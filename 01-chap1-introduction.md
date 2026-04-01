@@ -16,9 +16,25 @@ aaaaa
 
 [EN ORDEN ALFABETICO POR APELLIDO]
 
+**Nicolas Emilio Walter Juarez Leon (u202317483)**
+
+<div id="member-nicolas" align="center">
+  <img src="assets/images/cap1/gaby.jpeg" alt="Descripción de la imagen" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <div style="flex: 1;">
+  <p> 
+    Soy estudiante de la carrera de Ingeniería de Software cursando actualmente el 7mo ciclo y soy apasionado por aprender y reforzar mis conocimientos en diseño y desarrollo de software.
+    Además, me interesa el trabajo en equipo, la colaboración y la aplicación de conocimientos en entornos de desarrollo.
+    Por otro lado, cuento cono conocimientos en diseño de arquitectura, Git, así como tecnologías en desarrollo backend y móvil.
+    Finalmente, en mi futuro profesional busco centrarme sólidamente en el desarrollo móvil y el desarrollo backend complementado con tecnologías Cloud, arquitecturas escalables y mantenibles.
+  </p>
+  </div> 
+</div>
+
+<br>
+
 **Gabriela Nicole Shapiama Rivera (u202319448)**
 
-<div style="display: flex; align-items: center;">
+<div id="member-gabriela" align="center">
   <img src="assets/images/cap1/gaby.jpeg" alt="Descripción de la imagen" style="width: 150px; margin-right: 20px; border-radius: 10%;">
   <div style="flex: 1;">
   <p> Example<br>
