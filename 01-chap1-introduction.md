@@ -19,7 +19,7 @@ aaaaa
 **Nicolas Emilio Walter Juarez Leon (u202317483)**
 
 <div id="member-nicolas" align="center">
-  <img src="assets/images/cap1/gaby.jpeg" alt="Descripción de la imagen" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <img src="https://i.imgur.com/hpDR64l.png" alt="Imagen Nicolas Juarez" style="width: 150px; margin-right: 20px; border-radius: 10%;">
   <div style="flex: 1;">
   <p> 
     Soy estudiante de la carrera de Ingeniería de Software cursando actualmente el 7mo ciclo y soy apasionado por aprender y reforzar mis conocimientos en diseño y desarrollo de software.
