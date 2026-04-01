@@ -1,65 +1,39 @@
-<div style="text-align: center;" id="cover-page">
-<br>
-<img src="assets/images/presentation/logo-upc.png" alt="Logo UPC" style="width: 150px; height: auto;" />
+<div id="cover-page" align="center">
 
-**_Universidad Peruana de Ciencias Aplicadas_**
+<img src="https://i.imgur.com/uoAo2Eb.png" alt="Logo UPC" style="width: 200px; height: auto;" />
 
-**_Ingeniería de Software_**
+&nbsp;
 
-_**Periodo:** 2026-10_
+# UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
+## Ingeniería de Software
+### Ciclo: 202610
+### 1ASI0572 | Desarrollo de Soluciones IoT
+### NRC: 17757
+### Docente: Angel Augusto Velasquez Nuñez
 
-_**Curso:**  1ASI0572 - Desarrollo de Soluciones IoT_
+&nbsp;
+&nbsp;
 
-_**NRC:** 17757_
+# "Informe de Trabajo Final"
+### Startup: UI-Topic
+### Producto: Restock
 
-_**Docente:** Angel_
+&nbsp;
 
-### Informe de Trabajo Final
+### u202021885 - Castro Alejos, Julio Daniel
+### u202312508 - Coronel Espinoza, Farid Sebastian
+### u202311938 - Diaz Quispe, Matias Sebastian
+### u202319831 - Guerra Perez, José Jahaziel
+### u202317483 - Juarez Leon, Nicolas Emilio Walter
+### u202314101 - Navarro Chinga, Antonio Jhair
+### u202319448 - Shapiama Rivera, Gabriela Nicole
 
-_**Startup:** UI-Topic_
-
-_**Producto:** Restock_
-
-### Relación de Integrantes
-
-<div style="text-align: left; display: inline-block; margin-top: 0px;">
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center;">Código</th>
-      <th style="text-align: center;">Apellidos y Nombres</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center;">u202021885</td>
-      <td style="text-align: center;">Castro Alejos, Julio</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"></td>
-      <td style="text-align: center;"></td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">u202319831</td>
-      <td style="text-align: center;">Guerra Perez, José Jahaziel</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"></td>
-      <td style="text-align: center;"></td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">u202319448</td>
-      <td style="text-align: center;">Shapiama Rivera, Gabriela Nicole</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
----
-
-_**Mes y Año**: Abril 2026_
+&nbsp;
+### Abril 2026
 
 </div>
+
+&nbsp;
 
 <div class="page"></div>
 
