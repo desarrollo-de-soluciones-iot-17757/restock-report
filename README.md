@@ -8,7 +8,7 @@
 
 _**Periodo:** 2026-10_
 
-_**Curso:**  1ACC0238 - Desarrollo de Soluciones IoT_
+_**Curso:**  1ASI0572 - Desarrollo de Soluciones IoT_
 
 _**NRC:** 17757_
 
@@ -57,7 +57,7 @@ _**Producto:** Restock_
 
 ---
 
-_**Mes y Año**: Diciembre 2025_
+_**Mes y Año**: Abril 2026_
 
 </div>
 
