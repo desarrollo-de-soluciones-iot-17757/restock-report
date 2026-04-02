@@ -16,6 +16,20 @@ aaaaa
 
 [EN ORDEN ALFABETICO POR APELLIDO]
 
+**Farid Sebastian Coronel Espinoza (u202312508)**
+
+<div id="member-coronel" align="center">
+  <img src="assets/images/chapter1/farid.png" alt="Farid Coronel Espinoza" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <div style="flex: 1;">
+  <p> 
+    Soy estudiante de Ingeniería de Software y me formó de manera autodidacta. Cuento con sólidos conocimientos en desarrollo backend y mobile, aplicando buenas prácticas como Clean Architecture, Domain-Driven Design (DDD) y patrones de diseño. Tengo experiencia construyendo APIs REST, integrando servicios externos y trabajando con bases de datos relacionales y no relacionales.
+    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.    
+  </p>
+  </div> 
+</div>
+
+<br>
+
 **Nicolas Emilio Walter Juarez Leon (u202317483)**
 
 <div id="member-nicolas" align="center">
