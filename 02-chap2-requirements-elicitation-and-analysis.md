@@ -11,9 +11,61 @@
 
 ## 2.2. Entrevistas
 
-INTRODUCCION
+En esta sección se presenta la investigación realizada a partir de la recolección de información mediante entrevistas a representantes de los segmentos objetivo, con el fin de comprender sus necesidades, características y problemáticas.
 
 ### 2.2.1. Diseño de entrevistas
+
+#### **Segmento 1: Administradores o responsables de inventario en negocios con alta rotación de productos**
+
+##### **Preguntas principales:**
+
+1. ¿Cuál es su nombre y cuál es su cargo dentro del negocio?
+2. ¿Cuánto tiempo lleva desempeñando funciones relacionadas con la gestión de inventario?
+3. ¿Podría indicarnos su edad, estado civil y distrito de residencia actual?
+4. ¿Cómo describiría su trayectoria profesional hasta llegar a su puesto actual?
+5. ¿Qué tipo de productos gestiona con mayor frecuencia en su negocio?
+6. ¿Cuáles son los principales desafíos que enfrenta en el control y seguimiento del inventario?
+7. ¿Cómo realiza actualmente el registro y control de stock?
+8. ¿Utiliza alguna herramienta digital o software para gestionar inventarios? ¿Qué ventajas o limitaciones ha identificado?
+9. ¿Qué tipo de errores o pérdidas son más frecuentes en su proceso actual de control de inventario?
+10. ¿Qué tan importante considera contar con información en tiempo real para la toma de decisiones?
+
+##### **Preguntas complementarias:**
+
+1. ¿Qué dispositivos tecnológicos utiliza con mayor frecuencia en su trabajo diario?
+2. ¿Qué marcas, sistemas o herramientas prefiere para la gestión de inventario?
+3. ¿Cómo suele recibir alertas o reportes sobre faltantes, exceso de stock o productos en riesgo?
+4. ¿Qué canales digitales usa para comunicarse con su equipo o con otras áreas del negocio?
+5. ¿Qué características valoraría más en una solución tecnológica para mejorar su gestión de inventario?
+6. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos?
+7. ¿Estaría dispuesto(a) a probar una solución que incorpore monitoreo IoT para ciertos productos?
+
+
+#### **Segmento 2: Técnicos especializados en IoT**
+
+##### **Preguntas principales:**
+
+1. ¿Cuál es su nombre y cuál es su especialidad o cargo actual?
+2. ¿Cuánto tiempo lleva trabajando en instalación, mantenimiento o soporte de soluciones tecnológicas e IoT?
+3. ¿Podría indicarnos su edad, estado civil y distrito de residencia actual?
+4. ¿Cómo describiría su formación o experiencia profesional en el área tecnológica?
+5. ¿Qué tipo de dispositivos, sensores o sistemas IoT ha instalado o mantenido anteriormente?
+6. ¿Cuáles son los principales retos técnicos al implementar una solución IoT en un entorno real?
+7. ¿Qué aspectos considera críticos al momento de instalar sensores de peso, temperatura y humedad?
+8. ¿Cómo suele realizar el mantenimiento, calibración o monitoreo de estos dispositivos?
+9. ¿Qué problemas suelen aparecer con mayor frecuencia en este tipo de soluciones?
+10. ¿Qué tan importante considera la compatibilidad entre hardware, software y conectividad?
+
+
+##### **Preguntas complementarias:**
+
+1. ¿Qué herramientas o marcas de dispositivos IoT prefiere usar y por qué?
+2. ¿Qué canal de soporte o comunicación utiliza cuando hay fallas técnicas?
+3. ¿Qué nivel de capacitación considera necesario para operar una cabina inteligente?
+4. ¿Qué factores influyen en la facilidad de instalación y puesta en marcha de una solución IoT?
+5. ¿Qué recomendaciones daría para que un sistema IoT sea más confiable y escalable?
+6. ¿Qué tipo de alertas o datos serían más útiles para supervisar el funcionamiento del sistema?
+7. ¿Qué limitaciones técnicas suelen presentarse en proyectos con sensores de temperatura, humedad y peso?
 
 
 ### 2.2.2. Registro de entrevistas
