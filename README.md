@@ -154,11 +154,15 @@ _**Mes y Año**: Abril 2026_
 
 **ABET – EAC - Student Outcome 5**
 
-**Criterio:** aaaa
+**Criterio:** Trabaja efectivamente en un equipo cuyos
+miembros juntos proporcionan liderazgo; crea
+un entorno colaborativo e inclusivo y establece
+metas, planifica tareas y cumple objetivos
 
 En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 5.
 
-| Criterio específico | Acciones realizadas | Conclusiones |
-| -------------------- | ------------------- | ------------ |
-| **Actua--**    |                     |              |
-| **Reco-**      |                     |              |
+| Criterio específico                                                                                      | Acciones realizadas | Conclusiones |
+|----------------------------------------------------------------------------------------------------------|---------------------|--------------|
+| **5.c.1 Trabaja en equipo para proporcionar liderazgo en forma conjunta**                                |                     |              |
+| **5.c.2 Crea un entorno colaborativo e inclusivo, establece metas, planifica tareas y cumple objetivos** |                     |              |
+
