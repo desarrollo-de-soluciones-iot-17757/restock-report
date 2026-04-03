@@ -41,32 +41,35 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 ### 1.2.1 Antecedentes y Problemática
 
-
 #### Who (¿Quiénes se ven afectados?)
-
 
 #### What (¿Qué ocurre?)
 
-
 #### Where (¿Dónde sucede?)
-
 
 #### When (¿Desde cuándo y con qué frecuencia?)
 
-
 #### Why (¿Por qué es un problema?)
-
 
 #### How (¿Cómo se manifiesta?)
 
-
 #### How Much (¿Cuál es el impacto cuantitativo?)
-
 
 ### 1.2.2 Lean UX Proccess
 
+A continuación, se presenta el proceso Lean UX del proyecto, orientado a identificar problemas, formular hipótesis y orientar el diseño de la solución según las necesidades de los usuarios.
+
 #### 1.2.2.1. Lean UX Problem Statements
 
+El estado actual de la operación en las PyMEs de los sectores gastronómico y retail de alimentos se ha enfocado principalmente en la gestión manual de inventarios y pedidos por parte de administradores, mediante hojas de cálculo, cuadernos físicos y mensajería informal. Esto genera errores frecuentes, desperdicio de insumos, quiebres de stock y una limitada visibilidad del estado real de los productos almacenados.
+
+Lo que los productos y servicios existentes no logran resolver completamente es la necesidad de contar con una solución accesible y fácil de usar que, además de digitalizar la gestión del inventario, permita capturar automáticamente datos físicos del almacén en tiempo real sin depender de procesos manuales constantes.
+
+Nuestro producto abordará esta brecha mediante una plataforma de gestión de inventario integrada con cabinas de almacenamiento equipadas con dispositivos IoT, como sensores de peso, capaces de estimar automáticamente el stock actual y el espacio disponible. De esta manera, se busca mejorar la precisión del control de inventario, reducir errores operativos y optimizar la reposición de productos.
+
+Nuestro enfoque inicial estará dirigido a administradores de restaurantes y administradores de tiendas retail de alimentos.
+
+Sabremos que hemos tenido éxito cuando observemos una reducción en los errores de inventario y en el desperdicio de insumos, una mejora en los tiempos de abastecimiento y un uso recurrente de la plataforma para monitorear el stock y apoyar la toma de decisiones operativas.
 
 #### 1.2.2.2 Lean UX Assumptions
 
@@ -119,12 +122,9 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 - El panel de control centraliza inventario, ventas, alertas y estado de las cabinas.
 - La gestión digital del almacén reduce la dependencia de procesos manuales y mejora la organización general.
 
-
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
-
 #### 1.2.2.4 Lean UX Canvas
-
 
 ## 1.3 Segmentos objetivo
 
