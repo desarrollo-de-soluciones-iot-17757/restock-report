@@ -85,6 +85,30 @@ aaaaa
 
 ## 1.3 Segmentos objetivo
 
-**Segmento Objetivo 1: aaa**
+A continuación, se determinan los segmentos objetivos a los que va dirigida la propuesta de solución:
 
-**Segmento Objetivo 2: bbb**
+**Segmento Objetivo 1:** Dueños o administradores de Restaurantes
+
+Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 2026 en comparación con el mismo mes del año anterior. Este crecimiento se debe al buen desempeño de diversos tipos de establecimientos y la adopción de estrategias como la digitalización, el delivery y las promociones. Esto evidencia un aumento en la demanda del sector gastronómico, lo que incrementa la necesidad de que los negocios optimicen sus procesos internos, especialmente en la gestión de inventarios y control de insumos, para responder de manera eficiente a la demanda.  
+
+- **Datos demográficos:**
+    - Edad: Mayores de 18 años.
+    - Ocupación: Propietarios o administradores de restaurantes.
+    - Lugar de residencia: Lima Metropolitana, Perú.
+
+
+- **Problema:** Los restaurantes presentan dificultades en el control de inventarios debido al uso de métodos manuales, lo que genera pérdidas, desabastecimiento y desorganización en la gestión de insumos.
+- **Necesidad:** Buscan tener un mayor control de sus insumos para evitar pérdidas, reducir costos innecesarios y asegurar que nunca falten productos clave, permitiéndoles operar de manera más eficiente y aumentar la rentabilidad de su negocio.
+
+**Segmento Objetivo 2:** Dueños o administradores del sector Retail de consumo masivo
+
+Según el INEI, el sector de comercio en Perú creció 4,33% en enero de 2026 respecto al mismo mes del año anterior, impulsado por el comercio al por menor, el cual aumentó 4,67% debido a la mayor rotación de inventarios en supermercados, minimarkets y tiendas de conveniencia, así como a la apertura de nuevos puntos de venta. Esto refleja una creciente demanda en el sector retail, lo que exige una gestión más eficiente del inventario y del espacio de almacenamiento para responder adecuadamente al mercado.
+
+- **Datos demográficos:**
+    - Edad: Mayores de 18 años.
+    - Ocupación: Propietarios o administradores de negocios (Minimarkets, Tiendas de Conveniencia y almacenes logísticos).
+    - Lugar de residencia: Lima Metropolitana, Perú.
+
+
+- **Problema:** Los negocios retail presentan dificultades en el control de inventario debido a procesos manuales, lo que genera desorden, pérdidas por vencimiento y falta de precisión en el stock disponible.
+- **Necesidad:** Buscan mantener un control preciso del stock para evitar pérdidas y quiebres de inventario, mejorar la reposición de productos y maximizar sus ventas, asegurando una gestión más ordenada y rentable del negocio.
