@@ -64,19 +64,18 @@ aaaaa
 
 ##### A. Business Assumptions
 
-1. Creemos que las tiendas del sector retail, especialmente aquellas con alta rotación de productos y múltiples categorías de inventario, necesitan mejorar el control de stock y optimizar el uso del espacio de almacenamiento.
-2. Estas necesidades pueden resolverse con una solución tecnológica que combine monitoreo IoT, gestión de inventario e integración con puntos de venta.
-3. Nuestros primeros clientes serán administradores de tiendas, encargados de almacén y personal operativo de minimarkets, tiendas de conveniencia y almacenes logísticos.
-4. Como actores secundarios del ecosistema, también se considera a los proveedores de cabinas inteligentes y servicios de mantenimiento.
-5. El valor principal esperado es una mayor visibilidad del estado de ocupación de las cabinas y una reposición más eficiente del inventario.
-6. Beneficios adicionales: reducción de pérdidas, mejor organización del almacén, optimización del espacio y apoyo en la toma de decisiones.
-7. La adquisición puede realizarse mediante ventas directas B2B, referidos comerciales, alianzas con proveedores de cabinas y contactos del sector retail.
-8. Los ingresos pueden provenir de una suscripción mensual por tienda, con planes adicionales por integración, monitoreo IoT o mantenimiento.
-9. La competencia principal incluye sistemas de inventario tradicionales, soluciones de gestión de almacenes y herramientas de monitoreo de stock.
-10. La ventaja competitiva será la automatización del control de cabinas, la integración con ventas y las alertas inteligentes para reposición.
-11. El mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
-12. La mitigación se apoyará en una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
-13. Otros supuestos críticos son la disponibilidad de conectividad estable, el funcionamiento correcto de los sensores y la disposición de la tienda para integrar el sistema con sus ventas.
+1. Creo que mis clientes necesitan mejorar el control de inventarios y optimizar el uso del espacio de almacenamiento en tiendas retail con alta rotación.
+2. Estas necesidades se pueden resolver con una solución tecnológica que combine sensores IoT, gestión de inventario e integración con el punto de venta.
+3. Mis clientes iniciales son administradores de tiendas retail, encargados de almacén y personal operativo de minimarkets, tiendas de conveniencia y almacenes logísticos.
+4. El valor #1 que un cliente quiere de mi servicio es conocer en tiempo real el estado de ocupación de las cabinas y el stock disponible.
+5. El cliente también puede obtener estos beneficios adicionales: reducción de errores manuales, mejor organización del almacén, optimización del espacio y apoyo en la toma de decisiones.
+6. Voy a adquirir la mayoría de mis clientes a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de cabinas y mantenimiento.
+7. Haré dinero a través de una suscripción mensual por tienda, con planes adicionales por monitoreo IoT, integración con ventas o mantenimiento.
+8. Mi competencia principal en el mercado será los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
+9. Los venceremos debido a la automatización del control de cabinas, la integración con el punto de venta y las alertas inteligentes de reposición.
+10. Mi mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
+11. Resolveremos esto a través de una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
+12. Otras suposiciones que tenemos son que la conectividad será estable, que los sensores funcionarán correctamente y que la tienda estará dispuesta a integrar el sistema con sus ventas.
 
 ##### B. User Assumptions
 
