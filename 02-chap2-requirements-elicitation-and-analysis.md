@@ -35,11 +35,13 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 
 1. ¿Qué dispositivos tecnológicos utiliza con mayor frecuencia en su trabajo diario?
 2. ¿Qué marcas, sistemas o herramientas prefiere para la gestión de inventario?
-3. ¿Cómo suele recibir alertas o reportes sobre faltantes, exceso de stock o productos en riesgo?
-4. ¿Qué canales digitales usa para comunicarse con su equipo o con otras áreas del negocio?
-5. ¿Qué características valoraría más en una solución tecnológica para mejorar su gestión de inventario?
-6. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos?
-7. ¿Estaría dispuesto(a) a probar una solución que incorpore monitoreo IoT para ciertos productos?
+3. ¿Sigue a algún referente, empresa o profesional (influencer) en el ámbito de IoT o tecnología que influya en su trabajo o en las herramientas que utiliza?
+4. ¿Existen referentes, empresas o profesionales (influencers) que influyan en la forma en que gestiona su inventario o adopta nuevas tecnologías?
+5. ¿Cómo suele recibir alertas o reportes sobre faltantes, exceso de stock o productos en riesgo?
+6. ¿Qué canales digitales usa para comunicarse con su equipo o con otras áreas del negocio?
+7. ¿Qué características valoraría más en una solución tecnológica para mejorar su gestión de inventario?
+8. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos?
+9. ¿Estaría dispuesto(a) a probar una solución que incorpore monitoreo IoT para ciertos productos?
 
 #### **Segmento 2: Técnicos especializados en IoT**
 
