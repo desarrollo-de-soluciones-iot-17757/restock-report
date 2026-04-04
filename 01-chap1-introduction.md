@@ -61,15 +61,15 @@ A continuación, se presenta el proceso Lean UX del proyecto, orientado a identi
 
 #### 1.2.2.1. Lean UX Problem Statements
 
-El estado actual de la operación en las PyMEs de los sectores gastronómico y retail de alimentos se ha enfocado principalmente en la gestión manual de inventarios y pedidos por parte de administradores, mediante hojas de cálculo, cuadernos físicos y mensajería informal. Esto genera errores frecuentes, desperdicio de insumos, quiebres de stock y una limitada visibilidad del estado real de los productos almacenados.
+El estado actual de la operación en las PyMEs de los sectores gastronómico y retail de alimentos se ha enfocado principalmente en la gestión manual de inventarios y pedidos por parte de administradores, mediante hojas de cálculo, cuadernos físicos y mensajería informal. Esto genera errores frecuentes, desperdicio de insumos, quiebres de stock y una visibilidad limitada del estado real de los productos almacenados.
 
-Lo que los productos y servicios existentes no logran resolver completamente es la necesidad de contar con una solución accesible y fácil de usar que, además de digitalizar la gestión del inventario, permita capturar automáticamente datos físicos del almacén en tiempo real sin depender de procesos manuales constantes.
+Lo que los productos y servicios existentes no logran resolver completamente es la necesidad de contar con una alternativa accesible y fácil de usar que permita mejorar el control del inventario, reducir la dependencia de registros manuales constantes y disponer de información más oportuna para la toma de decisiones operativas.
 
-Nuestro producto abordará esta brecha mediante una plataforma de gestión de inventario integrada con cabinas de almacenamiento equipadas con dispositivos IoT, como sensores de peso, capaces de estimar automáticamente el stock actual y el espacio disponible. De esta manera, se busca mejorar la precisión del control de inventario, reducir errores operativos y optimizar la reposición de productos.
+Nuestro producto abordará esta brecha mediante una estrategia de digitalización y automatización del control de inventario, orientada a mejorar la precisión de los registros, optimizar el seguimiento del stock y facilitar la gestión operativa en negocios con una o más sucursales.
 
 Nuestro enfoque inicial estará dirigido a administradores de restaurantes y administradores de tiendas retail de alimentos.
 
-Sabremos que hemos tenido éxito cuando observemos una reducción en los errores de inventario y en el desperdicio de insumos, una mejora en los tiempos de abastecimiento y un uso recurrente de la plataforma para monitorear el stock y apoyar la toma de decisiones operativas.
+Sabremos que hemos tenido éxito cuando observemos una reducción en los errores de inventario y en el desperdicio de insumos, una mejora en los tiempos de abastecimiento y un uso recurrente de la solución para monitorear el stock y apoyar la toma de decisiones operativas.
 
 #### 1.2.2.2 Lean UX Assumptions
 
