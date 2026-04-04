@@ -49,7 +49,7 @@ Según Vásquez et al. (2024), muchas empresas peruanas presentan debilidades en
 #### When (¿Cuándo y con qué frecuencia?)
 
 La gestión ineficiente es persistente, ya que controlar el inventario es una tarea rutinaria y constante. Además, la situación se agrava gracias al uso de métodos manuales como el uso de cuadernos y hojas de apuntes.
-A pesar de que otras industrias mejoraron gracias a los avances tecnológicos, las PyMEs del sector gastronómico aún no han adoptado soluciones automatizadas que conecten en tiempo real las operaciones de inventario, lo cual resulta a exceso de inventario o poca disponibilidad del producto (Cross, 2024, como se cita en Omar, 2016).
+A pesar de que otras industrias mejoraron gracias a los avances tecnológicos, las PyMEs del sector gastronómico aún no han adoptado soluciones automatizadas que conecten en tiempo real las operaciones de inventario, lo cual resulta a exceso de inventario o poca disponibilidad del producto (Cross, 2024).
 
 #### Where (¿Dónde sucede?)
 
