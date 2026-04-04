@@ -35,8 +35,7 @@ aaaaa
 
 #### What (¿Qué ocurre?)
 Existe una problemática con las operaciones relacionadas a la gestión lógica y eficiente de inventarios en PyMEs (pequeña y mediana empresa) pertenecientes a los sectores gastronómico y retail.
-Por un lado, en el caso de los restaurantes, existe un problema con el monitereo, gestión de recursos, pedidos e inventarios ya que son inexactos y tardíos gracias a la inclusión de métodos manuales. Esto conlleva a pérdidas monetarias, ineficiencia laboral y poca satisfacción del cliente (Cross, 2024, como se cita en Chen & Peng, 2023; El-Said & Al Hajri, 2022; Opazo, 2012; Staley & Jucker, 2021; Wang, 2017)
-Por otro lado, en el sector retail, según Vásquez et al. (2024), muchas empresas peruanas presentan debilidades en el control de sus almacenes debido a la ausencia de sistemas de información integrados y la falta de metodologías estandarizadas para la clasificación y rotación del inventario.
+Según Vásquez et al. (2024), muchas empresas peruanas presentan debilidades en el control de sus almacenes debido a la ausencia de sistemas de información integrados y la falta de metodologías estandarizadas para la clasificación y rotación del inventario.
 
 #### When (¿Cuándo y con qué frecuencia?)
 La gestión ineficiente es persistente, ya que controlar el inventario es una tarea rutinaria y constante. Además, la situación se agrava gracias al uso de métodos manuales como el uso de cuadernos y hojas de apuntes.
