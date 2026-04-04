@@ -79,6 +79,23 @@ aaaaa
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
+1. **Inventario inteligente con sensores**
+
+   > **Creemos que** al integrar sensores en cabinas de almacenamiento que detecten el nivel de carga en tiempo real, los administradores de restaurantes y retail podrán monitorear el inventario físico de manera automática, **reduciendo la necesidad de revisiones manuales en un 40%** **Sabremos que estamos bien cuando**: usuarios indican que "ya no necesito revisar físicamente el almacenamiento" y/o se reduce en al menos un 40% la revisión manual del inventario.
+   >
+2. **Optimización de almacenamiento basada en ventas**
+
+   > **Creemos que** al conectar los datos de ventas con el sistema de almacenamiento inteligente, los administradores podrán podrán priorizar productos de alta rotación y optimizar el uso del espacio en un **25%**. **Sabremos que estamos bien cuando**: usuarios indican que “los productos más vendidos siempre están disponibles” y/o se observa una mejora del 25% en la disponibilidad de productos con mayor demanda.
+   >
+3. **Notificaciones proactivas**
+
+   > **Creemos que** al implementar alertas automáticas basadas en niveles de stock y estado de las cabinas, los administradores de restaurantes y retail podrán tomar decisiones más rápidas, **reduciendo retrasos en la reposición en un 25%**. **Sabremos que estamos bien cuando veamos los siguientes comentarios del mercado**: usuarios indican que “el sistema me avisa justo cuando debo reponer” y/o se reduce en un 25% el tiempo de respuesta ante faltantes de stock.
+   >
+4. **Visualización y control del almacén**
+
+   > **Creemos que** al ofrecer un panel de control centralizado que muestre en tiempo real el estado de las cabinas, el inventario y las alertas, los administradores de restaurantes y retail podrán supervisar el almacén de manera más eficiente **reduciendo el tiempo de control de inventario en un 30%**. **Sabremos que estamos bien cuando veamos los siguientes comentarios del mercado**: usuarios indican que “puedo controlar todo el almacén desde un solo lugar” y/o se reduce en un 30% el tiempo dedicado a supervisar el estado del inventario.
+   >
+
 
 #### 1.2.2.4 Lean UX Canvas
 
