@@ -65,14 +65,14 @@ _**Mes y Año**: Abril 2026_
 
 ## Registro de Versiones
 
-| *Versión* | *Fecha* | *Autor* | *Descripción de modificación* |
-| :----------: | :-------: | :-------- | :-------------------------------- |
-|     1.2     |          |           |                                   |
-|     1.3     |          |           |                                   |
-|     1.4     |          |           |                                   |
-|     1.5     |          |           |                                   |
-|     1.6     |          |           |                                   |
-|     1.7     |          |           |                                   |
+| *Versión*    | *Fecha*   | *Autor*        | *Descripción de modificación*     |
+| :----------: | :-------: | :--------:     | :-------------------------------- |
+|     1.1      | 02/04/26  | Nicolas Juarez |  Se agrega la seccion relacionada con los antecedentes y problematica. |
+|     1.3      |           |                |                                   |
+|     1.4      |           |                |                                   |
+|     1.5      |           |                |                                   |
+|     1.6      |           |                |                                   |
+|     1.7      |           |                |                                   |
 
 # Project Report Collaboration Insights
 
