@@ -77,7 +77,7 @@ aaaaa
 **José Jahaziel Guerra Perez (u202319831)**
 
 <div id="member-jahaziel" align="center">
-  <img src="https://ibb.co/FddH4tq" alt="Imagen Jahaziel Guerra" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <img src="https://i.ibb.co/LssNdfh/IMG-8966.jpg" alt="Imagen Jahaziel Guerra" style="width: 150px; margin-right: 20px; border-radius: 10%;">
   <div style="flex: 1;">
   <p> 
     Soy estudiante de Ingeniería de Software, actualmente en el quinto ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
