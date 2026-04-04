@@ -74,6 +74,20 @@ aaaaa
 
 <br>
 
+**José Jahaziel Guerra Perez (u202319831)**
+
+<div style="display: flex; align-items: center;">
+  <img src="assets/images/cap1/jahaziel.jpg" alt="Descripción de la imagen" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <div style="flex: 1;">
+  <p>Soy estudiante de Ingeniería de Software, actualmente en el quinto ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
+  Mi enfoque profesional está orientado al desarrollo backend, con especial interés en la construcción de sistemas distribuidos, escalables y resilientes, aplicando arquitecturas basadas en microservicios, mensajería asincrónica y herramientas de CI/CD modernas. <br>
+  Actualmente me interesa cómo los modelos de lenguaje (LLM) pueden actuar como agentes autónomos dentro de una arquitectura empresarial, integrándose con servicios como Apache Kafka, Spring Boot y sistemas de orquestación para tomar decisiones, responder eventos o ejecutar tareas de forma inteligente. <br>
+  Mi objetivo a futuro es convertirme en un Full Stack Developer con visión sistémica, capaz de diseñar   soluciones innovadoras que no solo funcionen, sino que mejoren activamente el ecosistema donde se   implementan, aprovechando tecnologías emergentes como inteligencia artificial, automatización y cloud   computing. </p>
+  </div>
+</div>
+
+<br>
+
 ## 1.2 Solution Profile
 
 ### 1.2.1 Antecedentes y Problemática
