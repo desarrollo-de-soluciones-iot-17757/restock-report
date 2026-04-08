@@ -38,12 +38,19 @@ El User Persona **Carolina Rivas** representa a las administradoras y propietari
   <img src="https://imgur.com/4UKJRpL.png" alt="user-persona-1">
 </div>
 
+La información mostrada del User Persona **Carolina Rivas** se observa que valora herramientas simples, visuales y fáciles de implementar, ya que busca optimizar sus procesos sin afectar la atención al cliente ni depender de sistemas complejos. En ese sentido, este perfil sintetiza claramente la oportunidad de diseñar una solución tecnológica orientada a digitalizar la gestión de inventarios, mejorar la eficiencia operativa y apoyar una toma de decisiones más informada dentro del restaurante.
+
 <br>
+
 Por otro lado, el User Persona **Jorge Torres** representa a los dueños o administradores de negocios del sector retail de consumo masivo, como minimarkets o tiendas de conveniencia. Con varios años de experiencia en la gestión de su negocio, Jorge maneja una alta rotación de productos, lo que hace que el control del inventario sea una tarea crítica en su operación diaria. Actualmente, utiliza métodos manuales apoyados por herramientas como WhatsApp y Excel para registrar el stock, coordinar pedidos y llevar el control de ventas, lo que le genera desorden, errores y falta de visibilidad en tiempo real.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/GS5ViIz.png" alt="user-persona-2">
 </div>
+
+La información mostrada del User Persona Jorge Torres permite identificar a un administrador de negocio retail de consumo masivo que enfrenta dificultades en el control de inventario debido a la alta rotación de productos y al uso de métodos manuales. Su perfil evidencia problemas de desorden, falta de precisión en el stock y ausencia de visibilidad en tiempo real, lo que afecta directamente la reposición, la organización del almacén y la rentabilidad del negocio.
+
+Asimismo, se observa que valora soluciones prácticas, visuales y fáciles de usar, siempre que le ayuden a reducir errores y ahorrar tiempo en sus tareas operativas. En ese sentido, este perfil refleja la necesidad de implementar una solución tecnológica que permita controlar el inventario en tiempo real, optimizar la reposición y mejorar la toma de decisiones dentro del negocio retail.
 
 ### 2.3.2. User Task Matrix
 
