@@ -71,6 +71,68 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 
 ### 2.2.2. Registro de entrevistas
 
+#### Segmento 1: Dueños o administradores de Restaurantes
+
+##### Entrevista 1:
+
+**Nombre:** Alex Guardia
+**Edad:** 38 años
+**Distrito:** Chorrillos
+**Timing:** (00:08 - 05:04 min)
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista1.png)
+Ver entrevista (00:08 - 05:04 min): https://shorturl.at/aNnes
+
+**Resumen:**
+Alex Guardia, gerente de restaurantes con 5 a 6 años de experiencia, tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome.
+
+Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. Se inspira en figuras del rubro gastronómico como Gastón Acurio y realiza compras en establecimientos como Makro o Plazavea. Actualmente enfrenta desafíos relacionados con los proveedores y la gestión de inventarios. Alex realiza controles físicos diarios y verificaciones electrónicas semanales o quincenales. Aunque utiliza software de gestión, considera que la mayoría carece de personalización, el soporte postventa suele ser deficiente y en ocasiones presenta problemas de discrepancia entre sus insumos físicos y los registrados. Estaría dispuesto a invertir entre 500 y 800 dólares en una solución tecnológica integral que incluya implementación, capacitación y soporte, siempre que se adapte a sus procesos y contribuya a mejorar la eficiencia del negocio.
+
+##### Entrevista 2:
+
+**Nombre:** Lincoln Chauca Rubio
+**Edad:** 36 años
+**Distrito:** Breña
+**Timing:** (05:05 - 09:13 min)
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista2.png)
+Ver entrevista (05:05 - 09:13 min): https://shorturl.at/aNnes
+
+**Resumen:**
+
+Lincoln Chauca Rubio, propietario del “Amazonas Restaurant”, tiene 36 años, es casado y vive en el distrito de Breña, Lima. Administra su restaurante desde hace 5 años y se describe como una persona disciplinada, responsable y dedicada. Ocupa el cargo de gerente propietario, con una participación directa en la gestión operativa del negocio.
+
+En términos tecnológicos, utiliza un celular con sistema operativo Android y una laptop con Windows. Su navegador habitual es Google Chrome. Para comunicarse con su equipo y proveedores, emplea canales como WhatsApp y llamadas telefónicas. En cuanto a influencias y marcas, menciona que busca referencias en otros restaurantes reconocidos de cocina regional, y realiza compras en proveedores mayoristas como Makro.
+
+Uno de los principales desafíos que enfrenta es la rotación constante del personal, ya que no cuenta con un equipo estable y se ve obligado a contratar nuevos empleados con frecuencia. Este problema afecta la eficiencia del servicio y genera un esfuerzo adicional en capacitación y adaptación.
+
+Otro reto significativo es el manejo del inventario, que incide directamente en la operatividad diaria del restaurante. Aunque utiliza un software llamado Vidal, el cual facilita la gestión del negocio al permitir que los mozos tomen pedidos desde tablets o celulares y se mantenga una base de datos de clientes, reconoce que aún hay oportunidades de mejora. También comenta que su personal en ocasiones tiene errores de registro y el stock real no coincide con lo mostrado en el software.
+
+Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológicas, pero está dispuesto a incrementar esa inversión hasta 500 soles si la solución mejora sustancialmente la gestión del restaurante.
+
+##### Entrevista 3:
+
+**Nombre:** Amparo Soledad Robles Vásquez
+**Edad:** 56 años
+**Distrito:** Bellavista
+**Timing:** (09:14 - 14:25 min)
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista3.png)
+Ver entrevista (09:14 - 14:25 min): https://shorturl.at/aNnes
+
+**Resumen:**
+
+La señora Amparo Robles Vásquez tiene 56 años, vive en el distrito de Bellavista y es propietaria del restaurante y cevichería "El 1er Puerto", el cual gestiona desde hace 20 años. Se describe como una persona perseverante, responsable y amable. Usa un celular con Android y una laptop con Windows, y suele navegar usando Google Chrome.
+
+Entre los principales desafíos que enfrenta están la dificultad para encontrar personal adecuado y la falta de conocimientos en marketing digital, lo que limita la promoción de su restaurante. Reconoce que adaptarse a la tecnología es un reto, pero también una necesidad en el contexto actual.
+
+Actualmente gestiona el inventario de manera manual, lo que le toma tiempo y esfuerzo. Por ello, tiene la intención de implementar un sistema digital que le permita agilizar los procesos y mejorar la atención al cliente, considerando esto clave para crecer y ofrecer un mejor servicio.
+
+Está dispuesta a invertir en un software que automatice su negocio si este se adapta a sus necesidades. Se informa por canales como WhatsApp y YouTube, y tiene afinidad con marcas como Makro y figuras del sector gastronómico como Gastón Acurio.
+
+---
+
+#### Segmento 2:
 
 ### 2.2.3. Análisis de entrevistas
 
