@@ -31,7 +31,7 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
   <div style="flex: 1;">
   <p> 
     Soy estudiante de Ingeniería de Software y me formó de manera autodidacta. Cuento con sólidos conocimientos en desarrollo backend y mobile, aplicando buenas prácticas como Clean Architecture, Domain-Driven Design (DDD) y patrones de diseño. Tengo experiencia construyendo APIs REST, integrando servicios externos y trabajando con bases de datos relacionales y no relacionales.
-    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.    
+    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.  
   </p>
   </div> 
 </div>
@@ -141,13 +141,13 @@ A continuación, se presenta el proceso Lean UX del proyecto, orientado a identi
 
 #### 1.2.2.1. Lean UX Problem Statements
 
-El estado actual de la operación en las PyMEs de los sectores gastronómico y retail de alimentos se ha enfocado principalmente en la gestión manual de inventarios y pedidos por parte de administradores, mediante hojas de cálculo, cuadernos físicos y mensajería informal. Esto genera errores frecuentes, desperdicio de insumos, quiebres de stock y una visibilidad limitada del estado real de los productos almacenados.
+El estado actual de la operación en las PyMEs de los sectores gastronómico y retail de alimentos se ha enfocado principalmente en la gestión manual de inventarios mediante hojas de cálculo, cuadernos físicos y mensajería informal. Esto genera errores frecuentes, desperdicio de insumos, quiebres de stock y una visibilidad limitada del estado real de los productos almacenados.
 
-Lo que los productos y servicios existentes no logran resolver completamente es la necesidad de contar con una alternativa accesible y fácil de usar que permita mejorar el control del inventario, reducir la dependencia de registros manuales constantes y disponer de información más oportuna para la toma de decisiones operativas.
+Lo que los productos y servicios existentes no logran resolver completamente es la necesidad de contar con una alternativa accesible y fácil de usar que permita mejorar el control del inventario, reducir la dependencia de registros manuales constantes, disminuir las discrepancias entre el stock físico y el stock registrado, y disponer de información más oportuna y confiable para la toma de decisiones operativas.
 
-Nuestro producto abordará esta brecha mediante una estrategia de digitalización y automatización del control de inventario, orientada a mejorar la precisión de los registros, optimizar el seguimiento del stock y facilitar la gestión operativa en negocios con una o más sucursales.
+Nuestro producto abordará esta brecha mediante una estrategia de digitalización y automatización del control de inventario, orientada a mejorar la precisión de los registros, optimizar el seguimiento del stock, reducir discrepancias entre el inventario físico y el registrado, y facilitar la gestión operativa en negocios con una o más sucursales.
 
-Nuestro enfoque inicial estará dirigido a administradores de restaurantes y administradores de tiendas retail de alimentos.
+Nuestro enfoque inicial estará dirigido a administradores de restaurantes y administradores de tiendas retail de consumo masivo.
 
 Sabremos que hemos tenido éxito cuando observemos una reducción en los errores de inventario y en el desperdicio de insumos, una mejora en los tiempos de abastecimiento y un uso recurrente de la solución para monitorear el stock y apoyar la toma de decisiones operativas.
 
@@ -212,14 +212,13 @@ A continuación, se determinan los segmentos objetivos a los que va dirigida la 
 
 **Segmento Objetivo 1:** Dueños o administradores de Restaurantes
 
-Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 2026 en comparación con el mismo mes del año anterior. Este crecimiento se debe al buen desempeño de diversos tipos de establecimientos y la adopción de estrategias como la digitalización, el delivery y las promociones. Esto evidencia un aumento en la demanda del sector gastronómico, lo que incrementa la necesidad de que los negocios optimicen sus procesos internos, especialmente en la gestión de inventarios y control de insumos, para responder de manera eficiente a la demanda.  
+Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 2026 en comparación con el mismo mes del año anterior. Este crecimiento se debe al buen desempeño de diversos tipos de establecimientos y la adopción de estrategias como la digitalización, el delivery y las promociones. Esto evidencia un aumento en la demanda del sector gastronómico, lo que incrementa la necesidad de que los negocios optimicen sus procesos internos, especialmente en la gestión de inventarios y control de insumos, para responder de manera eficiente a la demanda.
 
 - **Datos demográficos:**
-    - Edad: Mayores de 18 años.
-    - Ocupación: Propietarios o administradores de restaurantes.
-    - Lugar de residencia: Lima Metropolitana, Perú.
 
-
+  - Edad: Mayores de 18 años.
+  - Ocupación: Propietarios o administradores de restaurantes.
+  - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los restaurantes presentan dificultades en el control de inventarios debido al uso de métodos manuales, lo que genera pérdidas, desabastecimiento y desorganización en la gestión de insumos.
 - **Necesidad:** Buscan tener un mayor control de sus insumos para evitar pérdidas, reducir costos innecesarios y asegurar que nunca falten productos clave, permitiéndoles operar de manera más eficiente y aumentar la rentabilidad de su negocio.
 
@@ -228,10 +227,9 @@ Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 
 Según el INEI, el sector de comercio en Perú creció 4,33% en enero de 2026 respecto al mismo mes del año anterior, impulsado por el comercio al por menor, el cual aumentó 4,67% debido a la mayor rotación de inventarios en supermercados, minimarkets y tiendas de conveniencia, así como a la apertura de nuevos puntos de venta. Esto refleja una creciente demanda en el sector retail, lo que exige una gestión más eficiente del inventario y del espacio de almacenamiento para responder adecuadamente al mercado.
 
 - **Datos demográficos:**
-    - Edad: Mayores de 18 años.
-    - Ocupación: Propietarios o administradores de negocios (Minimarkets, Tiendas de Conveniencia y almacenes logísticos).
-    - Lugar de residencia: Lima Metropolitana, Perú.
 
-
+  - Edad: Mayores de 18 años.
+  - Ocupación: Propietarios o administradores de negocios (Minimarkets, Tiendas de Conveniencia y almacenes logísticos).
+  - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los negocios retail presentan dificultades en el control de inventario debido a procesos manuales, lo que genera desorden, pérdidas por vencimiento y falta de precisión en el stock disponible.
 - **Necesidad:** Buscan mantener un control preciso del stock para evitar pérdidas y quiebres de inventario, mejorar la reposición de productos y maximizar sus ventas, asegurando una gestión más ordenada y rentable del negocio.
