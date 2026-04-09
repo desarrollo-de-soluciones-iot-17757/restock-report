@@ -78,10 +78,10 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 **Nombre:** Alex Guardia
 **Edad:** 38 años
 **Distrito:** Chorrillos
-**Timing:** (00:08 - 05:04 min)
+**Timing:** (00:08 - 04:39 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista1.png)
-Ver entrevista (00:08 - 05:04 min): https://bit.ly/41kf54H
+Ver entrevista (00:08 - 04:39 min): https://bit.ly/41kf54H
 
 **Resumen:**
 Alex Guardia, gerente de restaurantes con 5 a 6 años de experiencia, tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome.
@@ -93,10 +93,10 @@ Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. Se i
 **Nombre:** Lincoln Chauca Rubio
 **Edad:** 36 años
 **Distrito:** Breña
-**Timing:** (05:05 - 09:13 min)
+**Timing:** (04:40 - 08:24 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista2.png)
-Ver entrevista (05:05 - 09:13 min): https://bit.ly/41kf54H
+Ver entrevista (04:40 - 08:24 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -115,10 +115,10 @@ Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológi
 **Nombre:** Amparo Soledad Robles Vásquez
 **Edad:** 56 años
 **Distrito:** Bellavista
-**Timing:** (09:14 - 14:25 min)
+**Timing:** (08:25 - 13:07 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista3.png)
-Ver entrevista (09:14 - 14:25 min): https://bit.ly/41kf54H
+Ver entrevista (08:25 - 13:07 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -139,10 +139,10 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 **Nombre:** Brayner Coronel
 **Edad:** 28 años
 **Distrito:** Villa El Salvador
-**Timing:** 
+**Timing:** (13:08 - 16:08 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista4.png)
-Ver entrevista (): https://bit.ly/41kf54H 
+Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H 
 
 **Resumen:**
 
@@ -164,10 +164,10 @@ Además, considera que contar con un software especializado, con funciones más 
 **Nombre:** Erick Coronel
 **Edad:** 51 años
 **Distrito:** Villa María del Triunfo
-**Timing:**
+**Timing:** (16:09 - 19:15 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista5.png)
-Ver entrevista (): https://bit.ly/41kf54H
+Ver entrevista (16:09 - 19:15 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -184,10 +184,10 @@ Erick no enfrenta dificultades con productos que no logran venderse, ya que cuen
 **Nombre:** Luis Alfonso Jimenez
 **Edad:** 55 años
 **Distrito:** San Martín de Porres
-**Timing:**
+**Timing:** (19:16 - 29:49 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista6.png)
-Ver entrevista (): https://bit.ly/41kf54H
+Ver entrevista (19:16 - 29:49 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
