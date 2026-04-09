@@ -132,10 +132,75 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 
 ---
 
-#### Segmento 2:
+#### Segmento 2: Dueños o administradores de negocios del sector retail de consumo masivo
+
+##### Entrevista 1:
+
+**Nombre:** Brayner Coronel
+**Edad:** 28 años
+**Distrito:** Villa El Salvador
+**Timing:** 
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista4.png)
+Ver entrevista ():  
+
+**Resumen:**
+
+
+Brayner Coronel, un emprendedor de 28 años y propietario de una tienda retail, decidió iniciar su negocio en plena pandemia. Aunque los primeros meses fueron difíciles y su emprendimiento enfrentó un estancamiento inicial, con esfuerzo y perseverancia logró salir adelante y consolidar su tienda en el mercado local. Actualmente, 
+
+
+Para él, la tecnología es una aliada clave en la eficiencia operativa y en el crecimiento sostenible de su emprendimiento. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows.
+
+En cuanto a los métodos de pago, ha integrado exitosamente la plataforma Yape, que le permite ofrecer a sus clientes una forma rápida y segura de realizar sus compras. Además, no enfrenta inconvenientes con productos que no se logran vender, ya que cuenta con el respaldo de sus proveedores, quienes se encargan de reemplazar aquellos artículos que no tienen salida.
+
+Brayner utiliza un software de gestión de inventarios que le permite registrar de forma detallada cada producto que recibe. 
+Al ingresar los datos en el sistema, puede visualizar fácilmente la disponibilidad de los productos, lo cual le facilita mantener un control eficiente del stock.
+
+Además, considera que contar con un software especializado, con funciones más avanzadas y herramientas adaptadas a las necesidades específicas de su rubro, puede marcar una gran diferencia en la forma en que administra su negocio.
+
+##### Entrevista 2:
+
+**Nombre:** Erick Coronel
+**Edad:** 51 años
+**Distrito:** Villa María del Triunfo
+**Timing:**
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista5.png)
+Ver entrevista ():
+
+**Resumen:**
+
+Erick Coronel, de 51 años, es el propietario de una tienda retail, un negocio al que decidió dedicarse tras dejar el rubro de la construcción durante la pandemia. Esta transición marcó un cambio importante en su vida laboral, y desde entonces ha buscado adaptar sus procesos a las exigencias del comercio moderno.
+
+Considera muy útil contar con una plataforma más especializada que le notifique cuándo es necesario reponer stock y que le ofrezca recomendaciones sobre el almacenamiento de sus productos. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows. En cuanto a los medios de pago, ha integrado plataformas digitales como Yape y Plin, facilitando así las transacciones con sus clientes y adaptándose a las nuevas formas de consumo.
+
+Para gestionar su inventario y las ventas diarias, utiliza un software básico que le permite mantener cierto orden. Sin embargo, considera poco práctico tener que revisar manualmente qué productos tienen mayor rotación, lo que le demanda tiempo y esfuerzo adicional. 
+
+Erick no enfrenta dificultades con productos que no logran venderse, ya que cuenta con un acuerdo con sus proveedores, quienes aceptan devoluciones, lo que le brinda mayor tranquilidad en la gestión de su stock. Valora el uso de herramientas digitales, especialmente aquellas que le permiten mejorar el proceso de cobranza, una parte crucial de su operación diaria.
+
+##### Entrevista 3:
+
+**Nombre:** Luis Alfonso Jimenez
+**Edad:** 55 años
+**Distrito:** San Martín de Porres
+**Timing:**
+
+![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista6.png)
+Ver entrevista ():
+
+**Resumen:**
+
+Luis Alfonso Jiménez, de 55 años, es dueño de una tienda retail que fundó hace 10 años. Desde sus inicios ha gestionado el negocio de forma manual, utilizando hojas de cálculo de Excel para controlar el inventario. Aunque este método le ha funcionado hasta cierto punto, reconoce que ya no es eficiente para las exigencias actuales. Uno de los principales desafíos que enfrenta es el manejo de productos próximos a vencer. Utiliza como browser Google Chrome y Safari. Como tecnologias utiliza un celular iphone y una laptop MacOS.
+
+Para evitar pérdidas, Luis Alfonso opta por mover estos productos a zonas más accesibles para los clientes y colocar los más nuevos al fondo de la tienda. Sin embargo, este constante movimiento puede dañar las botellas o empaques, generándole pérdidas innecesarias. 
+
+Luis Alfonso considera que un software que le permita gestionar automáticamente su inventario, compras y ventas le sería de gran ayuda. Actualmente lleva toda la documentación a mano, lo que le consume tiempo y puede generar errores.
+
+
+Además, le resulta tedioso identificar qué productos necesita reponer, ya que debe revisar toda su hoja de stock manualmente. A esto se suma el riesgo de olvidar registrar alguna venta, lo que afecta el control real de su inventario. En ocasiones, incluso tiene que ir directamente al almacén para verificar físicamente la existencia de ciertos productos. 
 
 ### 2.2.3. Análisis de entrevistas
-
 
 ## 2.3. Needfinding
 
