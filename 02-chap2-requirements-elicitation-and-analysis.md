@@ -81,7 +81,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 **Timing:** (00:08 - 05:04 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista1.png)
-Ver entrevista (00:08 - 05:04 min): https://shorturl.at/aNnes
+Ver entrevista (00:08 - 05:04 min): https://bit.ly/41kf54H
 
 **Resumen:**
 Alex Guardia, gerente de restaurantes con 5 a 6 años de experiencia, tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome.
@@ -96,7 +96,7 @@ Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. Se i
 **Timing:** (05:05 - 09:13 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista2.png)
-Ver entrevista (05:05 - 09:13 min): https://shorturl.at/aNnes
+Ver entrevista (05:05 - 09:13 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -118,7 +118,7 @@ Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológi
 **Timing:** (09:14 - 14:25 min)
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista3.png)
-Ver entrevista (09:14 - 14:25 min): https://shorturl.at/aNnes
+Ver entrevista (09:14 - 14:25 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -134,7 +134,7 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 
 #### Segmento 2: Dueños o administradores de negocios del sector retail de consumo masivo
 
-##### Entrevista 1:
+##### Entrevista 4:
 
 **Nombre:** Brayner Coronel
 **Edad:** 28 años
@@ -142,7 +142,7 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 **Timing:** 
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista4.png)
-Ver entrevista ():  
+Ver entrevista (): https://bit.ly/41kf54H 
 
 **Resumen:**
 
@@ -159,7 +159,7 @@ Al ingresar los datos en el sistema, puede visualizar fácilmente la disponibili
 
 Además, considera que contar con un software especializado, con funciones más avanzadas y herramientas adaptadas a las necesidades específicas de su rubro, puede marcar una gran diferencia en la forma en que administra su negocio.
 
-##### Entrevista 2:
+##### Entrevista 5:
 
 **Nombre:** Erick Coronel
 **Edad:** 51 años
@@ -167,7 +167,7 @@ Además, considera que contar con un software especializado, con funciones más 
 **Timing:**
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista5.png)
-Ver entrevista ():
+Ver entrevista (): https://bit.ly/41kf54H
 
 **Resumen:**
 
@@ -179,7 +179,7 @@ Para gestionar su inventario y las ventas diarias, utiliza un software básico q
 
 Erick no enfrenta dificultades con productos que no logran venderse, ya que cuenta con un acuerdo con sus proveedores, quienes aceptan devoluciones, lo que le brinda mayor tranquilidad en la gestión de su stock. Valora el uso de herramientas digitales, especialmente aquellas que le permiten mejorar el proceso de cobranza, una parte crucial de su operación diaria.
 
-##### Entrevista 3:
+##### Entrevista 6:
 
 **Nombre:** Luis Alfonso Jimenez
 **Edad:** 55 años
@@ -187,7 +187,7 @@ Erick no enfrenta dificultades con productos que no logran venderse, ya que cuen
 **Timing:**
 
 ![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista6.png)
-Ver entrevista ():
+Ver entrevista (): https://bit.ly/41kf54H
 
 **Resumen:**
 
