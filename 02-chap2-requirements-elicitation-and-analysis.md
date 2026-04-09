@@ -1,13 +1,12 @@
+    
+
 # Capítulo II: Requirements Elicitation & Analysis
 
 ## 2.1. Competidores
 
-
 ### 2.1.1. Análisis competitivo
 
-
 ### 2.1.2. Estrategias y tácticas frente a competidores
-
 
 ## 2.2. Entrevistas
 
@@ -71,9 +70,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 
 ### 2.2.2. Registro de entrevistas
 
-
 ### 2.2.3. Análisis de entrevistas
-
 
 ## 2.3. Needfinding
 
@@ -107,14 +104,38 @@ Asimismo, se observa que valora soluciones prácticas, visuales y fáciles de us
 
 ### 2.3.2. User Task Matrix
 
+Se presenta el User Task Matrix, que reúne las tareas que ambos User Persona, administradores de restaurantes y administradores del sector Retail de consumo masivo, realizan para lograr sus objetivos. Estas tareas comprenden funciones específicas, son actividades que los usuarios llevan a cabo en su día a día, independientemente de la existencia de una solución tecnológica.
+
+Los segmentos considerados para este análisis son:
+
+- Dueños o administradores de Restaurantes
+- Dueños o administradores del sector Retail de consumo masivo
+
+##### Task Matrix
+
+| Tarea                                                      | Carolina Rivas |             | Jorge Torres |             |
+| ---------------------------------------------------------- | -------------- | ----------- | ------------ | ----------- |
+|                                                            | Frecuencia     | Importancia | Frecuencia   | Importancia |
+| Supervisar y controlar el inventario disponible            | often          | high        | sometimes    | high        |
+| Monitorear condiciones de almacenamiento                   | often          | medium      | sometimes    | medium      |
+| Gestionar mermas, productos vencidos o dañados             | often          | high        | often        | high        |
+| Registrar ingresos de mercadería y salidas de stock        | sometimes      | medium      | often        | high        |
+| Evaluar precios, rentabilidad y condiciones de venta       | sometimes      | high        | sometimes    | medium      |
+| Planificar el reabastecimiento de insumos/productos        | often          | high        | often        | high        |
+| Gestionar incidencias e imprevistos                        | sometimes      | medium      | sometimes    | medium      |
+| Preparar, despachar o recibir productos del día           | sometimes      | high        | often        | high        |
+| Buscar herramientas para mejorar la gestión/organización | rarely         | medium      | rarely       | medium      |
+
+**Análisis:**
+
+- Ambos segmentos comparten varias tareas operativas esenciales, como la supervisión de inventario, la planificación del reabastecimiento y la gestión de mermas o productos dañados. Estas actividades son frecuentes y de alta importancia en ambos casos, aunque con enfoques distintos: la administradora de restaurante busca garantizar la frescura de sus insumos perecederos, mientras que el administrador de retail se centra en mantener el flujo de stock ante una alta rotación de productos.
+- Otras tareas como la evaluación de precios y rentabilidad o la búsqueda de herramientas de mejora son menos frecuentes, pero igualmente presentes en ambos perfiles. Esto evidencia un interés común por digitalizar sus procesos para reducir errores manuales y optimizar el control financiero de sus respectivos negocios.
+- Por otro lado, tareas como el monitoreo estricto de condiciones de almacenamiento y la gestión de mermas son mucho más críticas para el sector gastronómico debido a la naturaleza de sus productos, mientras que para el sector retail el registro constante de ingresos y salidas tiene un mayor impacto operativo. Esta diferencia permite identificar funcionalidades que deben ser priorizadas según el perfil del usuario dentro de la plataforma Restock.
 
 ### 2.3.3. User Journey Mapping
 
-
 ### 2.3.4. Empathy Mapping
 
-
 ## 2.4. Big Picture EventStorming
-
 
 ## 2.5. Ubiquitous Language
