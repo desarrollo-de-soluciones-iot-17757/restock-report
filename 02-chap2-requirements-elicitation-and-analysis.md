@@ -141,7 +141,8 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 **Distrito:** Villa El Salvador
 **Timing:** (13:08 - 16:08 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista4.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" height="500" width="1000">
+
 Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H 
 
 **Resumen:**
@@ -166,7 +167,8 @@ Además, considera que contar con un software especializado, con funciones más 
 **Distrito:** Villa María del Triunfo
 **Timing:** (16:09 - 19:15 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista5.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" height="500" width="1000">
+
 Ver entrevista (16:09 - 19:15 min): https://bit.ly/41kf54H
 
 **Resumen:**
