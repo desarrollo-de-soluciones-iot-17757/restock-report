@@ -69,18 +69,6 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 <br>
 
-**Gabriela Nicole Shapiama Rivera (u202319448)**
-
-<div id="member-gabriela" align="center">
-  <img src="assets/images/cap1/gaby.jpeg" alt="Descripción de la imagen" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-  <p> Example<br>
-  Example<br>
-  También, he fortalecido mis competencias en el diseño de proyectos de software, acompañado de un liderazgo asertivo. Estoy comprometida con seguir aprendiendo y aportar valor a cada equipo en el que participo. </p>
-  </div> 
-</div>
-
-<br>
 
 **José Jahaziel Guerra Perez (u202319831)**
 
@@ -88,11 +76,26 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
   <img src="https://i.ibb.co/LssNdfh/IMG-8966.jpg" alt="Imagen Jahaziel Guerra" style="width: 150px; margin-right: 20px; border-radius: 10%;">
   <div style="flex: 1;">
   <p> 
-    Soy estudiante de Ingeniería de Software, actualmente en el quinto ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
+    Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
   Mi enfoque profesional está orientado al desarrollo backend, con especial interés en la construcción de sistemas distribuidos, escalables y resilientes, aplicando arquitecturas basadas en microservicios, mensajería asincrónica y herramientas de CI/CD modernas. <br>
   Actualmente me interesa cómo los modelos de lenguaje (LLM) pueden actuar como agentes autónomos dentro de una arquitectura empresarial, integrándose con servicios como Apache Kafka, Spring Boot y sistemas de orquestación para tomar decisiones, responder eventos o ejecutar tareas de forma inteligente. <br>
-  Mi objetivo a futuro es convertirme en un Full Stack Developer con visión sistémica, capaz de diseñar   soluciones innovadoras que no solo funcionen, sino que mejoren activamente el ecosistema donde se   implementan, aprovechando tecnologías emergentes como inteligencia artificial, automatización y cloud   computing. 
+  Mi objetivo a futuro es convertirme en un Full Stack Developer con visión sistémica, capaz de diseñar soluciones innovadoras que no solo funcionen, sino que mejoren activamente el ecosistema donde se   implementan, aprovechando tecnologías emergentes como inteligencia artificial, automatización y cloud computing. 
   </p>
+  </div> 
+</div>
+
+<br>
+
+**Gabriela Nicole Shapiama Rivera (u202319448)**
+
+<div id="member-gabriela" align="center">
+  <img src="https://i.ibb.co/Y7svVgXm/gaby.jpg" alt="Imagen Gabriela Shapiama" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <div style="flex: 1;">
+<p>
+  Soy estudiante de séptimo ciclo de Ingeniería de Software, con un fuerte interés por la lógica, el razonamiento y el desarrollo de soluciones tecnológicas con impacto real.<br>
+  Me motiva desarrollar soluciones eficientes, escalables y bien estructuradas, por lo que he adquirido conocimientos en desarrollo full-stack para aplicaciones web y móviles. Cuento con experiencia en visión por computadora aplicada al reconocimiento de señas, así como en herramientas de procesamiento y análisis de datos como Databricks. Manejo herramientas de control de versiones como Git y plataformas colaborativas como GitHub, aplicando buenas prácticas como Gitflow y Conventional Commits. También, tengo conocimientos en Azure, GCP y Docker, lo que complementa mi interés por prácticas relacionadas con DevOps y despliegue de aplicaciones.<br>
+  Del mismo modo, vengo fortaleciendo mis conocimientos en diseño y arquitectura de proyectos de software, junto con habilidades de liderazgo asertivo. Estoy comprometida con seguir aprendiendo y aportar valor a cada equipo en el que participo.
+</p>
   </div> 
 </div>
 
