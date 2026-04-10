@@ -1,4 +1,4 @@
-# Capítulo II: Requirements Elicitation & Analysis
+    # Capítulo II: Requirements Elicitation & Analysis
 
 ## 2.1. Competidores
 
@@ -144,16 +144,13 @@ Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-Brayner Coronel, un emprendedor de 28 años y propietario de una tienda retail, decidió iniciar su negocio en plena pandemia. Aunque los primeros meses fueron difíciles y su emprendimiento enfrentó un estancamiento inicial, con esfuerzo y perseverancia logró salir adelante y consolidar su tienda en el mercado local. Actualmente,
+Brayner Coronel es un emprendedor de 28 años y uno de los propietarios de una tienda retail llamada “Donde Siempre”. Se caracteriza por ser una persona disciplinada y, sobre todo, perseverante. Actualmente, cuenta con cinco años de experiencia en el rubro y gestiona dos sucursales de alta rotación.
 
-Para él, la tecnología es una aliada clave en la eficiencia operativa y en el crecimiento sostenible de su emprendimiento. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows.
+Uno de los principales desafíos que enfrenta está relacionado con la gestión y reposición de sus productos. En ese sentido, comenta que resulta complicado identificar qué productos faltan o en qué cantidades, ya que, antes del cierre, debe contabilizar manualmente cada artículo disponible dentro de la tienda. En consecuencia, debido al crecimiento de su negocio, se le ha hecho cada vez más difícil mantener un control constante y preciso del stock.
 
-En cuanto a los métodos de pago, ha integrado exitosamente la plataforma Yape, que le permite ofrecer a sus clientes una forma rápida y segura de realizar sus compras. Además, no enfrenta inconvenientes con productos que no se logran vender, ya que cuenta con el respaldo de sus proveedores, quienes se encargan de reemplazar aquellos artículos que no tienen salida.
 
-Brayner utiliza un software de gestión de inventarios que le permite registrar de forma detallada cada producto que recibe.
-Al ingresar los datos en el sistema, puede visualizar fácilmente la disponibilidad de los productos, lo cual le facilita mantener un control eficiente del stock.
+Por otro lado, considera que la tecnología es una aliada clave para la eficiencia operativa y el crecimiento sostenible de su emprendimiento. En la actualidad, utiliza navegadores como Google Chrome y Microsoft Edge, además de un celular Android y una computadora con sistema operativo Windows. Asimismo, para la comunicación con su equipo y proveedores, emplea principalmente WhatsApp, lo que le permite una coordinación más ágil. De igual manera, se inspira en referentes del sector retail como la familia Lindley y realiza sus compras a través de aplicaciones como BEES, AC Digital, Merkao y Pepsi Chat. Finalmente, utiliza un software de gestión de inventarios denominado “Vandastic”, el cual le permite registrar de forma detallada cada producto que ingresa y sale; adicionalmente, complementa este control con Excel para el registro de sus almacenes externos. Sin embargo, considera invertir en un software más especializado, con funciones avanzadas que le permitan optimizar la gestión de inventarios y mejorar la eficiencia operativa.
 
-Además, considera que contar con un software especializado, con funciones más avanzadas y herramientas adaptadas a las necesidades específicas de su rubro, puede marcar una gran diferencia en la forma en que administra su negocio.
 
 ##### Entrevista 5:
 
@@ -168,13 +165,13 @@ Ver entrevista (16:09 - 19:15 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-Erick Coronel, de 51 años, es el propietario de una tienda retail, un negocio al que decidió dedicarse tras dejar el rubro de la construcción durante la pandemia. Esta transición marcó un cambio importante en su vida laboral, y desde entonces ha buscado adaptar sus procesos a las exigencias del comercio moderno.
+Erick Coronel, de 51 años, es uno de los propietarios de la tienda retail “Donde Siempre”. Decidió dedicarse a este rubro tras haber trabajado en el sector de la construcción durante la pandemia, lo que representó un cambio significativo en su trayectoria profesional. Desde entonces, ha venido adaptando sus procesos con el objetivo de responder mejor a las exigencias del comercio moderno.
 
-Considera muy útil contar con una plataforma más especializada que le notifique cuándo es necesario reponer stock y que le ofrezca recomendaciones sobre el almacenamiento de sus productos. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows. En cuanto a los medios de pago, ha integrado plataformas digitales como Yape y Plin, facilitando así las transacciones con sus clientes y adaptándose a las nuevas formas de consumo.
 
-Para gestionar su inventario y las ventas diarias, utiliza un software básico que le permite mantener cierto orden. Sin embargo, considera poco práctico tener que revisar manualmente qué productos tienen mayor rotación, lo que le demanda tiempo y esfuerzo adicional.
+Uno de los principales desafíos que enfrenta está relacionado con la gestión interna del personal, debido a la alta rotación de empleados. En ese sentido, comenta que su sistema actual no le permite administrar adecuadamente al equipo, lo que dificulta el control de las operaciones diarias. En consecuencia, esta situación puede generar inconsistencias en el registro del inventario, especialmente durante las actividades rutinarias de la tienda, afectando la precisión del stock.
 
-Erick no enfrenta dificultades con productos que no logran venderse, ya que cuenta con un acuerdo con sus proveedores, quienes aceptan devoluciones, lo que le brinda mayor tranquilidad en la gestión de su stock. Valora el uso de herramientas digitales, especialmente aquellas que le permiten mejorar el proceso de cobranza, una parte crucial de su operación diaria.
+
+Por otro lado, considera que la tecnología es un elemento clave para la gestión y crecimiento de su negocio. En la actualidad, utiliza únicamente el navegador Google Chrome, junto con un celular Android y una computadora con sistema operativo Windows. Asimismo, emplea WhatsApp y YouTube como medios de comunicación y apoyo operativo, lo que le permite mantenerse conectado con su equipo y acceder a información de utilidad. Para la gestión de su negocio realiza compras a través de plataformas como BEES, Merkao y tiendas Makro, y se inspira en referentes del sector retail como la familia Lindley. Para el control de inventarios y ventas diarias, emplea el sistema Vandastic; sin embargo, considera que este resulta limitado para sus necesidades actuales, especialmente porque le demanda revisar manualmente qué productos tienen mayor rotación. En este sentido, considera necesario migrar hacia una solución más especializada que le permita optimizar la gestión del inventario, mejorar la eficiencia operativa y, además, le notifique oportunamente cuándo es necesario reponer productos y le brinde recomendaciones sobre su almacenamiento.
 
 ##### Entrevista 6:
 
@@ -189,13 +186,11 @@ Ver entrevista (19:16 - 29:49 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-Luis Alfonso Jiménez, de 55 años, es dueño de una tienda retail que fundó hace 10 años. Desde sus inicios ha gestionado el negocio de forma manual, utilizando hojas de cálculo de Excel para controlar el inventario. Aunque este método le ha funcionado hasta cierto punto, reconoce que ya no es eficiente para las exigencias actuales. Uno de los principales desafíos que enfrenta es el manejo de productos próximos a vencer. Utiliza como browser Google Chrome y Safari. Como tecnologias utiliza un celular iphone y una laptop MacOS.
+Luis Alfonso Jiménez, de 55 años, es administrador de una tienda del sector retail. Se caracteriza por ser una persona honesta, responsable y trabajadora, comprometida con el correcto funcionamiento de su negocio, aunque reconoce que los métodos actuales ya no responden a las exigencias del mercado.
 
-Para evitar pérdidas, Luis Alfonso opta por mover estos productos a zonas más accesibles para los clientes y colocar los más nuevos al fondo de la tienda. Sin embargo, este constante movimiento puede dañar las botellas o empaques, generándole pérdidas innecesarias.
+Uno de los principales desafíos que enfrenta está relacionado con la gestión de inventarios, especialmente en el manejo de productos próximos a vencer. En ese sentido, para evitar pérdidas, suele reubicar estos productos en zonas más accesibles para los clientes y colocar los más recientes al fondo de la tienda. Sin embargo, este proceso constante de rotación puede ocasionar daños en los empaques o productos, generando pérdidas innecesarias y dificultando un control eficiente del stock.
 
-Luis Alfonso considera que un software que le permita gestionar automáticamente su inventario, compras y ventas le sería de gran ayuda. Actualmente lleva toda la documentación a mano, lo que le consume tiempo y puede generar errores.
-
-Además, le resulta tedioso identificar qué productos necesita reponer, ya que debe revisar toda su hoja de stock manualmente. A esto se suma el riesgo de olvidar registrar alguna venta, lo que afecta el control real de su inventario. En ocasiones, incluso tiene que ir directamente al almacén para verificar físicamente la existencia de ciertos productos.
+Por otro lado, en la actualidad utiliza Google Chrome y Safari como navegadores, junto con un celular iPhone y una laptop con sistema operativo macOS. Asimismo, emplea WhatsApp como medio de comunicación con su equipo y proveedores, lo que facilita la coordinación diaria. Su principal referente en el sector retail es Carlos Rodríguez-Pastor, a quien valora por la organización y eficiencia de sus modelos de gestión. De igual manera, continúa utilizando Excel para el control de inventarios, compras y ventas, aunque reconoce que este método le consume tiempo, puede generar errores y dificulta la identificación oportuna de productos para reposición, lo que en ocasiones lo obliga a verificar físicamente el almacén para confirmar existencias. En este contexto, considera que la tecnología es fundamental para optimizar sus operaciones y está dispuesto a invertir lo que sea necesario en un sistema que le permita mejorar la gestión del negocio.
 
 ### 2.2.3. Análisis de entrevistas
 
