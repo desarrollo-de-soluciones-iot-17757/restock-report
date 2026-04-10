@@ -24,23 +24,23 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 3. ¿Cuál es su cargo dentro del negocio?
 4. ¿Cuánto tiempo lleva desempeñando funciones relacionadas con la gestión de inventario?
 5. ¿Cómo describiría su trayectoria profesional hasta llegar a su puesto actual?
-6. ¿Qué tipo de insumos o productos gestiona con mayor frecuencia en su restaurante?
-7. ¿Cuáles son los principales desafíos que enfrenta en el control y seguimiento del inventario?
-8. ¿Cómo realiza actualmente el registro y control de stock?
-9. ¿Utiliza alguna herramienta digital o software para gestionar inventarios? ¿Qué ventajas o limitaciones ha identificado?
-10. ¿Qué tipo de errores, pérdidas o discrepancias entre el stock físico y el stock registrado son más frecuentes en su proceso actual de control de inventario?
-11. ¿Qué tan importante considera contar con información en tiempo real para la toma de decisiones?
+6. ¿Qué tipo de insumos (perecibles y no perecibles) gestiona con mayor frecuencia en su restaurante?
+7. ¿Cómo afecta la rotación de ingredientes y la preparación de recetas al control de inventario?
+8. ¿Cuáles son los principales desafíos que enfrenta en el control de insumos frescos o productos no empaquetados?
+9. ¿Cómo realiza actualmente el registro y control de stock en cocina o almacén?
+10. ¿Qué tipo de errores, pérdidas (por vencimiento, merma o uso en cocina) o discrepancias entre el stock físico y el registrado son más frecuentes?
+11. ¿Qué tan importante considera contar con información en tiempo real para evitar quiebres de insumos durante la operación diaria?
 
 ##### **Preguntas complementarias:**
 
 1. ¿Qué dispositivos tecnológicos utiliza con mayor frecuencia en su trabajo diario?
-2. ¿Qué marcas, sistemas o herramientas prefiere para la gestión de inventario?
-3. ¿Existen referentes, empresas o profesionales (influencers) que influyan en la forma en que gestiona su inventario o adopta nuevas tecnologías?
-4. ¿Cómo suele recibir alertas o reportes sobre faltantes, exceso de stock o productos en riesgo?
-5. ¿Qué canales digitales usa para comunicarse con su equipo o con otras áreas del negocio?
-6. ¿Qué características valoraría más en una solución tecnológica para mejorar su gestión de inventario?
-7. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos?
-8. ¿Estaría dispuesto(a) a probar una solución que incorpore monitoreo IoT para ciertos insumos o productos?
+2. ¿Qué sistemas o herramientas utiliza para la gestión de pedidos, recetas o inventario?
+3. ¿Cómo coordina el inventario entre cocina, almacén y área de compras?
+4. ¿Cómo suele recibir alertas sobre faltantes de insumos o productos críticos?
+5. ¿Qué canales digitales usa para comunicarse con su equipo de cocina o proveedores?
+6. ¿Qué características valoraría más en una solución tecnológica para mejorar la gestión de insumos?
+7. ¿Qué dificultades ha tenido al intentar digitalizar procesos dentro del restaurante?
+8. ¿Estaría dispuesto(a) a probar una solución que monitoree automáticamente el consumo de insumos mediante sensores?
 
 #### **Segmento 2: Dueños o administradores del sector Retail de consumo masivo**
 
@@ -51,23 +51,23 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 3. ¿Cuál es su cargo dentro del negocio?
 4. ¿Cuánto tiempo lleva desempeñando funciones relacionadas con la gestión de inventario?
 5. ¿Cómo describiría su trayectoria profesional hasta llegar a su puesto actual?
-6. ¿Qué tipo de productos gestiona con mayor frecuencia en su negocio?
-7. ¿Cuáles son los principales desafíos que enfrenta en el control y seguimiento del inventario?
-8. ¿Cómo realiza actualmente el registro y control de stock?
-9. ¿Utiliza alguna herramienta digital o software para gestionar inventarios? ¿Qué ventajas o limitaciones ha identificado?
-10. ¿Qué tipo de errores, pérdidas o discrepancias entre el stock físico y el stock registrado son más frecuentes en su proceso actual de control de inventario?
-11. ¿Qué tan importante considera contar con información en tiempo real para la toma de decisiones?
+6. ¿Qué tipo de productos (alta rotación, perecibles o empaquetados) gestiona con mayor frecuencia en su negocio?
+7. ¿Cómo gestiona actualmente la rotación de productos en góndolas o almacén?
+8. ¿Cuáles son los principales desafíos relacionados con productos próximos a vencer o con baja rotación?
+9. ¿Cómo realiza actualmente el registro y control de stock en tienda o almacén?
+10. ¿Qué tipo de errores, pérdidas (por vencimiento, devoluciones o mala rotación) o discrepancias entre el stock físico y el registrado son más frecuentes?
+11. ¿Qué tan importante considera contar con información en tiempo real para optimizar la reposición de productos?
 
 ##### **Preguntas complementarias:**
 
 1. ¿Qué dispositivos tecnológicos utiliza con mayor frecuencia en su trabajo diario?
-2. ¿Qué marcas, sistemas o herramientas prefiere para la gestión de inventario?
-3. ¿Existen referentes, empresas o profesionales (influencers) que influyan en la forma en que gestiona su inventario o adopta nuevas tecnologías?
-4. ¿Cómo suele recibir alertas o reportes sobre faltantes, exceso de stock o productos en riesgo?
-5. ¿Qué canales digitales usa para comunicarse con su equipo o con otras áreas del negocio?
-6. ¿Qué características valoraría más en una solución tecnológica para mejorar su gestión de inventario?
-7. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos?
-8. ¿Estaría dispuesto(a) a probar una solución que incorpore monitoreo IoT para ciertos productos o áreas de almacenamiento?
+2. ¿Qué sistemas o herramientas utiliza para la gestión de inventario y ventas?
+3. ¿Cómo gestiona la reposición de productos en tienda (manual, por demanda, por sistema)?
+4. ¿Cómo suele recibir alertas sobre productos con bajo stock o exceso de inventario?
+5. ¿Qué canales digitales usa para comunicarse con proveedores o personal de tienda?
+6. ¿Qué características valoraría más en una solución tecnológica para mejorar la reposición y control de stock?
+7. ¿Qué dificultades ha tenido al intentar digitalizar sus procesos de inventario?
+8. ¿Estaría dispuesto(a) a probar una solución que permita monitorear automáticamente el stock en estanterías o almacén?
 
 ### 2.2.2. Registro de entrevistas
 
