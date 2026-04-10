@@ -204,21 +204,21 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
-1. **Inventario inteligente con sensores**
+1. **Eliminación de discrepancias mediante sensores**
 
-   > **Creemos que** al integrar sensores en cabinas de almacenamiento que detecten el nivel de carga en tiempo real, los administradores de restaurantes y retail podrán monitorear el inventario físico de manera automática, **reduciendo la necesidad de revisiones manuales en un 40%** **Sabremos que estamos bien cuando**: usuarios indican que "ya no necesito revisar físicamente el almacenamiento" y/o se reduce en al menos un 40% la revisión manual del inventario.
+   > **Creemos que** al integrar sensores en cabinas de almacenamiento que detecten el peso en tiempo real, los administradores de restaurantes y retail podrán contrastar el stock físico contra el digital automáticamente, **reduciendo los errores de inventario detectados en un 30%.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y se reduzca en un 25% el tiempo dedicado al control manual de stock.
    >
-2. **Optimización de almacenamiento basada en ventas**
+2. **Optimización de stock real basada en ventas**
 
-   > **Creemos que** al conectar los datos de ventas con el sistema de almacenamiento inteligente, los administradores podrán podrán priorizar productos de alta rotación y optimizar el uso del espacio en un **25%**. **Sabremos que estamos bien cuando**: usuarios indican que “los productos más vendidos siempre están disponibles” y/o se observa una mejora del 25% en la disponibilidad de productos con mayor demanda.
+   > **Creemos que** al conectar los datos de ventas con el pesaje inteligente, los administradores podrán identificar si lo vendido coincide con lo que salió físicamente de la cabina, **aumentando la precisión en la reposición de productos en un 40%.** **Sabremos que estamos bien cuando**: los usuarios indiquen que “el stock en pantalla siempre es el real” y se observe una mejora del 40% en la disponibilidad de productos críticos.
    >
-3. **Notificaciones proactivas**
+3. **Alertas proactivas de quiebre y desajuste**
 
-   > **Creemos que** al implementar alertas automáticas basadas en niveles de stock y estado de las cabinas, los administradores de restaurantes y retail podrán tomar decisiones más rápidas, **reduciendo retrasos en la reposición en un 25%**. **Sabremos que estamos bien cuando veamos los siguientes comentarios del mercado**: usuarios indican que “el sistema me avisa justo cuando debo reponer” y/o se reduce en un 25% el tiempo de respuesta ante faltantes de stock.
+   > **Creemos que** al implementar alertas automáticas cuando el sensor detecte un nivel bajo o un retiro de stock no registrado, los administradores podrán corregir fallas de inventario al instante, **reduciendo la discrepancia por errores de registro.** **Sabremos que estamos bien cuando**: el tiempo de respuesta ante faltantes se reduzca en un 25% y los usuarios comenten que “el sistema detecta diferencias que antes pasaban desapercibidas”.
    >
-4. **Visualización y control del almacén**
+4. **Panel de control de integridad del almacén**
 
-   > **Creemos que** al ofrecer un panel de control centralizado que muestre en tiempo real el estado de las cabinas, el inventario y las alertas, los administradores de restaurantes y retail podrán supervisar el almacén de manera más eficiente **reduciendo el tiempo de control de inventario en un 30%**. **Sabremos que estamos bien cuando veamos los siguientes comentarios del mercado**: usuarios indican que “puedo controlar todo el almacén desde un solo lugar” y/o se reduce en un 30% el tiempo dedicado a supervisar el estado del inventario.
+   > **Creemos que** al ofrecer un panel centralizado que visualice las alertas de discrepancia y el estado real de las cabinas, los administradores podrán supervisar el almacén de manera estratégica, **mejorando la eficiencia de ocupación del espacio en un 35%.** **Sabremos que estamos bien cuando**: los administradores indiquen que “pueden confiar plenamente en los datos del panel” y se reduzca en un 30% el tiempo dedicado a la supervisión manual del inventario.
    >
 
 #### 1.2.2.4 Lean UX Canvas
