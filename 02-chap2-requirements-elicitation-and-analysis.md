@@ -77,7 +77,8 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 **Distrito:** Chorrillos
 **Timing:** (00:08 - 04:39 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista1.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista1.png" height="500"> 
+
 Ver entrevista (00:08 - 04:39 min): https://bit.ly/41kf54H
 
 **Resumen:**
@@ -95,7 +96,8 @@ Utiliza dispositivos como un celular Android y una laptop con Windows, y su nave
 **Distrito:** Breña
 **Timing:** (04:40 - 08:24 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista2.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista2.png" height="500">  
+
 Ver entrevista (04:40 - 08:24 min): https://bit.ly/41kf54H
 
 **Resumen:**
@@ -113,7 +115,8 @@ En términos tecnológicos, utiliza un celular con sistema operativo Android y u
 **Distrito:** Bellavista
 **Timing:** (08:25 - 13:07 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista3.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista3.png" height="500"> 
+
 Ver entrevista (08:25 - 13:07 min): https://bit.ly/41kf54H
 
 **Resumen:**
@@ -180,7 +183,8 @@ Erick no enfrenta dificultades con productos que no logran venderse, ya que cuen
 **Distrito:** San Martín de Porres
 **Timing:** (19:16 - 29:49 min)
 
-![Foto de Entrevista](assets/images/chapter2/needfinding-interviews/entrevista6.png)
+<img src="assets/images/chapter2/needfinding-interviews/entrevista6.png" height="500"> 
+
 Ver entrevista (19:16 - 29:49 min): https://bit.ly/41kf54H
 
 **Resumen:**
