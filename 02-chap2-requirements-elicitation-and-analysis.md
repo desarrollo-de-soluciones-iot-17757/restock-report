@@ -2,12 +2,9 @@
 
 ## 2.1. Competidores
 
-
 ### 2.1.1. Análisis competitivo
 
-
 ### 2.1.2. Estrategias y tácticas frente a competidores
-
 
 ## 2.2. Entrevistas
 
@@ -84,9 +81,12 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 Ver entrevista (00:08 - 04:39 min): https://bit.ly/41kf54H
 
 **Resumen:**
-Alex Guardia, gerente de restaurantes con 5 a 6 años de experiencia, tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome.
 
-Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. Se inspira en figuras del rubro gastronómico como Gastón Acurio y realiza compras en establecimientos como Makro o Plazavea. Actualmente enfrenta desafíos relacionados con los proveedores y la gestión de inventarios. Alex realiza controles físicos diarios y verificaciones electrónicas semanales o quincenales. Aunque utiliza software de gestión, considera que la mayoría carece de personalización, el soporte postventa suele ser deficiente y en ocasiones presenta problemas de discrepancia entre sus insumos físicos y los registrados. Estaría dispuesto a invertir entre 500 y 800 dólares en una solución tecnológica integral que incluya implementación, capacitación y soporte, siempre que se adapte a sus procesos y contribuya a mejorar la eficiencia del negocio.
+Alex Guardia tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Cuenta con 5 a 6 años de experiencia como gerente de restaurantes.
+
+Actualmente enfrenta desafíos relacionados con los proveedores y la gestión de inventarios. Realiza controles físicos diarios y verificaciones electrónicas semanales. Además, en ocasiones presenta problemas de discrepancia entre sus insumos físicos y los registrados.
+
+Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome. Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. También emplea software de gestión, aunque considera que la mayoría carece de personalización y que el soporte postventa suele ser deficiente. Se inspira en figuras del rubro gastronómico como Gastón Acurio y realiza compras en establecimientos como Makro o PlazaVea. Estaría dispuesto a invertir entre 500 y 800 dólares en una solución tecnológica integral que incluya implementación, capacitación y soporte, siempre que se adapte a sus procesos y contribuya a mejorar la eficiencia del negocio.
 
 ##### Entrevista 2:
 
@@ -100,15 +100,11 @@ Ver entrevista (04:40 - 08:24 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-Lincoln Chauca Rubio, propietario del “Amazonas Restaurant”, tiene 36 años, es casado y vive en el distrito de Breña, Lima. Administra su restaurante desde hace 5 años y se describe como una persona disciplinada, responsable y dedicada. Ocupa el cargo de gerente propietario, con una participación directa en la gestión operativa del negocio.
+Lincoln Chauca Rubio tiene 36 años, es casado y vive en el distrito de Breña, Lima. Se describe como una persona disciplinada, responsable y dedicada. Es propietario del “Amazonas Restaurant” y lo administra desde hace 5 años, con una participación directa en la gestión operativa del negocio.
 
-En términos tecnológicos, utiliza un celular con sistema operativo Android y una laptop con Windows. Su navegador habitual es Google Chrome. Para comunicarse con su equipo y proveedores, emplea canales como WhatsApp y llamadas telefónicas. En cuanto a influencias y marcas, menciona que busca referencias en otros restaurantes reconocidos de cocina regional, y realiza compras en proveedores mayoristas como Makro.
+Uno de los principales desafíos que enfrenta es la rotación constante del personal, ya que no cuenta con un equipo estable y se ve obligado a contratar nuevos empleados con frecuencia. Este problema afecta la eficiencia del servicio y genera un esfuerzo adicional en capacitación y adaptación. Otro reto significativo es el manejo del inventario, ya que el stock real no siempre coincide con lo mostrado en el software y su personal presenta errores de registro en algunas ocasiones.
 
-Uno de los principales desafíos que enfrenta es la rotación constante del personal, ya que no cuenta con un equipo estable y se ve obligado a contratar nuevos empleados con frecuencia. Este problema afecta la eficiencia del servicio y genera un esfuerzo adicional en capacitación y adaptación.
-
-Otro reto significativo es el manejo del inventario, que incide directamente en la operatividad diaria del restaurante. Aunque utiliza un software llamado Vidal, el cual facilita la gestión del negocio al permitir que los mozos tomen pedidos desde tablets o celulares y se mantenga una base de datos de clientes, reconoce que aún hay oportunidades de mejora. También comenta que su personal en ocasiones tiene errores de registro y el stock real no coincide con lo mostrado en el software.
-
-Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológicas, pero está dispuesto a incrementar esa inversión hasta 500 soles si la solución mejora sustancialmente la gestión del restaurante.
+En términos tecnológicos, utiliza un celular con sistema operativo Android y una laptop con Windows, y su navegador habitual es Google Chrome. Usa un software llamado Vidal, el cual facilita la gestión del negocio al permitir que los mozos tomen pedidos desde tablets o celulares y se mantenga una base de datos de clientes, aunque reconoce que aún existen oportunidades de mejora. Para comunicarse con su equipo y proveedores emplea canales como WhatsApp y llamadas telefónicas. En cuanto a influencias y marcas, menciona que busca referencias en otros restaurantes reconocidos de cocina regional y realiza compras en proveedores mayoristas como Makro. Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológicas, pero está dispuesto a incrementar esa inversión hasta 500 soles si la solución mejora sustancialmente la gestión del restaurante.
 
 ##### Entrevista 3:
 
@@ -122,13 +118,11 @@ Ver entrevista (08:25 - 13:07 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-La señora Amparo Robles Vásquez tiene 56 años, vive en el distrito de Bellavista y es propietaria del restaurante y cevichería "El 1er Puerto", el cual gestiona desde hace 20 años. Se describe como una persona perseverante, responsable y amable. Usa un celular con Android y una laptop con Windows, y suele navegar usando Google Chrome.
+Amparo Soledad Robles Vásquez tiene 56 años, vive en el distrito de Bellavista y es propietaria del restaurante y cevichería “El 1er Puerto”, el cual gestiona desde hace 20 años. Se describe como una persona perseverante, responsable y amable.
 
-Entre los principales desafíos que enfrenta están la dificultad para encontrar personal adecuado y la falta de conocimientos en marketing digital, lo que limita la promoción de su restaurante. Reconoce que adaptarse a la tecnología es un reto, pero también una necesidad en el contexto actual.
+Entre los principales desafíos que enfrenta están la dificultad para encontrar personal adecuado y la falta de conocimientos en marketing digital, lo que limita la promoción de su restaurante. Asimismo, actualmente gestiona el inventario principalmente de manera manual, lo que le toma tiempo y esfuerzo.
 
-Actualmente gestiona el inventario de manera manual, lo que le toma tiempo y esfuerzo. Por ello, tiene la intención de implementar un sistema digital que le permita agilizar los procesos y mejorar la atención al cliente, considerando esto clave para crecer y ofrecer un mejor servicio.
-
-Está dispuesta a invertir en un software que automatice su negocio si este se adapta a sus necesidades. Se informa por canales como WhatsApp y YouTube, y tiene afinidad con marcas como Makro y figuras del sector gastronómico como Gastón Acurio.
+Usa un celular con Android y una laptop con Windows, y suele navegar usando Google Chrome. Se informa por canales como WhatsApp y YouTube, y tiene afinidad con marcas como Makro y figuras del sector gastronómico como Gastón Acurio. Reconoce que adaptarse a la tecnología es un reto, pero también una necesidad en el contexto actual. Por ello, tiene la intención de implementar un sistema digital que le permita agilizar los procesos y mejorar la atención al cliente, considerando esto clave para crecer y ofrecer un mejor servicio. Está dispuesta a invertir en un software que automatice su negocio si este se adapta a sus necesidades.
 
 ---
 
@@ -141,21 +135,19 @@ Está dispuesta a invertir en un software que automatice su negocio si este se a
 **Distrito:** Villa El Salvador
 **Timing:** (13:08 - 16:08 min)
 
-<img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" height="500" width="1000">
+<img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" height="500" width="650">
 
-Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H 
+Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H
 
 **Resumen:**
 
-
-Brayner Coronel, un emprendedor de 28 años y propietario de una tienda retail, decidió iniciar su negocio en plena pandemia. Aunque los primeros meses fueron difíciles y su emprendimiento enfrentó un estancamiento inicial, con esfuerzo y perseverancia logró salir adelante y consolidar su tienda en el mercado local. Actualmente, 
-
+Brayner Coronel, un emprendedor de 28 años y propietario de una tienda retail, decidió iniciar su negocio en plena pandemia. Aunque los primeros meses fueron difíciles y su emprendimiento enfrentó un estancamiento inicial, con esfuerzo y perseverancia logró salir adelante y consolidar su tienda en el mercado local. Actualmente,
 
 Para él, la tecnología es una aliada clave en la eficiencia operativa y en el crecimiento sostenible de su emprendimiento. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows.
 
 En cuanto a los métodos de pago, ha integrado exitosamente la plataforma Yape, que le permite ofrecer a sus clientes una forma rápida y segura de realizar sus compras. Además, no enfrenta inconvenientes con productos que no se logran vender, ya que cuenta con el respaldo de sus proveedores, quienes se encargan de reemplazar aquellos artículos que no tienen salida.
 
-Brayner utiliza un software de gestión de inventarios que le permite registrar de forma detallada cada producto que recibe. 
+Brayner utiliza un software de gestión de inventarios que le permite registrar de forma detallada cada producto que recibe.
 Al ingresar los datos en el sistema, puede visualizar fácilmente la disponibilidad de los productos, lo cual le facilita mantener un control eficiente del stock.
 
 Además, considera que contar con un software especializado, con funciones más avanzadas y herramientas adaptadas a las necesidades específicas de su rubro, puede marcar una gran diferencia en la forma en que administra su negocio.
@@ -167,7 +159,7 @@ Además, considera que contar con un software especializado, con funciones más 
 **Distrito:** Villa María del Triunfo
 **Timing:** (16:09 - 19:15 min)
 
-<img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" height="500" width="1000">
+<img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" height="500" width="700">
 
 Ver entrevista (16:09 - 19:15 min): https://bit.ly/41kf54H
 
@@ -177,7 +169,7 @@ Erick Coronel, de 51 años, es el propietario de una tienda retail, un negocio a
 
 Considera muy útil contar con una plataforma más especializada que le notifique cuándo es necesario reponer stock y que le ofrezca recomendaciones sobre el almacenamiento de sus productos. Utiliza como browser Google Chrome y Edge. Como tecnologias utiliza un celular android y una laptop con sistema operativo Windows. En cuanto a los medios de pago, ha integrado plataformas digitales como Yape y Plin, facilitando así las transacciones con sus clientes y adaptándose a las nuevas formas de consumo.
 
-Para gestionar su inventario y las ventas diarias, utiliza un software básico que le permite mantener cierto orden. Sin embargo, considera poco práctico tener que revisar manualmente qué productos tienen mayor rotación, lo que le demanda tiempo y esfuerzo adicional. 
+Para gestionar su inventario y las ventas diarias, utiliza un software básico que le permite mantener cierto orden. Sin embargo, considera poco práctico tener que revisar manualmente qué productos tienen mayor rotación, lo que le demanda tiempo y esfuerzo adicional.
 
 Erick no enfrenta dificultades con productos que no logran venderse, ya que cuenta con un acuerdo con sus proveedores, quienes aceptan devoluciones, lo que le brinda mayor tranquilidad en la gestión de su stock. Valora el uso de herramientas digitales, especialmente aquellas que le permiten mejorar el proceso de cobranza, una parte crucial de su operación diaria.
 
@@ -195,12 +187,11 @@ Ver entrevista (19:16 - 29:49 min): https://bit.ly/41kf54H
 
 Luis Alfonso Jiménez, de 55 años, es dueño de una tienda retail que fundó hace 10 años. Desde sus inicios ha gestionado el negocio de forma manual, utilizando hojas de cálculo de Excel para controlar el inventario. Aunque este método le ha funcionado hasta cierto punto, reconoce que ya no es eficiente para las exigencias actuales. Uno de los principales desafíos que enfrenta es el manejo de productos próximos a vencer. Utiliza como browser Google Chrome y Safari. Como tecnologias utiliza un celular iphone y una laptop MacOS.
 
-Para evitar pérdidas, Luis Alfonso opta por mover estos productos a zonas más accesibles para los clientes y colocar los más nuevos al fondo de la tienda. Sin embargo, este constante movimiento puede dañar las botellas o empaques, generándole pérdidas innecesarias. 
+Para evitar pérdidas, Luis Alfonso opta por mover estos productos a zonas más accesibles para los clientes y colocar los más nuevos al fondo de la tienda. Sin embargo, este constante movimiento puede dañar las botellas o empaques, generándole pérdidas innecesarias.
 
 Luis Alfonso considera que un software que le permita gestionar automáticamente su inventario, compras y ventas le sería de gran ayuda. Actualmente lleva toda la documentación a mano, lo que le consume tiempo y puede generar errores.
 
-
-Además, le resulta tedioso identificar qué productos necesita reponer, ya que debe revisar toda su hoja de stock manualmente. A esto se suma el riesgo de olvidar registrar alguna venta, lo que afecta el control real de su inventario. En ocasiones, incluso tiene que ir directamente al almacén para verificar físicamente la existencia de ciertos productos. 
+Además, le resulta tedioso identificar qué productos necesita reponer, ya que debe revisar toda su hoja de stock manualmente. A esto se suma el riesgo de olvidar registrar alguna venta, lo que afecta el control real de su inventario. En ocasiones, incluso tiene que ir directamente al almacén para verificar físicamente la existencia de ciertos productos.
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -236,14 +227,10 @@ Asimismo, se observa que valora soluciones prácticas, visuales y fáciles de us
 
 ### 2.3.2. User Task Matrix
 
-
 ### 2.3.3. User Journey Mapping
-
 
 ### 2.3.4. Empathy Mapping
 
-
 ## 2.4. Big Picture EventStorming
-
 
 ## 2.5. Ubiquitous Language
