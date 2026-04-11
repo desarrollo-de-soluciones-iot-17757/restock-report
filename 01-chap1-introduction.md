@@ -102,6 +102,22 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 <br>
 
+**Antonio Jhair Navarro Chinga (u20234101)**
+
+<div id="member-gabriela" align="center">
+  <img src="https://i.ibb.co/gnxh3x8/Antonio.jpg" alt="Imagen Antonio Navarro" style="width: 150px; margin-right: 20px; border-radius: 10%;">
+  <div style="flex: 1;">
+<p>
+  Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me interesa entender cómo se construyen soluciones tecnológicas que realmente funcionen en contextos reales, considerando tanto la lógica del sistema como la experiencia de quienes lo utilizan.<br>
+  Cuento con conocimientos en desarrollo full stack y de aplicaciones móviles, trabajando en la construcción de aplicaciones web, APIs y manejo de bases de datos. Además, tengo experiencia utilizando tecnologías como Angular y aplicando conceptos de arquitectura para estructurar mejor las soluciones. <br>
+ Por otro lado, me interesa la automatización de procesos mediante agentes, explorando cómo pueden integrarse en aplicaciones para ejecutar tareas y mejorar la eficiencia. <br>
+  Me considero una persona responsable, organizada y con facilidad para adaptarme, buscando siempre aportar soluciones prácticas y seguir aprendiendo en cada proyecto en el que participo.
+</p>
+  </div> 
+</div>
+
+<br>
+
 **Gabriela Nicole Shapiama Rivera (u202319448)**
 
 <div id="member-gabriela" align="center">
