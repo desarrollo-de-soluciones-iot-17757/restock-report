@@ -24,6 +24,22 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 [EN ORDEN ALFABETICO POR APELLIDO]
 
+<br>
+
+**Julio Castro Alejos (u202021885)**
+
+<div id="member-julio" align="center"> 
+  <img src="https://i.ibb.co/TxBt9xhF/julio.png" alt="Julio Castro Alejos" style="width: 150px; margin-right: 20px; border-radius: 10%;"> 
+  <div style="flex: 1;"> 
+  <p> 
+    Soy estudiante de Ingeniería de Software, actualmente cursando el séptimo ciclo de la carrera. Me interesa comprender el desarrollo de software de forma integral, desde la concepción de una idea hasta su implementación y uso por parte de los usuarios. <br>
+    Tengo experiencia en desarrollo full stack, incluyendo backend, diseño de   APIs, bases de datos y construcción de aplicaciones web. Me enfoco en   entender cómo las decisiones técnicas influyen en la escalabilidad,   mantenibilidad y desempeño de los sistemas. <br>
+    Asimismo, tengo interés en áreas como arquitectura de software, cloud   computing y prácticas de DevOps, buscando siempre construir soluciones  eficientes y bien estructuradas. Además, me interesa el uso de inteligencia  artificial dentro del desarrollo de software, especialmente en cómo  integrarla de manera efectiva para potenciar productos digitales. <br>
+    Dentro del equipo, destaco por mi enfoque práctico y mi capacidad para  aterrizar ideas en soluciones concretas, siempre priorizando que el  software genere valor real para los usuarios y el negocio.
+  </p>
+  </div> 
+</div>
+
 **Farid Sebastian Coronel Espinoza (u202312508)**
 
 <div id="member-coronel" align="center">
