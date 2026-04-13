@@ -34,6 +34,20 @@ INTRODUCCION
 
 ### 2.3.3. User Journey Mapping
 
+En esta sección se presentan los User Journey Maps (As-Is) de los segmentos representados, correspondientes a sus respectivas User Personas. Se ilustra el recorrido actual de los usuarios sin la intervención de la solución UI-Topic, con el fin de identificar sus necesidades, puntos de fricción y oportunidades de mejora. Cada mapa refleja las etapas clave de interacción, acciones realizadas, puntos de contacto, experiencias emocionales, dificultades enfrentadas y posibles mejoras.
+
+#### Carolina Rivas
+
+A continuación se presenta el User Journey Map de Carolina Rivas.
+
+![user journey mapping carolina rivas](assets/images/chapter2/empathy-maps/customer-journey-map-restaurant-managers.png)
+
+#### Jorge Torres
+
+A continuación se presenta el User Journey Map de Jorge Torres.
+
+![user journey mapping jorge torres](assets/images/chapter2/empathy-maps/customer-journey-mapping-retail-managers.png)
+
 
 ### 2.3.4. Empathy Mapping
 
