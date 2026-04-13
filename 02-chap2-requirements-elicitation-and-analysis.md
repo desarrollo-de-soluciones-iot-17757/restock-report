@@ -56,7 +56,7 @@ A continuación se presenta el User Journey Map de Jorge Torres.
 
 Uno de los principales problemas identificados es la falta de control en tiempo real del stock. Al no existir un sistema automatizado, los productos no se actualizan correctamente después de cada venta o reposición, lo que puede generar tanto quiebres de stock como sobreabastecimiento. Esta falta de visibilidad impacta directamente en la toma de decisiones del negocio.
 
-En cuanto a la experiencia del usuario (en este caso, el gestor o encargado), se identifican puntos de frustración relacionados con la desorganización, el registro manual y la dificultad para acceder a información relevante como productos de alta rotación o niveles críticos de stock. La curva emocional muestra una caída en etapas clave del proceso.
+En cuanto a la experiencia del usuario, se identifican puntos de frustración relacionados con la desorganización, el registro manual y la dificultad para acceder a información relevante como productos de alta rotación o niveles críticos de stock. La curva emocional muestra una caída en etapas clave del proceso.
 
 Finalmente, el análisis permite concluir que el proceso de retail requiere una digitalización que permita automatizar el control de inventario, mejorar la precisión en el registro de ventas y proporcionar herramientas de análisis. Esto no solo optimizaría la operación, sino que también permitiría una mejor toma de decisiones estratégicas.
 
