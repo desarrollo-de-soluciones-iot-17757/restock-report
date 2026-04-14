@@ -57,7 +57,6 @@ INTRODUCCION
 | **Digital stock** *(Stock digital / registrado)* | Cantidad almacenada en el sistema según registros, movimientos y operaciones previas. |
 | **Stock record** *(Registro de stock)* | Entidad central que consolida telemetría, cálculos y estado actual del stock. |
 | **Stock estimation** *(Estimación de stock)* | Cálculo realizado por el sistema para inferir la cantidad disponible a partir del peso recibido. |
-| **Physical stock estimated** *(Stock físico estimado)* | Resultado del cálculo del stock físico a partir de datos de pesaje y unidad base. |
 | **Recomputed physical estimate** *(Reestimación física)* | Recalculo del stock físico cuando llegan nuevos datos o se detectan inconsistencias. |
 | **Stable weight** *(Peso estable)* | Medición considerada confiable porque el valor del peso dejó de fluctuar. |
 | **Supply weight** *(Peso del insumo)* | Peso total detectado del insumo contenido en una cabina. |
@@ -65,9 +64,6 @@ INTRODUCCION
 | **Telemetry** *(Telemetría)* | Datos transmitidos por el dispositivo, como peso y otros valores operativos. |
 | **Analytics** *(Analítica)* | Procesamiento e interpretación de datos de telemetría e inventario para generar decisiones o alertas. |
 | **Status check** *(Verificación de estado)* | Evaluación del estado actual del stock o del dispositivo luego de recibir datos. |
-| **Approximate supply weight checked** *(Peso aproximado del insumo validado)* | Verificación del peso leído para determinar si es consistente con lo esperado. |
-| **Calculated weight received** *(Peso calculado recibido)* | Evento que indica que el sistema recibió el valor final de peso ya procesado o estimado. |
-| **Calculated weight verified** *(Peso calculado verificado)* | Confirmación de que el valor calculado es válido para compararlo contra umbrales o stock esperado. |
 | **Stock anomaly** *(Anomalía de stock)* | Comportamiento irregular del stock detectado por el sistema, como variaciones inesperadas o inconsistentes. |
 | **Stock discrepancy** *(Discrepancia de stock)* | Diferencia entre el stock físico estimado por el dispositivo y el stock digital almacenado en el sistema. |
 | **Stock matched** *(Stock coincidente)* | Estado en el que el stock físico y el digital coinciden dentro del margen aceptado. |
@@ -75,7 +71,6 @@ INTRODUCCION
 | **Perform stock comparison** *(Realizar comparación de stock)* | Acción de comparar el stock físico medido contra el stock digital almacenado. |
 | **Physical count** *(Conteo físico)* | Verificación manual del inventario real por parte de un usuario. |
 | **Adjust stock** *(Ajustar stock)* | Acción manual o asistida para corregir el stock digital del sistema. |
-| **Reconciliation completed** *(Conciliación completada)* | Evento que indica que la discrepancia fue revisada y resuelta. |
 | **Supply threshold** *(Umbral de abastecimiento)* | Límite configurado para determinar cuándo el stock está en una zona crítica, normal o excedida. |
 | **Threshold** *(Umbral)* | Valor de referencia mínimo y/o máximo usado para evaluar el stock de un insumo. |
 | **Maximum and minimum weight** *(Peso máximo y mínimo)* | Valores límite usados para definir el rango permitido o esperado para un insumo en una cabina. |
