@@ -31,7 +31,7 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
   <div style="flex: 1;">
   <p> 
     Soy estudiante de Ingeniería de Software y me formó de manera autodidacta. Cuento con sólidos conocimientos en desarrollo backend y mobile, aplicando buenas prácticas como Clean Architecture, Domain-Driven Design (DDD) y patrones de diseño. Tengo experiencia construyendo APIs REST, integrando servicios externos y trabajando con bases de datos relacionales y no relacionales.
-    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.    
+    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.  
   </p>
   </div> 
 </div>
@@ -207,22 +207,22 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 1. **Reducción de discrepancias de inventario**
 
    > **Creemos que** al automatizar la comparación entre el inventario físico y el registrado,
-los administradores podrán detectar inconsistencias de forma inmediata, **reduciendo los errores de inventario en un 30 %.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y el tiempo dedicado al control manual se reduzca en un 25 %.
+   > los administradores podrán detectar inconsistencias de forma inmediata, **reduciendo los errores de inventario en un 30 %.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y el tiempo dedicado al control manual se reduzca en un 25 %.
    >
 2. **Optimización del uso del espacio**
 
    > **Creemos que** al priorizar la organización del inventario según la rotación de productos,
-los administradores podrán aprovechar mejor el espacio disponible, **mejorando la eficiencia de ocupación en un 35 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que el espacio rinde más y se observe una mejora del 35 % en el uso del almacenamiento.
+   > los administradores podrán aprovechar mejor el espacio disponible, **incrementando en un 35 % la proporción de espacio útil ocupado.** **Sabremos que estamos bien cuando**: la relación entre capacidad utilizada y capacidad total aumente en al menos 35 % y se reduzcan los espacios ociosos en el almacén.
    >
 3. **Mejora en la reposición de productos**
 
-   > **Creemos que** aal proporcionar alertas oportunas basadas en el estado real del inventario,
-los administradores podrán tomar decisiones de reposición más precisas, **aumentando la disponibilidad de productos en un 40 %.** **Sabremos que estamos bien cuando**: los usuarios confirmen que reponen en el momento adecuado y los productos críticos mantengan disponibilidad constante.
+   > **Creemos que** al proporcionar alertas oportunas basadas en el estado real del inventario,
+   > los administradores podrán tomar decisiones de reposición más precisas, **aumentando la disponibilidad de productos en un 40 %.** **Sabremos que estamos bien cuando**: los usuarios confirmen que reponen en el momento adecuado y los productos críticos mantengan disponibilidad constante.
    >
 4. **Reducción del tiempo operativo**
 
    > **Creemos que** al centralizar la información del inventario en un solo panel,
-los administradores podrán supervisar y gestionar el stock de forma más eficiente, **reduciendo el tiempo operativo en un 25 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que pueden controlar todo desde un solo lugar y se reduzcan las horas dedicadas a tareas manuales de inventario.
+   > los administradores podrán supervisar y gestionar el stock de forma más eficiente, **reduciendo el tiempo operativo en un 25 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que pueden controlar todo desde un solo lugar y se reduzcan las horas dedicadas a tareas manuales de inventario.
    >
 
 #### 1.2.2.4 Lean UX Canvas
@@ -233,14 +233,13 @@ A continuación, se determinan los segmentos objetivos a los que va dirigida la 
 
 **Segmento Objetivo 1:** Dueños o administradores de Restaurantes
 
-Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 2026 en comparación con el mismo mes del año anterior. Este crecimiento se debe al buen desempeño de diversos tipos de establecimientos y la adopción de estrategias como la digitalización, el delivery y las promociones. Esto evidencia un aumento en la demanda del sector gastronómico, lo que incrementa la necesidad de que los negocios optimicen sus procesos internos, especialmente en la gestión de inventarios y control de insumos, para responder de manera eficiente a la demanda.  
+Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 2026 en comparación con el mismo mes del año anterior. Este crecimiento se debe al buen desempeño de diversos tipos de establecimientos y la adopción de estrategias como la digitalización, el delivery y las promociones. Esto evidencia un aumento en la demanda del sector gastronómico, lo que incrementa la necesidad de que los negocios optimicen sus procesos internos, especialmente en la gestión de inventarios y control de insumos, para responder de manera eficiente a la demanda.
 
 - **Datos demográficos:**
-    - Edad: Mayores de 18 años.
-    - Ocupación: Propietarios o administradores de restaurantes.
-    - Lugar de residencia: Lima Metropolitana, Perú.
 
-
+  - Edad: Mayores de 18 años.
+  - Ocupación: Propietarios o administradores de restaurantes.
+  - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los restaurantes presentan dificultades en el control de inventarios debido al uso de métodos manuales, lo que genera pérdidas, desabastecimiento y desorganización en la gestión de insumos.
 - **Necesidad:** Buscan tener un mayor control de sus insumos para evitar pérdidas, reducir costos innecesarios y asegurar que nunca falten productos clave, permitiéndoles operar de manera más eficiente y aumentar la rentabilidad de su negocio.
 
@@ -249,10 +248,9 @@ Según INEI, la actividad de restaurantes en Perú creció un 5,97% en enero de 
 Según el INEI, el sector de comercio en Perú creció 4,33% en enero de 2026 respecto al mismo mes del año anterior, impulsado por el comercio al por menor, el cual aumentó 4,67% debido a la mayor rotación de inventarios en supermercados, minimarkets y tiendas de conveniencia, así como a la apertura de nuevos puntos de venta. Esto refleja una creciente demanda en el sector retail, lo que exige una gestión más eficiente del inventario y del espacio de almacenamiento para responder adecuadamente al mercado.
 
 - **Datos demográficos:**
-    - Edad: Mayores de 18 años.
-    - Ocupación: Propietarios o administradores de negocios (Minimarkets, Tiendas de Conveniencia y almacenes logísticos).
-    - Lugar de residencia: Lima Metropolitana, Perú.
 
-
+  - Edad: Mayores de 18 años.
+  - Ocupación: Propietarios o administradores de negocios (Minimarkets, Tiendas de Conveniencia y almacenes logísticos).
+  - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los negocios retail presentan dificultades en el control de inventario debido a procesos manuales, lo que genera desorden, pérdidas por vencimiento y falta de precisión en el stock disponible.
 - **Necesidad:** Buscan mantener un control preciso del stock para evitar pérdidas y quiebres de inventario, mejorar la reposición de productos y maximizar sus ventas, asegurando una gestión más ordenada y rentable del negocio.
