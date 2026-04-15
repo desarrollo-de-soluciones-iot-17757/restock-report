@@ -116,7 +116,7 @@ Los segmentos considerados para este análisis son:
 | Tarea                                                      | Carolina Rivas |             | Jorge Torres |             |
 | ---------------------------------------------------------- | -------------- | ----------- | ------------ | ----------- |
 |                                                            | Frecuencia     | Importancia | Frecuencia   | Importancia |
-| Supervisar y controlar el inventario disponible            | often          | high        | sometimes    | high        |
+| Supervisar y controlar el inventario disponible            | often          | high        | often        | high        |
 | Monitorear condiciones de almacenamiento                   | often          | medium      | sometimes    | medium      |
 | Gestionar mermas, productos vencidos o dañados             | often          | high        | often        | high        |
 | Registrar ingresos de mercadería y salidas de stock        | sometimes      | medium      | often        | high        |
