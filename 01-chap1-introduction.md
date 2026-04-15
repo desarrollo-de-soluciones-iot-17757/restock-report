@@ -241,6 +241,27 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
+1. **Reducción de discrepancias de inventario**
+
+   > **Creemos que** al automatizar la comparación entre el inventario físico y el registrado,
+   > los administradores podrán detectar inconsistencias de forma inmediata, **reduciendo los errores de inventario en un 30 %.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y el tiempo dedicado al control manual se reduzca en un 25 %.
+   >
+2. **Optimización del uso del espacio**
+
+   > **Creemos que** al priorizar la organización del inventario según la rotación de productos,
+   > los administradores podrán aprovechar mejor el espacio disponible, **incrementando en un 35 % la proporción de espacio útil ocupado.** **Sabremos que estamos bien cuando**: la relación entre capacidad utilizada y capacidad total aumente en al menos 35 % y se reduzcan los espacios ociosos en el almacén.
+   >
+3. **Mejora en la reposición de productos**
+
+   > **Creemos que** al proporcionar alertas oportunas basadas en el estado real del inventario,
+   > los administradores podrán tomar decisiones de reposición más precisas, **aumentando la disponibilidad de productos en un 40 %.** **Sabremos que estamos bien cuando**: los usuarios confirmen que reponen en el momento adecuado y los productos críticos mantengan disponibilidad constante.
+   >
+4. **Reducción del tiempo operativo**
+
+   > **Creemos que** al centralizar la información del inventario en un solo panel,
+   > los administradores podrán supervisar y gestionar el stock de forma más eficiente, **reduciendo el tiempo operativo en un 25 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que pueden controlar todo desde un solo lugar y se reduzcan las horas dedicadas a tareas manuales de inventario.
+   >
+
 #### 1.2.2.4 Lean UX Canvas
 
 ## 1.3 Segmentos objetivo
