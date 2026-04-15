@@ -204,21 +204,25 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
-1. **Eliminación de discrepancias mediante sensores**
+1. **Reducción de discrepancias de inventario**
 
-   > **Creemos que** al integrar sensores en cabinas de almacenamiento que detecten el peso en tiempo real, los administradores de restaurantes y retail podrán contrastar el stock físico contra el digital automáticamente, **reduciendo los errores de inventario detectados en un 30%.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y se reduzca en un 25% el tiempo dedicado al control manual de stock.
+   > **Creemos que** al automatizar la comparación entre el inventario físico y el registrado,
+los administradores podrán detectar inconsistencias de forma inmediata, **reduciendo los errores de inventario en un 30 %.** **Sabremos que estamos bien cuando**: los reportes del sistema coincidan con el stock real y el tiempo dedicado al control manual se reduzca en un 25 %.
    >
-2. **Optimización de stock real basada en ventas**
+2. **Optimización del uso del espacio**
 
-   > **Creemos que** al conectar los datos de ventas con el pesaje inteligente, los administradores podrán identificar si lo vendido coincide con lo que salió físicamente de la cabina, **aumentando la precisión en la reposición de productos en un 40%.** **Sabremos que estamos bien cuando**: los usuarios indiquen que “el stock en pantalla siempre es el real” y se observe una mejora del 40% en la disponibilidad de productos críticos.
+   > **Creemos que** al priorizar la organización del inventario según la rotación de productos,
+los administradores podrán aprovechar mejor el espacio disponible, **mejorando la eficiencia de ocupación en un 35 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que el espacio rinde más y se observe una mejora del 35 % en el uso del almacenamiento.
    >
-3. **Alertas proactivas de quiebre y desajuste**
+3. **Mejora en la reposición de productos**
 
-   > **Creemos que** al implementar alertas automáticas cuando el sensor detecte un nivel bajo o un retiro de stock no registrado, los administradores podrán corregir fallas de inventario al instante, **reduciendo la discrepancia por errores de registro.** **Sabremos que estamos bien cuando**: el tiempo de respuesta ante faltantes se reduzca en un 25% y los usuarios comenten que “el sistema detecta diferencias que antes pasaban desapercibidas”.
+   > **Creemos que** aal proporcionar alertas oportunas basadas en el estado real del inventario,
+los administradores podrán tomar decisiones de reposición más precisas, **aumentando la disponibilidad de productos en un 40 %.** **Sabremos que estamos bien cuando**: los usuarios confirmen que reponen en el momento adecuado y los productos críticos mantengan disponibilidad constante.
    >
-4. **Panel de control de integridad del almacén**
+4. **Reducción del tiempo operativo**
 
-   > **Creemos que** al ofrecer un panel centralizado que visualice las alertas de discrepancia y el estado real de las cabinas, los administradores podrán supervisar el almacén de manera estratégica, **mejorando la eficiencia de ocupación del espacio en un 35%.** **Sabremos que estamos bien cuando**: los administradores indiquen que “pueden confiar plenamente en los datos del panel” y se reduzca en un 30% el tiempo dedicado a la supervisión manual del inventario.
+   > **Creemos que** al centralizar la información del inventario en un solo panel,
+los administradores podrán supervisar y gestionar el stock de forma más eficiente, **reduciendo el tiempo operativo en un 25 %.** **Sabremos que estamos bien cuando**: los usuarios indiquen que pueden controlar todo desde un solo lugar y se reduzcan las horas dedicadas a tareas manuales de inventario.
    >
 
 #### 1.2.2.4 Lean UX Canvas
