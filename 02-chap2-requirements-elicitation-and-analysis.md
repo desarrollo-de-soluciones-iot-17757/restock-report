@@ -504,6 +504,35 @@ Los segmentos considerados para este análisis son:
 ### 2.3.3. User Journey Mapping
 
 ### 2.3.4. Empathy Mapping
+En esta sección, el equipo resume el proceso de elaboración y presenta los Empathy Maps realizados para cada User Persona. El proceso implicó centrar cada User Persona y plasmar las observaciones del equipo, respondiendo a preguntas clave sobre qué piensan, sienten, ven, oyen, dicen y hacen. Finalmente, se identificaron los “Pains” y “Gains” con el objetivo de comprender mejor sus preocupaciones, necesidades y las soluciones que podrían generar mayor valor para ellos.
+
+#### Carolina Rivas
+
+Esta sección presenta el Empathy Map elaborado para Carolina Rivas, nuestra User Persona clave que representa a la propietaria y administradora de un restaurante en Lima. Este mapa permite visualizar de manera integral sus pensamientos, emociones, necesidades y desafíos dentro del contexto de la gestión diaria de su negocio.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://i.imgur.com/eXhDJxU.png" alt="carolina-rivas-em">
+</div>
+
+A partir de este análisis, se evidencia que Carolina enfrenta dificultades principalmente relacionadas con la falta de control del inventario, el uso de procesos manuales y la ausencia de herramientas tecnológicas simples que se adapten a su operación. Estas limitaciones generan errores, pérdidas de insumos y dificultan la toma de decisiones informadas.
+
+Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como la falta de visibilidad en tiempo real del stock y la dependencia de registros manuales, así como sus oportunidades de valor (Gains), entre las que destacan la automatización de procesos, la reducción de errores y una mejor eficiencia operativa. Esto permite orientar la solución hacia una herramienta intuitiva, accesible y enfocada en mejorar el control del negocio sin aumentar su complejidad.
+
+
+#### Jorge Torres
+
+Por otro lado, esta sección presenta el Empathy Map elaborado para Jorge Torres, nuestro User Persona clave que representa a un administrador de un negocio retail de consumo masivo en Lima, Perú. Este mapa permite comprender de manera integral sus pensamientos, emociones, necesidades y desafíos en la gestión y optimización de su operación comercial.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://i.imgur.com/WHCj5lx.png" alt="jorge-torres-em">
+</div>
+
+El análisis muestra que Jorge enfrenta problemas relacionados con inventarios desactualizados, uso excesivo de herramientas manuales como Excel y falta de visibilidad en tiempo real, lo que impacta directamente en la rentabilidad de su negocio. Además, presenta la necesidad de optimizar la reposición de productos y mejorar la organización del almacén.
+
+A través de este ejercicio empático, se identificaron sus principales frustraciones (Pains), como las pérdidas por productos vencidos, errores en el registro de stock y la falta de alertas automáticas. Asimismo, se definieron sus oportunidades de valor (Gains), que incluyen una mejor planificación, control eficiente del inventario y toma de decisiones más rápida y precisa.
+
+Este entendimiento permite diseñar una solución enfocada en brindar mayor control, automatización y simplicidad, alineada con su necesidad de optimizar procesos sin incrementar la complejidad operativa.
+
 
 ## 2.4. Big Picture EventStorming
 
