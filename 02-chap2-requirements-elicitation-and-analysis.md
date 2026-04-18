@@ -459,7 +459,6 @@ El User Persona **Carolina Rivas** representa a las administradoras y propietari
 
 La información mostrada del User Persona **Carolina Rivas** se observa que valora herramientas simples, visuales y fáciles de implementar, ya que busca optimizar sus procesos sin afectar la atención al cliente ni depender de sistemas complejos. En ese sentido, este perfil sintetiza claramente la oportunidad de diseñar una solución tecnológica orientada a digitalizar la gestión de inventarios, mejorar la eficiencia operativa y apoyar una toma de decisiones más informada dentro del restaurante.
 
-<br>
 
 Por otro lado, el User Persona **Jorge Torres** representa a los dueños o administradores de negocios del sector retail de consumo masivo, como minimarkets o tiendas de conveniencia. Con varios años de experiencia en la gestión de su negocio, Jorge maneja una alta rotación de productos, lo que hace que el control del inventario sea una tarea crítica en su operación diaria. Actualmente, utiliza métodos manuales apoyados por herramientas como WhatsApp y Excel para registrar el stock, coordinar pedidos y llevar el control de ventas, lo que le genera desorden, errores y falta de visibilidad en tiempo real.
 
@@ -502,6 +501,32 @@ Los segmentos considerados para este análisis son:
 - Por otro lado, tareas como el monitoreo estricto de condiciones de almacenamiento y la gestión de mermas son mucho más críticas para el sector gastronómico debido a la naturaleza de sus productos, mientras que para el sector retail el registro constante de ingresos y salidas tiene un mayor impacto operativo. Esta diferencia permite identificar funcionalidades que deben ser priorizadas según el perfil del usuario dentro de la plataforma Restock.
 
 ### 2.3.3. User Journey Mapping
+
+En esta sección se presentan los User Journey Maps (As-Is) de los segmentos representados, correspondientes a sus respectivas User Personas. Se ilustra el recorrido actual de los usuarios sin la intervención de la solución UI-Topic, con el fin de identificar sus necesidades, puntos de fricción y oportunidades de mejora. Cada mapa refleja las etapas clave de interacción, acciones realizadas, puntos de contacto, experiencias emocionales, dificultades enfrentadas y posibles mejoras.
+
+#### Carolina Rivas
+
+A continuación se presenta el User Journey Map de Carolina Rivas.
+
+![user journey mapping carolina rivas](assets/images/chapter2/empathy-maps/customer-journey-map-restaurant-managers.png)
+
+Uno de los problemas más críticos se encuentra en la toma y transmisión de pedidos. Al no existir un sistema estructurado, es común que ocurran errores en la anotación, interpretación o comunicación de los pedidos hacia la cocina. Esto puede generar confusiones, retrasos e incluso la entrega incorrecta de platos a los clientes.
+
+La experiencia del usuario presenta modificaciones importantes, especialmente en las etapas de registro del pedido y preparación, donde se concentran los mayores niveles de incertidumbre y errores. La falta de claridad en el estado del pedido genera descoordinación entre el personal y aumenta la probabilidad de fallas en el servicio.
+
+En conclusión, el proceso del restaurante requiere la implementación de un sistema que permita estructurar la toma de pedidos, mejorar la comunicación entre áreas y automatizar el control de inventario. Esto contribuiría a reducir errores, optimizar tiempos de atención y mejorar significativamente la experiencia tanto del cliente como del personal.
+
+#### Jorge Torres
+
+A continuación se presenta el User Journey Map de Jorge Torres.
+
+![user journey mapping jorge torres](assets/images/chapter2/empathy-maps/customer-journey-mapping-retail-managers.png)
+
+Uno de los principales problemas identificados es la falta de control en tiempo real del stock. Al no existir un sistema automatizado, los productos no se actualizan correctamente después de cada venta o reposición, lo que puede generar tanto quiebres de stock como sobreabastecimiento. Esta falta de visibilidad impacta directamente en la toma de decisiones del negocio.
+
+En cuanto a la experiencia del usuario, se identifican puntos de frustración relacionados con la desorganización, el registro manual y la dificultad para acceder a información relevante como productos de alta rotación o niveles críticos de stock. La curva emocional muestra una caída en etapas clave del proceso.
+
+Finalmente, el análisis permite concluir que el proceso de retail requiere una digitalización que permita automatizar el control de inventario, mejorar la precisión en el registro de ventas y proporcionar herramientas de análisis. Esto no solo optimizaría la operación, sino que también permitiría una mejor toma de decisiones estratégicas.
 
 ### 2.3.4. Empathy Mapping
 En esta sección, el equipo resume el proceso de elaboración y presenta los Empathy Maps realizados para cada User Persona. El proceso implicó centrar cada User Persona y plasmar las observaciones del equipo, respondiendo a preguntas clave sobre qué piensan, sienten, ven, oyen, dicen y hacen. Finalmente, se identificaron los “Pains” y “Gains” con el objetivo de comprender mejor sus preocupaciones, necesidades y las soluciones que podrían generar mayor valor para ellos.
