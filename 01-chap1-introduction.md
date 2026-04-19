@@ -94,18 +94,18 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 ##### A. Business Assumptions
 
-1. Se considera que los clientes necesitan mejorar el control de inventarios, reducir la discrepancia entre el stock físico y el stock registrado, y optimizar el uso del espacio de almacenamiento en restaurantes y tiendas retail de consumo masivo.
+1. Creemos que nuestros clientes necesitan mejorar el control de inventarios, reducir la discrepancia entre el stock físico y el stock registrado, y optimizar el uso del espacio de almacenamiento en restaurantes y tiendas retail de consumo masivo.
 2. Estas necesidades pueden resolverse con una solución tecnológica que combine sensores de peso, gestión de inventario e integración con el punto de venta.
-3. Los clientes iniciales serán dueños o administradores de restaurantes, así como dueños o administradores de tiendas retail de consumo masivo.
-4. El principal valor que los clientes buscan en el servicio es conocer en tiempo real el estado del inventario, la disponibilidad de productos, detectar discrepancias entre el inventario físico y el registrado y el nivel de ocupación de sus áreas de almacenamiento o exhibición.
-5. Los clientes pueden obtener beneficios como reducción de errores manuales, mejor organización del almacén, optimización del espacio, control más preciso del stock, reducción de discrepancias y apoyo en la toma de decisiones.
-6. La adquisición de clientes se realizará principalmente a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de tecnología, equipamiento y mantenimiento.
-7. El modelo de ingresos se basará en una suscripción mensual por local, con planes adicionales por monitoreo de sensores de peso, integración con ventas o mantenimiento.
-8. La competencia principal en el mercado estará conformada por los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
-9. La propuesta se diferenciará por la automatización del control de inventario, la integración con el punto de venta, la detección de discrepancias y las alertas inteligentes de reposición.
-10. El mayor riesgo del producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
-11. Este riesgo se abordará mediante una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
-12. Otras suposiciones son que la conectividad será estable, que los sensores de peso funcionarán correctamente y que el local estará dispuesto a integrar el sistema con sus ventas.
+3. Nuestros clientes iniciales serán dueños o administradores de restaurantes, así como dueños o administradores de tiendas retail de consumo masivo.
+4. El valor #1 que nuestros clientes quieren de nuestro servicio es conocer en tiempo real el estado del inventario, la disponibilidad de productos, detectar discrepancias entre el inventario físico y el registrado y el nivel de ocupación de sus áreas de almacenamiento o exhibición.
+5. Nuestros clientes pueden obtener beneficios como reducción de errores manuales, mejor organización del almacén, optimización del espacio, control más preciso del stock, reducción de discrepancias y apoyo en la toma de decisiones.
+6. Adquiriremos la mayoría de nuestros clientes a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de tecnología, equipamiento y mantenimiento.
+7. Haremos dinero a través de una suscripción mensual por local, con planes adicionales por monitoreo de sensores de peso, integración con ventas o mantenimiento.
+8. Nuestra competencia principal en el mercado estará conformada por los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
+9. Los venceremos debido a la automatización del control de inventario, la integración con el punto de venta, la detección de discrepancias y las alertas inteligentes de reposición.
+10. Nuestro mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
+11. Resolveremos esto mediante una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
+12. Otras suposiciones que tenemos son que la conectividad será estable, que los sensores de peso funcionarán correctamente y que el local estará dispuesto a integrar el sistema con sus ventas.
 
 ##### B. User Assumptions
 
