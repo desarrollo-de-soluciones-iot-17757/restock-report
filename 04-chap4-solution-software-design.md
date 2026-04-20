@@ -7,109 +7,111 @@ En esta sección se aborda el enfoque de Strategic-Level Domain-Driven Design (D
 
 En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos y reglas de negocio. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
 
-A continuación, se describen los distintos bounded contexts identificados.
+#### Fase 1: Identificación de Bounded Contexts
 
-#### 1. Identity and Access Management
-
-Este bounded context gestiona el registro, la autenticación y la asignación de roles de los usuarios dentro del sistema, permitiendo controlar el acceso a las funcionalidades disponibles.
+En esta fase se realizó la delimitación inicial de los bounded contexts, con el propósito de organizar el dominio en áreas funcionales claramente diferenciadas. Esta separación permitió identificar los principales bloques de responsabilidad del sistema y establecer una visión estructurada de cómo se distribuyen las capacidades del negocio.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/zkDUj9I.png" alt="identity-and-access-management">
+  <img src="https://imgur.com/7qqJVcP.png" alt="identity-and-access-management-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/A63PeaL.png" alt="profile-management-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/E5QKnT9.png" alt="subscriptions-and-payments-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/Aov2RxV.png" alt="asset-and-resource-management-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/BY7CSPt.png" alt="service-design-and-planning-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/nLyck3E.png" alt="sales-order-management-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/yN80i4j.png" alt="alerts-and-notifications-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/FsSKdU9.png" alt="service-operation-and-monitoring-diagram">
 </div>
 
-En la imagen se observa el flujo de registro e inicio de sesión, en el cual el usuario ingresa sus datos personales, su contraseña y selecciona un rol. Posteriormente, el sistema valida las credenciales y autentica al usuario.
+En las imagenes se observa la división del sistema en distintos bounded contexts, entre los que se encuentran Identity and Access Management, Profile Management, Alerts and Notifications, Subscriptions and Payments, Service Design and Planning, Asset and Resource Management, Sales Order Management y Service Operation and Monitoring. Esta organización evidencia que el sistema fue modelado a partir de sus responsabilidades de negocio más importantes, permitiendo separar funciones como autenticación, gestión de perfiles, suscripciones, inventario, recetas, ventas y monitoreo operativo.
 
-Además, se evidencia la creación automática del perfil y la asociación del usuario con una cuenta de negocio en el caso de roles específicos, como el de trabajador. Este contexto también contempla decisiones relacionadas con la elección de un plan, lo que demuestra su conexión directa con otros módulos del sistema.
+Asimismo, esta fase permitió reconocer que cada contexto posee un propósito específico dentro del sistema y que no todos comparten la misma lógica de negocio. Por ello, la delimitación inicial resulta fundamental para evitar solapamientos funcionales y para facilitar el diseño posterior de los agregados, eventos y relaciones entre contextos.
 
-#### 2. Profile Management
+#### Fase 2: Definición de Eventos de Dominio y Agregados
 
-Este bounded context se encarga de la gestión y actualización de la información del perfil del usuario.
+En esta fase se profundizó en cada bounded context para identificar los eventos de dominio y los agregados principales del sistema. Esta actividad permitió representar los hechos relevantes del negocio y agrupar la lógica asociada a cada flujo funcional dentro de RESTOCK.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/JhuqGxM.png" alt="profile-management">
+  <img src="https://imgur.com/nLyck3E.png" alt="sales-order-management-diagram">
 </div>
 
-En la imagen se identifican procesos como la creación del perfil, la actualización de datos personales, el cambio de contraseña y la gestión de la foto de perfil. También se evidencia la integración con un sistema externo, Cloudinary API, para el almacenamiento de imágenes.
+En la imagen se identifican los eventos de dominio como hechos ya ocurridos dentro del sistema, redactados en pasado, lo que permite reflejar con claridad las acciones que forman parte del comportamiento del negocio. A partir de estos eventos, se reconocen agregados como User, Profile, Subscription, Business, Account, Branch, Inventory, Custom Supply, Batch, Device, Recipe, Sales Order, Notification, Stock Record, Supply Threshold, Conciliation Task y Device Health.
 
-Asimismo, se observan acciones específicas como la edición de información y la configuración del perfil, lo que permite mantener actualizados los datos del usuario dentro del sistema.
+La presencia de estos agregados demuestra que el sistema fue modelado considerando entidades centrales que concentran coherencia de negocio. En RESTOCK, cada agregado representa una pieza clave para la gestión de usuarios, recursos, ventas, recetas, notificaciones y monitoreo. Esta fase permitió comprender con mayor precisión cómo se estructuran internamente los procesos del dominio y cómo se relacionan los eventos con las responsabilidades de cada contexto.
 
-#### 3. Alerts and Notifications
+#### Fase 3: Identificación de Comandos, Actores y Políticas
 
-Este bounded context gestiona la generación y el envío de notificaciones a partir de eventos relevantes del sistema, permitiendo mantener informado al usuario.
+Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados durante la tercera fase del Design-Level Event Storming. Esta convención permitió identificar de manera visual los distintos elementos del dominio, tales como eventos, comandos, actores, políticas, modelos de lectura y sistemas externos, facilitando la comprensión de las relaciones y flujos dentro del sistema.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/KhRjH5Y.png" alt="alerts-and-notifications">
+  <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention">
 </div>
 
-En la imagen se observa que las notificaciones se generan a partir de eventos del sistema mediante el proceso de creación de una nueva notificación. Luego, la información de la situación es recibida, procesada y enviada al centro de notificaciones.
-
-Además, se evidencia el uso de un sistema externo, OneSignal API, para el envío de mensajes. También se incluyen funcionalidades como la visualización de notificaciones y la aplicación de filtros, lo que indica que este contexto no solo gestiona el envío, sino también la consulta de notificaciones por parte del usuario.
-
-#### 4. Service Design and Planning
-
-Este bounded context se enfoca en la gestión y planificación de recetas, permitiendo su registro, edición y organización dentro del sistema.
+En esta fase se incorporaron los comandos, actores y políticas con el objetivo de describir cómo se generan los eventos dentro del sistema y qué participantes intervienen en cada acción. Esta etapa permitió comprender la dinámica operativa del dominio RESTOCK desde la intención del usuario hasta la reacción automática del sistema.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/dk4Uhso.png" alt="service-design-and-planning">
+  <img src="https://imgur.com/Aov2RxV.png" alt="asset-and-resource-management-diagram">
 </div>
 
-En la imagen se identifican procesos claros como el registro de recetas, en el cual se selecciona una categoría, se ingresan datos, se asignan insumos y se define la cantidad de estos. Asimismo, se observa la carga de imágenes mediante la integración con Cloudinary API, lo que evidencia el uso de un sistema externo.
+En este bounded context se observa la relación entre comandos, actores y políticas orientadas a la gestión de recursos del sistema, como Branch, Inventory, Custom Supply, Batch y Device. Los comandos identificados permiten realizar acciones como Register Supply, Create Branch y Add Supply to Inventory, evidenciando un flujo operativo enfocado en el control de activos.
 
-También se incluyen procesos de edición, donde se actualizan datos, categorías, insumos e imágenes, así como la confirmación de cambios. Finalmente, se observa la eliminación de insumos y la posible generación de alertas mediante el envío de correo, lo que indica una interacción con el contexto de notificaciones. Este bounded context refleja un flujo completo de gestión de recetas, desde su creación hasta su mantenimiento.
+Asimismo, participan actores como el Branch Management y el Custom Supply Management, quienes ejecutan dichas acciones y mantienen actualizado el estado de los recursos. Por otro lado, se identifican políticas que automatizan respuestas del sistema, especialmente en la actualización y sincronización del Inventory.
 
-#### 5. Subscriptions and Payments
+En conjunto, este contexto refleja un flujo donde los comandos generan eventos que activan políticas, permitiendo una gestión eficiente y consistente de los recursos dentro del sistema RESTOCK.
 
-Este bounded context se encarga de la gestión de suscripciones y pagos dentro de la plataforma. Permite a los usuarios seleccionar un plan, ingresar sus datos de pago, procesar la transacción y activar la suscripción correspondiente. Asimismo, contempla la configuración y actualización de los límites asociados a cada plan.
+#### Fase 4: Incorporación de Read Models y Sistemas Externos
+
+En esta fase se añadieron los read models y los sistemas externos involucrados en el dominio, con el fin de representar cómo se consulta la información y qué servicios de terceros participan en el funcionamiento de RESTOCK.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/aDQ35ov.png" alt="subscriptions-and-payments">
+  <img src="https://imgur.com/BY7CSPt.png" alt="service-design-and-planning-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/yN80i4j.png" alt="alerts-and-notifications-diagram">
+</div>
+<br>
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/E5QKnT9.png" alt="subscriptions-and-payments-diagram">
 </div>
 
-Este bounded context concentra el ciclo completo de monetización del sistema. En primer lugar, se realiza el registro del negocio y la creación de la cuenta. Posteriormente, el usuario selecciona un plan de suscripción e ingresa sus datos de pago, los cuales son procesados a través de un proveedor externo. Una vez que el pago es aceptado, la suscripción se activa y se configuran los límites correspondientes.
+En la imagen se identifican distintos modelos de lectura que sirven como apoyo para la ejecución de comandos y la toma de decisiones dentro del sistema. Entre ellos destacan vistas relacionadas con inventario, suministros, pedidos, recetas, ventas, perfiles y planes de suscripción. Estos modelos permiten que los actores consulten información consolidada antes de ejecutar acciones, lo que mejora la usabilidad y la eficiencia del sistema.
 
-Además, este contexto no solo gestiona los pagos, sino también la habilitación de capacidades dentro del sistema, ya que define los recursos disponibles según el plan contratado. Por ello, mantiene una relación directa con la verificación y actualización de límites cuando se produce un cambio de suscripción.
+Del mismo modo, se evidencian integraciones con sistemas externos como Cloudinary API, utilizada para el almacenamiento de imágenes; OneSignal API, empleada para el envío de notificaciones; y proveedores de pago como parte del módulo de suscripciones y pagos. La inclusión de estos servicios muestra que RESTOCK depende de componentes externos para completar ciertas funcionalidades críticas.
 
-#### 6. Service Operation and Monitoring
+Esta fase permitió reconocer que el sistema no opera de manera aislada, sino que interactúa con servicios especializados que fortalecen capacidades como almacenamiento, comunicación y procesamiento de pagos.
 
-Este bounded context está orientado a la operación del servicio y al monitoreo continuo de los recursos. Su propósito es supervisar el estado de los dispositivos, el comportamiento del stock y la detección de anomalías, con el fin de generar alertas, reportes y acciones correctivas.
+#### Fase 5: Construcción del Context Map
+
+En esta fase final se establecieron las relaciones entre los distintos bounded contexts para construir el context map del sistema. Esta representación permitió visualizar cómo se conectan las áreas funcionales de RESTOCK y cuáles son sus dependencias principales.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/bkOMb8M.png" alt="service-operation-and-monitoring">
+  <img src="https://imgur.com/hbSe3YW.png" alt="Design-Level-EventStorming">
 </div>
 
-Este bounded context actúa como el núcleo de supervisión operativa del sistema. Recibe datos provenientes de dispositivos y eventos de telemetría, los cuales son utilizados para calcular el estado actual del stock y verificar su consistencia.
+En la imagen se observa el conjunto completo de relaciones entre los bounded contexts, lo que evidencia cómo fluye la información dentro del sistema. Se identifican dependencias entre Identity and Access Management y Profile Management, entre Subscriptions and Payments y otros módulos operativos, así como interacciones entre Identity and Access Management, Profile Management, Subscriptions and Payments, Asset and Resource Management, Service Design and Planning, Sales Order Management, Alerts and Notifications y Service Operation and Monitoring.
 
-A partir de estos datos, el sistema compara valores estimados con valores reales, detecta anomalías y evalúa si se han superado los umbrales definidos. Asimismo, se monitorea la salud de los dispositivos para identificar posibles fallas.
-
-Cuando se detecta alguna inconsistencia o problema, se generan reportes, alertas o tickets que permiten la intervención de usuarios responsables. De esta manera, este contexto garantiza la visibilidad y control continuo sobre los recursos y la operación del sistema.
-
-#### 7. Asset and Resource Management
-
-Este bounded context se encarga de la gestión de los activos y recursos del negocio. Incluye la administración de sucursales, suministros personalizados, inventarios, lotes y dispositivos, permitiendo su registro, actualización, transferencia y asociación.
-
-<div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/pPp4MA4.png" alt="asset-and-resource-management">
-</div>
-
-Este bounded context representa la capa encargada de la gestión de los recursos físicos y operativos del sistema. En él se administran las sucursales, los suministros personalizados, los inventarios organizados por lotes y los dispositivos asociados.
-
-Cada entidad cuenta con operaciones de creación, edición y eliminación, así como mecanismos de asociación entre sí. Además, se contemplan procesos de transferencia de stock entre sucursales y actualización de cantidades disponibles.
-
-Por otro lado, se gestiona el ciclo de vida de los dispositivos, incluyendo su registro, configuración, asignación y desactivación. En conjunto, este contexto permite mantener la trazabilidad, organización y control eficiente de los recursos del negocio.
-
-#### 8. Sales Order Management
-
-Este bounded context se encarga de la gestión de órdenes de venta dentro del sistema. Permite registrar ventas, calcular precios totales, gestionar los productos asociados y actualizar automáticamente el stock en función de las transacciones realizadas.
-
-<div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/uQCiGQC.png" alt="sales-order-management">
-</div>
-
-Este bounded context gestiona el flujo completo de una venta desde su inicio hasta su confirmación. El proceso comienza con el registro de la venta, donde se selecciona la sucursal correspondiente y los productos o recetas involucradas. Posteriormente, se registran suministros adicionales si corresponde y se calcula el precio total considerando todos los elementos.
-
-Una vez confirmado el monto, la venta se valida y se marca como completada. Como parte del proceso, el sistema descuenta automáticamente del inventario los suministros utilizados, asegurando la consistencia del stock.
-
-Adicionalmente, este contexto permite la consulta de ventas mediante filtros, lo que facilita el análisis y seguimiento de las transacciones realizadas. También se genera información asociada a la venta confirmada, la cual puede ser utilizada por otros contextos del sistema, como notificaciones o monitoreo.
+Esta representación permite comprender que RESTOCK funciona como un ecosistema de contextos conectados, donde cada uno cumple una función específica pero mantiene relaciones con los demás para garantizar la continuidad del negocio. El context map obtenido en esta fase constituye una base sólida para futuras decisiones de arquitectura, ya que ayuda a identificar límites claros, puntos de integración y dependencias entre módulos.
 
 #### 4.1.1.1 Candidate Context Discovery
 #### 4.1.1.2 Domain Message Flows Modeling
