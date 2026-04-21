@@ -191,17 +191,17 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 ##### A. Business Assumptions
 
 1. Creemos que nuestros clientes necesitan mejorar el control de inventarios, reducir la discrepancia entre el stock físico y el stock registrado, y optimizar el uso del espacio de almacenamiento en restaurantes y tiendas retail de consumo masivo.
-2. Estas necesidades pueden resolverse con una solución tecnológica que combine sensores IoT, gestión de inventario e integración con el punto de venta.
+2. Estas necesidades pueden resolverse con una solución tecnológica que combine sensores de peso, gestión de inventario e integración con el punto de venta.
 3. Nuestros clientes iniciales serán dueños o administradores de restaurantes, así como dueños o administradores de tiendas retail de consumo masivo.
 4. El valor #1 que nuestros clientes quieren de nuestro servicio es conocer en tiempo real el estado del inventario, la disponibilidad de productos, detectar discrepancias entre el inventario físico y el registrado y el nivel de ocupación de sus áreas de almacenamiento o exhibición.
 5. Nuestros clientes pueden obtener beneficios como reducción de errores manuales, mejor organización del almacén, optimización del espacio, control más preciso del stock, reducción de discrepancias y apoyo en la toma de decisiones.
 6. Adquiriremos la mayoría de nuestros clientes a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de tecnología, equipamiento y mantenimiento.
-7. Haremos dinero a través de una suscripción mensual por local, con planes adicionales por monitoreo IoT, integración con ventas o mantenimiento.
+7. Haremos dinero a través de una suscripción mensual por local, con planes adicionales por monitoreo de sensores de peso, integración con ventas o mantenimiento.
 8. Nuestra competencia principal en el mercado estará conformada por los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
 9. Los venceremos debido a la automatización del control de inventario, la integración con el punto de venta, la detección de discrepancias y las alertas inteligentes de reposición.
 10. Nuestro mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
 11. Resolveremos esto mediante una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
-12. Otras suposiciones que tenemos son que la conectividad será estable, que los sensores funcionarán correctamente y que el local estará dispuesto a integrar el sistema con sus ventas.
+12. Otras suposiciones que tenemos son que la conectividad será estable, que los sensores de peso funcionarán correctamente y que el local estará dispuesto a integrar el sistema con sus ventas.
 
 ##### B. User Assumptions
 
@@ -209,7 +209,7 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 - **¿Dónde encaja el producto?** En las tareas diarias de control de inventario, reposición, organización del almacén y supervisión de productos disponibles para venta, incluyendo la verificación de discrepancias entre el stock físico y el registrado.
 - **Problema a resolver**: manejo manual del inventario, desorden en el almacén, dificultad para identificar productos con bajo stock y discrepancias entre el inventario real y el registrado.
 - **Uso típico**: revisar el estado del inventario, registrar stock, recibir alertas de reposición, identificar diferencias entre el inventario físico y el digital y analizar qué productos deben tener mayor espacio o prioridad según su rotación.
-- **Características importantes**: sensores de carga o nivel de stock, monitoreo en tiempo real, alertas de reposición, integración con punto de venta, priorización de productos por ventas y panel de control.
+- **Características importantes**: sensores de peso, monitoreo en tiempo real, alertas de reposición, integración con punto de venta, priorización de productos por ventas y panel de control.
 - **Look & feel**: interfaz clara, visual y responsiva; navegación simple y datos fáciles de interpretar.
 
 ##### C. User Outcome & Benefit Assumptions
@@ -232,12 +232,13 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 ##### E. Feature Assumptions
 
-- Los sensores en las áreas de almacenamiento o exhibición permiten detectar si hay espacio disponible o si el producto está próximo a agotarse.
+- Los sensores de peso en las áreas de almacenamiento o exhibición permiten detectar si hay espacio disponible o si el producto está próximo a agotarse.
 - Las alertas automáticas ayudan a identificar cuándo un producto necesita reposición.
 - La integración con el punto de venta permite reconocer qué productos tienen mayor rotación.
 - El sistema permite detectar discrepancias entre el inventario físico y el registrado.
 - El panel de control centraliza inventario, ventas, alertas y estado del almacenamiento.
 - La gestión digital del inventario reduce la dependencia de procesos manuales y mejora la organización general.
+
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
