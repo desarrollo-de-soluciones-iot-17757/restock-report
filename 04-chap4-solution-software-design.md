@@ -4,8 +4,6 @@
 #### 4.1.1.1 Candidate Context Discovery
 #### 4.1.1.2 Domain Message Flows Modeling
 
-#### 4.1.1.2 Domain Message Flows Modeling
-
 Los Domain Message Flows modelan las interacciones entre los diferentes bounded contexts, mostrando cómo se comunican entre sí mediante comandos, eventos y consultas. A continuación, se muestran los flujos de mensaje para los escenarios clave del negocio:
 
 * **Access to platform:** En este flujo se muestra la interacción entre el bounded context IAM y el bounded context Profiles al momento en que un usuario se registra de forma omnicanal (Web o App) y se crea su perfil correspondiente.
@@ -15,10 +13,6 @@ Los Domain Message Flows modelan las interacciones entre los diferentes bounded 
 * **Record a recipe:** En este flujo se muestra la interacción entre el bounded context Planning y el bounded context Resource al momento en que un administrador diseña y registra una nueva receta, vinculando los insumos necesarios del almacén.
 
   <img src="assets/images/chapter4/message_flows/record_a_recipe.png" alt="Domain Message Flow - Record a recipe" height="500px">
-
-* **Register a retail sale and update inventory:** En este flujo se muestra la colaboración entre los contextos de Ventas (Monitoring / Sales) y Resource. Ilustra cómo la venta directa de un producto desde el frontend emite un evento que descuenta el stock de manera automática en el inventario.
-
-  <img src="assets/images/chapter4/message_flows/register_a_retail_sale.png" alt="Domain Message Flow - Register a retail sale" height="500px">
 
 * **Register a restaurant sale and update inventory:** En este flujo se modela la complejidad de una venta en restaurante, donde el sistema interactúa con las recetas para deducir de Resource las cantidades exactas de insumos utilizados tras confirmar el ticket.
 
