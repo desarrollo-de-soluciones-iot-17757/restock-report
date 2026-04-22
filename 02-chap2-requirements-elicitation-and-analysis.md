@@ -1,4 +1,4 @@
-    # Capítulo II: Requirements Elicitation & Analysis
+# Capítulo II: Requirements Elicitation & Analysis
 
 ## 2.1 Competidores
 
@@ -459,7 +459,6 @@ El User Persona **Carolina Rivas** representa a las administradoras y propietari
 
 La información mostrada del User Persona **Carolina Rivas** se observa que valora herramientas simples, visuales y fáciles de implementar, ya que busca optimizar sus procesos sin afectar la atención al cliente ni depender de sistemas complejos. En ese sentido, este perfil sintetiza claramente la oportunidad de diseñar una solución tecnológica orientada a digitalizar la gestión de inventarios, mejorar la eficiencia operativa y apoyar una toma de decisiones más informada dentro del restaurante.
 
-<br>
 
 Por otro lado, el User Persona **Jorge Torres** representa a los dueños o administradores de negocios del sector retail de consumo masivo, como minimarkets o tiendas de conveniencia. Con varios años de experiencia en la gestión de su negocio, Jorge maneja una alta rotación de productos, lo que hace que el control del inventario sea una tarea crítica en su operación diaria. Actualmente, utiliza métodos manuales apoyados por herramientas como WhatsApp y Excel para registrar el stock, coordinar pedidos y llevar el control de ventas, lo que le genera desorden, errores y falta de visibilidad en tiempo real.
 
@@ -473,9 +472,92 @@ Asimismo, se observa que valora soluciones prácticas, visuales y fáciles de us
 
 ### 2.3.2. User Task Matrix
 
+Se presenta el User Task Matrix, que reúne las tareas que ambos User Persona, administradores de restaurantes y administradores del sector Retail de consumo masivo, realizan para lograr sus objetivos. Estas tareas comprenden funciones específicas, son actividades que los usuarios llevan a cabo en su día a día, independientemente de la existencia de una solución tecnológica.
+
+Los segmentos considerados para este análisis son:
+
+- Dueños o administradores de Restaurantes
+- Dueños o administradores del sector Retail de consumo masivo
+
+##### Task Matrix
+
+| Tarea                                                      | Carolina Rivas |             | Jorge Torres |             |
+| ---------------------------------------------------------- | -------------- | ----------- | ------------ | ----------- |
+|                                                            | Frecuencia     | Importancia | Frecuencia   | Importancia |
+| Supervisar y controlar el inventario disponible            | often          | high        | often        | high        |
+| Monitorear condiciones de almacenamiento                   | often          | medium      | sometimes    | medium      |
+| Gestionar mermas, productos vencidos o dañados             | often          | high        | often        | high        |
+| Registrar ingresos de mercadería y salidas de stock        | sometimes      | medium      | often        | high        |
+| Evaluar precios, rentabilidad y condiciones de venta       | sometimes      | high        | sometimes    | medium      |
+| Planificar el reabastecimiento de insumos/productos        | often          | high        | often        | high        |
+| Gestionar incidencias e imprevistos                        | sometimes      | medium      | sometimes    | medium      |
+| Preparar, despachar o recibir productos del día           | sometimes      | high        | often        | high        |
+| Buscar herramientas para mejorar la gestión/organización | rarely         | medium      | rarely       | medium      |
+
+**Análisis:**
+
+- Ambos segmentos comparten varias tareas operativas esenciales, como la supervisión de inventario, la planificación del reabastecimiento y la gestión de mermas o productos dañados. Estas actividades son frecuentes y de alta importancia en ambos casos, aunque con enfoques distintos: la administradora de restaurante busca garantizar la frescura de sus insumos perecederos, mientras que el administrador de retail se centra en mantener el flujo de stock ante una alta rotación de productos.
+- Otras tareas como la evaluación de precios y rentabilidad o la búsqueda de herramientas de mejora son menos frecuentes, pero igualmente presentes en ambos perfiles. Esto evidencia un interés común por digitalizar sus procesos para reducir errores manuales y optimizar el control financiero de sus respectivos negocios.
+- Por otro lado, tareas como el monitoreo estricto de condiciones de almacenamiento y la gestión de mermas son mucho más críticas para el sector gastronómico debido a la naturaleza de sus productos, mientras que para el sector retail el registro constante de ingresos y salidas tiene un mayor impacto operativo. Esta diferencia permite identificar funcionalidades que deben ser priorizadas según el perfil del usuario dentro de la plataforma Restock.
+
 ### 2.3.3. User Journey Mapping
 
+En esta sección se presentan los User Journey Maps (As-Is) de los segmentos representados, correspondientes a sus respectivas User Personas. Se ilustra el recorrido actual de los usuarios sin la intervención de la solución UI-Topic, con el fin de identificar sus necesidades, puntos de fricción y oportunidades de mejora. Cada mapa refleja las etapas clave de interacción, acciones realizadas, puntos de contacto, experiencias emocionales, dificultades enfrentadas y posibles mejoras.
+
+#### Carolina Rivas
+
+A continuación se presenta el User Journey Map de Carolina Rivas.
+
+![user journey mapping carolina rivas](assets/images/chapter2/empathy-maps/customer-journey-map-restaurant-managers.png)
+
+Uno de los problemas más críticos se encuentra en la toma y transmisión de pedidos. Al no existir un sistema estructurado, es común que ocurran errores en la anotación, interpretación o comunicación de los pedidos hacia la cocina. Esto puede generar confusiones, retrasos e incluso la entrega incorrecta de platos a los clientes.
+
+La experiencia del usuario presenta modificaciones importantes, especialmente en las etapas de registro del pedido y preparación, donde se concentran los mayores niveles de incertidumbre y errores. La falta de claridad en el estado del pedido genera descoordinación entre el personal y aumenta la probabilidad de fallas en el servicio.
+
+En conclusión, el proceso del restaurante requiere la implementación de un sistema que permita estructurar la toma de pedidos, mejorar la comunicación entre áreas y automatizar el control de inventario. Esto contribuiría a reducir errores, optimizar tiempos de atención y mejorar significativamente la experiencia tanto del cliente como del personal.
+
+#### Jorge Torres
+
+A continuación se presenta el User Journey Map de Jorge Torres.
+
+![user journey mapping jorge torres](assets/images/chapter2/empathy-maps/customer-journey-mapping-retail-managers.png)
+
+Uno de los principales problemas identificados es la falta de control en tiempo real del stock. Al no existir un sistema automatizado, los productos no se actualizan correctamente después de cada venta o reposición, lo que puede generar tanto quiebres de stock como sobreabastecimiento. Esta falta de visibilidad impacta directamente en la toma de decisiones del negocio.
+
+En cuanto a la experiencia del usuario, se identifican puntos de frustración relacionados con la desorganización, el registro manual y la dificultad para acceder a información relevante como productos de alta rotación o niveles críticos de stock. La curva emocional muestra una caída en etapas clave del proceso.
+
+Finalmente, el análisis permite concluir que el proceso de retail requiere una digitalización que permita automatizar el control de inventario, mejorar la precisión en el registro de ventas y proporcionar herramientas de análisis. Esto no solo optimizaría la operación, sino que también permitiría una mejor toma de decisiones estratégicas.
+
 ### 2.3.4. Empathy Mapping
+En esta sección, el equipo resume el proceso de elaboración y presenta los Empathy Maps realizados para cada User Persona. El proceso implicó centrar cada User Persona y plasmar las observaciones del equipo, respondiendo a preguntas clave sobre qué piensan, sienten, ven, oyen, dicen y hacen. Finalmente, se identificaron los “Pains” y “Gains” con el objetivo de comprender mejor sus preocupaciones, necesidades y las soluciones que podrían generar mayor valor para ellos.
+
+#### Carolina Rivas
+
+Esta sección presenta el Empathy Map elaborado para Carolina Rivas, nuestra User Persona clave que representa a la propietaria y administradora de un restaurante en Lima. Este mapa permite visualizar de manera integral sus pensamientos, emociones, necesidades y desafíos dentro del contexto de la gestión diaria de su negocio.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://i.imgur.com/eXhDJxU.png" alt="carolina-rivas-em">
+</div>
+
+A partir de este análisis, se evidencia que Carolina enfrenta dificultades principalmente relacionadas con la falta de control del inventario, el uso de procesos manuales y la ausencia de herramientas tecnológicas simples que se adapten a su operación. Estas limitaciones generan errores, pérdidas de insumos y dificultan la toma de decisiones informadas.
+
+Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como la falta de visibilidad en tiempo real del stock y la dependencia de registros manuales, así como sus oportunidades de valor (Gains), entre las que destacan la automatización de procesos, la reducción de errores y una mejor eficiencia operativa. Esto permite orientar la solución hacia una herramienta intuitiva, accesible y enfocada en mejorar el control del negocio sin aumentar su complejidad.
+
+
+#### Jorge Torres
+
+Por otro lado, esta sección presenta el Empathy Map elaborado para Jorge Torres, nuestro User Persona clave que representa a un administrador de un negocio retail de consumo masivo en Lima, Perú. Este mapa permite comprender de manera integral sus pensamientos, emociones, necesidades y desafíos en la gestión y optimización de su operación comercial.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://i.imgur.com/WHCj5lx.png" alt="jorge-torres-em">
+</div>
+
+El análisis muestra que Jorge enfrenta problemas relacionados con inventarios desactualizados, uso excesivo de herramientas manuales como Excel y falta de visibilidad en tiempo real, lo que impacta directamente en la rentabilidad de su negocio. Además, presenta la necesidad de optimizar la reposición de productos y mejorar la organización del almacén.
+
+A través de este ejercicio empático, se identificaron sus principales frustraciones (Pains), como las pérdidas por productos vencidos, errores en el registro de stock y la falta de alertas automáticas. Asimismo, se definieron sus oportunidades de valor (Gains), que incluyen una mejor planificación, control eficiente del inventario y toma de decisiones más rápida y precisa.
+
+Este entendimiento permite diseñar una solución enfocada en brindar mayor control, automatización y simplicidad, alineada con su necesidad de optimizar procesos sin incrementar la complejidad operativa.
+
 
 ## 2.4. Big Picture EventStorming
 
