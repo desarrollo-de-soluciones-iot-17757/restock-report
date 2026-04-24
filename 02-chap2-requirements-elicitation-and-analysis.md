@@ -543,6 +543,22 @@ A partir de este análisis, se evidencia que Carolina enfrenta dificultades prin
 
 Mediante este enfoque empático, se identificaron sus principales frustraciones (Pains), como la falta de visibilidad en tiempo real del stock y la dependencia de registros manuales, así como sus oportunidades de valor (Gains), entre las que destacan la automatización de procesos, la reducción de errores y una mejor eficiencia operativa. Esto permite orientar la solución hacia una herramienta intuitiva, accesible y enfocada en mejorar el control del negocio sin aumentar su complejidad.
 
+#### Jorge Torres
+
+Por otro lado, esta sección presenta el Empathy Map elaborado para Jorge Torres, nuestro User Persona clave que representa a un administrador de un negocio retail de consumo masivo en Lima, Perú. Este mapa permite comprender de manera integral sus pensamientos, emociones, necesidades y desafíos en la gestión y optimización de su operación comercial.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://i.imgur.com/WHCj5lx.png" alt="jorge-torres-em">
+</div>
+
+El análisis muestra que Jorge enfrenta problemas relacionados con inventarios desactualizados, uso excesivo de herramientas manuales como Excel y falta de visibilidad en tiempo real, lo que impacta directamente en la rentabilidad de su negocio. Además, presenta la necesidad de optimizar la reposición de productos y mejorar la organización del almacén.
+
+A través de este ejercicio empático, se identificaron sus principales frustraciones (Pains), como las pérdidas por productos vencidos, errores en el registro de stock y la falta de alertas automáticas. Asimismo, se definieron sus oportunidades de valor (Gains), que incluyen una mejor planificación, control eficiente del inventario y toma de decisiones más rápida y precisa.
+
+Este entendimiento permite diseñar una solución enfocada en brindar mayor control, automatización y simplicidad, alineada con su necesidad de optimizar procesos sin incrementar la complejidad operativa.
+
+## 2.4. Big Picture EventStorming
+
 El Big Picture Event Storming nos ayuda a explorar los eventos relacionados al negocio de los restaurantes y de las tiendas retail. Se empezó colocando eventos de dominio relacionados sin importar el orden. Luego, se formaron líneas de tiempo que ayuden a denotar una secuencia de eventos de dominio que posea coherencia con el negocio y sus relaciones con otros eventos. Finalmente, se identificaron los actores que interactúan en el negocio y los puntos de dolor. A continuación, se adjuntan las capturas de pantalla de cada paso realizado para diagramar el Big Picture Event Storming del proyecto:
 
 **Paso 1: Free Exploration**
@@ -567,22 +583,6 @@ Para este primer paso, el equipo se reunió e inició una lluvia de ideas con el
 
 Luego de identificar a los eventos significativos del negocio, se formaron líneas de tiempo con cada uno de ellos para formar una secuencia coherente y capaz de explicarse por sí misma al momento de la lectura. Además, como resultado de la formación de líneas de tiempo, se identificaron flujos referentes a recepción de clientes, preparación de comandas, revisión de inventarios, reposición de productos, cierre de caja, definición de recetas y creación de ofertas. Al tener las líneas de tiempo formadas, se identificaron a los actores que interactúan en el negocio y que son responsables de los eventos de dominio. Para ello, se identificó a gerentes, almaceneros, proveedores, cocineros, cajeros, meseros, sistema POS y clientes. Luego, a cada evento de dominio, se le asignó el actor que ejecuta un flujo de acciones. Finalmente, se analizaron las líneas de tiempo formadas en búsqueda de puntos de dolor que afecten a los actores del negocio. De esta forma, se puede encontrar zonas a aprovechar para oportunidades de solución. Para ello, el equipo centró sus ideas en pensar cómo cada actor identificado para los eventos y analizar qué es aquello que los fastidia o causa frustración. Como resultado de este proceso, se identificaron varios puntos de dolor que servirán como base para el diseño del software solución.
 
-#### Jorge Torres
-
-Por otro lado, esta sección presenta el Empathy Map elaborado para Jorge Torres, nuestro User Persona clave que representa a un administrador de un negocio retail de consumo masivo en Lima, Perú. Este mapa permite comprender de manera integral sus pensamientos, emociones, necesidades y desafíos en la gestión y optimización de su operación comercial.
-
-<div style="display: flex; align-items: center;">
-  <img src="https://i.imgur.com/WHCj5lx.png" alt="jorge-torres-em">
-</div>
-
-El análisis muestra que Jorge enfrenta problemas relacionados con inventarios desactualizados, uso excesivo de herramientas manuales como Excel y falta de visibilidad en tiempo real, lo que impacta directamente en la rentabilidad de su negocio. Además, presenta la necesidad de optimizar la reposición de productos y mejorar la organización del almacén.
-
-A través de este ejercicio empático, se identificaron sus principales frustraciones (Pains), como las pérdidas por productos vencidos, errores en el registro de stock y la falta de alertas automáticas. Asimismo, se definieron sus oportunidades de valor (Gains), que incluyen una mejor planificación, control eficiente del inventario y toma de decisiones más rápida y precisa.
-
-Este entendimiento permite diseñar una solución enfocada en brindar mayor control, automatización y simplicidad, alineada con su necesidad de optimizar procesos sin incrementar la complejidad operativa.
-
-
-## 2.4. Big Picture EventStorming
 
 ## 2.5. Ubiquitous Language
 
