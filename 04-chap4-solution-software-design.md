@@ -99,6 +99,8 @@ El diseño final del Context Map permite centralizar la lógica de negocio en As
 
 ### 4.1.3. Software Architecture
 
+En esta sección se presentan los diagramas de arquitectura de software basados en el modelo C4, los cuales permiten describir la estructura del sistema Restock a diferentes niveles de detalle.
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
 
 En esta sección se presenta una visión general de los principales usuarios, sistemas externos y componentes internos que interactúan con la plataforma.
