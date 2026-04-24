@@ -1,9 +1,15 @@
 # Capítulo IV: Solution Software Design
+
 ## 4.1. Strategic-Level Domain-Driven Design
+
 ### 4.1.1. Design-Level EventStorming
+
 #### 4.1.1.1 Candidate Context Discovery
+
 #### 4.1.1.2 Domain Message Flows Modeling
+
 #### 4.1.1.3 Bounded Context Canvases
+
 ### 4.1.2. Context Mapping
 
 En esta sección se explica el proceso de elaboración del Context Map. Asimismo, se permite visualizar las relaciones estructurales entre los Bounded Contexts, junto con los patrones de relación definidos en Domain-Driven Design (DDD), tales como Anti-Corruption Layer (ACL), Conformist, Customer/Supplier y Shared Kernel.
@@ -92,13 +98,42 @@ En esta etapa final se sintetiza la lógica general del Context Map y se destaca
 El diseño final del Context Map permite centralizar la lógica de negocio en Asset and Resource Management (ARM) como núcleo del dominio. Asimismo, permite aislar la complejidad técnica de IoT mediante un Anti-Corruption Layer (ACL), mantener consistencia del dominio compartido a través de Shared Kernel, reducir el acoplamiento mediante relaciones Customer/Supplier y simplificar contextos de salida mediante Conformist. En conjunto, este enfoque garantiza un sistema escalable, desacoplado y alineado con las necesidades del negocio, permitiendo integrar sensores IoT, automatizar el control de inventario y mejorar la toma de decisiones operativas en PyMEs del sector gastronómico y retail.
 
 ### 4.1.3. Software Architecture
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
+
+En esta sección se presenta una visión general de los principales usuarios, sistemas externos y componentes internos que interactúan con la plataforma.
+
+Para Restock, el diagrama de panorama del sistema incluye los siguientes elementos principales:
+
+<img src="assets/images/chapter4/landscape-diagram.png" width="600px">
+
+**Restaurant Administrator:** Usuario encargado de gestionar el inventario, recetas, ventas y operaciones dentro de un restaurante, interactuando directamente con la plataforma Restock para administrar sus procesos.
+
+**Retail Administrator:** Usuario responsable de gestionar el inventario y las operaciones comerciales en entornos retail, utilizando Restock como herramienta central para el control del stock y la toma de decisiones.
+
+**Back Office Staff:** Personal administrativo y operativo de la organización UI-Topic que se encarga de administrar, supervisar y dar soporte al sistema, asegurando su correcto funcionamiento.
+
+**Support:** Equipo de soporte que asiste a los clientes, gestiona incidencias y monitorea el estado del sistema para garantizar una adecuada experiencia de usuario.
+
+**Maintenance Technician:** Personal técnico responsable de la instalación, mantenimiento y monitoreo de los dispositivos físicos, asegurando la correcta operación del hardware asociado.
+
+**Restock:** Sistema principal de la solución, encargado de la gestión del inventario y de coordinar la comunicación entre los distintos componentes, incluyendo aplicaciones, hardware IoT y servicios externos.
+
+**Restock Hardware:** Subsistema de hardware orientado al monitoreo de stock mediante dispositivos IoT, que recopila datos físicos y los envía a la plataforma para su procesamiento.
+
+**OneSignal API:** Servicio externo utilizado para el envío de notificaciones y alertas a los usuarios del sistema.
+
+**Stripe:** Plataforma externa encargada de procesar pagos y suscripciones dentro de la solución.
+
+**Cloudinary API:** Servicio externo utilizado para el almacenamiento y gestión de archivos multimedia, como imágenes asociadas a productos.
+
+En conjunto, este diagrama muestra cómo Restock actúa como el núcleo del sistema, integrando a los distintos usuarios, componentes internos y servicios externos para ofrecer una solución completa de gestión de inventarios.
+
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
 El diagrama de contexto en la arquitectura de software proporciona una visión general de alto nivel del sistema dentro de su entorno, mostrando cómo interactúa con los actores externos, sistemas externos y con dispositivos IoT que capturan y envían datos del mundo físico. Este diagrama permite comprender los límites del sistema y las principales interacciones externas.
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
-
 
 <img src="https://i.imgur.com/PsJeXBT.png">
 
@@ -109,7 +144,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 **Retail Administrators:** Usuarios que gestionan el inventario, control de stock y operaciones comerciales en entornos de retail utilizando la plataforma Restock.
 
 **Restock:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
- 
+
 **Stripe:** Sistema externo que gestiona los pagos y suscripciones de los usuarios dentro de la plataforma Restock.
 
 **Cloudinary API:** Servicio externo encargado del almacenamiento, gestión y entrega de imágenes y contenido multimedia utilizado en la plataforma.
@@ -124,99 +159,136 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
-
 <img src="https://i.imgur.com/wg30qij.png">
 
 **Landing Page:** Aplicación web estática desarrollada con HTML, CSS y JavaScript que presenta información pública sobre Restock, como funcionalidades, planes y términos, y guía a los usuarios hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con la Web Application a través de redirecciones.
 
-
 **Web Application:** Componente que actúa como punto de entrada a la plataforma web de Restock, encargado de entregar la aplicación frontend al navegador del usuario, interactuando con la Restock Platform Web Application.
-
 
 **Restock Platform Web Application:** Aplicación frontend desarrollada con TypeScript y Angular que se ejecuta en el navegador del usuario y permite gestionar el inventario, visualizar insumos y platos, y monitorear el stock en tiempo real, interactuando con la Restock Server Side Application mediante solicitudes API.
 
-
 **Restock Mobile Application:** Aplicación móvil multiplataforma desarrollada con Dart y Flutter que permite a los usuarios gestionar inventario, consultar productos y monitorear el stock en tiempo real desde dispositivos móviles, interactuando con la Restock Server Side Application mediante API y con la Mobile SQLite Database para almacenamiento local.
-
 
 **Mobile SQLite Database:** Base de datos local basada en SQLite que almacena información de la aplicación en el dispositivo móvil para permitir acceso offline y mejorar el rendimiento, interactuando únicamente con la Restock Mobile Application.
 
-
 **Restock Local Station Edge Application:** Aplicación intermedia desarrollada en Python con Flask que recibe datos de peso desde la aplicación embebida, los procesa y los envía al backend, además de recibir comandos de configuración como encendido, apagado y asignación de producto desde el backend y transmitirlos al embedded, interactuando con la Restock Server Side Application, la Restock Embedded Application y la Edge Local Database.
-
 
 **Edge Local Database:** Base de datos local basada en SQLite que almacena configuración del dispositivo, datos recientes de sensores y eventos pendientes de sincronización para garantizar el funcionamiento offline y la integridad de los datos, interactuando con la Restock Local Station Edge Application.
 
-
 **Restock Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición (balanza), captura datos de peso desde el sensor y ejecuta comandos recibidos como encendido, apagado o cambio de producto a monitorear, interactuando con la Restock Local Station Edge Application y el dispositivo Restock Smart Scale.
-
 
 **Restock Server Side Application:** Aplicación backend desarrollada en Java con Spring Boot que gestiona la lógica de negocio, procesa datos de inventario, recibe información desde el edge, envía comandos de configuración a los dispositivos y coordina la comunicación entre los distintos componentes del sistema, interactuando con la Restock Database, la Restock Platform Web Application, la Restock Mobile Application, la Restock Local Station Edge Application y servicios externos como Stripe, Cloudinary y OneSignal.
 
-
 **Restock Database:** Base de datos principal del sistema que almacena información de inventario, usuarios, productos y suscripciones, interactuando con la Restock Server Side Application.
-
 
 #### 4.1.3.3. Software Architecture Deployment Diagrams
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Identity and Access Management
+
 #### 4.2.1.1. Domain Layer
+
 #### 4.2.1.2. Interface Layer
+
 #### 4.2.1.3. Application Layer
+
 #### 4.2.1.4. Infrastructure Layer
+
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.2. Bounded Context: Subscriptions and Payments
+
 #### 4.2.2.1. Domain Layer
+
 #### 4.2.2.2. Interface Layer
+
 #### 4.2.2.3. Application Layer
+
 #### 4.2.2.4. Infrastructure Layer
+
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.2.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.3. Bounded Context: Profiles and Preferences
+
 #### 4.2.3.1. Domain Layer
+
 #### 4.2.3.2. Interface Layer
+
 #### 4.2.3.3. Application Layer
+
 #### 4.2.3.4. Infrastructure Layer
+
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.4. Bounded Context: Asset and Resource Management
+
 #### 4.2.4.1. Domain Layer
+
 #### 4.2.4.2. Interface Layer
+
 #### 4.2.4.3. Application Layer
+
 #### 4.2.4.4. Infrastructure Layer
+
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.4.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.5. Bounded Context: Service Design and Planning
+
 #### 4.2.5.1. Domain Layer
+
 #### 4.2.5.2. Interface Layer
+
 #### 4.2.5.3. Application Layer
+
 #### 4.2.5.4. Infrastructure Layer
+
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.5.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.5.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.6. Bounded Context: Service Operation and Monitoring
+
 #### 4.2.6.1. Domain Layer
+
 #### 4.2.6.2. Interface Layer
+
 #### 4.2.6.3. Application Layer
+
 #### 4.2.6.4. Infrastructure Layer
+
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
