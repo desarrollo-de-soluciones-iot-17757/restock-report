@@ -151,7 +151,37 @@ El diseño final del Context Map permite centralizar la lógica de negocio en As
 
 ### 4.1.3. Software Architecture
 
+En esta sección se presentan los diagramas de arquitectura de software basados en el modelo C4, los cuales permiten describir la estructura del sistema Restock a diferentes niveles de detalle.
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
+
+En esta sección se presenta una visión general de los principales usuarios, sistemas externos y componentes internos que interactúan con la plataforma.
+
+Para Restock, el diagrama de panorama del sistema incluye los siguientes elementos principales:
+
+<img src="assets/images/chapter4/landscape-diagram.png" width="600px">
+
+**Restaurant Administrator:** Usuario encargado de gestionar el inventario, recetas, ventas y operaciones dentro de un restaurante, interactuando directamente con la plataforma Restock para administrar sus procesos.
+
+**Retail Administrator:** Usuario responsable de gestionar el inventario y las operaciones comerciales en entornos retail, utilizando Restock como herramienta central para el control del stock y la toma de decisiones.
+
+**Back Office Staff:** Personal administrativo y operativo de la organización UI-Topic que se encarga de administrar, supervisar y dar soporte al sistema, asegurando su correcto funcionamiento.
+
+**Support:** Equipo de soporte que asiste a los clientes, gestiona incidencias y monitorea el estado del sistema para garantizar una adecuada experiencia de usuario.
+
+**Maintenance Technician:** Personal técnico responsable de la instalación, mantenimiento y monitoreo de los dispositivos físicos, asegurando la correcta operación del hardware asociado.
+
+**Restock:** Sistema principal de la solución, encargado de la gestión del inventario y de coordinar la comunicación entre los distintos componentes, incluyendo aplicaciones, hardware IoT y servicios externos.
+
+**Restock Hardware:** Subsistema de hardware orientado al monitoreo de stock mediante dispositivos IoT, que recopila datos físicos y los envía a la plataforma para su procesamiento.
+
+**OneSignal API:** Servicio externo utilizado para el envío de notificaciones y alertas a los usuarios del sistema.
+
+**Stripe:** Plataforma externa encargada de procesar pagos y suscripciones dentro de la solución.
+
+**Cloudinary API:** Servicio externo utilizado para el almacenamiento y gestión de archivos multimedia, como imágenes asociadas a productos.
+
+En conjunto, este diagrama muestra cómo Restock actúa como el núcleo del sistema, integrando a los distintos usuarios, componentes internos y servicios externos para ofrecer una solución completa de gestión de inventarios.
 
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
