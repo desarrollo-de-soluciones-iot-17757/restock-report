@@ -1,9 +1,67 @@
 # Capítulo IV: Solution Software Design
+
 ## 4.1. Strategic-Level Domain-Driven Design
+
 ### 4.1.1. Design-Level EventStorming
+
 #### 4.1.1.1 Candidate Context Discovery
+
+A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
+
+Primero, se buscaron eventos clave que indiquen cambios de estado entre diferentes partes del proceso del negocio:
+
+<img src="assets/images/chapter4/candidate_context/candidate_step1.png" alt=“DDD” width="500px">
+
+Luego, se agruparon los eventos de acuerdo a los principales cambios de contexto.
+
+<img src="assets/images/chapter4/candidate_context/candidate_step2.png" alt=“DDD” width="500px">
+
+Se trazaron fronteras alrededor de los grupos identificados, estableciendo los límites iniciales de los bounded contexts.
+
+<img src="assets/images/chapter4/candidate_context/candidate_step3.png" alt=“DDD” width="500px">
+
+Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
+
+<img src="assets/images/chapter4/event_storming.png" alt=“DDD” width="800px">
+
+A continuación, se explicará en qué consiste cada bounded context:
+
+**Identity and Access Management:** También llamado "IAM", este bounded context contiene el proceso de ingreso del usuario a la plataforma, ya sea iniciando sesión o registrandose.
+
+<img src="assets/images/chapter4/candidate_context/bounded_iam.jpg" alt=“DDD” width="500px">
+
+**Subscriptions and Payments:** También llamado "Subscriptions", este bounded context contiene el proceso de selección de planes, configuración de suscripciones, procesamiento de pagos e inicialización de cuentas de negocio, incluyendo la integración con plataformas externas como Stripe.
+
+<img src="assets/images/chapter4/candidate_context/bounded_subscriptions.jpg" alt=“DDD” width="500px">
+
+**Profiles and Preferences:** También llamado "Profile", este bounded context contiene el proceso de gestión de la información personal del usuario, incluyendo la actualización de datos, cambio de contraseña y configuración de preferencias, así como la gestión de información del negocio.
+
+<img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
+
+**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+
+<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+
+**Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
+
+<img src="assets/images/chapter4/candidate_context/bounded_resource.jpg" alt=“DDD” width="500px">
+
+**Service Design and Planning:** También llamado "Planning", este bounded context contiene el proceso de diseño y gestión de recetas y kits, incluyendo la selección de insumos, categorización, actualización de información y almacenamiento de imágenes, permitiendo definir cómo se estructuran los productos dentro del sistema.
+
+<img src="assets/images/chapter4/candidate_context/bounded_planning.jpg" alt=“DDD” width="500px">
+
+**Sales Order Management:** También llamado "Sales", este bounded context contiene el proceso de registro y gestión de ventas, incluyendo la selección de productos, cálculo del total, confirmación de la venta y actualización automática del stock disponible.
+
+<img src="assets/images/chapter4/candidate_context/bounded_sales.jpg" alt="DDD" width="500px">
+
+**Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
+
+<img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
+
 #### 4.1.1.2 Domain Message Flows Modeling
+
 #### 4.1.1.3 Bounded Context Canvases
+
 ### 4.1.2. Context Mapping
 
 En esta sección se explica el proceso de elaboración del Context Map. Asimismo, se permite visualizar las relaciones estructurales entre los Bounded Contexts, junto con los patrones de relación definidos en Domain-Driven Design (DDD), tales como Anti-Corruption Layer (ACL), Conformist, Customer/Supplier y Shared Kernel.
@@ -92,13 +150,14 @@ En esta etapa final se sintetiza la lógica general del Context Map y se destaca
 El diseño final del Context Map permite centralizar la lógica de negocio en Asset and Resource Management (ARM) como núcleo del dominio. Asimismo, permite aislar la complejidad técnica de IoT mediante un Anti-Corruption Layer (ACL), mantener consistencia del dominio compartido a través de Shared Kernel, reducir el acoplamiento mediante relaciones Customer/Supplier y simplificar contextos de salida mediante Conformist. En conjunto, este enfoque garantiza un sistema escalable, desacoplado y alineado con las necesidades del negocio, permitiendo integrar sensores IoT, automatizar el control de inventario y mejorar la toma de decisiones operativas en PyMEs del sector gastronómico y retail.
 
 ### 4.1.3. Software Architecture
+
 #### 4.1.3.1. Software Architecture System Landscape Diagram
+
 #### 4.1.3.2. Software Architecture Context Level Diagrams
 
 El diagrama de contexto en la arquitectura de software proporciona una visión general de alto nivel del sistema dentro de su entorno, mostrando cómo interactúa con los actores externos, sistemas externos y con dispositivos IoT que capturan y envían datos del mundo físico. Este diagrama permite comprender los límites del sistema y las principales interacciones externas.
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
-
 
 <img src="https://i.imgur.com/PsJeXBT.png">
 
@@ -109,7 +168,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 **Retail Administrators:** Usuarios que gestionan el inventario, control de stock y operaciones comerciales en entornos de retail utilizando la plataforma Restock.
 
 **Restock:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
- 
+
 **Stripe:** Sistema externo que gestiona los pagos y suscripciones de los usuarios dentro de la plataforma Restock.
 
 **Cloudinary API:** Servicio externo encargado del almacenamiento, gestión y entrega de imágenes y contenido multimedia utilizado en la plataforma.
@@ -124,99 +183,136 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
-
 <img src="https://i.imgur.com/wg30qij.png">
 
 **Landing Page:** Aplicación web estática desarrollada con HTML, CSS y JavaScript que presenta información pública sobre Restock, como funcionalidades, planes y términos, y guía a los usuarios hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con la Web Application a través de redirecciones.
 
-
 **Web Application:** Componente que actúa como punto de entrada a la plataforma web de Restock, encargado de entregar la aplicación frontend al navegador del usuario, interactuando con la Restock Platform Web Application.
-
 
 **Restock Platform Web Application:** Aplicación frontend desarrollada con TypeScript y Angular que se ejecuta en el navegador del usuario y permite gestionar el inventario, visualizar insumos y platos, y monitorear el stock en tiempo real, interactuando con la Restock Server Side Application mediante solicitudes API.
 
-
 **Restock Mobile Application:** Aplicación móvil multiplataforma desarrollada con Dart y Flutter que permite a los usuarios gestionar inventario, consultar productos y monitorear el stock en tiempo real desde dispositivos móviles, interactuando con la Restock Server Side Application mediante API y con la Mobile SQLite Database para almacenamiento local.
-
 
 **Mobile SQLite Database:** Base de datos local basada en SQLite que almacena información de la aplicación en el dispositivo móvil para permitir acceso offline y mejorar el rendimiento, interactuando únicamente con la Restock Mobile Application.
 
-
 **Restock Local Station Edge Application:** Aplicación intermedia desarrollada en Python con Flask que recibe datos de peso desde la aplicación embebida, los procesa y los envía al backend, además de recibir comandos de configuración como encendido, apagado y asignación de producto desde el backend y transmitirlos al embedded, interactuando con la Restock Server Side Application, la Restock Embedded Application y la Edge Local Database.
-
 
 **Edge Local Database:** Base de datos local basada en SQLite que almacena configuración del dispositivo, datos recientes de sensores y eventos pendientes de sincronización para garantizar el funcionamiento offline y la integridad de los datos, interactuando con la Restock Local Station Edge Application.
 
-
 **Restock Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición (balanza), captura datos de peso desde el sensor y ejecuta comandos recibidos como encendido, apagado o cambio de producto a monitorear, interactuando con la Restock Local Station Edge Application y el dispositivo Restock Smart Scale.
-
 
 **Restock Server Side Application:** Aplicación backend desarrollada en Java con Spring Boot que gestiona la lógica de negocio, procesa datos de inventario, recibe información desde el edge, envía comandos de configuración a los dispositivos y coordina la comunicación entre los distintos componentes del sistema, interactuando con la Restock Database, la Restock Platform Web Application, la Restock Mobile Application, la Restock Local Station Edge Application y servicios externos como Stripe, Cloudinary y OneSignal.
 
-
 **Restock Database:** Base de datos principal del sistema que almacena información de inventario, usuarios, productos y suscripciones, interactuando con la Restock Server Side Application.
-
 
 #### 4.1.3.3. Software Architecture Deployment Diagrams
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Identity and Access Management
+
 #### 4.2.1.1. Domain Layer
+
 #### 4.2.1.2. Interface Layer
+
 #### 4.2.1.3. Application Layer
+
 #### 4.2.1.4. Infrastructure Layer
+
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.2. Bounded Context: Subscriptions and Payments
+
 #### 4.2.2.1. Domain Layer
+
 #### 4.2.2.2. Interface Layer
+
 #### 4.2.2.3. Application Layer
+
 #### 4.2.2.4. Infrastructure Layer
+
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.2.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.3. Bounded Context: Profiles and Preferences
+
 #### 4.2.3.1. Domain Layer
+
 #### 4.2.3.2. Interface Layer
+
 #### 4.2.3.3. Application Layer
+
 #### 4.2.3.4. Infrastructure Layer
+
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.4. Bounded Context: Asset and Resource Management
+
 #### 4.2.4.1. Domain Layer
+
 #### 4.2.4.2. Interface Layer
+
 #### 4.2.4.3. Application Layer
+
 #### 4.2.4.4. Infrastructure Layer
+
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.4.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.5. Bounded Context: Service Design and Planning
+
 #### 4.2.5.1. Domain Layer
+
 #### 4.2.5.2. Interface Layer
+
 #### 4.2.5.3. Application Layer
+
 #### 4.2.5.4. Infrastructure Layer
+
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.5.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.5.6.2. Bounded Context Database Design Diagram
 
 ### 4.2.6. Bounded Context: Service Operation and Monitoring
+
 #### 4.2.6.1. Domain Layer
+
 #### 4.2.6.2. Interface Layer
+
 #### 4.2.6.3. Application Layer
+
 #### 4.2.6.4. Infrastructure Layer
+
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
+
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
+
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
+
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
