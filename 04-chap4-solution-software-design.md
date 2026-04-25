@@ -6,6 +6,58 @@
 
 #### 4.1.1.1 Candidate Context Discovery
 
+A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
+
+Primero, se buscaron eventos clave que indiquen cambios de estado entre diferentes partes del proceso del negocio:
+
+<img src="assets/images/chapter4/candidate_context/candidate_step1.png" alt=“DDD” width="500px">
+
+Luego, se agruparon los eventos de acuerdo a los principales cambios de contexto.
+
+<img src="assets/images/chapter4/candidate_context/candidate_step2.png" alt=“DDD” width="500px">
+
+Se trazaron fronteras alrededor de los grupos identificados, estableciendo los límites iniciales de los bounded contexts.
+
+<img src="assets/images/chapter4/candidate_context/candidate_step3.png" alt=“DDD” width="500px">
+
+Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
+
+<img src="assets/images/chapter4/event_storming.png" alt=“DDD” width="800px">
+
+A continuación, se explicará en qué consiste cada bounded context:
+
+**Identity and Access Management:** También llamado "IAM", este bounded context contiene el proceso de ingreso del usuario a la plataforma, ya sea iniciando sesión o registrandose.
+
+<img src="assets/images/chapter4/candidate_context/bounded_iam.jpg" alt=“DDD” width="500px">
+
+**Subscriptions and Payments:** También llamado "Subscriptions", este bounded context contiene el proceso de selección de planes, configuración de suscripciones, procesamiento de pagos e inicialización de cuentas de negocio, incluyendo la integración con plataformas externas como Stripe.
+
+<img src="assets/images/chapter4/candidate_context/bounded_subscriptions.jpg" alt=“DDD” width="500px">
+
+**Profiles and Preferences:** También llamado "Profile", este bounded context contiene el proceso de gestión de la información personal del usuario, incluyendo la actualización de datos, cambio de contraseña y configuración de preferencias, así como la gestión de información del negocio.
+
+<img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
+
+**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+
+<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+
+**Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
+
+<img src="assets/images/chapter4/candidate_context/bounded_resource.jpg" alt=“DDD” width="500px">
+
+**Service Design and Planning:** También llamado "Planning", este bounded context contiene el proceso de diseño y gestión de recetas y kits, incluyendo la selección de insumos, categorización, actualización de información y almacenamiento de imágenes, permitiendo definir cómo se estructuran los productos dentro del sistema.
+
+<img src="assets/images/chapter4/candidate_context/bounded_planning.jpg" alt=“DDD” width="500px">
+
+**Sales Order Management:** También llamado "Sales", este bounded context contiene el proceso de registro y gestión de ventas, incluyendo la selección de productos, cálculo del total, confirmación de la venta y actualización automática del stock disponible.
+
+<img src="assets/images/chapter4/candidate_context/bounded_sales.jpg" alt="DDD" width="500px">
+
+**Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
+
+<img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
+
 #### 4.1.1.2 Domain Message Flows Modeling
 
 #### 4.1.1.3 Bounded Context Canvases
