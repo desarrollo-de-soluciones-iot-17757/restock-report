@@ -193,13 +193,135 @@ Para Restock, el diagrama de contenedores incluye los siguientes contenedores pr
 
 ### 4.2.4. Bounded Context: Asset and Resource Management
 #### 4.2.4.1. Domain Layer
+
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Asset and Resource Management. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión del catálogo de insumos, el control transaccional del inventario físico, el ciclo de vida de las sucursales y la administración del hardware IoT. 
+
+Esta capa está completamente aislada de detalles técnicos, bases de datos o frameworks de presentación. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Branch</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una sucursal física. Encapsula la lógica para activar, desactivar y actualizar la información operativa del local.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CustomSupply</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el catálogo maestro de un insumo o producto. Contiene lógica para determinar alertas de stock bajo y estructurar precios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Batch</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un lote físico de inventario. Contiene las invariantes más críticas: deducción matemática de stock, cálculo de costos remanentes y validación de fechas de caducidad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Device</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un sensor o hardware IoT. Valida las reglas para su vinculación a una sucursal y el registro de telemetría o anomalías.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos (Primitive Obsession), asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockQuantity</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula la cantidad y unidad de medida. Previene cantidades negativas mediante lógica matemática interna en sus métodos add() y subtract().</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Location</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Agrupa la dirección física, ciudad y coordenadas geográficas de una sucursal en un solo concepto inmutable.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>HardwareSpecs</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Define las especificaciones técnicas de un dispositivo IoT (dirección MAC, fabricante, firmware).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>BranchId, SupplyId, etc.</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para garantizar que no se confundan IDs de diferentes entidades durante las operaciones.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Repository Interfaces
+
+Las abstracciones de persistencia se definen aquí mediante el Principio de Inversión de Dependencias (Dependency Inversion). El dominio dicta "qué" necesita guardar o consultar, sin importar "cómo" se hace en la base de datos.
+
+<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IBranchRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para la persistencia y búsqueda de sucursales activas en el sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IBatchRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para almacenar movimientos de lotes y consultar stock disponible o caducado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>ICustomSupplyRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para gestionar el ciclo de vida de los insumos y productos del catálogo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IDeviceRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para registrar y buscar hardware IoT asociado a las diferentes sucursales.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.4.2. Interface Layer
 
 En la capa de interfaz del Bounded Context de Asset and Resource Management se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades core de la gestión física y lógica del negocio. A través de controladores especializados y ensambladores (Assemblers), esta capa actúa como punto de entrada para solicitudes de clientes (como la Web App de administración o aplicaciones móviles), facilitando la transformación de recursos (Data Transfer Objects) en Comandos o Queries hacia la capa de aplicación. Su diseño garantiza una clara separación de responsabilidades para la orquestación de recursos clave como sucursales, insumos, inventario y dispositivos IoT.
 
 ##### BranchController
 
-<p><strong>Tabla X1</strong></p>
 <p><em>Tabla de BranchController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -231,7 +353,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 <br>
 
-<p><strong>Tabla X2</strong></p>
 <p><em>Tabla de métodos de BranchController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -279,7 +400,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 ##### CustomSupplyController
 
-<p><strong>Tabla X3</strong></p>
 <p><em>Tabla de CustomSupplyController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -311,7 +431,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 <br>
 
-<p><strong>Tabla X4</strong></p>
 <p><em>Tabla de métodos de CustomSupplyController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -353,7 +472,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 ##### InventoryController
 
-<p><strong>Tabla X5</strong></p>
 <p><em>Tabla de InventoryController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -385,7 +503,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 <br>
 
-<p><strong>Tabla X6</strong></p>
 <p><em>Tabla de métodos de InventoryController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -427,7 +544,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 ##### DeviceController
 
-<p><strong>Tabla X7</strong></p>
 <p><em>Tabla de DeviceController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -459,7 +575,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
 
 <br>
 
-<p><strong>Tabla X8</strong></p>
 <p><em>Tabla de métodos de DeviceController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -671,7 +786,6 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 ##### InventoryRepository
 
-<p><strong>Tabla X14</strong></p>
 <p><em>Tabla de InventoryRepository en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -705,7 +819,6 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 ##### BranchRepository
 
-<p><strong>Tabla X15</strong></p>
 <p><em>Tabla de BranchRepository en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -739,7 +852,6 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 ##### AssetDbContext
 
-<p><strong>Tabla X16</strong></p>
 <p><em>Tabla de AssetDbContext en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -769,7 +881,6 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 ##### CloudinaryImageService
 
-<p><strong>Tabla X17</strong></p>
 <p><em>Tabla de CloudinaryImageService en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
