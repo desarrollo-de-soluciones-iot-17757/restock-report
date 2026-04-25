@@ -19,7 +19,9 @@ Con el fin de mantener la consistencia y facilitar la interpretación del modelo
 El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/VPc1a1O.png" alt="event">
+  <img src="https://imgur.com/fTgbd9E.png" alt="event">
+  <img src="https://imgur.com/j9OFNTa.png" alt="event">
+  <img src="https://imgur.com/cRDqY8F.png" alt="event">
 </div>
 
 El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
@@ -29,7 +31,11 @@ El equipo identificó los eventos de dominio agrupados por columnas, representan
 El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada contexto del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/ORfFyCB.png" alt="time-line">
+  <img src="https://imgur.com/ReCbnXt.png" alt="time-line">
+  <img src="https://imgur.com/9bEkWCa.png" alt="time-line">
+  <img src="https://imgur.com/EOkJmQN.png" alt="time-line">
+  <img src="https://imgur.com/Nhh4SCB.png" alt="time-line">
+  <img src="https://imgur.com/YGJ0xsC.png" alt="time-line">
 </div>
 
 El equipo organizó los eventos en secuencias horizontales ordenadas bajo once contextos claramente etiquetados: IAM Identity and Access Management, Managing personal and business profiles, Plans and payment, Branch creation and management, Registration and management of customized supplies, Recipes and Kits, Batch and stock registration, Sales register, Device registration and configuration, Telemetry, stock and thresholds y Communications center. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
@@ -39,7 +45,11 @@ El equipo organizó los eventos en secuencias horizontales ordenadas bajo once c
 El tercer paso incorporó la identificación de los puntos de dolor o tambien llamados paint point dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/gw55AfL.png" alt="paint-point">
+  <img src="https://imgur.com/UW0q4GV.png" alt="paint-point">
+  <img src="https://imgur.com/JJcz00u.png" alt="paint-point">
+  <img src="https://imgur.com/RNYJEet.png" alt="paint-point">
+  <img src="https://imgur.com/ZInwCTO.png" alt="paint-point">
+  <img src="https://imgur.com/dTZ0ri0.png" alt="paint-point">
 </div>
 
 El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se marcó un pain point relacionado con el proceso de registro, preguntando qué información mínima se requiere para completar el alta de una cuenta. En Branch creation and management se levantó una pregunta sobre el comportamiento del sistema cuando no se adjunta una imagen al registrar una sucursal. En Registration and management of customized supplies se planteó la misma interrogante respecto a la imagen del insumo personalizado. En Recipes and Kits se identificaron pain points tanto en la receta como en el kit, relacionados con qué información adicional debe consultarse antes de registrarlos y qué ocurre cuando no se proporciona una imagen. En Sales register se levantó una pregunta sobre qué información de precio o condición debe validarse antes de confirmar la venta. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
@@ -49,17 +59,30 @@ El equipo incorporó pain points en los contextos donde surgieron preguntas sin 
 El cuarto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/jLtyiPQ.png" alt="commands">
+  <img src="https://imgur.com/DHgea1P.png" alt="commands">
+  <img src="https://imgur.com/nDtosJL.png" alt="commands">
+  <img src="https://imgur.com/gInUMCk.png" alt="commands">
+  <img src="https://imgur.com/buIMYRK.png" alt="commands">
+  <img src="https://imgur.com/X8ArTG7.png" alt="commands">
+  <img src="https://imgur.com/qoJBKIS.png" alt="commands">
 </div>
 
 El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Managing personal and business profiles: Create user profile, Change Password, Update personal data y Register new business. En Plans and payment: Select subscription plan, Configure plan limits, Update plan limits y Pay subscription plan. En Branch creation and management: Create branch, Edit branch y Delete branch. En Registration and management of customized supplies: Register Custom Supply y Edit Custom Supply. En Recipes and Kits: Register recipe, Edit recipe, Register Kit y Edit Kit. En Batch and stock registration: Register batch. En Sales register: Register sale, Calculate total price y Show sales. En Device registration and configuration: Register new device, Configure a device y Deactivate device. En Telemetry, stock and thresholds: Calculate stock, Status check, Register threshold, Edit threshold y Verify threshold. En Communications center: Generate new notification y Show the notification.
+
+#### 4.1.1.1 Candidate Context Discovery
 
 #### Paso 5: Policies and Actors
 
 El quinto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/FMCqKZv.png" alt="policies-actors">
+  <img src="https://imgur.com/Hhjsqjo.png" alt="policies-actors">
+  <img src="https://imgur.com/Fn8kiRd.png" alt="policies-actors">
+  <img src="https://imgur.com/wS36cPw.png" alt="policies-actors">
+  <img src="https://imgur.com/bTJYzP2.png" alt="policies-actors">
+  <img src="https://imgur.com/Kw8fJBH.png" alt="policies-actors">
+  <img src="https://imgur.com/XYX0G7Y.png" alt="policies-actors">
+  <img src="https://imgur.com/nNaVaxT.png" alt="policies-actors">
 </div>
 
 El equipo identificó como actores principales al Retail Manager y al Branch Manager, presentes en la totalidad de los contextos del sistema. El actor Visitor fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos: en Plans and payment se definió una política que activa el plan de suscripción una vez que el pago es aceptado; en Telemetry, stock and thresholds se identificó una política que genera una tarea de conciliación automáticamente al detectarse una anomalía de stock; en Device registration and configuration se definió una política que deshabilita la ingesta de telemetría ante ciertos eventos del dispositivo; y en Communications center se identificó una política que dispara el envío de notificaciones en respuesta a eventos de alerta del sistema.
@@ -69,7 +92,12 @@ El equipo identificó como actores principales al Retail Manager y al Branch Man
 El sexto paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/GnIq2AP.png" alt="read-models">
+  <img src="https://imgur.com/K9vID92.png" alt="read-models">
+  <img src="https://imgur.com/nWJaKVq.png" alt="read-models">
+  <img src="https://imgur.com/gt3sa9R.png" alt="read-models">
+  <img src="https://imgur.com/rn4V7vL.png" alt="read-models">
+  <img src="https://imgur.com/82EJ1hJ.png" alt="read-models">
+  <img src="https://imgur.com/6WNFx4f.png" alt="read-models">
 </div>
 
 El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificó la vista de Login. En Managing personal and business profiles se definió la vista de Profile settings. En Branch creation and management se identificó la vista de Branch Management. En Registration and management of customized supplies se definió la vista de Custom Supply Management. En Recipes and Kits se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de seleccionar un ítem para editarlo. En Batch and stock registration se definió la vista de Batch Management. En Sales register se identificó la vista de Sales Management. En Device registration and configuration se definió la vista de Device Management. Estos read models garantizan que los actores cuenten con el contexto necesario en cada punto de decisión del flujo.
@@ -79,7 +107,12 @@ El equipo incorporó los read models en los puntos del flujo donde el actor nece
 El séptimo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/WGdx4p0.png" alt="external-systems">
+  <img src="https://imgur.com/XbRy97n.png" alt="external-systems">
+  <img src="https://imgur.com/BwBWzj8.png" alt="external-systems">
+  <img src="https://imgur.com/gRnQyzo.png" alt="external-systems">
+  <img src="https://imgur.com/ws2Fbwv.png" alt="external-systems">
+  <img src="https://imgur.com/WlplS7V.png" alt="external-systems">
+  <img src="https://imgur.com/Ggadc64.png" alt="external-systems">
 </div>
 
 El equipo identificó tres sistemas externos a partir del PDF. El primero es Cloudinary API, presente en los contextos de Managing personal and business profiles, Branch creation and management, Registration and management of customized supplies y Recipes and Kits, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema. El segundo es Stripe, integrado en el contexto de Plans and payment, encargado de procesar los pagos de suscripción. El tercero es OneSignal API, integrado en el contexto de Communications center, responsable del envío de notificaciones push a los usuarios del sistema.
@@ -89,12 +122,20 @@ El equipo identificó tres sistemas externos a partir del PDF. El primero es Clo
 El octavo paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/xAvuzSR.png" alt="aggregates">
+  <img src="https://imgur.com/dUfgAkY.png" alt="aggregates">
+  <img src="https://imgur.com/rabdZax.png" alt="aggregates">
+  <img src="https://imgur.com/EoJgZBE.png" alt="aggregates">
+  <img src="https://imgur.com/MlUhamD.png" alt="aggregates">
+  <img src="https://imgur.com/wF2nQLP.png" alt="aggregates">
+  <img src="https://imgur.com/q8pRiMU.png" alt="aggregates">
+  <img src="https://imgur.com/10dCiIR.png" alt="aggregates">
+  <img src="https://imgur.com/cABCVsg.png" alt="aggregates">
+  <img src="https://imgur.com/55vDmur.png" alt="aggregates">
+  <img src="https://imgur.com/31ZhieS.png" alt="aggregates">
+  <img src="https://imgur.com/Wx8YDeo.png" alt="aggregates">
 </div>
 
 El equipo identificó los agregados visibles en la página 9 del PDF, organizados por contexto. En IAM se definió el agregado User. En Managing personal and business profiles se identificaron Profile y Business. En Plans and payment se definieron Subscription y Account. En Branch creation and management se identificaron Branch e Inventory. En Registration and management of customized supplies se definieron Custom Supply y Device. En Recipes and Kits se identificaron Recipe y Kit. En Batch and stock registration se definió Batch. En Sales register se identificó Sales Order. En Device registration and configuration se definieron Device Health y Conciliation Task. En Telemetry, stock and thresholds se identificaron Stock Record y Supply Threshold. En Communications center se definió el agregado Notification.
-
-#### 4.1.1.1 Candidate Context Discovery
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
@@ -112,7 +153,7 @@ Se trazaron fronteras alrededor de los grupos identificados, estableciendo los l
 
 Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
 
-<img src="assets/images/chapter4/event_storming.png" alt=“DDD” width="800px">
+<img src="https://imgur.com/Ke6dnOH.png" alt=“DDD” width="800px">
 
 A continuación, se explicará en qué consiste cada bounded context:
 
@@ -147,6 +188,10 @@ A continuación, se explicará en qué consiste cada bounded context:
 **Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
 
 <img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
+
+**Analytics:** También llamado “Analytics”, este bounded context contiene el proceso de análisis y visualización de información relevante del sistema, permitiendo a los usuarios consultar datos como insumos con stock cero, insumos con stock bajo, últimos insumos registrados y alertas recientes. Además, centraliza la presentación de indicadores en un dashboard, facilitando el seguimiento del comportamiento del inventario y el apoyo a la toma de decisiones.
+
+<img src="https://imgur.com/0trAWyu.png" alt=“DDD” width="500px">
 
 #### 4.1.1.2 Domain Message Flows Modeling
 
