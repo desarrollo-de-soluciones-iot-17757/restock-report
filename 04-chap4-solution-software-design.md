@@ -237,6 +237,12 @@ Para Restock, el diagrama de contenedores incluye los siguientes contenedores pr
 
 #### 4.1.3.3. Software Architecture Deployment Diagrams
 
+El siguiente diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
+
+<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" 
+     alt="Production Deployment Diagram"
+     style="width:100%; height:auto;">
+
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Identity and Access Management
