@@ -65,19 +65,15 @@ Los Domain Message Flows modelan las interacciones entre los diferentes bounded 
 * **Access to platform:** En este flujo se muestra la interacción entre el bounded context IAM y el bounded context Profiles al momento en que un usuario se registra de forma omnicanal (Web o App) y se crea su perfil correspondiente.
 
   <img src="assets/images/chapter4/message_flows/access_to_platform.png" alt="Domain Message Flow - Access to platform" height="500px">
-
 * **Record a recipe:** En este flujo se muestra la interacción entre el bounded context Planning y el bounded context Resource al momento en que un administrador diseña y registra una nueva receta, vinculando los insumos necesarios del almacén.
 
   <img src="assets/images/chapter4/message_flows/record_a_recipe.png" alt="Domain Message Flow - Record a recipe" height="500px">
-
 * **Register a restaurant sale and update inventory:** En este flujo se modela la complejidad de una venta en restaurante, donde el sistema interactúa con las recetas para deducir de Resource las cantidades exactas de insumos utilizados tras confirmar el ticket.
 
   <img src="assets/images/chapter4/message_flows/register_a_restaurant_sale.png" alt="Domain Message Flow - Register a restaurant sale" height="500px">
-
 * **IoT Monitoring and Anomaly Detection:** En este escenario crítico se muestra la interacción entre Monitoring (Service Operation) y Resource. La telemetría capturada por el hardware solicita el stock teórico, detecta discrepancias físicas y genera tareas de conciliación para el administrador.
 
   <img src="assets/images/chapter4/message_flows/iot_monitoring_and_anomaly_detection.png" alt="Domain Message Flow - IoT Monitoring" height="500px">
-
 * **Push Notification Dispatch:** En este flujo se detalla cómo el bounded context de Notifications reacciona a eventos anómalos del sistema, filtrando destinatarios y delegando el envío de alertas a dispositivos móviles mediante una integración con una API externa (OneSignal).
 
   <img src="assets/images/chapter4/message_flows/push_notification_dispatch.png" alt="Domain Message Flow - Push Notification Dispatch" height="500px">
@@ -87,15 +83,13 @@ Adicionalmente, se presentan flujos de escenarios relevantes para el core del ne
 * **Subscribe to a plan:** En este flujo se muestra el proceso de onboarding comercial, donde el registro empresarial y la confirmación de pago se orquestan internamente dentro del bounded context de Subscription.
 
   <img src="assets/images/chapter4/message_flows/subscribe_to_a_plan.png" alt="Domain Message Flow - Subscribe to a plan" height="500px">
-
 * **Record a supply in the inventory:** En este flujo se modela el ingreso manual o la actualización de existencias de un insumo, el cual es procesado exclusivamente dentro del bounded context Resource.
 
   <img src="assets/images/chapter4/message_flows/record_a_supply_in_the_inventory.png" alt="Domain Message Flow - Record a supply" height="500px">
-
 * **Register a physical branch and assign IoT devices:** En este flujo se evidencia el proceso de digitalización de una nueva sucursal y la vinculación de sus sensores físicos, consolidando entidades fuertemente acopladas dentro del bounded context Resource (Asset and Resource Management) y utilizando una API externa para la gestión de imágenes.
 
   <img src="assets/images/chapter4/message_flows/register_a_physical_branch_and_assign_devices.png" alt="Domain Message Flow - Register branch and devices" height="500px">
-  
+
 #### 4.1.1.3 Bounded Context Canvases
 
 ### 4.1.2. Context Mapping
@@ -107,34 +101,42 @@ A continuación, se describen las relaciones y patrones de integración observad
 #### Análisis de Bounded Contexts
 
 ##### Analytics ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Analytics)
 - **Patrón:** Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
 
 ##### Service Design and Planning ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Service Design and Planning) / Downstream (Asset and Resource Management)
 - **Patrón:** Shared Kernel — Ambos contextos comparten un modelo común de diseño de servicios. Service Design and Planning actúa como proveedor (SUP) y Asset and Resource Management como cliente (CUST), garantizando que la planificación de servicios guíe la gestión de recursos sin duplicar el modelo compartido.
 
 ##### Asset and Resource Management ↔ Sales Order Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Sales Order Management)
 - **Patrón:** Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Order Management consume para generar órdenes de venta correctamente asociadas. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para los procesos de venta.
 
 ##### Asset and Resource Management ↔ Service Operation and Monitoring
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Service Operation and Monitoring)
 - **Patrón:** Anti-Corruption Layer — Service Operation and Monitoring consume datos de Asset and Resource Management, pero los traduce a su propio modelo operativo a través de un ACL. Esto protege al dominio operativo de ser contaminado con el lenguaje propio de la gestión de activos y recursos.
 
 ##### IAM ↔ Subscriptions and Payments
+
 - **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
 - **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
 
 ##### IAM ↔ Profile and Preferences
+
 - **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
 - **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
 
 ##### Service Operation and Monitoring ↔ Communication
+
 - **Relación:** Upstream (Service Operation and Monitoring) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume eventos operativos generados por Service Operation and Monitoring para notificar al personal o a los usuarios relevantes. Service Operation and Monitoring actúa como proveedor del contexto operativo que Communication necesita para ejecutar sus notificaciones.
 
 ##### Sales Order Management ↔ Communication
+
 - **Relación:** Upstream (Sales Order Management) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume información de órdenes de venta de Sales Order Management para emitir confirmaciones, alertas o notificaciones relacionadas con el ciclo de vida de las órdenes, sin conocer la lógica interna del dominio de ventas.
 
@@ -241,9 +243,7 @@ Para Restock, el diagrama de contenedores incluye los siguientes contenedores pr
 
 El siguiente diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
 
-<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" 
-     alt="Production Deployment Diagram"
-     style="width:100%; height:auto;">
+<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" alt="Production Deployment Diagram" style="width:100%; height:auto;">
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
@@ -337,20 +337,244 @@ El siguiente diagrama de despliegue muestra la distribución física de los comp
 
 ##### 4.2.5.6.2. Bounded Context Database Design Diagram
 
-### 4.2.6. Bounded Context: Service Operation and Monitoring
+## 4.2.6. Bounded Context: Service Operation and Monitoring
 
-#### 4.2.6.1. Domain Layer
+### 4.2.6.1. Domain Layer
 
-#### 4.2.6.2. Interface Layer
+La capa de dominio representa el núcleo de la aplicación para el Bounded Context de **Service Operation and Monitoring**. En esta capa se encapsulan las reglas de negocio relacionadas con el monitoreo de telemetría IoT, estimación de stock físico, detección de anomalías, validación de umbrales mínimos y generación de tareas de conciliación.
 
-#### 4.2.6.3. Application Layer
+Está compuesta por Aggregates, Value Objects, Domain Events y abstracciones de repositorios, permitiendo representar el comportamiento central del monitoreo operativo del sistema.
 
-#### 4.2.6.4. Infrastructure Layer
+#### Aggregates & Entities
+
+| Nombre de Clase    | Categoría     | Propósito y Reglas de Negocio                                                                                                                                                                      |
+| ------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TelemetryReading   | Aggregate Root | Representa una lectura recibida desde un dispositivo IoT. Encapsula datos como peso bruto, peso estable y cantidad estimada. Permite calcular estimaciones físicas y detectar variaciones de peso. |
+| StockRecord        | Aggregate Root | Representa el registro consolidado del stock físico estimado. Calcula diferencias entre cantidades previas y nuevas, identifica anomalías y actualiza la estimación física del inventario.      |
+| SupplyThreshold    | Aggregate Root | Representa los umbrales configurados para un insumo en una sucursal. Valida si el stock actual está en estado normal, advertencia o crítico.                                                      |
+| DeviceHealthReport | Aggregate Root | Representa el estado operativo de un dispositivo IoT. Registra problemas como batería baja, señal débil, retraso de telemetría o mal funcionamiento.                                            |
+| ReconciliationTask | Aggregate Root | Representa una tarea generada cuando existe una discrepancia entre el stock físico estimado y el stock digital. Permite gestionar su estado hasta su resolución.                                  |
+
+#### Value Objects
+
+| Nombre de Clase                                         | Categoría   | Propósito y Reglas de Negocio                                                                                      |
+| ------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------- |
+| StockRecordId                                           | Value Object | Identificador único del registro de stock físico.                                                                 |
+| TelemetryReadingId                                      | Value Object | Identificador único de una lectura de telemetría.                                                                 |
+| SupplyThresholdId                                       | Value Object | Identificador único de la configuración de umbral de un insumo.                                                   |
+| DeviceHealthReportId                                    | Value Object | Identificador único de un reporte de salud del dispositivo.                                                        |
+| ReconciliationTaskId                                    | Value Object | Identificador único de una tarea de conciliación.                                                                 |
+| StockQuantity                                           | Value Object | Encapsula cantidades de stock y operaciones de comparación o resta, evitando cantidades inconsistentes.            |
+| Weight                                                  | Value Object | Representa valores de peso capturados por dispositivos IoT, permitiendo calcular diferencias y validar estabilidad. |
+| Percentage                                              | Value Object | Representa valores porcentuales como batería o intensidad de señal del dispositivo.                               |
+| BusinessId, BranchId, DeviceId, CustomSupplyId, BatchId | Value Object | Identificadores fuertemente tipados para evitar confusión entre entidades de distintos contextos.                  |
+
+#### Repository Interfaces
+
+| Nombre de Interfaz            | Categoría           | Propósito                                                                                             |
+| ----------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------ |
+| ITelemetryReadingRepository   | Repository Interface | Contrato para guardar y consultar lecturas de telemetría recibidas desde dispositivos IoT.            |
+| IStockRecordRepository        | Repository Interface | Contrato para persistir y consultar registros de stock físico estimado.                               |
+| ISupplyThresholdRepository    | Repository Interface | Contrato para gestionar la configuración de umbrales mínimos y de advertencia por insumo y sucursal. |
+| IDeviceHealthReportRepository | Repository Interface | Contrato para almacenar y consultar reportes de estado operativo de dispositivos.                      |
+| IReconciliationTaskRepository | Repository Interface | Contrato para registrar y consultar tareas de conciliación generadas por discrepancias de stock.      |
+
+#### Domain Events
+
+| Nombre de Evento               | Categoría   | Propósito                                                                                               |
+| ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------- |
+| TelemetryReceivedEvent         | Domain Event | Se emite cuando el sistema recibe una lectura válida desde un dispositivo IoT.                          |
+| PhysicalStockEstimatedEvent    | Domain Event | Se emite cuando se calcula una nueva estimación de stock físico.                                       |
+| StockAnomalyDetectedEvent      | Domain Event | Se emite cuando se detecta una diferencia relevante entre el stock físico estimado y el stock esperado. |
+| LowStockDetectedEvent          | Domain Event | Se emite cuando el stock físico estimado cae por debajo del umbral configurado.                         |
+| DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                               |
+| ReconciliationCompletedEvent   | Domain Event | Se emite cuando una tarea de conciliación es completada.                                                |
+
+---
+
+### 4.2.6.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de **Service Operation and Monitoring** se exponen los endpoints RESTful necesarios para consultar y administrar la información generada por el monitoreo operativo. Esta capa funciona como punto de entrada para la Web App de administración, permitiendo visualizar lecturas de telemetría, stock físico estimado, alertas, reportes de salud de dispositivos y tareas de conciliación.
+
+#### TelemetryController
+
+| Propiedad  | Valor                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| Nombre     | TelemetryController                                                                                |
+| Categoría | Controller                                                                                         |
+| Propósito | Exponer endpoints para recibir y consultar lecturas de telemetría generadas por dispositivos IoT. |
+| Ruta       | /api/v1/monitoring/telemetry                                                                       |
+
+| Nombre            | Ruta                               | Acción                                                   | Handle                            |
+| ----------------- | ---------------------------------- | --------------------------------------------------------- | --------------------------------- |
+| RegisterReading   | /readings (POST)                   | Registra una nueva lectura de telemetría.                | RegisterTelemetryReadingCommand   |
+| GetByDevice       | /devices/{deviceId}/readings (GET) | Consulta lecturas asociadas a un dispositivo.             | GetTelemetryReadingsByDeviceQuery |
+| GetLatestByDevice | /devices/{deviceId}/latest (GET)   | Obtiene la última lectura registrada por un dispositivo. | GetLatestTelemetryByDeviceQuery   |
+
+#### StockMonitoringController
+
+| Propiedad  | Valor                                                                             |
+| ---------- | --------------------------------------------------------------------------------- |
+| Nombre     | StockMonitoringController                                                         |
+| Categoría | Controller                                                                        |
+| Propósito | Consultar el stock físico estimado y sus variaciones detectadas por telemetría. |
+| Ruta       | /api/v1/monitoring/stock-records                                                  |
+
+| Nombre                    | Ruta                                                        | Acción                                                           | Handle                            |
+| ------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------- |
+| GetStockRecordsByBranch   | /branches/{branchId} (GET)                                  | Consulta registros de stock físico por sucursal.                 | GetStockRecordsByBranchQuery      |
+| GetLatestStockBySupply    | /branches/{branchId}/supplies/{customSupplyId}/latest (GET) | Obtiene la última estimación de stock físico de un insumo.     | GetLatestStockRecordBySupplyQuery |
+| RecomputePhysicalEstimate | /{stockRecordId}/recompute (POST)                           | Recalcula la estimación física a partir de una lectura válida. | RecomputePhysicalStockCommand     |
+
+#### SupplyThresholdController
+
+| Propiedad  | Valor                                                                        |
+| ---------- | ---------------------------------------------------------------------------- |
+| Nombre     | SupplyThresholdController                                                    |
+| Categoría | Controller                                                                   |
+| Propósito | Gestionar los umbrales mínimos y de advertencia para el monitoreo de stock. |
+| Ruta       | /api/v1/monitoring/supply-thresholds                                         |
+
+| Nombre            | Ruta                                                 | Acción                                           | Handle                          |
+| ----------------- | ---------------------------------------------------- | ------------------------------------------------- | ------------------------------- |
+| RegisterThreshold | / (POST)                                             | Registra umbrales para un insumo en una sucursal. | RegisterSupplyThresholdCommand  |
+| UpdateThreshold   | /{thresholdId} (PUT)                                 | Actualiza los valores mínimo y de advertencia.   | UpdateSupplyThresholdCommand    |
+| GetBySupply       | /branches/{branchId}/supplies/{customSupplyId} (GET) | Consulta el umbral configurado para un insumo.    | GetSupplyThresholdBySupplyQuery |
+
+#### DeviceHealthController
+
+| Propiedad  | Valor                                                                    |
+| ---------- | ------------------------------------------------------------------------ |
+| Nombre     | DeviceHealthController                                                   |
+| Categoría | Controller                                                               |
+| Propósito | Consultar y administrar reportes de salud operativa de dispositivos IoT. |
+| Ruta       | /api/v1/monitoring/device-health                                         |
+
+| Nombre               | Ruta                                | Acción                                     | Handle                                |
+| -------------------- | ----------------------------------- | ------------------------------------------- | ------------------------------------- |
+| GetReportsByDevice   | /devices/{deviceId}/reports (GET)   | Consulta reportes de salud por dispositivo. | GetDeviceHealthReportsByDeviceQuery   |
+| GetUnresolvedReports | /reports/unresolved (GET)           | Lista reportes pendientes de atención.     | GetUnresolvedDeviceHealthReportsQuery |
+| ResolveReport        | /reports/{reportId}/resolve (PATCH) | Marca un reporte como resuelto.             | ResolveDeviceHealthReportCommand      |
+
+#### ReconciliationTaskController
+
+| Propiedad  | Valor                                                                                        |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| Nombre     | ReconciliationTaskController                                                                 |
+| Categoría | Controller                                                                                   |
+| Propósito | Gestionar tareas de conciliación generadas por discrepancias entre stock físico y digital. |
+| Ruta       | /api/v1/monitoring/reconciliation-tasks                                                      |
+
+| Nombre             | Ruta                               | Acción                                                   | Handle                             |
+| ------------------ | ---------------------------------- | --------------------------------------------------------- | ---------------------------------- |
+| GetPendingByBranch | /branches/{branchId}/pending (GET) | Consulta tareas de conciliación pendientes por sucursal. | GetPendingReconciliationTasksQuery |
+| CompleteTask       | /{taskId}/complete (PATCH)         | Marca una tarea de conciliación como completada.         | CompleteReconciliationTaskCommand  |
+| CancelTask         | /{taskId}/cancel (PATCH)           | Cancela una tarea de conciliación.                       | CancelReconciliationTaskCommand    |
+
+### 4.2.6.3. Application Layer
+
+La capa de aplicación del Bounded Context de **Service Operation and Monitoring** coordina los flujos de negocio relacionados con el procesamiento de telemetría, estimación de stock físico, validación de umbrales, detección de anomalías y generación de tareas de conciliación. En esta capa se ubican Command Handlers, Query Handlers y Event Handlers que orquestan el uso de los aggregates del dominio y delegan la persistencia a los repositorios.
+
+#### Command Handlers
+
+| Nombre                                   | Categoría      | Propósito                                                                                | Comando                           |
+| ---------------------------------------- | --------------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
+| RegisterTelemetryReadingCommandHandler   | Command Handler | Orquesta el registro de una lectura de telemetría recibida desde un dispositivo IoT.     | RegisterTelemetryReadingCommand   |
+| RecomputePhysicalStockCommandHandler     | Command Handler | Recalcula la cantidad física estimada de un insumo a partir del peso estable registrado. | RecomputePhysicalStockCommand     |
+| RegisterSupplyThresholdCommandHandler    | Command Handler | Registra los umbrales mínimo y de advertencia para un insumo en una sucursal.            | RegisterSupplyThresholdCommand    |
+| UpdateSupplyThresholdCommandHandler      | Command Handler | Actualiza la configuración de umbrales de monitoreo.                                     | UpdateSupplyThresholdCommand      |
+| ResolveDeviceHealthReportCommandHandler  | Command Handler | Marca un reporte de salud de dispositivo como resuelto.                                   | ResolveDeviceHealthReportCommand  |
+| CompleteReconciliationTaskCommandHandler | Command Handler | Completa una tarea de conciliación luego de corregir o validar la diferencia de stock.   | CompleteReconciliationTaskCommand |
+| CancelReconciliationTaskCommandHandler   | Command Handler | Cancela una tarea de conciliación cuando ya no requiere atención.                       | CancelReconciliationTaskCommand   |
+
+#### Query Handlers
+
+| Nombre                                       | Categoría    | Propósito                                                            | Query                                 |
+| -------------------------------------------- | ------------- | --------------------------------------------------------------------- | ------------------------------------- |
+| GetTelemetryReadingsByDeviceQueryHandler     | Query Handler | Consulta las lecturas registradas por un dispositivo específico.     | GetTelemetryReadingsByDeviceQuery     |
+| GetLatestTelemetryByDeviceQueryHandler       | Query Handler | Obtiene la lectura más reciente generada por un dispositivo IoT.     | GetLatestTelemetryByDeviceQuery       |
+| GetStockRecordsByBranchQueryHandler          | Query Handler | Lista los registros de stock físico estimado por sucursal.           | GetStockRecordsByBranchQuery          |
+| GetLatestStockRecordBySupplyQueryHandler     | Query Handler | Consulta la última estimación física de un insumo en una sucursal. | GetLatestStockRecordBySupplyQuery     |
+| GetSupplyThresholdBySupplyQueryHandler       | Query Handler | Obtiene los umbrales configurados para un insumo específico.         | GetSupplyThresholdBySupplyQuery       |
+| GetDeviceHealthReportsByDeviceQueryHandler   | Query Handler | Consulta el historial de reportes de salud de un dispositivo.         | GetDeviceHealthReportsByDeviceQuery   |
+| GetUnresolvedDeviceHealthReportsQueryHandler | Query Handler | Lista los reportes de salud pendientes de resolución.                | GetUnresolvedDeviceHealthReportsQuery |
+| GetPendingReconciliationTasksQueryHandler    | Query Handler | Consulta tareas de conciliación pendientes por sucursal.             | GetPendingReconciliationTasksQuery    |
+
+#### Event Handlers
+
+| Nombre                                | Categoría    | Propósito                                                                                          | Evento                         |
+| ------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
+| TelemetryReceivedEventHandler         | Event Handler | Procesa una lectura de telemetría recibida y genera una estimación de stock físico.              | TelemetryReceivedEvent         |
+| PhysicalStockEstimatedEventHandler    | Event Handler | Registra el nuevo estado físico del stock y valida si existe una diferencia significativa.         | PhysicalStockEstimatedEvent    |
+| StockAnomalyDetectedEventHandler      | Event Handler | Genera una tarea de conciliación cuando se detecta una discrepancia de stock.                      | StockAnomalyDetectedEvent      |
+| LowStockDetectedEventHandler          | Event Handler | Gestiona la alerta de bajo stock cuando el stock estimado cae por debajo del umbral.                | LowStockDetectedEvent          |
+| DeviceMalfunctionDetectedEventHandler | Event Handler | Registra un reporte de salud del dispositivo cuando se detecta una falla o comportamiento anómalo. | DeviceMalfunctionDetectedEvent |
+| ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                          | ReconciliationCompletedEvent   |
+
+---
+
+### 4.2.6.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de **Service Operation and Monitoring** implementa los mecanismos técnicos necesarios para persistir datos, recibir telemetría desde dispositivos IoT y publicar eventos hacia otros bounded contexts. En esta capa se ubican las implementaciones concretas de los repositorios definidos en el dominio, el contexto de base de datos, adaptadores de mensajería y servicios externos necesarios para operar el monitoreo.
+
+#### Repositories
+
+| Nombre                       | Categoría  | Propósito                                                                                | Interfaz                      |
+| ---------------------------- | ----------- | ----------------------------------------------------------------------------------------- | ----------------------------- |
+| TelemetryReadingRepository   | Repositorio | Persiste y consulta lecturas de telemetría recibidas desde dispositivos IoT.             | ITelemetryReadingRepository   |
+| StockRecordRepository        | Repositorio | Persiste y consulta registros de stock físico estimado.                                  | IStockRecordRepository        |
+| SupplyThresholdRepository    | Repositorio | Gestiona la persistencia de los umbrales mínimos y de advertencia por insumo y sucursal. | ISupplyThresholdRepository    |
+| DeviceHealthReportRepository | Repositorio | Persiste reportes de salud operativa de dispositivos.                                     | IDeviceHealthReportRepository |
+| ReconciliationTaskRepository | Repositorio | Almacena y consulta tareas de conciliación generadas por discrepancias de stock.         | IReconciliationTaskRepository |
+
+#### Persistence and External Services
+
+| Nombre                           | Categoría               | Propósito                                                                                                                                                                               |
+| -------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MonitoringDbContext              | ORM Context              | Configura el mapeo entre las entidades del bounded context y las tablas de base de datos relacionadas con telemetría, stock records, thresholds, health reports y reconciliation tasks. |
+| TelemetryConsumer                | Message Consumer         | Recibe mensajes de telemetría publicados por dispositivos IoT o gateways externos.                                                                                                      |
+| DomainEventPublisher             | Message Broker Adapter   | Publica eventos de dominio relevantes hacia otros bounded contexts, como alertas de bajo stock o anomalías detectadas.                                                                  |
+| DeviceGatewayAdapter             | External Service Adapter | Adapta la comunicación con gateways o servicios externos que envían datos de sensores.                                                                                                 |
+| NotificationIntegrationPublisher | Integration Publisher    | Envía eventos de alerta hacia el contexto encargado de notificaciones o dashboards operativos.                                                                                          |
+
+#### Database Tables
+
+| Tabla                 | Propósito                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------- |
+| telemetry_readings    | Almacena lecturas de peso, cantidad estimada y fecha de recepción de los dispositivos IoT. |
+| stock_records         | Almacena el histórico de estimaciones físicas de stock y diferencias detectadas.          |
+| supply_thresholds     | Guarda los umbrales mínimos y de advertencia configurados por insumo y sucursal.           |
+| device_health_reports | Registra eventos de salud operativa de los dispositivos, como batería, señal y fallas.    |
+| reconciliation_tasks  | Almacena tareas de conciliación generadas por diferencias entre stock físico y digital.   |
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+Esta sección presenta el diagrama de componentes del backend para el bounded context Asset and Resource Management. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Service Operation and Monitoring. Este diagrama evidencia cómo el contexto organiza la lógica de monitoreo operativo, procesamiento de telemetría, estimación de stock físico, detección de anomalías y generación de tareas de conciliación.
+
+Para mantener la claridad del modelo, el diagrama se ha organizado visualmente en los siguientes sub-paquetes lógicos:
+
+Telemetry Processing: Agrupa la recepción y procesamiento de lecturas enviadas por los dispositivos IoT.
+
+Physical Stock Monitoring: Representa el cálculo y registro del stock físico estimado a partir de la telemetría recibida.
+
+Supply Threshold Monitoring: Define los umbrales mínimos y de advertencia para detectar posibles situaciones de bajo stock.
+
+Device Health Monitoring: Gestiona el estado operativo de los dispositivos, incluyendo fallas, batería, señal y retrasos de telemetría.
+
+Stock Reconciliation: Modela las tareas de conciliación generadas ante discrepancias entre el stock físico estimado y el stock digital.
+
+Domain Events: Mapea los eventos emitidos para comunicar situaciones relevantes como telemetría recibida, anomalías, bajo stock o fallas de dispositivos.
+
+<img src="assets/images/chapter4/bc-monitoring/class_diagram_monitoring.png" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
+
+En esta sección, se presenta el diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Service Operation and Monitoring. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente los grandes volúmenes de telemetría IoT y la flexibilidad del catálogo de recursos.
+
+<img src="assets/images/chapter4/bc-monitoring/db_diagram_monitoring.png" alt="Data Base Class Diagram - Asset and Resource Management" width="800px">
