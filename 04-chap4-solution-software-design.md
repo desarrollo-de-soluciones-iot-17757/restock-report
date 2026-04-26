@@ -1431,13 +1431,14 @@ Esta capa no contiene reglas de negocio puras. Su responsabilidad principal es r
 
 En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Asset and Suscriptions and Payments.
 
-<a href="https://ibb.co/gbpdN50n"><img src="https://i.ibb.co/gbpdN50n/uml-suscription.png" alt="uml-suscription" border="0"></a>
+<a href="https://ibb.co/gbpdN50n">
+<img src="https://i.ibb.co/gbpdN50n/uml-suscription.png" alt="uml-suscription" border="0"></a>
 
 ##### 4.2.2.6.2. Bounded Context Database Design Diagram
 
 En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Suscriptions and Payments.
 
-<a href="https://ibb.co/mC6HHJ3B"><img src="https://i.ibb.co/mC6HHJ3B/Captura-de-pantalla-2026-04-25-a-la-s-11-05-32-p-m.png" alt="bd-suscriptions" border="0"></a>
+<img src="assets/images/chapter4/bc-monitoring/db_diagram_suscriptions.png" alt="bd-suscriptions" border="0"></a>
 
 ### 4.2.3. Bounded Context: Profiles and Preferences
 
