@@ -2700,3 +2700,254 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
+
+### 4.2.7. Bounded Context: Sales Order Management
+
+#### 4.2.7.1. Domain Layer
+
+La capa de dominio representa el núcleo de la aplicación para el Bounded Context **Sales Order Management**. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión de órdenes de venta, desde su creación hasta su cierre.
+
+Esta capa está aislada de detalles de la capa de infraestructura. Se compone de Entities, Aggregate Roots, Value Objects para garantizar la inmutabilidad de las composiciones, Domain Events y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Sales</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una orden de venta. Encapsula la lógica para validar que la orden contenga al menos un producto, que el total sea mayor a cero y permite actualizar su estado.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos, asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+  </tbody>
+</table>
+
+##### Repository Interfaces
+
+Las abstracciones de persistencia se definen aquí mediante el Principio de Inversión de Dependencias (Dependency Inversion). El dominio dicta "qué" necesita guardar o consultar, sin importar "cómo" se hace en la base de datos.
+
+<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Sales Order Management se exponen los endpoints RESTful necesarios para interactuar con las funcionalidades de gestión de órdenes de venta. A través de controladores especializados, esta capa actúa como punto de entrada para que las aplicaciones cliente (Web o Móvil) envíen los comandos de creación, actualización o cierre de órdenes, facilitando la consulta del estado y el historial de ventas.
+
+##### SalesController
+
+<p><em>Tabla de BranchController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+#### 4.2.7.3. Application Layer
+
+La capa de aplicación del Bounded Context de Sales Order Management orquesta los flujos de trabajo dictados por los usuarios al gestionar sus órdenes de venta. Aquí residen los Command Handlers encargados de procesar la creación, actualización o cierre de órdenes, asegurando que se cumplan las reglas de negocio antes de delegar la persistencia al dominio.
+
+##### [sales]CommandHandler
+
+<p><em>Tabla de "" en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;"></th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;"></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+#### 4.2.7.4. Infrastructure Layer
+
+La capa de infrastructure de Sales Order Management materializa los repositorios necesarios para almacenar las órdenes de venta. Además, es el punto donde se implementan los adaptadores para servicios de terceros, como sistemas de pago o plataformas de envío, que son vitales para completar el ciclo de vida de una orden.
+
+##### SalesRepository
+
+<p><em>Tabla de SalesRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir las órdenes de venta, permitiendo su creación, actualización y consulta a través de la implementación de las operaciones definidas en el dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ISalesRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+En esta sección se presenta el Diagrama de Clases detallado para la Domain Layer en el Bounded Context de Sales Order Management.
+
+<img src="" alt="Domain Layer Class Diagram - Sales Order Management">
+
+##### 4.2.7.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Sales Order Management.
+
+<img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Order Management" width="800px">
+
+
