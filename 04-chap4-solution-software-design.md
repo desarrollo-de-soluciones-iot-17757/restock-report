@@ -38,9 +38,9 @@ A continuación, se explicará en qué consiste cada bounded context:
 
 <img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
 
-**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+**Communications:** Este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
 
-<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_communications.png" alt="DDD" width="500px">
 
 **Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
 
@@ -65,19 +65,15 @@ Los Domain Message Flows modelan las interacciones entre los diferentes bounded 
 * **Access to platform:** En este flujo se muestra la interacción entre el bounded context IAM y el bounded context Profiles al momento en que un usuario se registra de forma omnicanal (Web o App) y se crea su perfil correspondiente.
 
   <img src="assets/images/chapter4/message_flows/access_to_platform.png" alt="Domain Message Flow - Access to platform" height="500px">
-
 * **Record a recipe:** En este flujo se muestra la interacción entre el bounded context Planning y el bounded context Resource al momento en que un administrador diseña y registra una nueva receta, vinculando los insumos necesarios del almacén.
 
   <img src="assets/images/chapter4/message_flows/record_a_recipe.png" alt="Domain Message Flow - Record a recipe" height="500px">
-
 * **Register a restaurant sale and update inventory:** En este flujo se modela la complejidad de una venta en restaurante, donde el sistema interactúa con las recetas para deducir de Resource las cantidades exactas de insumos utilizados tras confirmar el ticket.
 
   <img src="assets/images/chapter4/message_flows/register_a_restaurant_sale.png" alt="Domain Message Flow - Register a restaurant sale" height="500px">
-
 * **IoT Monitoring and Anomaly Detection:** En este escenario crítico se muestra la interacción entre Monitoring (Service Operation) y Resource. La telemetría capturada por el hardware solicita el stock teórico, detecta discrepancias físicas y genera tareas de conciliación para el administrador.
 
   <img src="assets/images/chapter4/message_flows/iot_monitoring_and_anomaly_detection.png" alt="Domain Message Flow - IoT Monitoring" height="500px">
-
 * **Push Notification Dispatch:** En este flujo se detalla cómo el bounded context de Notifications reacciona a eventos anómalos del sistema, filtrando destinatarios y delegando el envío de alertas a dispositivos móviles mediante una integración con una API externa (OneSignal).
 
   <img src="assets/images/chapter4/message_flows/push_notification_dispatch.png" alt="Domain Message Flow - Push Notification Dispatch" height="500px">
@@ -87,15 +83,13 @@ Adicionalmente, se presentan flujos de escenarios relevantes para el core del ne
 * **Subscribe to a plan:** En este flujo se muestra el proceso de onboarding comercial, donde el registro empresarial y la confirmación de pago se orquestan internamente dentro del bounded context de Subscription.
 
   <img src="assets/images/chapter4/message_flows/subscribe_to_a_plan.png" alt="Domain Message Flow - Subscribe to a plan" height="500px">
-
 * **Record a supply in the inventory:** En este flujo se modela el ingreso manual o la actualización de existencias de un insumo, el cual es procesado exclusivamente dentro del bounded context Resource.
 
   <img src="assets/images/chapter4/message_flows/record_a_supply_in_the_inventory.png" alt="Domain Message Flow - Record a supply" height="500px">
-
 * **Register a physical branch and assign IoT devices:** En este flujo se evidencia el proceso de digitalización de una nueva sucursal y la vinculación de sus sensores físicos, consolidando entidades fuertemente acopladas dentro del bounded context Resource (Asset and Resource Management) y utilizando una API externa para la gestión de imágenes.
 
   <img src="assets/images/chapter4/message_flows/register_a_physical_branch_and_assign_devices.png" alt="Domain Message Flow - Register branch and devices" height="500px">
-  
+
 #### 4.1.1.3 Bounded Context Canvases
 
 ### 4.1.2. Context Mapping
@@ -107,34 +101,42 @@ A continuación, se describen las relaciones y patrones de integración observad
 #### Análisis de Bounded Contexts
 
 ##### Analytics ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Analytics)
 - **Patrón:** Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
 
 ##### Service Design and Planning ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Service Design and Planning) / Downstream (Asset and Resource Management)
 - **Patrón:** Shared Kernel — Ambos contextos comparten un modelo común de diseño de servicios. Service Design and Planning actúa como proveedor (SUP) y Asset and Resource Management como cliente (CUST), garantizando que la planificación de servicios guíe la gestión de recursos sin duplicar el modelo compartido.
 
 ##### Asset and Resource Management ↔ Sales Order Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Sales Order Management)
 - **Patrón:** Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Order Management consume para generar órdenes de venta correctamente asociadas. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para los procesos de venta.
 
 ##### Asset and Resource Management ↔ Service Operation and Monitoring
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Service Operation and Monitoring)
 - **Patrón:** Anti-Corruption Layer — Service Operation and Monitoring consume datos de Asset and Resource Management, pero los traduce a su propio modelo operativo a través de un ACL. Esto protege al dominio operativo de ser contaminado con el lenguaje propio de la gestión de activos y recursos.
 
 ##### IAM ↔ Subscriptions and Payments
+
 - **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
 - **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
 
 ##### IAM ↔ Profile and Preferences
+
 - **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
 - **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
 
 ##### Service Operation and Monitoring ↔ Communication
+
 - **Relación:** Upstream (Service Operation and Monitoring) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume eventos operativos generados por Service Operation and Monitoring para notificar al personal o a los usuarios relevantes. Service Operation and Monitoring actúa como proveedor del contexto operativo que Communication necesita para ejecutar sus notificaciones.
 
 ##### Sales Order Management ↔ Communication
+
 - **Relación:** Upstream (Sales Order Management) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume información de órdenes de venta de Sales Order Management para emitir confirmaciones, alertas o notificaciones relacionadas con el ciclo de vida de las órdenes, sin conocer la lógica interna del dominio de ventas.
 
@@ -241,9 +243,9 @@ Para Restock, el diagrama de contenedores incluye los siguientes contenedores pr
 
 El siguiente diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
 
-<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" 
+`<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" 
      alt="Production Deployment Diagram"
-     style="width:100%; height:auto;">
+     style="width:100%; height:auto;">`
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
