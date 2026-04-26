@@ -3094,9 +3094,12 @@ La capa de infrastructure de Sales Order Management materializa los repositorios
 
 ##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
 
-En esta sección se presenta el Diagrama de Clases detallado para la Domain Layer en el Bounded Context de Sales Order Management.
+En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta.
 
-<img src="" alt="Domain Layer Class Diagram - Sales Order Management">
+En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. El contrato de persistencia se define mediante la interfaz ISalesRepository, desacoplando el dominio de cualquier motor de base de datos. 
+
+
+<img src="https://i.imgur.com/5flPJ6S.png" alt="Class Diagram - Sales Order Management">
 
 ##### 4.2.7.6.2. Bounded Context Database Design Diagram
 
