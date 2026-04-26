@@ -2045,7 +2045,7 @@ La capa de aplicación del Bounded Context de Asset and Resource Management coor
 
 #### 4.2.4.4. Infrastructure Layer
 
-La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir entidades como sucursales, insumos y hardware IoT en la base de datos relacional. Asimismo, integra servicios externos esenciales para el negocio, como la API de Cloudinary para el almacenamiento de imágenes de sucursales y productos, y la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
+La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir agregados y entidades como sucursales, insumos y hardware IoT en la base de datos no relacional orientada a documentos (MongoDB). Asimismo, integra servicios externos esenciales para el negocio, como la API de Cloudinary para el almacenamiento de imágenes de sucursales y productos, y la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
 
 ##### InventoryRepository
 
@@ -2065,11 +2065,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en la base de datos.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en formato de documentos JSON dentro de la base de datos.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -2098,11 +2098,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales.</td>
+      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales directamente en las colecciones de MongoDB.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -2113,9 +2113,9 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 <br>
 
-##### AssetDbContext
+##### AssetMongoConfiguration
 
-<p><em>Tabla de AssetDbContext en el Infrastructure Layer</em></p>
+<p><em>Tabla de AssetMongoConfiguration en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -2127,15 +2127,15 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssetDbContext</td>
+      <td style="padding: 10px; border: 1px solid;">AssetMongoConfiguration</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+      <td style="padding: 10px; border: 1px solid;">ODM / Spring Data MongoDB</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Entity Framework para mapear las entidades del Bounded Context a la base de datos.</td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Spring Data MongoDB para realizar el mapeo objeto-documento (ODM) entre las clases del Bounded Context y las colecciones de la base de datos NoSQL.</td>
     </tr>
   </tbody>
 </table>
@@ -2175,7 +2175,180 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Asset and Resource Management. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y nodos locales (Edge Applications), únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-resource/frontend-components.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la administración de inventarios de la cuenta, sucursales, lotes y el registro de dispositivos IoT. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar activos del negocio (insumos, dispositivos, lotes, sucursales) en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
+
+<img src="assets/images/chapter4/bc-resource/mobile-components.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar inventarios, sucursales y dispositivos desde smartphones o tablets.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para sincronizar y actualizar la información de activos e inventarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura Local</td>
+      <td style="padding: 10px; border: 1px solid;">Guarda en caché la información de los activos e inventario para agilizar los tiempos de carga en la aplicación móvil y reducir llamadas de red.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
+
+<img src="assets/images/chapter4/bc-resource/backend-components.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de control de inventario, deducción de lotes y gestión de sucursales. Actúa como el puente de comunicación y configuración hacia la capa Edge de las cabinas inteligentes.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>edgeApplication</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Envía comandos de configuración de dispositivos (encendido/apagado, asignación de productos) hacia las estaciones locales y valida su registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiCommunications</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la generación de alertas y notificaciones al sistema cuando se detectan niveles críticos de stock u operaciones inusuales.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar el acceso y modificación de los recursos físicos del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para subir y recuperar imágenes referenciales de los insumos o catálogos a través de Cloudinary.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
