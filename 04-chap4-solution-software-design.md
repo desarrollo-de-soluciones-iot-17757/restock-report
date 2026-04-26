@@ -2701,9 +2701,9 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
 
-## 4.2.7. Bounded Context: Communication
+## 4.2.8. Bounded Context: Communication
 
-#### 4.2.7.1. Domain Layer
+#### 4.2.8.1. Domain Layer
 
 La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Service Operation and Monitoring y Sales Order Management para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
 
@@ -2796,7 +2796,7 @@ Las abstracciones de persistencia se definen en esta capa para cumplir el Princi
   </tbody>
 </table>
 
-#### 4.2.7.2. Interface Layer
+#### 4.2.8.2. Interface Layer
 
 La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, contempla endpoints de integración interna para recibir eventos desde otros bounded contexts, como Service Operation and Monitoring y Sales Order Management, que actúan como disparadores de nuevas notificaciones dentro de este contexto.
 
@@ -2868,7 +2868,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
   </tbody>
 </table>
 
-#### 4.2.7.3. Application Layer
+#### 4.2.8.3. Application Layer
 
 La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas, determinar destinatarios y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
 
@@ -3111,7 +3111,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
   </tbody>
 </table>
 
-#### 4.2.7.4. Infrastructure Layer
+#### 4.2.8.4. Infrastructure Layer
 
 La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
 NotificationRepository
@@ -3259,7 +3259,7 @@ NotificationRepository
   </tbody>
 </table>
 
-#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+#### 4.2.8.5. Bounded Context Software Architecture Component Level Diagrams
 
 En esta sección se presentan los diagramas de componentes del Bounded Context Communication, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la gestión del ciclo de vida de alertas y notificaciones.
 
@@ -3287,9 +3287,9 @@ El componente Communications dentro del Restock Cloud Server Side App concentra 
 
 El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
 
-#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+#### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
 
-##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+##### 4.2.7.8.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una notificación, desde su generación ante un evento crítico externo hasta su despacho al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo.
 
@@ -3297,7 +3297,7 @@ El diagrama de clases de la capa de dominio del Bounded Context de Communication
 
 El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación generación, envío y marcado como leída se gestiona unicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification y NotificationRecipient encapsulan reglas de negocio mediante operaciones como send(), markAsRead(), markAsFailed() y markAsDelivered(), en lugar de ser simples estructuras de datos. La consistencia se refuerza con el uso de Value Objects (como NotificationId, UserId, BusinessId, BranchId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), que definen un lenguaje ubicuo claro alineado con los campos de la colección MongoDB y restringen los valores válidos del dominio. Finalmente, los Domain Events muestran la integración entre contextos: eventos como StockAnomalyDetectedEvent y DeviceFailureDetectedEvent disparan la creación de notificaciones, mientras que NotificationGeneratedEvent y NotificationSentEvent comunican cambios relevantes a otros bounded contexts, manteniendo un bajo acoplamiento.
 
-##### 4.2.7.6.2. Bounded Context Database Design Diagram
+##### 4.2.7.8.2. Bounded Context Database Design Diagram
 
 El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones y sus destinatarios. Este esquema organiza la colección principal, sus atributos y las relaciones entre documentos, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
 
