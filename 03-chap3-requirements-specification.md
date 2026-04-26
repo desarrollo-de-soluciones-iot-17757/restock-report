@@ -171,9 +171,7 @@ Por ultimo se definieron maker stories para especificar los requerimientos asoci
 
 A continuación, se muestra el mapa de impacto según las historias de usuario. 
 
-<p align="center">
-  <img src="https://i.ibb.co/gZjvMMc6/UI-Topic-1.png" alt="Impact mapping">
-</p>
+<img src="assets/images/chapter3/impact-mapping.png" alt="Domain Message Flow - Record a supply" height=90%>
 
 ## 3.3. Product Backlog
 
