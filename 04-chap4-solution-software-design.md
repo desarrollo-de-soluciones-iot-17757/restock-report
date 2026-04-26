@@ -341,6 +341,16 @@ Estas clases expresan el querer generar una acción dentro del sistema. Para est
       <td style="padding: 10px; border: 1px solid;">Command</td>
       <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y la información que se necesita modificar.</td>
     </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateProfileAvatarByUserId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador del usuario y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateBusinessPictureByAccountId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
   </tbody>
 </table>
 <br>
@@ -375,6 +385,163 @@ Estas clases representan la intención de solicitar información de manera efici
 <br>
 
 #### 4.2.3.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Profile and Preferences se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades de la gestión de perfiles personales y de negocio. A través de controladores especializados y ensambladores (Assemblers), esta capa actúa como punto de entrada para solicitudes de clientes (como la Web App de administración o aplicaciones móviles), facilitando la transformación de recursos (Data Transfer Objects) en Comandos o Queries hacia la capa de aplicación. Su diseño garantiza una clara separación de responsabilidades para la orquestación de recursos clave como perfiles y negocios.
+
+##### ProfileContextFacade
+
+<p><em>Tabla de métodos de ProfileContextFacade en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createProfile</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil en el proceso de registro</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createBusiness</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil de negocio en el proceso de registro</td>
+    </tr>
+  </tbody>
+</table>
+
+
+##### UserProfilesController
+
+<p><em>Tabla de UserProfilesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserProfilesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles personales de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users/{userId}/profiles</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateAvatarByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente el avatar del usuario</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil de usuario. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información personal de un usuario</td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### AccountBusinessesController
+
+<p><em>Tabla de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AccountBusinessesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles de negocio de las cuentas de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/accounts/{accountId}/businesses</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updatePictureById</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente la imagen referencial del negocio</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil del negocio. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información de negocio de una cuenta</td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQuery</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.3.3. Application Layer
 
