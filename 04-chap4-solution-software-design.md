@@ -732,7 +732,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### SelectSubscriptionPlanCommandHandler
 
-<p><strong>Tabla X1</strong></p>
 <p><em>Tabla de SelectSubscriptionPlanCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -766,7 +765,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### ConfigurePlanLimitsCommandHandler
 
-<p><strong>Tabla X2</strong></p>
 <p><em>Tabla de ConfigurePlanLimitsCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -800,7 +798,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### GeneratePaymentOrderCommandHandler
 
-<p><strong>Tabla X3</strong></p>
 <p><em>Tabla de GeneratePaymentOrderCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -834,7 +831,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### ConfirmPaymentCommandHandler
 
-<p><strong>Tabla X4</strong></p>
 <p><em>Tabla de ConfirmPaymentCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -868,7 +864,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### ActivateSubscriptionCommandHandler
 
-<p><strong>Tabla X5</strong></p>
 <p><em>Tabla de ActivateSubscriptionCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -902,7 +897,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### CreateBusinessAccountCommandHandler
 
-<p><strong>Tabla X6</strong></p>
 <p><em>Tabla de CreateBusinessAccountCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -936,7 +930,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### AssociateUserToAccountCommandHandler
 
-<p><strong>Tabla X7</strong></p>
 <p><em>Tabla de AssociateUserToAccountCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -970,7 +963,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### UpgradeSubscriptionResourcesCommandHandler
 
-<p><strong>Tabla X8</strong></p>
 <p><em>Tabla de UpgradeSubscriptionResourcesCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -1004,7 +996,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### GetSubscriptionStatusQueryHandler
 
-<p><strong>Tabla X9</strong></p>
 <p><em>Tabla de GetSubscriptionStatusQueryHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -1038,7 +1029,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### PaymentAcceptedEventHandler
 
-<p><strong>Tabla X10</strong></p>
 <p><em>Tabla de PaymentAcceptedEventHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -1072,7 +1062,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### SubscriptionActivatedEventHandler
 
-<p><strong>Tabla X11</strong></p>
 <p><em>Tabla de SubscriptionActivatedEventHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -1106,7 +1095,6 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 ##### AccountCreatedEventHandler
 
-<p><strong>Tabla X12</strong></p>
 <p><em>Tabla de AccountCreatedEventHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -1447,7 +1435,7 @@ En esta sección, el equipo presenta el Diagrama de Clases detallado para la Dom
 
 En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Suscriptions and Payments.
 
-<a href="https://ibb.co/mFYKHb2r"><img src="https://i.ibb.co/qF48R7cL/bd-suscriptions.png" alt="bd-suscriptions" border="0"></a>
+<a href="https://ibb.co/mC6HHJ3B"><img src="https://i.ibb.co/mC6HHJ3B/Captura-de-pantalla-2026-04-25-a-la-s-11-05-32-p-m.png" alt="bd-suscriptions" border="0"></a>
 
 ### 4.2.3. Bounded Context: Profiles and Preferences
 
