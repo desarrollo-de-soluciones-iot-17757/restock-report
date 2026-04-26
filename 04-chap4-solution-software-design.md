@@ -390,7 +390,6 @@ Está compuesta por Aggregates, Value Objects, Domain Events y abstracciones de 
 | DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                               |
 | ReconciliationCompletedEvent   | Domain Event | Se emite cuando una tarea de conciliación es completada.                                                |
 
-
 ### 4.2.6.2. Interface Layer
 
 En la capa de interfaz del Bounded Context de **Service Operation and Monitoring** se exponen los endpoints RESTful necesarios para consultar y administrar la información generada por el monitoreo operativo. Esta capa funciona como punto de entrada para la Web App de administración, permitiendo visualizar lecturas de telemetría, stock físico estimado, alertas, reportes de salud de dispositivos y tareas de conciliación.
@@ -510,7 +509,6 @@ La capa de aplicación del Bounded Context de **Service Operation and Monitoring
 | DeviceMalfunctionDetectedEventHandler | Event Handler | Registra un reporte de salud del dispositivo cuando se detecta una falla o comportamiento anómalo. | DeviceMalfunctionDetectedEvent |
 | ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                          | ReconciliationCompletedEvent   |
 
-
 ### 4.2.6.4. Infrastructure Layer
 
 La capa de infraestructura del Bounded Context de **Service Operation and Monitoring** implementa los mecanismos técnicos necesarios para persistir datos, recibir telemetría desde dispositivos IoT y publicar eventos hacia otros bounded contexts. En esta capa se ubican las implementaciones concretas de los repositorios definidos en el dominio, el contexto de base de datos, adaptadores de mensajería y servicios externos necesarios para operar el monitoreo.
@@ -547,7 +545,7 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Asset and Resource Management. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+Esta sección presenta el diagrama de componentes del backend para el bounded context Service Operation and Monitoring. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
