@@ -3090,14 +3090,33 @@ La capa de infrastructure de Sales Order Management materializa los repositorios
 
 #### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
 
+En esta sección se presentan los diagramas de componentes del bounded context de **Sales Order Management** mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros componentes o servicios.
+
+##### Web Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
+
+<img src="https://i.imgur.com/DmgkRpH.png" alt="Web Sales Order Management Component Diagram" width="100%">
+
+##### Mobile Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación móvil, se implementa como un componente Dart/Flutter dentro del Restock Mobile Application, cumple la misma responsabilidad de gestión de órdenes de sucursal, reutilizando widgets o clases del componente Shared y conectándose igualmente al backend principal mediante JSON/HTTPS para el registro y consulta de ventas.
+
+<img src="https://i.imgur.com/FKwWjcM.png" alt="Mobile Sales Order Management Component Diagram" width="100%">
+
+##### Backend Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
+
+<img src="https://i.imgur.com/pR0rPXd.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+
 #### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
 
-En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta.
+En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta del negocio.
 
-En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. El contrato de persistencia se define mediante la interfaz ISalesRepository, desacoplando el dominio de cualquier motor de base de datos. 
-
+En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. El contrato de persistencia se define mediante la interfaz ISalesRepository, desacoplando el dominio de cualquier motor de base de datos.
 
 <img src="https://i.imgur.com/5flPJ6S.png" alt="Class Diagram - Sales Order Management">
 
