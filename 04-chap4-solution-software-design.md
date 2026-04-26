@@ -71,34 +71,42 @@ A continuación, se describen las relaciones y patrones de integración observad
 #### Análisis de Bounded Contexts
 
 ##### Analytics ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Analytics)
 - **Patrón:** Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
 
 ##### Service Design and Planning ↔ Asset and Resource Management
+
 - **Relación:** Upstream (Service Design and Planning) / Downstream (Asset and Resource Management)
 - **Patrón:** Shared Kernel — Ambos contextos comparten un modelo común de diseño de servicios. Service Design and Planning actúa como proveedor (SUP) y Asset and Resource Management como cliente (CUST), garantizando que la planificación de servicios guíe la gestión de recursos sin duplicar el modelo compartido.
 
 ##### Asset and Resource Management ↔ Sales Order Management
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Sales Order Management)
 - **Patrón:** Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Order Management consume para generar órdenes de venta correctamente asociadas. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para los procesos de venta.
 
 ##### Asset and Resource Management ↔ Service Operation and Monitoring
+
 - **Relación:** Upstream (Asset and Resource Management) / Downstream (Service Operation and Monitoring)
 - **Patrón:** Anti-Corruption Layer — Service Operation and Monitoring consume datos de Asset and Resource Management, pero los traduce a su propio modelo operativo a través de un ACL. Esto protege al dominio operativo de ser contaminado con el lenguaje propio de la gestión de activos y recursos.
 
 ##### IAM ↔ Subscriptions and Payments
+
 - **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
 - **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
 
 ##### IAM ↔ Profile and Preferences
+
 - **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
 - **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
 
 ##### Service Operation and Monitoring ↔ Communication
+
 - **Relación:** Upstream (Service Operation and Monitoring) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume eventos operativos generados por Service Operation and Monitoring para notificar al personal o a los usuarios relevantes. Service Operation and Monitoring actúa como proveedor del contexto operativo que Communication necesita para ejecutar sus notificaciones.
 
 ##### Sales Order Management ↔ Communication
+
 - **Relación:** Upstream (Sales Order Management) / Downstream (Communication)
 - **Patrón:** Customer/Supplier — Communication consume información de órdenes de venta de Sales Order Management para emitir confirmaciones, alertas o notificaciones relacionadas con el ciclo de vida de las órdenes, sin conocer la lógica interna del dominio de ventas.
 
@@ -205,21 +213,489 @@ Para Restock, el diagrama de contenedores incluye los siguientes contenedores pr
 
 El siguiente diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
 
-<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" 
-     alt="Production Deployment Diagram"
-     style="width:100%; height:auto;">
+`<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png"       alt="Production Deployment Diagram"      style="width:100%; height:auto;">`
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Identity and Access Management
 
+Este Bounded Context se encarga de gestionar el acceso seguro a la aplicación y el proceso de registro de los distintos actores del sistema. Proporciona los mecanismos necesarios para la autenticación y autorización, garantizando la correcta asignación de roles (Visitante, Usuario, Administrador de Retail, Administrador de Restaurante) y la validación de credenciales según las políticas de seguridad del negocio.
+
 #### 4.2.1.1. Domain Layer
+
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Identity and Access Management. En esta capa se encapsulan todas las reglas de negocio críticas tales como la creación de usuarios, autenticación, asignación de roles y vinculación con cuentas empresariales.
+
+Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, centralizando su lógica en Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar el tipado estricto, Eventos de Dominio (Domain Events) y los contratos de persistencia mediante Interfaces.
+
+##### Aggregates & Entities
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>User</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Entidad principal que representa a cualquier actor del sistema. Orquesta la validación de credenciales y asegura que la transición de estados (como el registro de un visitante a un usuario activo) cumpla con las invariantes de seguridad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Role</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Define el conjunto de permisos asociados a un usuario. En este contexto, gestiona la distinción entre Visitant, Retail manager y Restaurant manager, permitiendo el acceso granular a las funcionalidades del negocio.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Value Objects
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Username</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador único de la cuenta. Valida formatos y asegura que no existan duplicidad de identidades durante los procesos de Sign up o registro de trabajadores.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Password</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Garantiza la inmutabilidad y seguridad de la clave de acceso. Se encarga de aplicar reglas de complejidad y manejar la lógica de encriptación/hashing antes de la persistencia.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Repository Interfaces
+
+<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IUserRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Define el contrato para la persistencia de usuarios, permitiendo la búsqueda por credenciales para el Sign in y el almacenamiento de nuevos registros.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IRoleRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz encargada de recuperar la configuración de roles desde el almacén de datos para facilitar la asignación de permisos durante la creación de perfiles.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.1.2. Interface Layer
 
+La capa de interfaz expone los puntos de entrada HTTP necesarios para que los clientes interactúen con el sistema de identidad. A través de controladores especializados, gestiona los flujos de autenticación y la administración de personal operativo.
+
+##### AuthenticationController
+
+<p><em>Tabla de AuthenticationController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AuthenticationController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos de autenticación y registro inicial en la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/authentication</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de AuthenticationController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">signIn</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-in (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Autentica credenciales y genera el recurso de usuario autenticado.</td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">signUp</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-up (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra un nuevo usuario en el sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RolesController
+
+<p><em>Tabla de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RolesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Proveer acceso al catálogo de roles disponibles en el sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/roles</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllRoles</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna la lista completa de roles definidos.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllRolesQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UsersController
+
+<p><em>Tabla de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UsersController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la información de los usuarios y sus estados de suscripción.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllUsers</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista todos los usuarios registrados.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllUsersQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getUserById</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene los detalles de un usuario específico.</td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateUserSubscription</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId}/subscription (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el tipo de suscripción del usuario.</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.1.3. Application Layer
 
+La capa de aplicación para este Bounded Context orquesta los procesos de negocio relacionados con la identidad. Aquí se procesan los comandos para crear usuarios, se aplican las reglas de autenticación y se reacciona a los eventos de dominio para desencadenar acciones automáticas, como la creación de perfiles o la vinculación a cuentas de negocio.
+
+##### SignUpCommandHandler
+
+<p><em>Tabla de SignUpCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Coordinar el registro de nuevos usuarios en el sistema, gestionando el ingreso de datos personales, aplicando el hashing obligatorio de contraseñas y asignando el rol inicial de "Visitant".</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### SignInCommandHandler
+
+<p><em>Tabla de SignInCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Validar las credenciales de acceso ingresadas por el usuario para orquestar el proceso de autenticación y permitir el acceso seguro a los servicios de la aplicación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateUserSubscriptionCommandHandler
+
+<p><em>Tabla de UpdateUserSubscriptionCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Procesar la actualización del plan de suscripción del usuario, asegurando que el cambio de estado y los beneficios asociados se persistan correctamente en el perfil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetUserByIdQueryHandler
+
+<p><em>Tabla de GetUserByIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Recuperar la información detallada de un usuario específico para su visualización o validación de perfil en la interfaz, sin alterar el estado del sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.1.4. Infrastructure Layer
+
+La capa de infraestructura en el Bounded Context de IAM provee las implementaciones técnicas de las interfaces definidas en el dominio. Se encarga de la persistencia física de los usuarios y roles en MongoDB, la integración con servicios de seguridad para el cifrado de credenciales y la implementación de los servicios de generación de tokens o secuencias necesarias para el funcionamiento del sistema.
+
+##### UserRepository
+
+<p><em>Tabla de UserRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la persistencia y consultas en la base de datos MongoDB para gestionar los perfiles de usuario y sus credenciales de acceso.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IUserRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RoleRepository
+
+<p><em>Tabla de RoleRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RoleRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el almacenamiento y recuperación de los roles y permisos definidos en el sistema para la validación de accesos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IRoleRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
