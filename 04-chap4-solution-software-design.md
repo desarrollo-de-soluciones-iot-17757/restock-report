@@ -649,7 +649,7 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Implementar las consultas a la base de datos relacional para guardar, editar y buscar recetas gastronómicas.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementar las consultas a la base de datos para guardar, editar y buscar recetas gastronómicas.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -759,7 +759,7 @@ El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (Recipe
 
 ##### 4.2.5.6.2. Bounded Context Database Design Diagram
 
-En esta sección, el equipo presenta el Diagrama de Base de Datos (Entity-Relationship Diagram) diseñado para el Bounded Context de Service Design and Planning. Este diagrama detalla el esquema relacional que permite la persistencia de las entidades core: las recetas de los restaurantes y los kits comerciales de las tiendas retail.
+En esta sección, el equipo presenta el Diagrama de Base de Datos (Entity-Relationship Diagram) diseñado para el Bounded Context de Service Design and Planning. Este diagrama detalla el esquema que permite la persistencia de las entidades core: las recetas de los restaurantes y los kits comerciales de las tiendas retail.
 
 El modelo define explícitamente las tablas, tipos de datos, llaves primarias (PK) y llaves foráneas (FK) internas. Cabe destacar una decisión arquitectónica basada en los principios de Domain-Driven Design (DDD): las tablas de requerimientos (recipe_supply_requirements y kit_supply_requirements) almacenan el supply_id como una referencia lógica simple (Long/BigInt) y no como una Foreign Key física, garantizando así el desacoplamiento a nivel de base de datos respecto al Bounded Context de Asset and Resource Management, dueño original de la entidad Insumo.
 
