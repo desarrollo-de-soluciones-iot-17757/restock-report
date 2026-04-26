@@ -2729,8 +2729,20 @@ Estas clases representan los pilares transaccionales del sistema. Cada Aggregate
       <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
       <td style="padding: 10px; border: 1px solid;">Representa una orden de venta. Encapsula la lógica para validar que la orden contenga al menos un producto, que el total sea mayor a cero y permite actualizar su estado.</td>
     </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesItem</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un ítem dentro de la orden de venta. Se asegura de que la cantidad sea mayor que cero, que el precio unitario también sea mayor que cero y que el total de la línea sea el resultado de multiplicar el precio unitario por la cantidad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AdditionalSupply</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una línea de producto dentro de la orden. Garantiza que la cantidad sea mayor a cero y que el id del lote referenciado sea válido.</td>
+    </tr>
   </tbody>
 </table>
+
+<br>
 
 ##### Value Objects
 
@@ -2748,10 +2760,20 @@ Estas clases modelan características conceptuales del dominio. Son inmutables y
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesTotals</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los valores de subtotal, impuesto y total. Garantiza que estos valores no puedan modificarse una vez creados, que ninguno sea negativo y que el total sea siempre la suma del subtotal y el impuesto.</td>
     </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CustomerName</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el nombre del cliente. Valida que no sea una cadena vacía ni supere el límite de caracteres permitido.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el estado de la orden, como pendiente, completado o cancelado. Se asegura de que solo se utilicen valores definidos dentro del conjunto permitido y que los cambios de estado se realicen únicamente siguiendo transiciones válidas.</td>
+    </tr>  
   </tbody>
 </table>
 
@@ -2772,9 +2794,9 @@ Las abstracciones de persistencia se definen aquí mediante el Principio de Inve
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>ISalesRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para almacenar la información de cada venta realizada por el usuario.</td>
     </tr>
   </tbody>
 </table>
@@ -2796,16 +2818,16 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesController</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong></strong></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la creación, consulta, actualización y cierre de órdenes de venta de tiendas retail y restaurantes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
@@ -2829,34 +2851,34 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;">Register</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Crea una nueva orden de venta con sus ítems, insumos adicionales y monto total.</td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna el detalle completo de una orden de venta por su ID.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranch</td>
+      <td style="padding: 10px; border: 1px solid;">/branches/{branchId}/sales/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchQuery</td>
+    </tr>    
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Edit</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId}/status (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el estado de una orden de venta </td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
-      <td style="padding: 10px; border: 1px solid;"></td>
+      <td style="padding: 10px; border: 1px solid;">Delete</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (DELETE)</td>
+      <td style="padding: 10px; border: 1px solid;">Cancela una orden de venta marcándola con estado cancelado</td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
     </tr>
   </tbody>
 </table>
