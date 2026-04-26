@@ -109,7 +109,7 @@ Con base en el análisis, se implementaron los siguientes patrones de relación 
 - **Anti-Corruption Layer** en las relaciones de Service Operation and Monitoring, Subscriptions and Payments y Profile and Preferences con sus respectivos upstream.
 - **Customer/Supplier** entre Service Operation and Monitoring → Communication y Sales Order Management → Communication.
 
-![context-map](https://imgur.com/aewifGw.png)
+![context-map](https://imgur.com/6gwxZZP.png)
 
 En la imagen se observa que el contexto Asset and Resource Management actúa como el contexto central, relacionándose con dominios como Identity and Access Management, Sales Order Management, Service Design and Planning y Communication, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades específicas.
 
