@@ -2700,3 +2700,723 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
+
+## 4.2.7. Bounded Context: Communication
+
+#### 4.2.7.1. Domain Layer
+
+La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de alertas y notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts, como Service Operation and Monitoring y Sales Order Management, para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager).
+La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, filtrada según su severidad y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Alert</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una alerta generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, activación, resolución y expiración. Garantiza que una alerta no pueda resolverse sin haber sido previamente activada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Notification</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el mensaje concreto derivado de una alerta que se envía al usuario destinatario. Incluye el contenido del mensaje, la referencia externa generada por OneSignal y el estado de entrega. Una notificación siempre está asociada a una alerta padre.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationRecipient</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa al destinatario de una notificación dentro del sistema. Almacena el identificador del usuario, el canal de entrega y el estado de recepción. Permite modelar envíos multi-destinatario sin duplicar la lógica de la alerta.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Value Objects
+
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AlertType</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Clasifica el tipo de alerta generada: LOW_STOCK, OVERSTOCK, STOCK_DISCREPANCY, DEVICE_FAILURE o DEVICE_ANOMALY. Permite que el sistema aplique filtros de severidad y determine el mensaje apropiado para cada situación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AlertSeverity</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el nivel de criticidad de una alerta: LEVE, MODERADA o CRÍTICA. Condiciona la prioridad de entrega de la notificación y el comportamiento del sistema ante alertas pendientes de resolución.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AlertStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el estado actual de una alerta: ACTIVE, RESOLVED o EXPIRED. Garantiza que las transiciones de estado sean válidas y controladas dentro del ciclo de vida del aggregate.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el estado de entrega de una notificación: PENDING, SENT o FAILED. Permite rastrear si el mensaje fue correctamente despachado a través del proveedor externo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationChannel</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Define el canal de entrega de la notificación: PUSH_NOTIFICATION, IN_APP o EMAIL. Permite que el contexto soporte múltiples canales sin alterar la lógica central de generación de alertas.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SituationData</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una alerta: identificador del recurso afectado, nombre de la sucursal, tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AlertId, NotificationId, UserId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Repository Interfaces
+
+Las abstracciones de persistencia se definen en esta capa para cumplir el Principio de Inversión de Dependencias. El dominio declara qué necesita guardar o consultar, sin depender de la tecnología utilizada en la base de datos.
+
+<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IAlertRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para registrar, consultar, filtrar por tipo o severidad y actualizar el estado de alertas activas o resueltas dentro del sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>INotificationRepository</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato para persistir notificaciones generadas, consultar el historial cronológico y actualizar el estado de entrega de cada mensaje despachado.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.2. Interface Layer
+
+La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de alertas, visualizar notificaciones recibidas y gestionar el estado de las mismas. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación.
+Adicionalmente, contempla endpoints de integración interna para recibir eventos desde otros bounded contexts, como Service Operation and Monitoring y Sales Order Management, que actúan como disparadores de nuevas alertas dentro de este contexto.
+
+##### AlertController
+
+<p><em>Tabla de AlertController en el Interface Layer</em></p><table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AlertController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar, filtrar y gestionar el estado de alertas activas o históricas del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/alerts</td>
+    </tr>
+  </tbody>
+</table><br><p><em>Tabla de métodos de AlertController en el Interface Layer</em></p><table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetAll</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista todas las alertas de la cuenta con soporte de filtros por tipo y severidad</td>
+      <td style="padding: 10px; border: 1px solid;">GetAlertsByAccountQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{alertId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de una alerta específica</td>
+      <td style="padding: 10px; border: 1px solid;">GetAlertByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Resolve</td>
+      <td style="padding: 10px; border: 1px solid;">/{alertId}/resolve (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Marca una alerta activa como resuelta</td>
+      <td style="padding: 10px; border: 1px solid;">ResolveAlertCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">EvaluateStockThreshold</td>
+      <td style="padding: 10px; border: 1px solid;">/stock-thresholds/evaluate (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Evalúa umbrales de stock para generar alertas de bajo stock o exceso</td>
+      <td style="padding: 10px; border: 1px solid;">EvaluateStockThresholdCommand</td>
+    </tr>
+  </tbody>
+</table><br>
+
+##### NotificationController
+
+<p><em>Tabla de NotificationController en el Interface Layer</em></p><table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones recibidas por el usuario y su estado de entrega.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/notifications</td>
+    </tr>
+  </tbody>
+</table><br><p><em>Tabla de métodos de NotificationController en el Interface Layer</em></p><table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetRecent</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones del usuario en orden cronológico</td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{notificationId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de una notificación específica</td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.3. Application Layer
+
+La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de alertas y notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura.
+Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, cargar o crear aggregates, aplicar filtros de severidad, determinar destinatarios y delegar el envío de notificaciones al servicio externo de OneSignal a través de la capa de infraestructura.
+
+##### GenerateAlertCommandHandler
+
+<p><em>Tabla de GenerateAlertCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GenerateAlertCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva alerta a partir de la información de situación recibida, clasificarla por tipo y severidad, persistirla y desencadenar la generación de notificaciones para los destinatarios correspondientes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GenerateAlertCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### ResolveAlertCommandHandler
+
+<p><em>Tabla de ResolveAlertCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ResolveAlertCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la resolución de una alerta activa, validando que exista y que su estado permita la transición a RESOLVED, actualizando el aggregate y publicando el evento correspondiente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ResolveAlertCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### DispatchNotificationCommandHandler
+
+<p><em>Tabla de DispatchNotificationCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el envío de una notificación a los destinatarios identificados, delegando la entrega a OneSignal a través de la capa de infraestructura y actualizando el estado de la notificación según el resultado obtenido.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### GetAlertsByAccountQueryHandler
+
+<p><em>Tabla de GetAlertsByAccountQueryHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetAlertsByAccountQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar el historial de alertas asociadas a una cuenta, con soporte de filtros por tipo (LOW_STOCK, DEVICE_FAILURE, etc.) y severidad (LEVE, MODERADA, CRÍTICA), ordenadas cronológicamente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetAlertsByAccountQuery</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### GetRecentNotificationsQueryHandler
+
+<p><em>Tabla de GetRecentNotificationsQueryHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones recibidas por el usuario autenticado, incluyendo tipo de alerta, sucursal de origen y hora exacta del evento, para ser mostradas en el centro de notificaciones.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### StockAnomalyDetectedEventHandler
+<p><em>Tabla de StockAnomalyDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Service Operation and Monitoring cuando se detecta una anomalía de stock, creando la alerta correspondiente dentro del contexto de Communication e iniciando el flujo de notificación al administrador afectado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### DeviceFailureDetectedEventHandler
+<p><em>Tabla de DeviceFailureDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Service Operation and Monitoring, generando una alerta de tipo DEVICE_FAILURE y despachando la notificación correspondiente al administrador del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### AlertGeneratedEventHandler
+<p><em>Tabla de AlertGeneratedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AlertGeneratedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una alerta dentro del propio contexto para iniciar automáticamente el proceso de construcción y despacho de notificaciones hacia los destinatarios, invocando el DispatchNotificationCommand.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AlertGeneratedEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementan los repositorios de alertas y notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management.
+Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
+
+##### AlertRepository
+<p><em>Tabla de AlertRepository en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AlertRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar alertas generadas por el sistema, incluyendo su tipo, severidad, estado y datos de situación asociados. Soporta filtros por cuenta, tipo de alerta y estado para el centro de notificaciones.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IAlertRepository</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### NotificationRepository
+<p><em>Tabla de NotificationRepository en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir notificaciones despachadas, incluyendo la referencia externa de OneSignal, el estado de entrega y el canal utilizado. Soporta consulta cronológica del historial de mensajes por usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationRepository</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### CommunicationDbContext
+<p><em>Tabla de CommunicationDbContext en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CommunicationDbContext</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para las entidades del Bounded Context, incluyendo Alert, Notification y NotificationRecipient, hacia la base de datos MongoDB del sistema.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### OneSignalNotificationGateway
+<p><em>Tabla de OneSignalNotificationGateway en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">OneSignalNotificationGateway</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">External Service Wrapper</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal y retorna la referencia externa del mensaje despachado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationGateway</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### IntegrationEventConsumer
+<p><em>Tabla de IntegrationEventConsumer en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IntegrationEventConsumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Consumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Service Operation and Monitoring (StockAnomalyDetectedEvent, DeviceFailureDetectedEvent) y por Sales Order Management, transformándolos en comandos internos que disparan la generación de alertas dentro del contexto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IIntegrationEventConsumer</td>
+    </tr>
+  </tbody>
+</table>
+<br> 
+
+##### DomainEventPublisher
+<p><em>Tabla de DomainEventPublisher en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DomainEventPublisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Publisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como AlertGeneratedEvent o AlertResolvedEvent, para que otros contextos interesados puedan reaccionar de forma desacoplada si fuese necesario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IDomainEventPublisher</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context Communication, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la gestión del ciclo de vida de alertas y notificaciones.
+
+##### Web Application Component Diagram
+
+El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
+
+<img src="https://imgur.com/gkH6zra.png" alt="web-communicaiton">
+
+El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
+
+##### Mobile Application Component Diagram
+
+El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
+
+<img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communicaiton">
+
+El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
+
+##### Backend Application Component Diagram
+
+El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
+
+<img src="https://imgur.com/P0X1a9t.png" alt="api-communicaiton">
+
+El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
+
+#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de alertas y notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una alerta, desde su generación ante un evento crítico externo hasta el despacho de la notificación al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo.
+
+<img src="https://imgur.com/NWm4Vxu.png" alt="class-diagram-communicaiton">
+
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Alert, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una alerta de activación, resolución y expiración, se gestiona exclusivamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Alert, Notification y NotificationRecipient encapsulan reglas de negocio mediante operaciones como activate(), resolve(), markAsSent() y markAsDelivered(), en lugar de ser simples estructuras de datos. La consistencia se refuerza con el uso de Value Objects (como AlertId, NotificationId, UserId y SituationData) y enums (AlertType, AlertSeverity, AlertStatus, etc), que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. Finalmente, los Domain Events muestran la integración entre contextos: eventos como StockAnomalyDetectedEvent y DeviceFailureDetectedEvent disparan la creación de alertas, mientras que AlertGeneratedEvent y AlertResolvedEvent comunican cambios relevantes a otros bounded contexts, manteniendo un bajo acoplamiento.
+
+##### 4.2.7.6.2. Bounded Context Database Design Diagram
+
+El diagrama de diseño de base de datos del bounded context Communication muestra la estructura física que soporta el almacenamiento de alertas, notificaciones y destinatarios de notificación. Este esquema organiza las tablas principales, sus atributos y las relaciones entre ellas, asegurando la persistencia coherente de la información del dominio.
+
+<img src="https://imgur.com/Aq03V1G.png" alt="database-communication">
+
+El diagrama evidencia una estructura relacional clara compuesta por tres tablas principales: alerts, notifications y notification_recipients. La tabla alerts funciona como entidad central, ya que almacena la información principal de cada alerta, incluyendo su tipo, severidad, estado y datos asociados al evento detectado.
+
+La tabla notifications depende de alerts mediante la clave foránea alert_id, lo que permite registrar una o varias notificaciones generadas a partir de una alerta. A su vez, notification_recipients se relaciona con notifications para almacenar los destinatarios y el estado de entrega de cada mensaje.
+
+El uso de claves primarias, foráneas y campos tipados mediante enums refuerza la integridad referencial y la consistencia de los datos. En conjunto, este diseño refleja una persistencia alineada con el modelo de dominio, manteniendo una separación ordenada entre alertas, notificaciones y sus receptores.
