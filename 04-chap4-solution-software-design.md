@@ -390,7 +390,6 @@ Está compuesta por Aggregates, Value Objects, Domain Events y abstracciones de 
 | DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                               |
 | ReconciliationCompletedEvent   | Domain Event | Se emite cuando una tarea de conciliación es completada.                                                |
 
----
 
 ### 4.2.6.2. Interface Layer
 
@@ -511,7 +510,6 @@ La capa de aplicación del Bounded Context de **Service Operation and Monitoring
 | DeviceMalfunctionDetectedEventHandler | Event Handler | Registra un reporte de salud del dispositivo cuando se detecta una falla o comportamiento anómalo. | DeviceMalfunctionDetectedEvent |
 | ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                          | ReconciliationCompletedEvent   |
 
----
 
 ### 4.2.6.4. Infrastructure Layer
 
