@@ -3116,9 +3116,9 @@ El diagrama representa la implementación del bounded context de Sales Order Man
 
 En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta del negocio.
 
-En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. El contrato de persistencia se define mediante la interfaz ISalesRepository, desacoplando el dominio de cualquier motor de base de datos.
+En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. Además, se define los command y query service interfaces que orquestan las operaciones de creación y consulta de ventas, manteniendo una clara separación de responsabilidades.
 
-<img src="https://i.imgur.com/5flPJ6S.png" alt="Class Diagram - Sales Order Management">
+<img src="https://i.imgur.com/EVNhCMl.png" alt="Class Diagram - Sales Order Management">
 
 ##### 4.2.7.6.2. Bounded Context Database Design Diagram
 
