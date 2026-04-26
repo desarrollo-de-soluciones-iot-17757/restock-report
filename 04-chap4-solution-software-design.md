@@ -124,11 +124,13 @@ A continuación, se describen las relaciones y patrones de integración observad
 
 - **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
 - **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
+- **Patrón:** Shared Kernel — IAM provee al contexto de suscripciones de una relación con el usuario dueño de la cuenta y suscripción.
 
 ##### IAM ↔ Profile and Preferences
 
 - **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
 - **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
+- **Patrón:** Shared Kernel — IAM provee al contexto de perfiles de una relación con el usuario cuya información de negocio y personal está siendo usada por el contexto de perfiles.
 
 ##### Service Operation and Monitoring ↔ Communication
 
@@ -147,7 +149,7 @@ Con base en el análisis, se implementaron los siguientes patrones de relación 
 - **Anti-Corruption Layer** en las relaciones de Service Operation and Monitoring, Subscriptions and Payments y Profile and Preferences con sus respectivos upstream.
 - **Customer/Supplier** entre Service Operation and Monitoring → Communication y Sales Order Management → Communication.
 
-![context-map](https://imgur.com/6gwxZZP.png)
+![context-map](https://i.imgur.com/rBIqFn7.jpeg)
 
 En la imagen se observa que el contexto Asset and Resource Management actúa como el contexto central, relacionándose con dominios como Identity and Access Management, Sales Order Management, Service Design and Planning y Communication, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades específicas.
 
