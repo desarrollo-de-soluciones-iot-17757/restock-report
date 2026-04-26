@@ -702,8 +702,17 @@ La capa de infraestructura en el Bounded Context de IAM provee las implementacio
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
+
+El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
+
+<img src="https://i.ibb.co/35YFtdd9/imagen-2026-04-26-124752258.png" alt="imagen-2026-04-26-124752258" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Identity and Access Management.
+
+<img src="https://i.ibb.co/v4b2mP98/imagen-2026-04-25-235435477.png" alt="imagen 2026 04 25 235435477" border="0">
 
 ### 4.2.2. Bounded Context: Subscriptions and Payments
 
