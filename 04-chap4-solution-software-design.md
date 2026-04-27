@@ -2,9 +2,136 @@
 
 ## 4.1. Strategic-Level Domain-Driven Design
 
+En esta sección se aborda el enfoque de Strategic-Level Domain-Driven Design (DDD), el cual permite definir una visión global del sistema a partir de la identificación y organización de los distintos dominios del negocio. A través de este enfoque, el equipo establece los bounded contexts, delimita responsabilidades y analiza las relaciones entre las diferentes áreas funcionales.
+
 ### 4.1.1. Design-Level EventStorming
 
+En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos y reglas de negocio. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention">
+</div>
+
+Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados durante la tercera fase del Design-Level Event Storming. Esta convención permitió identificar de manera visual los distintos elementos del dominio, tales como eventos, comandos, actores, políticas, modelos de lectura y sistemas externos, facilitando la comprensión de las relaciones y flujos dentro del sistema.
+
+#### Paso 1: Event
+
+El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/fTgbd9E.png" alt="event">
+  <img src="https://imgur.com/j9OFNTa.png" alt="event">
+  <img src="https://imgur.com/cRDqY8F.png" alt="event">
+</div>
+
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
+
+#### Paso 2: Timelines
+
+El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada contexto del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/pISgB60.png" alt="time-line">
+  <img src="https://imgur.com/yUTo02r.png" alt="time-line">
+  <img src="https://imgur.com/vjb4mf6.png" alt="time-line">
+</div>
+
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo once contextos claramente etiquetados: IAM Identity and Access Management, Managing personal and business profiles, Plans and payment, Branch creation and management, Registration and management of customized supplies, Recipes and Kits, Batch and stock registration, Sales register, Device registration and configuration, Telemetry, stock and thresholds y Communications center. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
+
+#### Paso 3: Paint Point
+
+El tercer paso incorporó la identificación de los puntos de dolor o tambien llamados paint point dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/NGzzOlA.png" alt="paint-point">
+  <img src="https://imgur.com/flx9ps8.png" alt="paint-point">
+  <img src="https://imgur.com/PGu5p87.png" alt="paint-point">
+  <img src="https://imgur.com/90q0dd4.png" alt="paint-point">
+</div>
+
+El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se marcó un pain point relacionado con el proceso de registro, preguntando qué información mínima se requiere para completar el alta de una cuenta. En Branch creation and management se levantó una pregunta sobre el comportamiento del sistema cuando no se adjunta una imagen al registrar una sucursal. En Registration and management of customized supplies se planteó la misma interrogante respecto a la imagen del insumo personalizado. En Recipes and Kits se identificaron pain points tanto en la receta como en el kit, relacionados con qué información adicional debe consultarse antes de registrarlos y qué ocurre cuando no se proporciona una imagen. En Sales register se levantó una pregunta sobre qué información de precio o condición debe validarse antes de confirmar la venta. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
+
+#### Paso 4: Pivotal Points
+
+El cuarto paso incorporó la identificación de los pivotal points dentro de los flujos ya organizados. Estos puntos se representan como las líneas o momentos de transición más relevantes dentro del recorrido, y permiten visualizar dónde ocurre un cambio significativo en la dirección, el contexto o la decisión del proceso. Su identificación ayudó a comprender cómo se conectan las distintas etapas del negocio y cuáles son los momentos clave que estructuran la experiencia analizada.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/gsg4IUH.png" alt="pivotal-point">
+  <img src="https://imgur.com/jOwxT1W.png" alt="pivotal-point">
+  <img src="https://imgur.com/w3N0Ahv.png" alt="pivotal-point">
+  <img src="https://imgur.com/RLkltIc.png" alt="pivotal-point">
+  <img src="https://imgur.com/8ROOM3c.png" alt="pivotal-point">
+  <img src="https://imgur.com/92OfBoP.png" alt="pivotal-point">
+</div>
+
+En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Branch creation and management, se identificó el punto en el que la intención de crear una sucursal se transforma en el registro formal de sus datos. En Registration and management of customized supplies, el flujo cambia cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Recipes and Kits, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Batch and stock registration, el punto crítico se ubica en la transición hacia la confirmación de una venta. Finalmente, en Service Operation and Monitoring y Communications no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
+
+#### Paso 5: Commands
+
+El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/WiLGvE1.png" alt="commands">
+  <img src="https://imgur.com/xP7cZaQ.png" alt="commands">
+  <img src="https://imgur.com/Gt8pBlI.png" alt="commands">
+</div>
+
+El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Managing personal and business profiles: Create user profile, Change Password, Update personal data y Register new business. En Plans and payment: Select subscription plan, Configure plan limits, Update plan limits y Pay subscription plan. En Branch creation and management: Create branch, Edit branch y Delete branch. En Registration and management of customized supplies: Register Custom Supply y Edit Custom Supply. En Recipes and Kits: Register recipe, Edit recipe, Register Kit y Edit Kit. En Batch and stock registration: Register batch. En Sales register: Register sale, Calculate total price y Show sales. En Device registration and configuration: Register new device, Configure a device y Deactivate device. En Telemetry, stock and thresholds: Calculate stock, Status check, Register threshold, Edit threshold y Verify threshold. En Communications center: Generate new notification y Show the notification.
+
+#### Paso 6: Policies and Actors
+
+El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/mbnSUbF.png" alt="policies-actors">
+  <img src="https://imgur.com/WT6atlH.png" alt="policies-actors">
+  <img src="https://imgur.com/4ILKDjJ.png" alt="policies-actors">
+  <img src="https://imgur.com/gCyWyW1.png" alt="policies-actors">
+</div>
+
+El equipo identificó como actores principales al Retail Manager y al Branch Manager, presentes en la totalidad de los contextos del sistema. El actor Visitor fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos: en Plans and payment se definió una política que activa el plan de suscripción una vez que el pago es aceptado; en Telemetry, stock and thresholds se identificó una política que genera una tarea de conciliación automáticamente al detectarse una anomalía de stock; en Device registration and configuration se definió una política que deshabilita la ingesta de telemetría ante ciertos eventos del dispositivo; y en Communications center se identificó una política que dispara el envío de notificaciones en respuesta a eventos de alerta del sistema.
+
 #### 4.1.1.1 Candidate Context Discovery
+
+Luego de identificar los eventos, flujos, comandos y políticas del dominio, el equipo avanzó con la detección de contextos candidatos. Esta fase les permitió organizar los elementos vinculados de acuerdo con su cohesión funcional y las reglas de negocio que compartían, lo que facilitó la definición de los futuros Bounded Contexts. De este modo, el equipo logro modelar el dominio de Restock en contextos con responsabilidades claramente separadas.
+
+#### Paso 7: Read models
+
+El séptimo paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/SfMIuAC.png" alt="read-models">
+  <img src="https://imgur.com/LBUJFwz.png" alt="read-models">
+  <img src="https://imgur.com/1EfRZUB.png" alt="read-models">
+  <img src="https://imgur.com/RwejYIg.png" alt="read-models">
+</div>
+
+El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificó la vista de Login. En Managing personal and business profiles se definió la vista de Profile settings. En Branch creation and management se identificó la vista de Branch Management. En Registration and management of customized supplies se definió la vista de Custom Supply Management. En Recipes and Kits se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de seleccionar un ítem para editarlo. En Batch and stock registration se definió la vista de Batch Management. En Sales register se identificó la vista de Sales Management. En Device registration and configuration se definió la vista de Device Management. Estos read models garantizan que los actores cuenten con el contexto necesario en cada punto de decisión del flujo.
+
+#### Paso 8: External Systems
+
+El octavo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/6I1JkzM.png" alt="external-systems">
+  <img src="https://imgur.com/fatvFGG.png" alt="external-systems">
+  <img src="https://imgur.com/f0lHtoK.png" alt="external-systems">
+</div>
+
+El equipo identificó tres sistemas externos a partir del PDF. El primero es Cloudinary API, presente en los contextos de Managing personal and business profiles, Branch creation and management, Registration and management of customized supplies y Recipes and Kits, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema. El segundo es Stripe, integrado en el contexto de Plans and payment, encargado de procesar los pagos de suscripción. El tercero es OneSignal API, integrado en el contexto de Communications center, responsable del envío de notificaciones push a los usuarios del sistema.
+
+#### Paso 9: Add Aggregates
+
+El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
+
+<div style="display: flex; align-items: center;">
+  <img src="https://imgur.com/gDA5QZR.png" alt="aggregates">
+  <img src="https://imgur.com/awlhM6c.png" alt="aggregates">
+  <img src="https://imgur.com/R0iS8HY.png" alt="aggregates">
+  <img src="https://imgur.com/h5qQXCg.png" alt="aggregates">
+</div>
+
+El equipo identificó los agregados que estan organizados por contexto. En IAM se definió el agregado User. En Managing personal and business profiles se identificaron Profile y Business. En Plans and payment se definieron Subscription y Account. En Branch creation and management se identificaron Branch e Inventory. En Registration and management of customized supplies se definieron Custom Supply y Device. En Recipes and Kits se identificaron Recipe y Kit. En Batch and stock registration se definió Batch. En Sales register se identificó Sales Order. En Device registration and configuration se definieron Device Health y Conciliation Task. En Telemetry, stock and thresholds se identificaron Stock Record y Supply Threshold. En Communications center se definió el agregado Notification.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
@@ -22,7 +149,7 @@ Se trazaron fronteras alrededor de los grupos identificados, estableciendo los l
 
 Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
 
-<img src="assets/images/chapter4/event_storming.png" alt=“DDD” width="800px">
+<img src="https://imgur.com/oI92pdH.png" alt=“DDD” width="800px">
 
 A continuación, se explicará en qué consiste cada bounded context:
 
@@ -38,9 +165,9 @@ A continuación, se explicará en qué consiste cada bounded context:
 
 <img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
 
-**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+**Communication:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
 
-<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+<img src="https://imgur.com/5iFcZh6.jpg" alt="DDD" width="500px">
 
 **Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
 
@@ -1528,19 +1655,870 @@ En esta sección, el equipo presenta el diagrama de Base de Datos detallado para
 
 #### 4.2.3.1. Domain Layer
 
+La capa de dominio concentra el núcleo del Bounded Context Profiles and Preferences. En esta capa se encapsulan las reglas de negocio y la lógica fundamental relacionada con el manejo de información en perfiles de usuario y de negocio para brindar una identidad a cada uno de los usuarios de la plataforma.
+
+Esta capa está completamente aislada de detalles técnicos o bases de datos.Además, está compuesta de Entidades (Entities), Raíces de Agregación (Aggregate Roots) y Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates
+
+Este tipo de clases representa el pilar transaccional del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite.
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Profile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el perfil visible/administrable del usuario y centraliza sus datos de contacto, ubicación y avatar. Además, encapsula la lógica para editar la información almacenada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Business</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Contiene datos del negocio del usuario integrados al perfil. Además, contiene lógica para editar la información de negocio.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos (Primitive Obsession), asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>PhoneNumber</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena el número telefónico del usuario. Provee de validaciones especiales para asegurar que el formato ingresado para números telefónicos se siga al detalle.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Commands
+
+Estas clases expresan el querer generar una acción dentro del sistema. Para este contexto, expresa el querer crear o modificar información sobre el usuario y su negocio.
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateProfileCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe los parámetros necesarios para crear un perfil como número de teléfono, nombre, apellido, avatar, y, el identificador del usuario</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateBusinessCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe los parámetros necesarios para crear un perfil de negocio como nombre del negocio, ubicación, razón social e imagen referencial del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateProfileByUserIdCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de usuario para buscar su perfil y modificarlo según la información que se requiera modificar. No todos los campos son obligatorios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateBusinessByAccountId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y la información que se necesita modificar.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateProfileAvatarByUserId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador del usuario y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateBusinessPictureByAccountId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Queries
+
+Estas clases representan la intención de solicitar información de manera eficiente, sin alterar el estado de la entidad ni ejecutar reglas de negocio. Para este contexto, expresa el querer obtener la información de perfil y de negocio.
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetProfileByUserIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de usuario, el cual debe ser válido y representar a un usuario existente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetBusinessByAccountIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta, el cual debe ser válido y representar una cuenta existente.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
 #### 4.2.3.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Profile and Preferences se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades de la gestión de perfiles personales y de negocio. A través de controladores especializados y ensambladores (Assemblers), esta capa actúa como punto de entrada para solicitudes de clientes (como la Web App de administración o aplicaciones móviles), facilitando la transformación de recursos (Data Transfer Objects) en Comandos o Queries hacia la capa de aplicación. Su diseño garantiza una clara separación de responsabilidades para la orquestación de recursos clave como perfiles y negocios.
+
+##### ProfileContextFacade
+
+<p><em>Tabla de métodos de ProfileContextFacade en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createProfile</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil en el proceso de registro</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createBusiness</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil de negocio en el proceso de registro</td>
+    </tr>
+  </tbody>
+</table>
+
+
+##### UserProfilesController
+
+<p><em>Tabla de UserProfilesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserProfilesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles personales de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users/{userId}/profiles</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateAvatarByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente el avatar del usuario</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil de usuario. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información personal de un usuario</td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### AccountBusinessesController
+
+<p><em>Tabla de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AccountBusinessesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles de negocio de las cuentas de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/accounts/{accountId}/businesses</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updatePictureById</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente la imagen referencial del negocio</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil del negocio. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información de negocio de una cuenta</td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQuery</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.3.3. Application Layer
 
+La capa de aplicación del Bounded Context de Profiles and Preferences coordina el flujo de trabajo entre la capa de interfaz y el dominio, encapsulando la lógica de orquestación de la información personal y de negocio de los usuarios. En esta capa residen los Command Handlers, Query Handlers, Event Handlers y la implementación del Anticorruption Layer, los cuales son responsables de ejecutar las operaciones de creación y edición de los perfiles. Esta capa asegura que las acciones del negocio se realicen de manera transaccional y coherente, delegando las reglas puras al dominio y la persistencia a la infraestructura.
+
+##### ProfilesContextFacadeImpl
+
+<p><em>Tabla de ProfilesContextFacadeImpl en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesContextFacadeImpl</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la interfaz que expone métodos de creación de perfiles de usuario y de negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Métodos</strong></td>
+      <td style="padding: 10px; border: 1px solid;">createProfile y createBusiness</td>
+    </tr>
+  </tbody>
+</table>
+
+##### CreateProfileCommandHandler
+
+<p><em>Tabla de CreateBranchCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateProfileCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de un perfil personal de usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateProfileCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### CreateBusinessCommandHandler
+
+<p><em>Tabla de CreateBusinessCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBusinessCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de un perfil para el negocio del usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBusinessCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateProfileCommand
+
+<p><em>Tabla de UpdateProfileCommand en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Manejar la edición de un perfil de usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateBusinessCommandHandler
+
+<p><em>Tabla de UpdateBusinessCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la edición de informacion sobre el negocio de un usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateProfileAvatarCommandHandler
+
+<p><em>Tabla de UpdateProfileAvatarCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el cambio de avatares del usuario, eliminando el anterior de Cloudinary y obteniendo el URL de la nueva imagen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateBusinessPictureCommandHandler
+
+<p><em>Tabla de UpdateBusinessPictureCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el cambio de imágenes del negocio, eliminando el anterior de Cloudinary y obteniendo el URL de la nueva imagen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetProfileByUserIdQueryHandler
+
+<p><em>Tabla de GetProfileByUserIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la información del perfil de un usuario registrado en la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetBusinessByAccountIdQueryHandler
+
+<p><em>Tabla de GetBusinessByAccountIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la información del perfil de negocio de una cuenta suscrita a la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 #### 4.2.3.4. Infrastructure Layer
 
+La capa de infraestructura del Bounded Context de Profiles and Preferences actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir entidades como perfiles de usuario y de negocio en la base de datos no relacional.
+
+##### ProfileRepository
+
+<p><em>Tabla de ProfileRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfileRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de perfiles de usuario en la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### BusinessRepository
+
+<p><em>Tabla de BusinessRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BusinessRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de perfiles de negocio en la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### ProfilesDbContext
+
+<p><em>Tabla de ProfilesDbContext en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesDbContext</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Entity Framework para mapear las entidades del Bounded Context a la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+Esta sección presenta el diagrama de componentes del backend para el bounded context Profile and Preferences. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la visualización y edición de perfiles en pantallas de escritorio o laptops.
+
+<img src="https://i.imgur.com/wWNi05L.jpeg" alt="Web App Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Web Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la visualización y edición de información de perfiles de usuario y negocio. Además, capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webProfile</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar los perfiles de usuario y negocio en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus perfiles de usuario y negocio, adaptando la experiencia de usuario (UX) para pantallas táctiles.
+
+<img src="https://i.imgur.com/wuXRrNn.jpeg" alt="Mobile App Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Mobile Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar información de perfiles de usuario y negocio desde dispositivos portátiles.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileProfile</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para recuperar y actualizar los perfiles de usuario y negocio desde la aplicación móvil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
+
+<img src="https://i.imgur.com/FSz2gnn.jpeg" alt="Cloud API Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Backend Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de información en perfiles de usuario y negocio.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la información del perfil de usuario y de negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptions</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Comunica el identificador de negocio creado para asociarlo con la cuenta registrada para el usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la edición de perfiles.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Utilidades comunes</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para usar objetos de valor de identidad como UserId, BusinessId y DateTime.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
 
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Profile and Preferences. Este diagrama no solo detalla la estructura estática, sino que evidencia un Modelo de Dominio Rico, donde la lógica de negocio reside dentro de los métodos de los Agregados, garantizando la encapsulación y las invariantes del sistema.
+
+<img src="https://i.imgur.com/E3fzGTT.png" alt="Domain Layer Class Diagram - Profiles and Preferences">
+
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Profiles and Preferences. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente la información personal de los usuarios y la comercial de sus negocios.
+
+El diseño se fundamenta en principios clave de bases de datos documentales (como MongoDB). Además, destaca el uso estratégico de la desnormalización.
+
+<img src="https://i.imgur.com/9puceGt.jpeg" alt="Data Base Class Diagram - Profiles and Preferences">
 
 ### 4.2.4. Bounded Context: Asset and Resource Management
 
@@ -2263,7 +3241,7 @@ Esta sección presenta el diagrama de componentes del backend para el bounded co
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
-##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrms
 
 En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Asset and Resource Management. Este diagrama no solo detalla la estructura estática, sino que evidencia un Modelo de Dominio Rico, donde la lógica de negocio reside dentro de los métodos de los Agregados, garantizando la encapsulación y las invariantes del sistema.
 
@@ -2528,7 +3506,7 @@ En la capa de interfaz se exponen los endpoints HTTP RESTful necesarios para int
 
 #### 4.2.5.3. Application Layer
 
-La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja Event Handlers que reaccionan a acciones críticas, como notificar a los usuarios cuando un diseño es eliminado.
+La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command y Query Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja Event Handlers que reaccionan a acciones críticas, como notificar a los usuarios cuando un diseño es eliminado.
 
 ##### RegisterRecipeCommandHandler
 
@@ -2975,8 +3953,6 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Service Operation and Monitoring. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
-
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
@@ -3004,3 +3980,730 @@ Domain Events: Mapea los eventos emitidos para comunicar situaciones relevantes 
 En esta sección, se presenta el diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Service Operation and Monitoring. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente los grandes volúmenes de telemetría IoT y la flexibilidad del catálogo de recursos.
 
 <img src="assets/images/chapter4/bc-monitoring/db_diagram_monitoring.png" alt="Data Base Class Diagram - Asset and Resource Management" width="800px">
+
+## 4.2.8. Bounded Context: Communication
+
+#### 4.2.8.1. Domain Layer
+
+La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Service Operation and Monitoring y Sales Order Management para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Notification</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, la cuenta del destinatario, la sucursal de origen y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Value Objects
+
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationType</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Clasifica el tipo de notificación generada: LOW_STOCK, OVERSTOCK, STOCK_DISCREPANCY, DEVICE_FAILURE o DEVICE_ANOMALY. Permite que el sistema aplique filtros y determine el mensaje apropiado para cada situación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationPriority</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el nivel de prioridad de una notificación: LOW, MEDIUM o HIGH. Condiciona el orden de presentación en el centro de notificaciones y el comportamiento del canal de entrega push.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el estado de entrega de una notificación: PENDING, SENT o FAILED. Permite rastrear si el mensaje fue correctamente despachado a través del proveedor externo y actualizar el campo <code>sentAt</code> cuando el envío se confirma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SituationData</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador de la cuenta (<code>accountId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, AccountId, BranchId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>notificationId</code>, <code>accountId</code> y <code>branchId</code> de la colección.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### Commands
+
+Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GenerateNotificationCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: accountId, branchId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>MarkNotificationAsReadCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para marcar una notificación como leída dentro del aggregate.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DispatchNotificationCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### Queries
+
+Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetRecentNotificationsQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de una cuenta, con soporte de filtros por branchId, tipo y prioridad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetNotificationByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el accountId para recuperar su detalle completo desde la capa de infraestructura.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### Domain Events
+
+Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+<p><em>Tabla de Domain Events en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationGeneratedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationSentEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al confirmar el despacho exitoso del mensaje push, actualizando el campo <code>sentAt</code> y el estado a SENT.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockAnomalyDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DeviceFailureDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### 4.2.8.2. Interface Layer
+
+La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts generen notificaciones sin acoplarse al modelo interno de este contexto.
+
+##### NotificationController
+
+<p><em>Tabla de NotificationController en el Interface Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de una cuenta, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/notifications</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p><em>Tabla de métodos de NotificationController en el Interface Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetRecent</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones de la cuenta en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{notificationId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de una notificación específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">MarkAsRead</td>
+      <td style="padding: 10px; border: 1px solid;">/{notificationId}/read (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Marca una notificación como leída, actualizando el campo <code>read</code>.</td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+#### ACL (Anti-Corruption Layer)
+
+La interfaz del ACL se expone desde la capa de interfaz del Bounded Context de Communication para permitir que otros bounded contexts soliciten la generación de alertas sin depender del modelo interno del dominio. Esta interfaz actúa como contrato de entrada hacia la implementación ubicada en la capa de aplicación.
+
+<p><em>Tabla de ACL en el Interface Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>INotificationContextFacade</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code> y <code>generateDeviceAlert</code> para que otros bounded contexts puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.8.3. Application Layer
+
+La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
+
+#### NotificationContextFacade
+<p><em>Tabla de NotificationContextFacade en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationContextFacade</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationContextFacade</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### GenerateNotificationCommandHandler
+<p><em>Tabla de GenerateNotificationCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GenerateNotificationCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code> y desencadenar su despacho a través de OneSignal.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GenerateNotificationCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### MarkNotificationAsReadCommandHandler
+<p><em>Tabla de MarkNotificationAsReadCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el marcado de una notificación como leída, validando que exista y actualizando el campo <code>read</code> a <code>true</code> dentro del aggregate.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### DispatchNotificationCommandHandler
+<p><em>Tabla de DispatchNotificationCommandHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el envío de una notificación delegando la entrega push a OneSignal a través de la capa de infraestructura y actualizando el campo <code>sentAt</code> y el estado de entrega según el resultado obtenido.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommand</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### GetRecentNotificationsQueryHandler
+<p><em>Tabla de GetRecentNotificationsQueryHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones de la cuenta autenticada filtrando por <code>accountId</code> y <code>branchId</code>, incluyendo tipo, prioridad, sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### GetNotificationByIdQueryHandler
+<p><em>Tabla de GetNotificationByIdQueryHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y accountId, exponiendo todos los campos de la colección al cliente solicitante.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### StockAnomalyDetectedEventHandler
+<p><em>Tabla de StockAnomalyDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Service Operation and Monitoring cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### DeviceFailureDetectedEventHandler
+<p><em>Tabla de DeviceFailureDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Service Operation and Monitoring, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### NotificationGeneratedEventHandler
+<p><em>Tabla de NotificationGeneratedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationGeneratedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code> y actualizando el campo <code>sentAt</code> al confirmar el envío.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationGeneratedEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.8.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
+
+#### NotificationRepository
+<p><em>Tabla de NotificationRepository en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>accountId</code>, <code>branchId</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sentAt</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por cuenta, así como filtros por tipo y prioridad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationRepository</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### CommunicationDbContext
+<p><em>Tabla de CommunicationDbContext en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CommunicationDbContext</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### OneSignalNotificationGateway
+<p><em>Tabla de OneSignalNotificationGateway en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">OneSignalNotificationGateway</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">External Service Wrapper</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sentAt</code>.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationGateway</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### IntegrationEventConsumer
+<p><em>Tabla de IntegrationEventConsumer en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IntegrationEventConsumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Consumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Service Operation and Monitoring (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>) y por Sales Order Management, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IIntegrationEventConsumer</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### DomainEventPublisher
+<p><em>Tabla de DomainEventPublisher en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DomainEventPublisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Publisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> o <code>NotificationSentEvent</code>, para que otros contextos interesados puedan reaccionar de forma desacoplada si fuese necesario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IDomainEventPublisher</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.8.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context Communication, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la gestión del ciclo de vida de alertas y notificaciones.
+
+##### Web Application Component Diagram
+
+El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
+
+<img src="https://imgur.com/gkH6zra.png" alt="web-communicaiton">
+
+El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
+
+##### Mobile Application Component Diagram
+
+El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
+
+<img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communicaiton">
+
+El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
+
+
+##### Backend Application Component Diagram
+
+El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
+
+<img src="https://imgur.com/P0X1a9t.png" alt="api-communicaiton">
+
+El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
+
+#### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
+
+Esta sección presenta el diagrama de componentes del backend para el bounded context Service Operation and Monitoring. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+
+
+##### 4.2.7.8.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una notificación, desde su generación ante un evento crítico externo hasta su despacho al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates y value objects que definen la estructura y las reglas del dominio, y services, que contiene los commands, queries, domain events y la interfaz del ACL que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
+
+<img src="https://imgur.com/WB0oHIf.png" alt="class-diagram-communicaiton">
+
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como send(), markAsRead() y markAsFailed(), en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, AccountId, BranchId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. Cabe destacar que el Domain Layer no expone interfaces de repositorio ni entidades adicionales, ya que NotificationRecipient fue eliminado al no ser necesario en el modelo actual, y la abstracción de persistencia corresponde a la capa de infraestructura, manteniendo así la pureza del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos generateStockAlert y generateDeviceAlert para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.
+
+##### 4.2.7.8.2. Bounded Context Database Design Diagram
+
+El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones y sus destinatarios. Este esquema organiza la colección principal, sus atributos y las relaciones entre documentos, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
+
+<img src="https://imgur.com/WjWyVzo.png" alt="database-communication">
+
+El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (business_id), la sucursal asociada (branch_id), el usuario destinatario (user_id), el tipo de evento que la originó (type), el título y cuerpo del mensaje (title, message), la prioridad asignada (priority), la fecha y hora de envío (sent_at) y el estado de lectura (read).
+A diferencia de un modelo relacional con tablas separadas para alertas y notificaciones, este diseño en MongoDB consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por user_id, business_id o type. El campo read permite gestionar el estado de lectura directamente sobre el documento sin requerir una entidad adicional, mientras que sent_at registra el momento exacto en que la notificación fue despachada a través de OneSignal. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones de alertas separadas.
