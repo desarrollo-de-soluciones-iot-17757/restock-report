@@ -12,7 +12,7 @@ En esta sección se presenta el Product Backlog de Restock. Para su elaboración
 
 La gestión del Product Backlog se realizó mediante Jira. La tabla está ordenada de mayor a menor prioridad: las historias más relevantes para el negocio aparecen al inicio, mientras que las de menor importancia se ubican al final.
 
-A continuación, se adjunta una imagen del Product Backlog diseñado en Jira, junto con el enlace para acceder a él. [Enlace de acceso](https://ui-topic.atlassian.net/?continue=https%3A%2F%2Fui-topic.atlassian.net%2Fwelcome%2Fsoftware%3FprojectId%3D10034&atlOrigin=eyJpIjoiOTU1NzhmODU2ZmI0NDgyOGFhZTU4MDQ5MGI0NWUxMWQiLCJwIjoiamlyYS1zb2Z0d2FyZSJ9)
+A continuación, se adjunta una imagen del Product Backlog diseñado en Jira, junto con el enlace para acceder a él. [Enlace de acceso](https://acortar.link/ItBSPY)
 
 <p align="center">
   <img src="https://i.imgur.com/BseoOlL.png" alt="Product Backlog en Jira">
