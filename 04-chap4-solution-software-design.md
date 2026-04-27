@@ -460,21 +460,713 @@ El siguiente diagrama de despliegue muestra la distribución física de los comp
 
 ### 4.2.1. Bounded Context: Identity and Access Management
 
+Este Bounded Context se encarga de gestionar el acceso seguro a la aplicación y el proceso de registro de los distintos actores del sistema. Proporciona los mecanismos necesarios para la autenticación y autorización, garantizando la correcta asignación de roles (Visitante, Usuario, Administrador de Retail, Administrador de Restaurante) y la validación de credenciales según las políticas de seguridad del negocio.
+
 #### 4.2.1.1. Domain Layer
+
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Identity and Access Management. En esta capa se encapsulan todas las reglas de negocio críticas tales como la creación de usuarios, autenticación, asignación de roles y vinculación con cuentas empresariales.
+
+Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, centralizando su lógica en Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar el tipado estricto, Eventos de Dominio (Domain Events).
+
+##### Aggregates & Entities
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>User</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Entidad principal que representa a cualquier actor del sistema. Orquesta la validación de credenciales y asegura que la transición de estados (como el registro de un visitante a un usuario activo) cumpla con las invariantes de seguridad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Role</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Define el conjunto de permisos asociados a un usuario. En este contexto, gestiona la distinción entre Visitant, Retail manager y Restaurant manager, permitiendo el acceso granular a las funcionalidades del negocio.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Value Objects
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Username</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador único de la cuenta. Valida formatos y asegura que no existan duplicidad de identidades durante los procesos de Sign up o registro de trabajadores.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Password</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Garantiza la inmutabilidad y seguridad de la clave de acceso. Se encarga de aplicar reglas de complejidad y manejar la lógica de encriptación/hashing antes de la persistencia.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Commands (Domain Intentions)
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignUpCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de registrar un nuevo usuario. Contiene: username, password, email.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignInCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de autenticar a un usuario existente. Contiene: username, password.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateUserRoleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Intención de modificar los privilegios de un usuario. Contiene: userId, roleId.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Queries (Domain Information Requests)
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetUserByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud de información detallada de un usuario específico. Contiene: userId.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetAllRolesQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud para listar todos los roles y permisos disponibles en el sistema.</td>
+    </tr>
+  </tbody>
+</table>
+
 
 #### 4.2.1.2. Interface Layer
 
+La capa de interfaz expone los puntos de entrada HTTP necesarios para que los clientes interactúen con el sistema de identidad. A través de controladores especializados, gestiona los flujos de autenticación y la administración de personal operativo.
+
+##### AuthenticationController
+
+<p><em>Tabla de AuthenticationController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AuthenticationController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos de autenticación y registro inicial en la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/authentication</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de AuthenticationController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">signIn</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-in (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Autentica credenciales y genera el recurso de usuario autenticado.</td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">signUp</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-up (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra un nuevo usuario en el sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RolesController
+
+<p><em>Tabla de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RolesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Proveer acceso al catálogo de roles disponibles en el sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/roles</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllRoles</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna la lista completa de roles definidos.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllRolesQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UsersController
+
+<p><em>Tabla de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UsersController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la información de los usuarios y sus estados de suscripción.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllUsers</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista todos los usuarios registrados.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllUsersQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getUserById</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene los detalles de un usuario específico.</td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateUserSubscription</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId}/subscription (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el tipo de suscripción del usuario.</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.1.3. Application Layer
+
+La capa de aplicación para este Bounded Context orquesta los procesos de negocio relacionados con la identidad. Aquí se procesan los comandos para crear usuarios, se aplican las reglas de autenticación y se reacciona a los eventos de dominio para desencadenar acciones automáticas, como la creación de perfiles o la vinculación a cuentas de negocio.
+
+##### SignUpCommandHandler
+
+<p><em>Tabla de SignUpCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Coordinar el registro de nuevos usuarios en el sistema, gestionando el ingreso de datos personales, aplicando el hashing obligatorio de contraseñas y asignando el rol inicial de "Visitant".</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### SignInCommandHandler
+
+<p><em>Tabla de SignInCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Validar las credenciales de acceso ingresadas por el usuario para orquestar el proceso de autenticación y permitir el acceso seguro a los servicios de la aplicación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateUserSubscriptionCommandHandler
+
+<p><em>Tabla de UpdateUserSubscriptionCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Procesar la actualización del plan de suscripción del usuario, asegurando que el cambio de estado y los beneficios asociados se persistan correctamente en el perfil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetUserByIdQueryHandler
+
+<p><em>Tabla de GetUserByIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Recuperar la información detallada de un usuario específico para su visualización o validación de perfil en la interfaz, sin alterar el estado del sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.1.4. Infrastructure Layer
 
+La capa de infraestructura en el Bounded Context de IAM provee las implementaciones técnicas de las interfaces definidas en el dominio. Se encarga de la persistencia física de los usuarios y roles en MongoDB, la integración con servicios de seguridad para el cifrado de credenciales y la implementación de los servicios de generación de tokens o secuencias necesarias para el funcionamiento del sistema.
+
+##### UserRepository
+
+<p><em>Tabla de UserRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la persistencia y consultas en la base de datos MongoDB para gestionar los perfiles de usuario y sus credenciales de acceso.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IUserRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RoleRepository
+
+<p><em>Tabla de RoleRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RoleRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el almacenamiento y recuperación de los roles y permisos definidos en el sistema para la validación de accesos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IRoleRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context de Identity and Access Management (IAM), mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este Bounded Context gestiona de manera centralizada la seguridad de la plataforma, interactuando con otros contextos para la propagación de identidades o servicios externos únicamente cuando dichas interacciones son necesarias para la validación de credenciales, el control de acceso basado en roles y la gestión de sesiones de usuario.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-iam/frontend-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webIdentityAccess</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para las operaciones de inicio de sesión (Sign In) y registro (Sign Up). Capta las credenciales e interacciones de los usuarios (Retail/Restaurant Admin) para enviarlas al backend para su autenticación.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webIdentityAccess</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Cloud Server Side App</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para autenticar a los usuarios web, enviando credenciales y recibiendo tokens de acceso o confirmaciones de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Shared</strong> (Módulo Web)</td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de la API, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+##### Web Application Component Diagram
+
+El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
+
+<img src="assets/images/chapter4/bc-iam/mobile-app-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileIAM</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona localmente los flujos de inicio y cierre de sesión de los usuarios de la aplicación móvil. Provee la interfaz y la lógica para que administradores de restaurantes y comercios minoristas se autentiquen de forma segura para usar la aplicación.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileIAM</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Llamada de Servicio (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones HTTPS seguras para autenticar las credenciales de los usuarios de la aplicación móvil contra el servidor principal.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende la funcionalidad de utilidades base de API y endpoints compartidas por otros módulos de la aplicación móvil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de restaurantes se autentiquen para gestionar inventario, recetas y ventas.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Retail Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de comercios minoristas se autentiquen para gestionar inventario y stock.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
+
+<img src="assets/images/chapter4/bc-iam/backend-iam.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de autenticación y autorización para todos los usuarios del sistema. Emite y valida tokens JWT para asegurar las comunicaciones. Gestiona las cuentas de usuario y la creación de perfiles iniciales.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiIam</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Mobile Application</strong> / <strong>Restock Platform Web Client App</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe y procesa las solicitudes de inicio de sesión (sign-in) y registro (sign-up) desde las aplicaciones cliente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Múltiples Componentes Backend</strong> (Sales, Planning, Assets, etc.)</td>
+      <td style="padding: 10px; border: 1px solid;">Validación de Seguridad</td>
+      <td style="padding: 10px; border: 1px solid;">Actúa como proveedor de validación de tokens JWT para autorizar las operaciones internas de otros módulos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Database</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Persistencia (Escritura/Lectura)</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera datos críticos de usuarios, credenciales y la información de suscripción actual.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiProfileAndPreferences</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la creación automática de un perfil de usuario (ACL) cuando se registra una nueva cuenta.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptionsAndPayments</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Registra la cuenta y la suscripción inicial del usuario al completar el proceso de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades comunes de infraestructura y objetos de valor compartidos.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
+En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
+
+El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
+
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.jpeg" alt="class diagram identity and access management" border="0">
+
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Identity and Access Management.
+
+<img src="assets/images/chapter4/bc-iam/database-diagram-iam.png" alt="DataBase diagram Identity and Access Management" border="0">
 
 ### 4.2.2. Bounded Context: Subscriptions and Payments
 
