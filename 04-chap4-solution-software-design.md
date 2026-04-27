@@ -2777,12 +2777,11 @@ Estas clases modelan características conceptuales del dominio. Son inmutables y
   </tbody>
 </table>
 
-##### Repository Interfaces
+##### Commands 
 
-Las abstracciones de persistencia se definen aquí mediante el Principio de Inversión de Dependencias (Dependency Inversion). El dominio dicta "qué" necesita guardar o consultar, sin importar "cómo" se hace en la base de datos.
+Los Commands representan las intenciones de los usuarios al interactuar con el sistema. Cada Command encapsula los datos necesarios para ejecutar una acción específica, como crear o actualizar una orden de venta, y se valida antes de ser procesado por su correspondiente Command Handler.
 
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
-
+<p><em>Tabla de Commands en el Domain Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -2794,9 +2793,47 @@ Las abstracciones de persistencia se definen aquí mediante el Principio de Inve
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>ISalesRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para almacenar la información de cada venta realizada por el usuario.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para crear una nueva orden de venta, incluyendo la lista de ítems, insumos adicionales y el monto total. Valida que la información proporcionada cumpla con las reglas de negocio antes de ser procesada por el Command Handler.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CancelSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para cancelar una orden de venta existente. Valida que la orden esté en un estado que permita su cancelación y que se proporcione una razón válida para la cancelación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para actualizar el estado de una orden de venta. Valida que la transición de estado sea válida según las reglas de negocio y que se proporcione la información necesaria para realizar la actualización.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Queries
+
+Los Queries representan las solicitudes de información que los usuarios hacen al sistema. Cada Query encapsula los parámetros necesarios para recuperar datos específicos, como el detalle de una orden de venta o la lista de órdenes asociadas a una sucursal, y se valida antes de ser procesada por su correspondiente Query Handler.
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSalesByBranchIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar todas las órdenes de venta asociadas a una sucursal específica. Valida que el ID de la sucursal sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSaleByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar el detalle completo de una orden de venta por su ID. Valida que el ID de la orden sea válido y que el usuario tenga permisos para acceder a esa información.</td>
     </tr>
   </tbody>
 </table>
