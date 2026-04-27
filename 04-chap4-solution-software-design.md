@@ -2844,7 +2844,7 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
 
 ##### SalesController
 
-<p><em>Tabla de BranchController en el Interface Layer</em></p>
+<p><em>Tabla de SalesController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -2875,7 +2875,7 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
 
 <br>
 
-<p><em>Tabla de métodos de BranchController en el Interface Layer</em></p>
+<p><em>Tabla de métodos de SalesController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -2920,6 +2920,56 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   </tbody>
 </table>
 
+<p><em>Tabla de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchSalesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la consulta de órdenes de venta asociadas a una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches/{branchId}/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Get</td>
+      <td style="padding: 10px; border: 1px solid;">/ (Get)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchId</td>
+    </tr>
+</table>
 
 #### 4.2.7.3. Application Layer
 
