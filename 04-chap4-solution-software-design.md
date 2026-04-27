@@ -1106,7 +1106,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
 
 En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Profile and Preferences. Este diagrama no solo detalla la estructura estática, sino que evidencia un Modelo de Dominio Rico, donde la lógica de negocio reside dentro de los métodos de los Agregados, garantizando la encapsulación y las invariantes del sistema.
 
-<img src="https://i.imgur.com/nauMhPZ.png" alt="Domain Layer Class Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/E3fzGTT.png" alt="Domain Layer Class Diagram - Profiles and Preferences">
 
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
 
