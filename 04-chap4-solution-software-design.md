@@ -279,6 +279,59 @@ Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, c
   </tbody>
 </table>
 
+##### Commands (Domain Intentions)
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignUpCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de registrar un nuevo usuario. Contiene: username, password, email.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignInCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de autenticar a un usuario existente. Contiene: username, password.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateUserRoleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Intención de modificar los privilegios de un usuario. Contiene: userId, roleId.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Queries (Domain Information Requests)
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetUserByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud de información detallada de un usuario específico. Contiene: userId.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetAllRolesQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud para listar todos los roles y permisos disponibles en el sistema.</td>
+    </tr>
+  </tbody>
+</table>
+
+
 #### 4.2.1.2. Interface Layer
 
 La capa de interfaz expone los puntos de entrada HTTP necesarios para que los clientes interactúen con el sistema de identidad. A través de controladores especializados, gestiona los flujos de autenticación y la administración de personal operativo.
