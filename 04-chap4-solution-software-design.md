@@ -24,7 +24,7 @@ El primer paso del Design Level Event Storming consistió en la identificación 
   <img src="https://imgur.com/cRDqY8F.png" alt="event">
 </div>
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema.
 
 #### Paso 2: Timelines
 
@@ -249,7 +249,7 @@ Gestiona el proceso de diseño y planeamiento de recetas para restaurantes y kit
   <img src="https://i.imgur.com/1yUJIoY.jpeg" alt="Canvas del contexto de kits y recetas">
 </div>
 
-El contexto de Design and Planning representa un Supporting Domain enfocado en enganchar usuarios ya que provee de una base para el registro de ventas para el contexto de Sales, además facilita el reconocimiento de platos o kits que utiliza el negocio para sus ventas diarias. 
+El contexto de Design and Planning representa un Supporting Domain enfocado en enganchar usuarios ya que provee de una base para el registro de ventas para el contexto de Sales, además facilita el reconocimiento de platos o kits que utiliza el negocio para sus ventas diarias.
 
 ##### Sales Management Context
 
@@ -259,7 +259,7 @@ Gestiona las ventas registradas de un restaurante o tienda retail, incluyendo la
   <img src="https://i.imgur.com/TSRfkg3.jpeg" alt="Canvas del contexto de gestión de ventas">
 </div>
 
-El contexto de Sales Management representa un Supporting Domain enfocado en atraer y enganchar usuarios a la aplicación ya que provee una herramienta que facilita el proceso de ventas de restaurantes y tiendas retail. Además, ayuda al sistema de ventas mostrando el total de ventas de determinados periodos y qué productos se vendieron para cada transacción realizada. 
+El contexto de Sales Management representa un Supporting Domain enfocado en atraer y enganchar usuarios a la aplicación ya que provee una herramienta que facilita el proceso de ventas de restaurantes y tiendas retail. Además, ayuda al sistema de ventas mostrando el total de ventas de determinados periodos y qué productos se vendieron para cada transacción realizada.
 
 ##### Subscriptions Context
 
@@ -571,7 +571,6 @@ Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, c
     </tr>
   </tbody>
 </table>
-
 
 #### 4.2.1.2. Interface Layer
 
@@ -1020,7 +1019,6 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </tbody>
 </table>
 
-
 ##### Web Application Component Diagram
 
 El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
@@ -1083,6 +1081,7 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
 </table>
 
 ##### Backend Application Component Diagram
+
 El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
 
 <img src="assets/images/chapter4/bc-iam/backend-iam.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
@@ -1193,7 +1192,6 @@ Esta capa se mantiene independiente de frameworks, mecanismos de persistencia, s
 ##### Commands & Queries
 
 <p><em>Tabla de Commands y Queries del Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid;">Nombre</th> <th style="padding: 10px; border: 1px solid;">Tipo</th> <th style="padding: 10px; border: 1px solid;">Propósito</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;">SelectSubscriptionPlan</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Seleccionar un plan.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">InitializePayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Iniciar el pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ConfirmPayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Confirmar pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ActivateSubscription</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Activar suscripción.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">GetSubscription</td> <td style="padding: 10px; border: 1px solid;">Query</td> <td style="padding: 10px; border: 1px solid;">Consultar suscripción.</td> </tr> </tbody> </table>
-
 
 #### 4.2.2.2. Interface Layer
 
@@ -2345,7 +2343,6 @@ En la capa de interfaz del Bounded Context de Profile and Preferences se exponen
     </tr>
   </tbody>
 </table>
-
 
 ##### UserProfilesController
 
@@ -4769,6 +4766,7 @@ La capa de dominio del Bounded Context de Communication encapsula las reglas de 
 ##### Aggregates & Entities
 
 Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
 <p><em>Tabla de Aggregates en el Domain Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4791,6 +4789,7 @@ Estas clases representan los pilares transaccionales del sistema. El Aggregate R
 ##### Value Objects
 
 Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+
 <p><em>Tabla de Value Objects en el Domain Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4833,6 +4832,7 @@ Estas clases modelan conceptos propios del dominio y permiten evitar el uso indi
 #### Commands
 
 Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
+
 <p><em>Tabla de Commands en el Domain Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4865,6 +4865,7 @@ Los commands representan intenciones de cambio de estado dentro del dominio. Son
 #### Queries
 
 Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
+
 <p><em>Tabla de Queries en el Domain Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4892,6 +4893,7 @@ Las queries representan intenciones de consulta de información sin modificar el
 #### Domain Events
 
 Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+
 <p><em>Tabla de Domain Events en el Domain Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5019,6 +5021,7 @@ La interfaz del ACL se expone desde la capa de interfaz del Bounded Context de C
 La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
 
 #### NotificationContextFacade
+
 <p><em>Tabla de NotificationContextFacade en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5049,6 +5052,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### GenerateNotificationCommandHandler
+
 <p><em>Tabla de GenerateNotificationCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5079,6 +5083,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### MarkNotificationAsReadCommandHandler
+
 <p><em>Tabla de MarkNotificationAsReadCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5109,6 +5114,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### DispatchNotificationCommandHandler
+
 <p><em>Tabla de DispatchNotificationCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5139,6 +5145,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### GetRecentNotificationsQueryHandler
+
 <p><em>Tabla de GetRecentNotificationsQueryHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5169,6 +5176,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### GetNotificationByIdQueryHandler
+
 <p><em>Tabla de GetNotificationByIdQueryHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5199,6 +5207,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### StockAnomalyDetectedEventHandler
+
 <p><em>Tabla de StockAnomalyDetectedEventHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5229,6 +5238,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### DeviceFailureDetectedEventHandler
+
 <p><em>Tabla de DeviceFailureDetectedEventHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5259,6 +5269,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 <br>
 
 #### NotificationGeneratedEventHandler
+
 <p><em>Tabla de NotificationGeneratedEventHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5292,6 +5303,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
 La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
 
 #### NotificationRepository
+
 <p><em>Tabla de NotificationRepository en el Infrastructure Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5322,6 +5334,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
 <br>
 
 #### CommunicationDbContext
+
 <p><em>Tabla de CommunicationDbContext en el Infrastructure Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5348,6 +5361,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
 <br>
 
 #### OneSignalNotificationGateway
+
 <p><em>Tabla de OneSignalNotificationGateway en el Infrastructure Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5378,6 +5392,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
 <br>
 
 #### IntegrationEventConsumer
+
 <p><em>Tabla de IntegrationEventConsumer en el Infrastructure Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5408,6 +5423,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
 <br>
 
 #### DomainEventPublisher
+
 <p><em>Tabla de DomainEventPublisher en el Infrastructure Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5455,7 +5471,6 @@ El componente Communications dentro de la Restock Mobile Application replica el 
 <img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communicaiton">
 
 El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
-
 
 ##### Backend Application Component Diagram
 
