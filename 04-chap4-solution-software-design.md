@@ -3057,6 +3057,1030 @@ El diseño se fundamenta en principios clave de bases de datos documentales (com
 
 La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Asset and Resource Management. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión del catálogo de insumos, el control transaccional del inventario físico, el ciclo de vida de las sucursales y la administración del hardware IoT.
 
+Esta capa está completamente aislada de detalles técnicos, bases de datos o frameworks de presentación. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Comandos (Commands), Consultas (Queries) y Eventos de Dominio (Domain Events).
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Branch</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una sucursal física. Encapsula la lógica para activar, desactivar y actualizar la información operativa del local.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CustomSupply</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el catálogo maestro de un insumo o producto. Contiene lógica para determinar alertas de stock bajo y estructurar precios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Batch</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un lote físico de inventario. Contiene las invariantes más críticas: deducción matemática de stock, cálculo de costos remanentes y validación de fechas de caducidad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Device</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un sensor o hardware IoT. Valida las reglas para su vinculación a una sucursal y el registro de telemetría o anomalías.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos (Primitive Obsession), asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockQuantity</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula la cantidad y unidad de medida. Previene cantidades negativas mediante lógica matemática interna en sus métodos add() y subtract().</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Location</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Agrupa la dirección física, ciudad y coordenadas geográficas de una sucursal en un solo concepto inmutable.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>HardwareSpecs</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Define las especificaciones técnicas de un dispositivo IoT (dirección MAC, fabricante, firmware).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>BranchId, SupplyId, etc.</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para garantizar que no se confundan IDs de diferentes entidades durante las operaciones.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Commands
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Command</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateBranchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula la intención de crear una nueva sucursal con sus datos base.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>RegisterBatchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para ingresar un nuevo lote de inventario al sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SubtractSupplyStockCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la acción de deducir cantidades físicas de un insumo en una sucursal.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AssignDeviceToBranchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la vinculación de un dispositivo IoT específico a una sucursal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Queries
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Query</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetInventoryByBranchQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la consulta del inventario actual disponible en una sucursal determinada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetBranchByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la obtención de los detalles operativos y de ubicación de una sucursal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Domain Events
+
+<p><em>Tabla de Domain Events en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Evento</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockSubtractedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Evento emitido en el dominio cuando el nivel de stock ha disminuido exitosamente, notificando a otros componentes (ej. alertas).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DeviceAssignedToBranchEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Evento que confirma la asignación del hardware a una sucursal para iniciar el monitoreo.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.4.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Asset and Resource Management se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades core de la gestión física y lógica del negocio. A través de controladores especializados, ensambladores (Assemblers) y la interfaz de la capa Anti-Corrupción (ACL), esta capa actúa como punto de entrada para solicitudes de clientes y otros Bounded Contexts.
+
+##### BranchController
+
+<p><em>Tabla de BranchController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la gestión de la información y configuración de las sucursales físicas.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Create</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Crea una nueva sucursal</td>
+      <td style="padding: 10px; border: 1px solid;">CreateBranchCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene los datos de una sucursal</td>
+      <td style="padding: 10px; border: 1px solid;">GetBranchByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">UpdateInfo</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId}/info (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información básica</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBranchInfoCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">UpdateImage</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId}/image (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la fotografía</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBranchImageCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Delete</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId} (DELETE)</td>
+      <td style="padding: 10px; border: 1px solid;">Elimina o desactiva una sucursal</td>
+      <td style="padding: 10px; border: 1px solid;">DeleteBranchCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+##### BranchInventoriesController
+
+<p><em>Tabla de BranchInventoriesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchInventoriesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer sub-rutas RESTful de lectura de inventarios asociados a una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchInventoriesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetStock</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId}/inventories (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Consulta stock disponible</td>
+      <td style="padding: 10px; border: 1px solid;">GetInventoryByBranchQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### CustomSupplyController
+
+<p><em>Tabla de CustomSupplyController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CustomSupplyController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para el registro y mantenimiento del catálogo de insumos y productos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/supplies</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de CustomSupplyController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Register</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra un nuevo insumo</td>
+      <td style="padding: 10px; border: 1px solid;">RegisterCustomSupplyCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{supplyId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de un insumo</td>
+      <td style="padding: 10px; border: 1px solid;">GetCustomSupplyByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Update</td>
+      <td style="padding: 10px; border: 1px solid;">/{supplyId} (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Modifica datos del insumo</td>
+      <td style="padding: 10px; border: 1px solid;">EditCustomSupplyCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Delete</td>
+      <td style="padding: 10px; border: 1px solid;">/{supplyId} (DELETE)</td>
+      <td style="padding: 10px; border: 1px solid;">Elimina un insumo del catálogo</td>
+      <td style="padding: 10px; border: 1px solid;">DeleteCustomSupplyCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+##### InventoryController
+
+<p><em>Tabla de InventoryController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">InventoryController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Maneja las operaciones transaccionales de stock, lotes (batches) y transferencias.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/inventory</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de InventoryController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">RegisterBatch</td>
+      <td style="padding: 10px; border: 1px solid;">/batches (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Ingresa un nuevo lote de stock</td>
+      <td style="padding: 10px; border: 1px solid;">RegisterBatchCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">TransferStock</td>
+      <td style="padding: 10px; border: 1px solid;">/transfer (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Transfiere stock entre almacenes</td>
+      <td style="padding: 10px; border: 1px solid;">TransferSupplyStockCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">SubtractStock</td>
+      <td style="padding: 10px; border: 1px solid;">/subtract (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Deduce existencias por mermas</td>
+      <td style="padding: 10px; border: 1px solid;">SubtractSupplyStockCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+##### DeviceController
+
+<p><em>Tabla de DeviceController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona el registro y asignación del hardware IoT.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/devices</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de DeviceController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Register</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra un nuevo sensor IoT</td>
+      <td style="padding: 10px; border: 1px solid;">RegisterNewDeviceCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Configure</td>
+      <td style="padding: 10px; border: 1px solid;">/{deviceId}/configure (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Modifica parámetros técnicos</td>
+      <td style="padding: 10px; border: 1px solid;">ConfigureDeviceCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Assign</td>
+      <td style="padding: 10px; border: 1px solid;">/{deviceId}/assign (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Vincula el hardware a una sucursal</td>
+      <td style="padding: 10px; border: 1px solid;">AssignDeviceToBranchCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Anti-Corruption Layer (ACL) Interfaces
+
+<p><em>Tabla de Interfaces ACL en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IAssetResourceAcl</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Expone métodos seguros para que otros contextos (como Service Design y Sales Order) soliciten la reducción de stock de los suministros vendidos sin acoplarse a la lógica interna de Asset and Resource Management.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.4.3. Application Layer
+
+La capa de aplicación del Bounded Context de Asset and Resource Management coordina el flujo de trabajo entre la capa de interfaz y el dominio, encapsulando la lógica de orquestación de los recursos físicos y lógicos de la empresa. En esta capa residen los Command Handlers, Query Handlers y Event Handlers, los cuales son responsables de ejecutar las operaciones críticas como el registro de sucursales, la administración del catálogo de insumos, los movimientos de inventario (ingreso de lotes, transferencias, deducciones) y la asignación de hardware IoT. Además, aloja la implementación de la capa anti-corrupción (ACL) para blindar al contexto de influencias externas.
+
+##### CreateBranchCommandHandler
+
+<p><em>Tabla de CreateBranchCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBranchCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación y registro de una nueva sucursal física en el sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBranchCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RegisterBatchCommandHandler
+
+<p><em>Tabla de RegisterBatchCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RegisterBatchCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el ingreso de un nuevo lote de stock de un insumo al inventario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RegisterBatchCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetInventoryByBranchQueryHandler
+
+<p><em>Tabla de GetInventoryByBranchQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetInventoryByBranchQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar y consolidar el nivel de stock actual de los insumos en una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetInventoryByBranchQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### StockSubtractedEventHandler
+
+<p><em>Tabla de StockSubtractedEventHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockSubtractedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la reducción de stock para verificar si se ha alcanzado el umbral mínimo y emitir alertas si es necesario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockSubtractedEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### DeviceAssignedEventHandler
+
+<p><em>Tabla de DeviceAssignedEventHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceAssignedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos posteriores a la vinculación de un sensor IoT a una sucursal, como iniciar la telemetría.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceAssignedToBranchEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Anti-Corruption Layer (ACL) Implementation
+
+<p><em>Tabla de Implementación ACL en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AssetResourceAcl</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la interfaz IAssetResourceAcl, orquestando los comandos internos (como SubtractSupplyStockCommand) para reducir el inventario cuando los contextos de ventas y diseño de servicios lo requieran, manteniendo la integridad y el aislamiento.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.4.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir agregados y entidades como sucursales, insumos y hardware IoT en la base de datos no relacional orientada a documentos (MongoDB). Asimismo, integra la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
+
+##### InventoryRepository
+
+<p><em>Tabla de InventoryRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">InventoryRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en formato de documentos JSON dentro de la base de datos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IInventoryRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### BranchRepository
+
+<p><em>Tabla de BranchRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales directamente en las colecciones de MongoDB.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IBranchRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### AssetMongoConfiguration
+
+<p><em>Tabla de AssetMongoConfiguration en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AssetMongoConfiguration</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ODM / Spring Data MongoDB</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Spring Data MongoDB para realizar el mapeo objeto-documento (ODM) entre las clases del Bounded Context y las colecciones de la base de datos NoSQL.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y nodos locales (Edge Applications), únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-resource/frontend-components.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la administración de inventarios de la cuenta, sucursales, lotes y el registro de dispositivos IoT. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar activos del negocio (insumos, dispositivos, lotes, sucursales) en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
+
+<img src="assets/images/chapter4/bc-resource/mobile-components.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar inventarios, sucursales y dispositivos desde smartphones o tablets.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para sincronizar y actualizar la información de activos e inventarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura Local</td>
+      <td style="padding: 10px; border: 1px solid;">Guarda en caché la información de los activos e inventario para agilizar los tiempos de carga en la aplicación móvil y reducir llamadas de red.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
+
+<img src="assets/images/chapter4/bc-resource/backend-components.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de control de inventario, deducción de lotes y gestión de sucursales. Actúa como el puente de comunicación y configuración hacia la capa Edge de las cabinas inteligentes.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>edgeApplication</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Envía comandos de configuración de dispositivos (encendido/apagado, asignación de productos) hacia las estaciones locales y valida su registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiCommunications</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la generación de alertas y notificaciones al sistema cuando se detectan niveles críticos de stock u operaciones inusuales.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar el acceso y modificación de los recursos físicos del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para subir y recuperar imágenes referenciales de los insumos o catálogos a través de Cloudinary.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.4.6.1. Bounded Context Domain Layer Class Diagrams
+
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Asset and Resource Management. Este diagrama no solo detalla la estructura estática, sino que evidencia un Modelo de Dominio Rico, donde la lógica de negocio reside dentro de los métodos de los Agregados, garantizando la encapsulación y las invariantes del sistema.
+
+Para garantizar el orden y la legibilidad dada la complejidad del contexto, el diagrama se ha organizado visualmente en cuatro sub-paquetes lógicos:
+
+Branch & IoT Operations: Agrupa la gestión de sucursales (Branch) y la asignación/configuración de hardware IoT (Device).
+
+Supply Catalog: Define el catálogo maestro de insumos y productos (CustomSupply) con sus reglas de costeo.
+
+Inventory & Stock Tracking: Maneja la complejidad transaccional de los lotes física (Batch), deducciones y transferencias.
+
+Domain Events: Mapea los eventos clave que se emiten para la comunicación asíncrona con otros contextos (como Ventas o Notificaciones).
+
+<img src="assets/images/chapter4/bc-resource/ARM-Bounded-Context-Domain-Layer.png" alt="Domain Layer Class Diagram - Asset and Resource Management">
+
+##### 4.2.4.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Asset and Resource Management. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente los grandes volúmenes de telemetría IoT y la flexibilidad del catálogo de recursos.
+
+El diseño se fundamenta en principios clave de bases de datos documentales (como MongoDB). Destaca el uso estratégico de la desnormalización y el patrón de documentos embebidos (Embedded Documents) para optimizar el rendimiento de las consultas. Por ejemplo, los atributos de ubicación (location) se anidan directamente dentro de la colección de sucursales (branches), y las especificaciones de hardware (specifications) se embeben en los dispositivos (devices), asegurando que "los datos que se consultan juntos, se almacenen juntos".
+
+<img src="assets/images/chapter4/bc-resource/ARM-Bounded-Context-Domain-Layer-DB-Schema.png" alt="Data Base Class Diagram - Asset and Resource Management" width="800px">
+
+#### 4.2.4.1. Domain Layer
+
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Asset and Resource Management. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión del catálogo de insumos, el control transaccional del inventario físico, el ciclo de vida de las sucursales y la administración del hardware IoT.
+
 Esta capa está completamente aislada de detalles técnicos, bases de datos o frameworks de presentación. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
 
 ##### Aggregates & Entities
@@ -3638,7 +4662,7 @@ La capa de aplicación del Bounded Context de Asset and Resource Management coor
 
 #### 4.2.4.4. Infrastructure Layer
 
-La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir entidades como sucursales, insumos y hardware IoT en la base de datos relacional. Asimismo, integra servicios externos esenciales para el negocio, como la API de Cloudinary para el almacenamiento de imágenes de sucursales y productos, y la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
+La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir agregados y entidades como sucursales, insumos y hardware IoT en la base de datos no relacional orientada a documentos (MongoDB). Asimismo, integra servicios externos esenciales para el negocio, como la API de Cloudinary para el almacenamiento de imágenes de sucursales y productos, y la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
 
 ##### InventoryRepository
 
@@ -3658,11 +4682,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en la base de datos.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en formato de documentos JSON dentro de la base de datos.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -3691,11 +4715,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales.</td>
+      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales directamente en las colecciones de MongoDB.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -3706,9 +4730,9 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 <br>
 
-##### AssetDbContext
+##### AssetMongoConfiguration
 
-<p><em>Tabla de AssetDbContext en el Infrastructure Layer</em></p>
+<p><em>Tabla de AssetMongoConfiguration en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -3720,15 +4744,15 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssetDbContext</td>
+      <td style="padding: 10px; border: 1px solid;">AssetMongoConfiguration</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+      <td style="padding: 10px; border: 1px solid;">ODM / Spring Data MongoDB</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Entity Framework para mapear las entidades del Bounded Context a la base de datos.</td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Spring Data MongoDB para realizar el mapeo objeto-documento (ODM) entre las clases del Bounded Context y las colecciones de la base de datos NoSQL.</td>
     </tr>
   </tbody>
 </table>
@@ -3768,7 +4792,180 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Asset and Resource Management. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y nodos locales (Edge Applications), únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-resource/frontend-components.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la administración de inventarios de la cuenta, sucursales, lotes y el registro de dispositivos IoT. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar activos del negocio (insumos, dispositivos, lotes, sucursales) en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
+
+<img src="assets/images/chapter4/bc-resource/mobile-components.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar inventarios, sucursales y dispositivos desde smartphones o tablets.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para sincronizar y actualizar la información de activos e inventarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura Local</td>
+      <td style="padding: 10px; border: 1px solid;">Guarda en caché la información de los activos e inventario para agilizar los tiempos de carga en la aplicación móvil y reducir llamadas de red.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
+
+<img src="assets/images/chapter4/bc-resource/backend-components.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de control de inventario, deducción de lotes y gestión de sucursales. Actúa como el puente de comunicación y configuración hacia la capa Edge de las cabinas inteligentes.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>edgeApplication</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Envía comandos de configuración de dispositivos (encendido/apagado, asignación de productos) hacia las estaciones locales y valida su registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiCommunications</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la generación de alertas y notificaciones al sistema cuando se detectan niveles críticos de stock u operaciones inusuales.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar el acceso y modificación de los recursos físicos del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para subir y recuperar imágenes referenciales de los insumos o catálogos a través de Cloudinary.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
