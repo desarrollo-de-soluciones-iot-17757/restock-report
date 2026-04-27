@@ -3213,4 +3213,3 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo
 
 <img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Order Management" width="800px">
 
-
