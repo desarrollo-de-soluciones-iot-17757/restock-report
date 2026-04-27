@@ -165,9 +165,9 @@ A continuación, se explicará en qué consiste cada bounded context:
 
 <img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
 
-**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+**Communication:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
 
-<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+<img src="https://imgur.com/5iFcZh6.jpg" alt="DDD" width="500px">
 
 **Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
 
