@@ -269,150 +269,55 @@ El siguiente diagrama de despliegue muestra la distribución física de los comp
 
 #### 4.2.2.1. Domain Layer
 
-La capa de dominio representa el núcleo de negocio del Bounded Context de Subscriptions and Payments. En esta capa se encapsulan las reglas relacionadas con la gestión de planes de suscripción, activación de beneficios, control de límites contratados, procesamiento conceptual de pagos y creación de cuentas de negocio asociadas a una suscripción activa.
+La capa de dominio representa el núcleo de negocio del Bounded Context de Subscriptions and Payments. En esta capa se encapsulan las reglas relacionadas con la gestión de planes de suscripción, activación de beneficios, control de límites contratados y procesamiento conceptual de pagos.
 
-Este bounded context funciona como el punto de entrada comercial del sistema, debido a que el usuario selecciona un plan, registra sus datos de pago, confirma la transacción mediante Stripe y, a partir de ello, se activa el plan contratado. Una vez aceptado el pago, el contexto emite los eventos necesarios para crear la cuenta de negocio, asociar al usuario propietario y habilitar los recursos iniciales que luego serán utilizados por otros bounded contexts, como Profile and Preferences, Identity and Access Management y Asset and Resource Management.
+Este bounded context funciona como el punto de entrada comercial del sistema, debido a que el usuario selecciona un plan y, posteriormente, se gestiona el flujo de pago y activación de la suscripción. Una vez aceptado el pago, el contexto emite eventos de dominio que permiten a otros bounded contexts reaccionar de forma desacoplada.
 
-Esta capa se mantiene independiente de frameworks, mecanismos de persistencia, servicios externos o detalles de infraestructura. Se compone de Aggregate Roots, Entities, Value Objects, Domain Events y Repository Interfaces.
+Esta capa se mantiene independiente de frameworks, mecanismos de persistencia, servicios externos o detalles de infraestructura. Se compone de Aggregate Roots, Entities, Value Objects y Domain Events.
 
 ##### Aggregates & Entities
 
-Estas clases representan los conceptos principales del dominio y garantizan la consistencia transaccional dentro del contexto de suscripciones, pagos y cuentas.
-
-<p><em>Tabla de Aggregates en el Domain Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Subscription</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la suscripción contratada por una cuenta de negocio. Controla el ciclo de vida del plan, su estado de activación, renovación, expiración o actualización. Garantiza que una cuenta tenga un único plan activo a la vez.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Plan</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una plantilla comercial de beneficios, precios y límites. Define qué recursos, cuotas o capacidades quedan disponibles para la cuenta según el tipo de suscripción seleccionada.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Payment</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el proceso de pago asociado a una suscripción. Registra el estado de la operación, la referencia externa de Stripe y la confirmación necesaria para activar el plan contratado.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Account</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la cuenta de negocio creada después de la confirmación del pago. Recibe el identificador del usuario propietario y el identificador de la suscripción activa para iniciar la operación del negocio dentro del sistema.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>AccountMembership</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la asociación entre un usuario y una cuenta de negocio. Permite modelar propietarios, trabajadores o administradores vinculados a una cuenta, evitando guardar únicamente una lista simple de usuarios.</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
+<p><em>Tabla de Aggregates en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Subscription</strong></td> <td style="padding: 10px; border: 1px solid;">Aggregate Root</td> <td style="padding: 10px; border: 1px solid;">Representa la suscripción contratada. Controla el ciclo de vida del plan (activación, expiración, cancelación) y garantiza que solo exista un plan activo por cuenta.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Plan</strong></td> <td style="padding: 10px; border: 1px solid;">Entity</td> <td style="padding: 10px; border: 1px solid;">Define los beneficios, precios y límites disponibles para una suscripción.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Payment</strong></td> <td style="padding: 10px; border: 1px solid;">Aggregate Root</td> <td style="padding: 10px; border: 1px solid;">Representa el proceso de pago asociado a una suscripción, incluyendo su estado y validación para activar el plan.</td> </tr> </tbody> </table>
 
 ##### Value Objects
 
-Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+<p><em>Tabla de Value Objects en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PlanLimits</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Define los límites del plan contratado.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Money</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Representa montos monetarios con moneda.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>BillingPeriod</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Define el periodo de facturación.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentStatus</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Estado del pago (pendiente, confirmado, fallido).</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionStatus</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Estado de la suscripción.</td> </tr> </tbody> </table>
 
-<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+##### Domain Events
 
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>PlanLimits</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Agrupa los límites del plan contratado, como número máximo de sucursales, usuarios, dispositivos IoT o recursos permitidos. Previene límites negativos o inconsistentes.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Money</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa montos monetarios asociados a pagos, renovaciones o upgrades. Encapsula importe y moneda para evitar errores de cálculo o confusión entre divisas.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>BillingPeriod</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Define el periodo de facturación de la suscripción, como mensual o anual, así como las fechas de inicio y término del ciclo activo.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>PaymentStatus</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el estado del pago, como pendiente, aceptado, rechazado o reembolsado. Permite condicionar la activación del plan solo cuando el pago ha sido confirmado.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionStatus</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el estado de la suscripción, como activa, expirada, cancelada o pendiente. Controla que los beneficios del plan solo estén disponibles cuando corresponda.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionId, AccountId, UserId, PaymentId</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para evitar confusiones entre entidades del mismo bounded context o referencias provenientes de otros contextos.</td>
-    </tr>
-  </tbody>
-</table>
+<p><em>Tabla de Domain Events en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Evento</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionPlanSelectedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando un usuario selecciona un plan.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentInitializedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando se inicia un pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentConfirmedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando el pago es confirmado.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionActivatedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando una suscripción se activa.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionUpgradedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando se realiza un upgrade de plan.</td> </tr> </tbody> </table>
 
-<br>
+##### Commands & Queries
 
-##### Repository Interfaces
+<p><em>Tabla de Commands y Queries del Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid;">Nombre</th> <th style="padding: 10px; border: 1px solid;">Tipo</th> <th style="padding: 10px; border: 1px solid;">Propósito</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;">SelectSubscriptionPlan</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Seleccionar un plan.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">InitializePayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Iniciar el pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ConfirmPayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Confirmar pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ActivateSubscription</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Activar suscripción.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">GetSubscription</td> <td style="padding: 10px; border: 1px solid;">Query</td> <td style="padding: 10px; border: 1px solid;">Consultar suscripción.</td> </tr> </tbody> </table>
 
-Las abstracciones de persistencia se definen en esta capa para cumplir el Principio de Inversión de Dependencias. El dominio declara qué necesita guardar o consultar, sin depender de la tecnología utilizada en la base de datos.
-
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>ISubscriptionRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para registrar, consultar y actualizar suscripciones activas, expiradas o canceladas.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IPlanRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para consultar planes disponibles, precios, beneficios y límites configurados.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IPaymentRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para persistir pagos, referencias externas de Stripe y estados de confirmación.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IAccountRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para crear cuentas de negocio y asociar usuarios a ellas mediante membresías.</td>
-    </tr>
-  </tbody>
-</table>
 
 #### 4.2.2.2. Interface Layer
 
-En la capa de interfaz del Bounded Context de Subscriptions and Payments se exponen los endpoints RESTful necesarios para que los usuarios puedan consultar planes, seleccionar una suscripción, iniciar pagos, confirmar operaciones y administrar la cuenta de negocio asociada. Esta capa recibe solicitudes desde la Web App o aplicaciones cliente, transforma los recursos de entrada en comandos o queries y delega la ejecución a la capa de aplicación.
+En la capa de interfaz del Bounded Context de Subscriptions and Payments se exponen endpoints RESTful alineados a recursos del dominio como planes, suscripciones y pagos. Esta capa transforma las solicitudes entrantes en Commands o Queries y delega su ejecución a la capa de aplicación.
 
-También contempla endpoints de integración para recibir confirmaciones provenientes de Stripe mediante webhooks. Estos eventos externos son tratados como entradas al sistema, pero la decisión de activar un plan se mantiene dentro del dominio de suscripciones y pagos.
+Asimismo, se define la interfaz del Anti-Corruption Layer (ACL) para permitir la comunicación con otros bounded contexts sin acoplar directamente los modelos de dominio.
+
+##### Anti-Corruption Layer Interface
+
+<p><em>Tabla de ACL Interface en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Tipo</th>
+      <th style="padding: 10px; border: 1px solid;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>ProfilesACL</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Define la comunicación con el bounded context de Profiles para operaciones como creación de cuentas de negocio y asociación de usuarios.</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### PlanController
 
@@ -421,23 +326,11 @@ También contempla endpoints de integración para recibir confirmaciones proveni
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th style="padding: 10px; border: 1px solid;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid;">Valor</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">PlanController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar planes disponibles, beneficios y límites de suscripción.</td>
-    </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
       <td style="padding: 10px; border: 1px solid;">/api/v1/plans</td>
@@ -445,31 +338,29 @@ También contempla endpoints de integración para recibir confirmaciones proveni
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de PlanController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">GetAll</td>
-      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Lista los planes disponibles</td>
-      <td style="padding: 10px; border: 1px solid;">GetAvailablePlansQuery</td>
+      <td>GetAll</td>
+      <td>GET /</td>
+      <td>Listar planes</td>
+      <td>GetAvailablePlansQuery</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">GetById</td>
-      <td style="padding: 10px; border: 1px solid;">/{planId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de un plan</td>
-      <td style="padding: 10px; border: 1px solid;">GetPlanByIdQuery</td>
+      <td>GetById</td>
+      <td>GET /{planId}</td>
+      <td>Obtener plan</td>
+      <td>GetPlanByIdQuery</td>
     </tr>
   </tbody>
 </table>
@@ -481,133 +372,133 @@ También contempla endpoints de integración para recibir confirmaciones proveni
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">SubscriptionController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la selección, activación, consulta, renovación y actualización de suscripciones.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/subscriptions</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/subscriptions</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de SubscriptionController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">SelectPlan</td>
-      <td style="padding: 10px; border: 1px solid;">/select-plan (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Selecciona un plan de suscripción</td>
-      <td style="padding: 10px; border: 1px solid;">SelectSubscriptionPlanCommand</td>
+      <td>Create</td>
+      <td>POST /</td>
+      <td>Crear suscripción (selección de plan)</td>
+      <td>SelectSubscriptionPlanCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">ConfigureLimits</td>
-      <td style="padding: 10px; border: 1px solid;">/{subscriptionId}/limits (PUT)</td>
-      <td style="padding: 10px; border: 1px solid;">Configura los límites del plan contratado</td>
-      <td style="padding: 10px; border: 1px solid;">ConfigurePlanLimitsCommand</td>
+      <td>Upgrade</td>
+      <td>POST /{subscriptionId}/upgrade</td>
+      <td>Actualizar plan</td>
+      <td>UpgradeSubscriptionPlanCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">Upgrade</td>
-      <td style="padding: 10px; border: 1px solid;">/{subscriptionId}/upgrade (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Actualiza la suscripción a un nuevo plan</td>
-      <td style="padding: 10px; border: 1px solid;">UpgradeSubscriptionPlanCommand</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetCurrent</td>
-      <td style="padding: 10px; border: 1px solid;">/current (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene la suscripción activa de la cuenta</td>
-      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQuery</td>
+      <td>ConfigureLimits</td>
+      <td>PUT /{subscriptionId}/limits</td>
+      <td>Configurar límites</td>
+      <td>ConfigurePlanLimitsCommand</td>
     </tr>
   </tbody>
 </table>
 
-##### PaymentController
+##### AccountSubscriptionsController
 
-<p><em>Tabla de PaymentController en el Interface Layer</em></p>
+<p><em>Tabla de AccountSubscriptionsController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">PaymentController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la creación de órdenes de pago, inicio de checkout y consulta del estado del pago.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/payments</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/accounts/{accountId}/subscriptions</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de PaymentController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">CreatePaymentOrder</td>
-      <td style="padding: 10px; border: 1px solid;">/order (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Genera una orden de pago con los detalles de la suscripción</td>
-      <td style="padding: 10px; border: 1px solid;">CreatePaymentOrderCommand</td>
+      <td>GetCurrent</td>
+      <td>GET /current</td>
+      <td>Obtener suscripción activa de la cuenta</td>
+      <td>GetCurrentSubscriptionQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### SubscriptionPaymentsController
+
+<p><em>Tabla de SubscriptionPaymentsController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th>Propiedad</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/subscriptions/{subscriptionId}/payments</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Métodos</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CreatePayment</td>
+      <td>POST /</td>
+      <td>Iniciar proceso de pago</td>
+      <td>StartStripeCheckoutCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">StartCheckout</td>
-      <td style="padding: 10px; border: 1px solid;">/checkout (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Inicia el flujo de pago con Stripe</td>
-      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommand</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetStatus</td>
-      <td style="padding: 10px; border: 1px solid;">/{paymentId}/status (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Consulta el estado actual del pago</td>
-      <td style="padding: 10px; border: 1px solid;">GetPaymentStatusQuery</td>
+      <td>GetStatus</td>
+      <td>GET /{paymentId}</td>
+      <td>Consultar estado del pago</td>
+      <td>GetPaymentStatusQuery</td>
     </tr>
   </tbody>
 </table>
@@ -619,118 +510,46 @@ También contempla endpoints de integración para recibir confirmaciones proveni
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">StripeWebhookController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Webhook Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Recibir y validar eventos provenientes de Stripe para confirmar pagos, renovaciones o rechazos.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/webhooks/stripe</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/webhooks/stripe</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de StripeWebhookController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">HandlePaymentAccepted</td>
-      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Procesa confirmaciones de pago recibidas desde Stripe</td>
-      <td style="padding: 10px; border: 1px solid;">ConfirmStripePaymentCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-##### AccountController
-
-<p><em>Tabla de AccountController en el Interface Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar la cuenta de negocio creada y asociar trabajadores a una cuenta existente.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/accounts</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-<p><em>Tabla de métodos de AccountController en el Interface Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetById</td>
-      <td style="padding: 10px; border: 1px solid;">/{accountId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene los datos básicos de una cuenta de negocio</td>
-      <td style="padding: 10px; border: 1px solid;">GetAccountByIdQuery</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">AssociateUser</td>
-      <td style="padding: 10px; border: 1px solid;">/{accountId}/members (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Asocia un usuario trabajador a la cuenta</td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommand</td>
+      <td>HandlePayment</td>
+      <td>POST /</td>
+      <td>Procesar eventos de Stripe</td>
+      <td>ConfirmStripePaymentCommand</td>
     </tr>
   </tbody>
 </table>
 
 #### 4.2.2.3. Application Layer
 
-La capa de aplicación del Bounded Context de Subscriptions and Payments coordina los casos de uso relacionados con planes, suscripciones, pagos y cuentas de negocio. En esta capa residen los Command Handlers, Query Handlers y Event Handlers encargados de ejecutar los flujos principales del contexto: selección de plan, generación de orden de pago, confirmación de pago mediante Stripe, activación de suscripción, creación de cuenta de negocio, asociación de usuarios y actualización de límites cuando el usuario realiza un upgrade de plan.
+La capa de aplicación del Bounded Context de Subscriptions and Payments coordina los casos de uso relacionados con planes, suscripciones y pagos. En esta capa residen los Command Handlers, Query Handlers, Event Handlers y servicios de aplicación encargados de ejecutar los flujos principales del contexto: selección de plan, inicio del proceso de pago, confirmación de pago mediante Stripe, activación de suscripción y actualización de límites cuando el usuario realiza un upgrade de plan.
 
-Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar el flujo de trabajo entre la capa de interfaz y el dominio, cargar aggregates desde repositorios, invocar métodos del modelo de dominio, persistir cambios y publicar eventos que serán consumidos por otros bounded contexts, como Asset and Resource Management, Profile and Preferences e Identity and Access Management. De esta manera, el contexto mantiene la responsabilidad sobre el ciclo de vida comercial de la suscripción, mientras que los demás contextos ejecutan acciones específicas relacionadas con recursos, perfiles, sucursales y permisos.
+Esta capa no contiene reglas puras de dominio. Su responsabilidad es orquestar el flujo de trabajo entre la capa de interfaz y el dominio, cargar aggregates desde los mecanismos de persistencia disponibles, invocar métodos del modelo de dominio, persistir cambios y publicar eventos que podrán ser consumidos por otros bounded contexts.
+
+La creación de la cuenta de negocio no pertenece directamente a este bounded context, debido a que el comando CreateBusinessAccount forma parte del contexto de Profiles. Por ello, Subscriptions and Payments se comunica con dicho contexto mediante un Anti-Corruption Layer (ACL), evitando acoplar directamente sus modelos internos.
 
 ##### SelectSubscriptionPlanCommandHandler
 
@@ -754,7 +573,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la selección inicial de un plan de suscripción por parte del usuario, validando que el plan exista y dejando preparado el estado inicial de la suscripción antes del pago.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la selección inicial de un plan de suscripción, validando que el plan exista y dejando preparada la suscripción antes del pago.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -787,7 +606,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la configuración de los límites asociados al plan seleccionado, como cuotas de recursos, capacidad operativa y restricciones aplicables a la cuenta.</td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la configuración de límites asociados al plan seleccionado, como cuotas de recursos, capacidad operativa y restricciones aplicables a la suscripción.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -798,9 +617,9 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 <br>
 
-##### GeneratePaymentOrderCommandHandler
+##### StartStripeCheckoutCommandHandler
 
-<p><em>Tabla de GeneratePaymentOrderCommandHandler en el Application Layer</em></p>
+<p><em>Tabla de StartStripeCheckoutCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -812,7 +631,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GeneratePaymentOrderCommandHandler</td>
+      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommandHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -820,11 +639,11 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una orden de pago con los detalles del plan seleccionado, preparando la integración con Stripe para iniciar el proceso de cobro.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el inicio del proceso de pago asociado a una suscripción, preparando la integración con Stripe y registrando la referencia del pago.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GeneratePaymentOrderCommand</td>
+      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommand</td>
     </tr>
   </tbody>
 </table>
@@ -853,7 +672,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Procesar la confirmación del pago recibida desde Stripe, validar la referencia de la orden de pago y actualizar el estado del pago dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Procesar la confirmación del pago recibida desde Stripe, validar la referencia externa y actualizar el estado del pago dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -886,77 +705,11 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Activar la suscripción una vez confirmado el pago, asociando el plan contratado y publicando los eventos necesarios para habilitar la cuenta y los recursos vinculados.</td>
+      <td style="padding: 10px; border: 1px solid;">Activar la suscripción una vez confirmado el pago, asociando el plan contratado y publicando los eventos necesarios para que otros contextos reaccionen.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
       <td style="padding: 10px; border: 1px solid;">ActivateSubscriptionCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-##### CreateBusinessAccountCommandHandler
-
-<p><em>Tabla de CreateBusinessAccountCommandHandler en el Application Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateBusinessAccountCommandHandler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de la cuenta de negocio asociada a una suscripción activa, recibiendo el identificador del usuario propietario y el identificador de la suscripción.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateBusinessAccountCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-##### AssociateUserToAccountCommandHandler
-
-<p><em>Tabla de AssociateUserToAccountCommandHandler en el Application Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommandHandler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la asociación de un usuario a una cuenta de negocio, enviando el identificador de la cuenta y registrando la incorporación del usuario como trabajador o miembro del negocio.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommand</td>
     </tr>
   </tbody>
 </table>
@@ -985,7 +738,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar el cambio de plan o incremento de recursos contratados, reemplazando los límites actuales por los límites del nuevo plan y notificando a los contextos responsables de recursos e IoT.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el cambio de plan o incremento de recursos contratados, reemplazando los límites actuales por los límites del nuevo plan y notificando a los contextos correspondientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -1018,11 +771,44 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consultar el estado actual de una suscripción, incluyendo el plan asociado, estado del pago, vigencia y límites configurados.</td>
+      <td style="padding: 10px; border: 1px solid;">Consultar el estado actual de una suscripción, incluyendo plan asociado, estado del pago, vigencia y límites configurados.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
       <td style="padding: 10px; border: 1px solid;">GetSubscriptionStatusQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetCurrentSubscriptionQueryHandler
+
+<p><em>Tabla de GetCurrentSubscriptionQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la suscripción activa vinculada a una cuenta específica, sin exponer detalles técnicos de persistencia.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQuery</td>
     </tr>
   </tbody>
 </table>
@@ -1084,7 +870,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar a la activación de una suscripción para solicitar la creación de la cuenta de negocio, la asociación del usuario propietario y la habilitación inicial de recursos.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la activación de una suscripción y solicitar al contexto de Profiles la creación de la cuenta de negocio mediante el ACL.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -1095,9 +881,9 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 <br>
 
-##### AccountCreatedEventHandler
+##### ProfilesACL
 
-<p><em>Tabla de AccountCreatedEventHandler en el Application Layer</em></p>
+<p><em>Tabla de ProfilesACL en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -1109,19 +895,52 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountCreatedEventHandler</td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesACL</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+      <td style="padding: 10px; border: 1px solid;">Anti-Corruption Layer Implementation</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos posteriores a la creación de una cuenta de negocio, como la publicación de eventos para Profile and Preferences, Identity and Access Management y Asset and Resource Management.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la comunicación entre Subscriptions and Payments y Profiles, traduciendo solicitudes internas del contexto de suscripciones hacia comandos o recursos propios del contexto de perfiles.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountCreatedEvent</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IProfilesACL</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RequestBusinessAccountCreationService
+
+<p><em>Tabla de RequestBusinessAccountCreationService en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RequestBusinessAccountCreationService</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Application Service</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitar al contexto de Profiles la creación de una cuenta de negocio después de la activación de una suscripción, sin ejecutar directamente el comando CreateBusinessAccount dentro de este bounded context.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Dependencia</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesACL</td>
     </tr>
   </tbody>
 </table>
