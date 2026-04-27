@@ -251,125 +251,125 @@ _**Mes y Año**: Abril 2026_
     <td> 1.673 </th>
     <td> 23/04/26 </th>
     <td> Nicolas Juarez </th>
-    <td> Se corrigió el formato del Bic Picture Event Storming. </th>
+    <td> Se corrigió el formato del Big Picture Event Storming. </th>
   </tr>
   <tr>
     <td> 1.71 </th>
-    <td> colocar fecha </th>
+    <td> 23/04/2026 </th>
     <td> Jahaziel Guerra </th>
     <td> Se corrigió el Lean UX Canvas. </th>
   </tr>
   <tr>
     <td> 1.72 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Antonio Navarro </th>
     <td> Se añadió la sección relacionada a los Mapas de Impacto. </th>
   </tr>
   <tr>
     <td> 1.73 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Matias Diaz </th>
     <td> Se corrigió la sección del Design-Level Eventstorming. </th>
   </tr>
   <tr>
     <td> 1.74 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Gabriela Shapiama </th>
     <td> Se añadió la sección del Candidate Context Discovery. </th>
   </tr>
   <tr>
     <td> 1.75 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Julio Castro </th>
     <td> Se corrigieron los diagramas de Domain Message Flow Modeling. </th>
   </tr>
   <tr>
     <td> 1.76 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Nicolas Juarez </th>
     <td> Se añadió la sección de los Bounded Context Canvases. </th>
   </tr>
   <tr>
     <td> 1.77 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Gabriela Shapiama </th>
     <td> Se añadió la sección del Software Architecture System Landscape. </th>
   </tr>
   <tr>
     <td> 1.78 </th>
-    <td> colocar fecha </th>
+    <td> 24/04/2026 </th>
     <td> Jahaziel Guerra </th>
     <td> Se añadió la sección del Software Architecture Deployment Diagram. </th>
   </tr>
   <tr>
     <td> 1.81 </th>
-    <td> colocar fecha </th>
+    <td> 25/04/2026 </th>
     <td> Antonio Navarro </th>
     <td> Se añadió la sección del diseño táctico del contexto IAM. </th>
   </tr>
   <tr>
     <td> 1.82 </th>
-    <td> colocar fecha </th>
+    <td> 25/04/2026 </th>
     <td> Jahaziel Guerra </th>
     <td> Se añadió la sección del diseño táctico del contexto Subscriptions and Payments. </th>
   </tr>
   <tr>
     <td> 1.83 </th>
-    <td> colocar fecha </th>
+    <td> 25/04/2026 </th>
     <td> Nicolas Juarez </th>
     <td> Se añadió la sección del diseño táctico del contexto Profiles and Preferences. </th>
   </tr>
   <tr>
     <td> 1.84 </th>
-    <td> colocar fecha </th>
+    <td> 25/04/2026 </th>
     <td> Julio Castro </th>
     <td> Se añadió la sección del diseño táctico del contexto Asset and Resource Management. </th>
   </tr>
   <tr>
     <td> 1.85 </th>
-    <td> colocar fecha </th>
+    <td> 25/04/2026 </th>
     <td> Julio Castro </th>
     <td> Se añadió la sección del diseño táctico del contexto Service Design and Planning. </th>
   </tr>
   <tr>
     <td> 1.86 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Farid Coronel </th>
     <td> Se añadió la sección del diseño táctico del contexto Sales Order Management. </th>
   </tr>
   <tr>
     <td> 1.87 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Matias Diaz </th>
     <td> Se añadió la sección del diseño táctico del contexto Alerts and Notifications. </th>
   </tr>
   <tr>
     <td> 1.88 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Gabriela Shapiama </th>
     <td> Se añadió la sección del diseño táctico del contexto Service Operation and Monitoring. </th>
   </tr>
   <tr>
     <td> 1.91 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Antonio Navarro </th>
     <td> Se añadieron las conclusiones sobre el primer avance. </th>
   </tr>
   <tr>
     <td> 1.92 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Matias Diaz </th>
     <td> Se añadió la sección de la Bibliografía. </th>
   </tr>
   <tr>
     <td> 1.92 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Nicolas Juarez </th>
     <td> Se añadió la sección de los anexos. </th>
   </tr>
   <tr>
     <td> 1.93 </th>
-    <td> colocar fecha </th>
+    <td> 26/04/2026 </th>
     <td> Julio Castro </th>
     <td> Se añadió la sección del Collaboration Insights. </th>
   </tr>
