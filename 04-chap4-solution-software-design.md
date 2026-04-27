@@ -149,7 +149,7 @@ Se trazaron fronteras alrededor de los grupos identificados, estableciendo los l
 
 Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
 
-<img src="https://imgur.com/Ke6dnOH.png" alt=“DDD” width="800px">
+<img src="https://imgur.com/oI92pdH.png" alt=“DDD” width="800px">
 
 A continuación, se explicará en qué consiste cada bounded context:
 
@@ -184,10 +184,6 @@ A continuación, se explicará en qué consiste cada bounded context:
 **Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
 
 <img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
-
-**Analytics:** También llamado “Analytics”, este bounded context contiene el proceso de análisis y visualización de información relevante del sistema, permitiendo a los usuarios consultar datos como insumos con stock cero, insumos con stock bajo, últimos insumos registrados y alertas recientes. Además, centraliza la presentación de indicadores en un dashboard, facilitando el seguimiento del comportamiento del inventario y el apoyo a la toma de decisiones.
-
-<img src="https://imgur.com/0trAWyu.png" alt=“DDD” width="500px">
 
 #### 4.1.1.2 Domain Message Flows Modeling
 
