@@ -5926,6 +5926,22 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
 
+Este diagrama representa la implementación del bounded context Service Operation and Monitoring en la aplicación web.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_frontend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
+##### Mobile Application Component Diagram
+
+Este diagrama muestra la implementación del bounded context Service Operation and Monitoring en la aplicación móvil.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_mobile.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
+##### Backend Application Component Diagram
+
+Este diagrama representa la lógica central del bounded context Service Operation and Monitoring en el backend.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_backend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
