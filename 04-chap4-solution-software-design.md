@@ -2796,7 +2796,7 @@ La capa de infraestructura del Bounded Context de Profiles and Preferences actú
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
@@ -6248,10 +6248,21 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
       <td style="padding: 10px; border: 1px solid;">NotificationContextFacade</td>
     </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webProfile</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
       <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
       <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
