@@ -39,14 +39,315 @@
 
 ## Registro de Versiones
 
-| *Versión* | *Fecha* | *Autor* | *Descripción de modificación* |
-| :----------: | :-------: | :-------- | :-------------------------------- |
-|     1.2     |          |           |                                   |
-|     1.3     |          |           |                                   |
-|     1.4     |          |           |                                   |
-|     1.5     |          |           |                                   |
-|     1.6     |          |           |                                   |
-|     1.7     |          |           |                                   |
+<table border="1">
+  <tr>
+    <th> Versión </th>
+    <th> Fecha </th>
+    <th> Autor </th>
+    <th> Descripción de la modificación </th>
+  </tr>
+  <tr>
+    <td> 1.11 </th>
+    <td> 02/04/26 </th>
+    <td> Julio Castro </th>
+    <td> Se agregó la sección relacionada a la descripción de la startup </th>
+  </tr>
+  <tr>
+    <td> 1.12 </th>
+    <td> 02/04/26 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se agregó la sección relacionada con los antecedentes y problematica. </th>
+  </tr>
+  <tr>
+    <td> 1.21 </th>
+    <td> 03/04/26 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se agregó la seccion relacionada con el Lean UX Problem Statement. </th>
+  </tr>
+  <tr>
+    <td> 1.22 </th>
+    <td> 04/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se agregó la seccion relacionada con el Lean UX Assumptions. </th>
+  </tr>
+  <tr>
+    <td> 1.23 </th>
+    <td> 04/04/26 </th>
+    <td> Antonio Navarro </th>
+    <td> Se agregó la seccion relacionada con el Lean UX Hypothesis Statements. </th>
+  </tr>
+  <tr>
+    <td> 1.24 </th>
+    <td> 05/04/26 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se agregó la seccion relacionada con el Lean UX Canvas. </th>
+  </tr>
+  <tr>
+    <td> 1.25 </th>
+    <td> 06/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con los segmentos objetivos. </th>
+  </tr>
+  <tr>
+    <td> 1.31 </th>
+    <td> 07/04/26 </th>
+    <td> Jahaziel Garcia </th>
+    <td> Se agregó la seccion del análisis competitivo </th>
+  </tr>
+  <tr>
+    <td> 1.32 </th>
+    <td> 08/04/26 </th>
+    <td> Julio Castro </th>
+    <td> Se agregó la seccion relacionada el diseño de entrevistas </th>
+  </tr>
+  <tr>
+    <td> 1.33 </th>
+    <td> 08/04/26 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se agregó la seccion relacionada con el registro de entrevistas para el sector de restaurantes. </th>
+  </tr>
+  <tr>
+    <td> 1.34 </th>
+    <td> 08/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con el registro de entrevistas para el sector retail. </th>
+  </tr>
+  <tr>
+    <td> 1.35 </th>
+    <td> 10/04/26 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se agregó la seccion relacionada con el analisis de entrevistas. </th>
+  </tr>
+  <tr>
+    <td> 1.41 </th>
+    <td> 11/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se agregó la seccion relacionada con los User Persona. </th>
+  </tr>
+  <tr>
+    <td> 1.42 </th>
+    <td> 12/04/26 </th>
+    <td> Antonio Navarro </th>
+    <td> Se agregó la seccion relacionada con el User Task Matrix. </th>
+  </tr>
+  <tr>
+    <td> 1.43 </th>
+    <td> 12/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con el User Journey Mapping. </th>
+  </tr>
+  <tr>
+    <td> 1.44 </th>
+    <td> 13/04/26 </th>
+    <td> Julio Castro </th>
+    <td> Se agregó la seccion relacionada con los User Empathy Maps. </th>
+  </tr>
+  <tr>
+    <td> 1.45 </th>
+    <td> 15/04/26 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se agregó la seccion relacionada con el Big Picture Event Storming. </th>
+  </tr>
+  <tr>
+    <td> 1.46 </th>
+    <td> 16/04/26 </th>
+    <td> Julio Castro </th>
+    <td> Se agregó la seccion relacionada con el Ubiquitous Language. </th>
+  </tr>
+  <tr>
+    <td> 1.51 </th>
+    <td> 19/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se agregó la seccion relacionada con los User Stories. </th>
+  </tr>
+  <tr>
+    <td> 1.52 </th>
+    <td> 20/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con el Product Backlog. </th>
+  </tr>
+  <tr>
+    <td> 1.61 </th>
+    <td> 21/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se agregó la seccion relacionada con el Design-Level Eventstorming. </th>
+  </tr>
+  <tr>
+    <td> 1.62 </th>
+    <td> 21/04/26 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se agregó la seccion relacionada con el Big Picture Event Storming </th>
+  </tr>
+  <tr>
+    <td> 1.63 </th>
+    <td> 21/04/26 </th>
+    <td> Julio Castro </th>
+    <td> Se agregó la seccion relacionada con el Domain Message Flow Modeling. </th>
+  </tr>
+  <tr>
+    <td> 1.64 </th>
+    <td> 21/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se agregó la seccion relacionada con el Context Mapping. </th>
+  </tr>
+  <tr>
+    <td> 1.65 </th>
+    <td> 21/04/26 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se agregó la seccion relacionada con el System Landscape Diagram. </th>
+  </tr>
+  <tr>
+    <td> 1.66 </th>
+    <td> 22/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con el Software Architecture Context Level Diagram. </th>
+  </tr>
+  <tr>
+    <td> 1.67 </th>
+    <td> 22/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se agregó la seccion relacionada con los Software Architecture Container Level Diagrams. </th>
+  </tr>
+  <tr>  
+  <tr>
+    <td> 1.671 </th>
+    <td> 22/04/26 </th>
+    <td> Matias Diaz </th>
+    <td> Se redujo la cantidad de User Stories. </th>
+  </tr>
+  <tr>
+    <td> 1.672 </th>
+    <td> 23/04/26 </th>
+    <td> Farid Coronel </th>
+    <td> Se corrigió la sección del Product Backlog. </th>
+  </tr>
+  <tr>
+    <td> 1.673 </th>
+    <td> 23/04/26 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el formato del Big Picture Event Storming. </th>
+  </tr>
+  <tr>
+    <td> 1.71 </th>
+    <td> 23/04/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se corrigió el Lean UX Canvas. </th>
+  </tr>
+  <tr>
+    <td> 1.72 </th>
+    <td> 24/04/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección relacionada a los Mapas de Impacto. </th>
+  </tr>
+  <tr>
+    <td> 1.73 </th>
+    <td> 24/04/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se corrigió la sección del Design-Level Eventstorming. </th>
+  </tr>
+  <tr>
+    <td> 1.74 </th>
+    <td> 24/04/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Candidate Context Discovery. </th>
+  </tr>
+  <tr>
+    <td> 1.75 </th>
+    <td> 24/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se corrigieron los diagramas de Domain Message Flow Modeling. </th>
+  </tr>
+  <tr>
+    <td> 1.76 </th>
+    <td> 24/04/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de los Bounded Context Canvases. </th>
+  </tr>
+  <tr>
+    <td> 1.77 </th>
+    <td> 24/04/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Software Architecture System Landscape. </th>
+  </tr>
+  <tr>
+    <td> 1.78 </th>
+    <td> 24/04/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección del Software Architecture Deployment Diagram. </th>
+  </tr>
+  <tr>
+    <td> 1.81 </th>
+    <td> 25/04/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección del diseño táctico del contexto IAM. </th>
+  </tr>
+  <tr>
+    <td> 1.82 </th>
+    <td> 25/04/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección del diseño táctico del contexto Subscriptions and Payments. </th>
+  </tr>
+  <tr>
+    <td> 1.83 </th>
+    <td> 25/04/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del diseño táctico del contexto Profiles and Preferences. </th>
+  </tr>
+  <tr>
+    <td> 1.84 </th>
+    <td> 25/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del diseño táctico del contexto Asset and Resource Management. </th>
+  </tr>
+  <tr>
+    <td> 1.85 </th>
+    <td> 25/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del diseño táctico del contexto Service Design and Planning. </th>
+  </tr>
+  <tr>
+    <td> 1.86 </th>
+    <td> 26/04/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección del diseño táctico del contexto Sales Order Management. </th>
+  </tr>
+  <tr>
+    <td> 1.87 </th>
+    <td> 26/04/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del diseño táctico del contexto Alerts and Notifications. </th>
+  </tr>
+  <tr>
+    <td> 1.88 </th>
+    <td> 26/04/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del diseño táctico del contexto Service Operation and Monitoring. </th>
+  </tr>
+  <tr>
+    <td> 1.91 </th>
+    <td> 26/04/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadieron las conclusiones sobre el primer avance. </th>
+  </tr>
+  <tr>
+    <td> 1.92 </th>
+    <td> 26/04/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección de la Bibliografía. </th>
+  </tr>
+  <tr>
+    <td> 1.92 </th>
+    <td> 26/04/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de los anexos. </th>
+  </tr>
+  <tr>
+    <td> 1.93 </th>
+    <td> 26/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del Collaboration Insights. </th>
+  </tr>
+</table>
 
 # Project Report Collaboration Insights
 
