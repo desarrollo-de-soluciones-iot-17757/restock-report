@@ -225,7 +225,7 @@ Este Bounded Context se encarga de gestionar el acceso seguro a la aplicación y
 
 La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Identity and Access Management. En esta capa se encapsulan todas las reglas de negocio críticas tales como la creación de usuarios, autenticación, asignación de roles y vinculación con cuentas empresariales.
 
-Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, centralizando su lógica en Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar el tipado estricto, Eventos de Dominio (Domain Events) y los contratos de persistencia mediante Interfaces.
+Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, centralizando su lógica en Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar el tipado estricto, Eventos de Dominio (Domain Events).
 
 ##### Aggregates & Entities
 
@@ -275,32 +275,6 @@ Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, c
       <td style="padding: 10px; border: 1px solid;"><strong>Password</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
       <td style="padding: 10px; border: 1px solid;">Garantiza la inmutabilidad y seguridad de la clave de acceso. Se encarga de aplicar reglas de complejidad y manejar la lógica de encriptación/hashing antes de la persistencia.</td>
-    </tr>
-  </tbody>
-</table>
-
-##### Repository Interfaces
-
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IUserRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Define el contrato para la persistencia de usuarios, permitiendo la búsqueda por credenciales para el Sign in y el almacenamiento de nuevos registros.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IRoleRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Interfaz encargada de recuperar la configuración de roles desde el almacén de datos para facilitar la asignación de permisos durante la creación de perfiles.</td>
     </tr>
   </tbody>
 </table>
@@ -699,14 +673,200 @@ La capa de infraestructura en el Bounded Context de IAM provee las implementacio
 
 #### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
 
+En esta sección se presentan los diagramas de componentes del Bounded Context de Identity and Access Management (IAM), mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este Bounded Context gestiona de manera centralizada la seguridad de la plataforma, interactuando con otros contextos para la propagación de identidades o servicios externos únicamente cuando dichas interacciones son necesarias para la validación de credenciales, el control de acceso basado en roles y la gestión de sesiones de usuario.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-iam/frontend-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webIdentityAccess</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para las operaciones de inicio de sesión (Sign In) y registro (Sign Up). Capta las credenciales e interacciones de los usuarios (Retail/Restaurant Admin) para enviarlas al backend para su autenticación.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webIdentityAccess</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Cloud Server Side App</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para autenticar a los usuarios web, enviando credenciales y recibiendo tokens de acceso o confirmaciones de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Shared</strong> (Módulo Web)</td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de la API, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+##### Web Application Component Diagram
+
+El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
+
+<img src="assets/images/chapter4/bc-iam/mobile-app-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileIAM</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona localmente los flujos de inicio y cierre de sesión de los usuarios de la aplicación móvil. Provee la interfaz y la lógica para que administradores de restaurantes y comercios minoristas se autentiquen de forma segura para usar la aplicación.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileIAM</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Llamada de Servicio (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones HTTPS seguras para autenticar las credenciales de los usuarios de la aplicación móvil contra el servidor principal.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende la funcionalidad de utilidades base de API y endpoints compartidas por otros módulos de la aplicación móvil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de restaurantes se autentiquen para gestionar inventario, recetas y ventas.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Retail Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de comercios minoristas se autentiquen para gestionar inventario y stock.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
+
+<img src="assets/images/chapter4/bc-iam/backend-iam.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de autenticación y autorización para todos los usuarios del sistema. Emite y valida tokens JWT para asegurar las comunicaciones. Gestiona las cuentas de usuario y la creación de perfiles iniciales.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiIam</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Mobile Application</strong> / <strong>Restock Platform Web Client App</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe y procesa las solicitudes de inicio de sesión (sign-in) y registro (sign-up) desde las aplicaciones cliente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Múltiples Componentes Backend</strong> (Sales, Planning, Assets, etc.)</td>
+      <td style="padding: 10px; border: 1px solid;">Validación de Seguridad</td>
+      <td style="padding: 10px; border: 1px solid;">Actúa como proveedor de validación de tokens JWT para autorizar las operaciones internas de otros módulos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Database</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Persistencia (Escritura/Lectura)</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera datos críticos de usuarios, credenciales y la información de suscripción actual.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiProfileAndPreferences</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la creación automática de un perfil de usuario (ACL) cuando se registra una nueva cuenta.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptionsAndPayments</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Registra la cuenta y la suscripción inicial del usuario al completar el proceso de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades comunes de infraestructura y objetos de valor compartidos.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+
 En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
 
 El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
 
-<img src="https://i.ibb.co/35YFtdd9/imagen-2026-04-26-124752258.png" alt="imagen-2026-04-26-124752258" border="0">
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.jpeg" alt="imagen-2026-04-26-124752258" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
