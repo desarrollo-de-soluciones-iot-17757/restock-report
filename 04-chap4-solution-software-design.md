@@ -2916,20 +2916,16 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
 
-### 4.2.7. Bounded Context: Sales Order Management
+## 4.2.8. Bounded Context: Communication
 
-#### 4.2.7.1. Domain Layer
+#### 4.2.8.1. Domain Layer
 
-La capa de dominio representa el núcleo de la aplicación para el Bounded Context **Sales Order Management**. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión de órdenes de venta, desde su creación hasta su cierre.
-
-Esta capa está aislada de detalles de la capa de infraestructura. Se compone de Entities, Aggregate Roots, Value Objects para garantizar la inmutabilidad de las composiciones, Domain Events y las abstracciones de los repositorios mediante Interfaces.
+La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Service Operation and Monitoring y Sales Order Management para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
 
 ##### Aggregates & Entities
 
-Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
-
+Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
 <p><em>Tabla de Aggregates en el Domain Layer</em></p>
-
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -2940,31 +2936,18 @@ Estas clases representan los pilares transaccionales del sistema. Cada Aggregate
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Sales</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Notification</strong></td>
       <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una orden de venta. Encapsula la lógica para validar que la orden contenga al menos un producto, que el total sea mayor a cero y permite actualizar su estado.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SalesItem</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa un ítem dentro de la orden de venta. Se asegura de que la cantidad sea mayor que cero, que el precio unitario también sea mayor que cero y que el total de la línea sea el resultado de multiplicar el precio unitario por la cantidad.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>AdditionalSupply</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una línea de producto dentro de la orden. Garantiza que la cantidad sea mayor a cero y que el id del lote referenciado sea válido.</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, la cuenta del destinatario, la sucursal de origen y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
 ##### Value Objects
 
-Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos, asegurando que los datos siempre sean válidos desde su creación.
-
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
 <p><em>Tabla de Value Objects en el Domain Layer</em></p>
-
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -2975,92 +2958,137 @@ Estas clases modelan características conceptuales del dominio. Son inmutables y
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SalesTotals</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula los valores de subtotal, impuesto y total. Garantiza que estos valores no puedan modificarse una vez creados, que ninguno sea negativo y que el total sea siempre la suma del subtotal y el impuesto.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationType</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Clasifica el tipo de notificación generada: LOW_STOCK, OVERSTOCK, STOCK_DISCREPANCY, DEVICE_FAILURE o DEVICE_ANOMALY. Permite que el sistema aplique filtros y determine el mensaje apropiado para cada situación.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>CustomerName</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el nombre del cliente. Valida que no sea una cadena vacía ni supere el límite de caracteres permitido.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationPriority</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el nivel de prioridad de una notificación: LOW, MEDIUM o HIGH. Condiciona el orden de presentación en el centro de notificaciones y el comportamiento del canal de entrega push.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SalesStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object (enum)</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el estado de entrega de una notificación: PENDING, SENT o FAILED. Permite rastrear si el mensaje fue correctamente despachado a través del proveedor externo y actualizar el campo <code>sentAt</code> cuando el envío se confirma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SituationData</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el estado de la orden, como pendiente, completado o cancelado. Se asegura de que solo se utilicen valores definidos dentro del conjunto permitido y que los cambios de estado se realicen únicamente siguiendo transiciones válidas.</td>
-    </tr>  
+      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador de la cuenta (<code>accountId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, AccountId, BranchId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>notificationId</code>, <code>accountId</code> y <code>branchId</code> de la colección.</td>
+    </tr>
   </tbody>
 </table>
+<br>
 
-##### Commands 
+#### Commands
 
-Los Commands representan las intenciones de los usuarios al interactuar con el sistema. Cada Command encapsula los datos necesarios para ejecutar una acción específica, como crear o actualizar una orden de venta, y se valida antes de ser procesado por su correspondiente Command Handler.
-
+Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
 <p><em>Tabla de Commands en el Domain Layer</em></p>
-
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>CreateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>GenerateNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para crear una nueva orden de venta, incluyendo la lista de ítems, insumos adicionales y el monto total. Valida que la información proporcionada cumpla con las reglas de negocio antes de ser procesada por el Command Handler.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: accountId, branchId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>CancelSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>MarkNotificationAsReadCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para cancelar una orden de venta existente. Valida que la orden esté en un estado que permita su cancelación y que se proporcione una razón válida para la cancelación.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para marcar una notificación como leída dentro del aggregate.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>UpdateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>DispatchNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para actualizar el estado de una orden de venta. Valida que la transición de estado sea válida según las reglas de negocio y que se proporcione la información necesaria para realizar la actualización.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
+<br>
 
-##### Queries
+#### Queries
 
-Los Queries representan las solicitudes de información que los usuarios hacen al sistema. Cada Query encapsula los parámetros necesarios para recuperar datos específicos, como el detalle de una orden de venta o la lista de órdenes asociadas a una sucursal, y se valida antes de ser procesada por su correspondiente Query Handler.
-
+Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
 <p><em>Tabla de Queries en el Domain Layer</em></p>
-
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>GetSalesByBranchIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetRecentNotificationsQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar todas las órdenes de venta asociadas a una sucursal específica. Valida que el ID de la sucursal sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de una cuenta, con soporte de filtros por branchId, tipo y prioridad.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>GetSaleByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetNotificationByIdQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar el detalle completo de una orden de venta por su ID. Valida que el ID de la orden sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el accountId para recuperar su detalle completo desde la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
+<br>
 
-#### 4.2.7.2. Interface Layer
+#### Domain Events
 
-En la capa de interfaz del Bounded Context de Sales Order Management se exponen los endpoints RESTful necesarios para interactuar con las funcionalidades de gestión de órdenes de venta. A través de controladores especializados, esta capa actúa como punto de entrada para que las aplicaciones cliente (Web o Móvil) envíen los comandos de creación, actualización o cierre de órdenes, facilitando la consulta del estado y el historial de ventas.
+Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+<p><em>Tabla de Domain Events en el Domain Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationGeneratedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationSentEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al confirmar el despacho exitoso del mensaje push, actualizando el campo <code>sentAt</code> y el estado a SENT.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockAnomalyDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DeviceFailureDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
 
-##### SalesController
+#### 4.2.8.2. Interface Layer
 
-<p><em>Tabla de SalesController en el Interface Layer</em></p>
+La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts generen notificaciones sin acoplarse al modelo interno de este contexto.
 
+##### NotificationController
+
+<p><em>Tabla de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3071,7 +3099,7 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">SalesController</td>
+      <td style="padding: 10px; border: 1px solid;">NotificationController</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3079,19 +3107,16 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la creación, consulta, actualización y cierre de órdenes de venta de tiendas retail y restaurantes.</td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de una cuenta, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/sales</td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/notifications</td>
     </tr>
   </tbody>
 </table>
-
 <br>
-
-<p><em>Tabla de métodos de SalesController en el Interface Layer</em></p>
-
+<p><em>Tabla de métodos de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3103,40 +3128,54 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">Register</td>
-      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Crea una nueva orden de venta con sus ítems, insumos adicionales y monto total.</td>
-      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+      <td style="padding: 10px; border: 1px solid;">GetRecent</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones de la cuenta en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;">GetById</td>
-      <td style="padding: 10px; border: 1px solid;">/{saleId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Retorna el detalle completo de una orden de venta por su ID.</td>
-      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+      <td style="padding: 10px; border: 1px solid;">/{notificationId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de una notificación específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQuery</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">GetSalesByBranch</td>
-      <td style="padding: 10px; border: 1px solid;">/branches/{branchId}/sales/{saleId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
-      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
-    </tr>    
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">Edit</td>
-      <td style="padding: 10px; border: 1px solid;">/{saleId}/status (PATCH)</td>
-      <td style="padding: 10px; border: 1px solid;">Actualiza el estado de una orden de venta </td>
-      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">Delete</td>
-      <td style="padding: 10px; border: 1px solid;">/{saleId} (DELETE)</td>
-      <td style="padding: 10px; border: 1px solid;">Cancela una orden de venta marcándola con estado cancelado</td>
-      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+      <td style="padding: 10px; border: 1px solid;">MarkAsRead</td>
+      <td style="padding: 10px; border: 1px solid;">/{notificationId}/read (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Marca una notificación como leída, actualizando el campo <code>read</code>.</td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommand</td>
     </tr>
   </tbody>
 </table>
 
-<p><em>Tabla de BranchSalesController en el Interface Layer</em></p>
+#### ACL (Anti-Corruption Layer)
 
+La interfaz del ACL se expone desde la capa de interfaz del Bounded Context de Communication para permitir que otros bounded contexts soliciten la generación de alertas sin depender del modelo interno del dominio. Esta interfaz actúa como contrato de entrada hacia la implementación ubicada en la capa de aplicación.
+
+<p><em>Tabla de ACL en el Interface Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>INotificationContextFacade</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code> y <code>generateDeviceAlert</code> para que otros bounded contexts puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.8.3. Application Layer
+
+La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
+
+#### NotificationContextFacade
+<p><em>Tabla de NotificationContextFacade en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3147,53 +3186,26 @@ En la capa de interfaz del Bounded Context de Sales Order Management se exponen 
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">BranchSalesController</td>
+      <td style="padding: 10px; border: 1px solid;">NotificationContextFacade</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la consulta de órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/branches/{branchId}/sales</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationContextFacade</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-<p><em>Tabla de métodos de BranchSalesController en el Interface Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Query)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">Get</td>
-      <td style="padding: 10px; border: 1px solid;">/ (Get)</td>
-      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
-      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchId</td>
-    </tr>
-</table>
-
-#### 4.2.7.3. Application Layer
-
-La capa de aplicación del Bounded Context de Sales Order Management orquesta los flujos de trabajo dictados por los usuarios al gestionar sus órdenes de venta. Aquí residen los Command Handlers encargados de procesar la creación, actualización o cierre de órdenes, asegurando que se cumplan las reglas de negocio antes de delegar la persistencia al dominio.
-
-##### SalesCommandHandler
-
-<p><em>Tabla de CreateSaleCommandHandler en el Application Layer</em></p>
-
+#### GenerateNotificationCommandHandler
+<p><em>Tabla de GenerateNotificationCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3204,7 +3216,7 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateSaleCommandHandler</td>
+      <td style="padding: 10px; border: 1px solid;">GenerateNotificationCommandHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3212,21 +3224,18 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquesta la creación de una nueva orden de venta, validando que contenga al menos un ítem, que el monto total sea correcto y que se asocie a la sucursal correspondiente antes de persistirla a través del dominio.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code> y desencadenar su despacho a través de OneSignal.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+      <td style="padding: 10px; border: 1px solid;">GenerateNotificationCommand</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-##### UpdateSaleStatusCommandHandler
-
-<p><em>Tabla de UpdateSaleStatusCommandHandler en el Application Layer</em></p>
-
+#### MarkNotificationAsReadCommandHandler
+<p><em>Tabla de MarkNotificationAsReadCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3237,7 +3246,7 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommandHandler</td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommandHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3245,21 +3254,18 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquesta la actualización del estado de una orden de venta, validando que la transición de estado sea válida y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el marcado de una notificación como leída, validando que exista y actualizando el campo <code>read</code> a <code>true</code> dentro del aggregate.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
+      <td style="padding: 10px; border: 1px solid;">MarkNotificationAsReadCommand</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-##### CancelSaleCommandHandler
-
-<p><em>Tabla de CancelSaleCommandHandler en el Application Layer</em></p>
-
+#### DispatchNotificationCommandHandler
+<p><em>Tabla de DispatchNotificationCommandHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3270,7 +3276,7 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CancelSaleCommandHandler</td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommandHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3278,21 +3284,18 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquesta la cancelación de una orden de venta, validando que la orden exista, que su estado actual permita la cancelación y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el envío de una notificación delegando la entrega push a OneSignal a través de la capa de infraestructura y actualizando el campo <code>sentAt</code> y el estado de entrega según el resultado obtenido.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+      <td style="padding: 10px; border: 1px solid;">DispatchNotificationCommand</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-##### GetSaleByIdQueryHandler
-
-<p><em>Tabla de GetSaleByIdQueryHandler en el Application Layer</em></p>
-
+#### GetRecentNotificationsQueryHandler
+<p><em>Tabla de GetRecentNotificationsQueryHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3303,7 +3306,7 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQueryHandler</td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQueryHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3311,21 +3314,18 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de una orden de venta por su ID, validando que la orden exista y que el usuario tenga permisos para acceder a esa información antes de retornar el detalle completo de la orden.</td>
+      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones de la cuenta autenticada filtrando por <code>accountId</code> y <code>branchId</code>, incluyendo tipo, prioridad, sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-##### GetSalesByBranchIdQueryHandler
-
-<p><em>Tabla de GetSalesByBranchIdQueryHandler en el Application Layer</em></p>
-
+#### GetNotificationByIdQueryHandler
+<p><em>Tabla de GetNotificationByIdQueryHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3336,7 +3336,7 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQueryHandler</td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQueryHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3344,25 +3344,18 @@ La capa de aplicación del Bounded Context de Sales Order Management orquesta lo
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de todas las órdenes de venta asociadas a una sucursal específica, validando que la sucursal exista y que el usuario tenga permisos para acceder a esa información antes de retornar el listado completo de órdenes.</td>
+      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y accountId, exponiendo todos los campos de la colección al cliente solicitante.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetNotificationByIdQuery</td>
     </tr>
   </tbody>
 </table>
-
 <br>
 
-#### 4.2.7.4. Infrastructure Layer
-
-La capa de infrastructure de Sales Order Management materializa los repositorios necesarios para almacenar las órdenes de venta. Además, es el punto donde se implementan los adaptadores para servicios de terceros, como sistemas de pago o plataformas de envío, que son vitales para completar el ciclo de vida de una orden.
-
-##### SalesRepository
-
-<p><em>Tabla de SalesRepository en el Infrastructure Layer</em></p>
-
+#### StockAnomalyDetectedEventHandler
+<p><em>Tabla de StockAnomalyDetectedEventHandler en el Application Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -3373,7 +3366,100 @@ La capa de infrastructure de Sales Order Management materializa los repositorios
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">SalesRepository</td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Service Operation and Monitoring cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">StockAnomalyDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### DeviceFailureDetectedEventHandler
+<p><em>Tabla de DeviceFailureDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Service Operation and Monitoring, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### NotificationGeneratedEventHandler
+<p><em>Tabla de NotificationGeneratedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationGeneratedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code> y actualizando el campo <code>sentAt</code> al confirmar el envío.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationGeneratedEvent</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.8.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
+
+#### NotificationRepository
+<p><em>Tabla de NotificationRepository en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">NotificationRepository</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -3381,51 +3467,174 @@ La capa de infrastructure de Sales Order Management materializa los repositorios
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir las órdenes de venta, permitiendo su creación, actualización y consulta a través de la implementación de las operaciones definidas en el dominio.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>accountId</code>, <code>branchId</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sentAt</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por cuenta, así como filtros por tipo y prioridad.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
-      <td style="padding: 10px; border: 1px solid;">ISalesRepository</td>
+      <td style="padding: 10px; border: 1px solid;">INotificationRepository</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### CommunicationDbContext
+<p><em>Tabla de CommunicationDbContext en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CommunicationDbContext</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### OneSignalNotificationGateway
+<p><em>Tabla de OneSignalNotificationGateway en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">OneSignalNotificationGateway</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">External Service Wrapper</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sentAt</code>.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">INotificationGateway</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### IntegrationEventConsumer
+<p><em>Tabla de IntegrationEventConsumer en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IntegrationEventConsumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Consumer</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Service Operation and Monitoring (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>) y por Sales Order Management, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IIntegrationEventConsumer</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### DomainEventPublisher
+<p><em>Tabla de DomainEventPublisher en el Infrastructure Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">DomainEventPublisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Message Broker Publisher</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> o <code>NotificationSentEvent</code>, para que otros contextos interesados puedan reaccionar de forma desacoplada si fuese necesario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IDomainEventPublisher</td>
     </tr>
   </tbody>
 </table>
 
-#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+#### 4.2.8.5. Bounded Context Software Architecture Component Level Diagrams
 
-En esta sección se presentan los diagramas de componentes del bounded context de **Sales Order Management** mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros componentes o servicios.
+En esta sección se presentan los diagramas de componentes del Bounded Context Communication, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la gestión del ciclo de vida de alertas y notificaciones.
 
 ##### Web Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
+El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
 
-<img src="https://i.imgur.com/DmgkRpH.png" alt="Web Sales Order Management Component Diagram" width="100%">
+<img src="https://imgur.com/gkH6zra.png" alt="web-communicaiton">
+
+El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
 
 ##### Mobile Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación móvil, se implementa como un componente Dart/Flutter dentro del Restock Mobile Application, cumple la misma responsabilidad de gestión de órdenes de sucursal, reutilizando widgets o clases del componente Shared y conectándose igualmente al backend principal mediante JSON/HTTPS para el registro y consulta de ventas.
+El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
 
-<img src="https://i.imgur.com/FKwWjcM.png" alt="Mobile Sales Order Management Component Diagram" width="100%">
+<img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communicaiton">
+
+El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
 
 ##### Backend Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
+El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
 
-<img src="https://i.imgur.com/pR0rPXd.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+<img src="https://imgur.com/P0X1a9t.png" alt="api-communicaiton">
 
-#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
 
-##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+#### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
 
-En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta del negocio.
+##### 4.2.7.8.1. Bounded Context Domain Layer Class Diagrams
 
-En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. Además, se define los command y query service interfaces que orquestan las operaciones de creación y consulta de ventas, manteniendo una clara separación de responsabilidades.
+El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una notificación, desde su generación ante un evento crítico externo hasta su despacho al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates y value objects que definen la estructura y las reglas del dominio, y services, que contiene los commands, queries, domain events y la interfaz del ACL que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
 
-<img src="https://i.imgur.com/EVNhCMl.png" alt="Class Diagram - Sales Order Management">
+<img src="https://imgur.com/WB0oHIf.png" alt="class-diagram-communicaiton">
 
-##### 4.2.7.6.2. Bounded Context Database Design Diagram
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como send(), markAsRead() y markAsFailed(), en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, AccountId, BranchId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. Cabe destacar que el Domain Layer no expone interfaces de repositorio ni entidades adicionales, ya que NotificationRecipient fue eliminado al no ser necesario en el modelo actual, y la abstracción de persistencia corresponde a la capa de infraestructura, manteniendo así la pureza del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos generateStockAlert y generateDeviceAlert para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.
 
-En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Sales Order Management.
+##### 4.2.7.8.2. Bounded Context Database Design Diagram
 
-<img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Order Management" width="800px">
+El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones y sus destinatarios. Este esquema organiza la colección principal, sus atributos y las relaciones entre documentos, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
 
+<img src="https://imgur.com/WjWyVzo.png" alt="database-communication">
 
+El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (business_id), la sucursal asociada (branch_id), el usuario destinatario (user_id), el tipo de evento que la originó (type), el título y cuerpo del mensaje (title, message), la prioridad asignada (priority), la fecha y hora de envío (sent_at) y el estado de lectura (read).
+A diferencia de un modelo relacional con tablas separadas para alertas y notificaciones, este diseño en MongoDB consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por user_id, business_id o type. El campo read permite gestionar el estado de lectura directamente sobre el documento sin requerir una entidad adicional, mientras que sent_at registra el momento exacto en que la notificación fue despachada a través de OneSignal. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones de alertas separadas.
