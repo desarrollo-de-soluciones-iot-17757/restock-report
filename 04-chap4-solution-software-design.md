@@ -941,7 +941,7 @@ Esta sección presenta el diagrama de componentes del backend para el bounded co
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la visualización y edición de perfiles en pantallas de escritorio o laptops.
 
-<img src="https://imgur.com/a/DTF8cyi#UX6oWqW.jpeg" alt="Web App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/wWNi05L.jpeg" alt="Web App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Web Application para Profiles and Preferences</em></p>
 
@@ -992,7 +992,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus perfiles de usuario y negocio, adaptando la experiencia de usuario (UX) para pantallas táctiles.
 
-<img src="https://imgur.com/a/DTF8cyi#no145rR.jpeg" alt="Mobile App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/wuXRrNn.jpeg" alt="Mobile App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Mobile Application para Profiles and Preferences</em></p>
 
@@ -1043,7 +1043,7 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
 
-<img src="https://imgur.com/a/DTF8cyi#eM9vuSN.jpeg" alt="Cloud API Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/FSz2gnn.jpeg" alt="Cloud API Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Backend Application para Profiles and Preferences</em></p>
 
