@@ -2659,7 +2659,7 @@ En la capa de interfaz se exponen los endpoints HTTP RESTful necesarios para int
 
 #### 4.2.5.3. Application Layer
 
-La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja Event Handlers que reaccionan a acciones críticas, como notificar a los usuarios cuando un diseño es eliminado.
+La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command y Query Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja Event Handlers que reaccionan a acciones críticas, como notificar a los usuarios cuando un diseño es eliminado.
 
 ##### RegisterRecipeCommandHandler
 
@@ -2915,3 +2915,517 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
+
+### 4.2.7. Bounded Context: Sales Order Management
+
+#### 4.2.7.1. Domain Layer
+
+La capa de dominio representa el núcleo de la aplicación para el Bounded Context **Sales Order Management**. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión de órdenes de venta, desde su creación hasta su cierre.
+
+Esta capa está aislada de detalles de la capa de infraestructura. Se compone de Entities, Aggregate Roots, Value Objects para garantizar la inmutabilidad de las composiciones, Domain Events y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Sales</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una orden de venta. Encapsula la lógica para validar que la orden contenga al menos un producto, que el total sea mayor a cero y permite actualizar su estado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesItem</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un ítem dentro de la orden de venta. Se asegura de que la cantidad sea mayor que cero, que el precio unitario también sea mayor que cero y que el total de la línea sea el resultado de multiplicar el precio unitario por la cantidad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AdditionalSupply</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una línea de producto dentro de la orden. Garantiza que la cantidad sea mayor a cero y que el id del lote referenciado sea válido.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos, asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesTotals</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los valores de subtotal, impuesto y total. Garantiza que estos valores no puedan modificarse una vez creados, que ninguno sea negativo y que el total sea siempre la suma del subtotal y el impuesto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CustomerName</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el nombre del cliente. Valida que no sea una cadena vacía ni supere el límite de caracteres permitido.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el estado de la orden, como pendiente, completado o cancelado. Se asegura de que solo se utilicen valores definidos dentro del conjunto permitido y que los cambios de estado se realicen únicamente siguiendo transiciones válidas.</td>
+    </tr>  
+  </tbody>
+</table>
+
+##### Commands 
+
+Los Commands representan las intenciones de los usuarios al interactuar con el sistema. Cada Command encapsula los datos necesarios para ejecutar una acción específica, como crear o actualizar una orden de venta, y se valida antes de ser procesado por su correspondiente Command Handler.
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para crear una nueva orden de venta, incluyendo la lista de ítems, insumos adicionales y el monto total. Valida que la información proporcionada cumpla con las reglas de negocio antes de ser procesada por el Command Handler.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CancelSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para cancelar una orden de venta existente. Valida que la orden esté en un estado que permita su cancelación y que se proporcione una razón válida para la cancelación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para actualizar el estado de una orden de venta. Valida que la transición de estado sea válida según las reglas de negocio y que se proporcione la información necesaria para realizar la actualización.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Queries
+
+Los Queries representan las solicitudes de información que los usuarios hacen al sistema. Cada Query encapsula los parámetros necesarios para recuperar datos específicos, como el detalle de una orden de venta o la lista de órdenes asociadas a una sucursal, y se valida antes de ser procesada por su correspondiente Query Handler.
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSalesByBranchIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar todas las órdenes de venta asociadas a una sucursal específica. Valida que el ID de la sucursal sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSaleByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar el detalle completo de una orden de venta por su ID. Valida que el ID de la orden sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Sales Order Management se exponen los endpoints RESTful necesarios para interactuar con las funcionalidades de gestión de órdenes de venta. A través de controladores especializados, esta capa actúa como punto de entrada para que las aplicaciones cliente (Web o Móvil) envíen los comandos de creación, actualización o cierre de órdenes, facilitando la consulta del estado y el historial de ventas.
+
+##### SalesController
+
+<p><em>Tabla de SalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la creación, consulta, actualización y cierre de órdenes de venta de tiendas retail y restaurantes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de SalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Register</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Crea una nueva orden de venta con sus ítems, insumos adicionales y monto total.</td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna el detalle completo de una orden de venta por su ID.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranch</td>
+      <td style="padding: 10px; border: 1px solid;">/branches/{branchId}/sales/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
+    </tr>    
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Edit</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId}/status (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el estado de una orden de venta </td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Delete</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (DELETE)</td>
+      <td style="padding: 10px; border: 1px solid;">Cancela una orden de venta marcándola con estado cancelado</td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Tabla de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchSalesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la consulta de órdenes de venta asociadas a una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches/{branchId}/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Get</td>
+      <td style="padding: 10px; border: 1px solid;">/ (Get)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchId</td>
+    </tr>
+</table>
+
+#### 4.2.7.3. Application Layer
+
+La capa de aplicación del Bounded Context de Sales Order Management orquesta los flujos de trabajo dictados por los usuarios al gestionar sus órdenes de venta. Aquí residen los Command Handlers encargados de procesar la creación, actualización o cierre de órdenes, asegurando que se cumplan las reglas de negocio antes de delegar la persistencia al dominio.
+
+##### SalesCommandHandler
+
+<p><em>Tabla de CreateSaleCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la creación de una nueva orden de venta, validando que contenga al menos un ítem, que el monto total sea correcto y que se asocie a la sucursal correspondiente antes de persistirla a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateSaleStatusCommandHandler
+
+<p><em>Tabla de UpdateSaleStatusCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la actualización del estado de una orden de venta, validando que la transición de estado sea válida y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### CancelSaleCommandHandler
+
+<p><em>Tabla de CancelSaleCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la cancelación de una orden de venta, validando que la orden exista, que su estado actual permita la cancelación y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetSaleByIdQueryHandler
+
+<p><em>Tabla de GetSaleByIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de una orden de venta por su ID, validando que la orden exista y que el usuario tenga permisos para acceder a esa información antes de retornar el detalle completo de la orden.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetSalesByBranchIdQueryHandler
+
+<p><em>Tabla de GetSalesByBranchIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de todas las órdenes de venta asociadas a una sucursal específica, validando que la sucursal exista y que el usuario tenga permisos para acceder a esa información antes de retornar el listado completo de órdenes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+#### 4.2.7.4. Infrastructure Layer
+
+La capa de infrastructure de Sales Order Management materializa los repositorios necesarios para almacenar las órdenes de venta. Además, es el punto donde se implementan los adaptadores para servicios de terceros, como sistemas de pago o plataformas de envío, que son vitales para completar el ciclo de vida de una orden.
+
+##### SalesRepository
+
+<p><em>Tabla de SalesRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir las órdenes de venta, permitiendo su creación, actualización y consulta a través de la implementación de las operaciones definidas en el dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ISalesRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del bounded context de **Sales Order Management** mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros componentes o servicios.
+
+##### Web Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
+
+<img src="https://i.imgur.com/DmgkRpH.png" alt="Web Sales Order Management Component Diagram" width="100%">
+
+##### Mobile Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación móvil, se implementa como un componente Dart/Flutter dentro del Restock Mobile Application, cumple la misma responsabilidad de gestión de órdenes de sucursal, reutilizando widgets o clases del componente Shared y conectándose igualmente al backend principal mediante JSON/HTTPS para el registro y consulta de ventas.
+
+<img src="https://i.imgur.com/FKwWjcM.png" alt="Mobile Sales Order Management Component Diagram" width="100%">
+
+##### Backend Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
+
+<img src="https://i.imgur.com/pR0rPXd.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+
+#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Order Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta del negocio.
+
+En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. Además, se define los command y query service interfaces que orquestan las operaciones de creación y consulta de ventas, manteniendo una clara separación de responsabilidades.
+
+<img src="https://i.imgur.com/EVNhCMl.png" alt="Class Diagram - Sales Order Management">
+
+##### 4.2.7.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Sales Order Management.
+
+<img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Order Management" width="800px">
+
+
