@@ -1160,7 +1160,7 @@ En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa
 
 El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.jpeg" alt="class diagram identity and access management" border="0">
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="class diagram identity and access management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
