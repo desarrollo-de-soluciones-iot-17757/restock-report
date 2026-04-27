@@ -147,6 +147,9 @@ Por ultimo se definieron maker stories para especificar los requerimientos asoci
 
 ## 3.2. Impact Mapping
 
+A continuación, se muestra el mapa de impacto según las historias de usuario. 
+
+<img src="assets/images/chapter3/impact-mapping.png" alt="Domain Message Flow - Record a supply" height=90%>
 
 ## 3.3. Product Backlog
 
