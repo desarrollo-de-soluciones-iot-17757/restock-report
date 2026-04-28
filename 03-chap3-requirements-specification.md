@@ -147,6 +147,9 @@ Por ultimo se definieron maker stories para especificar los requerimientos asoci
 
 ## 3.2. Impact Mapping
 
+A continuación, se muestra el mapa de impacto según las historias de usuario. 
+
+<img src="assets/images/chapter3/impact-mapping.png" alt="Domain Message Flow - Record a supply" height=90%>
 
 ## 3.3. Product Backlog
 
@@ -154,10 +157,10 @@ En esta sección se presenta el Product Backlog de Restock. Para su elaboración
 
 La gestión del Product Backlog se realizó mediante Jira. La tabla está ordenada de mayor a menor prioridad: las historias más relevantes para el negocio aparecen al inicio, mientras que las de menor importancia se ubican al final.
 
-A continuación, se adjunta una imagen del Product Backlog diseñado en Jira, junto con el enlace para acceder a él. [Link de acceso](https://ui-topic.atlassian.net/?continue=https%3A%2F%2Fui-topic.atlassian.net%2Fwelcome%2Fsoftware%3FprojectId%3D10001&atlOrigin=eyJpIjoiMDNjNTlhMTAzNGI0NDQ0ZjlhOGFhZjg4ZTk3YmE4MGIiLCJwIjoiamlyYS1zb2Z0d2FyZSJ9)
+A continuación, se adjunta una imagen del Product Backlog diseñado en Jira, junto con el enlace para acceder a él. [Enlace de acceso](https://acortar.link/ItBSPY)
 
 <p align="center">
-  <img src="https://i.imgur.com/RE49LKT.png" alt="Product Backlog en Jira">
+  <img src="https://i.imgur.com/BseoOlL.png" alt="Product Backlog en Jira">
 </p>
 
 El _Product Backlog_ completo se detalla en la siguiente tabla:
