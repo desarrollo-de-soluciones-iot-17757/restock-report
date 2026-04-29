@@ -329,60 +329,64 @@ A continuación, se describen las relaciones y patrones de integración observad
 
 #### Análisis de Bounded Contexts
 
-##### Analytics ↔ Asset and Resource Management
+##### **Analytics ↔ Asset and Resource Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Analytics)
-- **Patrón:** Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Analytics)
+- **Patrón**: Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
 
-##### Design and Planning ↔ Asset and Resource Management
+##### **Design and Planning ↔ Asset and Resource Management**
 
-- **Relación:** Upstream (Design and Planning) / Downstream (Asset and Resource Management)
-- **Patrón:** Shared Kernel — Ambos contextos comparten un modelo común de diseño de servicios. Service Design and Planning actúa como proveedor (SUP) y Asset and Resource Management como cliente (CUST), garantizando que la planificación de servicios guíe la gestión de recursos sin duplicar el modelo compartido.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Design and Planning)
+- **Patrón**: Shared Kernel — Ambos contextos comparten un modelo común vinculado a la planificación y gestión de recursos. Asset and Resource Management actúa como proveedor (SUP) y Design and Planning como cliente (CUST), garantizando que la gestión de activos guíe la planificación sin duplicar el modelo compartido. Design and Planning incorpora además un ACL para proteger su dominio del lenguaje propio de la gestión de recursos.
 
-##### Asset and Resource Management ↔ Sales Management
+##### **Asset and Resource Management ↔ Sales Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Sales Management)
-- **Patrón:** Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Order Management consume para generar órdenes de venta correctamente asociadas. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para los procesos de venta.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Sales Management)
+- **Patrón**: Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Management consume para gestionar correctamente los procesos de venta. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para el dominio de ventas.
 
-##### Asset and Resource Management ↔ Tracking
+##### **Asset and Resource Management ↔ Device Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Tracking)
-- **Patrón:** Anti-Corruption Layer — Service Operation and Monitoring consume datos de Asset and Resource Management, pero los traduce a su propio modelo operativo a través de un ACL. Esto protege al dominio operativo de ser contaminado con el lenguaje propio de la gestión de activos y recursos.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Device Management)
+- **Patrón**: Customer/Supplier — Device Management consume información de Asset and Resource Management para gestionar los dispositivos asociados a los recursos del sistema. Asset and Resource Management actúa como proveedor (SUP) y Device Management como cliente (CUST).
 
-##### IAM ↔ Subscriptions and Payments
+##### **Asset and Resource Management ↔ Communication**
 
-- **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
-- **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
-- **Patrón:** Shared Kernel — IAM provee al contexto de suscripciones de una relación con el usuario dueño de la cuenta y suscripción.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Communication)
+- **Patrón**: Customer/Supplier — Communication consume datos provenientes de Asset and Resource Management para emitir notificaciones relacionadas con el estado de los recursos y activos, sin acoplarse a la lógica interna del dominio de gestión.
 
-##### IAM ↔ Profile and Preferences
+##### **Asset and Resource Management ↔ Tracking**
 
-- **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
-- **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
-- **Patrón:** Shared Kernel — IAM provee al contexto de perfiles de una relación con el usuario cuya información de negocio y personal está siendo usada por el contexto de perfiles.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Tracking)
+- **Patrón**: Anti-Corruption Layer — Tracking consume datos de Asset and Resource Management pero los traduce a su propio modelo de seguimiento a través de un ACL, protegiendo su dominio del lenguaje propio de la gestión de activos y recursos.
 
-##### Tracking ↔ Communication
+##### **Identity and Access Management ↔ Subscriptions and Payments**
 
-- **Relación:** Upstream (Tracking) / Downstream (Communication)
-- **Patrón:** Customer/Supplier — Communication consume eventos operativos generados por Service Operation and Monitoring para notificar al personal o a los usuarios relevantes. Service Operation and Monitoring actúa como proveedor del contexto operativo que Communication necesita para ejecutar sus notificaciones.
+- **Relación**: Upstream (Identity and Access Management) / Downstream (Subscriptions and Payments)
+- **Patrón**: Anti-Corruption Layer — Subscriptions and Payments depende de Identity and Access Management para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación.
+- **Patrón**: Shared Kernel — Identity and Access Management provee al contexto de suscripciones una relación con el usuario dueño de la cuenta y suscripción, compartiendo un núcleo común que evita la duplicación del modelo de usuario.
 
-##### Sales Management ↔ Communication
+##### **Identity and Access Management ↔ Profiles and Preferences**
 
-- **Relación:** Upstream (Sales Management) / Downstream (Communication)
-- **Patrón:** Customer/Supplier — Communication consume información de órdenes de venta de Sales Order Management para emitir confirmaciones, alertas o notificaciones relacionadas con el ciclo de vida de las órdenes, sin conocer la lógica interna del dominio de ventas.
+- **Relación**: Upstream (Identity and Access Management) / Downstream (Profiles and Preferences)
+- **Patrón**: Anti-Corruption Layer — Profiles and Preferences consume el modelo de identidad de Identity and Access Management pero lo traduce a través de un ACL para construir el perfil del usuario, protegiendo su dominio del lenguaje propio de la autenticación.
+- **Patrón**: Shared Kernel — Identity and Access Management provee al contexto de perfiles una relación con el usuario cuya información de negocio y personal es utilizada por dicho contexto, compartiendo un núcleo común que garantiza coherencia sin duplicación.
+
+##### **Communication ↔ Tracking**
+
+- **Relación**: Upstream (Communication) / Downstream (Tracking)
+- **Patrón**: Customer/Supplier — Tracking consume eventos generados por Communication para coordinar el seguimiento de operaciones notificadas. Communication actúa como proveedor (SUP) y Tracking como cliente (CUST).
 
 Con base en el análisis, se implementaron los siguientes patrones de relación entre contextos:
 
 - **Conformist** entre Asset and Resource Management → Analytics.
-- **Shared Kernel** entre Service Design and Planning → Asset and Resource Management y Asset and Resource Management → Sales Order Management.
-- **Anti-Corruption Layer** en las relaciones de Service Operation and Monitoring, Subscriptions and Payments y Profile and Preferences con sus respectivos upstream.
-- **Customer/Supplier** entre Service Operation and Monitoring → Communication y Sales Order Management → Communication.
+- **Shared Kernel** entre Asset and Resource Management → Sales Management, Asset and Resource Management → Design and Planning, Identity and Access Management → Subscriptions and Payments e Identity and Access Management → Profiles and Preferences.
+- **Anti-Corruption Layer** en las relaciones de Tracking, Design and Planning, Subscriptions and Payments y Profiles and Preferences con sus respectivos upstream.
+- **Customer/Supplier** entre Asset and Resource Management → Device Management, Asset and Resource Management → Communication y Communication → Tracking.
 
-![context-map](https://i.imgur.com/rBIqFn7.jpeg)
+![context-map](https://imgur.com/0EqEVvs.jpeg)
 
-En la imagen se observa que el contexto Asset and Resource Management actúa como el contexto central, relacionándose con dominios como Identity and Access Management, Sales Management, Design and Planning y Communication, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades específicas.
-
-Asimismo, las relaciones upstream/downstream (U/D) reflejan dependencias entre contextos, mientras que patrones como ACL (Anti-Corruption Layer) y SK (Shared Kernel) muestran mecanismos para integrar módulos, proteger el dominio y compartir elementos comunes cuando es necesario.
+En la imagen se observa que el contexto Asset and Resource Management actúa como el nodo central del sistema, relacionándose con dominios como Identity and Access Management, Sales Management, Device Management, Design and Planning, Communication y Tracking, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades claramente delimitadas.
+Las relaciones upstream/downstream (U/D) reflejan las dependencias direccionales entre contextos. El patrón ACL (Anti-Corruption Layer) aparece en contextos como Communication, Tracking, Profiles and Preferences y Subscriptions and Payments, protegiéndolos de contaminación con modelos ajenos a su dominio. El patrón SK (Shared Kernel) se emplea en las relaciones entre Asset and Resource Management con Sales Management y Design and Planning, así como entre Identity and Access Management con Subscriptions and Payments y Profiles and Preferences, garantizando un modelo compartido sin duplicación. Finalmente, el patrón CF (Conformist) se identifica en Analytics, que adopta directamente el modelo de su upstream sin transformación propia.
 
 ### 4.1.3. Software Architecture
 
