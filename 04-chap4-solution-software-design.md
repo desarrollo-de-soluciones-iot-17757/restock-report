@@ -19,77 +19,85 @@ Con el fin de mantener la consistencia y facilitar la interpretación del modelo
 El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/fTgbd9E.png" alt="event">
-  <img src="https://imgur.com/j9OFNTa.png" alt="event">
-  <img src="https://imgur.com/cRDqY8F.png" alt="event">
+  <img src="https://imgur.com/99oEpmr.png" alt="event">
+  <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
 El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
 
 #### Paso 2: Timelines
 
-El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada contexto del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
+El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/pISgB60.png" alt="time-line">
-  <img src="https://imgur.com/yUTo02r.png" alt="time-line">
-  <img src="https://imgur.com/vjb4mf6.png" alt="time-line">
+  <img src="https://imgur.com/N3A08JD.png" alt="time-line">
+  <img src="https://imgur.com/b2VepjU.png" alt="time-line">
+  <img src="https://imgur.com/GHpCIkg.png" alt="time-line">
+  <img src="https://imgur.com/eNAJXbz.png" alt="time-line">
+  <img src="https://imgur.com/0LdKD0Q.png" alt="time-line">
 </div>
 
-El equipo organizó los eventos en secuencias horizontales ordenadas bajo once contextos claramente etiquetados: IAM Identity and Access Management, Managing personal and business profiles, Plans and payment, Branch creation and management, Registration and management of customized supplies, Recipes and Kits, Batch and stock registration, Sales register, Device registration and configuration, Telemetry, stock and thresholds y Communications center. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo diez bounded contexts claramente etiquetados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Communications, Asset and Resource Management (ARM), Design and Planning, Sales Management, Analytics, Device Management y Tracking. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
 
 #### Paso 3: Paint Point
 
-El tercer paso incorporó la identificación de los puntos de dolor o tambien llamados paint point dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
+El tercer paso incorporó la identificación de los puntos de dolor, también llamados pain points, dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/NGzzOlA.png" alt="paint-point">
-  <img src="https://imgur.com/flx9ps8.png" alt="paint-point">
-  <img src="https://imgur.com/PGu5p87.png" alt="paint-point">
-  <img src="https://imgur.com/90q0dd4.png" alt="paint-point">
+  <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
+  <img src="https://imgur.com/U8QiL0s" alt="paint-point">
+  <img src="https://imgur.com/0C8oOMR.png" alt="paint-point">
+  <img src="https://imgur.com/jIvMoqL.png" alt="paint-point">
+  <img src="https://imgur.com/3rKIBL0.png" alt="paint-point">
+  <img src="https://imgur.com/Pp4xgKP.png" alt="paint-point">
 </div>
 
-El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se marcó un pain point relacionado con el proceso de registro, preguntando qué información mínima se requiere para completar el alta de una cuenta. En Branch creation and management se levantó una pregunta sobre el comportamiento del sistema cuando no se adjunta una imagen al registrar una sucursal. En Registration and management of customized supplies se planteó la misma interrogante respecto a la imagen del insumo personalizado. En Recipes and Kits se identificaron pain points tanto en la receta como en el kit, relacionados con qué información adicional debe consultarse antes de registrarlos y qué ocurre cuando no se proporciona una imagen. En Sales register se levantó una pregunta sobre qué información de precio o condición debe validarse antes de confirmar la venta. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
+El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se identificó el pain point "How do I access the services?", relacionado con el flujo de registro inicial de un usuario en el sistema. En Design and Planning se marcaron dos pain points: "What information does a recipe require?" y "What information does a Kit require?", señalando la necesidad de definir los datos mínimos para registrar cada elemento. En Sales Management se levantó la pregunta "How do I record a sale?", referida al proceso y condiciones necesarias para confirmar una venta. En Asset and Resource Management se plantearon las preguntas "How do you register a branch?", cuestionando los datos y pasos requeridos para dar de alta una sucursal, y "How do you register a custom supply?", indicando dudas sobre la información mínima necesaria para crear un insumo personalizado. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
 
 #### Paso 4: Pivotal Points
 
 El cuarto paso incorporó la identificación de los pivotal points dentro de los flujos ya organizados. Estos puntos se representan como las líneas o momentos de transición más relevantes dentro del recorrido, y permiten visualizar dónde ocurre un cambio significativo en la dirección, el contexto o la decisión del proceso. Su identificación ayudó a comprender cómo se conectan las distintas etapas del negocio y cuáles son los momentos clave que estructuran la experiencia analizada.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/gsg4IUH.png" alt="pivotal-point">
-  <img src="https://imgur.com/jOwxT1W.png" alt="pivotal-point">
-  <img src="https://imgur.com/w3N0Ahv.png" alt="pivotal-point">
-  <img src="https://imgur.com/RLkltIc.png" alt="pivotal-point">
-  <img src="https://imgur.com/8ROOM3c.png" alt="pivotal-point">
-  <img src="https://imgur.com/92OfBoP.png" alt="pivotal-point">
+  <img src="https://imgur.com/RGOcMYK.png" alt="pivotal-point">
+  <img src="https://imgur.com/YHAHFyV.png" alt="pivotal-point">
+  <img src="https://imgur.com/uUMZjIW.png" alt="pivotal-point">
+  <img src="https://imgur.com/rD5GwRE.png" alt="pivotal-point">
+  <img src="https://imgur.com/hw1P6o3.png" alt="pivotal-point">
+  <img src="https://imgur.com/mOw9dHN.png" alt="pivotal-point">
+  <img src="https://imgur.com/vpFvHI9.png" alt="pivotal-point">
 </div>
 
-En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Branch creation and management, se identificó el punto en el que la intención de crear una sucursal se transforma en el registro formal de sus datos. En Registration and management of customized supplies, el flujo cambia cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Recipes and Kits, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Batch and stock registration, el punto crítico se ubica en la transición hacia la confirmación de una venta. Finalmente, en Service Operation and Monitoring y Communications no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
+En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Asset and Resource Management, se identificaron dos pivotal points: el primero en el momento en que la intención de crear una sucursal se transforma en el registro formal de sus datos, y el segundo cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Design and Planning, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Sales Management, el punto crítico se ubica en la transición hacia la confirmación de una venta. En Tracking, el pivotal point se encuentra en el momento en que el flujo de telemetría pasa del monitoreo continuo a la detección de una anomalía de stock. En Communications y Analytics no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
 
 #### Paso 5: Commands
 
 El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/WiLGvE1.png" alt="commands">
-  <img src="https://imgur.com/xP7cZaQ.png" alt="commands">
-  <img src="https://imgur.com/Gt8pBlI.png" alt="commands">
+  <img src="https://imgur.com/oChmol2.png" alt="commands">
+  <img src="https://imgur.com/yii7ltr.png" alt="commands">
+  <img src="https://imgur.com/UsAg66F.png" alt="commands">
+  <img src="https://imgur.com/bw7fYmO.png" alt="commands">
+  <img src="https://imgur.com/Wg0qEsV.png" alt="commands">
+  <img src="https://imgur.com/IAtSW8V.png" alt="commands">
 </div>
 
-El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Managing personal and business profiles: Create user profile, Change Password, Update personal data y Register new business. En Plans and payment: Select subscription plan, Configure plan limits, Update plan limits y Pay subscription plan. En Branch creation and management: Create branch, Edit branch y Delete branch. En Registration and management of customized supplies: Register Custom Supply y Edit Custom Supply. En Recipes and Kits: Register recipe, Edit recipe, Register Kit y Edit Kit. En Batch and stock registration: Register batch. En Sales register: Register sale, Calculate total price y Show sales. En Device registration and configuration: Register new device, Configure a device y Deactivate device. En Telemetry, stock and thresholds: Calculate stock, Status check, Register threshold, Edit threshold y Verify threshold. En Communications center: Generate new notification y Show the notification.
+El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Profiles and Preferences se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts. En Subscriptions and Payments se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account. En Asset and Resource Management se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Register batch, Add supply batch stock, Transfer supply batch stock y Subtrack batch stock. En Design and Planning se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit. En Sales Management se definieron: Register sale y Show sales. En Device Management se definieron: Register new device, Configure a device y Deactivate device. En Tracking se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock comparison, Register threshold, Edit threshold, Verify threshold y Perform stock adjustment.
 
 #### Paso 6: Policies and Actors
 
 El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/mbnSUbF.png" alt="policies-actors">
-  <img src="https://imgur.com/WT6atlH.png" alt="policies-actors">
-  <img src="https://imgur.com/4ILKDjJ.png" alt="policies-actors">
-  <img src="https://imgur.com/gCyWyW1.png" alt="policies-actors">
+  <img src="https://imgur.com/ZSbeOHv.png" alt="policies-actors">
+  <img src="https://imgur.com/wUaOO3L.png" alt="policies-actors">
+  <img src="https://imgur.com/Bq5ICTb.png" alt="policies-actors">
+  <img src="https://imgur.com/i98m21X.png" alt="policies-actors">
 </div>
 
-El equipo identificó como actores principales al Retail Manager y al Branch Manager, presentes en la totalidad de los contextos del sistema. El actor Visitor fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos: en Plans and payment se definió una política que activa el plan de suscripción una vez que el pago es aceptado; en Telemetry, stock and thresholds se identificó una política que genera una tarea de conciliación automáticamente al detectarse una anomalía de stock; en Device registration and configuration se definió una política que deshabilita la ingesta de telemetría ante ciertos eventos del dispositivo; y en Communications center se identificó una política que dispara el envío de notificaciones en respuesta a eventos de alerta del sistema.
+El equipo identificó como actores principales al Retail Manager y al Restaurant Manager, presentes en la mayoría de los contextos del sistema. El actor Visitant fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. El actor User fue identificado en los contextos de IAM, Subscriptions and Payments y Profiles and Preferences. El actor Device fue identificado en los contextos de Device Management y Tracking como emisor automático de eventos de telemetría.
+Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos. En IAM se definió una política que crea el perfil del usuario automáticamente al completarse el registro. En Subscriptions and Payments se definieron cuatro políticas: una que genera una orden de pago en Stripe con los detalles del plan seleccionado, una que configura los límites del plan para la cuenta al detectarse un nuevo plan, una que crea una nueva cuenta para el negocio al completarse el proceso de cuenta, y una que envía el resumen del pago al usuario una vez generado. En Profiles and Preferences se definió una política que sube la foto a la API de Cloudinary y obtiene el enlace al actualizarse la imagen de perfil o negocio. En Design and Planning se definieron políticas que suben la foto a la API de Cloudinary y obtienen el enlace al cargarse o actualizarse imágenes de recetas y kits. En Sales Management se definió una política que suma automáticamente los precios de las recetas y los insumos adicionales para calcular el total, y otra que envía la información de la venta confirmada. En Asset and Resource Management se definió una política que verifica el stock actual del almacén y lo descuenta al transferir stock entre sucursales, y otra que obtiene la información y envía un mensaje al añadir stock al inventario. En Device Management se definió una política que obtiene la información del cambio y envía una notificación ante eventos de configuración del dispositivo, y otra que crea o edita un registro de umbral para el manejo de alertas. En Tracking se definieron políticas que dividen el peso recibido y configuran el cálculo del stock físico.
 
 #### 4.1.1.1 Candidate Context Discovery
 
@@ -100,38 +108,48 @@ Luego de identificar los eventos, flujos, comandos y políticas del dominio, el 
 El séptimo paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/SfMIuAC.png" alt="read-models">
-  <img src="https://imgur.com/LBUJFwz.png" alt="read-models">
-  <img src="https://imgur.com/1EfRZUB.png" alt="read-models">
-  <img src="https://imgur.com/RwejYIg.png" alt="read-models">
+  <img src="https://imgur.com/X0h65gU.png" alt="read-models">
+  <img src="https://imgur.com/FTHqAMi.png" alt="read-models">
+  <img src="https://imgur.com/K1i9PTY.png" alt="read-models">
+  <img src="https://imgur.com/fhmxcNR.png" alt="read-models">
+  <img src="https://imgur.com/z2zBn1G.png" alt="read-models">
 </div>
 
-El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificó la vista de Login. En Managing personal and business profiles se definió la vista de Profile settings. En Branch creation and management se identificó la vista de Branch Management. En Registration and management of customized supplies se definió la vista de Custom Supply Management. En Recipes and Kits se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de seleccionar un ítem para editarlo. En Batch and stock registration se definió la vista de Batch Management. En Sales register se identificó la vista de Sales Management. En Device registration and configuration se definió la vista de Device Management. Estos read models garantizan que los actores cuenten con el contexto necesario en cada punto de decisión del flujo.
+El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificaron las vistas de Sign-up Form y Sign-in Form, que el visitante y el usuario consultan antes de registrarse o autenticarse. En Profiles and Preferences se definieron las vistas de Profile settings, utilizada al cambiar contraseña o actualizar datos personales, y Business Profile, utilizada al registrar o actualizar la información del negocio. Asimismo, se definió la vista de Workers Management, consultada por el Retail Manager y Restaurant Manager al registrar un nuevo usuario para la cuenta. En Subscriptions and Payments se identificó la vista de Subscription plans, que el usuario consulta antes de seleccionar o actualizar un plan. En Asset and Resource Management se identificaron las vistas de Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock de lotes; y Batch Management, consultada al registrar un lote o transferir stock al almacén. En Design and Planning se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de editar o eliminar un ítem. En Sales Management se identificó la vista de Sales Management, consultada al registrar o filtrar ventas. En Device Management se definió la vista de Device Management, consultada al registrar, configurar o desactivar un dispositivo.
 
 #### Paso 8: External Systems
 
 El octavo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/6I1JkzM.png" alt="external-systems">
-  <img src="https://imgur.com/fatvFGG.png" alt="external-systems">
-  <img src="https://imgur.com/f0lHtoK.png" alt="external-systems">
+  <img src="https://imgur.com/SaHLR0Z.png" alt="external-systems">
+  <img src="https://imgur.com/5jLk4hf.png" alt="external-systems">
+  <img src="https://imgur.com/V28VaFs.png" alt="external-systems">
+  <img src="https://imgur.com/2KDUQy1.png" alt="external-systems">
+  <img src="https://imgur.com/Dhrs7SO.png" alt="external-systems">
 </div>
 
-El equipo identificó tres sistemas externos a partir del PDF. El primero es Cloudinary API, presente en los contextos de Managing personal and business profiles, Branch creation and management, Registration and management of customized supplies y Recipes and Kits, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema. El segundo es Stripe, integrado en el contexto de Plans and payment, encargado de procesar los pagos de suscripción. El tercero es OneSignal API, integrado en el contexto de Communications center, responsable del envío de notificaciones push a los usuarios del sistema.
+El equipo identificó tres sistemas externos. El primero es Cloudinary API, presente en los contextos de Profiles and Preferences, Asset and Resource Management y Design and Planning, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema mediante la política "Upload the photo to the API and get the link". El segundo es Stripe, integrado en el contexto de Subscriptions and Payments, encargado de procesar los pagos de suscripción mediante la generación de una orden de pago con los detalles del plan seleccionado. El tercero es OneSignal API, integrado en el contexto de Communications, responsable de obtener la información del evento y enviar el mensaje de notificación push correspondiente a los usuarios del sistema.
 
 #### Paso 9: Add Aggregates
 
 El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/gDA5QZR.png" alt="aggregates">
-  <img src="https://imgur.com/awlhM6c.png" alt="aggregates">
-  <img src="https://imgur.com/R0iS8HY.png" alt="aggregates">
-  <img src="https://imgur.com/h5qQXCg.png" alt="aggregates">
+  <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
+  <img src="https://imgur.com/bz39Etw.png" alt="aggregates">
+  <img src="https://imgur.com/NKfdPMt.png" alt="aggregates">
+  <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
+  <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
+  <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
+  <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
+  <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
+  <img src="https://imgur.com/1RTkenv.png" alt="aggregates">
+  <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
+  <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
 
-El equipo identificó los agregados que estan organizados por contexto. En IAM se definió el agregado User. En Managing personal and business profiles se identificaron Profile y Business. En Plans and payment se definieron Subscription y Account. En Branch creation and management se identificaron Branch e Inventory. En Registration and management of customized supplies se definieron Custom Supply y Device. En Recipes and Kits se identificaron Recipe y Kit. En Batch and stock registration se definió Batch. En Sales register se identificó Sales Order. En Device registration and configuration se definieron Device Health y Conciliation Task. En Telemetry, stock and thresholds se identificaron Stock Record y Supply Threshold. En Communications center se definió el agregado Notification.
+El equipo identificó los aggregates en cada bounded context. En IAM se identificó el aggregate User, que agrupa los flujos de registro, autenticación y registro de nuevos usuarios para una cuenta. En Subscriptions and Payments se identificaron tres aggregates: Subscription, que agrupa los eventos de selección y actualización de planes junto con el procesamiento mediante Stripe; Plan, que agrupa la detección y configuración de límites del plan; y Payment, que agrupa el registro del pago y la generación del resumen. En Profiles and Preferences se identificaron dos aggregates: Profile, que agrupa los flujos de cambio de contraseña, actualización de datos personales y carga de imágenes mediante Cloudinary API; y Business, que agrupa el registro y actualización de la información del negocio. En Asset and Resource Management se identificaron cuatro aggregates: Branch, que agrupa la creación, edición y eliminación de sucursales junto con la integración de Cloudinary API para imágenes; Custom Supply, que agrupa el registro, edición y eliminación de insumos personalizados con su respectiva carga de imágenes; Inventory, que agrupa los flujos de adición y transferencia de stock entre sucursales; y Batch, que agrupa el registro de lotes, la transferencia de stock al almacén y el descuento de stock. En Design and Planning se identificaron dos aggregates: Recipe, que agrupa el registro, edición y eliminación de recetas junto con la integración de Cloudinary API; y Kit, que agrupa el registro, edición y eliminación de kits con su respectiva carga de imágenes. En Sales Management se identificó el aggregate Sales Order, que agrupa los flujos de registro de ventas, cálculo del precio total y filtrado de ventas. En Communications se identificó el aggregate Notification, que agrupa la generación de notificaciones y su envío mediante OneSignal API. En Device Management se identificó el aggregate Device, que agrupa el registro, configuración y desactivación de dispositivos. En Tracking se identificaron cuatro aggregates: Device Health Record, que agrupa el monitoreo del estado del dispositivo; Box State Record, que agrupa el registro de telemetría física del contenedor incluyendo peso, temperatura y humedad; Stock Comparison, que agrupa la comparación entre el stock físico estimado y el stock digital para detectar discrepancias; Power Schedule, que agrupa la configuración del encendido y apagado programado del dispositivo; Conciliation Task, que agrupa el proceso de ajuste de stock al detectarse diferencias; y Box Threshold, que agrupa el registro, edición y verificación de umbrales de alerta por dispositivo.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
