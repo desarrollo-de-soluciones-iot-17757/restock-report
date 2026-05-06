@@ -338,23 +338,23 @@ Los **modales de confirmación** se presentan centrados con fondo semitransparen
 
 #### 5.1.2.3. IoT Style Guidelines
 
-Los dispositivos IoT de Restock constituyen la balanza inteligente que permite el monitoreo físico del inventario en tiempo real. Cada dispositivo está compuesto por un **ESP32 DevKitV1** como unidad de procesamiento central, cuatro **sensores de celda de carga WSS-5KG** con conversor **HX711** de 24 bits para la medición de peso, un **sensor DHT22** para temperatura y humedad, y un **display LCD 1602A** de 2 líneas × 16 caracteres con módulo I2C como interfaz visual principal. El kit básico de componentes incluye además LEDs y un botón físico de control.
+Los dispositivos IoT de Restock constituyen la balanza inteligente que permite el monitoreo físico del inventario en tiempo real. Cada dispositivo está compuesto por un **ESP32 DevKitV1** como unidad de procesamiento central, cuatro **sensores de celda de carga WSS-5KG** con conversor **HX711** de 24 bits para la medición de peso, un **sensor DHT22** para temperatura y humedad, y un **display LCD 1602A** de 2 líneas × 16 caracteres con módulo I2C como interfaz visual principal. El kit básico de componentes incluye además LEDs de señalización.
 
 La interfaz de usuario del dispositivo IoT es completamente física y autónoma: no requiere conexión a una pantalla externa ni acceso a las aplicaciones web o móvil para comunicar el estado del inventario al operario presente en la sucursal.
 
 ##### 5.1.2.3.1. Display LCD 1602A — Interfaz visual del dispositivo
 
-El display alfanumérico LCD de 2 líneas × 16 caracteres, controlado mediante el módulo I2C PCF8574 por el ESP32, es el canal de comunicación visual principal del dispositivo con el usuario en campo. Su diseño de contenido responde a los principios de claridad, concisión y orientación a la acción definidos en el tono de comunicación de Restock: cada pantalla comunica un único estado o dato con vocabulario extraído directamente del Ubiquitous Language del sistema.
+El display alfanumérico LCD de 2 líneas × 16 caracteres, controlado mediante el módulo I2C PCF8574 por el ESP32, es el canal de comunicación visual principal del dispositivo con el usuario en campo. Su diseño de contenido responde a los principios de claridad y concisión definidos en el tono de comunicación de Restock: cada pantalla comunica un único dato con vocabulario extraído directamente del Ubiquitous Language del sistema.
 
 **Principios de diseño de contenido para el display LCD:**
 
-Cada mensaje ocupa las dos líneas disponibles de forma complementaria: la línea superior presenta el contexto o el nombre del insumo monitoreado, y la línea inferior presenta el valor medido o la acción que el sistema recomienda. Ninguna línea contiene información redundante de la otra. Los nombres de insumos que superan los 16 caracteres disponibles por línea se truncan en la posición 14 con puntos suspensivos para indicar que el nombre continúa. Los valores numéricos siempre incluyen su unidad de medida (`kg`, `g`, `L`, `u`).
+Cada mensaje ocupa las dos líneas disponibles de forma complementaria: la línea superior presenta el nombre del insumo monitoreado y la línea inferior presenta el valor medido. Ninguna línea contiene información redundante de la otra. Los nombres de insumos que superan los 16 caracteres disponibles por línea se truncan en la posición 14 con puntos suspensivos para indicar que el nombre continúa. Los valores numéricos siempre incluyen su unidad de medida (`kg`, `g`, `L`, `u`).
 
-El uso de mayúsculas se reserva exclusivamente para mensajes de alerta y error, siguiendo la misma lógica semántica que el color terciario Rojo Alerta de la paleta de Restock: la capitalización completa indica que el estado requiere intervención inmediata del operario.
+**Pantallas consideradas en el alcance del sistema:**
 
-**Pantallas por estado del sistema:**
+El display contempla únicamente dos vistas en rotación: la vista de stock del insumo asignado y la vista de condiciones ambientales capturadas por el sensor DHT22. La rotación entre ambas vistas es periódica y automática, controlada por el firmware del ESP32.
 
-Cuando el dispositivo opera normalmente con un insumo asignado y peso estable, el display muestra:
+Cuando el dispositivo opera con un insumo asignado y peso estable, el display muestra:
 ```
 [Nombre del insumo]
 Stock: [XX.X] [unidad]
@@ -367,88 +367,46 @@ Harina de trigo
 Stock: 4.2 kg
 ```
 
-Cuando el stock cae por debajo del umbral mínimo configurado, el display muestra:
-```
-ALERTA STOCK BAJO
-[Nombre] [XX.X] [u]
-```
-Cuando el stock llega a cero o el peso medido es insuficiente para estimar unidades disponibles:
-```
-SIN STOCK DETECTADO
-Reponer: [Nombre]
-```
-Cuando el sistema detecta una diferencia entre el stock físico estimado por el sensor y el stock digital registrado en la plataforma:
-```
-DISCREPANCIA
-Dif: [+/-XX.X] [u]
-```
-Cuando el sensor HX711 o la celda de carga no responden correctamente o envían lecturas fuera del rango físico esperado:
-```
-ERROR SENSOR
-Verificar balanza
-```
-Cuando el dispositivo está operativo pero no tiene un insumo asignado desde la plataforma:
-```
-Restock Balanza
-Sin asignar
-```
-El display rota periódicamente entre la vista de stock del insumo y la vista de condiciones ambientales capturadas por el DHT22, mostrando esta última durante un intervalo breve antes de volver al estado principal:
+La vista de condiciones ambientales se presenta durante un intervalo breve antes de volver a la vista de stock principal:
 ```
 Temp: [XX.X] C
 Hum:  [XX.X] %
 ```
-
-La retroiluminación del LCD permanece activa durante el horario de operación configurado para el dispositivo. Fuera de ese horario, el ESP32 apaga la retroiluminación para reducir el consumo energético, manteniendo activo únicamente el monitoreo de los sensores.
+Cuando el dispositivo está operativo pero no tiene un insumo asignado desde la plataforma, el display muestra:
+```
+Restock Balanza
+Sin asignar
+```
+El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
 ##### 5.1.2.3.2. Sistema de señalización LED
 
 El LED de señalización incluido en el kit básico de componentes actúa como canal de retroalimentación visual instantánea, complementando la información del display LCD con un indicador de estado perceptible desde mayor distancia y sin necesidad de leer texto.
 
-La codificación semántica del LED replica la lógica cromática de la paleta de Restock: el verde corresponde al color primario de la plataforma, asociado a operación correcta y eficiencia; el rojo corresponde al color terciario, reservado para situaciones que requieren atención inmediata.
+La codificación semántica del LED replica la lógica cromática de la paleta de Restock: el verde corresponde al color primario de la plataforma, asociado a operación correcta; el rojo corresponde al color terciario, reservado para situaciones que requieren atención inmediata.
 
 **Patrones de señalización por estado:**
 
-| Estado del sistema                        | Color | Comportamiento         |
-|-------------------------------------------|-------|------------------------|
-| Operación normal — stock dentro del umbral| Verde | Encendido continuo     |
-| Stock en zona de advertencia              | Verde | Parpadeo lento (1 Hz)  |
-| Stock bajo — umbral mínimo alcanzado      | Rojo  | Parpadeo lento (1 Hz)  |
-| Stock en cero o discrepancia crítica      | Rojo  | Parpadeo rápido (4 Hz) |
-| Error de sensor o falla de hardware       | Rojo  | Parpadeo muy rápido (8 Hz) |
-| Dispositivo sin insumo asignado           | —     | LED apagado            |
-| Inicialización del sistema (boot)         | Verde | 3 destellos cortos     |
-| Transmisión activa de telemetría al edge  | Verde | Destello único de 100 ms |
+| Estado del sistema                          | Color | Comportamiento       |
+|---------------------------------------------|-------|----------------------|
+| Insumo asignado — stock con valor detectado | Verde | Encendido continuo   |
+| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz)|
+| Dispositivo sin insumo asignado             | —     | LED apagado          |
+| Inicialización del sistema (boot)           | Verde | 3 destellos cortos   |
 
-La progresión de frecuencia de parpadeo es directamente proporcional a la severidad del estado, facilitando la lectura intuitiva del nivel de urgencia sin necesidad de leer el display LCD. Un operario puede identificar desde varios metros de distancia si el dispositivo está en estado normal (luz verde continua) o requiere atención (parpadeo rojo).
+La distinción entre LED encendido en verde de forma continua y parpadeo en rojo permite que el operario identifique desde distancia si el dispositivo está registrando peso correctamente o si el contenedor está vacío o sin lectura válida, sin necesidad de acercarse al display.
 
-##### 5.1.2.3.3. Botón físico de control
+##### 5.1.2.3.3. Estándares generales de interacción con la interfaz física
 
-El botón momentáneo incluido en el kit básico actúa como único mecanismo de interacción directa del usuario con el dispositivo, permitiendo ejecutar acciones operativas sin necesidad de acceder a las aplicaciones web o móvil de Restock.
-
-Su comportamiento se define por la duración de la pulsación, siguiendo un patrón simple y predecible que no requiere aprendizaje previo:
-
-| Tipo de pulsación    | Duración        | Acción ejecutada                                        |
-|----------------------|-----------------|---------------------------------------------------------|
-| Pulsación corta      | Menos de 500 ms | Alterna el display entre vista de stock y temperatura/humedad |
-| Pulsación media      | 500 ms a 2 s    | Fuerza nueva lectura de peso (tara y reestimación)      |
-| Pulsación larga      | Más de 3 s      | Muestra información de diagnóstico (IP, firmware, WiFi) |
-| Doble pulsación      | 2 × menos de 300 ms | Confirma ajuste manual de stock cuando está disponible |
-
-Toda pulsación reconocida por el firmware produce una respuesta visual inmediata en el display LCD y en el LED, confirmando al usuario que la acción fue registrada. Ante una pulsación corta el LED destella una vez brevemente; ante una pulsación media el LED parpadea a 2 Hz mientras el sistema procesa la nueva lectura de peso; ante una pulsación larga el display presenta la información de diagnóstico del dispositivo durante un intervalo fijo antes de volver a la vista operativa.
-
-##### 5.1.2.3.4. Estándares generales de interacción con la interfaz física
-
-El diseño de la interfaz física del dispositivo IoT de Restock responde a los mismos valores de claridad, orientación a la acción y empatía con el usuario operativo que definen el tono de comunicación de la plataforma.
+El diseño de la interfaz física del dispositivo IoT de Restock responde a los mismos valores de claridad y empatía con el usuario operativo que definen el tono de comunicación de la plataforma.
 
 **Legibilidad en contextos operativos.** El display LCD 1602A con retroiluminación garantiza legibilidad en entornos con variaciones de iluminación propias de cocinas, almacenes y áreas de exhibición retail. El ángulo de visión recomendado para una lectura cómoda del display es de hasta 45° desde el eje frontal del dispositivo. La posición de montaje de la cabina debe considerar este ángulo para que el display sea legible desde la posición habitual del operario durante la reposición de insumos.
 
-**Vocabulario del display alineado con la plataforma.** Todos los textos del display LCD emplean términos del Ubiquitous Language de Restock: "Stock", "Alerta", "Reponer", "Discrepancia", "Temp", "Hum". Esta coherencia terminológica garantiza que el operario reconozca los mismos conceptos que emplea en la aplicación web o móvil, reduciendo la carga cognitiva y los errores de interpretación en el campo.
+**Vocabulario del display alineado con la plataforma.** Todos los textos del display LCD emplean términos del Ubiquitous Language de Restock: "Stock", "Temp", "Hum". Esta coherencia terminológica garantiza que el operario reconozca los mismos conceptos que emplea en la aplicación web o móvil, reduciendo la carga cognitiva y los errores de interpretación en el campo.
 
-**Retroalimentación inmediata.** Toda acción del usuario sobre el dispositivo ya sea una pulsación del botón, la detección de un nuevo peso estable o la recepción de un comando desde el sistema— produce una respuesta visible en el display o en el LED en menos de 200 ms. Este tiempo de respuesta garantiza que el operario perciba el resultado de su acción sin necesidad de esperar, manteniendo el ritmo operativo en entornos de alta demanda.
+**Retroalimentación inmediata.** Ante la detección de un nuevo peso estable o la recepción de un comando de configuración desde la plataforma, el display actualiza su contenido en menos de 200 ms, garantizando que el operario perciba el estado actual del insumo sin demora perceptible.
 
-**Filtrado de lecturas inestables.** El firmware del ESP32 aplica validación de las lecturas del HX711 antes de actualizar el display o activar cualquier señal LED. Las lecturas que fluctúan por encima de un umbral de variación o que se encuentran fuera del rango físico esperado para la celda de carga se descartan sin generar alertas falsas, protegiendo la confianza del operario en los datos mostrados por el dispositivo.
-
-**Modo de bajo consumo fuera del horario de operación.** El ESP32 apaga la retroiluminación del LCD y reduce la frecuencia de muestreo de los sensores durante los períodos fuera del horario configurado por el administrador en la plataforma, minimizando el consumo energético del dispositivo sin interrumpir su capacidad de retomar el monitoreo al inicio de la siguiente jornada.
+**Filtrado de lecturas inestables.** El firmware del ESP32 aplica validación de las lecturas del HX711 antes de actualizar el display o activar cualquier señal LED. Las lecturas que fluctúan por encima de un umbral de variación o que se encuentran fuera del rango físico esperado para la celda de carga se descartan sin modificar la vista mostrada, protegiendo la confianza del operario en los datos presentados por el dispositivo.
 
 **Comportamiento ante pérdida de conectividad WiFi.** Cuando el dispositivo pierde la conexión con el edge local o con la plataforma en la nube, el display continúa mostrando el estado actual del peso medido y el LED mantiene su señalización de estado. Los datos de telemetría generados durante el período sin conectividad se almacenan localmente en el edge para ser enviados al sistema central cuando la conexión se restablezca, garantizando la trazabilidad del inventario sin pérdida de registros.
 
