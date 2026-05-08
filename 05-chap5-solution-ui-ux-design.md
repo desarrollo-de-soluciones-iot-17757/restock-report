@@ -426,3 +426,599 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ### 5.4.3. Applications User Flow Diagrams
 ## 5.5. Applications Prototyping
 ## 5.6. IoT Device Design
+
+### Diseño del dispositivo IoT
+
+Además del diseño de experiencia e interfaces de las aplicaciones convencionales, también es necesario detallar el diseño del dispositivo IoT del proyecto, el cual se encarga de tomar medidas de peso, temperatura y humedad del suministro que se encuentre almacenado.
+Por un lado, se utiliza la propuesta de 12 pasos para el diseño de dispositivos IoT hecha por Eulalia Balestrieri, Luca De Vito, Francesco Lamonaca, Francesco Picariello, Sergio Rapuano y Ioan Tudosa, la cual se basa en capacidades de suministro de energía y restricciones de retraso de tiempo (time-delay) que deba poseer el dispositivo.
+
+<div align="center">
+  <img src="https://i.imgur.com/KIXRbiB.png" alt="Flujo del diseño de dispositivos iot en 12 pasos"/>
+</div>
+
+#### Paso 1: Definición de los requisitos del sistema
+
+En este paso se toma en consideración los requisitos en general del sistema. Para que sean específicos y no redunden con pasos siguientes, se definen requisitos basados en la capacidad de suministro de energía del dispositivo y las restricciones de retraso de tiempo.
+
+<table>
+  <tr>
+    <th> Criterios </th>
+    <th> Especificación </th>
+  </tr>
+  <tr>
+    <td rowspan="3"> <strong> Capacidades de suministro de energía </strong> </td>
+    <td> <strong> Centro de operación: </strong> El sistema operará en entornos cerrados (más específicamente, en almacenes) de las tiendas retail y restaurantes donde se dispone de acceso constante a la red eléctrica comercial.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Entrada de alimentación: </strong> Se requiere una entrada de alimentación estándar (enchufe) que proporcione <strong> 5V DC </strong> con una capacidad de corriente mínima de <strong> 2 A </strong> para cubrir el consumo del microcontrolador y los sensores periféricos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Limitaciones: </strong> No se contempla el uso de baterías ni sistemas de recolección de energía (harvesting). </td>
+  </tr>
+  <tr>
+    <td rowspan="4"> <strong> Restricciones de time-delay </strong> </td>
+    <td> <strong> Sistema basado en eventos: </strong> El sistema operará bajo un modelo de programación reactiva (event-driven) para optimizar la eficiencia del procesamiento en el borde (Edge Analytics).  </td>
+  </tr>
+  <tr>
+    <td> <strong> Reacción ante cambios físicos: </strong> La detección de cambios físicos (cambios de peso ≥ 5–10 g) deberá activar una notificación inmediata con un tiempo de respuesta en el nodo no mayor a 300 ms. </td>
+  </tr>
+  <tr>
+    <td> <strong> Lectura de estado de salud: </strong> Para garantizar la calidad de servicio (QoS) y la detección de fallos de red, el sistema enviará un mensaje de estado ("heartbeat") cada 60 segundos en ausencia de eventos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Reacción ante eventos críticos: </strong> Ante un evento crítico (discrepancia detectada o temperatura fuera de rango), el sistema priorizará este paquete sobre el tráfico normal, garantizando una latencia end-to-end (sensor a nube) menor a 2 segundos para permitir una toma de decisiones en tiempo casi real por parte del administrador </td>
+  </tr>
+</table>
+
+#### Paso 2: Elección de la tipología de sistema IoT
+
+A continuación, se identifica la tipología adecuada para nuesto sistema IoT basándonos en las mismas características que el paso anterior (capacidad de suministro de energía y restricciones de time-delay).
+Esto significa, escoger una unión de estructuras definidas entre los dos parámetros mencionados (alimentado por red o batería y en tiempo real o con retraso), lo cual ayuda a enfocar mejor las decisiones de diseño en los próximos pasos.
+
+<table>
+  <tr>
+    <th> Parámetro de clasificación </th>
+    <th> Estructura definida </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Capacidades de suministro de energía </strong> </td>
+    <td> Alimentado por red (Network-powered) </td>
+    <td> Los dispositivos se instalarán en espacios cerrados (almacenes) con acceso a la red eléctrica comercial de la tienda o restaurante. </td>
+  </tr>
+  <tr>
+    <td> <strong> Restricción de retardo (time-delay) </strong> </td>
+    <td> High Delay (No Real-Time) </td>
+    <td> La aplicación permite latencias de segundos para la actualización de stock físico, no siendo una aplicación de seguridad crítica. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología Final </strong> </td>
+    <td> Network-powered IoT system </td>
+    <td> Clasificación estándar para sistemas alimentados por red sin restricciones críticas de tiempo. </td>
+  </tr>
+</table>
+
+#### Paso 3: Definición de requisitos para la capa física
+
+Luego, se definen los nodos, sensores y actuadores necesarios para el dispositivo. En este paso, no se entra en detalle de modelos de sensores o actuadores, sino que se detalla lo relacionado a la lectura de datos que realizan los sensores y la precisión de los actuadores.
+
+<table>
+  <tr>
+    <th> Parámetro </th>
+    <th> Definición </th>
+  </tr>
+  <tr>
+    <td> <strong> Número y tipos de nodos, sensores y actuators  </strong> </td>
+    <td>  
+- Se requiere 1 nodo IoT integral para el dispositivo (Smart Inventory Device). <br>
+- Sensores: 4 celdas de carga, 1 sensor digital de temperatura y 1 de humedad. <br>
+- Actuadores: 1 Display de tipo LCD para retroalimentación local al usuario </td>
+  </tr>
+  <tr>
+    <td> <strong> Target uncertainty, relacionada con las cantidades físicas medidas por cada sensor </strong> </td>
+    <td> 
+- El sensor de celda de carga debe tener una precisión máxima de ±0.05% F.S. (Full Scale). <br>
+- El sensor de temperatura debe tener una precisión máxima de ±0.5 °C (grados celsius). <br>
+- El sensor de humedad debe tener una precisión máxima de ±2% HR (humedad relativa) para detección de ambientes propensos a descomposición.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Target accuracy and precision de los actuadores </strong> </td>
+    <td> LCD: Garantizar una tasa de refresco de datos procesados (Edge) cada 1 segundo con integridad de caracteres del 100%, asegurando que la lectura física coincida con la telemetría enviada. </td>
+  </tr>
+  <tr>
+    <td> <strong> Processing Power para los algoritmos de procesamiento de datos que se implementarán en el nodo </strong> </td>
+    <td>  
+- Se requiere una memoria RAM de al menos 256 KB para manejar el stack de WiFi y el buffer de datos. <br>
+- Algoritmos: Implementación de Edge Analytics mediante: <br>
+  1) Filtro de promedio móvil para estabilizar el peso. <br>
+  2) Algoritmo de compensación térmica y tara automática basada en memoria no volátil (NVS).
+  </tr>
+</table>
+
+#### Paso 4: Definición de requisitos para la capa de intercambio de datos
+
+Continuando con el cuarto paso, aquí se define la forma en la que los datos son transportados, es decir, cómo viajan desde el dispositivo al gateway. Es por eso que, se definen restricciones de tiempo para el transporte, protocolos de comunicación y de red, la distancia entre nodos y gateway y qué tipo de seguridad se aplica a los datos para un traslado seguro.
+
+<table>
+  <tr>
+    <th> Parámetro </th>
+    <th> Definición </th>
+  </tr>
+  <tr>
+    <td> <strong> Máximo time-delay permitido </strong> </td>
+    <td> El retardo en la transmisión del paquete desde el nodo hasta el gateway no debe exceder los 500 ms para asegurar que la latencia end-to-end total se mantenga bajo los 2 segundos definidos en el Paso 1. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología de comunicación </strong> </td>
+    <td> Se requiere una comunicación inalámbrica (wireless) debido a la necesidad de moLilidad y facilidad de instalación en góndolas en tiendas retail y almacenes de restaurantes y tiendas retail, evitando el cableado estructurado costoso. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología de la red </strong> </td>
+    <td> Topología de estrella, donde cada dispositivo se comunica directamente con un punto de acceso (Access Point/Router) central. </td>
+  </tr>
+  <tr>
+    <td> <strong> Distancias de comunicación </strong> </td>
+    <td> Red local: el gateway y los dispositivos se encuentran en el mismo espacio físico. El sistema debe operar en un rango de 30 a 50 metros en interiores, considerando la penetración de obstáculos como estanterías metálicas o paredes de cocina. </td>
+  </tr>
+  <tr>
+    <td> <strong> Consumo de potencia máximo </strong> </td>
+    <td> 
+Se establece un límite de consumo máximo de 300 mA para la etapa de radio durante ráfagas de transmisión activa (Tx/Rx). Dado que el sistema es alimentado por red (network-powered), el objetivo de este límite es independiente del ahorro energético, centrándose exclusivamente en garantizar la estabilidad del bus de sensores y evitar caídas de tensión (brownouts). Este valor se mantiene dentro del Power Budget de 2000 mA definido en el Paso 1, permitiendo un margen de maniobra suficiente para el funcionamiento simultáneo de la lógica de control, los sensores de alta precisión y el actuador visual (LCD). </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipo de criptografía de datos </strong> </td>
+    <td> 
+Se requiere el uso de TLS 1.2/1.3 para la comunicación nodo-nube y soporte para cifrado AES-256. El dispositivo debe ser compatible con protocolos de seguridad WPA2/WPA3 para su integración en la infraestructura WiFi del cliente. Esto garantiza la integridad de los datos de inventario y evita interceptaciones en la red del restaurante. </td>
+  </tr>
+</table>
+
+#### Paso 5: Definición de requisitos para la capa de información
+
+En el quinto paso, empezamos a definir quienes serán los usuarios finales que usarán el dispositivo. Además, se inicia la detección de posibles servicios que cada usuario requiere para el ecosistema IoT de Restock. Por otro lado, se asocia cada servicio identificado con la información necesaria para satisfacer el servicio propuesto.
+
+<table>
+  <tr>
+    <th> Criterios </th>
+    <th> Especificación </th>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Definición de usuarios finales </strong> </td>
+    <td> <strong> Operador del sistema: </strong> son los encargados del mantenimiento de dispositivos y de su estado.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Administrador de tienda retail o restaurante: </strong> usuarios que gestionan el inventario de sus productos y su bienestar para evitar pérdidas y tener un control de las operaciones del inventario.  </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Servicios por usuario final identificado </strong> </td>
+    <td> <strong> Operador del sistema: </strong> supervisión del estado del dispositivo/nodo (uptime, conectividad).  </td>
+  </tr>
+  <tr>
+    <td> 
+<strong> Administrador de tienda retail o restaurante: </strong> configuración de producto asignado al dispositivo, monitoreo del estado de un producto (frescura ambiental), recibir alertas por estado crítico del producto (quiebre de stock o degradación ambienta), monitoreo de desfase entre stock físico y digital. </td>
+  </tr>
+  <tr>
+    <td rowspan="5"> <strong> Necesidades de información para satisfacer cada servicio identificado </strong> </td>
+    <td> <strong> Supervisión del estado del dispositivo: </strong> se necesitan datos de salud que envían los dispositivos como temperatura de CPU, voltaje actual (reporte de uptime y estabilidad de voltaje del nodo). </td>
+  </tr>
+  <tr>
+    <td> <strong> Configuración de asignación de producto al dispositivo: </strong> se necesitan los datos del producto asignado como peso aproximado por producto, límites de stock y nombre. </td>
+  </tr>
+  <tr>
+    <td> <strong> Monitoreo del estado de productos: </strong> se necesita el peso leído por las celdas de carga y el peso aproximado del producto configurado y los datos leídos por los sensores de temperatura y humedad. </td>
+  </tr>
+  <tr>
+    <td> <strong> Generación de alertas por eventos críticos detectados: </strong> se necesitan los límites de stock, temperatura y humedad configurados por el usuario para evaluar el dato leído del dispositivo. </td>
+  </tr>
+  <tr>
+    <td> <strong> Supervisión de desafe entre stock físico y digital: </strong> se necesita el valor convertido de kilogramos a "unidades de producto" tras aplicar el factor de peso unitario y el dato del stock digital almacenado en la nube. </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Arquitectura de procesamiento (Nodo vs. Nube) </strong> </td>
+    <td> <strong> En el Gateway: </strong> Filtrado de ruido (promedio móvil), detección de eventos de cambio de peso asíncronos y evaluación del estado de salud de los dispositivos. </td>
+  </tr>
+  <tr>
+    <td> <strong> En Cloud: </strong> Comparación del stock físico recibido con la base de datos de inventario digital y gestión de logs históricos </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Evaluación de complejidad computacional </strong> </td>
+    <td> <strong> Gateway: </strong> Baja complejidad (algoritmos lineales de filtrado y comparación de umbrales), ideal para el microcontrolador a seleccionar. </td>
+  </tr>
+  <tr>
+    <td> <strong> Nube: </strong> Complejidad media (consultas a base de datos en tiempo real y orquestación de notificaciones push/correo). </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Tiempo de procesamiento requerido </strong> </td>
+    <td> <strong> Información de stock: </strong> Generación del dato integrado en menos de 700 ms tras recibir el evento del nodo.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Alertas por eventos críticos: </strong> Disparo de notificación en menos de 1 segundo tras la detección de la anomalía. </td>
+  </tr>
+</table>
+
+#### Paso 6: Definición de requisitos para la capa de servicios de aplicación
+
+Ya habiendo definido los servicios en el anterior paso y la información necesaria para cumplir con estos servicios, en este paso se definen los requisitos para dichos servicios.
+Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados. 
+
+<table>
+  <tr>
+    <th> Requisitos </th>
+    <th> Especificación de requisitos asociados </th>
+    <th> Complejidad de Algoritmos en Disp. Usuario </th>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de monitoreo de estado de un producto </strong> </td>
+    <td>  
+- Uso del Display LCD en el dispositivo para mostrar el stock de un producto asociado. <br>
+- Uso del Display LCD en el dispositivo para mostrar la temperatura y humedad actual del producto asociado. <br>
+- Interfaz gráfica en las aplicaciones web y móvil para visualizar el producto y su información de estado actual.
+    </td>
+    <td> Baja: Renderizado de datos en tiempo real recibidos desde el middleware. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de resumen de información recolectada </strong> </td>
+    <td>  
+- Interfaz gráfica en las aplicaciones web y móvil donde se visualizan las alertas generadas recientemente. <br>
+- Gráficos que muestren la información de estado de un producto (variación de stock, temperatura y humedad).
+    </td>
+    <td> Media: Procesamiento de datos históricos y renderizado de bibliotecas gráficas. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de configuración de dispositivos </strong> </td>
+    <td>  
+- Interfaz gráfica en la aplicación web donde el usuario registra un dispositivo a su nombre con el uso de un código especial asignado a dicho dispositivo. <br>
+- Interfaz gráfica en la aplicación web donde el usuario configura el dispositivo asignándole un producto registrado.
+    </td>
+    <td> Baja: Gestión de formularios estándar y envío de comandos CRUD. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de configuración de información sobre productos </strong> </td>
+    <td>  
+- Interfaz gráfica en las aplicaciones web y móvil donde el usuario puede configurar información del producto como nombre y peso promedio. <br>
+- Opción de asignar límites de stock a un producto. <br>
+- Opción de definir una temperatura y humedad adecuada para el producto registrado.
+    </td>
+    <td> Baja: Interfaz de entrada de datos y actualización de parámetros en la nube. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de mantenimiento de dispositivos </strong> </td>
+    <td>  
+- Envío automático de alertas ante anomalías técnicas detectadas (caídas de voltaje o pérdida de conexión). <br>
+- Módulo de Reporte: Formulario simple en el dashboard para que el administrador registre o reporte fallas manuales del nodo en la aplicación Web.
+    </td>
+    <td> Baja: Lógica de activación de disparadores (triggers) de eventos y manejo de formularios. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de alertas por estado de productos </strong> </td>
+    <td>  
+- Panel donde se reunen las alertas generadas por el sistema en las aplicaciones Web y Móvil. <br>
+- Cuando algún dato leído por el dispositivo esté fuera de los límites definidos, se alerta al usuario.
+    </td>
+    <td> Baja: Lógica de recepción y visualización de notificaciones push. </td>
+  </tr>
+</table>
+
+#### Paso 7: Elección de la arquitectura de las capas de intercambio de datos y de información
+
+Con los requisitos más claros, se elige la arquitectura final para las capas de intercambio de datos e integración de información. Además, se analizan las restricciones de tiempo de los pasos anteriores para evaluar la arquitectura elegida.
+
+**Selección de arquitectura**
+
+<table>
+  <tr>
+    <th> Capa </th>
+    <th> Arquitectura seleccionada </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Intercambio de Datos </strong> </td>
+    <td> Arquitectura basada en Nodo Concentrador (SBC) </td>
+    <td> 
+Se selecciona un concentrador basado en una Single Board Computer (SBC) para centralizar la recepción de datos provenientes de los nodos sensores IoT. Este concentrador actúa como capa Edge, recibiendo lecturas de peso, temperatura, humedad y estado del dispositivo, para luego validarlas, procesarlas y publicar la telemetría procesada hacia la nube mediante MQTT sobre WiFi. Esto permite una gestión local más robusta, desacopla los nodos sensores del backend y facilita la comunicación segura mediante TLS/SSL planteada en el Paso 4.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Integración de Información </strong> </td>
+    <td> Arquitectura Monolítica en la Nube </td>
+    <td>
+Para los servicios definidos en el Paso 5, se opta por un monolito desarrollado en Spring Boot con MongoDB. Según la fuente, esta capa debe asegurar la interoperabilidad y protección de datos. Un monolito centraliza el procesamiento de inventario y la lógica de negocio, facilitando el mantenimiento y despliegue inicial del sistema Restock.
+    </td>
+  </tr>
+</table>
+
+**Análisis de retardo en la comunicación en la arquitectura**
+
+<table>
+  <tr>
+    <th> Segmento del flujo de datos </th>
+    <th> Acción técnica </th>
+    <th> Retardo estimado (ms) </th>
+    <th> Justificación </th>
+  </tr>
+  <tr>
+    <td> <strong> Nodo → Concentrador (Edge) </strong> </td>
+    <td> Comunicación Local (WiFi Direct/Serial) </td>
+    <td> 200 ms </td>
+    <td> Los nodos sensores envían los datos de telemetría al concentrador local para su procesamiento inicial. </td>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Concentrador (Edge) → Broker MQTT </strong> </td>
+    <td> Publicación vía MQTT/TLS </td>
+    <td> 400 ms </td>
+    <td> El Edge procesa el dato y lo publica en el broker bajo cifrado para asegurar la privacidad. </td>
+  </tr>
+  <tr>
+    <td> <strong> Broker MQTT → Cloud </strong> </td>
+    <td> Suscripción y Procesamiento </td>
+    <td> 300 ms </td>
+    <td> El servidor recibe el mensaje y actualiza el estado del stock en la base de datos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Cloud  → Aplicación </strong> </td>
+    <td> Comunicación via API/HTTPS </td>
+    <td> 200 ms </td>
+    <td> El usuario consulta el estado vía API HTTPS o recibe la alerta de inventario crítico. </td>
+  </tr>
+  <tr>
+    <td> <strong> Total Estimado (End-to-End) </strong> </td>
+    <td> Latencia total de transporte </td>
+    <td> 1500 ms (1.5s) </td>
+    <td> El tiempo acumulado es menor al límite de 2.00 s definido en la QoS del Paso 1. </td>
+  </tr>
+</table>
+
+#### Paso 8: Elección de sensores y actuadores
+
+Al tener definida la arquitectura y la comunicación entre nodos y gateway, es momento de elegir los sensores y actuadores necesarios que cumplan con los requisitos identificados. Estos requisitos se centran en incertidumbre máxima, dato a leer y capacidad de suministro de energía.
+
+<table>
+  <tr>
+    <th> Sensor o actuador identificado </th>
+    <th> Modelo elegido </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Medición de peso </strong> </td>
+    <td> Celda de carga WSS-5KG + Módulo HX711 </td>
+    <td> 
+La celda de carga permite un rango de hasta 5kg, ideal para productos de restaurante. El HX711 actúa como un convertidor analógico-digital (ADC) de 24 bits, lo que garantiza una alta resolución metrológica para detectar variaciones mínimas de stock. Eléctricamente, opera entre 2.6V y 5.5V, siendo compatible con los niveles lógicos del nodo.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Medición de Temperatura y Humedad </strong> </td>
+    <td> Sensor Digital DHT22 (AM2302) </td>
+    <td>
+Se elige sobre el DHT11 por su mayor precisión (±0.5°C frente a ±2°C) y un rango de humedad más amplio (0-100%). Proporciona una señal digital mediante un bus de un solo cable, lo que facilita la integración y reduce el ruido eléctrico en la medición. Además, es más preciso que su versión anterior el DHT11 para estas mediciones.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Interfaz Visual Local (Actuador) </strong> </td>
+    <td> Display LCD 1602A con Módulo I2C (PCF8574) </td>
+    <td>
+Este actuador de información permite visualizar el estado del stock "in situ" sin necesidad de la app. El uso del protocolo I2C es una decisión eléctrica clave, ya que reduce el uso de pines GPIO de 6 a solo 2 (SDA/SCL), optimizando los recursos del microcontrolador.
+    </td>
+  </tr>
+</table>
+
+#### Paso 9: Elección del microcontrolador y transceptores de radio del dispositivo
+
+Previamente se definieron los sensores y actuadores que se encargan de actuar ante eventos del entorno y ante comandos, respectivamente. Sin embargo, ahora es momento de definir cómo es que estos datos van a ser comunicados hacia el gateway.
+Es por ello, que, se define, a su vez, el modelo del 'cerebro' del dispositivo y el gateway.
+
+<table>
+  <tr>
+    <th> Nodo asignado </th>
+    <th> Modelo seleccionado </th>
+    <th> Transceptor de radio </th>
+    <th> Justificación </th>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Sensor (Dispositivo) </strong> </td>
+    <td> ESP32 DevKitV1 </td>
+    <td> Wi-Fi 802.11 b/g/n (Integrado) </td>
+    <td> 
+Se selecciona este System-on-a-Chip (SoC) por su bajo consumo en modos de suspensión y su doble núcleo de 240 MHz, suficiente para el filtrado de datos. Cuenta con los periféricos necesarios: pines GPIO para el DHT22 y bus I2C para el LCD. Opera a 3.3V, compatible con los sensores elegidos en el Paso 8. Se encarga de controlar el hardware del dispositivo como sensores y actuadores. Además, es el encargado de transmitir los datos leídos al gateway.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Concentrador (Gateway) </strong> </td>
+    <td> Raspberry Pi 4 Model B </td>
+    <td> Wi-Fi Dual Band + Bluetooth 5.0 </td>
+    <td> 
+Al ser una Single Board Computer (SBC), ofrece una potencia de 1.5 GHz y hasta 4GB de RAM, superando ampliamente a un microcontrolador para tareas de Edge Analytics. Su capacidad de procesamiento permite gestionar el Broker MQTT local y la comunicación segura hacia la nube sin cuellos de botella. Se encarga de la recepción de datos de los dispositivos asignados y procesar toda la información para obtener un conjunto de datos limpios y útiles para los usuarios finales.
+    </td>
+  </tr>
+</table>
+
+#### Paso 10: Definición de los algoritmos de procesamiento de datos
+
+A continuación, se definen los algoritmos necesarios para procesar los datos en las diversas capas del ecosistema IoT.
+Para este caso, se definen algoritmos que se ejecutan en el nodo (ESP32), en el gateway y en la nube. Además, se brinda una breve descripción de la responsabilidad del algoritmo a implementar.
+
+<table>
+  <tr>
+    <th> Algoritmo a implementar </th>
+    <th> Responsabilidad </th>
+    <th> Ubicación </th>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de calibración (Calibración y Tara) </strong> </td>
+    <td> Calibrar los datos leídos por los sensores antes de enviarlos al gateway. Ejecuta la rutina de ajuste del sensor HX711 usando un peso de referencia para eliminar el offset inicial. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de filtrado de Ruido (Sampling) </strong> </td>
+    <td> Implementa un método de muestreo consciente de la energía para promediar lecturas y eliminar fluctuaciones eléctricas en los sensores de temperatura y peso. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de normalización de Datos </strong> </td>
+    <td> Convierte las lecturas de bits del ADC (HX711) y el sensor DHT22 a unidades del SI (kg, °C, %) antes de su transmisión inalámbrica. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de compensación </strong> </td>
+    <td> Tomando en cuenta la incertidumbre de los datos leídos por los sensores, se debe realizar un cálculo aproximado del valor real del dato sin la incertidumbre. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de transformación a stock </strong> </td>
+    <td> Para el caso del peso de los productos, se aplica una función de división entre el peso total recibido y el peso unitario configurado para el insumo, derivando las existencias reales en unidades para enviar únicamente el dato consolidado hacia la nube. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de validación de límites </strong> </td>
+    <td> Tomar la configuración del producto asignado, leer sus límites definidos y validarlos con el dato procesado para evaluar la generación de alertas sobre el estado del producto. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de verificación de salud de dispositivos </strong> </td>
+    <td> Verificar los límites para temperatura de CPU y voltaje permitido para determinar el correcto estado y funcionamiento de los dispositivos.  </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de sincronización de inventario </strong> </td>
+    <td> Ejecuta la lógica de comparación entre el stock calculado físicamente y el registro digital en la base de datos para detectar discrepancias. </td>
+    <td> En la nube </td>
+  </tr>
+</table>
+
+#### Paso 11: Análisis del esfuerzo computacional de los algoritmos
+
+Luego, se analiza el esfuerzo computacional de los algoritmos elegidos. Es por ello, que elegimos como métricas clave la complejidad según Big O del algoritmo, el tiempo de ejecución y el consumo de memoria,
+
+<table>
+  <tr>
+    <th> Algoritmo a implementar </th>
+    <th> Complejidad (Big O) </th>
+    <th> Uso en Memoria </th>
+    <th> Tiempo de ejecución (estimación) </th>
+    <th> Ubicación </th>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de calibración (Calibración y Tara) </strong> </td>
+    <td> O(N) </td>
+    <td> Muy Bajo (< 1 KB) </td>
+    <td> 100 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de filtrado de Ruido (Sampling) </strong> </td>
+    <td> O(N) </td>
+    <td> Bajo (~2 KB) </td>
+    <td> 50 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de normalización de Datos </strong> </td>
+    <td> O(1) </td>
+    <td> Mínimo (Bytes) </td>
+    <td> 10 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de compensación </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (< 1 KB) </td>
+    <td> 40 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de transformación a stock </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (< 1 KB) </td>
+    <td> 30 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de validación de límites </strong> </td>
+    <td> O(1) </td>
+    <td> Mínimo (Bytes) </td>
+    <td> 20 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de verificación de salud de dispositivos </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (~1 KB) </td>
+    <td> 50 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de sincronización de inventario </strong> </td>
+    <td> O(1) </td>
+    <td> Moderado (~10 KB) </td>
+    <td> 200 ms </td>
+    <td> En la nube </td>
+  </tr>
+</table>
+
+**Justificación Técnica de los Parámetros**
+
+**1. Justificación de Complejidad (***O***):**
+
+- Algoritmos *O*(*N*): La Calibración y el Filtrado (Sampling) requieren procesar un conjunto de *N* muestras consecutivas para promediar el peso y eliminar el ruido eléctrico. El esfuerzo crece linealmente con el número de muestras seleccionadas (ej. 100 muestras).
+- Algoritmos *O*(1): Procesos como la Normalización, Transformación y Validación consisten en operaciones aritméticas directas o comparaciones de umbrales que no dependen del volumen de datos almacenados, ejecutándose en tiempo constante.
+
+**2. Justificación de los Tiempos de Ejecución:**
+
+- Capacidad del ESP32: Con una velocidad de reloj de 240 MHz, el microcontrolador puede realizar millones de instrucciones por segundo. Tiempos de 10 ms a 100 ms son valores conservadores que incluyen el tiempo de adquisición del sensor HX711 y el procesamiento básico, garantizando que el nodo no sea un cuello de botella.
+- Capacidad del Edge (Raspberry Pi): Al ser una Single Board Computer (SBC) de 1.5 GHz con arquitectura ARM, la ejecución de lógica de negocio (Transformación y Salud) en milisegundos es sumamente eficiente, permitiendo realizar Edge Analytics en tiempo real sin degradar el sistema.
+- Impacto en la QoS: La sumatoria de estos tiempos de procesamiento local (aprox 500 ms en total) es una fracción menor del presupuesto de 2 segundos de QoS definido en el Paso 1, dejando el margen necesario para la latencia de red y el transporte de datos analizado en el Paso 7.
+
+**3. Uso de Memoria:**
+
+- El uso de memoria es Bajo en los nodos periféricos porque se manejan tipos de datos primitivos (float, int) y buffers de muestreo pequeños, lo que optimiza los 520 KB de RAM del ESP32.
+
+#### Paso 12: Definición de la interfaz de usuario gráfica 
+
+En esta etapa final se definen los elementos visuales basándose en los servicios de información integrada y comandos operativos requeridos por el usuario final. A continuación, se detalla el módulo y su responsabilidad en el sistema:
+
+<table>
+  <tr>
+    <th> Servicio/Módulo (Tipología) </th>
+    <th> Plataformas de Interfaz </th>
+    <th> Elementos Clave </th>
+    <th> Justificación Funcional (Metodología) </th>
+  </tr>
+  <tr>
+    <td> <strong> Monitoreo de Salud del Dispositivo </strong> </td>
+    <td> Web / Mobile / LCD local </td>
+    <td> Indicadores de conectividad, batería y alertas de falla técnica. </td>
+    <td> Permite visualizar el autodiagnóstico y reconocer automáticamente fallas del hardware. </td>
+  </tr>
+  <tr>
+    <td> <strong> Inventario Físico en Tiempo Real </strong> </td>
+    <td> Web / Mobile </td>
+    <td> Monitor de stock en masa (kg) y unidades calculadas. </td>
+    <td> Proporciona la información integrada y comprimida necesaria para la operación del restaurante. </td>
+  </tr>
+  <tr>
+    <td> <strong> Configuración de Hardware </strong> </td>
+    <td> Web </td>
+    <td> Panel para asignar productos a sensores y ajustar pesos unitarios. </td>
+    <td> Permite el envío de comandos operativos para el control remoto de los recursos (Resource Control). </td>
+  </tr>
+  <tr>
+    <td> <strong> Notificaciones  </strong> </td>
+    <td> Web / Mobile </td>
+    <td> Avisos visuales de stock crítico o temperatura. </td>
+    <td> Cumple con la prioridad de QoS para servicios que requieren procesamiento y reacción en tiempo real. </td>
+  </tr>
+  <tr>
+    <td> <strong> Análisis de Históricos </strong> </td>
+    <td> Web </td>
+    <td> Gráficas de tendencias de consumo y reportes de discrepancias. </td>
+    <td> Utiliza la capacidad de almacenamiento y procesamiento del middleware para mostrar datos históricos </td>
+  </tr>
+  </tr>
+</table>
+
+### Diseño físico y de circuito del dispositivo IoT
+
+Por otro lado, se realiza una propuesta de diseño físico y del circuito del dispositivo IoT, el cual ayuda a tener una idea de los componentes a usar y cómo se conectan con el ESP32 central del dispositivo.
+
+### Flujos de interacción del dispositivo IoT
+
+Finalmente, se diseñan diagramas que explican los flujos de interacción para el dispositivo IoT, los cuales incluyen la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
