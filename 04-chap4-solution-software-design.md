@@ -99,8 +99,7 @@ El diagrama de contexto en la arquitectura de software proporciona una visión g
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
 
-
-<img src="https://i.imgur.com/PsJeXBT.png">
+<img src="https://i.imgur.com/UWstUkL.png" alt="Diagrama de contexto de Restock">
 
 **Visitors:** Usuarios anónimos que navegan el contenido público de la plataforma, como información, planes y características, y pueden registrarse o acceder como administradores de restaurante o retail.
 
@@ -108,7 +107,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **Retail Administrators:** Usuarios que gestionan el inventario, control de stock y operaciones comerciales en entornos de retail utilizando la plataforma Restock.
 
-**Restock:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
+**Restock Platform:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
  
 **Stripe:** Sistema externo que gestiona los pagos y suscripciones de los usuarios dentro de la plataforma Restock.
 
@@ -116,7 +115,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **OneSignal API:** Servicio externo utilizado para el envío de notificaciones y alertas en tiempo real a los usuarios de la plataforma.
 
-**Restock Smart Scale:** Dispositivo IoT que captura datos de peso desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
+**Restock Smart Inventory Device:** Dispositivo IoT que captura datos de peso, temperatura y humedad desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
 
 #### 4.1.3.2. Software Architecture Container Level Diagrams
 
