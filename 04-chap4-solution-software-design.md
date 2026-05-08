@@ -464,7 +464,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **Restock Smart Inventory Device:** Dispositivo IoT que captura datos de peso, temperatura y humedad desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
 
-#### 4.1.3.2. Software Architecture Container Level Diagrams
+#### 4.1.3.3. Software Architecture Container Level Diagrams
 
 El diagrama de contenedores de la arquitectura de software proporciona una visión de alto nivel de los principales contenedores del sistema, incluyendo aplicaciones, servicios, bases de datos y componentes IoT, como dispositivos embebidos y aplicaciones edge que interactúan con sensores físicos. Además, muestra cómo estos elementos se comunican entre sí para procesar y transmitir información. Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
@@ -498,7 +498,7 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 **Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición, captura datos de peso, temperatura y humedad desde los sensores y recibe los datos procesados del gateway para mostrarlos de forma constante en el Display LCD que posee el dispositivo IoT.
 
-#### 4.1.3.3. Software Architecture Deployment Diagrams
+#### 4.1.3.4. Software Architecture Deployment Diagrams
 
 A continuación, se muestra el diagrama de despliegue, el cual estructura la distribución física de los componentes del sistema en los distintos entornos de ejecución, incluyendo la infraestructura en la nube, los dispositivos del usuario, los nodos de cómputo en el edge y el hardware embebido.
 
