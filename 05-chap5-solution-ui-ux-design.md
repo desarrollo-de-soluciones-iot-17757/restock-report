@@ -595,9 +595,16 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 ### 5.4.2. Applications Mock-ups
 
+En esta sección se presentarán los mockups de las aplicaciones, los cuales fueron diseñas en Figma.
+
 ### Web Application
 
+En esta sección se presentarán los mockups de la aplicación web, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
 #### Registro de cuenta
+
+Esta es la pantalla de registro de cuenta, donde el usuario puede crear una nueva cuenta para acceder a la plataforma Restock. El formulario solicita información básica como nombre, correo electrónico y contraseña.
+
 
 <div align="center">
   <img src="https://i.imgur.com/WogEZ03.png">
@@ -605,12 +612,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Registro de empresa
 
+Esta es la pantalla de registro de empresa, donde el usuario debe crear una cuenta de empresa para empezar a gestionar su inventario.
+
 <div align="center">
   <img src="https://i.imgur.com/A2bjmuO.png">
 </div>
 
 #### Inicio de sesión
 
+En esta pantalla de inicio de sesión, el usuario puede acceder a su cuenta de Restock ingresando su correo electrónico y contraseña registrados. También se ofrece la opción de recuperar la contraseña en caso de haberla olvidado.
 
 <div align="center">
   <img src="https://i.imgur.com/0vskI7b.png">
@@ -618,11 +628,16 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Fallo de inicio de sesión
 
+Esta pantalla muestra el estado de error cuando el usuario ingresa credenciales incorrectas al intentar iniciar sesión. Se despliega un mensaje de advertencia indicando que el correo electrónico o la contraseña son inválidos, invitando al usuario a intentarlo nuevamente.
+
 <div align="center">
   <img src="https://i.imgur.com/uIvivp4.png">
 </div>
 
 #### Lista de sucursales
+
+En esta pantalla se muestra el listado de todas las sucursales registradas bajo la cuenta de la empresa. El usuario puede visualizar información general de cada sucursal y acceder a su gestión individual, así como agregar nuevas sucursales desde esta vista.
+
 
 <div align="center">
   <img src="https://i.imgur.com/PDEwpOG.png">
@@ -630,11 +645,17 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Crear una nueva sucursal
 
+Esta pantalla presenta el formulario para registrar una nueva sucursal dentro de la plataforma. El usuario debe completar datos como el nombre de la sucursal, dirección y otros detalles relevantes para su correcta identificación y gestión.
+
+
 <div align="center">
   <img src="https://i.imgur.com/R6rZej6.png">
 </div>
 
 #### Recuperar contraseña
+
+En esta pantalla el usuario puede solicitar la recuperación de su contraseña ingresando el correo electrónico asociado a su cuenta. La plataforma enviará un enlace o código para restablecer la contraseña de forma segura.
+
 
 <div align="center">
   <img src="https://i.imgur.com/ldrNJsk.png">
@@ -642,11 +663,17 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Pago de plan de suscripción 
 
+Esta pantalla corresponde al proceso de pago del plan de suscripción seleccionado. El usuario puede ingresar los datos de su método de pago y confirmar la transacción para activar o renovar su plan dentro de la plataforma Restock.
+
+
 <div align="center">
   <img src="https://i.imgur.com/tbRwP8W.png">
 </div>
 
 #### Inventario vacío
+
+Esta pantalla se muestra cuando el usuario aún no ha registrado ningún producto o lote en su inventario. Se presenta un mensaje informativo junto a una opción para comenzar a agregar elementos al inventario.
+
 
 <div align="center">
   <img src="https://i.imgur.com/k6Kdmbj.png">
@@ -654,11 +681,17 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Lotes registrados
 
+En esta pantalla se visualizan todos los lotes de productos que han sido registrados en el inventario de la sucursal. El usuario puede revisar detalles como cantidades disponibles y el estado de cada lote.
+
+
 <div align="center">
   <img src="https://i.imgur.com/Vq8uGTA.png">
 </div>
 
 #### Registro de lote
+
+Esta pantalla presenta el formulario para registrar un nuevo lote de productos en el inventario. El usuario debe ingresar información como el producto asociado, cantidad y fecha de vencimiento, entre otros campos relevantes.
+
 
 <div align="center">
   <img src="https://i.imgur.com/8QhpRcn.png">
@@ -666,17 +699,25 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Catálogo de suministros
 
+En esta pantalla se muestra el catálogo completo de suministros disponibles en la plataforma. El usuario puede gestionar los distintos insumos registrados, así como acceder a las opciones de edición o eliminación de cada uno.
+
+
 <div align="center">
   <img src="https://i.imgur.com/S7d8Jcx.png">
 </div>
 
 #### Registrar un nuevo suministro
 
+Esta pantalla presenta el formulario para dar de alta un nuevo suministro en el sistema. El usuario debe completar campos como nombre del insumo, unidad de medida y descripción, entre otros datos necesarios para su correcta gestión.
+
+
 <div align="center">
   <img src="https://i.imgur.com/ci7VsN5.png">
 </div>
 
 #### Editar un suministro
+
+En esta pantalla el usuario puede modificar la información de un suministro previamente registrado. Se muestran los mismos campos del formulario de creación, precargados con los datos actuales del insumo, permitiendo actualizar la información de manera sencilla.
 
 <div align="center">
   <img src="https://i.imgur.com/beQqlcQ.png">
@@ -685,11 +726,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Catálogo de combos 
 
+Esta pantalla muestra el listado de combos disponibles configurados en la plataforma. El usuario puede visualizar los combos existentes, acceder al detalle de cada uno y gestionar su composición según los suministros o productos que los integran.
+
 <div align="center">
   <img src="https://i.imgur.com/owwjEEt.png">
 </div>
 
 #### Detalle de combo
+
+En esta pantalla se presenta la información detallada de un combo específico, incluyendo los productos o suministros que lo componen, sus cantidades y el precio o condiciones asociadas. El usuario puede editar o eliminar el combo desde esta vista.
 
 <div align="center">
   <img src="https://i.imgur.com/3oH6LBS.png">
@@ -697,11 +742,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Cátalogo de recetas
 
+Esta pantalla muestra el listado de recetas registradas en la plataforma, orientada principalmente al segmento de restaurantes. El usuario puede explorar las recetas existentes y acceder a su detalle o crear nuevas recetas vinculadas a los suministros disponibles.
+
 <div align="center">
   <img src="https://i.imgur.com/I96OyZ0.png">
 </div>
 
 #### Detalle de receta
+
+En esta pantalla se visualiza la información completa de una receta en particular, incluyendo los ingredientes necesarios y sus cantidades. Esta vista permite al usuario gestionar los insumos requeridos y mantener un control preciso del consumo de inventario.
 
 <div align="center">
   <img src="https://i.imgur.com/4oOxbng.png">
@@ -709,11 +758,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Retail Dashboard
 
+Esta pantalla corresponde al panel principal para negocios de tipo retail, donde el usuario puede visualizar métricas clave del inventario, alertas de stock bajo, movimientos recientes y un resumen general del estado de sus productos y sucursales.
+
 <div align="center">
   <img src="https://i.imgur.com/Z4YWRxA.png">
 </div>
 
 #### Restaurant Dashboard
+
+Esta pantalla es el panel principal para negocios de tipo restaurante, mostrando indicadores relevantes como el consumo de insumos y discrepancias entre entra las cantidades del stock actual.
 
 <div align="center">
   <img src="https://i.imgur.com/azgMSRd.png">
@@ -721,11 +774,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Planes de suscripción
 
+En esta pantalla se presentan los distintos planes de suscripción disponibles en la plataforma Restock. El usuario puede comparar las características y beneficios de cada plan para seleccionar el que mejor se adapte a las necesidades de su negocio.
+
 <div align="center">
   <img src="https://i.imgur.com/ijIXAr3.png">
 </div>
 
 #### Configuración y preferencias
+
+Esta pantalla permite al usuario personalizar las preferencias generales de la plataforma, como notificaciones, idioma, zona horaria y otras opciones de configuración que afectan la experiencia de uso dentro de Restock.
 
 <div align="center">
   <img src="https://i.imgur.com/qRfAIuu.png">
@@ -733,11 +790,15 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Perfil del negocio
 
+En esta pantalla el usuario puede visualizar y editar la información general de su negocio registrado en la plataforma, incluyendo nombre, dirección y datos de contacto.
+
 <div align="center">
   <img src="https://i.imgur.com/M0ntofi.png">
 </div>
 
 #### Perfil del usuario
+
+Esta pantalla muestra la información personal del usuario principal de la cuenta, muestra como nombre, correo electrónico y opciones para actualizar sus datos.
 
 <div align="center">
   <img src="https://i.imgur.com/8YasZDN.png">
@@ -745,8 +806,181 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 
 #### Notificaciones
 
+En esta pantalla el usuario puede revisar todas las notificaciones generadas por la plataforma, tales como alertas de stock bajo, productos próximos a vencer, actualizaciones del sistema y otros avisos relevantes para la gestión del inventario.
+
 <div align="center">
   <img src="https://i.imgur.com/wnqW2Kc.png">
+</div>
+
+#### Monitoreo de dispositivos IoT
+
+Esta pantalla permite al usuario visualizar en tiempo real el estado de los dispositivos IoT conectados a la plataforma, mostrando métricas como niveles de stock detectados por sensores, estado de conexión de cada dispositivo y últimas lecturas registradas.
+
+<div align="center">
+  <img src="https://i.imgur.com/cZ6kkLs.png">
+</div>
+
+#### Configuración de suministro a dispositivo IoT
+
+En esta pantalla el usuario puede asociar y configurar los suministros que serán monitoreados por un dispositivo IoT específico. Se definen parámetros como umbrales mínimos de stock y el tipo de suministro vinculado al sensor correspondiente.
+
+<div align="center">
+  <img src="https://i.imgur.com/mlg3g3Z.png">
+</div>
+
+
+### Mobile Application
+
+En esta sección se presentarán los mockups de la aplicación móvil, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
+#### Registro de cuenta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de empresa
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Fallo de inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lista de sucursales
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Crear una nueva sucursal
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Recuperar contraseña
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Pago de plan de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inventario vacío
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lotes registrados
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de lote
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de suministros
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registrar un nuevo suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Editar un suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de combos
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de combo
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de recetas
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de receta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Retail Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Restaurant Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Planes de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración y preferencias
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del negocio
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del usuario
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Notificaciones
+
+<div align="center">
+  <img src="">
 </div>
 
 #### Configuración de dispositivos IoT
@@ -760,9 +994,6 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 <div align="center">
   <img src="">
 </div>
-
-
-### Mobile Application
 
 ### 5.4.3. Applications User Flow Diagrams
 ## 5.5. Applications Prototyping
