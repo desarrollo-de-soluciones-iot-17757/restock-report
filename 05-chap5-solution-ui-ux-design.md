@@ -423,6 +423,176 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ### 5.4.1. Applications Wireframes
 ### 5.4.2. Applications Wireflow Diagrams
 ### 5.4.2. Applications Mock-ups
+
+### Web Application
+
+#### Registro de cuenta
+
+<div align="center">
+  <img src="https://i.imgur.com/WogEZ03.png">
+</div>
+
+#### Registro de empresa
+
+<div align="center">
+  <img src="https://i.imgur.com/A2bjmuO.png">
+</div>
+
+#### Inicio de sesión
+
+
+<div align="center">
+  <img src="https://i.imgur.com/0vskI7b.png">
+</div>
+
+#### Fallo de inicio de sesión
+
+<div align="center">
+  <img src="https://i.imgur.com/uIvivp4.png">
+</div>
+
+#### Lista de sucursales
+
+<div align="center">
+  <img src="https://i.imgur.com/PDEwpOG.png">
+</div>
+
+#### Crear una nueva sucursal
+
+<div align="center">
+  <img src="https://i.imgur.com/R6rZej6.png">
+</div>
+
+#### Recuperar contraseña
+
+<div align="center">
+  <img src="https://i.imgur.com/ldrNJsk.png">
+</div>
+
+#### Pago de plan de suscripción 
+
+<div align="center">
+  <img src="https://i.imgur.com/tbRwP8W.png">
+</div>
+
+#### Inventario vacío
+
+<div align="center">
+  <img src="https://i.imgur.com/k6Kdmbj.png">
+</div>
+
+#### Lotes registrados
+
+<div align="center">
+  <img src="https://i.imgur.com/Vq8uGTA.png">
+</div>
+
+#### Registro de lote
+
+<div align="center">
+  <img src="https://i.imgur.com/8QhpRcn.png">
+</div>
+
+#### Catálogo de suministros
+
+<div align="center">
+  <img src="https://i.imgur.com/S7d8Jcx.png">
+</div>
+
+#### Registrar un nuevo suministro
+
+<div align="center">
+  <img src="https://i.imgur.com/ci7VsN5.png">
+</div>
+
+#### Editar un suministro
+
+<div align="center">
+  <img src="https://i.imgur.com/beQqlcQ.png">
+</div>
+
+
+#### Catálogo de combos 
+
+<div align="center">
+  <img src="https://i.imgur.com/owwjEEt.png">
+</div>
+
+#### Detalle de combo
+
+<div align="center">
+  <img src="https://i.imgur.com/3oH6LBS.png">
+</div>
+
+#### Cátalogo de recetas
+
+<div align="center">
+  <img src="https://i.imgur.com/I96OyZ0.png">
+</div>
+
+#### Detalle de receta
+
+<div align="center">
+  <img src="https://i.imgur.com/4oOxbng.png">
+</div>
+
+#### Retail Dashboard
+
+<div align="center">
+  <img src="https://i.imgur.com/Z4YWRxA.png">
+</div>
+
+#### Restaurant Dashboard
+
+<div align="center">
+  <img src="https://i.imgur.com/azgMSRd.png">
+</div>
+
+#### Planes de suscripción
+
+<div align="center">
+  <img src="https://i.imgur.com/ijIXAr3.png">
+</div>
+
+#### Configuración y preferencias
+
+<div align="center">
+  <img src="https://i.imgur.com/qRfAIuu.png">
+</div>
+
+#### Perfil del negocio
+
+<div align="center">
+  <img src="https://i.imgur.com/M0ntofi.png">
+</div>
+
+#### Perfil del usuario
+
+<div align="center">
+  <img src="https://i.imgur.com/8YasZDN.png">
+</div>
+
+#### Notificaciones
+
+<div align="center">
+  <img src="https://i.imgur.com/wnqW2Kc.png">
+</div>
+
+#### Configuración de dispositivos IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de dispositivo IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+
+### Mobile Application
+
 ### 5.4.3. Applications User Flow Diagrams
 ## 5.5. Applications Prototyping
 ## 5.6. IoT Device Design
