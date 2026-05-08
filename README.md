@@ -373,6 +373,78 @@ _**Mes y Año**: Abril 2026_
     <td> Julio Castro </th>
     <td> Se añadió la sección del Collaboration Insights. </th>
   </tr>
+  <tr>
+    <td> 1.93 </th>
+    <td> 26/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del Collaboration Insights. </th>
+  </tr>
+  <tr>
+    <td> 2.01 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del General Style Guidelines </th>
+  </tr>
+  <tr>
+    <td> 2.02 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Web, Mobile and IoT Style Guidelines. </th>
+  </tr>
+  <tr>
+    <td> 2.03 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se corrigieron las historias de usuario. </th>
+  </tr>
+  <tr>
+    <td> 2.04 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se actualizó el Product Backlog con los cambios aplicados en las historias de usuario </th>
+  </tr>
+  <tr>
+    <td> 2.05 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Software Development Environment Configuration. </th>
+  </tr>
+  <tr>
+    <td> 2.06 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Source Code Management. </th>
+  </tr>
+  <tr>
+    <td> 2.07 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se actualizó el event storming agregando detalles de lectura de humedad y temperatura. </th>
+  </tr>
+  <tr>
+    <td> 2.08 </th>
+    <td> 06/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se corregió la sección de Candidate Context Discovery según los cambios efectuados en el event storming. </th>
+  </tr>
+  <tr>
+    <td> 2.09 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el Context Mapping agregando los contextos de Tracking, Device Management y Analytics. </th>
+  </tr>
+  <tr>
+    <td> 2.091 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se diseñaron nuevos Bounded Contexts Canvasses para los nuevos contextos agregados. </th>
+  </tr>
+  <tr>
+    <td> 2.10 </th>
+    <td> 07/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la descripción de los 12 pasos en la sección del IoT Device Design. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
