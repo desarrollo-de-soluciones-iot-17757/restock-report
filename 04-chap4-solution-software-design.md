@@ -502,9 +502,27 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 A continuación, se muestra el diagrama de despliegue, el cual estructura la distribución física de los componentes del sistema en los distintos entornos de ejecución, incluyendo la infraestructura en la nube, los dispositivos del usuario, los nodos de cómputo en el edge y el hardware embebido.
 
-<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png" alt="Production Deployment Diagram" style="width:100%; height:auto;">
+<img src="https://i.imgur.com/uaNmqy7.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
 
 El diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
+
+**Landing Page y Web Server:** Ambas aplicaciones se despliegan utilizando Vercel y cada una forma parte de Vercel Edge Network donde el usuario puede acceder a las aplicaciones de forma pública.
+
+**Web Application:** Cuando el usuario accede al Web Server desplegado en Vercel, envía los archivos PWA de la aplicación web al navegador del usuario.
+
+**Mobile Application y Mobile SQLite Database:** La aplicación móvil se despliega mediante Firebase App Distribution y se instala en el dispositivo del usuario creando, a su vez, la base de datos local basada en SQLite.
+
+**API Gateway y Cloud REST API:** Se despliegan en la nube en el servicio ofrecido por Render donde los clientes pueden acceder a los servicios web del API.
+
+**MongoDB Database:** La base de datos del Cloud API se despliega en MongoDB Atlas Cluster, una solución cloud para despliegue de bases de datos MongoDB.
+
+**Redis Cache Server:** La base de datos en memoria se despliega en Redis Cloud, una plataforma cloud para despliegue de bases de datos Redis.
+
+**Edge Application y Edge Local Database:** El Edge Gateway junto con su base de datos son desplegados en manera física en un dispositivo Raspberry Pi en un sistema operativo Linux para una eficiencia en el procesamiento de información.
+
+**MQTT Broker:** El broker de mensajería para telemetría es desplegado en HiveMQ Cloud, una solución en nube para implementación de comunicación MQTT para ecosistemas IoT.
+
+**Embedded Application:** El software embebido se despliega de forma local en el ESP32 del dispositivo IoT.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
