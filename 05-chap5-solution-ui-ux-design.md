@@ -421,7 +421,178 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ### 5.3.2. Landing Page Mock-up
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
+
+### Web Application
+
+Aquí tienes el mismo bloque corregido, sin los links de imagen:
+
+#### Registro de cuenta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de empresa
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Fallo de inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lista de sucursales
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Crear una nueva sucursal
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Recuperar contraseña
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Pago de plan de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inventario vacío
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lotes registrados
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de lote
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de suministros
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registrar un nuevo suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Editar un suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de combos
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de combo
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de recetas
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de receta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Retail Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Restaurant Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Planes de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración y preferencias
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del negocio
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del usuario
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Notificaciones
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración de dispositivos IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de dispositivo IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+### Mobile Application
+
 ### 5.4.2. Applications Wireflow Diagrams
+
+
 ### 5.4.2. Applications Mock-ups
 
 ### Web Application
