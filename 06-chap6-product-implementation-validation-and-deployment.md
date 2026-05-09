@@ -25,13 +25,13 @@ Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficie
 
 | Team Member (Last Name, First Name) | GitHub Username | IAM | ARM | Planning | Sales | Devices | Tracking | Communications |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Navarro Chinga, Antonio Jhair | AntonioNavarro24 | **L** |  |  |  |  | C |  |
-| Guerra Perez, José Jahaziel | jahazielgg |  |  | C |  |  | C |  |
-| Juarez Leon, Nicolas Emilio | JuarezLn10 |  |  |  |  | **L** | **L** |  |
-| Diaz Quispe, Matias Sebastian | equinox-1092 |  |  |  |  |  |  | **L** |
-| Castro Alejos, Julio Daniel | JulioXC4 |  | **L** | **L** |  |  |  |  |
-| Shapiama Rivera, Gabriela Nicole | GabrielaShapiama28 |  | **L** |  |  | **L** |  |  |
-| Coronel Espinoza, Farid Sebastian | Far14z |  |  |  | **L** |  |  |  |
+| Navarro Chinga, Antonio Jhair | AntonioNavarro24 | **L** |  | C |  |  | C |  |
+| Guerra Perez, José Jahaziel | jahazielgg |  |  | C | C |  | C |  |
+| Juarez Leon, Nicolas Emilio | JuarezLn10 |  | C |  |  | **L** | **L** |  |
+| Diaz Quispe, Matias Sebastian | equinox-1092 | C |  |  | C |  |  | **L** |
+| Castro Alejos, Julio Daniel | JulioXC4 |  | C | **L** |  |  |  | C |
+| Shapiama Rivera, Gabriela Nicole | GabrielaShapiama28 |  | **L** |  |  | C |  | C |
+| Coronel Espinoza, Farid Sebastian | Far14z |  | C |  | **L** | C |  |  |
 
 #### 6.2.1.3. Sprint Backlog 1
 
