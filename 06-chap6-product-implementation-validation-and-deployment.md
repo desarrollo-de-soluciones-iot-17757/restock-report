@@ -19,6 +19,20 @@
 
 #### 6.2.1.2. Aspect Leaders and Collaborators
 
+Durante el Sprint 1, se han definido los pilares estratégicos del sistema basados en una arquitectura de contextos delimitados (Bounded Contexts). Estos abarcan desde la seguridad y acceso hasta la gestión compleja de activos, ventas y monitoreo de servicios para los sectores de retail y restaurantes.
+
+Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficiente, se ha elaborado la siguiente matriz de liderazgo y colaboración (LACX). En ella se designa un líder responsable (L) para la integridad de cada contexto y colaboradores (C) que aseguran la integración y el cumplimiento de los 40 puntos de historia definidos en la planificación.
+
+| Team Member (Last Name, First Name) | GitHub Username | IAM | ARM | Planning | Sales | Devices | Tracking | Communications |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Navarro Chinga, Antonio Jhair | AntonioNavarro24 | **L** |  | C |  |  | C |  |
+| Guerra Perez, José Jahaziel | jahazielgg |  |  | C | C |  | C |  |
+| Juarez Leon, Nicolas Emilio | JuarezLn10 |  | C |  |  | **L** | **L** |  |
+| Diaz Quispe, Matias Sebastian | equinox-1092 | C |  |  | C |  |  | **L** |
+| Castro Alejos, Julio Daniel | JulioXC4 |  | C | **L** |  |  |  | C |
+| Shapiama Rivera, Gabriela Nicole | GabrielaShapiama28 |  | **L** |  |  | C |  | C |
+| Coronel Espinoza, Farid Sebastian | Far14z |  | C |  | **L** | C |  |  |
+
 #### 6.2.1.3. Sprint Backlog 1
 
 #### 6.2.1.4. Development Evidence for Sprint Review
