@@ -19,77 +19,85 @@ Con el fin de mantener la consistencia y facilitar la interpretación del modelo
 El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/fTgbd9E.png" alt="event">
-  <img src="https://imgur.com/j9OFNTa.png" alt="event">
-  <img src="https://imgur.com/cRDqY8F.png" alt="event">
+  <img src="https://imgur.com/99oEpmr.png" alt="event">
+  <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema.
 
 #### Paso 2: Timelines
 
-El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada contexto del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
+El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/pISgB60.png" alt="time-line">
-  <img src="https://imgur.com/yUTo02r.png" alt="time-line">
-  <img src="https://imgur.com/vjb4mf6.png" alt="time-line">
+  <img src="https://imgur.com/N3A08JD.png" alt="time-line">
+  <img src="https://imgur.com/b2VepjU.png" alt="time-line">
+  <img src="https://imgur.com/GHpCIkg.png" alt="time-line">
+  <img src="https://imgur.com/eNAJXbz.png" alt="time-line">
+  <img src="https://imgur.com/0LdKD0Q.png" alt="time-line">
 </div>
 
-El equipo organizó los eventos en secuencias horizontales ordenadas bajo once contextos claramente etiquetados: IAM Identity and Access Management, Managing personal and business profiles, Plans and payment, Branch creation and management, Registration and management of customized supplies, Recipes and Kits, Batch and stock registration, Sales register, Device registration and configuration, Telemetry, stock and thresholds y Communications center. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo diez bounded contexts claramente etiquetados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Communications, Asset and Resource Management (ARM), Design and Planning, Sales Management, Analytics, Device Management y Tracking. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
 
 #### Paso 3: Paint Point
 
-El tercer paso incorporó la identificación de los puntos de dolor o tambien llamados paint point dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
+El tercer paso incorporó la identificación de los puntos de dolor, también llamados pain points, dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/NGzzOlA.png" alt="paint-point">
-  <img src="https://imgur.com/flx9ps8.png" alt="paint-point">
-  <img src="https://imgur.com/PGu5p87.png" alt="paint-point">
-  <img src="https://imgur.com/90q0dd4.png" alt="paint-point">
+  <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
+  <img src="https://imgur.com/U8QiL0s" alt="paint-point">
+  <img src="https://imgur.com/0C8oOMR.png" alt="paint-point">
+  <img src="https://imgur.com/jIvMoqL.png" alt="paint-point">
+  <img src="https://imgur.com/3rKIBL0.png" alt="paint-point">
+  <img src="https://imgur.com/Pp4xgKP.png" alt="paint-point">
 </div>
 
-El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se marcó un pain point relacionado con el proceso de registro, preguntando qué información mínima se requiere para completar el alta de una cuenta. En Branch creation and management se levantó una pregunta sobre el comportamiento del sistema cuando no se adjunta una imagen al registrar una sucursal. En Registration and management of customized supplies se planteó la misma interrogante respecto a la imagen del insumo personalizado. En Recipes and Kits se identificaron pain points tanto en la receta como en el kit, relacionados con qué información adicional debe consultarse antes de registrarlos y qué ocurre cuando no se proporciona una imagen. En Sales register se levantó una pregunta sobre qué información de precio o condición debe validarse antes de confirmar la venta. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
+El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se identificó el pain point "How do I access the services?", relacionado con el flujo de registro inicial de un usuario en el sistema. En Design and Planning se marcaron dos pain points: "What information does a recipe require?" y "What information does a Kit require?", señalando la necesidad de definir los datos mínimos para registrar cada elemento. En Sales Management se levantó la pregunta "How do I record a sale?", referida al proceso y condiciones necesarias para confirmar una venta. En Asset and Resource Management se plantearon las preguntas "How do you register a branch?", cuestionando los datos y pasos requeridos para dar de alta una sucursal, y "How do you register a custom supply?", indicando dudas sobre la información mínima necesaria para crear un insumo personalizado. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
 
 #### Paso 4: Pivotal Points
 
 El cuarto paso incorporó la identificación de los pivotal points dentro de los flujos ya organizados. Estos puntos se representan como las líneas o momentos de transición más relevantes dentro del recorrido, y permiten visualizar dónde ocurre un cambio significativo en la dirección, el contexto o la decisión del proceso. Su identificación ayudó a comprender cómo se conectan las distintas etapas del negocio y cuáles son los momentos clave que estructuran la experiencia analizada.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/gsg4IUH.png" alt="pivotal-point">
-  <img src="https://imgur.com/jOwxT1W.png" alt="pivotal-point">
-  <img src="https://imgur.com/w3N0Ahv.png" alt="pivotal-point">
-  <img src="https://imgur.com/RLkltIc.png" alt="pivotal-point">
-  <img src="https://imgur.com/8ROOM3c.png" alt="pivotal-point">
-  <img src="https://imgur.com/92OfBoP.png" alt="pivotal-point">
+  <img src="https://imgur.com/RGOcMYK.png" alt="pivotal-point">
+  <img src="https://imgur.com/YHAHFyV.png" alt="pivotal-point">
+  <img src="https://imgur.com/uUMZjIW.png" alt="pivotal-point">
+  <img src="https://imgur.com/rD5GwRE.png" alt="pivotal-point">
+  <img src="https://imgur.com/hw1P6o3.png" alt="pivotal-point">
+  <img src="https://imgur.com/mOw9dHN.png" alt="pivotal-point">
+  <img src="https://imgur.com/vpFvHI9.png" alt="pivotal-point">
 </div>
 
-En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Branch creation and management, se identificó el punto en el que la intención de crear una sucursal se transforma en el registro formal de sus datos. En Registration and management of customized supplies, el flujo cambia cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Recipes and Kits, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Batch and stock registration, el punto crítico se ubica en la transición hacia la confirmación de una venta. Finalmente, en Service Operation and Monitoring y Communications no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
+En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Asset and Resource Management, se identificaron dos pivotal points: el primero en el momento en que la intención de crear una sucursal se transforma en el registro formal de sus datos, y el segundo cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Design and Planning, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Sales Management, el punto crítico se ubica en la transición hacia la confirmación de una venta. En Tracking, el pivotal point se encuentra en el momento en que el flujo de telemetría pasa del monitoreo continuo a la detección de una anomalía de stock. En Communications y Analytics no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
 
 #### Paso 5: Commands
 
 El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/WiLGvE1.png" alt="commands">
-  <img src="https://imgur.com/xP7cZaQ.png" alt="commands">
-  <img src="https://imgur.com/Gt8pBlI.png" alt="commands">
+  <img src="https://imgur.com/oChmol2.png" alt="commands">
+  <img src="https://imgur.com/yii7ltr.png" alt="commands">
+  <img src="https://imgur.com/UsAg66F.png" alt="commands">
+  <img src="https://imgur.com/bw7fYmO.png" alt="commands">
+  <img src="https://imgur.com/Wg0qEsV.png" alt="commands">
+  <img src="https://imgur.com/IAtSW8V.png" alt="commands">
 </div>
 
-El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Managing personal and business profiles: Create user profile, Change Password, Update personal data y Register new business. En Plans and payment: Select subscription plan, Configure plan limits, Update plan limits y Pay subscription plan. En Branch creation and management: Create branch, Edit branch y Delete branch. En Registration and management of customized supplies: Register Custom Supply y Edit Custom Supply. En Recipes and Kits: Register recipe, Edit recipe, Register Kit y Edit Kit. En Batch and stock registration: Register batch. En Sales register: Register sale, Calculate total price y Show sales. En Device registration and configuration: Register new device, Configure a device y Deactivate device. En Telemetry, stock and thresholds: Calculate stock, Status check, Register threshold, Edit threshold y Verify threshold. En Communications center: Generate new notification y Show the notification.
+El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Profiles and Preferences se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts. En Subscriptions and Payments se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account. En Asset and Resource Management se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Register batch, Add supply batch stock, Transfer supply batch stock y Subtrack batch stock. En Design and Planning se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit. En Sales Management se definieron: Register sale y Show sales. En Device Management se definieron: Register new device, Configure a device y Deactivate device. En Tracking se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock comparison, Register threshold, Edit threshold, Verify threshold y Perform stock adjustment.
 
 #### Paso 6: Policies and Actors
 
 El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/mbnSUbF.png" alt="policies-actors">
-  <img src="https://imgur.com/WT6atlH.png" alt="policies-actors">
-  <img src="https://imgur.com/4ILKDjJ.png" alt="policies-actors">
-  <img src="https://imgur.com/gCyWyW1.png" alt="policies-actors">
+  <img src="https://imgur.com/ZSbeOHv.png" alt="policies-actors">
+  <img src="https://imgur.com/wUaOO3L.png" alt="policies-actors">
+  <img src="https://imgur.com/Bq5ICTb.png" alt="policies-actors">
+  <img src="https://imgur.com/i98m21X.png" alt="policies-actors">
 </div>
 
-El equipo identificó como actores principales al Retail Manager y al Branch Manager, presentes en la totalidad de los contextos del sistema. El actor Visitor fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos: en Plans and payment se definió una política que activa el plan de suscripción una vez que el pago es aceptado; en Telemetry, stock and thresholds se identificó una política que genera una tarea de conciliación automáticamente al detectarse una anomalía de stock; en Device registration and configuration se definió una política que deshabilita la ingesta de telemetría ante ciertos eventos del dispositivo; y en Communications center se identificó una política que dispara el envío de notificaciones en respuesta a eventos de alerta del sistema.
+El equipo identificó como actores principales al Retail Manager y al Restaurant Manager, presentes en la mayoría de los contextos del sistema. El actor Visitant fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. El actor User fue identificado en los contextos de IAM, Subscriptions and Payments y Profiles and Preferences. El actor Device fue identificado en los contextos de Device Management y Tracking como emisor automático de eventos de telemetría.
+Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos. En IAM se definió una política que crea el perfil del usuario automáticamente al completarse el registro. En Subscriptions and Payments se definieron cuatro políticas: una que genera una orden de pago en Stripe con los detalles del plan seleccionado, una que configura los límites del plan para la cuenta al detectarse un nuevo plan, una que crea una nueva cuenta para el negocio al completarse el proceso de cuenta, y una que envía el resumen del pago al usuario una vez generado. En Profiles and Preferences se definió una política que sube la foto a la API de Cloudinary y obtiene el enlace al actualizarse la imagen de perfil o negocio. En Design and Planning se definieron políticas que suben la foto a la API de Cloudinary y obtienen el enlace al cargarse o actualizarse imágenes de recetas y kits. En Sales Management se definió una política que suma automáticamente los precios de las recetas y los insumos adicionales para calcular el total, y otra que envía la información de la venta confirmada. En Asset and Resource Management se definió una política que verifica el stock actual del almacén y lo descuenta al transferir stock entre sucursales, y otra que obtiene la información y envía un mensaje al añadir stock al inventario. En Device Management se definió una política que obtiene la información del cambio y envía una notificación ante eventos de configuración del dispositivo, y otra que crea o edita un registro de umbral para el manejo de alertas. En Tracking se definieron políticas que dividen el peso recibido y configuran el cálculo del stock físico.
 
 #### 4.1.1.1 Candidate Context Discovery
 
@@ -100,38 +108,48 @@ Luego de identificar los eventos, flujos, comandos y políticas del dominio, el 
 El séptimo paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/SfMIuAC.png" alt="read-models">
-  <img src="https://imgur.com/LBUJFwz.png" alt="read-models">
-  <img src="https://imgur.com/1EfRZUB.png" alt="read-models">
-  <img src="https://imgur.com/RwejYIg.png" alt="read-models">
+  <img src="https://imgur.com/X0h65gU.png" alt="read-models">
+  <img src="https://imgur.com/FTHqAMi.png" alt="read-models">
+  <img src="https://imgur.com/K1i9PTY.png" alt="read-models">
+  <img src="https://imgur.com/fhmxcNR.png" alt="read-models">
+  <img src="https://imgur.com/z2zBn1G.png" alt="read-models">
 </div>
 
-El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificó la vista de Login. En Managing personal and business profiles se definió la vista de Profile settings. En Branch creation and management se identificó la vista de Branch Management. En Registration and management of customized supplies se definió la vista de Custom Supply Management. En Recipes and Kits se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de seleccionar un ítem para editarlo. En Batch and stock registration se definió la vista de Batch Management. En Sales register se identificó la vista de Sales Management. En Device registration and configuration se definió la vista de Device Management. Estos read models garantizan que los actores cuenten con el contexto necesario en cada punto de decisión del flujo.
+El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificaron las vistas de Sign-up Form y Sign-in Form, que el visitante y el usuario consultan antes de registrarse o autenticarse. En Profiles and Preferences se definieron las vistas de Profile settings, utilizada al cambiar contraseña o actualizar datos personales, y Business Profile, utilizada al registrar o actualizar la información del negocio. Asimismo, se definió la vista de Workers Management, consultada por el Retail Manager y Restaurant Manager al registrar un nuevo usuario para la cuenta. En Subscriptions and Payments se identificó la vista de Subscription plans, que el usuario consulta antes de seleccionar o actualizar un plan. En Asset and Resource Management se identificaron las vistas de Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock de lotes; y Batch Management, consultada al registrar un lote o transferir stock al almacén. En Design and Planning se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de editar o eliminar un ítem. En Sales Management se identificó la vista de Sales Management, consultada al registrar o filtrar ventas. En Device Management se definió la vista de Device Management, consultada al registrar, configurar o desactivar un dispositivo.
 
 #### Paso 8: External Systems
 
 El octavo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/6I1JkzM.png" alt="external-systems">
-  <img src="https://imgur.com/fatvFGG.png" alt="external-systems">
-  <img src="https://imgur.com/f0lHtoK.png" alt="external-systems">
+  <img src="https://imgur.com/SaHLR0Z.png" alt="external-systems">
+  <img src="https://imgur.com/5jLk4hf.png" alt="external-systems">
+  <img src="https://imgur.com/V28VaFs.png" alt="external-systems">
+  <img src="https://imgur.com/2KDUQy1.png" alt="external-systems">
+  <img src="https://imgur.com/Dhrs7SO.png" alt="external-systems">
 </div>
 
-El equipo identificó tres sistemas externos a partir del PDF. El primero es Cloudinary API, presente en los contextos de Managing personal and business profiles, Branch creation and management, Registration and management of customized supplies y Recipes and Kits, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema. El segundo es Stripe, integrado en el contexto de Plans and payment, encargado de procesar los pagos de suscripción. El tercero es OneSignal API, integrado en el contexto de Communications center, responsable del envío de notificaciones push a los usuarios del sistema.
+El equipo identificó tres sistemas externos. El primero es Cloudinary API, presente en los contextos de Profiles and Preferences, Asset and Resource Management y Design and Planning, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema mediante la política "Upload the photo to the API and get the link". El segundo es Stripe, integrado en el contexto de Subscriptions and Payments, encargado de procesar los pagos de suscripción mediante la generación de una orden de pago con los detalles del plan seleccionado. El tercero es OneSignal API, integrado en el contexto de Communications, responsable de obtener la información del evento y enviar el mensaje de notificación push correspondiente a los usuarios del sistema.
 
 #### Paso 9: Add Aggregates
 
 El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/gDA5QZR.png" alt="aggregates">
-  <img src="https://imgur.com/awlhM6c.png" alt="aggregates">
-  <img src="https://imgur.com/R0iS8HY.png" alt="aggregates">
-  <img src="https://imgur.com/h5qQXCg.png" alt="aggregates">
+  <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
+  <img src="https://imgur.com/bz39Etw.png" alt="aggregates">
+  <img src="https://imgur.com/NKfdPMt.png" alt="aggregates">
+  <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
+  <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
+  <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
+  <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
+  <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
+  <img src="https://imgur.com/1RTkenv.png" alt="aggregates">
+  <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
+  <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
 
-El equipo identificó los agregados que estan organizados por contexto. En IAM se definió el agregado User. En Managing personal and business profiles se identificaron Profile y Business. En Plans and payment se definieron Subscription y Account. En Branch creation and management se identificaron Branch e Inventory. En Registration and management of customized supplies se definieron Custom Supply y Device. En Recipes and Kits se identificaron Recipe y Kit. En Batch and stock registration se definió Batch. En Sales register se identificó Sales Order. En Device registration and configuration se definieron Device Health y Conciliation Task. En Telemetry, stock and thresholds se identificaron Stock Record y Supply Threshold. En Communications center se definió el agregado Notification.
+El equipo identificó los aggregates en cada bounded context. En IAM se identificó el aggregate User, que agrupa los flujos de registro, autenticación y registro de nuevos usuarios para una cuenta. En Subscriptions and Payments se identificaron tres aggregates: Subscription, que agrupa los eventos de selección y actualización de planes junto con el procesamiento mediante Stripe; Plan, que agrupa la detección y configuración de límites del plan; y Payment, que agrupa el registro del pago y la generación del resumen. En Profiles and Preferences se identificaron dos aggregates: Profile, que agrupa los flujos de cambio de contraseña, actualización de datos personales y carga de imágenes mediante Cloudinary API; y Business, que agrupa el registro y actualización de la información del negocio. En Asset and Resource Management se identificaron cuatro aggregates: Branch, que agrupa la creación, edición y eliminación de sucursales junto con la integración de Cloudinary API para imágenes; Custom Supply, que agrupa el registro, edición y eliminación de insumos personalizados con su respectiva carga de imágenes; Inventory, que agrupa los flujos de adición y transferencia de stock entre sucursales; y Batch, que agrupa el registro de lotes, la transferencia de stock al almacén y el descuento de stock. En Design and Planning se identificaron dos aggregates: Recipe, que agrupa el registro, edición y eliminación de recetas junto con la integración de Cloudinary API; y Kit, que agrupa el registro, edición y eliminación de kits con su respectiva carga de imágenes. En Sales Management se identificó el aggregate Sales Order, que agrupa los flujos de registro de ventas, cálculo del precio total y filtrado de ventas. En Communications se identificó el aggregate Notification, que agrupa la generación de notificaciones y su envío mediante OneSignal API. En Device Management se identificó el aggregate Device, que agrupa el registro, configuración y desactivación de dispositivos. En Tracking se identificaron cuatro aggregates: Device Health Record, que agrupa el monitoreo del estado del dispositivo; Box State Record, que agrupa el registro de telemetría física del contenedor incluyendo peso, temperatura y humedad; Stock Comparison, que agrupa la comparación entre el stock físico estimado y el stock digital para detectar discrepancias; Power Schedule, que agrupa la configuración del encendido y apagado programado del dispositivo; Conciliation Task, que agrupa el proceso de ajuste de stock al detectarse diferencias; y Box Threshold, que agrupa el registro, edición y verificación de umbrales de alerta por dispositivo.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
@@ -149,7 +167,7 @@ Se trazaron fronteras alrededor de los grupos identificados, estableciendo los l
 
 Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
 
-<img src="https://imgur.com/Ke6dnOH.png" alt=“DDD” width="800px">
+<img src="https://imgur.com/oI92pdH.png" alt=“DDD” width="800px">
 
 A continuación, se explicará en qué consiste cada bounded context:
 
@@ -165,9 +183,9 @@ A continuación, se explicará en qué consiste cada bounded context:
 
 <img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
 
-**Alerts and Notifications:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+**Communication:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
 
-<img src="assets/images/chapter4/candidate_context/bounded_notifications.jpg" alt="DDD" width="500px">
+<img src="https://imgur.com/5iFcZh6.jpg" alt="DDD" width="500px">
 
 **Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
 
@@ -184,10 +202,6 @@ A continuación, se explicará en qué consiste cada bounded context:
 **Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
 
 <img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
-
-**Analytics:** También llamado “Analytics”, este bounded context contiene el proceso de análisis y visualización de información relevante del sistema, permitiendo a los usuarios consultar datos como insumos con stock cero, insumos con stock bajo, últimos insumos registrados y alertas recientes. Además, centraliza la presentación de indicadores en un dashboard, facilitando el seguimiento del comportamiento del inventario y el apoyo a la toma de decisiones.
-
-<img src="https://imgur.com/0trAWyu.png" alt=“DDD” width="500px">
 
 #### 4.1.1.2 Domain Message Flows Modeling
 
@@ -230,40 +244,60 @@ Un Bounded Context Canvas es una herramienta visual que ayuda a documentar lo ne
 Maneja el proceso de gestión de inventarios para restaurantes y tiendas retail, incluyendo el registro y seguimiento de stock de suministros en las distintas sucursales del negocio del usuario, garantizando que cada usuario sepa el flujo del stock de sus suministros. Además, gestiona el registro y configuración de las balanzas inteligentes, permitiendo la personalización del dispositivo acorde a la necesidad del negocio del usuario.
 
 <div align="center">
-  <img src="https://i.imgur.com/0DPMWjC.jpeg" alt="Canvas del contexto de gestión de inventarios y dispositivos IoT">
+  <img src="https://i.imgur.com/92pzrbs.png" alt="Canvas del contexto de gestión de inventarios y dispositivos IoT">
 </div>
 
-El contexto de Asset and Resource representa un Core Domain del negocio, ya que sus funcionalidades son importantes para la diferenciación con otras soluciones y garantizar el éxito de la plataforma. Además, este contexto se encarga, principalmente, del proceso de gestión de inventarios y de la gestión de dispositivos que adquiera el usuario. Por ello, este contexto actúa como ejecutor, siendo el contexto del que dependen otros como Design and Planning, Sales Management y Monitoring.
+El contexto de Asset and Resource representa un Core Domain del negocio, ya que sus funcionalidades son importantes para la diferenciación con otras soluciones y garantizar el éxito de la plataforma. Además, este contexto se encarga, principalmente, del proceso de gestión de inventarios. Por ello, este contexto actúa como ejecutor, siendo el contexto del que dependen otros como Design and Planning, Sales Management y Tracking.
 
-##### Monitoring Context
+##### Tracking Context
 
-Gestiona los dispositivos adquiridos por el usuario, incluyendo la lectura de peso real de los suministros almacenados, la conversión a stock exacto y el estado de salud de los dispositivos. Además, controla el hardware de los dispositivos enviando señales cuando es momento de encenderse o apagarse.
+Gestiona las operaciones realizadas por los dispositivos adquiridos por el usuario, incluyendo la lectura de peso real de los suministros almacenados, la conversión a stock exacto y el estado de salud de los dispositivos. Además, controla el hardware de los dispositivos enviando señales cuando es momento de encenderse o apagarse.
 
 <div align="center">
-  <img src="https://i.imgur.com/YhA5Wul.jpeg" alt="Canvas del contexto de monitoreo de datos de los dispositivos IoT">
+  <img src="https://i.imgur.com/CyijLYT.png" alt="Canvas del contexto de monitoreo de datos de los dispositivos IoT">
 </div>
 
-El contexto de Monitoring representa un Core Domain dentro del negocio, ya que sus funcionalidades diferencian a la solución de otras y ayudan a enganchar una mayor cantidad de usuarios. Además, sus funcionalidades incluyen la lectura, transformación e informe de datos reales de peso de los suministros de los usuarios. Es por ello, que este contexto actúa como un contexto de ejecución. También, es importante para el contexto de Asset and Resource donde se realiza una comparación entre stock físico y digital.
+El contexto de Tracking representa un Core Domain dentro del negocio, ya que sus funcionalidades diferencian a la solución de otras y ayudan a enganchar una mayor cantidad de usuarios. Además, sus funcionalidades incluyen la lectura, transformación e informe de datos reales de peso de los suministros de los usuarios. Es por ello, que este contexto actúa como un contexto de ejecución. También, es importante para el contexto de Asset and Resource donde se realiza una comparación entre stock físico y digital.
+
+##### Devices Context
+
+Maneja los dispositivos de los usuarios, incluyendo el registro de un dispositivo en el sistema y la configuración del mismo. De esta forma, se le permite al usuario personalizar el dispositivo según las necesidades de negocio del usuario.
+
+<div align="center">
+  <img src="https://i.imgur.com/Vpov1fK.png" alt="Canvas del contexto de monitoreo de datos de los dispositivos IoT">
+</div>
+
+El contexto de Devices Management representa un Core Domain dentro del negocio, puesto que sus funcionalidades son parte de la iniciación del usuario al uso de las placas inteligentes. Además, provee al usuario de personalización para adaptar al dispositivo a lo que necesite.
 
 ##### Design and Planning Context
 
 Gestiona el proceso de diseño y planeamiento de recetas para restaurantes y kits de productos para tiendas retail, incluyendo asignación de suministros para registrar recetas o kits y asignación de imágenes referenciales a las recetas o kits, garantizando una mejor operación de ventas para el contexto de ventas al no tener que registrar mano a mano los suministros usados para concretar una venta.
 
 <div align="center">
-  <img src="https://i.imgur.com/1yUJIoY.jpeg" alt="Canvas del contexto de kits y recetas">
+  <img src="https://i.imgur.com/OcGbBVg.png" alt="Canvas del contexto de kits y recetas">
 </div>
 
-El contexto de Design and Planning representa un Supporting Domain enfocado en enganchar usuarios ya que provee de una base para el registro de ventas para el contexto de Sales, además facilita el reconocimiento de platos o kits que utiliza el negocio para sus ventas diarias. 
+El contexto de Design and Planning representa un Supporting Domain enfocado en enganchar usuarios ya que provee de una base para el registro de ventas para el contexto de Sales, además facilita el reconocimiento de platos o kits que utiliza el negocio para sus ventas diarias.
 
 ##### Sales Management Context
 
 Gestiona las ventas registradas de un restaurante o tienda retail, incluyendo la asignación de suministros para registrar una venta o utilizar kits o recetas previamente registradas y el cálculo inmediato del precio total a pagar, facilitando el proceso de registro de ventas para los administradores.
 
 <div align="center">
-  <img src="https://i.imgur.com/TSRfkg3.jpeg" alt="Canvas del contexto de gestión de ventas">
+  <img src="https://i.imgur.com/C4U0iEV.png" alt="Canvas del contexto de gestión de ventas">
 </div>
 
-El contexto de Sales Management representa un Supporting Domain enfocado en atraer y enganchar usuarios a la aplicación ya que provee una herramienta que facilita el proceso de ventas de restaurantes y tiendas retail. Además, ayuda al sistema de ventas mostrando el total de ventas de determinados periodos y qué productos se vendieron para cada transacción realizada. 
+El contexto de Sales Management representa un Supporting Domain enfocado en atraer y enganchar usuarios a la aplicación ya que provee una herramienta que facilita el proceso de ventas de restaurantes y tiendas retail. Además, ayuda al sistema de ventas mostrando el total de ventas de determinados periodos y qué productos se vendieron para cada transacción realizada.
+
+##### Analytics Context
+
+Se encarga de la toma de datos relevantes del usuario y mostrarlos de forma visual y que permita a los usuarios tomar decisiones informadas sobre sus suministros.
+
+<div align="center">
+  <img src="https://i.imgur.com/K2tSaGj.png" alt="Canvas del contexto de gestión de ventas">
+</div>
+
+El contexto de Analytics representa un Supporting Domain, pues, soporta el sistema de información de la plataforma con gráficos y tablas que permiten a los usuarios visualizar el estado actual de sus suministros.
 
 ##### Subscriptions Context
 
@@ -277,10 +311,10 @@ El contexto de Subscripciones representa un Supporting Domain con enfoque en gen
 
 ##### Profiles Context
 
-Gestiona los perfiles de los usuarios, los cuales incluyen información personal e información relacionada a los negocios de los usuarios, permitiendo actualizar la información requerida y personalización subiendo una avatar con la integración con Cloudinary.
+Gestiona los perfiles de los usuarios, los cuales incluyen información personal e información relacionada a los negocios de los usuarios, permitiendo actualizar la información requerida y personalización subiendo un avatar con la integración con Cloudinary.
 
 <div align="center">
-  <img src="https://i.imgur.com/hTyxVwj.jpeg" alt="Canvas del contexto de perfiles de usuario y negocio">
+  <img src="https://i.imgur.com/BdB8MwE.png" alt="Canvas del contexto de perfiles de usuario y negocio">
 </div>
 
 El contexto de Profiles representa un Generic Domain enfocado en enganche de usuarios, dado que un perfil personalizado provee de una experiencia más satisfactoria para el usuario. Además, provee de una identidad tanto como para él como para su negocio dentro de la plataforma.
@@ -300,7 +334,7 @@ El contexto de IAM representa un Generic Domain enfocado en el cumplimiento de s
 Gestiona la comunicación directa con el usuario, incluyendo alertar y notificar a los usuarios de eventos críticos que ocurran en la plataforma como stock bajo, stock cero o vencimiento próximo, hasta la concialiación entre stock físico y digital.
 
 <div align="center">
-  <img src="https://i.imgur.com/G0yVup3.jpeg" alt="Canvas del contexto de comunicación con el usuario">
+  <img src="https://i.imgur.com/WBpCb9q.png" alt="Canvas del contexto de comunicación con el usuario">
 </div>
 
 El contexto de Communications representa un Supporting Domain enfocado en enganche de usuarios dadas sus funcionalidades de notificación ante eventos críticos que facilitan el accionar y la toma de decisiones ante estos eventos.
@@ -313,60 +347,64 @@ A continuación, se describen las relaciones y patrones de integración observad
 
 #### Análisis de Bounded Contexts
 
-##### Analytics ↔ Asset and Resource Management
+##### **Analytics ↔ Asset and Resource Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Analytics)
-- **Patrón:** Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Analytics)
+- **Patrón**: Conformist — Analytics adopta directamente el modelo definido por Asset and Resource Management sin transformación propia. Asset and Resource Management es la fuente de verdad de los recursos del sistema, y Analytics se conforma a ese modelo para construir sus reportes y métricas.
 
-##### Service Design and Planning ↔ Asset and Resource Management
+##### **Design and Planning ↔ Asset and Resource Management**
 
-- **Relación:** Upstream (Service Design and Planning) / Downstream (Asset and Resource Management)
-- **Patrón:** Shared Kernel — Ambos contextos comparten un modelo común de diseño de servicios. Service Design and Planning actúa como proveedor (SUP) y Asset and Resource Management como cliente (CUST), garantizando que la planificación de servicios guíe la gestión de recursos sin duplicar el modelo compartido.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Design and Planning)
+- **Patrón**: Shared Kernel — Ambos contextos comparten un modelo común vinculado a la planificación y gestión de recursos. Asset and Resource Management actúa como proveedor (SUP) y Design and Planning como cliente (CUST), garantizando que la gestión de activos guíe la planificación sin duplicar el modelo compartido. Design and Planning incorpora además un ACL para proteger su dominio del lenguaje propio de la gestión de recursos.
 
-##### Asset and Resource Management ↔ Sales Order Management
+##### **Asset and Resource Management ↔ Sales Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Sales Order Management)
-- **Patrón:** Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Order Management consume para generar órdenes de venta correctamente asociadas. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para los procesos de venta.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Sales Management)
+- **Patrón**: Shared Kernel — Asset and Resource Management provee información de recursos y activos que Sales Management consume para gestionar correctamente los procesos de venta. La relación SUP → CUST asegura que los datos de recursos sean la fuente autoritativa para el dominio de ventas.
 
-##### Asset and Resource Management ↔ Service Operation and Monitoring
+##### **Asset and Resource Management ↔ Device Management**
 
-- **Relación:** Upstream (Asset and Resource Management) / Downstream (Service Operation and Monitoring)
-- **Patrón:** Anti-Corruption Layer — Service Operation and Monitoring consume datos de Asset and Resource Management, pero los traduce a su propio modelo operativo a través de un ACL. Esto protege al dominio operativo de ser contaminado con el lenguaje propio de la gestión de activos y recursos.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Device Management)
+- **Patrón**: Customer/Supplier — Device Management consume información de Asset and Resource Management para gestionar los dispositivos asociados a los recursos del sistema. Asset and Resource Management actúa como proveedor (SUP) y Device Management como cliente (CUST).
 
-##### IAM ↔ Subscriptions and Payments
+##### **Asset and Resource Management ↔ Communication**
 
-- **Relación:** Upstream (IAM) / Downstream (Subscriptions and Payments)
-- **Patrón:** Anti-Corruption Layer — Subscriptions and Payments depende de IAM para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación de IAM.
-- **Patrón:** Shared Kernel — IAM provee al contexto de suscripciones de una relación con el usuario dueño de la cuenta y suscripción.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Communication)
+- **Patrón**: Customer/Supplier — Communication consume datos provenientes de Asset and Resource Management para emitir notificaciones relacionadas con el estado de los recursos y activos, sin acoplarse a la lógica interna del dominio de gestión.
 
-##### IAM ↔ Profile and Preferences
+##### **Asset and Resource Management ↔ Tracking**
 
-- **Relación:** Upstream (IAM) / Downstream (Profile and Preferences)
-- **Patrón:** Anti-Corruption Layer — Profile and Preferences consume el modelo de identidad de IAM pero lo traduce a través de un ACL para construir el perfil del usuario. Esto protege al dominio de preferencias de ser contaminado con el lenguaje propio de la autenticación.
-- **Patrón:** Shared Kernel — IAM provee al contexto de perfiles de una relación con el usuario cuya información de negocio y personal está siendo usada por el contexto de perfiles.
+- **Relación**: Upstream (Asset and Resource Management) / Downstream (Tracking)
+- **Patrón**: Anti-Corruption Layer — Tracking consume datos de Asset and Resource Management pero los traduce a su propio modelo de seguimiento a través de un ACL, protegiendo su dominio del lenguaje propio de la gestión de activos y recursos.
 
-##### Service Operation and Monitoring ↔ Communication
+##### **Identity and Access Management ↔ Subscriptions and Payments**
 
-- **Relación:** Upstream (Service Operation and Monitoring) / Downstream (Communication)
-- **Patrón:** Customer/Supplier — Communication consume eventos operativos generados por Service Operation and Monitoring para notificar al personal o a los usuarios relevantes. Service Operation and Monitoring actúa como proveedor del contexto operativo que Communication necesita para ejecutar sus notificaciones.
+- **Relación**: Upstream (Identity and Access Management) / Downstream (Subscriptions and Payments)
+- **Patrón**: Anti-Corruption Layer — Subscriptions and Payments depende de Identity and Access Management para validar la identidad del usuario, pero traduce el modelo de identidad a través de un ACL. Esto permite que el dominio de pagos mantenga su propio lenguaje sin acoplarse directamente al modelo de autenticación.
+- **Patrón**: Shared Kernel — Identity and Access Management provee al contexto de suscripciones una relación con el usuario dueño de la cuenta y suscripción, compartiendo un núcleo común que evita la duplicación del modelo de usuario.
 
-##### Sales Order Management ↔ Communication
+##### **Identity and Access Management ↔ Profiles and Preferences**
 
-- **Relación:** Upstream (Sales Order Management) / Downstream (Communication)
-- **Patrón:** Customer/Supplier — Communication consume información de órdenes de venta de Sales Order Management para emitir confirmaciones, alertas o notificaciones relacionadas con el ciclo de vida de las órdenes, sin conocer la lógica interna del dominio de ventas.
+- **Relación**: Upstream (Identity and Access Management) / Downstream (Profiles and Preferences)
+- **Patrón**: Anti-Corruption Layer — Profiles and Preferences consume el modelo de identidad de Identity and Access Management pero lo traduce a través de un ACL para construir el perfil del usuario, protegiendo su dominio del lenguaje propio de la autenticación.
+- **Patrón**: Shared Kernel — Identity and Access Management provee al contexto de perfiles una relación con el usuario cuya información de negocio y personal es utilizada por dicho contexto, compartiendo un núcleo común que garantiza coherencia sin duplicación.
+
+##### **Communication ↔ Tracking**
+
+- **Relación**: Upstream (Communication) / Downstream (Tracking)
+- **Patrón**: Customer/Supplier — Tracking consume eventos generados por Communication para coordinar el seguimiento de operaciones notificadas. Communication actúa como proveedor (SUP) y Tracking como cliente (CUST).
 
 Con base en el análisis, se implementaron los siguientes patrones de relación entre contextos:
 
 - **Conformist** entre Asset and Resource Management → Analytics.
-- **Shared Kernel** entre Service Design and Planning → Asset and Resource Management y Asset and Resource Management → Sales Order Management.
-- **Anti-Corruption Layer** en las relaciones de Service Operation and Monitoring, Subscriptions and Payments y Profile and Preferences con sus respectivos upstream.
-- **Customer/Supplier** entre Service Operation and Monitoring → Communication y Sales Order Management → Communication.
+- **Shared Kernel** entre Asset and Resource Management → Sales Management, Asset and Resource Management → Design and Planning, Identity and Access Management → Subscriptions and Payments e Identity and Access Management → Profiles and Preferences.
+- **Anti-Corruption Layer** en las relaciones de Tracking, Design and Planning, Subscriptions and Payments y Profiles and Preferences con sus respectivos upstream.
+- **Customer/Supplier** entre Asset and Resource Management → Device Management, Asset and Resource Management → Communication y Communication → Tracking.
 
-![context-map](https://i.imgur.com/rBIqFn7.jpeg)
+![context-map](https://imgur.com/0EqEVvs.jpeg)
 
-En la imagen se observa que el contexto Asset and Resource Management actúa como el contexto central, relacionándose con dominios como Identity and Access Management, Sales Order Management, Service Design and Planning y Communication, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades específicas.
-
-Asimismo, las relaciones upstream/downstream (U/D) reflejan dependencias entre contextos, mientras que patrones como ACL (Anti-Corruption Layer) y SK (Shared Kernel) muestran mecanismos para integrar módulos, proteger el dominio y compartir elementos comunes cuando es necesario.
+En la imagen se observa que el contexto Asset and Resource Management actúa como el nodo central del sistema, relacionándose con dominios como Identity and Access Management, Sales Management, Device Management, Design and Planning, Communication y Tracking, lo que evidencia una distribución del sistema en bounded contexts con responsabilidades claramente delimitadas.
+Las relaciones upstream/downstream (U/D) reflejan las dependencias direccionales entre contextos. El patrón ACL (Anti-Corruption Layer) aparece en contextos como Communication, Tracking, Profiles and Preferences y Subscriptions and Payments, protegiéndolos de contaminación con modelos ajenos a su dominio. El patrón SK (Shared Kernel) se emplea en las relaciones entre Asset and Resource Management con Sales Management y Design and Planning, así como entre Identity and Access Management con Subscriptions and Payments y Profiles and Preferences, garantizando un modelo compartido sin duplicación. Finalmente, el patrón CF (Conformist) se identifica en Analytics, que adopta directamente el modelo de su upstream sin transformación propia.
 
 ### 4.1.3. Software Architecture
 
@@ -408,7 +446,7 @@ El diagrama de contexto en la arquitectura de software proporciona una visión g
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
 
-<img src="https://i.imgur.com/PsJeXBT.png">
+<img src="https://i.imgur.com/UWstUkL.png" alt="Diagrama de contexto de Restock">
 
 **Visitors:** Usuarios anónimos que navegan el contenido público de la plataforma, como información, planes y características, y pueden registrarse o acceder como administradores de restaurante o retail.
 
@@ -416,7 +454,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **Retail Administrators:** Usuarios que gestionan el inventario, control de stock y operaciones comerciales en entornos de retail utilizando la plataforma Restock.
 
-**Restock:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
+**Restock Platform:** Sistema principal que permite la gestión de inventarios, monitoreo de stock en tiempo real y automatización de procesos mediante la integración con aplicaciones web, móviles, servicios externos y dispositivos IoT.
 
 **Stripe:** Sistema externo que gestiona los pagos y suscripciones de los usuarios dentro de la plataforma Restock.
 
@@ -424,75 +462,81 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **OneSignal API:** Servicio externo utilizado para el envío de notificaciones y alertas en tiempo real a los usuarios de la plataforma.
 
-**Restock Smart Scale:** Dispositivo IoT que captura datos de peso desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
+**Restock Smart Inventory Device:** Dispositivo IoT que captura datos de peso, temperatura y humedad desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
 
-#### 4.1.3.2. Software Architecture Container Level Diagrams
+#### 4.1.3.3. Software Architecture Container Level Diagrams
 
-El diagrama de contenedores de la arquitectura de software proporciona una visión de alto nivel de los principales contenedores del sistema, incluyendo aplicaciones, servicios, bases de datos y componentes IoT, como dispositivos embebidos y aplicaciones edge que interactúan con sensores físicos. Además, muestra cómo estos elementos se comunican entre sí para procesar y transmitir información.
+El diagrama de contenedores de la arquitectura de software proporciona una visión de alto nivel de los principales contenedores del sistema, incluyendo aplicaciones, servicios, bases de datos y componentes IoT, como dispositivos embebidos y aplicaciones edge que interactúan con sensores físicos. Además, muestra cómo estos elementos se comunican entre sí para procesar y transmitir información. Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
-Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
+<img src="https://i.imgur.com/Mn9kfjy.png" alt="Diagrama de contenedores de Restock">
 
-<img src="https://i.imgur.com/wg30qij.png">
+**Landing Page:** Sitio web estático desarrollado con HTML5, CSS y JavaScript que presenta información pública sobre la plataforma, como funcionalidades, planes y términos de servicio (ToS). Además, guía a los visitantes hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con el contenedor **Web Application** a través de redirecciones. A su vez, redigire a los visitantes de dispositivos móviles a la tienda de aplicaciones para descargar la aplicación móvil.
 
-**Landing Page:** Aplicación web estática desarrollada con HTML, CSS y JavaScript que presenta información pública sobre Restock, como funcionalidades, planes y términos, y guía a los usuarios hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con la Web Application a través de redirecciones.
+**Web Server:** Componente que actúa como punto de entrada a la plataforma web de Restock, encargado de entregar la aplicación frontend al navegador del usuario, interactuando con la Restock Platform Web Application.
 
-**Web Application:** Componente que actúa como punto de entrada a la plataforma web de Restock, encargado de entregar la aplicación frontend al navegador del usuario, interactuando con la Restock Platform Web Application.
+**Web Application:** Aplicación web desarrollada con TypeScript y Angular que se ejecuta en el navegador del usuario y permite gestionar el inventario, visualizar insumos y platos, y monitorear el stock en tiempo real, interactuando con el Load Balancer mediante solicitudes HTTP que deben llegar hasta el API.
 
-**Restock Platform Web Application:** Aplicación frontend desarrollada con TypeScript y Angular que se ejecuta en el navegador del usuario y permite gestionar el inventario, visualizar insumos y platos, y monitorear el stock en tiempo real, interactuando con la Restock Server Side Application mediante solicitudes API.
+**Mobile Application:** Aplicación móvil multiplataforma desarrollada con Dart y Flutter que permite a los usuarios gestionar inventario, consultar productos y monitorear el stock en tiempo real desde dispositivos móviles, interactuando con Load Balancer mediante HTTP y con la Mobile SQLite Database para almacenamiento local.
 
-**Restock Mobile Application:** Aplicación móvil multiplataforma desarrollada con Dart y Flutter que permite a los usuarios gestionar inventario, consultar productos y monitorear el stock en tiempo real desde dispositivos móviles, interactuando con la Restock Server Side Application mediante API y con la Mobile SQLite Database para almacenamiento local.
+**Mobile SQLite Database:** Base de datos local basada en SQLite que almacena información de la aplicación en el dispositivo móvil del usuario para permitir acceso offline y mejorar el rendimiento, interactuando únicamente con la Restock Mobile Application.
 
-**Mobile SQLite Database:** Base de datos local basada en SQLite que almacena información de la aplicación en el dispositivo móvil para permitir acceso offline y mejorar el rendimiento, interactuando únicamente con la Restock Mobile Application.
+**NGINX Load Balancer:** Es el balanceador de carga basado en NGINX que redirige las peticiones HTTP que son para el Cloud REST API hacia una instancia de API Gateway. Ayuda a proteger la entrada directa al servidor central y a reducir saturación en servidores.
 
-**Restock Local Station Edge Application:** Aplicación intermedia desarrollada en Python con Flask que recibe datos de peso desde la aplicación embebida, los procesa y los envía al backend, además de recibir comandos de configuración como encendido, apagado y asignación de producto desde el backend y transmitirlos al embedded, interactuando con la Restock Server Side Application, la Restock Embedded Application y la Edge Local Database.
+**API Gateway:** Es el punto de entrada para acceder al Cloud REST API. Funciona como módulo de seguridad para validar tokens asociadas a las consultas de los clientes (web y móvil).
+
+**Cloud REST API:** REST API en la nube desarrollada con Java y Spring Boot que gestiona la lógica de negocio, procesa datos de inventario, recibe información desde el Edge Application, envía comandos de configuración a los dispositivos y coordina la comunicación entre los distintos componentes del sistema, interactuando con su base de datos centralizada MongoDB Database, base de datos en memoria Redis Cache Server y servicios externos como Stripe, Cloudinary y OneSignal.
+
+**MongoDB Database:** Base de datos central del sistema que almacena información de inventario, usuarios, productos y suscripciones, interactuando con el Cloud REST API.
+
+**Redis Cache Server:** Base de datos en memoria que almacena información que es consultada frecuentemente por los usuarios para reducir latencia y sobrecarga de la base de datos principal MongoDB Database.
+
+**Edge Application:** Edge Gateway desarrollado en Python y Flask que recibe datos de peso, temperatura y humedad desde la aplicación embebida, los procesa y los envía al Cloud REST API, además de recibir comandos de configuración como asignación de suministro desde el API y transmitirlos al dispositivo IoT. Además, se encarga de evaluar el estado de salud de los dispositivos del usuario.
 
 **Edge Local Database:** Base de datos local basada en SQLite que almacena configuración del dispositivo, datos recientes de sensores y eventos pendientes de sincronización para garantizar el funcionamiento offline y la integridad de los datos, interactuando con la Restock Local Station Edge Application.
 
-**Restock Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición (balanza), captura datos de peso desde el sensor y ejecuta comandos recibidos como encendido, apagado o cambio de producto a monitorear, interactuando con la Restock Local Station Edge Application y el dispositivo Restock Smart Scale.
+**MQTT Broker:** Es el servidor que funciona como puente de comunicación entre la nube (Cloud REST API) y el edge gateway (Edge Application). Además, recibe los datos procesados del edge gateway y los enruta hacia el API Gateway para que puedan ser verificados y comparados. También, se encarga de recibir comandos por parte del API en nube para entregarlos al gateway adecuado.
 
-**Restock Server Side Application:** Aplicación backend desarrollada en Java con Spring Boot que gestiona la lógica de negocio, procesa datos de inventario, recibe información desde el edge, envía comandos de configuración a los dispositivos y coordina la comunicación entre los distintos componentes del sistema, interactuando con la Restock Database, la Restock Platform Web Application, la Restock Mobile Application, la Restock Local Station Edge Application y servicios externos como Stripe, Cloudinary y OneSignal.
+**Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición, captura datos de peso, temperatura y humedad desde los sensores y recibe los datos procesados del gateway para mostrarlos de forma constante en el Display LCD que posee el dispositivo IoT.
 
-**Restock Database:** Base de datos principal del sistema que almacena información de inventario, usuarios, productos y suscripciones, interactuando con la Restock Server Side Application.
+#### 4.1.3.4. Software Architecture Deployment Diagrams
 
-#### 4.1.3.3. Software Architecture Deployment Diagrams
+A continuación, se muestra el diagrama de despliegue, el cual estructura la distribución física de los componentes del sistema en los distintos entornos de ejecución, incluyendo la infraestructura en la nube, los dispositivos del usuario, los nodos de cómputo en el edge y el hardware embebido.
 
-El siguiente diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
+<img src="https://i.imgur.com/uaNmqy7.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
 
-<img src="https://i.ibb.co/Z6SpWJsK/Production-Deployment-dark.png"       alt="Production Deployment Diagram"      style="width:100%; height:auto;">
+El diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
+
+**Landing Page y Web Server:** Ambas aplicaciones se despliegan utilizando Vercel y cada una forma parte de Vercel Edge Network donde el usuario puede acceder a las aplicaciones de forma pública.
+
+**Web Application:** Cuando el usuario accede al Web Server desplegado en Vercel, envía los archivos PWA de la aplicación web al navegador del usuario.
+
+**Mobile Application y Mobile SQLite Database:** La aplicación móvil se despliega mediante Firebase App Distribution y se instala en el dispositivo del usuario creando, a su vez, la base de datos local basada en SQLite.
+
+**API Gateway y Cloud REST API:** Se despliegan en la nube en el servicio ofrecido por Render donde los clientes pueden acceder a los servicios web del API.
+
+**MongoDB Database:** La base de datos del Cloud API se despliega en MongoDB Atlas Cluster, una solución cloud para despliegue de bases de datos MongoDB.
+
+**Redis Cache Server:** La base de datos en memoria se despliega en Redis Cloud, una plataforma cloud para despliegue de bases de datos Redis.
+
+**Edge Application y Edge Local Database:** El Edge Gateway junto con su base de datos son desplegados en manera física en un dispositivo Raspberry Pi en un sistema operativo Linux para una eficiencia en el procesamiento de información.
+
+**MQTT Broker:** El broker de mensajería para telemetría es desplegado en HiveMQ Cloud, una solución en nube para implementación de comunicación MQTT para ecosistemas IoT.
+
+**Embedded Application:** El software embebido se despliega de forma local en el ESP32 del dispositivo IoT.
 
 ## 4.2. Tactical-Level Domain-Driven Design
 
 ### 4.2.1. Bounded Context: Identity and Access Management
 
+Este Bounded Context se encarga de gestionar el acceso seguro a la aplicación y el proceso de registro de los distintos actores del sistema. Proporciona los mecanismos necesarios para la autenticación y autorización, garantizando la correcta asignación de roles (Visitante, Usuario, Administrador de Retail, Administrador de Restaurante) y la validación de credenciales según las políticas de seguridad del negocio.
+
 #### 4.2.1.1. Domain Layer
 
-#### 4.2.1.2. Interface Layer
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Identity and Access Management. En esta capa se encapsulan todas las reglas de negocio críticas tales como la creación de usuarios, autenticación, asignación de roles y vinculación con cuentas empresariales.
 
-#### 4.2.1.3. Application Layer
-
-#### 4.2.1.4. Infrastructure Layer
-
-#### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
-
-#### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
-
-##### 4.2.1.6.2. Bounded Context Database Design Diagram
-
-### 4.2.2. Bounded Context: Subscriptions and Payments
-
-#### 4.2.2.1. Domain Layer
-
-La capa de dominio representa el núcleo de negocio del Bounded Context de Subscriptions and Payments. En esta capa se encapsulan las reglas relacionadas con la gestión de planes de suscripción, activación de beneficios, control de límites contratados, procesamiento conceptual de pagos y creación de cuentas de negocio asociadas a una suscripción activa.
-
-Este bounded context funciona como el punto de entrada comercial del sistema, debido a que el usuario selecciona un plan, registra sus datos de pago, confirma la transacción mediante Stripe y, a partir de ello, se activa el plan contratado. Una vez aceptado el pago, el contexto emite los eventos necesarios para crear la cuenta de negocio, asociar al usuario propietario y habilitar los recursos iniciales que luego serán utilizados por otros bounded contexts, como Profile and Preferences, Identity and Access Management y Asset and Resource Management.
-
-Esta capa se mantiene independiente de frameworks, mecanismos de persistencia, servicios externos o detalles de infraestructura. Se compone de Aggregate Roots, Entities, Value Objects, Domain Events y Repository Interfaces.
+Esta capa se mantiene agnóstica a la infraestructura o interfaces de usuario, centralizando su lógica en Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar el tipado estricto, Eventos de Dominio (Domain Events).
 
 ##### Aggregates & Entities
-
-Estas clases representan los conceptos principales del dominio y garantizan la consistencia transaccional dentro del contexto de suscripciones, pagos y cuentas.
 
 <p><em>Tabla de Aggregates en el Domain Layer</em></p>
 
@@ -506,38 +550,19 @@ Estas clases representan los conceptos principales del dominio y garantizan la c
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Subscription</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>User</strong></td>
       <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la suscripción contratada por una cuenta de negocio. Controla el ciclo de vida del plan, su estado de activación, renovación, expiración o actualización. Garantiza que una cuenta tenga un único plan activo a la vez.</td>
+      <td style="padding: 10px; border: 1px solid;">Entidad principal que representa a cualquier actor del sistema. Orquesta la validación de credenciales y asegura que la transición de estados (como el registro de un visitante a un usuario activo) cumpla con las invariantes de seguridad.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Plan</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Role</strong></td>
       <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una plantilla comercial de beneficios, precios y límites. Define qué recursos, cuotas o capacidades quedan disponibles para la cuenta según el tipo de suscripción seleccionada.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Payment</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el proceso de pago asociado a una suscripción. Registra el estado de la operación, la referencia externa de Stripe y la confirmación necesaria para activar el plan contratado.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Account</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la cuenta de negocio creada después de la confirmación del pago. Recibe el identificador del usuario propietario y el identificador de la suscripción activa para iniciar la operación del negocio dentro del sistema.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>AccountMembership</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Entity</td>
-      <td style="padding: 10px; border: 1px solid;">Representa la asociación entre un usuario y una cuenta de negocio. Permite modelar propietarios, trabajadores o administradores vinculados a una cuenta, evitando guardar únicamente una lista simple de usuarios.</td>
+      <td style="padding: 10px; border: 1px solid;">Define el conjunto de permisos asociados a un usuario. En este contexto, gestiona la distinción entre Visitant, Retail manager y Restaurant manager, permitiendo el acceso granular a las funcionalidades del negocio.</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
 ##### Value Objects
-
-Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
 
 <p><em>Tabla de Value Objects en el Domain Layer</em></p>
 
@@ -551,87 +576,77 @@ Estas clases modelan conceptos propios del dominio y permiten evitar el uso indi
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>PlanLimits</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Username</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Agrupa los límites del plan contratado, como número máximo de sucursales, usuarios, dispositivos IoT o recursos permitidos. Previene límites negativos o inconsistentes.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador único de la cuenta. Valida formatos y asegura que no existan duplicidad de identidades durante los procesos de Sign up o registro de trabajadores.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Money</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Password</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa montos monetarios asociados a pagos, renovaciones o upgrades. Encapsula importe y moneda para evitar errores de cálculo o confusión entre divisas.</td>
+      <td style="padding: 10px; border: 1px solid;">Garantiza la inmutabilidad y seguridad de la clave de acceso. Se encarga de aplicar reglas de complejidad y manejar la lógica de encriptación/hashing antes de la persistencia.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Commands (Domain Intentions)
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignUpCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de registrar un nuevo usuario. Contiene: username, password, email.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>BillingPeriod</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Define el periodo de facturación de la suscripción, como mensual o anual, así como las fechas de inicio y término del ciclo activo.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>SignInCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la intención de autenticar a un usuario existente. Contiene: username, password.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>PaymentStatus</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el estado del pago, como pendiente, aceptado, rechazado o reembolsado. Permite condicionar la activación del plan solo cuando el pago ha sido confirmado.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionStatus</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Representa el estado de la suscripción, como activa, expirada, cancelada o pendiente. Controla que los beneficios del plan solo estén disponibles cuando corresponda.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionId, AccountId, UserId, PaymentId</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para evitar confusiones entre entidades del mismo bounded context o referencias provenientes de otros contextos.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateUserRoleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Intención de modificar los privilegios de un usuario. Contiene: userId, roleId.</td>
     </tr>
   </tbody>
 </table>
 
 <br>
 
-##### Repository Interfaces
+##### Queries (Domain Information Requests)
 
-Las abstracciones de persistencia se definen en esta capa para cumplir el Principio de Inversión de Dependencias. El dominio declara qué necesita guardar o consultar, sin depender de la tecnología utilizada en la base de datos.
-
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+<p><em>Tabla de Queries en el Domain Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción y Atributos</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>ISubscriptionRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para registrar, consultar y actualizar suscripciones activas, expiradas o canceladas.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetUserByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud de información detallada de un usuario específico. Contiene: userId.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IPlanRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para consultar planes disponibles, precios, beneficios y límites configurados.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IPaymentRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para persistir pagos, referencias externas de Stripe y estados de confirmación.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IAccountRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para crear cuentas de negocio y asociar usuarios a ellas mediante membresías.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetAllRolesQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud para listar todos los roles y permisos disponibles en el sistema.</td>
     </tr>
   </tbody>
 </table>
 
-#### 4.2.2.2. Interface Layer
+#### 4.2.1.2. Interface Layer
 
-En la capa de interfaz del Bounded Context de Subscriptions and Payments se exponen los endpoints RESTful necesarios para que los usuarios puedan consultar planes, seleccionar una suscripción, iniciar pagos, confirmar operaciones y administrar la cuenta de negocio asociada. Esta capa recibe solicitudes desde la Web App o aplicaciones cliente, transforma los recursos de entrada en comandos o queries y delega la ejecución a la capa de aplicación.
+La capa de interfaz expone los puntos de entrada HTTP necesarios para que los clientes interactúen con el sistema de identidad. A través de controladores especializados, gestiona los flujos de autenticación y la administración de personal operativo.
 
-También contempla endpoints de integración para recibir confirmaciones provenientes de Stripe mediante webhooks. Estos eventos externos son tratados como entradas al sistema, pero la decisión de activar un plan se mantiene dentro del dominio de suscripciones y pagos.
+##### AuthenticationController
 
-##### PlanController
-
-<p><em>Tabla de PlanController en el Interface Layer</em></p>
+<p><em>Tabla de AuthenticationController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -643,7 +658,7 @@ También contempla endpoints de integración para recibir confirmaciones proveni
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">PlanController</td>
+      <td style="padding: 10px; border: 1px solid;">AuthenticationController</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -651,18 +666,18 @@ También contempla endpoints de integración para recibir confirmaciones proveni
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar planes disponibles, beneficios y límites de suscripción.</td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos de autenticación y registro inicial en la plataforma.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/plans</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/authentication</td>
     </tr>
   </tbody>
 </table>
 
 <br>
 
-<p><em>Tabla de métodos de PlanController en el Interface Layer</em></p>
+<p><em>Tabla de métodos de AuthenticationController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -675,16 +690,646 @@ También contempla endpoints de integración para recibir confirmaciones proveni
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">GetAll</td>
-      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Lista los planes disponibles</td>
-      <td style="padding: 10px; border: 1px solid;">GetAvailablePlansQuery</td>
+      <td style="padding: 10px; border: 1px solid;">signIn</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-in (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Autentica credenciales y genera el recurso de usuario autenticado.</td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">GetById</td>
-      <td style="padding: 10px; border: 1px solid;">/{planId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene el detalle de un plan</td>
-      <td style="padding: 10px; border: 1px solid;">GetPlanByIdQuery</td>
+      <td style="padding: 10px; border: 1px solid;">signUp</td>
+      <td style="padding: 10px; border: 1px solid;">/sign-up (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra un nuevo usuario en el sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RolesController
+
+<p><em>Tabla de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RolesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Proveer acceso al catálogo de roles disponibles en el sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/roles</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de RolesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllRoles</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna la lista completa de roles definidos.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllRolesQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UsersController
+
+<p><em>Tabla de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UsersController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la información de los usuarios y sus estados de suscripción.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta Base</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de UsersController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getAllUsers</td>
+      <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Lista todos los usuarios registrados.</td>
+      <td style="padding: 10px; border: 1px solid;">GetAllUsersQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getUserById</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene los detalles de un usuario específico.</td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateUserSubscription</td>
+      <td style="padding: 10px; border: 1px solid;">/{userId}/subscription (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el tipo de suscripción del usuario.</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.1.3. Application Layer
+
+La capa de aplicación para este Bounded Context orquesta los procesos de negocio relacionados con la identidad. Aquí se procesan los comandos para crear usuarios, se aplican las reglas de autenticación y se reacciona a los eventos de dominio para desencadenar acciones automáticas, como la creación de perfiles o la vinculación a cuentas de negocio.
+
+##### SignUpCommandHandler
+
+<p><em>Tabla de SignUpCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Coordinar el registro de nuevos usuarios en el sistema, gestionando el ingreso de datos personales, aplicando el hashing obligatorio de contraseñas y asignando el rol inicial de "Visitant".</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignUpCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### SignInCommandHandler
+
+<p><em>Tabla de SignInCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Validar las credenciales de acceso ingresadas por el usuario para orquestar el proceso de autenticación y permitir el acceso seguro a los servicios de la aplicación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SignInCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateUserSubscriptionCommandHandler
+
+<p><em>Tabla de UpdateUserSubscriptionCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Procesar la actualización del plan de suscripción del usuario, asegurando que el cambio de estado y los beneficios asociados se persistan correctamente en el perfil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateUserSubscriptionCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetUserByIdQueryHandler
+
+<p><em>Tabla de GetUserByIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Recuperar la información detallada de un usuario específico para su visualización o validación de perfil en la interfaz, sin alterar el estado del sistema.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetUserByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.1.4. Infrastructure Layer
+
+La capa de infraestructura en el Bounded Context de IAM provee las implementaciones técnicas de las interfaces definidas en el dominio. Se encarga de la persistencia física de los usuarios y roles en MongoDB, la integración con servicios de seguridad para el cifrado de credenciales y la implementación de los servicios de generación de tokens o secuencias necesarias para el funcionamiento del sistema.
+
+##### UserRepository
+
+<p><em>Tabla de UserRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la persistencia y consultas en la base de datos MongoDB para gestionar los perfiles de usuario y sus credenciales de acceso.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IUserRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RoleRepository
+
+<p><em>Tabla de RoleRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RoleRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el almacenamiento y recuperación de los roles y permisos definidos en el sistema para la validación de accesos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IRoleRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+#### 4.2.1.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context de Identity and Access Management (IAM), mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este Bounded Context gestiona de manera centralizada la seguridad de la plataforma, interactuando con otros contextos para la propagación de identidades o servicios externos únicamente cuando dichas interacciones son necesarias para la validación de credenciales, el control de acceso basado en roles y la gestión de sesiones de usuario.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-iam/frontend-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webIdentityAccess</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para las operaciones de inicio de sesión (Sign In) y registro (Sign Up). Capta las credenciales e interacciones de los usuarios (Retail/Restaurant Admin) para enviarlas al backend para su autenticación.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webIdentityAccess</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Cloud Server Side App</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para autenticar a los usuarios web, enviando credenciales y recibiendo tokens de acceso o confirmaciones de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Shared</strong> (Módulo Web)</td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de la API, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Web Application Component Diagram
+
+El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
+
+<img src="assets/images/chapter4/bc-iam/mobile-app-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileIAM</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona localmente los flujos de inicio y cierre de sesión de los usuarios de la aplicación móvil. Provee la interfaz y la lógica para que administradores de restaurantes y comercios minoristas se autentiquen de forma segura para usar la aplicación.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileIAM</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Llamada de Servicio (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones HTTPS seguras para autenticar las credenciales de los usuarios de la aplicación móvil contra el servidor principal.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende la funcionalidad de utilidades base de API y endpoints compartidas por otros módulos de la aplicación móvil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de restaurantes se autentiquen para gestionar inventario, recetas y ventas.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Retail Administrator</strong> (Usuario)</td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de comercios minoristas se autentiquen para gestionar inventario y stock.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
+
+<img src="assets/images/chapter4/bc-iam/backend-iam.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de autenticación y autorización para todos los usuarios del sistema. Emite y valida tokens JWT para asegurar las comunicaciones. Gestiona las cuentas de usuario y la creación de perfiles iniciales.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiIam</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Mobile Application</strong> / <strong>Restock Platform Web Client App</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe y procesa las solicitudes de inicio de sesión (sign-in) y registro (sign-up) desde las aplicaciones cliente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Múltiples Componentes Backend</strong> (Sales, Planning, Assets, etc.)</td>
+      <td style="padding: 10px; border: 1px solid;">Validación de Seguridad</td>
+      <td style="padding: 10px; border: 1px solid;">Actúa como proveedor de validación de tokens JWT para autorizar las operaciones internas de otros módulos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Database</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Persistencia (Escritura/Lectura)</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera datos críticos de usuarios, credenciales y la información de suscripción actual.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiProfileAndPreferences</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la creación automática de un perfil de usuario (ACL) cuando se registra una nueva cuenta.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptionsAndPayments</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Registra la cuenta y la suscripción inicial del usuario al completar el proceso de registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades comunes de infraestructura y objetos de valor compartidos.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.1.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
+
+En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
+
+El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
+
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="class diagram identity and access management" border="0">
+
+##### 4.2.1.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Identity and Access Management.
+
+<img src="assets/images/chapter4/bc-iam/database-diagram-iam.png" alt="DataBase diagram Identity and Access Management" border="0">
+
+### 4.2.2. Bounded Context: Subscriptions and Payments
+
+#### 4.2.2.1. Domain Layer
+
+La capa de dominio representa el núcleo de negocio del Bounded Context de Subscriptions and Payments. En esta capa se encapsulan las reglas relacionadas con la gestión de planes de suscripción, activación de beneficios, control de límites contratados y procesamiento conceptual de pagos.
+
+Este bounded context funciona como el punto de entrada comercial del sistema, debido a que el usuario selecciona un plan y, posteriormente, se gestiona el flujo de pago y activación de la suscripción. Una vez aceptado el pago, el contexto emite eventos de dominio que permiten a otros bounded contexts reaccionar de forma desacoplada.
+
+Esta capa se mantiene independiente de frameworks, mecanismos de persistencia, servicios externos o detalles de infraestructura. Se compone de Aggregate Roots, Entities, Value Objects y Domain Events.
+
+##### Aggregates & Entities
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Subscription</strong></td> <td style="padding: 10px; border: 1px solid;">Aggregate Root</td> <td style="padding: 10px; border: 1px solid;">Representa la suscripción contratada. Controla el ciclo de vida del plan (activación, expiración, cancelación) y garantiza que solo exista un plan activo por cuenta.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Plan</strong></td> <td style="padding: 10px; border: 1px solid;">Entity</td> <td style="padding: 10px; border: 1px solid;">Define los beneficios, precios y límites disponibles para una suscripción.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Payment</strong></td> <td style="padding: 10px; border: 1px solid;">Aggregate Root</td> <td style="padding: 10px; border: 1px solid;">Representa el proceso de pago asociado a una suscripción, incluyendo su estado y validación para activar el plan.</td> </tr> </tbody> </table>
+
+##### Value Objects
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PlanLimits</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Define los límites del plan contratado.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>Money</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Representa montos monetarios con moneda.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>BillingPeriod</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Define el periodo de facturación.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentStatus</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Estado del pago (pendiente, confirmado, fallido).</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionStatus</strong></td> <td style="padding: 10px; border: 1px solid;">Value Object</td> <td style="padding: 10px; border: 1px solid;">Estado de la suscripción.</td> </tr> </tbody> </table>
+
+##### Domain Events
+
+<p><em>Tabla de Domain Events en el Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Evento</th> <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionPlanSelectedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando un usuario selecciona un plan.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentInitializedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando se inicia un pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>PaymentConfirmedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando el pago es confirmado.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionActivatedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando una suscripción se activa.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;"><strong>SubscriptionUpgradedEvent</strong></td> <td style="padding: 10px; border: 1px solid;">Se emite cuando se realiza un upgrade de plan.</td> </tr> </tbody> </table>
+
+##### Commands & Queries
+
+<p><em>Tabla de Commands y Queries del Domain Layer</em></p> <table style="width:100%; border-collapse: collapse; border: 1px solid;"> <thead> <tr> <th style="padding: 10px; border: 1px solid;">Nombre</th> <th style="padding: 10px; border: 1px solid;">Tipo</th> <th style="padding: 10px; border: 1px solid;">Propósito</th> </tr> </thead> <tbody> <tr> <td style="padding: 10px; border: 1px solid;">SelectSubscriptionPlan</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Seleccionar un plan.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">InitializePayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Iniciar el pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ConfirmPayment</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Confirmar pago.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">ActivateSubscription</td> <td style="padding: 10px; border: 1px solid;">Command</td> <td style="padding: 10px; border: 1px solid;">Activar suscripción.</td> </tr> <tr> <td style="padding: 10px; border: 1px solid;">GetSubscription</td> <td style="padding: 10px; border: 1px solid;">Query</td> <td style="padding: 10px; border: 1px solid;">Consultar suscripción.</td> </tr> </tbody> </table>
+
+#### 4.2.2.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Subscriptions and Payments se exponen endpoints RESTful alineados a recursos del dominio como planes, suscripciones y pagos. Esta capa transforma las solicitudes entrantes en Commands o Queries y delega su ejecución a la capa de aplicación.
+
+Asimismo, se define la interfaz del Anti-Corruption Layer (ACL) para permitir la comunicación con otros bounded contexts sin acoplar directamente los modelos de dominio.
+
+##### Anti-Corruption Layer Interface
+
+<p><em>Tabla de ACL Interface en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Tipo</th>
+      <th style="padding: 10px; border: 1px solid;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>ProfilesACL</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Define la comunicación con el bounded context de Profiles para operaciones como creación de cuentas de negocio y asociación de usuarios.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### PlanController
+
+<p><em>Tabla de PlanController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/plans</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Métodos</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GetAll</td>
+      <td>GET /</td>
+      <td>Listar planes</td>
+      <td>GetAvailablePlansQuery</td>
+    </tr>
+    <tr>
+      <td>GetById</td>
+      <td>GET /{planId}</td>
+      <td>Obtener plan</td>
+      <td>GetPlanByIdQuery</td>
     </tr>
   </tbody>
 </table>
@@ -696,133 +1341,133 @@ También contempla endpoints de integración para recibir confirmaciones proveni
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">SubscriptionController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la selección, activación, consulta, renovación y actualización de suscripciones.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/subscriptions</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/subscriptions</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de SubscriptionController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">SelectPlan</td>
-      <td style="padding: 10px; border: 1px solid;">/select-plan (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Selecciona un plan de suscripción</td>
-      <td style="padding: 10px; border: 1px solid;">SelectSubscriptionPlanCommand</td>
+      <td>Create</td>
+      <td>POST /</td>
+      <td>Crear suscripción (selección de plan)</td>
+      <td>SelectSubscriptionPlanCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">ConfigureLimits</td>
-      <td style="padding: 10px; border: 1px solid;">/{subscriptionId}/limits (PUT)</td>
-      <td style="padding: 10px; border: 1px solid;">Configura los límites del plan contratado</td>
-      <td style="padding: 10px; border: 1px solid;">ConfigurePlanLimitsCommand</td>
+      <td>Upgrade</td>
+      <td>POST /{subscriptionId}/upgrade</td>
+      <td>Actualizar plan</td>
+      <td>UpgradeSubscriptionPlanCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">Upgrade</td>
-      <td style="padding: 10px; border: 1px solid;">/{subscriptionId}/upgrade (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Actualiza la suscripción a un nuevo plan</td>
-      <td style="padding: 10px; border: 1px solid;">UpgradeSubscriptionPlanCommand</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetCurrent</td>
-      <td style="padding: 10px; border: 1px solid;">/current (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene la suscripción activa de la cuenta</td>
-      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQuery</td>
+      <td>ConfigureLimits</td>
+      <td>PUT /{subscriptionId}/limits</td>
+      <td>Configurar límites</td>
+      <td>ConfigurePlanLimitsCommand</td>
     </tr>
   </tbody>
 </table>
 
-##### PaymentController
+##### AccountSubscriptionsController
 
-<p><em>Tabla de PaymentController en el Interface Layer</em></p>
+<p><em>Tabla de AccountSubscriptionsController en el Interface Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">PaymentController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la creación de órdenes de pago, inicio de checkout y consulta del estado del pago.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/payments</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/accounts/{accountId}/subscriptions</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de PaymentController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">CreatePaymentOrder</td>
-      <td style="padding: 10px; border: 1px solid;">/order (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Genera una orden de pago con los detalles de la suscripción</td>
-      <td style="padding: 10px; border: 1px solid;">CreatePaymentOrderCommand</td>
+      <td>GetCurrent</td>
+      <td>GET /current</td>
+      <td>Obtener suscripción activa de la cuenta</td>
+      <td>GetCurrentSubscriptionQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### SubscriptionPaymentsController
+
+<p><em>Tabla de SubscriptionPaymentsController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th>Propiedad</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/subscriptions/{subscriptionId}/payments</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Métodos</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CreatePayment</td>
+      <td>POST /</td>
+      <td>Iniciar proceso de pago</td>
+      <td>StartStripeCheckoutCommand</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">StartCheckout</td>
-      <td style="padding: 10px; border: 1px solid;">/checkout (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Inicia el flujo de pago con Stripe</td>
-      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommand</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetStatus</td>
-      <td style="padding: 10px; border: 1px solid;">/{paymentId}/status (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Consulta el estado actual del pago</td>
-      <td style="padding: 10px; border: 1px solid;">GetPaymentStatusQuery</td>
+      <td>GetStatus</td>
+      <td>GET /{paymentId}</td>
+      <td>Consultar estado del pago</td>
+      <td>GetPaymentStatusQuery</td>
     </tr>
   </tbody>
 </table>
@@ -834,118 +1479,46 @@ También contempla endpoints de integración para recibir confirmaciones proveni
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+      <th>Propiedad</th>
+      <th>Valor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">StripeWebhookController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Webhook Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Recibir y validar eventos provenientes de Stripe para confirmar pagos, renovaciones o rechazos.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/webhooks/stripe</td>
+      <td><strong>Ruta</strong></td>
+      <td>/api/v1/webhooks/stripe</td>
     </tr>
   </tbody>
 </table>
 
-<br>
-
-<p><em>Tabla de métodos de StripeWebhookController en el Interface Layer</em></p>
+<p><em>Métodos</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th>Acción</th>
+      <th>Handle</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;">HandlePaymentAccepted</td>
-      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Procesa confirmaciones de pago recibidas desde Stripe</td>
-      <td style="padding: 10px; border: 1px solid;">ConfirmStripePaymentCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-##### AccountController
-
-<p><em>Tabla de AccountController en el Interface Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountController</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Controller</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar la cuenta de negocio creada y asociar trabajadores a una cuenta existente.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
-      <td style="padding: 10px; border: 1px solid;">/api/v1/accounts</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-<p><em>Tabla de métodos de AccountController en el Interface Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid;">Nombre</th>
-      <th style="padding: 10px; border: 1px solid;">Ruta</th>
-      <th style="padding: 10px; border: 1px solid;">Acción</th>
-      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetById</td>
-      <td style="padding: 10px; border: 1px solid;">/{accountId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Obtiene los datos básicos de una cuenta de negocio</td>
-      <td style="padding: 10px; border: 1px solid;">GetAccountByIdQuery</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">AssociateUser</td>
-      <td style="padding: 10px; border: 1px solid;">/{accountId}/members (POST)</td>
-      <td style="padding: 10px; border: 1px solid;">Asocia un usuario trabajador a la cuenta</td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommand</td>
+      <td>HandlePayment</td>
+      <td>POST /</td>
+      <td>Procesar eventos de Stripe</td>
+      <td>ConfirmStripePaymentCommand</td>
     </tr>
   </tbody>
 </table>
 
 #### 4.2.2.3. Application Layer
 
-La capa de aplicación del Bounded Context de Subscriptions and Payments coordina los casos de uso relacionados con planes, suscripciones, pagos y cuentas de negocio. En esta capa residen los Command Handlers, Query Handlers y Event Handlers encargados de ejecutar los flujos principales del contexto: selección de plan, generación de orden de pago, confirmación de pago mediante Stripe, activación de suscripción, creación de cuenta de negocio, asociación de usuarios y actualización de límites cuando el usuario realiza un upgrade de plan.
+La capa de aplicación del Bounded Context de Subscriptions and Payments coordina los casos de uso relacionados con planes, suscripciones y pagos. En esta capa residen los Command Handlers, Query Handlers, Event Handlers y servicios de aplicación encargados de ejecutar los flujos principales del contexto: selección de plan, inicio del proceso de pago, confirmación de pago mediante Stripe, activación de suscripción y actualización de límites cuando el usuario realiza un upgrade de plan.
 
-Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar el flujo de trabajo entre la capa de interfaz y el dominio, cargar aggregates desde repositorios, invocar métodos del modelo de dominio, persistir cambios y publicar eventos que serán consumidos por otros bounded contexts, como Asset and Resource Management, Profile and Preferences e Identity and Access Management. De esta manera, el contexto mantiene la responsabilidad sobre el ciclo de vida comercial de la suscripción, mientras que los demás contextos ejecutan acciones específicas relacionadas con recursos, perfiles, sucursales y permisos.
+Esta capa no contiene reglas puras de dominio. Su responsabilidad es orquestar el flujo de trabajo entre la capa de interfaz y el dominio, cargar aggregates desde los mecanismos de persistencia disponibles, invocar métodos del modelo de dominio, persistir cambios y publicar eventos que podrán ser consumidos por otros bounded contexts.
+
+La creación de la cuenta de negocio no pertenece directamente a este bounded context, debido a que el comando CreateBusinessAccount forma parte del contexto de Profiles. Por ello, Subscriptions and Payments se comunica con dicho contexto mediante un Anti-Corruption Layer (ACL), evitando acoplar directamente sus modelos internos.
 
 ##### SelectSubscriptionPlanCommandHandler
 
@@ -969,7 +1542,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la selección inicial de un plan de suscripción por parte del usuario, validando que el plan exista y dejando preparado el estado inicial de la suscripción antes del pago.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la selección inicial de un plan de suscripción, validando que el plan exista y dejando preparada la suscripción antes del pago.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -1002,7 +1575,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la configuración de los límites asociados al plan seleccionado, como cuotas de recursos, capacidad operativa y restricciones aplicables a la cuenta.</td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la configuración de límites asociados al plan seleccionado, como cuotas de recursos, capacidad operativa y restricciones aplicables a la suscripción.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -1013,9 +1586,9 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 <br>
 
-##### GeneratePaymentOrderCommandHandler
+##### StartStripeCheckoutCommandHandler
 
-<p><em>Tabla de GeneratePaymentOrderCommandHandler en el Application Layer</em></p>
+<p><em>Tabla de StartStripeCheckoutCommandHandler en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -1027,7 +1600,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GeneratePaymentOrderCommandHandler</td>
+      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommandHandler</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
@@ -1035,11 +1608,11 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una orden de pago con los detalles del plan seleccionado, preparando la integración con Stripe para iniciar el proceso de cobro.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el inicio del proceso de pago asociado a una suscripción, preparando la integración con Stripe y registrando la referencia del pago.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">GeneratePaymentOrderCommand</td>
+      <td style="padding: 10px; border: 1px solid;">StartStripeCheckoutCommand</td>
     </tr>
   </tbody>
 </table>
@@ -1068,7 +1641,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Procesar la confirmación del pago recibida desde Stripe, validar la referencia de la orden de pago y actualizar el estado del pago dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Procesar la confirmación del pago recibida desde Stripe, validar la referencia externa y actualizar el estado del pago dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -1101,77 +1674,11 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Activar la suscripción una vez confirmado el pago, asociando el plan contratado y publicando los eventos necesarios para habilitar la cuenta y los recursos vinculados.</td>
+      <td style="padding: 10px; border: 1px solid;">Activar la suscripción una vez confirmado el pago, asociando el plan contratado y publicando los eventos necesarios para que otros contextos reaccionen.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
       <td style="padding: 10px; border: 1px solid;">ActivateSubscriptionCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-##### CreateBusinessAccountCommandHandler
-
-<p><em>Tabla de CreateBusinessAccountCommandHandler en el Application Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateBusinessAccountCommandHandler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de la cuenta de negocio asociada a una suscripción activa, recibiendo el identificador del usuario propietario y el identificador de la suscripción.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CreateBusinessAccountCommand</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-##### AssociateUserToAccountCommandHandler
-
-<p><em>Tabla de AssociateUserToAccountCommandHandler en el Application Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommandHandler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar la asociación de un usuario a una cuenta de negocio, enviando el identificador de la cuenta y registrando la incorporación del usuario como trabajador o miembro del negocio.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssociateUserToAccountCommand</td>
     </tr>
   </tbody>
 </table>
@@ -1200,7 +1707,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar el cambio de plan o incremento de recursos contratados, reemplazando los límites actuales por los límites del nuevo plan y notificando a los contextos responsables de recursos e IoT.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar el cambio de plan o incremento de recursos contratados, reemplazando los límites actuales por los límites del nuevo plan y notificando a los contextos correspondientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -1233,11 +1740,44 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consultar el estado actual de una suscripción, incluyendo el plan asociado, estado del pago, vigencia y límites configurados.</td>
+      <td style="padding: 10px; border: 1px solid;">Consultar el estado actual de una suscripción, incluyendo plan asociado, estado del pago, vigencia y límites configurados.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
       <td style="padding: 10px; border: 1px solid;">GetSubscriptionStatusQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetCurrentSubscriptionQueryHandler
+
+<p><em>Tabla de GetCurrentSubscriptionQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la suscripción activa vinculada a una cuenta específica, sin exponer detalles técnicos de persistencia.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetCurrentSubscriptionQuery</td>
     </tr>
   </tbody>
 </table>
@@ -1299,7 +1839,7 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar a la activación de una suscripción para solicitar la creación de la cuenta de negocio, la asociación del usuario propietario y la habilitación inicial de recursos.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la activación de una suscripción y solicitar al contexto de Profiles la creación de la cuenta de negocio mediante el ACL.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -1310,9 +1850,9 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
 
 <br>
 
-##### AccountCreatedEventHandler
+##### ProfilesACL
 
-<p><em>Tabla de AccountCreatedEventHandler en el Application Layer</em></p>
+<p><em>Tabla de ProfilesACL en el Application Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -1324,19 +1864,52 @@ Esta capa no contiene reglas puras de dominio; su responsabilidad es orquestar e
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountCreatedEventHandler</td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesACL</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+      <td style="padding: 10px; border: 1px solid;">Anti-Corruption Layer Implementation</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Gestionar los procesos posteriores a la creación de una cuenta de negocio, como la publicación de eventos para Profile and Preferences, Identity and Access Management y Asset and Resource Management.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la comunicación entre Subscriptions and Payments y Profiles, traduciendo solicitudes internas del contexto de suscripciones hacia comandos o recursos propios del contexto de perfiles.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AccountCreatedEvent</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">IProfilesACL</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### RequestBusinessAccountCreationService
+
+<p><em>Tabla de RequestBusinessAccountCreationService en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">RequestBusinessAccountCreationService</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Application Service</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitar al contexto de Profiles la creación de una cuenta de negocio después de la activación de una suscripción, sin ejecutar directamente el comando CreateBusinessAccount dentro de este bounded context.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Dependencia</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesACL</td>
     </tr>
   </tbody>
 </table>
@@ -1640,38 +2213,908 @@ Esta capa no contiene reglas de negocio puras. Su responsabilidad principal es r
 
 #### 4.2.2.5. Bounded Context Software Architecture Component Level Diagrams
 
+En esta sección se presentan los diagramas de componentes del bounded context **Subscriptions and Payments**, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la gestión del ciclo de vida de suscripciones y pagos.
+
+##### Web Application Component Diagram
+
+Este diagrama representa la implementación del bounded context **Subscriptions and Payments** en la aplicación web. Se muestra cómo el componente web permite a los usuarios visualizar beneficios, seleccionar planes y gestionar la renovación o cancelación de suscripciones. Asimismo, se evidencia la interacción directa con el backend mediante solicitudes HTTP y la integración con **Stripe** para iniciar y redirigir el proceso de pago. Además, el componente utiliza funcionalidades compartidas a través del módulo **Shared** para la reutilización de utilidades comunes.
+
+<img src="https://i.ibb.co/HTVxgpJc/backend-Suscription.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
+
+##### Mobile Application Component Diagram
+
+Este diagrama muestra la implementación del bounded context **Subscriptions and Payments** en la aplicación móvil. El componente permite consultar el estado actual de la suscripción, así como realizar acciones de renovación o cancelación. Se observa la comunicación con el backend para la gestión del estado de la suscripción y la persistencia de la información en la base de datos. También se incluye la integración con **Stripe**, donde la aplicación inicia el proceso de pago y redirige al usuario para completarlo.
+
+<img src="https://i.ibb.co/TDYJ28dG/mobile-Suscription.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
+
+##### Backend Application Component Diagram
+
+Este diagrama representa la lógica central del bounded context **Subscriptions and Payments** en el backend. Se muestra cómo este componente gestiona el ciclo de vida completo de las suscripciones (adquisición, renovación y cancelación), interactuando con el contexto de **Identity and Access Management** para validar la identidad del usuario y registrar cuentas. Asimismo, se integra con **Profile and Preferences** para asociar la suscripción con el perfil de negocio del usuario. El componente persiste información relevante en la base de datos y se integra con **Stripe** para la creación de sesiones de pago y el procesamiento de transacciones.
+
+<img src="https://i.ibb.co/NgLNRZxy/api-Suscription.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
+
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.2.6.1. Bounded Context Domain Layer Class Diagrams
 
-En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Asset and Suscriptions and Payments.
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Asset and Subscriptions and Payments.
 
 <a href="https://ibb.co/gbpdN50n">
-<img src="https://i.ibb.co/gbpdN50n/uml-suscription.png" alt="uml-suscription" border="0"></a>
+<img src="https://i.ibb.co/gbpdN50n/uml-suscription.png" alt="uml-subscription" border="0"></a>
 
 ##### 4.2.2.6.2. Bounded Context Database Design Diagram
 
-En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Suscriptions and Payments.
+En esta sección, el equipo presenta el diagrama de Base de Datos detallado para la Domain Layer del Bounded Context de Subscriptions and Payments.
 
-<img src="assets/images/chapter4/bc-monitoring/db_diagram_suscriptions.png" alt="bd-suscriptions" border="0"></a>
+<img src="assets/images/chapter4/bc-monitoring/db_diagram_suscriptions.png" alt="bd-subscriptions" border="0"></a>
 
 ### 4.2.3. Bounded Context: Profiles and Preferences
 
 #### 4.2.3.1. Domain Layer
 
+La capa de dominio concentra el núcleo del Bounded Context Profiles and Preferences. En esta capa se encapsulan las reglas de negocio y la lógica fundamental relacionada con el manejo de información en perfiles de usuario y de negocio para brindar una identidad a cada uno de los usuarios de la plataforma.
+
+Esta capa está completamente aislada de detalles técnicos o bases de datos. Además, está compuesta de Entidades (Entities), Raíces de Agregación (Aggregate Roots) y Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates
+
+Este tipo de clases representa el pilar transaccional del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite.
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Profile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa el perfil visible/administrable del usuario y centraliza sus datos de contacto, ubicación y avatar. Además, encapsula la lógica para editar la información almacenada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Business</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Contiene datos del negocio del usuario integrados al perfil. Además, contiene lógica para editar la información de negocio.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos (Primitive Obsession), asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>PhoneNumber</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena el número telefónico del usuario. Provee de validaciones especiales para asegurar que el formato ingresado para números telefónicos se siga al detalle.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Commands
+
+Estas clases expresan el querer generar una acción dentro del sistema. Para este contexto, expresa el querer crear o modificar información sobre el usuario y su negocio.
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateProfileCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe los parámetros necesarios para crear un perfil como número de teléfono, nombre, apellido, avatar, y, el identificador del usuario</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateBusinessCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe los parámetros necesarios para crear un perfil de negocio como nombre del negocio, ubicación, razón social e imagen referencial del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateProfileByUserIdCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de usuario para buscar su perfil y modificarlo según la información que se requiera modificar. No todos los campos son obligatorios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateBusinessByAccountId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y la información que se necesita modificar.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateProfileAvatarByUserId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador del usuario y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateBusinessPictureByAccountId</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta y el binario de la nueva imagen subida por parte del usuario.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+##### Queries
+
+Estas clases representan la intención de solicitar información de manera eficiente, sin alterar el estado de la entidad ni ejecutar reglas de negocio. Para este contexto, expresa el querer obtener la información de perfil y de negocio.
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetProfileByUserIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de usuario, el cual debe ser válido y representar a un usuario existente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetBusinessByAccountIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe el identificador de la cuenta, el cual debe ser válido y representar una cuenta existente.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
 #### 4.2.3.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Profile and Preferences se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades de la gestión de perfiles personales y de negocio. A través de controladores especializados y ensambladores (Assemblers), esta capa actúa como punto de entrada para solicitudes de clientes (como la Web App de administración o aplicaciones móviles), facilitando la transformación de recursos (Data Transfer Objects) en Comandos o Queries hacia la capa de aplicación. Su diseño garantiza una clara separación de responsabilidades para la orquestación de recursos clave como perfiles y negocios.
+
+##### ProfileContextFacade
+
+<p><em>Tabla de métodos de ProfileContextFacade en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createProfile</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil en el proceso de registro</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">createBusiness</td>
+      <td style="padding: 10px; border: 1px solid;">Expone un método para que se pueda crear un perfil de negocio en el proceso de registro</td>
+    </tr>
+  </tbody>
+</table>
+
+##### UserProfilesController
+
+<p><em>Tabla de UserProfilesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UserProfilesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles personales de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/users/{userId}/profiles</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateAvatarByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente el avatar del usuario</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil de usuario. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileByUserId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getProfileByUserId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/users/{userId}/profiles (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información personal de un usuario</td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+##### AccountBusinessesController
+
+<p><em>Tabla de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AccountBusinessesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encargado de exponer endpoints para la obtención de perfiles de negocio de las cuentas de los usuarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/accounts/{accountId}/businesses</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de AccountBusinessesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updatePictureById</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza únicamente la imagen referencial del negocio</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">updateBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (PUT)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza la información de un perfil del negocio. No todos los campos son requeridos</td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessByAccountId</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">getBusinessByAccountId</td>
+      <td style="padding: 10px; border: 1px solid;">api/v1/accounts/{accountId}/businesses (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Obtiene la información de negocio de una cuenta</td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQuery</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.3.3. Application Layer
 
+La capa de aplicación del Bounded Context de Profiles and Preferences coordina el flujo de trabajo entre la capa de interfaz y el dominio, encapsulando la lógica de orquestación de la información personal y de negocio de los usuarios. En esta capa residen los Command Handlers, Query Handlers, Event Handlers y la implementación del Anticorruption Layer, los cuales son responsables de ejecutar las operaciones de creación y edición de los perfiles. Esta capa asegura que las acciones del negocio se realicen de manera transaccional y coherente, delegando las reglas puras al dominio y la persistencia a la infraestructura.
+
+##### ProfilesContextFacadeImpl
+
+<p><em>Tabla de ProfilesContextFacadeImpl en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesContextFacadeImpl</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la interfaz que expone métodos de creación de perfiles de usuario y de negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Métodos</strong></td>
+      <td style="padding: 10px; border: 1px solid;">createProfile y createBusiness</td>
+    </tr>
+  </tbody>
+</table>
+
+##### CreateProfileCommandHandler
+
+<p><em>Tabla de CreateBranchCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateProfileCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de un perfil personal de usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateProfileCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### CreateBusinessCommandHandler
+
+<p><em>Tabla de CreateBusinessCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBusinessCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de un perfil para el negocio del usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateBusinessCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateProfileCommand
+
+<p><em>Tabla de UpdateProfileCommand en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Manejar la edición de un perfil de usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateBusinessCommandHandler
+
+<p><em>Tabla de UpdateBusinessCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar la edición de informacion sobre el negocio de un usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateProfileAvatarCommandHandler
+
+<p><em>Tabla de UpdateProfileAvatarCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el cambio de avatares del usuario, eliminando el anterior de Cloudinary y obteniendo el URL de la nueva imagen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateProfileAvatarCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateBusinessPictureCommandHandler
+
+<p><em>Tabla de UpdateBusinessPictureCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestionar el cambio de imágenes del negocio, eliminando el anterior de Cloudinary y obteniendo el URL de la nueva imagen.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateBusinessPictureCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetProfileByUserIdQueryHandler
+
+<p><em>Tabla de GetProfileByUserIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la información del perfil de un usuario registrado en la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetProfileByUserIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetBusinessByAccountIdQueryHandler
+
+<p><em>Tabla de GetBusinessByAccountIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consultar la información del perfil de negocio de una cuenta suscrita a la plataforma.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetBusinessByAccountIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 #### 4.2.3.4. Infrastructure Layer
 
+La capa de infraestructura del Bounded Context de Profiles and Preferences actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir entidades como perfiles de usuario y de negocio en la base de datos no relacional.
+
+##### ProfileRepository
+
+<p><em>Tabla de ProfileRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfileRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de perfiles de usuario en la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### BusinessRepository
+
+<p><em>Tabla de BusinessRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BusinessRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de perfiles de negocio en la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### ProfilesDbContext
+
+<p><em>Tabla de ProfilesDbContext en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ProfilesDbContext</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Entity Framework para mapear las entidades del Bounded Context a la base de datos.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
 #### 4.2.3.5. Bounded Context Software Architecture Component Level Diagrams
+
+Esta sección presenta el diagrama de componentes del backend para el bounded context Profile and Preferences. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la visualización y edición de perfiles en pantallas de escritorio o laptops.
+
+<img src="https://i.imgur.com/wWNi05L.jpeg" alt="Web App Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Web Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la visualización y edición de información de perfiles de usuario y negocio. Además, capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webProfile</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar los perfiles de usuario y negocio en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus perfiles de usuario y negocio, adaptando la experiencia de usuario (UX) para pantallas táctiles.
+
+<img src="https://i.imgur.com/wuXRrNn.jpeg" alt="Mobile App Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Mobile Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar información de perfiles de usuario y negocio desde dispositivos portátiles.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileProfile</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para recuperar y actualizar los perfiles de usuario y negocio desde la aplicación móvil.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
+
+<img src="https://i.imgur.com/FSz2gnn.jpeg" alt="Cloud API Component Diagram - Profiles and Preferences">
+
+<p><em>Tabla de Componentes de la Backend Application para Profiles and Preferences</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiProfile</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de información en perfiles de usuario y negocio.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la información del perfil de usuario y de negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptions</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Comunica el identificador de negocio creado para asociarlo con la cuenta registrada para el usuario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la edición de perfiles.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Utilidades comunes</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para usar objetos de valor de identidad como UserId, BusinessId y DateTime.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.3.6.1. Bounded Context Domain Layer Class Diagrams
 
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Profile and Preferences. Este diagrama no solo detalla la estructura estática, sino que evidencia un Modelo de Dominio Rico, donde la lógica de negocio reside dentro de los métodos de los Agregados, garantizando la encapsulación y las invariantes del sistema.
+
+<img src="https://i.imgur.com/E3fzGTT.png" alt="Domain Layer Class Diagram - Profiles and Preferences">
+
 ##### 4.2.3.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Profiles and Preferences. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente la información personal de los usuarios y la comercial de sus negocios.
+
+El diseño se fundamenta en principios clave de bases de datos documentales (como MongoDB). Además, destaca el uso estratégico de la desnormalización.
+
+<img src="https://i.imgur.com/9puceGt.jpeg" alt="Data Base Class Diagram - Profiles and Preferences">
 
 ### 4.2.4. Bounded Context: Asset and Resource Management
 
@@ -1679,7 +3122,7 @@ En esta sección, el equipo presenta el diagrama de Base de Datos detallado para
 
 La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Asset and Resource Management. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión del catálogo de insumos, el control transaccional del inventario físico, el ciclo de vida de las sucursales y la administración del hardware IoT.
 
-Esta capa está completamente aislada de detalles técnicos, bases de datos o frameworks de presentación. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
+Esta capa está completamente aislada de detalles técnicos, bases de datos o frameworks de presentación. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de los datos, Comandos (Commands), Consultas (Queries) y Eventos de Dominio (Domain Events).
 
 ##### Aggregates & Entities
 
@@ -1761,47 +3204,90 @@ Estas clases modelan características conceptuales del dominio. Son inmutables y
 
 <br>
 
-##### Repository Interfaces
+##### Commands
 
-Las abstracciones de persistencia se definen aquí mediante el Principio de Inversión de Dependencias (Dependency Inversion). El dominio dicta "qué" necesita guardar o consultar, sin importar "cómo" se hace en la base de datos.
-
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+<p><em>Tabla de Commands en el Domain Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Command</th>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IBranchRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para la persistencia y búsqueda de sucursales activas en el sistema.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateBranchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula la intención de crear una nueva sucursal con sus datos base.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IBatchRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para almacenar movimientos de lotes y consultar stock disponible o caducado.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>RegisterBatchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para ingresar un nuevo lote de inventario al sistema.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>ICustomSupplyRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para gestionar el ciclo de vida de los insumos y productos del catálogo.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>SubtractSupplyStockCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la acción de deducir cantidades físicas de un insumo en una sucursal.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IDeviceRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para registrar y buscar hardware IoT asociado a las diferentes sucursales.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>AssignDeviceToBranchCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la vinculación de un dispositivo IoT específico a una sucursal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Queries
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Query</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetInventoryByBranchQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la consulta del inventario actual disponible en una sucursal determinada.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetBranchByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la obtención de los detalles operativos y de ubicación de una sucursal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Domain Events
+
+<p><em>Tabla de Domain Events en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Evento</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>StockSubtractedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Evento emitido en el dominio cuando el nivel de stock ha disminuido exitosamente, notificando a otros componentes (ej. alertas).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DeviceAssignedToBranchEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Evento que confirma la asignación del hardware a una sucursal para iniciar el monitoreo.</td>
     </tr>
   </tbody>
 </table>
 
 #### 4.2.4.2. Interface Layer
 
-En la capa de interfaz del Bounded Context de Asset and Resource Management se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades core de la gestión física y lógica del negocio. A través de controladores especializados y ensambladores (Assemblers), esta capa actúa como punto de entrada para solicitudes de clientes (como la Web App de administración o aplicaciones móviles), facilitando la transformación de recursos (Data Transfer Objects) en Comandos o Queries hacia la capa de aplicación. Su diseño garantiza una clara separación de responsabilidades para la orquestación de recursos clave como sucursales, insumos, inventario y dispositivos IoT.
+En la capa de interfaz del Bounded Context de Asset and Resource Management se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades core de la gestión física y lógica del negocio. A través de controladores especializados, ensambladores (Assemblers) y la interfaz de la capa Anti-Corrupción (ACL), esta capa actúa como punto de entrada para solicitudes de clientes y otros Bounded Contexts.
 
 ##### BranchController
 
@@ -1877,6 +3363,60 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
       <td style="padding: 10px; border: 1px solid;">/{branchId} (DELETE)</td>
       <td style="padding: 10px; border: 1px solid;">Elimina o desactiva una sucursal</td>
       <td style="padding: 10px; border: 1px solid;">DeleteBranchCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+##### BranchInventoriesController
+
+<p><em>Tabla de BranchInventoriesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchInventoriesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer sub-rutas RESTful de lectura de inventarios asociados a una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchInventoriesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetStock</td>
+      <td style="padding: 10px; border: 1px solid;">/{branchId}/inventories (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Consulta stock disponible</td>
+      <td style="padding: 10px; border: 1px solid;">GetInventoryByBranchQuery</td>
     </tr>
   </tbody>
 </table>
@@ -2016,12 +3556,6 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
       <td style="padding: 10px; border: 1px solid;">Deduce existencias por mermas</td>
       <td style="padding: 10px; border: 1px solid;">SubtractSupplyStockCommand</td>
     </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;">GetStock</td>
-      <td style="padding: 10px; border: 1px solid;">/branches/{branchId} (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Consulta stock disponible</td>
-      <td style="padding: 10px; border: 1px solid;">GetInventoryByBranchQuery</td>
-    </tr>
   </tbody>
 </table>
 
@@ -2091,9 +3625,30 @@ En la capa de interfaz del Bounded Context de Asset and Resource Management se e
   </tbody>
 </table>
 
+##### Anti-Corruption Layer (ACL) Interfaces
+
+<p><em>Tabla de Interfaces ACL en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IAssetResourceAcl</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Expone métodos seguros para que otros contextos (como Service Design y Sales Order) soliciten la reducción de stock de los suministros vendidos sin acoplarse a la lógica interna de Asset and Resource Management.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.4.3. Application Layer
 
-La capa de aplicación del Bounded Context de Asset and Resource Management coordina el flujo de trabajo entre la capa de interfaz y el dominio, encapsulando la lógica de orquestación de los recursos físicos y lógicos de la empresa. En esta capa residen los Command Handlers, Query Handlers y Event Handlers, los cuales son responsables de ejecutar las operaciones críticas como el registro de sucursales, la administración del catálogo de insumos, los movimientos de inventario (ingreso de lotes, transferencias, deducciones) y la asignación de hardware IoT. Esta capa asegura que las acciones del negocio se realicen de manera transaccional y coherente, delegando las reglas puras al dominio y la persistencia a la infraestructura.
+La capa de aplicación del Bounded Context de Asset and Resource Management coordina el flujo de trabajo entre la capa de interfaz y el dominio, encapsulando la lógica de orquestación de los recursos físicos y lógicos de la empresa. En esta capa residen los Command Handlers, Query Handlers y Event Handlers, los cuales son responsables de ejecutar las operaciones críticas como el registro de sucursales, la administración del catálogo de insumos, los movimientos de inventario (ingreso de lotes, transferencias, deducciones) y la asignación de hardware IoT. Además, aloja la implementación de la capa anti-corrupción (ACL) para blindar al contexto de influencias externas.
 
 ##### CreateBranchCommandHandler
 
@@ -2258,9 +3813,38 @@ La capa de aplicación del Bounded Context de Asset and Resource Management coor
   </tbody>
 </table>
 
+<br>
+
+##### Anti-Corruption Layer (ACL) Implementation
+
+<p><em>Tabla de Implementación ACL en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">AssetResourceAcl</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la interfaz IAssetResourceAcl, orquestando los comandos internos (como SubtractSupplyStockCommand) para reducir el inventario cuando los contextos de ventas y diseño de servicios lo requieran, manteniendo la integridad y el aislamiento.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.4.4. Infrastructure Layer
 
-La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir entidades como sucursales, insumos y hardware IoT en la base de datos relacional. Asimismo, integra servicios externos esenciales para el negocio, como la API de Cloudinary para el almacenamiento de imágenes de sucursales y productos, y la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
+La capa de infraestructura del Bounded Context de Asset and Resource Management actúa como el puente entre la lógica central del negocio y los mecanismos técnicos externos. En esta capa se materializan las interfaces de repositorios definidas en el dominio para persistir agregados y entidades como sucursales, insumos y hardware IoT en la base de datos no relacional orientada a documentos (MongoDB). Asimismo, integra la configuración de comunicación mediante Message Brokers para publicar eventos de dominio (como cambios críticos de stock) hacia otros contextos del sistema.
 
 ##### InventoryRepository
 
@@ -2280,11 +3864,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en la base de datos.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar entidades y agregados de inventario (Lotes y Stock) en formato de documentos JSON dentro de la base de datos.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -2313,11 +3897,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio Documental</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales.</td>
+      <td style="padding: 10px; border: 1px solid;">Manejar el acceso a datos para la configuración, detalles y geolocalización de las sucursales directamente en las colecciones de MongoDB.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -2328,38 +3912,9 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 <br>
 
-##### AssetDbContext
+##### AssetMongoConfiguration
 
-<p><em>Tabla de AssetDbContext en el Infrastructure Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">AssetDbContext</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">ORM Context</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Entity Framework para mapear las entidades del Bounded Context a la base de datos.</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-##### CloudinaryImageService
-
-<p><em>Tabla de CloudinaryImageService en el Infrastructure Layer</em></p>
+<p><em>Tabla de AssetMongoConfiguration en el Infrastructure Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -2371,26 +3926,195 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CloudinaryImageService</td>
+      <td style="padding: 10px; border: 1px solid;">AssetMongoConfiguration</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">External Service Wrapper</td>
+      <td style="padding: 10px; border: 1px solid;">ODM / Spring Data MongoDB</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integrar la API de Cloudinary para la carga, almacenamiento y obtención de URLs de imágenes de insumos y sucursales.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
-      <td style="padding: 10px; border: 1px solid;">IImageStorageService</td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de Spring Data MongoDB para realizar el mapeo objeto-documento (ODM) entre las clases del Bounded Context y las colecciones de la base de datos NoSQL.</td>
     </tr>
   </tbody>
 </table>
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Asset and Resource Management. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
+En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y nodos locales (Edge Applications), únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-resource/frontend-components.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la administración de inventarios de la cuenta, sucursales, lotes y el registro de dispositivos IoT. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar activos del negocio (insumos, dispositivos, lotes, sucursales) en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
+
+<img src="assets/images/chapter4/bc-resource/mobile-components.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar inventarios, sucursales y dispositivos desde smartphones o tablets.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para sincronizar y actualizar la información de activos e inventarios.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura Local</td>
+      <td style="padding: 10px; border: 1px solid;">Guarda en caché la información de los activos e inventario para agilizar los tiempos de carga en la aplicación móvil y reducir llamadas de red.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
+
+<img src="assets/images/chapter4/bc-resource/backend-components.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de control de inventario, deducción de lotes y gestión de sucursales. Actúa como el puente de comunicación y configuración hacia la capa Edge de las cabinas inteligentes.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>edgeApplication</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Envía comandos de configuración de dispositivos (encendido/apagado, asignación de productos) hacia las estaciones locales y valida su registro.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiCommunications</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la generación de alertas y notificaciones al sistema cuando se detectan niveles críticos de stock u operaciones inusuales.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar el acceso y modificación de los recursos físicos del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para subir y recuperar imágenes referenciales de los insumos o catálogos a través de Cloudinary.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.4.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -2414,19 +4138,19 @@ Domain Events: Mapea los eventos clave que se emiten para la comunicación asín
 
 En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Asset and Resource Management. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente los grandes volúmenes de telemetría IoT y la flexibilidad del catálogo de recursos.
 
-El diseño se fundamenta en principios clave de bases de datos documentales (como MongoDB). Destaca el uso estratégico de la desnormalización y el patrón de documentos embebidos (Embedded Documents) para optimizar el rendimiento de las consultas. Por ejemplo, los atributos de ubicación (location) se anidan directamente dentro de la colección de sucursales (branches), y las especificaciones de hardware (specifications) se embeben en los dispositivos (devices), asegurando que "los datos que se consultan juntos, se almacenen juntos".
+El diseño se fundamenta en principios clave de bases de datos documentales (como MongoDB). Destaca el uso estratégico de la des normalización y el patrón de documentos embebidos (Embedded Documents) para optimizar el rendimiento de las consultas. Por ejemplo, los atributos de ubicación (location) se anidan directamente dentro de la colección de sucursales (branches), y las especificaciones de hardware (specifications) se embeben en los dispositivos (devices), asegurando que "los datos que se consultan juntos, se almacenen juntos".
 
 <img src="assets/images/chapter4/bc-resource/ARM-Bounded-Context-Domain-Layer-DB-Schema.png" alt="Data Base Class Diagram - Asset and Resource Management" width="800px">
 
-### 4.2.5. Bounded Context: Service Design and Planning
+### 4.2.5. Bounded Context: Design and Planning
 
 Este Bounded Context se encarga de la formulación y empaquetamiento comercial de los recursos. Proporciona las herramientas para que los administradores de restaurantes diseñen sus recetas (vinculando insumos y cantidades) y para que los administradores de tiendas retail estructuren kits o combos comerciales destinados a sus clientes.
 
 #### 4.2.5.1. Domain Layer
 
-La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Service Design and Planning. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la estructuración de recetas gastronómicas y la composición de kits comerciales.
+La capa de dominio representa el núcleo (core) de la aplicación para el Bounded Context de Design and Planning. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la estructuración de recetas gastronómicas y la composición de kits comerciales.
 
-Esta capa está aislada de detalles técnicos o de infraestructura. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de las composiciones, Eventos de Dominio (Domain Events) y las abstracciones de los repositorios mediante Interfaces.
+Esta capa está aislada de detalles técnicos o de infraestructura. Se compone de Entidades (Entities), Raíces de Agregación (Aggregate Roots), Objetos de Valor (Value Objects) para garantizar la inmutabilidad de las composiciones, Comandos (Commands), Consultas (Queries) y Eventos de Dominio (Domain Events).
 
 ##### Aggregates & Entities
 
@@ -2489,35 +4213,90 @@ Esta capa está aislada de detalles técnicos o de infraestructura. Se compone d
 
 <br>
 
-##### Repository Interfaces
+##### Commands
 
-<p><em>Tabla de Abstracciones de Repositorio en el Domain Layer</em></p>
+<p><em>Tabla de Commands en el Domain Layer</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Command</th>
       <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IRecipeRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para la persistencia, búsqueda y filtrado de recetas en el catálogo del restaurante.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>RegisterRecipeCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula la intención de registrar una nueva receta junto con su lista de insumos requeridos.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>IKitRepository</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Repository Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato para almacenar y recuperar los combos configurados localmente por la tienda retail.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>RegisterKitCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee los datos necesarios para agrupar productos individuales en un nuevo kit comercial.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>EditRecipeCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Representa la acción de modificar la información base o las cantidades de los insumos de una receta existente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>DeleteRecipeCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la eliminación lógica o desactivación de una receta del catálogo.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Queries
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Query</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetRecipeByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la obtención detallada de una receta, incluyendo su formulación de insumos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetKitByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consulta la composición completa y el precio combinado de un kit comercial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Domain Events
+
+<p><em>Tabla de Domain Events en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre del Evento</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>RecipeDeletedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Evento emitido en el dominio cuando una receta es eliminada, útil para desencadenar notificaciones o auditorías.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>KitRegisteredEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Confirma la creación exitosa de un combo comercial en el sistema.</td>
     </tr>
   </tbody>
 </table>
 
 #### 4.2.5.2. Interface Layer
 
-En la capa de interfaz se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades de diseño de servicios. A través de controladores especializados, esta capa actúa como punto de entrada para que las aplicaciones cliente (Web o Móvil) envíen los comandos de creación o edición de recetas y kits, facilitando la subida de imágenes y la definición de formulaciones.
+En la capa de interfaz se exponen los endpoints HTTP RESTful necesarios para interactuar con las funcionalidades de diseño de servicios. A través de controladores especializados y la capa anti-corrupción (ACL), esta capa actúa como punto de entrada para que las aplicaciones cliente envíen comandos de creación de recetas, y para que otros Bounded Contexts interactúen de forma segura.
 
 ##### RecipeController
 
@@ -2657,9 +4436,30 @@ En la capa de interfaz se exponen los endpoints HTTP RESTful necesarios para int
   </tbody>
 </table>
 
+##### Anti-Corruption Layer (ACL) Interfaces
+
+<p><em>Tabla de Interfaces ACL en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Interfaz</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>IServiceDesignAcl</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
+      <td style="padding: 10px; border: 1px solid;">Expone métodos estructurados para que otros Bounded Contexts (como Sales Order Management) puedan consultar la composición interna de recetas y kits, aislando los detalles de implementación del catálogo.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.5.3. Application Layer
 
-La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command y Query Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja Event Handlers que reaccionan a acciones críticas, como notificar a los usuarios cuando un diseño es eliminado.
+La capa de aplicación de este Bounded Context orquesta los flujos de trabajo dictados por los usuarios al diseñar sus servicios. Aquí residen los Command Handlers y Query Handlers encargados de procesar la creación y edición de catálogos, asegurando que las listas de insumos se estructuren correctamente antes de delegar la persistencia al dominio. También aloja la implementación de la capa anti-corrupción (ACL) que facilita la entrega segura de información de recetas hacia otros módulos.
 
 ##### RegisterRecipeCommandHandler
 
@@ -2758,9 +4558,38 @@ La capa de aplicación de este Bounded Context orquesta los flujos de trabajo di
   </tbody>
 </table>
 
+<br>
+
+##### Anti-Corruption Layer (ACL) Implementation
+
+<p><em>Tabla de Implementación ACL en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ServiceDesignAcl</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Implementar la interfaz IServiceDesignAcl, orquestando las consultas para obtener de manera segura la lista de insumos que componen una receta específica (utilizado por Ventas para solicitar la deducción de inventario).</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.5.4. Infrastructure Layer
 
-La capa de infraestructura de Service Design and Planning materializa los repositorios necesarios para almacenar los modelos de recetas y kits. Además, es el punto donde se implementan los adaptadores para servicios de terceros, los cuales son vitales en este contexto, específicamente para el manejo de archivos multimedia (imágenes de platos o combos) y el servicio de notificaciones transaccionales a los administradores.
+La capa de infraestructura de Service Design and Planning materializa los repositorios necesarios para almacenar los modelos de recetas y kits en la base de datos. Además, es el punto donde se implementan los adaptadores para servicios de terceros que son vitales en este contexto, como el servicio de notificaciones transaccionales a los administradores.
 
 ##### RecipeRepository
 
@@ -2830,33 +4659,6 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
 
 ##### External Services Integrations
 
-<p><em>Tabla de Servicios Externos en el Infrastructure Layer</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
-      <td style="padding: 10px; border: 1px solid;">CloudinaryImageAdapter</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
-      <td style="padding: 10px; border: 1px solid;">External Service Wrapper</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integrarse con la API de Cloudinary para procesar la subida y almacenamiento de imágenes de recetas y kits.</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
     <tr>
@@ -2882,6 +4684,176 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
 
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
 
+En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios externos únicamente cuando dichas interacciones son necesarias para la gestión de recetas gastronómicas y la configuración de kits comerciales.
+
+##### Web Application Component Diagram
+
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de los catálogos en pantallas de escritorio o laptops.
+
+<img src="assets/images/chapter4/bc-planning/frontend-components.png" alt="Web Service Design and Planning Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Service Design and Planning</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webServiceDesign</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la configuración de recetas para restaurantes y ensamblaje de kits para tiendas retail. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webServiceDesign</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar las formulaciones de recetas y kits en el servidor central.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Mobile Application Component Diagram
+
+El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar la composición de sus servicios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles.
+
+<img src="assets/images/chapter4/bc-planning/mobile-components.png" alt="Mobile Service Design and Planning Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Mobile Application para Service Design and Planning</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileServiceDesign</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar recetas y kits desde dispositivos portátiles.</td>
+      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente mobileServiceDesign</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para recuperar y actualizar el catálogo de recetas y kits desde la red móvil o Wi-Fi.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Backend Application Component Diagram
+
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
+
+<img src="assets/images/chapter4/bc-planning/backend-components.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Backend Application para Service Design and Planning</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiServiceDesign</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail. Centraliza la lógica de validación de insumos y estructuración comercial.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la composición de los kits y las recetas diseñadas por los administradores.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el stock de los insumos asociados cuando una receta o kit es vendido, garantizando la consistencia del inventario.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la creación, edición o eliminación de elementos del catálogo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para integrar la carga y recuperación de imágenes multimedia asociadas a los combos o platos mediante Cloudinary.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSalesManagement</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe peticiones del módulo de ventas para contabilizar las cantidades vendidas de recetas o kits registrados a través del ACL.</td>
+    </tr>
+  </tbody>
+</table>
+
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.5.6.1. Bounded Context Domain Layer Class Diagrams
@@ -2898,23 +4870,759 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para
 
 <img src="assets/images/chapter4/bc-planning/Service-Design-and-Planning-DB-Schema.png" alt="Database Design Diagram - Service Design and Planning">
 
-### 4.2.6. Bounded Context: Service Operation and Monitoring
+### 4.2.6. Bounded Context: Tracking
 
-#### 4.2.6.1. Domain Layer
+### 4.2.6.1. Domain Layer
 
-#### 4.2.6.2. Interface Layer
+La capa de dominio representa el núcleo de la aplicación para el Bounded Context de **Tracking**. En esta capa se encapsulan las reglas de negocio relacionadas con el monitoreo de telemetría IoT, estimación de stock físico, detección de anomalías, validación de umbrales mínimos y generación de tareas de conciliación.
 
-#### 4.2.6.3. Application Layer
+Está compuesta por Aggregates, Value Objects, Domain Events y abstracciones de repositorios, permitiendo representar el comportamiento central del monitoreo operativo del sistema.
 
-#### 4.2.6.4. Infrastructure Layer
+#### Aggregates & Entities
+
+| Nombre de Clase    | Categoría      | Propósito y Reglas de Negocio                                                                                                                                                                      |
+|--------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TelemetryReading   | Aggregate Root | Representa una lectura recibida desde un dispositivo IoT. Encapsula datos como peso bruto, peso estable y cantidad estimada. Permite calcular estimaciones físicas y detectar variaciones de peso. |
+| StockRecord        | Aggregate Root | Representa el registro consolidado del stock físico estimado. Calcula diferencias entre cantidades previas y nuevas, identifica anomalías y actualiza la estimación física del inventario.         |
+| SupplyThreshold    | Aggregate Root | Representa los umbrales configurados para un insumo en una sucursal. Valida si el stock actual está en estado normal, advertencia o crítico.                                                       |
+| DeviceHealthReport | Aggregate Root | Representa el estado operativo de un dispositivo IoT. Registra problemas como batería baja, señal débil, retraso de telemetría o mal funcionamiento.                                               |
+| ReconciliationTask | Aggregate Root | Representa una tarea generada cuando existe una discrepancia entre el stock físico estimado y el stock digital. Permite gestionar su estado hasta su resolución.                                   |
+
+#### Value Objects
+
+| Nombre de Clase                                         | Categoría    | Propósito y Reglas de Negocio                                                                                       |
+|---------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
+| StockRecordId                                           | Value Object | Identificador único del registro de stock físico.                                                                   |
+| TelemetryReadingId                                      | Value Object | Identificador único de una lectura de telemetría.                                                                   |
+| SupplyThresholdId                                       | Value Object | Identificador único de la configuración de umbral de un insumo.                                                     |
+| DeviceHealthReportId                                    | Value Object | Identificador único de un reporte de salud del dispositivo.                                                         |
+| ReconciliationTaskId                                    | Value Object | Identificador único de una tarea de conciliación.                                                                   |
+| StockQuantity                                           | Value Object | Encapsula cantidades de stock y operaciones de comparación o resta, evitando cantidades inconsistentes.             |
+| Weight                                                  | Value Object | Representa valores de peso capturados por dispositivos IoT, permitiendo calcular diferencias y validar estabilidad. |
+| Percentage                                              | Value Object | Representa valores porcentuales como batería o intensidad de señal del dispositivo.                                 |
+| BusinessId, BranchId, DeviceId, CustomSupplyId, BatchId | Value Object | Identificadores fuertemente tipados para evitar confusión entre entidades de distintos contextos.                   |
+
+#### Domain Events
+
+| Nombre de Evento               | Categoría    | Propósito                                                                                               |
+|--------------------------------|--------------|---------------------------------------------------------------------------------------------------------|
+| TelemetryReceivedEvent         | Domain Event | Se emite cuando el sistema recibe una lectura válida desde un dispositivo IoT.                          |
+| PhysicalStockEstimatedEvent    | Domain Event | Se emite cuando se calcula una nueva estimación de stock físico.                                        |
+| StockAnomalyDetectedEvent      | Domain Event | Se emite cuando se detecta una diferencia relevante entre el stock físico estimado y el stock esperado. |
+| LowStockDetectedEvent          | Domain Event | Se emite cuando el stock físico estimado cae por debajo del umbral configurado.                         |
+| DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                              |
+| ReconciliationCompletedEvent   | Domain Event | Se emite cuando una tarea de conciliación es completada.                                                |
+
+### 4.2.6.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de **Tracking** se exponen los endpoints RESTful necesarios para consultar y administrar la información generada por el monitoreo operativo. Esta capa funciona como punto de entrada para la Web App de administración, permitiendo visualizar lecturas de telemetría, stock físico estimado, alertas, reportes de salud de dispositivos y tareas de conciliación.
+
+#### TelemetryController
+
+| Propiedad | Valor                                                                                             |
+|-----------|---------------------------------------------------------------------------------------------------|
+| Nombre    | TelemetryController                                                                               |
+| Categoría | Controller                                                                                        |
+| Propósito | Exponer endpoints para recibir y consultar lecturas de telemetría generadas por dispositivos IoT. |
+| Ruta      | /api/v1/monitoring/telemetry                                                                      |
+
+| Nombre            | Ruta                               | Acción                                                   | Handle                            |
+|-------------------|------------------------------------|----------------------------------------------------------|-----------------------------------|
+| RegisterReading   | /readings (POST)                   | Registra una nueva lectura de telemetría.                | RegisterTelemetryReadingCommand   |
+| GetByDevice       | /devices/{deviceId}/readings (GET) | Consulta lecturas asociadas a un dispositivo.            | GetTelemetryReadingsByDeviceQuery |
+| GetLatestByDevice | /devices/{deviceId}/latest (GET)   | Obtiene la última lectura registrada por un dispositivo. | GetLatestTelemetryByDeviceQuery   |
+
+#### StockMonitoringController
+
+| Propiedad | Valor                                                                           |
+|-----------|---------------------------------------------------------------------------------|
+| Nombre    | StockMonitoringController                                                       |
+| Categoría | Controller                                                                      |
+| Propósito | Consultar el stock físico estimado y sus variaciones detectadas por telemetría. |
+| Ruta      | /api/v1/monitoring/stock-records                                                |
+
+| Nombre                    | Ruta                                                        | Acción                                                         | Handle                            |
+|---------------------------|-------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------|
+| GetStockRecordsByBranch   | /branches/{branchId} (GET)                                  | Consulta registros de stock físico por sucursal.               | GetStockRecordsByBranchQuery      |
+| GetLatestStockBySupply    | /branches/{branchId}/supplies/{customSupplyId}/latest (GET) | Obtiene la última estimación de stock físico de un insumo.     | GetLatestStockRecordBySupplyQuery |
+| RecomputePhysicalEstimate | /{stockRecordId}/recompute (POST)                           | Recalcula la estimación física a partir de una lectura válida. | RecomputePhysicalStockCommand     |
+
+#### SupplyThresholdController
+
+| Propiedad | Valor                                                                       |
+|-----------|-----------------------------------------------------------------------------|
+| Nombre    | SupplyThresholdController                                                   |
+| Categoría | Controller                                                                  |
+| Propósito | Gestionar los umbrales mínimos y de advertencia para el monitoreo de stock. |
+| Ruta      | /api/v1/monitoring/supply-thresholds                                        |
+
+| Nombre            | Ruta                                                 | Acción                                            | Handle                          |
+|-------------------|------------------------------------------------------|---------------------------------------------------|---------------------------------|
+| RegisterThreshold | / (POST)                                             | Registra umbrales para un insumo en una sucursal. | RegisterSupplyThresholdCommand  |
+| UpdateThreshold   | /{thresholdId} (PUT)                                 | Actualiza los valores mínimo y de advertencia.    | UpdateSupplyThresholdCommand    |
+| GetBySupply       | /branches/{branchId}/supplies/{customSupplyId} (GET) | Consulta el umbral configurado para un insumo.    | GetSupplyThresholdBySupplyQuery |
+
+#### DeviceHealthController
+
+| Propiedad | Valor                                                                    |
+|-----------|--------------------------------------------------------------------------|
+| Nombre    | DeviceHealthController                                                   |
+| Categoría | Controller                                                               |
+| Propósito | Consultar y administrar reportes de salud operativa de dispositivos IoT. |
+| Ruta      | /api/v1/monitoring/device-health                                         |
+
+| Nombre               | Ruta                                | Acción                                      | Handle                                |
+|----------------------|-------------------------------------|---------------------------------------------|---------------------------------------|
+| GetReportsByDevice   | /devices/{deviceId}/reports (GET)   | Consulta reportes de salud por dispositivo. | GetDeviceHealthReportsByDeviceQuery   |
+| GetUnresolvedReports | /reports/unresolved (GET)           | Lista reportes pendientes de atención.      | GetUnresolvedDeviceHealthReportsQuery |
+| ResolveReport        | /reports/{reportId}/resolve (PATCH) | Marca un reporte como resuelto.             | ResolveDeviceHealthReportCommand      |
+
+#### ReconciliationTaskController
+
+| Propiedad | Valor                                                                                      |
+|-----------|--------------------------------------------------------------------------------------------|
+| Nombre    | ReconciliationTaskController                                                               |
+| Categoría | Controller                                                                                 |
+| Propósito | Gestionar tareas de conciliación generadas por discrepancias entre stock físico y digital. |
+| Ruta      | /api/v1/monitoring/reconciliation-tasks                                                    |
+
+| Nombre             | Ruta                               | Acción                                                   | Handle                             |
+|--------------------|------------------------------------|----------------------------------------------------------|------------------------------------|
+| GetPendingByBranch | /branches/{branchId}/pending (GET) | Consulta tareas de conciliación pendientes por sucursal. | GetPendingReconciliationTasksQuery |
+| CompleteTask       | /{taskId}/complete (PATCH)         | Marca una tarea de conciliación como completada.         | CompleteReconciliationTaskCommand  |
+| CancelTask         | /{taskId}/cancel (PATCH)           | Cancela una tarea de conciliación.                       | CancelReconciliationTaskCommand    |
+
+### 4.2.6.3. Application Layer
+
+La capa de aplicación del Bounded Context de **Tracking** coordina los flujos de negocio relacionados con el procesamiento de telemetría, estimación de stock físico, validación de umbrales, detección de anomalías y generación de tareas de conciliación. En esta capa se ubican Command Handlers, Query Handlers y Event Handlers que orquestan el uso de los aggregates del dominio y delegan la persistencia a los repositorios.
+
+#### Command Handlers
+
+| Nombre                                   | Categoría       | Propósito                                                                                | Comando                           |
+|------------------------------------------|-----------------|------------------------------------------------------------------------------------------|-----------------------------------|
+| RegisterTelemetryReadingCommandHandler   | Command Handler | Orquesta el registro de una lectura de telemetría recibida desde un dispositivo IoT.     | RegisterTelemetryReadingCommand   |
+| RecomputePhysicalStockCommandHandler     | Command Handler | Recalcula la cantidad física estimada de un insumo a partir del peso estable registrado. | RecomputePhysicalStockCommand     |
+| RegisterSupplyThresholdCommandHandler    | Command Handler | Registra los umbrales mínimo y de advertencia para un insumo en una sucursal.            | RegisterSupplyThresholdCommand    |
+| UpdateSupplyThresholdCommandHandler      | Command Handler | Actualiza la configuración de umbrales de monitoreo.                                     | UpdateSupplyThresholdCommand      |
+| ResolveDeviceHealthReportCommandHandler  | Command Handler | Marca un reporte de salud de dispositivo como resuelto.                                  | ResolveDeviceHealthReportCommand  |
+| CompleteReconciliationTaskCommandHandler | Command Handler | Completa una tarea de conciliación luego de corregir o validar la diferencia de stock.   | CompleteReconciliationTaskCommand |
+| CancelReconciliationTaskCommandHandler   | Command Handler | Cancela una tarea de conciliación cuando ya no requiere atención.                        | CancelReconciliationTaskCommand   |
+
+#### Query Handlers
+
+| Nombre                                       | Categoría     | Propósito                                                          | Query                                 |
+|----------------------------------------------|---------------|--------------------------------------------------------------------|---------------------------------------|
+| GetTelemetryReadingsByDeviceQueryHandler     | Query Handler | Consulta las lecturas registradas por un dispositivo específico.   | GetTelemetryReadingsByDeviceQuery     |
+| GetLatestTelemetryByDeviceQueryHandler       | Query Handler | Obtiene la lectura más reciente generada por un dispositivo IoT.   | GetLatestTelemetryByDeviceQuery       |
+| GetStockRecordsByBranchQueryHandler          | Query Handler | Lista los registros de stock físico estimado por sucursal.         | GetStockRecordsByBranchQuery          |
+| GetLatestStockRecordBySupplyQueryHandler     | Query Handler | Consulta la última estimación física de un insumo en una sucursal. | GetLatestStockRecordBySupplyQuery     |
+| GetSupplyThresholdBySupplyQueryHandler       | Query Handler | Obtiene los umbrales configurados para un insumo específico.       | GetSupplyThresholdBySupplyQuery       |
+| GetDeviceHealthReportsByDeviceQueryHandler   | Query Handler | Consulta el historial de reportes de salud de un dispositivo.      | GetDeviceHealthReportsByDeviceQuery   |
+| GetUnresolvedDeviceHealthReportsQueryHandler | Query Handler | Lista los reportes de salud pendientes de resolución.              | GetUnresolvedDeviceHealthReportsQuery |
+| GetPendingReconciliationTasksQueryHandler    | Query Handler | Consulta tareas de conciliación pendientes por sucursal.           | GetPendingReconciliationTasksQuery    |
+
+#### Event Handlers
+
+| Nombre                                | Categoría     | Propósito                                                                                          | Evento                         |
+|---------------------------------------|---------------|----------------------------------------------------------------------------------------------------|--------------------------------|
+| TelemetryReceivedEventHandler         | Event Handler | Procesa una lectura de telemetría recibida y genera una estimación de stock físico.                | TelemetryReceivedEvent         |
+| PhysicalStockEstimatedEventHandler    | Event Handler | Registra el nuevo estado físico del stock y valida si existe una diferencia significativa.         | PhysicalStockEstimatedEvent    |
+| StockAnomalyDetectedEventHandler      | Event Handler | Genera una tarea de conciliación cuando se detecta una discrepancia de stock.                      | StockAnomalyDetectedEvent      |
+| LowStockDetectedEventHandler          | Event Handler | Gestiona la alerta de bajo stock cuando el stock estimado cae por debajo del umbral.               | LowStockDetectedEvent          |
+| DeviceMalfunctionDetectedEventHandler | Event Handler | Registra un reporte de salud del dispositivo cuando se detecta una falla o comportamiento anómalo. | DeviceMalfunctionDetectedEvent |
+| ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                         | ReconciliationCompletedEvent   |
+
+### 4.2.6.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de **Service Operation and Monitoring** implementa los mecanismos técnicos necesarios para persistir datos, recibir telemetría desde dispositivos IoT y publicar eventos hacia otros bounded contexts. En esta capa se ubican las implementaciones concretas de los repositorios definidos en el dominio, el contexto de base de datos, adaptadores de mensajería y servicios externos necesarios para operar el monitoreo.
+
+#### Repositories
+
+| Nombre                       | Categoría   | Propósito                                                                                | Interfaz                      |
+|------------------------------|-------------|------------------------------------------------------------------------------------------|-------------------------------|
+| TelemetryReadingRepository   | Repositorio | Persiste y consulta lecturas de telemetría recibidas desde dispositivos IoT.             | ITelemetryReadingRepository   |
+| StockRecordRepository        | Repositorio | Persiste y consulta registros de stock físico estimado.                                  | IStockRecordRepository        |
+| SupplyThresholdRepository    | Repositorio | Gestiona la persistencia de los umbrales mínimos y de advertencia por insumo y sucursal. | ISupplyThresholdRepository    |
+| DeviceHealthReportRepository | Repositorio | Persiste reportes de salud operativa de dispositivos.                                    | IDeviceHealthReportRepository |
+| ReconciliationTaskRepository | Repositorio | Almacena y consulta tareas de conciliación generadas por discrepancias de stock.         | IReconciliationTaskRepository |
+
+#### Persistence and External Services
+
+| Nombre                           | Categoría                | Propósito                                                                                                                                                                               |
+|----------------------------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| MonitoringDbContext              | ORM Context              | Configura el mapeo entre las entidades del bounded context y las tablas de base de datos relacionadas con telemetría, stock records, thresholds, health reports y reconciliation tasks. |
+| TelemetryConsumer                | Message Consumer         | Recibe mensajes de telemetría publicados por dispositivos IoT o gateways externos.                                                                                                      |
+| DomainEventPublisher             | Message Broker Adapter   | Publica eventos de dominio relevantes hacia otros bounded contexts, como alertas de bajo stock o anomalías detectadas.                                                                  |
+| DeviceGatewayAdapter             | External Service Adapter | Adapta la comunicación con gateways o servicios externos que envían datos de sensores.                                                                                                  |
+| NotificationIntegrationPublisher | Integration Publisher    | Envía eventos de alerta hacia el contexto encargado de notificaciones o dashboards operativos.                                                                                          |
+
+#### Database Tables
+
+| Tabla                 | Propósito                                                                                  |
+|-----------------------|--------------------------------------------------------------------------------------------|
+| telemetry_readings    | Almacena lecturas de peso, cantidad estimada y fecha de recepción de los dispositivos IoT. |
+| stock_records         | Almacena el histórico de estimaciones físicas de stock y diferencias detectadas.           |
+| supply_thresholds     | Guarda los umbrales mínimos y de advertencia configurados por insumo y sucursal.           |
+| device_health_reports | Registra eventos de salud operativa de los dispositivos, como batería, señal y fallas.     |
+| reconciliation_tasks  | Almacena tareas de conciliación generadas por diferencias entre stock físico y digital.    |
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
+
+Este diagrama representa la implementación del bounded context Tracking en la aplicación web.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_frontend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
+##### Mobile Application Component Diagram
+
+Este diagrama muestra la implementación del bounded context Tracking en la aplicación móvil.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_mobile.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+
+##### Backend Application Component Diagram
+
+Este diagrama representa la lógica central del bounded context Tracking en el backend.
+
+<img src="assets/images/chapter4/bc-monitoring/monitoring_component_backend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.6.6.1. Bounded Context Domain Layer Class Diagrams
 
+En esta sección, el equipo presenta el Diagrama de Clases detallado para la Domain Layer del Bounded Context de Tracking. Este diagrama evidencia cómo el contexto organiza la lógica de monitoreo operativo, procesamiento de telemetría, estimación de stock físico, detección de anomalías y generación de tareas de conciliación.
+
+Para mantener la claridad del modelo, el diagrama se ha organizado visualmente en los siguientes sub-paquetes lógicos:
+
+Telemetry Processing: Agrupa la recepción y procesamiento de lecturas enviadas por los dispositivos IoT.
+
+Physical Stock Monitoring: Representa el cálculo y registro del stock físico estimado a partir de la telemetría recibida.
+
+Supply Threshold Monitoring: Define los umbrales mínimos y de advertencia para detectar posibles situaciones de bajo stock.
+
+Device Health Monitoring: Gestiona el estado operativo de los dispositivos, incluyendo fallas, batería, señal y retrasos de telemetría.
+
+Stock Reconciliation: Modela las tareas de conciliación generadas ante discrepancias entre el stock físico estimado y el stock digital.
+
+Domain Events: Mapea los eventos emitidos para comunicar situaciones relevantes como telemetría recibida, anomalías, bajo stock o fallas de dispositivos.
+
+<img src="assets/images/chapter4/bc-monitoring/class_diagram_monitoring.png" alt="Domain Layer Class Diagram - Tracking">
+
 ##### 4.2.6.6.2. Bounded Context Database Design Diagram
+
+En esta sección, se presenta el diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Tracking. Este modelo de persistencia ha sido seleccionado para gestionar eficientemente los grandes volúmenes de telemetría IoT y la flexibilidad del catálogo de recursos.
+
+<img src="assets/images/chapter4/bc-monitoring/db_diagram_monitoring.png" alt="Data Base Class Diagram - Tracking" width="800px">
+
+### 4.2.7. Bounded Context: Sales Management
+
+#### 4.2.7.1. Domain Layer
+
+La capa de dominio representa el núcleo de la aplicación para el Bounded Context **Sales Management**. En esta capa se encapsulan todas las reglas de negocio, invariantes y la lógica fundamental relacionada con la gestión de órdenes de venta, desde su creación hasta su cierre.
+
+Esta capa está aislada de detalles de la capa de infraestructura. Se compone de Entities, Aggregate Roots, Value Objects para garantizar la inmutabilidad de las composiciones, Domain Events y las abstracciones de los repositorios mediante Interfaces.
+
+##### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. Cada Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+<p><em>Tabla de Aggregates en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Sales</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una orden de venta. Encapsula la lógica para validar que la orden contenga al menos un producto, que el total sea mayor a cero y permite actualizar su estado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesItem</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa un ítem dentro de la orden de venta. Se asegura de que la cantidad sea mayor que cero, que el precio unitario también sea mayor que cero y que el total de la línea sea el resultado de multiplicar el precio unitario por la cantidad.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>AdditionalSupply</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Entity</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una línea de producto dentro de la orden. Garantiza que la cantidad sea mayor a cero y que el id del lote referenciado sea válido.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### Value Objects
+
+Estas clases modelan características conceptuales del dominio. Son inmutables y ayudan a evitar el uso excesivo de tipos primitivos, asegurando que los datos siempre sean válidos desde su creación.
+
+<p><em>Tabla de Value Objects en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesTotals</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los valores de subtotal, impuesto y total. Garantiza que estos valores no puedan modificarse una vez creados, que ninguno sea negativo y que el total sea siempre la suma del subtotal y el impuesto.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CustomerName</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el nombre del cliente. Valida que no sea una cadena vacía ni supere el límite de caracteres permitido.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SalesStatus</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Value Object</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el estado de la orden, como pendiente, completado o cancelado. Se asegura de que solo se utilicen valores definidos dentro del conjunto permitido y que los cambios de estado se realicen únicamente siguiendo transiciones válidas.</td>
+    </tr>  
+  </tbody>
+</table>
+
+##### Commands
+
+Los Commands representan las intenciones de los usuarios al interactuar con el sistema. Cada Command encapsula los datos necesarios para ejecutar una acción específica, como crear o actualizar una orden de venta, y se valida antes de ser procesado por su correspondiente Command Handler.
+
+<p><em>Tabla de Commands en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CreateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para crear una nueva orden de venta, incluyendo la lista de ítems, insumos adicionales y el monto total. Valida que la información proporcionada cumpla con las reglas de negocio antes de ser procesada por el Command Handler.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>CancelSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para cancelar una orden de venta existente. Valida que la orden esté en un estado que permita su cancelación y que se proporcione una razón válida para la cancelación.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>UpdateSaleCommand</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command</td>
+      <td style="padding: 10px; border: 1px solid;">Define los datos necesarios para actualizar el estado de una orden de venta. Valida que la transición de estado sea válida según las reglas de negocio y que se proporcione la información necesaria para realizar la actualización.</td>
+    </tr>
+  </tbody>
+</table>
+
+##### Queries
+
+Los Queries representan las solicitudes de información que los usuarios hacen al sistema. Cada Query encapsula los parámetros necesarios para recuperar datos específicos, como el detalle de una orden de venta o la lista de órdenes asociadas a una sucursal, y se valida antes de ser procesada por su correspondiente Query Handler.
+
+<p><em>Tabla de Queries en el Domain Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Nombre de Clase</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Categoría</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propósito y Reglas de Negocio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSalesByBranchIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar todas las órdenes de venta asociadas a una sucursal específica. Valida que el ID de la sucursal sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>GetSaleByIdQuery</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query</td>
+      <td style="padding: 10px; border: 1px solid;">Define los parámetros necesarios para recuperar el detalle completo de una orden de venta por su ID. Valida que el ID de la orden sea válido y que el usuario tenga permisos para acceder a esa información.</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.2. Interface Layer
+
+En la capa de interfaz del Bounded Context de Sales Management se exponen los endpoints RESTful necesarios para interactuar con las funcionalidades de gestión de órdenes de venta. A través de controladores especializados, esta capa actúa como punto de entrada para que las aplicaciones cliente (Web o Móvil) envíen los comandos de creación, actualización o cierre de órdenes, facilitando la consulta del estado y el historial de ventas.
+
+##### SalesController
+
+<p><em>Tabla de SalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la creación, consulta, actualización y cierre de órdenes de venta de tiendas retail y restaurantes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de SalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Command/Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Register</td>
+      <td style="padding: 10px; border: 1px solid;">/ (POST)</td>
+      <td style="padding: 10px; border: 1px solid;">Crea una nueva orden de venta con sus ítems, insumos adicionales y monto total.</td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetById</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna el detalle completo de una orden de venta por su ID.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranch</td>
+      <td style="padding: 10px; border: 1px solid;">/branches/{branchId}/sales/{saleId} (GET)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
+    </tr>    
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Edit</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId}/status (PATCH)</td>
+      <td style="padding: 10px; border: 1px solid;">Actualiza el estado de una orden de venta </td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Delete</td>
+      <td style="padding: 10px; border: 1px solid;">/{saleId} (DELETE)</td>
+      <td style="padding: 10px; border: 1px solid;">Cancela una orden de venta marcándola con estado cancelado</td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Tabla de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">BranchSalesController</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Controller</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Exponer los endpoints para la consulta de órdenes de venta asociadas a una sucursal específica.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
+      <td style="padding: 10px; border: 1px solid;">/api/v1/branches/{branchId}/sales</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de métodos de BranchSalesController en el Interface Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid;">Nombre</th>
+      <th style="padding: 10px; border: 1px solid;">Ruta</th>
+      <th style="padding: 10px; border: 1px solid;">Acción</th>
+      <th style="padding: 10px; border: 1px solid;">Handle (Query)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;">Get</td>
+      <td style="padding: 10px; border: 1px solid;">/ (Get)</td>
+      <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchId</td>
+    </tr>
+</table>
+
+#### 4.2.7.3. Application Layer
+
+La capa de aplicación del Bounded Context de Sales Management orquesta los flujos de trabajo dictados por los usuarios al gestionar sus órdenes de venta. Aquí residen los Command Handlers encargados de procesar la creación, actualización o cierre de órdenes, asegurando que se cumplan las reglas de negocio antes de delegar la persistencia al dominio.
+
+##### SalesCommandHandler
+
+<p><em>Tabla de CreateSaleCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la creación de una nueva orden de venta, validando que contenga al menos un ítem, que el monto total sea correcto y que se asocie a la sucursal correspondiente antes de persistirla a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CreateSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### UpdateSaleStatusCommandHandler
+
+<p><em>Tabla de UpdateSaleStatusCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la actualización del estado de una orden de venta, validando que la transición de estado sea válida y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">UpdateSaleStatusCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### CancelSaleCommandHandler
+
+<p><em>Tabla de CancelSaleCommandHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommandHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Command Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la cancelación de una orden de venta, validando que la orden exista, que su estado actual permita la cancelación y que se realice dentro de un marco temporal permitido antes de persistir el cambio a través del dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">CancelSaleCommand</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetSaleByIdQueryHandler
+
+<p><em>Tabla de GetSaleByIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de una orden de venta por su ID, validando que la orden exista y que el usuario tenga permisos para acceder a esa información antes de retornar el detalle completo de la orden.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSaleByIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+##### GetSalesByBranchIdQueryHandler
+
+<p><em>Tabla de GetSalesByBranchIdQueryHandler en el Application Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQueryHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Query Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la consulta de todas las órdenes de venta asociadas a una sucursal específica, validando que la sucursal exista y que el usuario tenga permisos para acceder a esa información antes de retornar el listado completo de órdenes.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
+      <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+#### 4.2.7.4. Infrastructure Layer
+
+La capa de infrastructure de Sales Management materializa los repositorios necesarios para almacenar las órdenes de venta. Además, es el punto donde se implementan los adaptadores para servicios de terceros, como sistemas de pago o plataformas de envío, que son vitales para completar el ciclo de vida de una orden.
+
+##### SalesRepository
+
+<p><em>Tabla de SalesRepository en el Infrastructure Layer</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SalesRepository</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Repositorio</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistir las órdenes de venta, permitiendo su creación, actualización y consulta a través de la implementación de las operaciones definidas en el dominio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ISalesRepository</td>
+    </tr>
+  </tbody>
+</table>
+
+#### 4.2.7.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del bounded context de **Sales Management** mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros componentes o servicios.
+
+##### Web Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
+
+<img src="https://i.imgur.com/DmgkRpH.png" alt="Web Sales Order Management Component Diagram" width="100%">
+
+##### Mobile Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación móvil, se implementa como un componente Dart/Flutter dentro del Restock Mobile Application, cumple la misma responsabilidad de gestión de órdenes de sucursal, reutilizando widgets o clases del componente Shared y conectándose igualmente al backend principal mediante JSON/HTTPS para el registro y consulta de ventas.
+
+<img src="https://i.imgur.com/FKwWjcM.png" alt="Mobile Sales Order Management Component Diagram" width="100%">
+
+##### Backend Application Component Diagram
+
+El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
+
+<img src="https://i.imgur.com/pR0rPXd.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+
+#### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.7.6.1. Bounded Context Domain Layer Class Diagrams
+
+En esta sección se presenta el Diagrama de Clases detallado para el Bounded Context de Sales Management. Que ilustra la estructura del dominio, destacando entities, aggregate roots, value objects y las interfaces de repositorio que conforman el núcleo de la lógica de negocio para la gestión de órdenes de venta del negocio.
+
+En el dominio, el Aggregate Root Sales centraliza la lógica de una orden de venta, agrupando entidades como SaleItem y AdditionalSupply, y apoyándose en Value Objects como SaleTotals, CustomerName y el enum SaleStatus para garantizar la validez de los datos. Además, se define los command y query service interfaces que orquestan las operaciones de creación y consulta de ventas, manteniendo una clara separación de responsabilidades.
+
+<img src="https://i.imgur.com/EVNhCMl.png" alt="Class Diagram - Sales Management">
+
+##### 4.2.7.6.2. Bounded Context Database Design Diagram
+
+En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo un enfoque No Relacional (NoSQL), del tipo orientado a documentos, para el Bounded Context de Sales Management.
+
+<img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Management" width="800px">
 
 ## 4.2.8. Bounded Context: Communication
 
@@ -3733,3 +6441,37 @@ El diagrama de diseño de base de datos del Bounded Context Communication muestr
 <img src="https://imgur.com/WjWyVzo.png" alt="database-communication">
 
 El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (`business_id` como FK), la sucursal asociada (`branch_id` como FK), el usuario destinatario (`user_id` como FK), el tipo de evento que la originó (`type`), el título y cuerpo del mensaje (`title`, `message`), la prioridad asignada (`priority`), la fecha y hora de envío (`sent_at`) y el estado de lectura (`read`). Los campos `business_id`, `branch_id` y `user_id` actúan como referencias externas hacia los bounded contexts de Profiles and Preferences e Identity and Access Management, respectivamente, sin establecer joins físicos dado el modelo documental de MongoDB. A diferencia de un modelo relacional con tablas separadas, este diseño consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por `user_id`, `business_id` o `type`. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones adicionales.
+
+### 4.2.9. Bounded Context: Device Management
+
+#### 4.2.9.1. Domain Layer
+
+#### 4.2.9.2. Interfaces Layer
+
+#### 4.2.9.3. Application Layer
+
+#### 4.2.9.4. Infrastructure Layer
+
+#### 4.2.9.5. Bounded Context Software Architecture Component Level Diagrams
+
+#### 4.2.9.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.9.6.1. Bounded Context Domain Layer Class Diagrams
+
+##### 4.2.9.6.2. Bounded Context Database Design Diagram
+
+### 4.2.10. Bounded Context: Analytics
+
+#### 4.2.10.1. Bounded Context Software Architecture Component Level Diagrams
+
+### 4.2.11. Bounded Context: Shared Kernel
+
+#### 4.2.11.1. Domain Layer
+
+#### 4.2.11.2. Infrastructure Layer
+
+#### 4.2.11.3. Bounded Context Software Architecture Component Level Diagrams
+
+#### 4.2.11.4. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.11.4.1. Bounded Context Domain Layer Class Diagrams
