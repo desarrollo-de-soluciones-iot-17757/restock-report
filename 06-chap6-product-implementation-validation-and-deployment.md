@@ -23,15 +23,15 @@ Durante el Sprint 1, se han definido los pilares estratégicos del sistema basad
 
 Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficiente, se ha elaborado la siguiente matriz de liderazgo y colaboración (LACX). En ella se designa un líder responsable (L) para la integridad de cada contexto y colaboradores (C) que aseguran la integración y el cumplimiento de los 40 puntos de historia definidos en la planificación.
 
-| Team Member (Last Name, First Name) | Identity and Access Management | Subscriptions and Payments | Profiles and Preferences | Alerts and Notifications | Asset and Resource Management | Service Operation and Monitoring | Service Design and Planning | Sales Order Management |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Navarro Chinga, Antonio Jhair | **L** | C | C | C | C | C | C | C |
-| Guerra Perez, José Jahaziel | C | **L** | C | C | C | C | C | C |
-| Juarez Leon, Nicolas Emilio | C | C | **L** | C | C | **L** | C | C |
-| Diaz Quispe, Matias Sebastian | C | C | C | **L** | C | C | C | C |
-| Castro Alejos, Julio Daniel | C | C | C | C | **L** | C | **L** | C |
-| Shapiama Rivera, Gabriela Nicole | C | C | C | C | **L** | **L** | C | C |
-| Coronel Espinoza, Farid Sebastian | C | C | C | C | C | C | C | **L** |
+| Team Member (Last Name, First Name) | GitHub Username | Propósito y Atracción de Visitantes | Seguridad y Control de Acceso | Monetización y Control de Recursos | Perfiles y Configuración de Negocios | Gestión de Alertas y Mensajes | Sedes, Suministros y Hardware | Diseño de Recetas y Kits | Registro y Gestión de Ventas | Monitoreo de Stock e IoT |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Navarro Chinga, Antonio Jhair | AntonioNavarro24 |  | **L** |  |  |  |  |  |  |  |
+| Guerra Perez, José Jahaziel | jahazielgg |  |  | **L** |  |  |  |  |  |  |
+| Juarez Leon, Nicolas Emilio | JuarezLn10 |  |  |  | **L** |  |  |  |  | **L** |
+| Diaz Quispe, Matias Sebastian | equinox-1092 | **L** |  |  |  | **L** |  |  |  |  |
+| Castro Alejos, Julio Daniel | JulioXC4 |  |  |  |  |  | C | **L** |  |  |
+| Shapiama Rivera, Gabriela Nicole | GabrielaShapiama28 |  |  |  |  |  | **L** |  |  | C |
+| Coronel Espinoza, Farid Sebastian | Far14z |  |  |  |  |  |  |  | **L** |  |
 
 #### 6.2.1.3. Sprint Backlog 1
 
