@@ -640,7 +640,7 @@ En esta pantalla se muestra el listado de todas las sucursales registradas bajo 
 
 
 <div align="center">
-  <img src="https://i.imgur.com/PDEwpOG.png">
+  <img src="https://i.imgur.com/7SZem7C.png">
 </div>
 
 #### Crear una nueva sucursal
@@ -729,7 +729,7 @@ En esta pantalla el usuario puede modificar la información de un suministro pre
 Esta pantalla muestra el listado de combos disponibles configurados en la plataforma. El usuario puede visualizar los combos existentes, acceder al detalle de cada uno y gestionar su composición según los suministros o productos que los integran.
 
 <div align="center">
-  <img src="https://i.imgur.com/owwjEEt.png">
+  <img src="https://i.imgur.com/jImC02b.png">
 </div>
 
 #### Detalle de combo
@@ -737,7 +737,7 @@ Esta pantalla muestra el listado de combos disponibles configurados en la plataf
 En esta pantalla se presenta la información detallada de un combo específico, incluyendo los productos o suministros que lo componen, sus cantidades y el precio o condiciones asociadas. El usuario puede editar o eliminar el combo desde esta vista.
 
 <div align="center">
-  <img src="https://i.imgur.com/3oH6LBS.png">
+  <img src="https://i.imgur.com/bRfra7h.png">
 </div>
 
 #### Cátalogo de recetas
@@ -761,7 +761,7 @@ En esta pantalla se visualiza la información completa de una receta en particul
 Esta pantalla corresponde al panel principal para negocios de tipo retail, donde el usuario puede visualizar métricas clave del inventario, alertas de stock bajo, movimientos recientes y un resumen general del estado de sus productos y sucursales.
 
 <div align="center">
-  <img src="https://i.imgur.com/Z4YWRxA.png">
+  <img src="https://i.imgur.com/W4VMaSZ.png">
 </div>
 
 #### Restaurant Dashboard
@@ -777,7 +777,7 @@ Esta pantalla es el panel principal para negocios de tipo restaurante, mostrando
 En esta pantalla se presentan los distintos planes de suscripción disponibles en la plataforma Restock. El usuario puede comparar las características y beneficios de cada plan para seleccionar el que mejor se adapte a las necesidades de su negocio.
 
 <div align="center">
-  <img src="https://i.imgur.com/ijIXAr3.png">
+  <img src="https://i.imgur.com/BTcOQaV.png">
 </div>
 
 #### Configuración y preferencias
@@ -785,7 +785,7 @@ En esta pantalla se presentan los distintos planes de suscripción disponibles e
 Esta pantalla permite al usuario personalizar las preferencias generales de la plataforma, como notificaciones, idioma, zona horaria y otras opciones de configuración que afectan la experiencia de uso dentro de Restock.
 
 <div align="center">
-  <img src="https://i.imgur.com/qRfAIuu.png">
+  <img src="https://i.imgur.com/bcj4I7K.png">
 </div>
 
 #### Perfil del negocio
@@ -801,7 +801,7 @@ En esta pantalla el usuario puede visualizar y editar la información general de
 Esta pantalla muestra la información personal del usuario principal de la cuenta, muestra como nombre, correo electrónico y opciones para actualizar sus datos.
 
 <div align="center">
-  <img src="https://i.imgur.com/8YasZDN.png">
+  <img src="https://i.imgur.com/a60Y9eI.png">
 </div>
 
 #### Notificaciones
@@ -809,7 +809,7 @@ Esta pantalla muestra la información personal del usuario principal de la cuent
 En esta pantalla el usuario puede revisar todas las notificaciones generadas por la plataforma, tales como alertas de stock bajo, productos próximos a vencer, actualizaciones del sistema y otros avisos relevantes para la gestión del inventario.
 
 <div align="center">
-  <img src="https://i.imgur.com/wnqW2Kc.png">
+  <img src="https://i.imgur.com/vMzvB0c.png">
 </div>
 
 #### Monitoreo de dispositivos IoT
@@ -817,7 +817,7 @@ En esta pantalla el usuario puede revisar todas las notificaciones generadas por
 Esta pantalla permite al usuario visualizar en tiempo real el estado de los dispositivos IoT conectados a la plataforma, mostrando métricas como niveles de stock detectados por sensores, estado de conexión de cada dispositivo y últimas lecturas registradas.
 
 <div align="center">
-  <img src="https://i.imgur.com/cZ6kkLs.png">
+  <img src="https://i.imgur.com/d7p4XBH.png">
 </div>
 
 #### Configuración de suministro a dispositivo IoT
@@ -976,7 +976,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
 <div align="center">
   <img src="">
 </div>
-
+x`
 #### Notificaciones
 
 <div align="center">
