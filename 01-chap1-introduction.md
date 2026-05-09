@@ -190,55 +190,52 @@ Sabremos que hemos tenido éxito cuando observemos una reducción en los errores
 
 ##### A. Business Assumptions
 
-1. Creemos que nuestros clientes necesitan mejorar el control de inventarios, reducir la discrepancia entre el stock físico y el stock registrado, y optimizar el uso del espacio de almacenamiento en restaurantes y tiendas retail de consumo masivo.
-2. Estas necesidades pueden resolverse con una solución tecnológica que combine sensores de peso, gestión de inventario e integración con el punto de venta.
-3. Nuestros clientes iniciales serán dueños o administradores de restaurantes, así como dueños o administradores de tiendas retail de consumo masivo.
-4. El valor #1 que nuestros clientes quieren de nuestro servicio es conocer en tiempo real el estado del inventario, la disponibilidad de productos, detectar discrepancias entre el inventario físico y el registrado y el nivel de ocupación de sus áreas de almacenamiento o exhibición.
-5. Nuestros clientes pueden obtener beneficios como reducción de errores manuales, mejor organización del almacén, optimización del espacio, control más preciso del stock, reducción de discrepancias y apoyo en la toma de decisiones.
-6. Adquiriremos la mayoría de nuestros clientes a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de tecnología, equipamiento y mantenimiento.
-7. Haremos dinero a través de una suscripción mensual por local, con planes adicionales por monitoreo de sensores de peso, integración con ventas o mantenimiento.
-8. Nuestra competencia principal en el mercado estará conformada por los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
-9. Los venceremos debido a la automatización del control de inventario, la integración con el punto de venta, la detección de discrepancias y las alertas inteligentes de reposición.
-10. Nuestro mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
-11. Resolveremos esto mediante una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
-12. Otras suposiciones que tenemos son que la conectividad será estable, que los sensores de peso funcionarán correctamente y que el local estará dispuesto a integrar el sistema con sus ventas.
+- Creemos que nuestros clientes necesitan mejorar el control de inventarios, reducir la discrepancia entre el stock físico y el stock registrado, y optimizar el uso del espacio de almacenamiento en restaurantes y tiendas retail de consumo masivo.
+- Estas necesidades se pueden resolver con una solución tecnológica que combine sensores de peso, gestión de inventario e integración con el punto de venta.
+- Nuestros clientes iniciales serán dueños o administradores de restaurantes, así como dueños o administradores de tiendas retail de consumo masivo.
+- El valor #1 que nuestros clientes quieren de nuestro servicio es conocer en tiempo real el estado del inventario, la disponibilidad de productos, detectar discrepancias entre el inventario físico y el registrado y el nivel de ocupación de sus áreas de almacenamiento o exhibición.
+- Nuestros clientes pueden obtener beneficios como reducción de errores manuales, mejor organización del almacén, optimización del espacio, control más preciso del stock, reducción de discrepancias y apoyo en la toma de decisiones.
+- Creemos que adquiriremos la mayoría de nuestros clientes a través de ventas directas B2B, referidos comerciales y alianzas con proveedores de tecnología, equipamiento y mantenimiento.
+- Haremos dinero a través de una suscripción mensual por local, con planes adicionales por monitoreo de sensores de peso, integración con ventas o mantenimiento.
+- Nuestra competencia principal en el mercado estará conformada por los sistemas tradicionales de inventario, soluciones de gestión de almacenes y herramientas de control de stock.
+- Esperamos diferenciarnos mediante herramientas de automatización del control de inventario, la integración con el punto de venta, la detección de discrepancias y las alertas inteligentes de reposición.
+- Nuestro mayor riesgo de producto es la resistencia al cambio y la dependencia de procesos manuales ya establecidos.
+- Buscaremos mitigar este riesgo mediante una interfaz simple, capacitación inicial, alertas automáticas y reportes fáciles de interpretar.
 
 ##### B. User Assumptions
 
-- **¿Quién es el usuario?** Dueños o administradores de restaurantes y de tiendas retail de consumo masivo, además del personal encargado de almacén o reposición.
-- **¿Dónde encaja el producto?** En las tareas diarias de control de inventario, reposición, organización del almacén y supervisión de productos disponibles para venta, incluyendo la verificación de discrepancias entre el stock físico y el registrado.
-- **Problema a resolver**: manejo manual del inventario, desorden en el almacén, dificultad para identificar productos con bajo stock y discrepancias entre el inventario real y el registrado.
-- **Uso típico**: revisar el estado del inventario, registrar stock, recibir alertas de reposición, identificar diferencias entre el inventario físico y el digital y analizar qué productos deben tener mayor espacio o prioridad según su rotación.
-- **Características importantes**: sensores de peso, monitoreo en tiempo real, alertas de reposición, integración con punto de venta, priorización de productos por ventas y panel de control.
-- **Look & feel**: interfaz clara, visual y responsiva; navegación simple y datos fáciles de interpretar.
+- Los usuarios serán dueños o administradores de restaurantes y de tiendas retail de consumo masivo, además del personal encargado de almacén o reposición.
+- Los administradores de restaurantes y tiendas retail y su personal de almacén ejecutan tareas diarias de control de inventario, reposición, organización del almacén y supervisión de productos disponibles para venta, incluyendo la verificación de discrepancias entre el stock físico y el registrado.
+- Los administradores de restaurantes y tiendas retail y su personal de almacén ejecutan un manejo manual del inventario, desorden en el almacén, dificultad para identificar productos con bajo stock y discrepancias entre el inventario real y el registrado.
+- Los administradores de restaurantes y tiendas retail revisan el estado del inventario, registrar stock, recibir alertas de reposición, identificar diferencias entre el inventario físico y el digital y analizar qué productos deben tener mayor espacio o prioridad según su rotación.
+- Los administradores de restaurantes y tiendas retail esperan una interfaz clara, visual y responsiva; navegación simple y datos fáciles de interpretar.
 
-##### C. User Outcome & Benefit Assumptions
+##### C. User Outcome & Benefits
 
-- Saber en tiempo real qué productos requieren reposición.
-- Reducir el trabajo manual y los errores en el control de stock.
-- Reducir la discrepancia entre el inventario físico y el registrado.
-- Optimizar el espacio de almacenamiento según la rotación de productos.
-- Priorizar productos con mayor demanda de acuerdo con las ventas.
-- Tomar decisiones operativas más rápidas y precisas.
+- Reducir en 30% la detección y resolución tardía de eventos críticos de inventario.
+- Disminuir en 25% el tiempo promedio dedicado al control rutinario de stock de los suministros.
+- Aumentar en 40% la precisión en la reposición de suministros.
+- Aumenta en un 30% la eficiencia en el manejo de los productos vendidos individualmente o en conjunto.
+- Mejorar en 35% la eficiencia de gestión de operaciones entre sucursales.
+- Reducir en un 30% los eventos de discrepancia entre el inventario físico y digital.
 
-##### D. Business Outcome Assumptions (métricas objetivo)
+##### D. Business Outcome (métricas objetivo)
 
-- Reducir en 30 % los errores de inventario detectados en los primeros 2 meses.
-- Disminuir en 25 % el tiempo dedicado al control manual de stock.
-- Aumentar en 40 % la precisión en la reposición de productos.
-- Lograr 500 usuarios activos entre administradores y operarios en 6 meses.
-- Mejorar en 35 % la eficiencia de ocupación del espacio en almacenes o zonas de exhibición.
-- Reducir la discrepancia entre el inventario físico y el registrado en los primeros meses de uso.
+- Mejorar la puntuación de satisfacción del cliente (CSAT) al 80%.
+- Incrementar el margen de beneficio neto por la adquisición de suscripciones en un 40%,
+- Incrementar la tasa de retención de usuarios dentro de la plataforma en un 35%.
+- Incrementar en un 35% el uso de herramientas digitales en procesos de gestión rutinaria de inventarios.
+- Incrementar en un 40% la eficiencia del manejo de stock y lotes de suministros en almacenes.
+- Lograr 500 usuarios activos entre administradores y operarios.
 
-##### E. Feature Assumptions
+##### E. Features Assumptions
 
-- Los sensores de peso en las áreas de almacenamiento o exhibición permiten detectar si hay espacio disponible o si el producto está próximo a agotarse.
-- Las alertas automáticas ayudan a identificar cuándo un producto necesita reposición.
-- La integración con el punto de venta permite reconocer qué productos tienen mayor rotación.
-- El sistema permite detectar discrepancias entre el inventario físico y el registrado.
-- El panel de control centraliza inventario, ventas, alertas y estado del almacenamiento.
-- La gestión digital del inventario reduce la dependencia de procesos manuales y mejora la organización general.
-
+- **Centro de alertas y notificaciones:** Envío de alertas automáticas ante detección de eventos críticos en el inventario, como stock bajo o nulo, temperatura o humedad fuera del rango permitido para un suministro determinado.
+- **Monitoreo de estado de un suministro:** Captura y visualización en tiempo real del peso, temperatura y humedad de un suministro en las áreas de almacenamiento o exhibición que permite identificar el estado actual de un suministro ya sea respecto de su stock o de las condiciones en las que está siendo almacenado.
+- **Gestión de lotes de suministros:** Permite registrar y monitorear lotes de suministros para mejorar el control de stock de un suministro.
+- **Módulo de ventas:** Registro de ventas y asignación de suministros en conjunto o individuales con cálculo automático del precio total.
+- **Módulo multi-sucursal:** Panel de control por sucursal que centraliza su inventario, módulo de ventas, alertas y estado del almacenamiento.
+- **Detección de discrepancias:** Detección de discrepancias de stock entre el inventario físico y digital.
 
 #### 1.2.2.3 Lean UX Hypothesis Statements
 
