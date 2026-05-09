@@ -434,6 +434,7 @@ Se ha priorizado la claridad semántica y la coherencia con el lenguaje visual d
 - **Dispositivos:** Gestión y monitoreo de balanzas IoT en tiempo real. Incluye estado de conexión, salud de los sensores y vinculación de dispositivos con insumos específicos.
 
 **Aplicación Web – Administradores del sector Retail**
+- **Kits:** Catálogo de productos combinados vinculados al inventario. Permite gestionar combos, monitorear alertas de stock bajo por kit y editar detalles de ofertas comerciales.
 
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
