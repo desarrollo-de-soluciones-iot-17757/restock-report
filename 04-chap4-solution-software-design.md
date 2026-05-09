@@ -6460,9 +6460,284 @@ El diagrama evidencia una estructura centrada en la colección notifications, qu
 
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
-### 4.2.10. Bounded Context: Analytics
+## 4.2.10. Bounded Context: Analytics
 
-#### 4.2.10.1. Bounded Context Software Architecture Component Level Diagrams
+#### 4.2.10.1. Domain Layer
+
+La capa de dominio del Bounded Context de Analytics encapsula las reglas de negocio relacionadas con la construcción, consulta y presentación de indicadores operativos del inventario. Este contexto actúa como agregador de información proveniente de otros bounded contexts como Tracking, Asset and Resource Management y Communication, para transformarla en métricas accionables dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que el dashboard refleje en todo momento el estado real del negocio: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+
+#### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+*Tabla de Aggregates en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **Metric** | Aggregate Root | Representa el estado consolidado del dashboard para una cuenta de negocio en un momento dado. Agrupa los indicadores operativos clave: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. Controla su ciclo de vida: construcción, actualización ante eventos de inventario o alerta, y consulta por parte de los administradores. Garantiza que los indicadores presentados correspondan siempre a la sucursal o cuenta activa del usuario autenticado. |
+
+#### Value Objects
+
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+
+*Tabla de Value Objects en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **StockIndicator** | Value Object | Encapsula la información de un insumo en estado crítico: identificador del insumo, nombre, cantidad actual, umbral mínimo y sucursal de origen. Permite clasificar el insumo como zero_stock o low_stock según la comparación entre la cantidad actual y el umbral configurado. |
+| **RecentSupplyEntry** | Value Object | Encapsula los datos de un insumo registrado recientemente en el sistema: identificador, nombre, categoría, fecha de registro y sucursal de origen. Permite presentar al administrador los últimos insumos incorporados al inventario sin exponer el modelo completo del insumo. |
+| **RecentAlertEntry** | Value Object | Encapsula los datos de una alerta reciente generada por el sistema: identificador, tipo de alerta, mensaje, prioridad, sucursal de origen y timestamp. Permite al dashboard presentar las últimas alertas sin depender directamente del modelo interno del Bounded Context Communication. |
+| **DashboardSummaryId, BusinessId, BranchId** | Value Object | Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos de identificación del negocio y la sucursal activa del usuario autenticado. |
+
+#### Commands
+
+Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
+
+*Tabla de Commands en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **RefreshDashboardSummaryCommand** | Command | Encapsula los datos necesarios para reconstruir el resumen del dashboard de una cuenta: businessId, branchId opcional y timestamp de actualización. Es invocado por los Event Handlers cuando llegan eventos de inventario o alerta desde Asset and Resource Management, Tracking o Communication. |
+
+#### Queries
+
+Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
+
+*Tabla de Queries en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **GetDashboardSummaryQuery** | Query | Encapsula los criterios de consulta para recuperar el resumen del dashboard de una cuenta autenticada: businessId y branchId opcional. Retorna los indicadores de stock cero, bajo stock, últimos insumos registrados y alertas recientes. |
+| **GetZeroStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos con stock igual a cero para una cuenta y sucursal determinadas. |
+| **GetLowStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos cuya cantidad actual se encuentra por debajo del umbral mínimo configurado, ordenados por nivel de criticidad. |
+| **GetRecentSuppliesQuery** | Query | Encapsula los criterios para recuperar los últimos insumos registrados en el inventario de una cuenta, con soporte de filtro por sucursal y límite de resultados. |
+| **GetRecentAlertsQuery** | Query | Encapsula los criterios para recuperar las últimas alertas generadas por el sistema para una cuenta, con soporte de filtro por tipo de alerta y sucursal de origen. |
+
+#### Domain Events
+
+Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+
+*Tabla de Domain Events en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **DashboardSummaryRefreshedEvent** | Domain Event | Emitido por el aggregate Metric al completar su actualización exitosamente. Permite que otros componentes del contexto reaccionen para invalidar cachés o notificar a clientes conectados mediante WebSocket. |
+| **StockLevelChangedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica un cambio en el nivel de stock de un insumo. Dispara la actualización de los indicadores de stock cero y bajo stock en el dashboard. |
+| **SupplyRegisteredEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica el registro de un nuevo insumo en el catálogo. Dispara la actualización del indicador de últimos insumos registrados en el dashboard. |
+| **NotificationGeneratedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Communication que notifica la generación de una nueva alerta. Dispara la actualización del indicador de alertas recientes en el dashboard. |
+
+#### 4.2.10.2. Interface Layer
+
+La capa de interfaz del Bounded Context de Analytics expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar los indicadores del dashboard desde la aplicación web y móvil. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries y delega su ejecución a la capa de aplicación. Los datos consultados se sirven desde la caché Redis cuando están disponibles, garantizando tiempos de respuesta bajos para las vistas de mayor frecuencia de acceso.
+
+#### AnalyticsController
+
+*Tabla de AnalyticsController en el Interface Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsController |
+| **Categoría** | Controller |
+| **Propósito** | Exponer endpoints para consultar el resumen del dashboard, los insumos con stock cero, los insumos con bajo stock, los últimos insumos registrados y las alertas recientes de una cuenta autenticada. |
+| **Ruta** | /api/v1/analytics |
+
+*Tabla de métodos de AnalyticsController en el Interface Layer*
+
+| Nombre | Ruta | Acción | Handle (Command/Query) |
+|---|---|---|---|
+| GetDashboardSummary | /dashboard (GET) | Retorna el resumen consolidado del dashboard con todos los indicadores operativos para la cuenta autenticada. | GetDashboardSummaryQuery |
+| GetZeroStockSupplies | /supplies/zero-stock (GET) | Retorna el listado de insumos con stock igual a cero para la cuenta y sucursal activa. | GetZeroStockSuppliesQuery |
+| GetLowStockSupplies | /supplies/low-stock (GET) | Retorna el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad. | GetLowStockSuppliesQuery |
+| GetRecentSupplies | /supplies/recent (GET) | Retorna los últimos insumos registrados en el inventario de la cuenta autenticada. | GetRecentSuppliesQuery |
+| GetRecentAlerts | /alerts/recent (GET) | Retorna las últimas alertas generadas por el sistema para la cuenta autenticada. | GetRecentAlertsQuery |
+
+#### 4.2.10.3. Application Layer
+
+La capa de aplicación del Bounded Context de Analytics orquesta los casos de uso relacionados con la construcción y consulta de indicadores del dashboard. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de Asset and Resource Management, Tracking y Communication, reconstruir los indicadores del dashboard, almacenarlos en la caché Redis para optimizar las consultas frecuentes y exponerlos a los clientes a través de la capa de interfaz.
+
+#### RefreshDashboardSummaryCommandHandler
+
+*Tabla de RefreshDashboardSummaryCommandHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | RefreshDashboardSummaryCommandHandler |
+| **Categoría** | Command Handler |
+| **Propósito** | Orquestar la reconstrucción del resumen del dashboard consultando los datos actualizados de inventario desde Asset and Resource Management y las alertas recientes desde Communication, persistiendo el resultado en la caché Redis e invalidando los datos anteriores para garantizar consistencia. |
+| **Comando** | RefreshDashboardSummaryCommand |
+
+#### GetDashboardSummaryQueryHandler
+
+*Tabla de GetDashboardSummaryQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetDashboardSummaryQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el resumen consolidado del dashboard desde la caché Redis para la cuenta autenticada. Si los datos no están disponibles en caché, delega la reconstrucción al RefreshDashboardSummaryCommandHandler antes de retornar la respuesta al cliente. |
+| **Query** | GetDashboardSummaryQuery |
+
+#### GetZeroStockSuppliesQueryHandler
+
+*Tabla de GetZeroStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetZeroStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock igual a cero para la cuenta y sucursal activa, recuperando los datos desde la caché Redis o delegando la consulta al repositorio de inventario si la caché está expirada. |
+| **Query** | GetZeroStockSuppliesQuery |
+
+#### GetLowStockSuppliesQueryHandler
+
+*Tabla de GetLowStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetLowStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad, desde la caché Redis o delegando al repositorio de inventario cuando sea necesario. |
+| **Query** | GetLowStockSuppliesQuery |
+
+#### GetRecentSuppliesQueryHandler
+
+*Tabla de GetRecentSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar los últimos insumos registrados en el inventario de la cuenta autenticada, con soporte de filtro por sucursal y límite de resultados, recuperando los datos desde la caché Redis o delegando al repositorio cuando sea necesario. |
+| **Query** | GetRecentSuppliesQuery |
+
+#### GetRecentAlertsQueryHandler
+
+*Tabla de GetRecentAlertsQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentAlertsQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar las últimas alertas generadas por el sistema para la cuenta autenticada, con soporte de filtro por tipo de alerta y sucursal, recuperando los datos desde la caché Redis o delegando al repositorio de alertas cuando sea necesario. |
+| **Query** | GetRecentAlertsQuery |
+
+#### StockLevelChangedEventHandler
+
+*Tabla de StockLevelChangedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | StockLevelChangedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando cambia el nivel de stock de un insumo, invocando el RefreshDashboardSummaryCommand para actualizar los indicadores de stock cero y bajo stock en el dashboard. |
+| **Evento** | StockLevelChangedEvent |
+
+#### SupplyRegisteredEventHandler
+
+*Tabla de SupplyRegisteredEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | SupplyRegisteredEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando se registra un nuevo insumo en el catálogo, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de últimos insumos registrados en el dashboard. |
+| **Evento** | SupplyRegisteredEvent |
+
+#### NotificationGeneratedEventHandler
+
+*Tabla de NotificationGeneratedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | NotificationGeneratedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Communication cuando se genera una nueva alerta en el sistema, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de alertas recientes en el dashboard. |
+| **Evento** | NotificationGeneratedEvent |
+
+#### 4.2.10.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Analytics resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de resúmenes del dashboard, se configura la integración con la caché Redis para optimizar las consultas frecuentes, se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Asset and Resource Management, Tracking y Communication, y se configuran las consultas de lectura sobre MongoDB para los indicadores que no están en caché. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia en caché, consultas de lectura sobre las colecciones de otros bounded contexts y consumo de eventos de integración.
+
+#### AnalyticsCacheRepository
+
+*Tabla de AnalyticsCacheRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsCacheRepository |
+| **Categoría** | Cache Repository |
+| **Propósito** | Persistir y recuperar los resúmenes del dashboard, los indicadores de stock crítico, los últimos insumos registrados y las alertas recientes desde la caché Redis, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados en el dashboard. |
+| **Interfaz** | IAnalyticsCacheRepository |
+
+#### AnalyticsReadRepository
+
+*Tabla de AnalyticsReadRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsReadRepository |
+| **Categoría** | Read Repository |
+| **Propósito** | Ejecutar consultas de solo lectura sobre las colecciones `custom_supplies`, `batches`, `stock_records` y `notifications` de MongoDB para construir los indicadores del dashboard cuando los datos no están disponibles en la caché Redis. |
+| **Interfaz** | IAnalyticsReadRepository |
+
+#### IntegrationEventConsumer
+
+*Tabla de IntegrationEventConsumer en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | IntegrationEventConsumer |
+| **Categoría** | Message Broker Consumer |
+| **Propósito** | Consumir eventos de integración emitidos por Asset and Resource Management (`StockLevelChangedEvent`, `SupplyRegisteredEvent`) y Communication (`NotificationGeneratedEvent`), transformándolos en comandos internos que disparan la actualización de los indicadores del dashboard dentro del contexto. |
+| **Interfaz** | IIntegrationEventConsumer |
+
+#### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context Analytics, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la construcción y presentación de los indicadores del dashboard.
+
+##### Web Application Component Diagram
+
+El componente Analytics dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
+
+![web-analytics](https://imgur.com/b7pXs3Y.png)
+
+El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
+
+##### Mobile Application Component Diagram
+
+El componente Analytics dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar los indicadores del dashboard y los resúmenes de stock, permitiendo que los administradores consulten el estado operativo de su negocio desde sus dispositivos móviles.
+
+![mobile-analytics](https://imgur.com/VJjhLSh.png)
+
+El diagrama muestra que el componente Analytics de la aplicación móvil replica estructuralmente el comportamiento del componente web, adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente garantiza una experiencia consistente independientemente del dispositivo utilizado.
+
+##### Backend Application Component Diagram
+
+El componente Analytics dentro del Restock Cloud Server Side App concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
+
+![api-analytics](https://imgur.com/T5G77zJ.png)
+
+El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communication, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
+
+#### 4.2.10.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.10.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama de clases de la capa de dominio del Bounded Context de Analytics modela las responsabilidades estructurales del sistema de indicadores operativos del inventario. Su diseño refleja cómo el dominio encapsula el ciclo de vida de un resumen del dashboard, desde su construcción ante un evento de inventario o alerta externo hasta su consulta por parte de los administradores, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates, value objects y domain events que definen la estructura y las reglas del dominio, y services, que contiene los commands y queries que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
+
+![class-diagram-analytics](https://imgur.com/LjiALCp.png)
+
+El diagrama de clases del Bounded Context de Analytics se centra en un único Aggregate Root, Metric, que actúa como la unidad principal de consistencia del dashboard. Toda la lógica de actualización de indicadores se gestiona únicamente a través de su método `refresh()`, evitando cambios de estado fuera del aggregate. El modelo representa un dominio orientado a la agregación de datos, donde Metric consolida cuatro colecciones de Value Objects: `zeroStockSupplies` y `lowStockSupplies`, ambas compuestas por instancias de StockIndicator que encapsulan el estado crítico de cada insumo y exponen los métodos `isZeroStock()` e `isLowStock()` para clasificar automáticamente el nivel de criticidad; `recentSupplies`, compuesta por instancias de RecentSupplyEntry que representan los últimos insumos incorporados al catálogo; y `recentAlerts`, compuesta por instancias de RecentAlertEntry que presentan las últimas alertas generadas por el sistema sin depender del modelo interno del Bounded Context Communication. La consistencia se refuerza además con el uso de identificadores fuertemente tipados como DashboardSummaryId, BusinessId y BranchId, agrupados dentro del paquete valueobjects bajo model, y con el enum StockStatus, que restringe los valores válidos del estado de stock a ZERO_STOCK, LOW_STOCK y NORMAL. El paquete services agrupa el command RefreshDashboardSummaryCommand, invocado por los event handlers ante eventos entrantes de inventario o alerta, y las queries GetDashboardSummaryQuery, GetZeroStockSuppliesQuery, GetLowStockSuppliesQuery, GetRecentSuppliesQuery y GetRecentAlertsQuery, que permiten consultar los indicadores del dashboard sin modificar el estado del dominio. Los domain events del paquete events incluyen DashboardSummaryRefreshedEvent, emitido por el aggregate al completar su actualización, y los eventos entrantes StockLevelChangedEvent, SupplyRegisteredEvent y NotificationGeneratedEvent, que actúan como disparadores del proceso de refresh. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como `LocalDateTime`, `Double`, `int` y `boolean`, manteniendo una implementación coherente con la tecnología del proyecto.
+
+##### 4.2.10.6.2. Bounded Context Database Design Diagram
+
+El diagrama de diseño de base de datos del Bounded Context Analytics muestra la estructura de almacenamiento que soporta los indicadores del dashboard. A diferencia de otros bounded contexts, Analytics no posee colecciones propias en MongoDB: opera como un contexto de solo lectura que consulta las colecciones de Asset and Resource Management, Tracking y Communication, y persiste los resultados procesados en la caché Redis para optimizar las consultas frecuentes del dashboard.
+
+![database-analytics-1](https://imgur.com/hJOxX5i.png)
+
+![database-analytics-2](https://imgur.com/c7DmnS9.png)
+
+El diagrama evidencia que Analytics no gestiona colecciones propias en MongoDB. Su modelo de persistencia se basa en dos mecanismos complementarios: consultas de solo lectura sobre las colecciones `custom_supplies`, `batches` y `stock_records` de Asset and Resource Management para construir los indicadores de stock, y sobre la colección `notifications` de Communication para construir el indicador de alertas recientes; y almacenamiento en caché Redis de los resúmenes ya construidos, aplicando políticas de expiración configurables para garantizar la frescura de los datos. Este diseño refleja una decisión arquitectónica deliberada: Analytics es un contexto de agregación y presentación, no de escritura, lo que elimina la necesidad de colecciones propias y reduce la duplicación de datos en el sistema. La caché Redis actúa como la capa de persistencia operativa del contexto, permitiendo que el dashboard responda con baja latencia sin impactar las colecciones transaccionales de los bounded contexts productores de datos.
 
 ### 4.2.11. Bounded Context: Shared Kernel
 
