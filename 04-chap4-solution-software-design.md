@@ -80,9 +80,13 @@ El primer paso consistió en la identificación de los eventos de dominio del si
   <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: User data was saved, Payment accepted, Plan activated, Account created, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded, Kit description entered, Kit saved into the catalog, Sale confirmed, Branch registered, Custom Supply created, Batch created, Transfer confirmed, Weight registered, Temperature registered, Humidity registered, Values checked, Physical stock estimated, Data anomaly detected, Discrepancy detected, Stock verified, Anomaly detected, Notification sent to the center, entre otros.
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: User data was saved, Payment accepted, Plan activated, Account created, Recipe register initialized, Supplies selected, Recipe image uploaded, Kit saved into the catalog, Sale confirmed, Branch registered, Custom Supply created, Batch created, Transfer confirmed, Weight registered, Temperature registered, Humidity registered, Values checked, Physical stock estimated, Data anomaly detected, Discrepancy detected, Stock verified, Anomaly detected, Notification sent to the center, entre otros. Cabe destacar que los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables monitoreadas por los dispositivos IoT.
+Se eliminaron los eventos de captura de campos individuales de formulario ( `Name entered`, `Category selected`, `Unit price entered`, `Unit of measurement entered` y `Branch name was entered`) dado que no generan reacciones de dominio ni disparan políticas o comandos independientes. En su lugar, se conservan únicamente los eventos que agrupan la información capturada o que representan un cambio de estado significativo en el dominio.
 
+Adicionalmente, se incorporaron eventos de lectura en los bounded contexts donde el actor consulta información antes de emitir un comando, siguiendo el principio de que toda interacción relevante con el sistema debe quedar registrada. Los eventos de lectura añadidos son: `Recipe catalog consulted`, `Kit catalog consulted`, `Branch list consulted`, `Inventory consulted`, `Device list consulted`, `Subscription plans consulted`, `Sales history consulted`, `Profile consulted` y `Stock record consulted`.
+
+Los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables monitoreadas por los dispositivos IoT.
 
 #### Paso 2: Timelines
 
@@ -96,7 +100,18 @@ El segundo paso consistió en organizar los eventos de dominio dentro de líneas
   <img src="https://imgur.com/0LdKD0Q.png" alt="time-line">
 </div>
 
-El equipo organizó los eventos en secuencias horizontales ordenadas bajo los bounded contexts identificados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Asset and Resource Management, Design and Planning, Sales Management, Device Management y Tracking. El bounded context de Tracking incluye tres flujos diferenciados: el flujo de telemetría física (Weight registered → Temperature registered → Humidity registered → Values checked → Approximated supply data processed → Physical stock estimated), el flujo de comparación de stock (Physical stock received → Digital stock received → Difference evaluated → Discrepancy detected / Stock verified) y el flujo de salud del dispositivo (Voltage registered → CPU usage registered → Memory usage registered → Device temperature registered → Data analyzed / Anomaly detected).
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo los bounded contexts identificados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Asset and Resource Management, Design and Planning, Sales Management, Device Management y Tracking.
+
+En **Design and Planning**, el flujo de receta: `Profile consulted` → `Recipe catalog consulted` → `Recipe information entered` → `Supplies selected` → `The quantity of supplies was established` → `Recipe image uploaded` → `Recipe saved`. El flujo de kit: `Kit catalog consulted` → `Kit description entered` → `Supplies selected` → `Quantity of supplies established` → `Recipe image uploaded` → `Kit saved into the catalog`.
+
+En **Asset and Resource Management**, el flujo de sucursal: `Branch list consulted` → `Branch location was selected` → `Branch image was loaded` → `Branch registered`. El flujo de insumo personalizado se consolida en: `Inventory consulted` → `Custom Supply created`.
+
+En **Subscriptions and Payments**, el flujo incorpora: `Subscription plans consulted` → `Plan selected` → `Payment details entered` → `Payment accepted` → `Plan activated`.
+
+En **Sales Management**, el flujo incorpora: `Sales history consulted` → `Sale initialized` → `Branch selected` → `Recipes selected` → `Additional supplies were registered` → `Calculate total price` → `Sale confirmed`.
+
+El bounded context de **Tracking** incluye tres flujos diferenciados: el flujo de telemetría física (`Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Approximated supply data processed` → `Physical stock estimated`), el flujo de comparación de stock (`Physical stock received` → `Digital stock received` → `Stock record consulted` → `Difference evaluated` → `Discrepancy detected` / `Stock verified`) y el flujo de salud del dispositivo (`Voltage registered` → `CPU usage registered` → `Memory usage registered` → `Device temperature registered` → `Data analyzed` / `Anomaly detected`).
+
 
 #### Paso 3: Paint Point
 
@@ -177,9 +192,9 @@ El equipo incorporó los comandos en cada línea de tiempo de la siguiente maner
 
 - En **Sales Management** se definieron: Register sale y Show sales.
 
-= En **Device Management** se definieron: Register new device, Configure a device y Deactivate device.
+- En **Device Management** se definieron: Register new device, Configure a device y Deactivate device.
 
-= En **Tracking** se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock adjustment, Register threshold, Edit threshold y Verify threshold.
+- En **Tracking** se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock adjustment, Register threshold, Edit threshold y Verify threshold.
 
 #### Paso 6: Policies and Actors
 
@@ -288,9 +303,9 @@ El equipo identificó los agregados en cada bounded context de la siguiente mane
 
 - En **Profiles and Preferences** se identificaron dos agregados: **Profile**, que centraliza la creación de perfil, el cambio de contraseña, la actualización de datos personales y la carga de imágenes mediante Cloudinary API; y **Business**, que gestiona el registro y actualización de la información comercial del negocio.
 
-- En **Asset and Resource Management** se identificaron cuatro agregados: **Branch**, que gestiona el ciclo de vida completo de las sucursales incluyendo la restricción de eliminación cuando existe stock disponible e integración con Cloudinary API; **Custom Supply**, que gestiona el catálogo de insumos personalizados con su información, imagen y estado; **Inventory**, que centraliza las operaciones de adición y transferencia de stock entre sucursales; y **Batch**, que gestiona los lotes de inventario, incluyendo su creación, transferencia y descuento de stock.
+- En **Asset and Resource Management** se identificaron cuatro agregados: **Branch**, que gestiona el ciclo de vida completo de las sucursales incluyendo la restricción de eliminación cuando existe stock disponible e integración con Cloudinary API, exponiendo los eventos `Branch location was selected`, `Branch image was loaded`, `Branch registered`, `Branch edited` y `Branch deleted`; **Custom Supply**, que gestiona el catálogo de insumos personalizados consolidando su creación en el evento `Custom Supply created` y exponiendo adicionalmente `Custom Supply edited` y `Custom Supply deleted`; **Inventory**, que centraliza las operaciones de adición y transferencia de stock entre sucursales; y **Batch**, que gestiona los lotes de inventario, incluyendo su creación, transferencia y descuento de stock.
 
-- En **Design and Planning** se identificaron dos agregados: **Recipe**, que centraliza el registro, edición y eliminación de recetas junto con la vinculación de insumos, sus cantidades y la integración con Cloudinary API; y **Kit**, que gestiona la composición de kits comerciales para el sector retail con la misma estructura.
+- En **Design and Planning** se identificaron dos agregados: **Recipe**, que centraliza el registro y edición de recetas exponiendo los eventos `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`, `Recipe saved`, `Recipe edited` y `Recipe deleted`; y **Kit**, que gestiona la composición de kits comerciales para el sector retail exponiendo los eventos `Kit description entered`, `Supplies selected`, `Quantity of supplies established`, `Recipe image uploaded`, `Kit saved into the catalog`, `Kit edited` y `Kit deleted`.
 
 - En **Sales Management** se identificó el agregado **Sales Order**, que centraliza el registro de ventas, el cálculo automático del precio total y el filtrado del historial de ventas.
 
@@ -300,17 +315,17 @@ El equipo identificó los agregados en cada bounded context de la siguiente mane
 
 En **Tracking** se identificaron seis agregados:
 
-- **Device Health Record**, que gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: Data analyzed o Anomaly detected.
+- **Device Health Record**, que gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
 
-- **Box State Record**, que centraliza el flujo de telemetría física del dispositivo: Weight registered → Temperature registered → Humidity registered → Values checked → Divide the weight received to calculate the physical stock → Approximated supply data processed → Physical stock estimated, con dos posibles derivaciones: Processed data stored o Data anomaly detected. Este agregado incorpora explícitamente el registro de temperatura y humedad como variables monitoreadas junto al peso.
+- **Box State Record**, que centraliza el flujo de telemetría física del dispositivo: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos posibles derivaciones: `Processed data stored` o `Data anomaly detected`. Este agregado incorpora explícitamente el registro de temperatura y humedad como variables monitoreadas junto al peso.
 
-- **Stock Comparison**, que gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, evaluando la diferencia y derivando en Discrepancy detected o Stock verified.
+- **Stock Comparison**, que gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
 
-- **Power Schedule**, que gestiona la programación de encendido y apagado del dispositivo, con el flujo: Device selected → Power off schedule set → Power on schedule set → Configuration stored, y la ejecución automática: Schedules detected → Schedule time reached → Turn on/off action evaluated → Device turned on / Device turned off.
+- **Power Schedule**, que gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
 
-- **Conciliation Task**, que gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: Physical and digital stock received → Stock difference received → Stock adjusted → Real stock stored.
+- **Conciliation Task**, que gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
 
-- **Box Threshold**, que centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de peso, humedad y temperatura junto al nombre del insumo. Al verificar un umbral se calcula si los datos actuales superan los límites configurados, generando la política Generates an alert of surpassed threshold cuando corresponde.
+- **Box Threshold**, que centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de peso, humedad y temperatura junto al nombre del insumo. Al verificar un umbral se calcula si los datos actuales superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
