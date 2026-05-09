@@ -413,6 +413,28 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ## 5.2. Information Architecture
 ### 5.2.1. Organization Systems
 ### 5.2.2. Labeling Systems
+
+En esta sección se presenta el sistema de etiquetado (labeling system) para la plataforma de Restock. Este sistema prioriza la claridad y la sencillez visual. Usamos términos familiares para que el sistema sea fácil de usar, manteniendo siempre la estética definida en nuestros estándares de diseño.
+
+Se ha priorizado la claridad semántica y la coherencia con el lenguaje visual del producto, especialmente con el tono de comunicación cercano y profesional.
+
+**Landing Page:**
+
+- **Inicio:** Sección principal de bienvenida. Incluye título principal, una pequeña descripción y acceso a la plataforma.
+- **Beneficios:** Explicación segmentada de las ventajas de Restock para restaurantes y tiendas retail.
+- **Testimonios:** Comentarios reales de usuarios sobre cómo la plataforma les ha ayudado en su gestión.
+- **Preguntas Frecuentes:** Preguntas comunes con respuestas claras. Ayuda a resolver dudas sin necesidad de contacto directo.
+
+**Aplicación Web – Administradores de Restaurantes**
+- **Overview:**  Vista integral del sistema Restock que permite monitorear métricas críticas de sensores y gestionar alertas de stock mediante la comparación automática entre el inventario esperado y el real.
+- **Inventario:** Gestión de existencias por lotes y control de mermas. Incluye monitoreo de caducidades, temperatura, humedad y conciliación automática de discrepancias detectadas por sensores.
+- **Recetas:** Registro de platos del menú vinculados a insumos. Permite calcular consumo y optimizar compras.
+- **Ventas:** Registro y control de transacciones en tiempo real. Incluye historial de tickets, indicadores de rendimiento mensual y estado de sincronización con el inventario.
+- **Alertas:** Notificaciones en tiempo real sobre discrepancias de stock, fallos de conexión en balanzas y confirmaciones de movimientos manuales de insumos.
+- **Dispositivos:** Gestión y monitoreo de balanzas IoT en tiempo real. Incluye estado de conexión, salud de los sensores y vinculación de dispositivos con insumos específicos.
+
+**Aplicación Web – Administradores del sector Retail**
+
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
 ### 5.2.5. Navigation Systems
