@@ -415,6 +415,13 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 En esta sección el equipo de Restock presenta las decisiones y fundamentos relacionados con la organización del contenido dentro de las experiencias web y móvil, incluyendo el Landing Page y las aplicaciones del sistema. El objetivo es garantizar que los usuarios puedan interactuar de manera intuitiva con la plataforma, facilitando el acceso a las funcionalidades, información y recursos necesarios de forma rápida y sencilla. Asimismo, se detallan las decisiones tomadas respecto a los Organization Systems, Labeling Systems, Navigation Systems y Searching Systems, con el propósito de mejorar la experiencia de usuario y optimizar la usabilidad del producto.
 
 ### 5.2.1. Organization Systems
+
+En el sistema Restock, se emplea la organización jerárquica para priorizar visualmente la información crítica capturada por los sensores IoT, como los niveles de stock bajo mínimos y las alertas de productos próximos a vencer en los dashboards. Esta jerarquía visual asegura que el usuario identifique de inmediato las anomalías en el peso o cantidad de los insumos antes de revisar métricas secundarias, facilitando una toma de decisiones rápida basada en datos en tiempo real.
+
+También se aplica una organización secuencial en procesos operativos que requieren una progresión lógica, tales como la vinculación de insumos específicos a los sensores de peso y la configuración de umbrales de alerta. Al guiar al usuario a través de un flujo paso a paso para definir cuántos kilogramos representan el stock mínimo y máximo según las necesidades de su negocio, el sistema garantiza que las notificaciones automáticas sean precisas. Estos flujos estructurados permiten que el personal gestione las reglas de reabastecimiento de manera autónoma, asegurando que la configuración del software refleje fielmente la realidad física de su almacén.
+
+En cuanto a los esquemas de categorización, se utiliza una organización cronológica para gestionar el historial de telemetría de los sensores, los registros de ventas y el seguimiento de las compras realizadas, presentando siempre los eventos más recientes en primer plano. Además, el contenido se clasifica por tópicos para agrupar los insumos según su naturaleza (como lácteos, carnes o abarrotes) y, fundamentalmente, según la audiencia del sistema. De esta manera, los administradores de restaurante visualizan herramientas de gestión de mermas, mientras que el personal técnico accede a interfaces adaptadas al monitoreo de la salud de los dispositivos IoT, asegurando que cada grupo de usuarios tenga una experiencia personalizada según su rol.
+
 ### 5.2.2. Labeling Systems
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
