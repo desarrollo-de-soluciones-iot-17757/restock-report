@@ -6,7 +6,64 @@ En esta sección se aborda el enfoque de Strategic-Level Domain-Driven Design (D
 
 ### 4.1.1. Design-Level EventStorming
 
-En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos y reglas de negocio. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
+En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos, actores, políticas, modelos de lectura, sistemas externos y agregados. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
+
+A partir del Big Picture EventStorming, el equipo identificó los siguientes pain points distribuidos en los distintos flujos del negocio. Estos puntos de fricción representan situaciones sin resolver en la operación actual y constituyeron el punto de partida para el diseño detallado del sistema:
+
+**Flujo de cierre de caja:**
+- **"What happens if the count was not done correctly?"**: Existía ambigüedad sobre qué ocurre cuando el conteo físico de caja presenta errores. Este pain point evidenció la necesidad de modelar un flujo de corrección que contemple la detección de diferencias, su resolución y el registro de justificaciones.
+- **"What do I do with the missing money?"**: No estaba definido el proceso a seguir cuando se detecta una diferencia de caja no resuelta. Este punto señaló la necesidad de un flujo de escalamiento hacia el manager y generación de reportes de cierre.
+
+**Flujo de gestión de inventario en restaurante:**
+- **"How do I reduce the wastage?"**: La operación manual de inventario no disponía de mecanismos para controlar el desperdicio de insumos. Este painpoint motivó el diseño de alertas de stock y seguimiento de mermas en el sistema.
+- **"What happens if no provider has the supply needed?"**: El flujo de reabastecimiento no contemplaba el escenario en que ningún proveedor disponga del insumo requerido, dejando al negocio sin alternativa. Este punto evidenció la necesidad de gestionar proveedores alternativos o generar alertas críticas.
+- **"What happens if the order is rejected?"**: No estaba modelado qué ocurre cuando el proveedor rechaza la orden de compra, interrumpiendo el flujo de reabastecimiento.
+
+**Flujo de gestión de inventario en tienda retail:**
+- **"What happens if no provider has the supply needed?"**: Pain point análogo al del sector restaurante, evidenciando la misma brecha en ambos segmentos objetivo.
+- **"What happens if the order is rejected?"**: Igualmente presente en el sector retail, señalando la ausencia de un flujo de contingencia ante rechazos de proveedores.
+- **"What happens with the expired products?"**: El proceso de ajuste de stock por diferencias detectadas no contemplaba el tratamiento específico de productos vencidos, generando una brecha en el control de inventario.
+
+**Flujo de organización de góndolas:**
+- **"What happens with the products in the back of the gondola?"**: El flujo de reposición en góndola no definía qué hacer con los productos ubicados en la parte trasera, una práctica crítica para el control de vencimientos mediante rotación FIFO.
+
+**Flujo de preparación de platos:**
+- **"How much time does the order take to reach the kitchen?"**: No estaba definido el tiempo máximo aceptable ni el mecanismo de seguimiento del estado del pedido entre sala y cocina.
+- **"What happens if we prepared the wrong dish?"**: El flujo de preparación no contemplaba el manejo de errores en la elaboración del plato ni la reposición de insumos afectados.
+
+**Flujo de atención al cliente en restaurante:**
+- **"How much time does the order take to reach the kitchen?"**: Pain point recurrente también presente en el flujo de atención al cliente, reforzando la necesidad de visibilidad del estado del pedido.
+- **"What happens if the calculations are wrong?"**: El cálculo del precio de la orden podía presentar errores sin un mecanismo de corrección definido antes del cobro.
+- **"What happens if the system goes down?"**: La dependencia del POS para procesar pagos dejaba al negocio sin alternativa ante una caída del sistema.
+
+**Flujo de atención al cliente en tienda retail:**
+- **"What happens if the customer needs a product that I don't have?"**: El flujo de atención no contemplaba cómo gestionar la demanda de productos agotados o no disponibles en tienda.
+- **"What happens if the system goes down?"**: Análogo al restaurante, la dependencia del POS presentaba el mismo riesgo operativo.
+
+**Flujo de ideación y registro de ofertas:**
+- **"What happens if the offer doesn't work?"**: No estaba definido el proceso de evaluación y retiro de una oferta que no genera el impacto esperado en ventas.
+
+**Flujo de creación y prueba de recetas:**
+- **"What happens if I don't calculate the correct price?"**: El cálculo del costo teórico de una receta podía presentar errores sin un mecanismo de validación definido antes de su aprobación.
+- **"How do I know the new recipe will work?"**: No estaba definido el criterio de aceptación de una receta nueva, dejando la decisión sin un proceso estructurado de prueba y validación.
+
+**Flujo de cierre de día en restaurante y retail:**
+- **"What if the place gets robbed?"**: Presente en ambos sectores, este pain point señalaba la ausencia de un protocolo de seguridad ante incidentes físicos al cierre del establecimiento.
+
+Estos pain points del Big Picture evidenciaron las principales brechas operativas de los negocios objetivo y orientaron las decisiones de diseño del sistema. Aquellos directamente relacionados con la gestión de inventarios, el control de stock, la detección de discrepancias y la trazabilidad de insumos fueron priorizados en el Design-Level EventStorming, ya que constituyen el núcleo de valor de la solución Restock. Los pain points relacionados con operaciones fuera del alcance del sistema (seguridad física, atención al cliente presencial, elaboración de platos) fueron registrados como contexto del problema pero no forman parte del diseño técnico de la plataforma.
+
+A partir de este análisis, el equipo avanzó con la construcción del modelo detallado identificando los siguientes pain points específicos para resolver dentro del Design-Level:
+
+- **"How do I access the services?"**: Resuelto mediante el modelado del flujo de Sign up y Sign in en IAM.
+- **"What information does a recipe require?"**: Resuelto estableciendo los eventos de registro de receta en Design and Planning.
+- **"What information does a Kit require?"**: Resuelto estableciendo los eventos de registro de kit en Design and Planning.
+- **"How do I record a sale?"**: Resuelto con el flujo de venta y sus políticas automáticas en Sales Management.
+- **"How do you register a branch?"**: Resuelto con el flujo de alta de sucursal en Asset and Resource Management.
+- **"How do you register a custom supply?"**: Resuelto con el flujo de registro de insumo personalizado en Asset and Resource Management.
+
+Con estos pain points identificados y priorizados, el equipo avanzó con la construcción del modelo completo siguiendo los nueve pasos del Design-Level Event Storming.
+
+Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados:
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention">
@@ -16,18 +73,18 @@ Con el fin de mantener la consistencia y facilitar la interpretación del modelo
 
 #### Paso 1: Event
 
-El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
+El primer paso consistió en la identificación de los eventos de dominio del sistema. Un evento de dominio representa un hecho relevante que ya ocurrió dentro del negocio y se expresa en tiempo pasado. En esta técnica los eventos se representan con tarjetas de color naranja.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/99oEpmr.png" alt="event">
   <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. 
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: User data was saved, Payment accepted, Plan activated, Account created, Recipe register initialized, Supplies selected, Recipe image uploaded, Kit saved into the catalog, Sale confirmed, Branch registered, Custom Supply created, Batch created, Transfer confirmed, Weight registered, Temperature registered, Humidity registered, Values checked, Physical stock estimated, Data anomaly detected, Discrepancy detected, Stock verified, Anomaly detected, Notification sent to the center, entre otros. Cabe destacar que los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables monitoreadas por los dispositivos IoT.
 
 #### Paso 2: Timelines
 
-El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
+El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/N3A08JD.png" alt="time-line">
@@ -37,11 +94,11 @@ El segundo paso consistió en organizar los eventos de dominio dentro de líneas
   <img src="https://imgur.com/0LdKD0Q.png" alt="time-line">
 </div>
 
-El equipo organizó los eventos en secuencias horizontales ordenadas bajo diez bounded contexts claramente etiquetados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Communications, Asset and Resource Management (ARM), Design and Planning, Sales Management, Analytics, Device Management y Tracking. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo los bounded contexts identificados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Asset and Resource Management, Design and Planning, Sales Management, Device Management y Tracking. El bounded context de Tracking incluye tres flujos diferenciados: el flujo de telemetría física (Weight registered → Temperature registered → Humidity registered → Values checked → Approximated supply data processed → Physical stock estimated), el flujo de comparación de stock (Physical stock received → Digital stock received → Difference evaluated → Discrepancy detected / Stock verified) y el flujo de salud del dispositivo (Voltage registered → CPU usage registered → Memory usage registered → Device temperature registered → Data analyzed / Anomaly detected).
 
 #### Paso 3: Paint Point
 
-El tercer paso incorporó la identificación de los puntos de dolor, también llamados pain points, dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
+El tercer paso incorporó la identificación de los pain points dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
@@ -52,11 +109,23 @@ El tercer paso incorporó la identificación de los puntos de dolor, también ll
   <img src="https://imgur.com/Pp4xgKP.png" alt="paint-point">
 </div>
 
-El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se identificó el pain point "How do I access the services?", relacionado con el flujo de registro inicial de un usuario en el sistema. En Design and Planning se marcaron dos pain points: "What information does a recipe require?" y "What information does a Kit require?", señalando la necesidad de definir los datos mínimos para registrar cada elemento. En Sales Management se levantó la pregunta "How do I record a sale?", referida al proceso y condiciones necesarias para confirmar una venta. En Asset and Resource Management se plantearon las preguntas "How do you register a branch?", cuestionando los datos y pasos requeridos para dar de alta una sucursal, y "How do you register a custom supply?", indicando dudas sobre la información mínima necesaria para crear un insumo personalizado. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
+Se identificaron seis pain points distribuidos en los bounded contexts con mayor ambigüedad de diseño. Cada uno fue resuelto en el transcurso del Design-Level EventStorming tal como se describe al inicio de esta sección:
+
+- **"How do I access the services?"** en IAM. Resuelto mediante el modelado del flujo Sign up con sus cuatro eventos (User entered personal data, User entered their password, User Role was chosen, User data was saved) y la política automática Create profile automatically.
+
+- **"What information does a recipe require?"** en Design and Planning. Resuelto estableciendo seis eventos de registro: Recipe register initialized, Category selected, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded.
+
+- **"What information does a Kit require?"** en Design and Planning. Resuelto estableciendo siete eventos: Kit register initialized, Category selected, Kit description entered, Supplies selected, Quantity of supplies established, Recipe image uploaded, Kit saved into the catalog.
+
+- **"How do I record a sale?"** en Sales Management. Resuelto mediante el flujo de seis eventos: Sale initialized, Branch selected, Recipes selected, Additional supplies were registered, Calculate total price, Sale confirmed; con dos políticas automáticas que calculan el total y descuentan el stock.
+
+- **"How do you register a branch?"** en Asset and Resource Management. Resuelto con cinco eventos: Branch register was initialized, Branch name was entered, Branch location was selected, Branch image was loaded, Branch registered; más la restricción Cannot delete branch with stock available.
+
+- **"How do you register a custom supply?"** en Asset and Resource Management. Resuelto con seis eventos: Name entered, Category selected, Unit price entered, Unit of measurement entered, Custom Supply image was loaded, Custom Supply created.
 
 #### Paso 4: Pivotal Points
 
-El cuarto paso incorporó la identificación de los pivotal points dentro de los flujos ya organizados. Estos puntos se representan como las líneas o momentos de transición más relevantes dentro del recorrido, y permiten visualizar dónde ocurre un cambio significativo en la dirección, el contexto o la decisión del proceso. Su identificación ayudó a comprender cómo se conectan las distintas etapas del negocio y cuáles son los momentos clave que estructuran la experiencia analizada.
+El cuarto paso incorporó la identificación de los pivotal points, representados como líneas verticales de separación entre bounded contexts. Estos puntos señalan los momentos de transición más relevantes en el recorrido del sistema, donde el flujo cambia de contexto o de responsabilidad.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/RGOcMYK.png" alt="pivotal-point">
@@ -68,11 +137,20 @@ El cuarto paso incorporó la identificación de los pivotal points dentro de los
   <img src="https://imgur.com/vpFvHI9.png" alt="pivotal-point">
 </div>
 
-En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Asset and Resource Management, se identificaron dos pivotal points: el primero en el momento en que la intención de crear una sucursal se transforma en el registro formal de sus datos, y el segundo cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Design and Planning, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Sales Management, el punto crítico se ubica en la transición hacia la confirmación de una venta. En Tracking, el pivotal point se encuentra en el momento en que el flujo de telemetría pasa del monitoreo continuo a la detección de una anomalía de stock. En Communications y Analytics no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
+El equipo reconoció pivotal points en los siguientes momentos:
+
+- En **IAM**, la transición entre el flujo de Sign up y el flujo de Sign in marca el cambio de actor (de Visitant a User) y de intención.
+- En **Subscriptions and Payments**, la transición entre la selección del plan y el procesamiento del pago marca el momento en que el sistema externo Stripe toma control del flujo financiero.
+- En **Asset and Resource Management**, la transición entre la gestión de sucursales y la gestión de insumos personalizados representa un cambio de objeto de dominio.
+- En **Design and Planning**, la transición entre el flujo de recetas y el flujo de kits marca el cambio de actor responsable.
+- En **Sales Management**, la transición hacia el cálculo del precio total y la confirmación de la venta representa el momento de mayor impacto operativo, ya que dispara políticas automáticas de descuento de stock.
+- En **Tracking**, la transición desde la recepción de telemetría hacia la comparación de stock y la detección de discrepancias marca el punto donde el sistema pasa del monitoreo pasivo a la acción correctiva.
+
+En Communications y Profiles and Preferences no se identificaron pivotal points relevantes, ya que sus flujos mantienen una secuencia continua sin cambios de contexto marcados.
 
 #### Paso 5: Commands
 
-El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
+El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican antes del evento de dominio que producen.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/oChmol2.png" alt="commands">
@@ -83,11 +161,27 @@ El quinto paso consistió en identificar los comandos del sistema. Un comando re
   <img src="https://imgur.com/IAtSW8V.png" alt="commands">
 </div>
 
-El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Profiles and Preferences se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts. En Subscriptions and Payments se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account. En Asset and Resource Management se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Register batch, Add supply batch stock, Transfer supply batch stock y Subtrack batch stock. En Design and Planning se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit. En Sales Management se definieron: Register sale y Show sales. En Device Management se definieron: Register new device, Configure a device y Deactivate device. En Tracking se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock comparison, Register threshold, Edit threshold, Verify threshold y Perform stock adjustment.
+El equipo incorporó los comandos en cada línea de tiempo de la siguiente manera:
+
+- En **IAM** se definieron: Sign up, Sign in y Register new user for account.
+
+- En **Profiles and Preferences** se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts.
+
+- En **Subscriptions and Payments** se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account.
+
+- En **Asset and Resource Management** se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Add supply batch stock, Subtrack supply batch stock y Transfer supply batch stock.
+
+- En **Design and Planning** se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit.
+
+- En **Sales Management** se definieron: Register sale y Show sales.
+
+= En **Device Management** se definieron: Register new device, Configure a device y Deactivate device.
+
+= En **Tracking** se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock adjustment, Register threshold, Edit threshold y Verify threshold.
 
 #### Paso 6: Policies and Actors
 
-El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
+El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores se representan con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, y se representan con tarjetas de color lila.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/ZSbeOHv.png" alt="policies-actors">
@@ -96,8 +190,23 @@ El sexto paso incorporó al modelo los actores y las políticas del sistema. Los
   <img src="https://imgur.com/i98m21X.png" alt="policies-actors">
 </div>
 
-El equipo identificó como actores principales al Retail Manager y al Restaurant Manager, presentes en la mayoría de los contextos del sistema. El actor Visitant fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. El actor User fue identificado en los contextos de IAM, Subscriptions and Payments y Profiles and Preferences. El actor Device fue identificado en los contextos de Device Management y Tracking como emisor automático de eventos de telemetría.
-Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos. En IAM se definió una política que crea el perfil del usuario automáticamente al completarse el registro. En Subscriptions and Payments se definieron cuatro políticas: una que genera una orden de pago en Stripe con los detalles del plan seleccionado, una que configura los límites del plan para la cuenta al detectarse un nuevo plan, una que crea una nueva cuenta para el negocio al completarse el proceso de cuenta, y una que envía el resumen del pago al usuario una vez generado. En Profiles and Preferences se definió una política que sube la foto a la API de Cloudinary y obtiene el enlace al actualizarse la imagen de perfil o negocio. En Design and Planning se definieron políticas que suben la foto a la API de Cloudinary y obtienen el enlace al cargarse o actualizarse imágenes de recetas y kits. En Sales Management se definió una política que suma automáticamente los precios de las recetas y los insumos adicionales para calcular el total, y otra que envía la información de la venta confirmada. En Asset and Resource Management se definió una política que verifica el stock actual del almacén y lo descuenta al transferir stock entre sucursales, y otra que obtiene la información y envía un mensaje al añadir stock al inventario. En Device Management se definió una política que obtiene la información del cambio y envía una notificación ante eventos de configuración del dispositivo, y otra que crea o edita un registro de umbral para el manejo de alertas. En Tracking se definieron políticas que dividen el peso recibido y configuran el cálculo del stock físico.
+El equipo identificó como actores principales al **Retail Manager** y al **Restaurant Manager**, presentes en la mayoría de los bounded contexts operativos. El actor **Visitant** fue identificado únicamente en IAM para el flujo de Sign up. El actor **User** fue identificado en IAM, Subscriptions and Payments y Profiles and Preferences. El actor **Device** fue identificado en Tracking como emisor autónomo de eventos de telemetría.
+
+Las políticas identificadas por bounded context son las siguientes:
+
+- En **IAM:** Create profile automatically, disparada tras User data was saved, y Access the dashboard when logging in, disparada tras Worker data was saved.
+
+- En **Subscriptions and Payments:** Generate a payment order in Stripe with details, disparada tras Payment details entered; Configures the plan limits for the account, disparada tras New plan chosen; Creates a new account for the business, disparada tras Account created; y Sends the payment summary to the user, disparada tras Summary generated.
+
+- En **Profiles and Preferences** y **Design and Planning:** Upload the photo to the API and get the link, disparada cada vez que se carga o actualiza una imagen de perfil, negocio, receta o kit a través de Cloudinary API.
+
+- En **Sales Management:** Sum all the prices of the recipes and additional supplies, disparada tras Additional supplies were registered para calcular el total; y Subtract automatically the stock of the sold supplies, disparada tras Sale confirmed para actualizar el inventario.
+
+- En **Asset and Resource Management:** Gets the info and sends a message, disparada tras Batch stock added to the inventory; y Verifies the current stock of the warehouse and subtracts it, disparada durante la transferencia de stock entre sucursales.
+
+- En **Device Management:** Gets info of the change and sends a notification, disparada tras Configuration confirmed; y Creates or edits a threshold record for alert handling, disparada tras configuraciones de umbrales en el dispositivo.
+
+- En **Tracking:** Divide the weight received to calculate the physical stock, disparada al procesar los datos de telemetría para estimar el stock físico.
 
 #### 4.1.1.1 Candidate Context Discovery
 
@@ -105,7 +214,7 @@ Luego de identificar los eventos, flujos, comandos y políticas del dominio, el 
 
 #### Paso 7: Read models
 
-El séptimo paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
+El séptimo paso consistió en identificar los modelos de lectura del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas que los actores necesitan consultar antes de emitir un comando.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/X0h65gU.png" alt="read-models">
@@ -115,11 +224,25 @@ El séptimo paso consistió en identificar los modelos de lectura (read models) 
   <img src="https://imgur.com/z2zBn1G.png" alt="read-models">
 </div>
 
-El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificaron las vistas de Sign-up Form y Sign-in Form, que el visitante y el usuario consultan antes de registrarse o autenticarse. En Profiles and Preferences se definieron las vistas de Profile settings, utilizada al cambiar contraseña o actualizar datos personales, y Business Profile, utilizada al registrar o actualizar la información del negocio. Asimismo, se definió la vista de Workers Management, consultada por el Retail Manager y Restaurant Manager al registrar un nuevo usuario para la cuenta. En Subscriptions and Payments se identificó la vista de Subscription plans, que el usuario consulta antes de seleccionar o actualizar un plan. En Asset and Resource Management se identificaron las vistas de Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock de lotes; y Batch Management, consultada al registrar un lote o transferir stock al almacén. En Design and Planning se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de editar o eliminar un ítem. En Sales Management se identificó la vista de Sales Management, consultada al registrar o filtrar ventas. En Device Management se definió la vista de Device Management, consultada al registrar, configurar o desactivar un dispositivo.
+El equipo incorporó los read models en los siguientes bounded contexts:
+
+- En **IAM:** Sign-up Form, consultada por el Visitant antes de registrarse; y Sign-in Form, consultada por el User antes de autenticarse.
+
+- En **Profiles and Preferences:** Profile settings, consultada al cambiar contraseña o actualizar datos personales; Business Profile, consultada al registrar o actualizar la información del negocio; y Workers Management, consultada al registrar un nuevo usuario para la cuenta.
+
+- En **Subscriptions and Payments:** Subscription plans, consultada por el User antes de seleccionar o actualizar un plan de suscripción.
+
+- En **Design and Planning:** Recipe Catalog, consultada por el Restaurant Manager al registrar, editar o eliminar una receta; y Kit Catalog, consultada por el Retail Manager al registrar, editar o eliminar un kit.
+
+- En **Sales Management:** Sales Management, consultada al registrar una venta o filtrar el historial de ventas.
+
+- En **Asset and Resource Management:** Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock; y Batch Management, consultada al registrar un lote.
+
+En **Device Management:** Device Management, consultada al registrar, configurar o desactivar un dispositivo.
 
 #### Paso 8: External Systems
 
-El octavo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
+El octavo paso consistió en incorporar al modelo los sistemas externos. Los sistemas externos se representan con tarjetas de color rojo o rosa oscuro y corresponden a servicios fuera del dominio propio que participan en los flujos de negocio.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/SaHLR0Z.png" alt="external-systems">
@@ -129,11 +252,17 @@ El octavo paso consistió en incorporar al modelo los sistemas externos con los 
   <img src="https://imgur.com/Dhrs7SO.png" alt="external-systems">
 </div>
 
-El equipo identificó tres sistemas externos. El primero es Cloudinary API, presente en los contextos de Profiles and Preferences, Asset and Resource Management y Design and Planning, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema mediante la política "Upload the photo to the API and get the link". El segundo es Stripe, integrado en el contexto de Subscriptions and Payments, encargado de procesar los pagos de suscripción mediante la generación de una orden de pago con los detalles del plan seleccionado. El tercero es OneSignal API, integrado en el contexto de Communications, responsable de obtener la información del evento y enviar el mensaje de notificación push correspondiente a los usuarios del sistema.
+El equipo identificó tres sistemas externos:
+
+- **Cloudinary API** presente en Profiles and Preferences (carga de imágenes de perfil y negocio), Asset and Resource Management (carga de imágenes de sucursales e insumos) y Design and Planning (carga de imágenes de recetas y kits). Es activada mediante la política Upload the photo to the API and get the link.
+
+- **Stripe** presente en Subscriptions and Payments, encargado de procesar los pagos de suscripción. Aparece en el flujo entre Payment details entered y Pay subscription plan, activado mediante la política Generate a payment order in Stripe with details.
+
+- **OneSignal API** presente en Communications, responsable de enviar notificaciones push a los usuarios. Es activado mediante la política Gets the info and sends a message, disparada tras el evento Notification sent to the center.
 
 #### Paso 9: Add Aggregates
 
-El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
+El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
@@ -149,7 +278,37 @@ El noveno paso consistió en identificar los agregados del dominio y agrupar en 
   <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
 
-El equipo identificó los aggregates en cada bounded context. En IAM se identificó el aggregate User, que agrupa los flujos de registro, autenticación y registro de nuevos usuarios para una cuenta. En Subscriptions and Payments se identificaron tres aggregates: Subscription, que agrupa los eventos de selección y actualización de planes junto con el procesamiento mediante Stripe; Plan, que agrupa la detección y configuración de límites del plan; y Payment, que agrupa el registro del pago y la generación del resumen. En Profiles and Preferences se identificaron dos aggregates: Profile, que agrupa los flujos de cambio de contraseña, actualización de datos personales y carga de imágenes mediante Cloudinary API; y Business, que agrupa el registro y actualización de la información del negocio. En Asset and Resource Management se identificaron cuatro aggregates: Branch, que agrupa la creación, edición y eliminación de sucursales junto con la integración de Cloudinary API para imágenes; Custom Supply, que agrupa el registro, edición y eliminación de insumos personalizados con su respectiva carga de imágenes; Inventory, que agrupa los flujos de adición y transferencia de stock entre sucursales; y Batch, que agrupa el registro de lotes, la transferencia de stock al almacén y el descuento de stock. En Design and Planning se identificaron dos aggregates: Recipe, que agrupa el registro, edición y eliminación de recetas junto con la integración de Cloudinary API; y Kit, que agrupa el registro, edición y eliminación de kits con su respectiva carga de imágenes. En Sales Management se identificó el aggregate Sales Order, que agrupa los flujos de registro de ventas, cálculo del precio total y filtrado de ventas. En Communications se identificó el aggregate Notification, que agrupa la generación de notificaciones y su envío mediante OneSignal API. En Device Management se identificó el aggregate Device, que agrupa el registro, configuración y desactivación de dispositivos. En Tracking se identificaron cuatro aggregates: Device Health Record, que agrupa el monitoreo del estado del dispositivo; Box State Record, que agrupa el registro de telemetría física del contenedor incluyendo peso, temperatura y humedad; Stock Comparison, que agrupa la comparación entre el stock físico estimado y el stock digital para detectar discrepancias; Power Schedule, que agrupa la configuración del encendido y apagado programado del dispositivo; Conciliation Task, que agrupa el proceso de ajuste de stock al detectarse diferencias; y Box Threshold, que agrupa el registro, edición y verificación de umbrales de alerta por dispositivo.
+El equipo identificó los agregados en cada bounded context de la siguiente manera:
+
+- En **IAM** se identificó el agregado **User**, que centraliza los flujos de Sign up, Sign in y Register new user for account, garantizando que la identidad y el acceso de cada actor estén correctamente gestionados.
+
+- En **Subscriptions and Payments** se identificaron tres agregados: **Subscription**, que agrupa los eventos de selección de plan y procesamiento mediante Stripe; **Plan**, que gestiona la detección y configuración de límites del plan contratado; y **Payment**, que agrupa el registro del pago, la recepción del monto y la generación del resumen de facturación.
+
+- En **Profiles and Preferences** se identificaron dos agregados: **Profile**, que centraliza la creación de perfil, el cambio de contraseña, la actualización de datos personales y la carga de imágenes mediante Cloudinary API; y **Business**, que gestiona el registro y actualización de la información comercial del negocio.
+
+- En **Asset and Resource Management** se identificaron cuatro agregados: **Branch**, que gestiona el ciclo de vida completo de las sucursales incluyendo la restricción de eliminación cuando existe stock disponible e integración con Cloudinary API; **Custom Supply**, que gestiona el catálogo de insumos personalizados con su información, imagen y estado; **Inventory**, que centraliza las operaciones de adición y transferencia de stock entre sucursales; y **Batch**, que gestiona los lotes de inventario, incluyendo su creación, transferencia y descuento de stock.
+
+- En **Design and Planning** se identificaron dos agregados: **Recipe**, que centraliza el registro, edición y eliminación de recetas junto con la vinculación de insumos, sus cantidades y la integración con Cloudinary API; y **Kit**, que gestiona la composición de kits comerciales para el sector retail con la misma estructura.
+
+- En **Sales Management** se identificó el agregado **Sales Order**, que centraliza el registro de ventas, el cálculo automático del precio total y el filtrado del historial de ventas.
+
+- En **Communications** se identificó el agregado **Notification**, que gestiona la generación de notificaciones ante eventos del sistema y su despacho mediante OneSignal API.
+
+- En **Device Management** se identificó el agregado **Device**, que centraliza el registro, configuración y desactivación de dispositivos IoT, incluyendo la asignación de sucursal, insumo de seguimiento, umbrales de peso, humedad y temperatura, y programación de encendido y apagado.
+
+En **Tracking** se identificaron seis agregados:
+
+- **Device Health Record**, que gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: Data analyzed o Anomaly detected.
+
+- **Box State Record**, que centraliza el flujo de telemetría física del dispositivo: Weight registered → Temperature registered → Humidity registered → Values checked → Divide the weight received to calculate the physical stock → Approximated supply data processed → Physical stock estimated, con dos posibles derivaciones: Processed data stored o Data anomaly detected. Este agregado incorpora explícitamente el registro de temperatura y humedad como variables monitoreadas junto al peso.
+
+- **Stock Comparison**, que gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, evaluando la diferencia y derivando en Discrepancy detected o Stock verified.
+
+- **Power Schedule**, que gestiona la programación de encendido y apagado del dispositivo, con el flujo: Device selected → Power off schedule set → Power on schedule set → Configuration stored, y la ejecución automática: Schedules detected → Schedule time reached → Turn on/off action evaluated → Device turned on / Device turned off.
+
+- **Conciliation Task**, que gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: Physical and digital stock received → Stock difference received → Stock adjusted → Real stock stored.
+
+- **Box Threshold**, que centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de peso, humedad y temperatura junto al nombre del insumo. Al verificar un umbral se calcula si los datos actuales superan los límites configurados, generando la política Generates an alert of surpassed threshold cuando corresponde.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
