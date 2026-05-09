@@ -411,6 +411,9 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 **Comportamiento ante pérdida de conectividad WiFi.** Cuando el dispositivo pierde la conexión con el edge local o con la plataforma en la nube, el display continúa mostrando el estado actual del peso medido y el LED mantiene su señalización de estado. Los datos de telemetría generados durante el período sin conectividad se almacenan localmente en el edge para ser enviados al sistema central cuando la conexión se restablezca, garantizando la trazabilidad del inventario sin pérdida de registros.
 
 ## 5.2. Information Architecture
+
+En esta sección el equipo de Restock presenta las decisiones y fundamentos relacionados con la organización del contenido dentro de las experiencias web y móvil, incluyendo el Landing Page y las aplicaciones del sistema. El objetivo es garantizar que los usuarios puedan interactuar de manera intuitiva con la plataforma, facilitando el acceso a las funcionalidades, información y recursos necesarios de forma rápida y sencilla. Asimismo, se detallan las decisiones tomadas respecto a los Organization Systems, Labeling Systems, Navigation Systems y Searching Systems, con el propósito de mejorar la experiencia de usuario y optimizar la usabilidad del producto.
+
 ### 5.2.1. Organization Systems
 ### 5.2.2. Labeling Systems
 ### 5.2.3. SEO Tags and Meta Tags
