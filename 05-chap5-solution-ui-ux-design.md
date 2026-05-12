@@ -422,6 +422,166 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
 ### 5.4.2. Applications Wireflow Diagrams
+
+Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
+
+**- Task Flow 1**: Registro de un nuevo usuario y activación de su suscripción
+
+<p align="center">
+  <img src="https://i.imgur.com/bMmb1kl.png"
+    alt="task-flow-1"/>
+</p>
+
+#### Pasos del Task Flow 1:
+
+1. El visitante ingresa a la aplicación web
+2. El visitante va a la sección de registro
+3. El Visitante elige su rol de negocio
+4. El Visitante completa su correo y contraseña
+5. El Visitante completa sus datos de perfil
+6. El Visitante completa sus datos de negocio
+7. El Visitante completa los datos del negocio
+8. El Visitante elige un plan de suscripción y paga
+9. Va a la sección de Inicio
+
+
+**- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+<p align="center">
+  <img src="https://i.imgur.com/ic1ZSHy.png"
+    alt="wire-flow-1"/>
+</p>
+
+El visitante ingresa a la web app y se registra eligiendo su rol (administrador de restaurnate o retail); luego completa sus datos personales y de negocio, selecciona un plan y realiza el pago para activar su suscripción. Al finalizar el proceso, accede al dashboard principal de la plataforma y puede comenzar a gestionar su inventario.
+
+**- Task Flow 2**: Inicio de sesión y recuperación de contraseña
+
+<p align="center">
+  <img src="https://i.imgur.com/0RFEmnX.png"
+    alt="task-flow-2"/>
+</p>
+
+#### Pasos del Task Flow 2:
+
+1. El usuario ingresa a la aplicación web
+2. El visitante va a la seccion de "Olvidaste tu contraseña"
+3. El usuario ingresa su correo
+4. El usuario ingresa el código de 6 dígitos
+5. El usuario restablece su contraseña
+6. El usuario ingresa su correo y nueva contraseña
+7. El usuario ingresa a Inicio
+
+**- User Goal 2**: Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta.
+
+<p align="center">
+  <img src="https://i.imgur.com/2mNOzqX.png"
+    alt="wire-flow-2"/>
+</p>
+
+El usuario registrado accede a la web app y puede iniciar sesión directamente con sus credenciales. Si olvidó su contraseña, inicia el flujo de recuperación ingresando su correo, recibiendo y validando un código de 6 dígitos, y estableciendo una nueva contraseña, para finalmente iniciar sesión y acceder a su cuenta.
+
+**- Task Flow 3**: Gestión de suministros
+
+<p align="center">
+  <img src="https://i.imgur.com/HhxJUxF.png"
+    alt="task-flow-3"/>
+</p>
+
+#### Pasos del Task Flow 3:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador selecciona "Agregar un suministro"
+3. El administrador completa el formulario de registro
+4. El administrador visualiza su nuevo suministro en su catálogo
+5. El administrador selecciona el suministro creado
+6. El administrador visualiza los detalles de ese suministro creado
+
+**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario. 
+
+<p align="center">
+  <img src="https://i.imgur.com/64Bmz5l.png"
+    alt="wire-flow-3"/>
+</p>
+
+El administrador navega a la sección de inventario y, si aún no tiene insumos, usa la opción de agregar el primero; si ya tiene insumos registrados, puede crear uno nuevo. En ambos casos completa el formulario de creación del insumo y, al guardarlo, el nuevo producto queda disponible en el catálogo con su información.
+
+**- Task Flow 4**: Gestión de Recetas
+
+<p align="center">
+  <img src="https://i.imgur.com/B9SZIFs.png"
+    alt="task-flow-4"/>
+</p>
+
+#### Pasos del Task Flow 4:
+
+1. El administrador de restaurante ingresa a la sección de recetas
+2. El administrador de restaurante selecciona "Agregar receta"
+3. El administrador completa el formulario de registro de receta
+4. El administrador visualiza su nueva receta en su catálogo
+5. El administrador selecciona la receta creado
+6. El administrador visualiza los detalles de esa receta creado
+
+**- User Goal 4**: Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+<p align="center">
+  <img src="https://i.imgur.com/yvfuzKo.png"
+    alt="wire-flow-4"/>
+</p>
+
+El administrador de restaurante accede a la sección de recetas y selecciona la opción de crear una receta nueva; completa el formulario con nombre, imagen y los ingredientes que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle de la receta creada y verificar su disponibilidad.
+
+**- Task Flow 5**: Gestión de Kits / Combos
+
+<p align="center">
+  <img src="https://i.imgur.com/Na89SRx.png"
+    alt="task-flow-5"/>
+</p>
+
+#### Pasos del Task Flow 5:
+
+1. El administrador retail ingresa a la sección de kits (combos)
+2. El administrador retail selecciona "Agregar combo"
+3. El administrador completa el formulario de registro del combo
+4. El administrador visualiza su nuevo combo en su catálogo
+5. El administrador selecciona el combo creado
+6. El administrador visualiza los detalles de ese combo creado
+
+**- User Goal 5**: Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/qCFeaCC.png"
+    alt="wire-flow-5"/>
+</p>
+
+El administrador retail accede a la sección de kits y selecciona la opción de crear un kit nuevo; completa el formulario con nombre, imagen y los productos que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle del kit creado y verificar su disponibilidad operacional basada en el stock real de cada componente.
+
+**- Task Flow 6**: Gestión de Lotes (Batches) y Transferencia de Stock
+
+<p align="center">
+  <img src="https://i.imgur.com/AwvA8VH.png"
+    alt="task-flow-6"/>
+</p>
+
+#### Pasos del Task Flow 6:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador retail selecciona "Agregar un lote"
+3. El administrador completa selecciona una suministro y su cantidad de stock
+4. El administrador visualiza el nuevo lote en el inventario
+5. El administrador selecciona "Transferir lote"
+6. El administrador ingresa el lote y la sucursal de origen y de destino
+7. El lote se elimina de la sucursal de origen y pasa a visualizarse en la sucursal de destino
+
+
+**- User Goal 6**: Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+<p align="center">
+  <img src="https://i.imgur.com/s5OWiSC.png"
+    alt="wire-flow-6"/>
+</p>
+
+El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
+
 ### 5.4.2. Applications Mock-ups
 ### 5.4.3. Applications User Flow Diagrams
 ## 5.5. Applications Prototyping
