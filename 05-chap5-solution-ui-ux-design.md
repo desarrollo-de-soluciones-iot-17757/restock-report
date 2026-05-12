@@ -448,7 +448,12 @@ Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wirefr
 **- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
 
 <p align="center">
-  <img src="https://i.imgur.com/ic1ZSHy.png"
+  <img src="https://i.imgur.com/9G2937P.png"
+    alt="wire-flow-1"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/2579pQG.png"
     alt="wire-flow-1"/>
 </p>
 
@@ -478,6 +483,11 @@ El visitante ingresa a la web app y se registra eligiendo su rol (administrador 
     alt="wire-flow-2"/>
 </p>
 
+<p align="center">
+  <img src="https://i.imgur.com/wT7ghaG.png"
+    alt="wire-flow-2"/>
+</p>
+
 El usuario registrado accede a la web app y puede iniciar sesión directamente con sus credenciales. Si olvidó su contraseña, inicia el flujo de recuperación ingresando su correo, recibiendo y validando un código de 6 dígitos, y estableciendo una nueva contraseña, para finalmente iniciar sesión y acceder a su cuenta.
 
 **- Task Flow 3**: Gestión de suministros
@@ -500,6 +510,11 @@ El usuario registrado accede a la web app y puede iniciar sesión directamente c
 
 <p align="center">
   <img src="https://i.imgur.com/64Bmz5l.png"
+    alt="wire-flow-3"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/huTCM9n.png"
     alt="wire-flow-3"/>
 </p>
 
@@ -580,7 +595,99 @@ El administrador retail accede a la sección de kits y selecciona la opción de 
     alt="wire-flow-6"/>
 </p>
 
+<p align="center">
+  <img src="https://i.imgur.com/ty5WeSE.png"
+    alt="wire-flow-6"/>
+</p>
+
 El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
+
+
+**- Task Flow 7**: Conciliación de discrepancias de inventario
+
+<p align="center">
+  <img src="https://i.imgur.com/MHcvbcM.png"
+    alt="task-flow-7"/>
+</p>
+
+#### Pasos del Task Flow 7:
+
+1. El administrador ingresa a la sección de discrepancias de inventario
+2. El administrador selecciona una discrepancia
+3. El administrador resuelve la discrepancia de stock
+4. El administrador ya no visualiza la discrepancia resuelta
+
+**- User Goal 7**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/5YqlQLQ.png"
+    alt="wire-flow-7"/>
+</p>
+
+El administrador accede a la sección de discrepancias de inventario y selecciona una discrepancia específica para ver su detalle, donde puede revisar las diferencias entre el stock físico y el digital junto a su historial. Desde esa vista, elige la opción de resolver la discrepancia, completa el formulario de justificación con los datos correspondientes y confirma la acción para registrar la corrección.
+
+
+**- Task Flow 8**: Gestión de dispositivos
+
+<p align="center">
+  <img src="https://i.imgur.com/6blSmB0.png"
+    alt="task-flow-8"/>
+</p>
+
+#### Pasos del Task Flow 8:
+
+1. El administrador ingresa a la sección de dispositivos
+2. El administrador selecciona "Agregar dispositivo"
+3. El administrador completa el formulario de registro de un dispositivo
+4. El administrador visualiza el dispositivo en la sección de dispositivos
+5. El administrador selecciona el dispositivo creado
+6. El administrador asigna un suministro a ese dispositivo
+7. El administrador configura el peso, temperatura y humedad limites que debe validar el dispositivo
+
+**- User Goal 8**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/2y4W9Ic.png"
+    alt="wire-flow-8"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/rMo2n4s.png"
+    alt="wire-flow-8"/>
+</p>
+
+El administrador ingresa a la sección de dispositivos y registra un nuevo inventario inteligente completando su formulario; una vez creado, accede al detalle del dispositivo para asignarle un insumo del catálogo. Luego completa el formulario de asignación y configura los límites de peso, temperatura y humedad que activarán alertas automáticas, permitiendo así automatizar el seguimiento del stock en tiempo real.
+
+
+**- Task Flow 9**:
+
+<p align="center">
+  <img src="https://i.imgur.com/Y3X9GEn.png"
+    alt="task-flow-9"/>
+</p>
+
+#### Pasos del Task Flow 9:
+
+1. El administrador ingresa a la configuración de la cuenta
+2. El administrador ingresa a la sección de sucursales
+3. El administrador selecciona "Agregar sucursal"
+4. El administrador completa el formulario de registro de una sucursal
+5. Se actualiza la seccion de sucursales con la nueva creada anteriormente
+
+**- User Goal 9**: Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+<p align="center">
+  <img src="https://i.imgur.com/gsnzuuh.png"
+    alt="wire-flow-9"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/MAcfEL3.png"
+    alt="wire-flow-9"/>
+</p>
+
+El administrador accede a la configuración de cuenta y navega a la sección de sucursales, donde puede ver las ubicaciones ya registradas. Desde allí selecciona la opción de agregar una nueva sucursal, completa el formulario con nombre, teléfono, dirección y demás datos de la ubicación, y al guardar la nueva sucursal queda visible en el listado para organizar las operaciones por local.
+
 
 ### 5.4.2. Applications Mock-ups
 ### 5.4.3. Applications User Flow Diagrams
