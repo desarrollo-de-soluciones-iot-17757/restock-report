@@ -434,7 +434,7 @@ En esta sección, se evidencian pruebas de uso del prototipo de la aplicación w
   <img src="https://i.imgur.com/6o0juzg.png">
 
 
-Video demostrativo de la aplicación web: https://acortar.link/JbhOVn
+Video demostrativo de la aplicación web: https://acortar.link/tcLixm
 
 
 #### Prototipo de la aplicación móvil
@@ -442,6 +442,6 @@ Video demostrativo de la aplicación web: https://acortar.link/JbhOVn
 <p align="center">
   <img src="https://i.imgur.com/ey1iDmG.png">
 
-Video demostrativo de la aplicación móvil: https://acortar.link/y4z34g
+Video demostrativo de la aplicación móvil: https://acortar.link/uvTr3x
 
 ## 5.6. IoT Device Design
