@@ -453,7 +453,486 @@ Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso 
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
 ### 5.4.2. Applications Wireflow Diagrams
+
+Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
+
+**- Task Flow 1**: Registro de un nuevo usuario y activación de su suscripción
+
+<p align="center">
+  <img src="https://i.imgur.com/bMmb1kl.png"
+    alt="task-flow-1"/>
+</p>
+
+#### Pasos del Task Flow 1:
+
+1. El visitante ingresa a la aplicación web
+2. El visitante va a la sección de registro
+3. El Visitante elige su rol de negocio
+4. El Visitante completa su correo y contraseña
+5. El Visitante completa sus datos de perfil
+6. El Visitante completa sus datos de negocio
+7. El Visitante completa los datos del negocio
+8. El Visitante elige un plan de suscripción y paga
+9. Va a la sección de Inicio
+
+
+**- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+<p align="center">
+  <img src="https://i.imgur.com/9G2937P.png"
+    alt="wire-flow-1"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/2579pQG.png"
+    alt="wire-flow-1"/>
+</p>
+
+El visitante ingresa a la web app y se registra eligiendo su rol (administrador de restaurnate o retail); luego completa sus datos personales y de negocio, selecciona un plan y realiza el pago para activar su suscripción. Al finalizar el proceso, accede al dashboard principal de la plataforma y puede comenzar a gestionar su inventario.
+
+**- Task Flow 2**: Inicio de sesión y recuperación de contraseña
+
+<p align="center">
+  <img src="https://i.imgur.com/0RFEmnX.png"
+    alt="task-flow-2"/>
+</p>
+
+#### Pasos del Task Flow 2:
+
+1. El usuario ingresa a la aplicación web
+2. El visitante va a la seccion de "Olvidaste tu contraseña"
+3. El usuario ingresa su correo
+4. El usuario ingresa el código de 6 dígitos
+5. El usuario restablece su contraseña
+6. El usuario ingresa su correo y nueva contraseña
+7. El usuario ingresa a Inicio
+
+**- User Goal 2**: Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta.
+
+<p align="center">
+  <img src="https://i.imgur.com/2mNOzqX.png"
+    alt="wire-flow-2"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/wT7ghaG.png"
+    alt="wire-flow-2"/>
+</p>
+
+El usuario registrado accede a la web app y puede iniciar sesión directamente con sus credenciales. Si olvidó su contraseña, inicia el flujo de recuperación ingresando su correo, recibiendo y validando un código de 6 dígitos, y estableciendo una nueva contraseña, para finalmente iniciar sesión y acceder a su cuenta.
+
+**- Task Flow 3**: Gestión de suministros
+
+<p align="center">
+  <img src="https://i.imgur.com/HhxJUxF.png"
+    alt="task-flow-3"/>
+</p>
+
+#### Pasos del Task Flow 3:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador selecciona "Agregar un suministro"
+3. El administrador completa el formulario de registro
+4. El administrador visualiza su nuevo suministro en su catálogo
+5. El administrador selecciona el suministro creado
+6. El administrador visualiza los detalles de ese suministro creado
+
+**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario. 
+
+<p align="center">
+  <img src="https://i.imgur.com/64Bmz5l.png"
+    alt="wire-flow-3"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/huTCM9n.png"
+    alt="wire-flow-3"/>
+</p>
+
+El administrador navega a la sección de inventario y, si aún no tiene insumos, usa la opción de agregar el primero; si ya tiene insumos registrados, puede crear uno nuevo. En ambos casos completa el formulario de creación del insumo y, al guardarlo, el nuevo producto queda disponible en el catálogo con su información.
+
+**- Task Flow 4**: Gestión de Recetas
+
+<p align="center">
+  <img src="https://i.imgur.com/B9SZIFs.png"
+    alt="task-flow-4"/>
+</p>
+
+#### Pasos del Task Flow 4:
+
+1. El administrador de restaurante ingresa a la sección de recetas
+2. El administrador de restaurante selecciona "Agregar receta"
+3. El administrador completa el formulario de registro de receta
+4. El administrador visualiza su nueva receta en su catálogo
+5. El administrador selecciona la receta creado
+6. El administrador visualiza los detalles de esa receta creado
+
+**- User Goal 4**: Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+<p align="center">
+  <img src="https://i.imgur.com/yvfuzKo.png"
+    alt="wire-flow-4"/>
+</p>
+
+El administrador de restaurante accede a la sección de recetas y selecciona la opción de crear una receta nueva; completa el formulario con nombre, imagen y los ingredientes que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle de la receta creada y verificar su disponibilidad.
+
+**- Task Flow 5**: Gestión de Kits / Combos
+
+<p align="center">
+  <img src="https://i.imgur.com/Na89SRx.png"
+    alt="task-flow-5"/>
+</p>
+
+#### Pasos del Task Flow 5:
+
+1. El administrador retail ingresa a la sección de kits (combos)
+2. El administrador retail selecciona "Agregar combo"
+3. El administrador completa el formulario de registro del combo
+4. El administrador visualiza su nuevo combo en su catálogo
+5. El administrador selecciona el combo creado
+6. El administrador visualiza los detalles de ese combo creado
+
+**- User Goal 5**: Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/qCFeaCC.png"
+    alt="wire-flow-5"/>
+</p>
+
+El administrador retail accede a la sección de kits y selecciona la opción de crear un kit nuevo; completa el formulario con nombre, imagen y los productos que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle del kit creado y verificar su disponibilidad operacional basada en el stock real de cada componente.
+
+**- Task Flow 6**: Gestión de Lotes (Batches) y Transferencia de Stock
+
+<p align="center">
+  <img src="https://i.imgur.com/AwvA8VH.png"
+    alt="task-flow-6"/>
+</p>
+
+#### Pasos del Task Flow 6:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador retail selecciona "Agregar un lote"
+3. El administrador completa selecciona una suministro y su cantidad de stock
+4. El administrador visualiza el nuevo lote en el inventario
+5. El administrador selecciona "Transferir lote"
+6. El administrador ingresa el lote y la sucursal de origen y de destino
+7. El lote se elimina de la sucursal de origen y pasa a visualizarse en la sucursal de destino
+
+
+**- User Goal 6**: Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+<p align="center">
+  <img src="https://i.imgur.com/s5OWiSC.png"
+    alt="wire-flow-6"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ty5WeSE.png"
+    alt="wire-flow-6"/>
+</p>
+
+El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
+
+
+**- Task Flow 7**: Conciliación de discrepancias de inventario
+
+<p align="center">
+  <img src="https://i.imgur.com/MHcvbcM.png"
+    alt="task-flow-7"/>
+</p>
+
+#### Pasos del Task Flow 7:
+
+1. El administrador ingresa a la sección de discrepancias de inventario
+2. El administrador selecciona una discrepancia
+3. El administrador resuelve la discrepancia de stock
+4. El administrador ya no visualiza la discrepancia resuelta
+
+**- User Goal 7**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/5YqlQLQ.png"
+    alt="wire-flow-7"/>
+</p>
+
+El administrador accede a la sección de discrepancias de inventario y selecciona una discrepancia específica para ver su detalle, donde puede revisar las diferencias entre el stock físico y el digital junto a su historial. Desde esa vista, elige la opción de resolver la discrepancia, completa el formulario de justificación con los datos correspondientes y confirma la acción para registrar la corrección.
+
+
+**- Task Flow 8**: Gestión de dispositivos
+
+<p align="center">
+  <img src="https://i.imgur.com/6blSmB0.png"
+    alt="task-flow-8"/>
+</p>
+
+#### Pasos del Task Flow 8:
+
+1. El administrador ingresa a la sección de dispositivos
+2. El administrador selecciona "Agregar dispositivo"
+3. El administrador completa el formulario de registro de un dispositivo
+4. El administrador visualiza el dispositivo en la sección de dispositivos
+5. El administrador selecciona el dispositivo creado
+6. El administrador asigna un suministro a ese dispositivo
+7. El administrador configura el peso, temperatura y humedad limites que debe validar el dispositivo
+
+**- User Goal 8**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/2y4W9Ic.png"
+    alt="wire-flow-8"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/rMo2n4s.png"
+    alt="wire-flow-8"/>
+</p>
+
+El administrador ingresa a la sección de dispositivos y registra un nuevo inventario inteligente completando su formulario; una vez creado, accede al detalle del dispositivo para asignarle un insumo del catálogo. Luego completa el formulario de asignación y configura los límites de peso, temperatura y humedad que activarán alertas automáticas, permitiendo así automatizar el seguimiento del stock en tiempo real.
+
+
+**- Task Flow 9**:
+
+<p align="center">
+  <img src="https://i.imgur.com/Y3X9GEn.png"
+    alt="task-flow-9"/>
+</p>
+
+#### Pasos del Task Flow 9:
+
+1. El administrador ingresa a la configuración de la cuenta
+2. El administrador ingresa a la sección de sucursales
+3. El administrador selecciona "Agregar sucursal"
+4. El administrador completa el formulario de registro de una sucursal
+5. Se actualiza la seccion de sucursales con la nueva creada anteriormente
+
+**- User Goal 9**: Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+<p align="center">
+  <img src="https://i.imgur.com/gsnzuuh.png"
+    alt="wire-flow-9"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/MAcfEL3.png"
+    alt="wire-flow-9"/>
+</p>
+
+El administrador accede a la configuración de cuenta y navega a la sección de sucursales, donde puede ver las ubicaciones ya registradas. Desde allí selecciona la opción de agregar una nueva sucursal, completa el formulario con nombre, teléfono, dirección y demás datos de la ubicación, y al guardar la nueva sucursal queda visible en el listado para organizar las operaciones por local.
+
+
 ### 5.4.2. Applications Mock-ups
 ### 5.4.3. Applications User Flow Diagrams
+
+#### User Flow 1: Registro y Onboarding
+
+**User Goal:** Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+##### Happy Path
+
+El visitante accede a la pantalla de Login y hace clic en "Sign up". Es redirigido a la pantalla Register donde ingresa su email, contraseña y confirma la contraseña. Hace clic en "Create Account" y avanza a "How will you use Restock?" donde selecciona su rol (Restaurant Administrator o Retail Administrator). Hace clic en "Continue" y completa el formulario "Create your Account" con nombre, apellido, teléfono, ubicación y avatar. Hace clic en "Next: Business Details" y completa el "Registration - Business Profile" con nombre comercial, descripción, categorías y dirección. Hace clic en "Create Account" y es redirigido a "Subscription Plans" donde selecciona el plan Premium. Hace clic en "Select Plan" y es redirigido al "Payment Gateway" donde ingresa sus datos de tarjeta. El pago es procesado exitosamente y el usuario accede al Dashboard.
+
+
+![User Flow 1 - Happy Path Web](https://imgur.com/qCOMFK3.png)
+
+![User Flow 1 - Happy Path Mobile](https://imgur.com/32OLoEy.png)
+
+
+##### Unhappy Path
+
+El visitante intenta registrarse con un correo ya existente o deja campos obligatorios vacíos. El sistema muestra mensajes de error en los campos correspondientes y bloquea el avance hasta que los datos sean corregidos. Si en el Payment Gateway los datos de tarjeta son inválidos, el sistema muestra un aviso de fallo en la transacción y bloquea el pago hasta que el usuario corrija la información.
+
+
+![User Flow 1 - Unhappy Path Web](https://imgur.com/w0ilFpl.png)
+
+![User Flow 1 - Unhappy Path Mobile](https://imgur.com/unYReLb.png)
+
+
+#### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
+
+**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Intiva.
+
+##### Happy Path
+
+El usuario accede a la pantalla Login, ingresa su email y contraseña correctos y hace clic en "Login". El sistema valida las credenciales y redirige al Dashboard principal.
+
+![User Flow 2 - Happy Path Web](https://imgur.com/WLtfwZY.png)
+
+![User Flow 2 - Happy Path Mobile](https://imgur.com/qHmQ3YJ.png)
+
+
+##### Unhappy Path
+
+El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el mensaje "Incorrect credentials. Please try again." El usuario hace clic en "Forgot your password?" y es redirigido a Reset Password donde ingresa su email y hace clic en "Send recovery code". Recibe un código de 6 dígitos en su correo, lo ingresa en la pantalla de verificación y establece una nueva contraseña válida para recuperar el acceso.
+
+![User Flow 2 - Unhappy Path Web](https://imgur.com/lsTwfc3.png)
+
+![User Flow 2 - Unhappy Path Mobile](https://imgur.com/oRD1Bbc.png)
+
+
+
+#### User Flow 3: Gestión de Insumos / Custom Supplies
+
+**User Goal:** Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario.
+
+##### Happy Path
+
+El administrador navega desde el Dashboard al módulo Inventory y accede a la sección Custom Supplies. Visualiza el catálogo con los insumos existentes. Hace clic en "+ Add Supply", se abre el modal "Create Custom Supply" donde selecciona la categoría, ingresa el nombre del insumo, la unidad de medida, capacidad mínima, máxima y marca si es perecible. Guarda los cambios y el nuevo insumo aparece en el catálogo. Para editar, hace clic en "Edit" sobre un insumo existente, se abre el modal "Edit Custom Supply" con los datos precargados, realiza los cambios y hace clic en "Update Supply".
+
+
+![User Flow 3 - Happy Path Web](https://imgur.com/b5BxBnj.png)
+
+![User Flow 3 - Happy Path Mobile](https://imgur.com/QtC4zEP.png)
+
+
+##### Unhappy Path
+
+El administrador deja campos obligatorios vacíos o ingresa valores inválidos en el modal "Create Custom Supply". El sistema bloquea el guardado y muestra mensajes de error en los campos correspondientes hasta que los datos sean corregidos.
+
+![User Flow 3 - Unhappy Path Web](https://imgur.com/5GCD8R1.png)
+
+![User Flow 3 - Unhappy Path Mobile](https://imgur.com/4KDJ6CR.png)
+
+
+#### User Flow 4: Gestión de Recetas
+
+**User Goal:** Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+
+##### Happy Path
+
+El administrador accede al módulo Recipes desde el sidebar. Visualiza el Recipe Catalog con las recetas activas organizadas en Main Courses, Starters y Beverages. Hace clic en "+ Add Recipe", se abre el modal "Create New Recipe" donde ingresa el nombre, precio estimado y agrega ingredientes desde el inventario con sus cantidades. Hace clic en "Save Recipe" y la receta aparece en el catálogo. Al hacer clic en una receta accede al "Recipe Detail Builder" donde visualiza el costo estimado, precio de venta e ingredientes vinculados. Para editar, hace clic en "Edit Recipe", se abre el modal con los datos precargados, modifica los ingredientes o cantidades y hace clic en "Update Recipe".
+
+![User Flow 4 - Happy Path Web](https://imgur.com/H2U0c80.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una receta sin ingredientes o con cantidades inválidas. El sistema bloquea el guardado y muestra el mensaje de error correspondiente. Si decide eliminar una receta, aparece el modal "Delete Recipe?" con advertencia de que la acción es permanente. Si confirma haciendo clic en "Yes, delete recipe", la receta es eliminada del catálogo.
+
+
+![User Flow 4 - Unhappy Path Web](https://imgur.com/Wnwo46O.png)
+
+
+
+#### User Flow 5: Gestión de Kits / Combos
+
+**User Goal:** Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad operativa según el stock real.
+
+##### Happy Path
+
+El administrador retail accede al módulo Kits desde el sidebar. Visualiza el Kits & Combos Catalog con los combos existentes. Hace clic en "+ Create Kit", se abre el modal "Create New Kit" donde sube una imagen, ingresa el nombre del kit, selecciona los productos desde el inventario con sus cantidades y hace clic en "Add Kit". El kit aparece en el catálogo. Al acceder al detalle del kit visualiza la disponibilidad operativa calculada según el stock de los componentes. Para editar, hace clic en "Edit Kit", modifica los componentes y hace clic en "Update Kit". Desde el módulo Sales, el administrador agrega el kit al Order Ticket, hace clic en "Log Sale & Update Stock" y el sistema registra la venta mostrando el modal "Sale Registered Successfully".
+
+
+![User Flow 5 - Happy Path Web](https://imgur.com/aLFOxY2.png)
+
+
+
+##### Unhappy Path
+
+El administrador intenta registrar una venta con un kit cuyos componentes no tienen stock físico suficiente. El sistema muestra el modal "Action Blocked: Insufficient Physical Inventory" indicando el componente faltante con el stock disponible vs el requerido. El administrador debe hacer clic en "Go to Restock from Stock" para ir al inventario y reponer el componente antes de poder completar la venta.
+
+
+![User Flow 5 - Unhappy Path Web](https://imgur.com/31DxN7R.png)
+
+
+#### User Flow 6: Gestión de Lotes (Batches) y Transferencia de Stock
+
+**User Goal:** Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y visualiza la vista de Batches con la lista de lotes activos, stock total, fechas de vencimiento y alertas. Hace clic en "+ Add Batch", se abre el modal "Add New Batch" donde selecciona el insumo, ingresa el stock inicial y la fecha de vencimiento y hace clic en "Add Batch". Para ver el detalle de un lote hace clic sobre él y se abre el modal "Batch Detail". Para editar hace clic en "Update Batch", modifica los campos en el modal "Edit Batch" y confirma los cambios. Para transferir stock hace clic en "Transfer Batch Stock", se abre el drawer "Stock Transfer" donde selecciona la sucursal origen, destino, el lote y la cantidad, y confirma la transferencia actualizando el stock de ambas sucursales.
+
+
+![User Flow 6 - Happy Path Web](https://imgur.com/neT8TRY.png)
+
+
+![User Flow 6 - Happy Path Mobile](https://imgur.com/MXuIxpP.png)
+
+
+##### Unhappy Path
+
+Si el administrador accede al inventario por primera vez sin insumos registrados, el sistema muestra la pantalla "Empty Inventory" con el mensaje "Your inventory is empty" y la opción de agregar el primer insumo haciendo clic en "+ Add First Supply". Si en el drawer de transferencia ingresa una cantidad mayor al stock disponible del lote, el sistema muestra el indicador en rojo y bloquea la confirmación hasta que se corrija la cantidad.
+
+
+![User Flow 6 - Unhappy Path Web](https://imgur.com/lb9bjQ8.png)
+
+
+![User Flow 6 - Unhappy Path Mobile](https://imgur.com/BztsoNr.png)
+
+
+
+#### User Flow 7: Conciliación de Discrepancias de Inventario
+
+**User Goal:** Como administrador del negocio, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y selecciona la sección "Conciliation Tasks". Visualiza la lista de discrepancias activas con su nivel de criticidad. Hace clic en una discrepancia activa para acceder al "Discrepancy Detail" donde visualiza el stock digital, la lectura del smart scale y la gráfica de peso vs tiempo. Selecciona la causa de la discrepancia desde el dropdown, ingresa la justificación y hace clic en "Confirm & Apply Action". El sistema actualiza el inventario digital, cierra la tarea y registra el evento en el "Resolution History".
+
+
+![User Flow 7 - Happy Path Web](https://imgur.com/Tp0Slyz.png)
+
+
+##### Unhappy Path
+
+El administrador detecta que el smart scale reporta lecturas inconsistentes y hace clic en "Recalibrate Scale". Se abre el modal "Recalibrate Scale" con las opciones "Force Reset (Stay Calibrated)" o "Schedule On-site Visit Maintenance". Si el dispositivo no responde al reset, el sistema bloquea la confirmación y muestra error de conectividad. El administrador puede registrar la discrepancia como "Unresolved" con comentario o programar visita técnica mediante "Recalibrate & Create Discrepancy".
+
+
+![User Flow 7 - Unhappy Path Web](https://imgur.com/e0L6mW6.png)
+
+#### User Flow 8: Gestión de Dispositivos (Smart Scales)
+
+**User Goal:** Como administrador, quiero registrar y configurar los dispositivos de monitoreo de inventario en mis sucursales, para automatizar el seguimiento de stock y recibir alertas oportunas según los umbrales definidos.
+
+
+##### Happy Path
+
+El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
+
+
+![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
+
+
+![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
+
+
+
+##### Unhappy Path — Desvinculación de dispositivo activo
+
+El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
+
+
+![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
+
+![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
+
+
+#### User Flow 9: Gestión de Sucursales
+
+**User Goal:** Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+
+##### Happy Path
+
+El administrador accede a Settings, Branch Management desde el sidebar. Visualiza las tarjetas de las sucursales activas con sus métricas de devices, staff y alerts. Hace clic en "+ Add New Branch" y se abre el drawer "Create New Branch" donde sube la foto de la instalación, ingresa el nombre, número de teléfono, dirección, ciudad, zip code y activa el Branch Status. Hace clic en "Save Branch" y la nueva sucursal aparece en el panel. Para editar, hace clic en "Manage Branch" de una sucursal existente, se abre el drawer "Edit Branch" con los datos precargados, realiza los cambios y hace clic en "Update Branch".
+
+![User Flow 9 - Happy Path Web](https://imgur.com/NDLjokQ.png)
+
+![User Flow 9 - Happy Path Mobile](https://imgur.com/YRUpB5y.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una nueva sucursal dejando campos obligatorios vacíos o con datos inválidos. El sistema bloquea el guardado en el drawer "Create New Branch" y muestra mensajes de error en los campos correspondientes hasta que la información sea corregida y completada.
+
+
+![User Flow 9 - Unhappy Path Web](https://imgur.com/DHtm8WS.png)
+
+![User Flow 9 - Unhappy Path Mobile](https://imgur.com/7Ge84z7.png)
+
+
 ## 5.5. Applications Prototyping
 ## 5.6. IoT Device Design
