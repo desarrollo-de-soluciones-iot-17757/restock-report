@@ -428,19 +428,20 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 
 En esta sección, se evidencian pruebas de uso del prototipo de la aplicación web y móvil. Además, se adjunta un video donde se usa el prototipo y las interacciones con el prototipo se basan en los User Flows descritos previamente.
 
+#### Prototipo de la aplicación web 
+
 <p align="center">
   <img src="https://i.imgur.com/6o0juzg.png">
 
-<p align="center">Prototipo de la aplicación web - Restock</p>
 
-Prototipo de la aplicación web: https://acortar.link/JbhOVn
+Video demostrativo de la aplicación web: https://acortar.link/JbhOVn
 
+
+#### Prototipo de la aplicación móvil
 
 <p align="center">
   <img src="https://i.imgur.com/ey1iDmG.png">
 
-<p align="center">Prototipo de la aplicación móvil - Restock</p>
-
-Prototipo de la aplicación móvil: https://acortar.link/y4z34g
+Video demostrativo de la aplicación móvil: https://acortar.link/y4z34g
 
 ## 5.6. IoT Device Design
