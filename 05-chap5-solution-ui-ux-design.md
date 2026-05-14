@@ -419,6 +419,62 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ### 5.2.2. Labeling Systems
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
+
+En Restock, los sistemas de búsqueda se definen de acuerdo con las funcionalidades establecidas en las User Stories del Capítulo 3, especialmente en los flujos de gestión de suministros, recetas, kits, lotes, discrepancias, dispositivos y sucursales. Por ello, la propuesta se centra en mecanismos de búsqueda simples y filtros operativos concretos, evitando funcionalidades avanzadas no contempladas en el alcance del producto.
+
+El objetivo principal es que el usuario encuentre rápidamente registros existentes para ejecutar sus tareas (consultar, editar, resolver o transferir), sin sentirse perdido frente al volumen de información.
+
+#### 5.2.4.1. Medios de ayuda para la búsqueda
+
+Para apoyar al usuario durante la consulta de datos, la interfaz incorpora ayudas directas:
+
+- **Campo de búsqueda visible por módulo:** ubicado en la parte superior de listas o tablas con textos guía como "Buscar insumo", "Buscar lote" o "Buscar sucursal".
+- **Filtros básicos de contexto:** controles de selección por estado, sucursal o fecha, según el módulo.
+- **Indicador de resultados:** mensaje de apoyo como "Mostrando X resultados" para confirmar que la búsqueda fue aplicada.
+- **Acción "Limpiar":** permite quitar el texto y filtros seleccionados para volver al listado completo.
+- **Estado sin resultados:** mensaje claro cuando no hay coincidencias, invitando a cambiar el término ingresado o ajustar filtros.
+
+Estas ayudas siguen el tono de comunicación definido en Restock: claro, directo y orientado a la acción.
+
+#### 5.2.4.2. Opciones de búsqueda por aplicación
+
+| Plataforma | Tipo de búsqueda | Alcance |
+|------------|------------------|---------|
+| Landing Page | Navegación por secciones (anclas y menú) | Permite ubicar contenido informativo (beneficios, funcionalidades, planes, FAQ) sin un motor de búsqueda dedicado |
+| Aplicación web | Búsqueda textual por módulo + filtros básicos | Permite localizar registros en tablas/listas de trabajo según las tareas de administración |
+| Aplicación móvil | Búsqueda textual por pantalla + filtros simplificados | Permite consultar los mismos datos clave de la web con interacción táctil |
+| Dispositivo IoT | No aplica búsqueda textual | El dispositivo muestra estado operativo y lectura actual en el display, sin flujo de búsqueda manual |
+
+#### 5.2.4.3. Filtros definidos por módulo (alineados a User Stories)
+
+| Módulo | Búsqueda textual | Filtros disponibles |
+|--------|------------------|---------------------|
+| Suministros / Inventario (US-14, US-15, US-19) | Nombre de insumo o producto | Estado (activo/inactivo), categoría, sucursal |
+| Lotes (Task/User Flow 6) | Código o nombre de lote/insumo | Sucursal, estado del lote, rango de vencimiento |
+| Discrepancias (Task/User Flow 7) | Insumo o identificador de discrepancia | Estado (pendiente/resuelta), criticidad, rango de fecha |
+| Dispositivos (Task/User Flow 8) | Alias o identificador del dispositivo | Estado (online/offline), sucursal |
+| Recetas (Task/User Flow 4) | Nombre de receta | Categoría de receta, estado (activa/inactiva) |
+| Kits/Combos (Task/User Flow 5) | Nombre de kit/combo | Estado (activo/inactivo), disponibilidad |
+| Sucursales (Task/User Flow 9) | Nombre de sucursal o ubicación | Estado (activa/inactiva), ciudad |
+
+#### 5.2.4.4. Visualización de resultados después de la búsqueda
+
+Después de aplicar búsqueda o filtros, los datos se muestran manteniendo el mismo formato base de cada módulo:
+
+- **Web:** tablas o listas con columnas clave (nombre, estado, sucursal, fecha o stock según el caso).
+- **Móvil:** tarjetas o listas resumidas con los datos críticos del registro y acceso al detalle.
+- **Consistencia de estado:** siempre se muestra si la búsqueda devolvió resultados, si no hubo coincidencias o si se debe limpiar/ajustar filtros.
+
+Comportamientos esperados:
+
+- **Con resultados:** se visualiza el subconjunto filtrado y el contador de coincidencias.
+- **Sin resultados:** se muestra estado vacío con mensaje orientativo.
+- **Al limpiar filtros:** se restaura el listado completo del módulo.
+
+#### 5.2.4.5. Criterio de alcance funcional
+
+El sistema de búsqueda propuesto no introduce funcionalidades complejas adicionales (por ejemplo, búsqueda semántica, recomendaciones inteligentes o consultas predictivas), ya que no forman parte de los requerimientos funcionales priorizados en el Capítulo 3. De esta manera, la sección se mantiene consistente con el backlog del producto y con los flujos de uso definidos para la versión actual de Restock.
+
 ### 5.2.5. Navigation Systems
 
 En esta sección se describen las acciones y técnicas que guiarán a los usuarios a través del Landing Page y las aplicaciones (web, móvil e IoT), permitiéndoles cumplir sus metas e interactuar de forma satisfactoria con el producto. Se incluyen los recorridos principales, los patrones de interacción y las tácticas UX que facilitan la navegación y la conversión hacia tareas de valor.
