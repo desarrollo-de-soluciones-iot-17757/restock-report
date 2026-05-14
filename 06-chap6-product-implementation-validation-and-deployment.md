@@ -39,7 +39,7 @@ Se adjuntan los enlaces para acceder al sitio web estático desplegado y al víd
 #### Sección Hero
 
 
-<img src="" alt="hero-web" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/eRR8EeY.png" alt="hero-web" style="width: 100%; height: auto;"/>
 
 
 #### Acerca de Restock
@@ -59,7 +59,7 @@ Se adjuntan los enlaces para acceder al sitio web estático desplegado y al víd
 
 #### Testimonios
 
-<img src="" alt="testimonials" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/8L2iZDb.png" alt="testimonials" style="width: 100%; height: auto;"/>
 
 #### Preguntas frecuentes (FAQ)
 
@@ -73,8 +73,15 @@ Se adjuntan los enlaces para acceder al sitio web estático desplegado y al víd
 
 <img src="" alt="plan-and-subscriptions" style="width: 100%; height: auto;"/>
 
-#### Footer
+#### Usa la aplicación web
 
+<img src="https://i.imgur.com/pRBTjs8.png" alt="go-to-app-web" style="width: 100%; height: auto;"/>
+
+#### Descarga la aplicación
+
+<img src="https://i.imgur.com/NLvtb3J.png" alt="download app" style="width: 100%; height: auto;"/>
+
+#### Footer
 
 <img src="" alt="footer" style="width: 100%; height: auto;"/>
 
@@ -97,8 +104,9 @@ Se adjuntan los enlaces para el vídeo de demostración de la aplicación web. E
 
 #### Registro de usuario
 
-<img src="" alt="sign-up" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/nTioVNT.png" alt="sign-up" style="width: 100%; height: auto;"/>
 
+<img src="https://i.imgur.com/9qIy3a3.png" alt="role-selection" style="width: 100%; height: auto;"/>
 
 #### Gestión de sucursales
 
@@ -121,13 +129,19 @@ Se adjuntan los enlaces para el vídeo de demostración de la aplicación web. E
 
 #### Gestión de inventario
 
-<img src="" alt="inventory" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/1zlXafL.png" alt="batches" style="width: 100%; height: auto;"/>
 
 <img src="" alt="inventory" style="width: 100%; height: auto;"/>
 
 <img src="" alt="inventory" style="width: 100%; height: auto;"/>
 
 <img src="" alt="inventory" style="width: 100%; height: auto;"/>
+
+#### Ventas de una sucursal
+
+<img src="https://i.imgur.com/1qO4O2Q.png" alt="sales" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/RiLXMTZ.png" alt="sales" style="width: 100%; height: auto;"/>
 
 #### Gestión de dispositivos
 
