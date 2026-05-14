@@ -935,4 +935,23 @@ El administrador intenta guardar una nueva sucursal dejando campos obligatorios 
 
 
 ## 5.5. Applications Prototyping
+
+En esta sección, se evidencian pruebas de uso del prototipo de la aplicación web y móvil. Además, se adjunta un video donde se usa el prototipo y las interacciones con el prototipo se basan en los User Flows descritos previamente.
+
+#### Prototipo de la aplicación web 
+
+<p align="center">
+  <img src="https://i.imgur.com/6o0juzg.png">
+
+
+Video demostrativo de la aplicación web: https://acortar.link/tcLixm
+
+
+#### Prototipo de la aplicación móvil
+
+<p align="center">
+  <img src="https://i.imgur.com/ey1iDmG.png">
+
+Video demostrativo de la aplicación móvil: https://acortar.link/uvTr3x
+
 ## 5.6. IoT Device Design
