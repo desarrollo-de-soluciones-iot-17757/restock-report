@@ -30,12 +30,22 @@ Cada miembro del equipo avanzó progresivamente en las diferentes áreas del pro
 A continuación, se muestra una tabla que contiene la información sobre los **commits** realizados que contienen las funcionalidades implementadas para completar el primer sprint.
 
 
-| Repository              | Branch                 | Commit Id                                | Commit Message                                   | Commited On |
-|-------------------------|------------------------|------------------------------------------|--------------------------------------------------|-------------|
-| restock-landing-page    | master                 | c4d1d91309ecd68035221e82ba0ebf5596db282d | chore: initial commit.                           | 08/05/26    |
-| restock-web-application | main                   | 1ac30de5797ce40dffb7fe42b2703f093d088613 | chore: initial commit.                           | 08/05/26    |
-| restock-web-application | feature/initial-config | 5402e827034d9529d50f6bb46632cffda0aa6a1f | chore: initialize angular standalone application | 11/05/26    |
-
+| Repository              | Branch                   | Commit Id                                | Commit Message                                                                                                 | Commited On |
+|-------------------------|--------------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|
+| restock-landing-page    | master                   | c4d1d91309ecd68035221e82ba0ebf5596db282d | chore: initial commit.                                                                                         | 08/05/26    |
+| restock-web-application | main                     | 1ac30de5797ce40dffb7fe42b2703f093d088613 | chore: initial commit.                                                                                         | 08/05/26    |
+| restock-landing-page    | feature/hero             | 137c93e1068496a6063d32bac6a2dee75e235eec | feat(hero): add hero section.                                                                                  | 12/05/26    |
+| restock-landing-page    | feature/hero             | 137c93e1068496a6063d32bac6a2dee75e235eec | feat(hero): add hero section.                                                                                  | 12/05/26    |
+| restock-landing-page    | feature/faq              | 22c208b3aaefcbce8eb0751bdab1489a27462be7 | feat(faq): add faq section.                                                                                    | 12/05/26    |
+| restock-landing-page    | feature/download         | c0342fd8cbc565e7b37e7aa9c9189afd1276e4d7 | feat(download): add download section.                                                                          | 12/05/26    |
+| restock-landing-page    | feature/testimonzials    | 5dfdf9cd19030ff80d8f9c0a618f13c95fb09d21 | feat(testimonials): add testimonials section.                                                                  | 12/05/26    |
+| restock-web-application | feature/initial-config   | 5402e827034d9529d50f6bb46632cffda0aa6a1f | chore: initialize angular standalone application                                                               | 12/05/26    |
+| restock-web-application | fetaure/initial-config   | a211b83dd2a21d17d32faab5f16882ea5f08e531 | feat(top-bar): add top bar component with search and user profile features                                     | 12/05/26    |
+| restock-web-application | feature/profiles         | b0fe9090d4c066c2b01282e6afb8590f1c0f7b08 | feat(profiles): implement businesses and profiles api endpoints with assemblers and response interfaces        | 12/05/26    |
+| restock-web-application | feature/inventory        | 5402e827034d9529d50f6bb46632cffda0aa6a1f | feat(resource): add inventory domain models.                                                                   | 12/05/26    |
+| restock-web-application | feature/register         | 42fbf570a51f126699a2fee8618a0af860bd1580 | feat(i18n): add i18n to authentication section and sign-up form.                                               | 12/05/26    |
+| restock-web-application | feature/intial-config    | 9d10d4c2f00919c6f2b67f679ffe6a66937e43c4 | feat(config): add db json server configuration.                                                                | 13/05/26    |
+| restock-web-application | feature/sales-management | 4df66f6fb80b50c629ad43a0c316dcbb5868ebad | feat(sales): add lazy loading for sales routes and update sales api service for retrieving sales by branch id. | 13/05/26    |
 
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
