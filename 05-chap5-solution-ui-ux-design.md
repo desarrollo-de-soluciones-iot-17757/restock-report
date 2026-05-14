@@ -416,11 +416,63 @@ En esta sección el equipo de Restock presenta las decisiones y fundamentos rela
 
 ### 5.2.1. Organization Systems
 
-En el sistema Restock, se emplea la organización jerárquica para priorizar visualmente la información crítica capturada por los sensores IoT, como los niveles de stock bajo mínimos y las alertas de productos próximos a vencer en los dashboards. Esta jerarquía visual asegura que el usuario identifique de inmediato las anomalías en el peso o cantidad de los insumos antes de revisar métricas secundarias, facilitando una toma de decisiones rápida basada en datos en tiempo real.
+Restock utiliza un esquema de organización visual que combina tres tipos principales de ordenamiento: jerárquico, secuencial y categórico. Cada uno responde a una necesidad distinta del usuario y permite presentar la información de forma clara, eficiente y alineada con los roles de las diferentes audiencias.
 
-También se aplica una organización secuencial en procesos operativos que requieren una progresión lógica, tales como la vinculación de insumos específicos a los sensores de peso y la configuración de umbrales de alerta. Al guiar al usuario a través de un flujo paso a paso para definir cuántos kilogramos representan el stock mínimo y máximo según las necesidades de su negocio, el sistema garantiza que las notificaciones automáticas sean precisas. Estos flujos estructurados permiten que el personal gestione las reglas de reabastecimiento de manera autónoma, asegurando que la configuración del software refleje fielmente la realidad física de su almacén.
+#### Organización visual jerárquica
 
-En cuanto a los esquemas de categorización, se utiliza una organización cronológica para gestionar el historial de telemetría de los sensores, los registros de ventas y el seguimiento de las compras realizadas, presentando siempre los eventos más recientes en primer plano. Además, el contenido se clasifica por tópicos para agrupar los insumos según su naturaleza (como lácteos, carnes o abarrotes) y, fundamentalmente, según la audiencia del sistema. De esta manera, los administradores de restaurante visualizan herramientas de gestión de mermas, mientras que el personal técnico accede a interfaces adaptadas al monitoreo de la salud de los dispositivos IoT, asegurando que cada grupo de usuarios tenga una experiencia personalizada según su rol.
+En el sistema Restock, la organización jerárquica prioriza visualmente la información crítica capturada por los sensores IoT, como los niveles de stock bajo mínimos y las alertas de productos próximos a vencer. Esta jerarquía visual garantiza que el usuario identifique de inmediato las anomalías en el peso o cantidad de los insumos antes de revisar métricas secundarias, facilitando una toma de decisiones rápida basada en datos en tiempo real.
+
+Representación de la Arquitectura jerárquica:
+
+<p align="center">Organización en el landing page</p>
+
+<img src="assets/images/chapter5/sitemaps/organizacion-landing.png" alt="Landing page - sitemap" height=90%>
+
+Este diagrama representa la jerarquía informativa orientada al usuario externo. Estructura el flujo desde el inicio (propuesta de valor), pasando por los beneficios específicos para restaurantes y retail, hasta culminar en la conversión mediante la visualización de planes de suscripción.
+
+<p align="center">Organización de la aplicación</p>
+
+<img src="assets/images/chapter5/sitemaps/organizacion-front.png" alt="Web App - sitemap" height=90%>
+
+Este esquema detalla la arquitectura interna del software de gestión. La organización jerárquica parte de un Dashboard central (Overview) que ramifica el acceso hacia los módulos operativos clave como el inventario, las recetas (Recipes), los kits, y la gestión de dispositivos IoT.
+
+Casos de aplicación:
+- Dashboards donde los indicadores de stock crítico, discrepancias y alertas aparecen en la parte superior o en paneles destacados.
+- Vistas de inventario en las que los colores, badges y tipografías jerarquizan el estado de cada insumo.
+- Páginas de resumen donde los totales y los mensajes de alerta se distinguen claramente del resto del contenido.
+
+#### Organización secuencial
+
+El sistema también aplica una organización secuencial en procesos operativos que requieren una progresión lógica y una guía paso a paso. Esto es especialmente relevante en flujos de configuración y en tareas donde el orden de las acciones impacta directamente en la precisión del sistema.
+
+Casos de aplicación:
+- Vinculación de insumos específicos a sensores de peso, donde el usuario primero selecciona el insumo, luego ajusta el sensor y finalmente confirma la asignación.
+- Configuración de umbrales de alerta, que sigue pasos de definición de stock mínimo, stock máximo y reglas de notificación.
+- Onboarding de nuevos dispositivos IoT y de nuevas sucursales, donde el proceso se descompone en etapas claras de verificación, configuración y validación.
+
+Al agrupar estos casos bajo el concepto de organización secuencial, se refuerza la idea de que el sistema debe guiar al usuario sin saltos ni confusiones, con instrucciones y estados intermedios visibles en cada paso.
+
+#### Esquemas de categorización de contenido
+
+Para gestionar el volumen de información y facilitar el acceso rápido a los datos relevantes, Restock implementa esquemas de categorización que combinan criterios cronológicos, temáticos y por audiencia.
+
+- Organización cronológica: se utiliza para el historial de telemetría de los sensores, los registros de ventas y el seguimiento de las compras realizadas, presentando siempre los eventos más recientes en primer plano.
+- Organización por tópicos: agrupa los insumos según su naturaleza, como lácteos, carnes, abarrotes, o según su estado de almacenamiento (fresco, refrigerado, seco).
+- Organización por audiencia: separa las vistas y funciones según los dos perfiles reales del sistema: administradores de restaurantes y usuarios de retail.
+
+Esta categorización por audiencias permite que cada perfil vea información relevante para su rol:
+- Administradores de restaurante: vista de recetas, costos, mermas y reabastecimiento.
+- Retail: vista de kits y paquetes de insumos, enfocada en pedidos y gestión de surtido.
+
+De esta manera, el sistema organiza la información por su contenido y por el contexto de uso de los dos perfiles reales del producto.
+
+#### Segmentación por roles y audiencias
+
+Además de los criterios anteriores, Restock distingue claramente entre los dos perfiles disponibles en la plataforma. La segmentación por audiencias refuerza que:
+- los administradores visualizan herramientas de gestión de mermas, control de stock y análisis de ventas;
+- los usuarios de retail tienen acceso a vistas centradas en kits de productos, paquetes y opciones de surtido.
+
+Con este enfoque, cada perfil obtiene una experiencia personalizada según su rol, reduciendo la complejidad y mejorando la eficacia en la toma de decisiones.
 
 ### 5.2.2. Labeling Systems
 ### 5.2.3. SEO Tags and Meta Tags
