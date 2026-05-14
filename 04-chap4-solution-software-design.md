@@ -283,14 +283,14 @@ El noveno paso consistió en identificar los agregados del dominio y agrupar en 
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
-  <img src="https://imgur.com/bz39Etw.png" alt="aggregates">
-  <img src="https://imgur.com/NKfdPMt.png" alt="aggregates">
+  <img src="https://imgur.com/Zvyn232.png" alt="aggregates">
+  <img src="https://imgur.com/1KBSr9c.png" alt="aggregates">
   <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
   <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
   <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
   <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
   <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
-  <img src="https://imgur.com/1RTkenv.png" alt="aggregates">
+  <img src="https://imgur.com/nSjYQkn.png" alt="aggregates">
   <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
   <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
