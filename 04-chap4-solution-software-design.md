@@ -119,7 +119,7 @@ El tercer paso incorporó la identificación de los pain points dentro de los fl
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
-  <img src="https://imgur.com/U8QiL0s" alt="paint-point">
+  <img src="https://imgur.com/U8QiL0s.png" alt="paint-point">
   <img src="https://imgur.com/0C8oOMR.png" alt="paint-point">
   <img src="https://imgur.com/jIvMoqL.png" alt="paint-point">
   <img src="https://imgur.com/3rKIBL0.png" alt="paint-point">
