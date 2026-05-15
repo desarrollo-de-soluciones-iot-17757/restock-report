@@ -4120,11 +4120,11 @@ La capa de infraestructura del Bounded Context de Asset and Resource Management 
 
 #### 4.2.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y nodos locales (Edge Applications), únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
+En esta sección se presentan los diagramas de componentes del bounded context Asset and Resource Management, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, servicios externos (como Cloudinary) y bounded context, únicamente cuando dichas interacciones son necesarias para la gestión de inventarios físicos, sucursales y la red de cabinas inteligentes IoT.
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops. Se comunica con el backend mediante Kong Gateway.
 
 <img src="https://i.imgur.com/dlTD59E.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
 
@@ -4161,14 +4161,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>kongGateway</strong> (Proxy)</td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar activos del negocio (insumos, dispositivos, lotes, sucursales) en el servidor central.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend.</td>
     </tr>
   </tbody>
 </table>
@@ -4211,29 +4206,25 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
     </tr>
   </thead>
   <tbody>
+  <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>kongGateway</strong> (Proxy)</td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para sincronizar y actualizar la información de activos e inventarios.</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
       <td style="padding: 10px; border: 1px solid;">Escritura / Lectura Local</td>
       <td style="padding: 10px; border: 1px solid;">Guarda en caché la información de los activos e inventario para agilizar los tiempos de carga en la aplicación móvil y reducir llamadas de red.</td>
     </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
-    </tr>
   </tbody>
 </table>
 
 ##### Backend Application Component Diagram
 
-El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y coordinación con bounded context internos para mantener actualizados los niveles de stock físico reportados por el hardware.
 
-<img src="https://i.imgur.com/bQgTt0i.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/16Vd5h1.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
 
@@ -4273,9 +4264,9 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
       <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>edgeApplication</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Envía comandos de configuración de dispositivos (encendido/apagado, asignación de productos) hacia las estaciones locales y valida su registro.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>redisCacheServer</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Escribe / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza Redis para almacenar en caché los niveles de stock críticos y acelerar las consultas frecuentes sobre el inventario.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>apiCommunications</strong></td>
@@ -4286,6 +4277,16 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
       <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
       <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
       <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar el acceso y modificación de los recursos físicos del negocio.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiDevice</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Orquesta la configuración y actualización de los dispositivos IoT vinculados a las sucursales para mantener la telemetría y el monitoreo en tiempo real.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiTracking</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Registra eventos de inventario, movimientos de stock y cambios en la configuración de sucursales para auditoría y análisis histórico.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Cloudinary API</strong></td>
