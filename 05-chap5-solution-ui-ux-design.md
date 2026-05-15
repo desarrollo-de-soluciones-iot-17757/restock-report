@@ -417,7 +417,6 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ## 5.2. Information Architecture
 ### 5.2.1. Organization Systems
 ### 5.2.2. Labeling Systems
-### 5.2.3. SEO Tags and Meta Tags
 
 ### 5.2.3. SEO Tags and Meta Tags
 
@@ -459,6 +458,25 @@ Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los mo
 - **Meta Author:**
     `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
     - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
+
+---
+
+**Mobile Application – Vista de Monitoreo**
+
+- **Title:**
+    `<title>Restock Mobile | Estado de Inventario y Alertas en tu Bolsillo</title>`
+    - **Propósito:** Resalta la portabilidad y la inmediatez. El uso de "en tu bolsillo" refuerza la naturaleza móvil de la herramienta frente a la versión de escritorio.
+
+- **Meta Description:**
+    `<meta name="description" content="Lleva el control de tu almacén a donde vayas. Revisa niveles de stock mediante sensores IoT, recibe notificaciones push de suministros críticos y verifica el estado de tus dispositivos en tiempo real desde tu smartphone.">`
+    - **Propósito:** Se enfoca en las capacidades exclusivas del móvil, como las "notificaciones push" y la movilidad, factores clave para un administrador que no siempre está frente a una PC.
+
+- **Meta Keywords:**
+    `<meta name="keywords" content="app de inventario, monitoreo móvil IoT, notificaciones de stock, control de suministros smartphone, gestión de almacén remota, alertas push Restock">`
+    - **Propósito:** Atrae a usuarios que buscan soluciones de gestión remota y aplicaciones móviles para control de stock.
+
+- **Meta Author:**
+    `<meta name="author" content="Equipo de Desarrollo Mobile – Restock, 2026">`
 
 ### 5.2.4. Searching Systems
 ### 5.2.5. Navigation Systems
