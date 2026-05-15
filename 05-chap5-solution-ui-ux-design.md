@@ -290,6 +290,27 @@ La plataforma web de Restock aplica los estándares WCAG 2.1 de nivel AA/AAA, va
 
 - El **etiquetado semántico** de los componentes sigue las convenciones ARIA: los íconos Tabler Icons que comunican información de estado llevan `aria-label` descriptivo; las tablas de inventario emplean encabezados con `role="columnheader"`; las alertas de stock crítico emplean `role="alert"` para anunciarse automáticamente a lectores de pantalla; los modales de confirmación emplean `role="dialog"` con `aria-labelledby` y `aria-modal="true"`.
 
+##### 5.1.2.1.5. Patrón Z en la interfaz web
+
+El patrón Z es un principio de diseño visual que describe la trayectoria natural del ojo humano al escanear una interfaz. El usuario inicia la lectura en la esquina superior izquierda, se desplaza horizontalmente hacia la esquina superior derecha, realiza un movimiento diagonal hacia la esquina inferior izquierda y concluye en la esquina inferior derecha. Esta trayectoria en forma de "Z" se repite de forma instintiva en interfaces con estructura horizontal, como dashboards, landing pages y vistas de gestión de datos (Zeldman, 2024).
+
+En Restock Web, el patrón Z se aplica de la siguiente manera:
+
+| Zona | Posición | Contenido asignado | Justificación |
+|------|----------|--------------------|---------------|
+| Punto 1 | Superior izquierda | Logo de Restock y nombre de la sucursal activa | Ancla la identidad de marca y el contexto operativo del usuario |
+| Punto 2 | Superior derecha | Ícono de notificaciones, perfil de usuario y acceso rápido a alertas | Concentra los controles de mayor frecuencia de uso en sesión activa |
+| Diagonal | Centro | Contenido principal del dashboard: métricas de stock, widgets de alertas y gráficos de rotación | La zona de mayor densidad informativa aprovecha el tránsito visual natural entre los dos puntos superiores e inferiores |
+| Punto 3 | Inferior izquierda | Sidebar de navegación con accesos a módulos: Inventario, Sucursales, Dispositivos, Ventas | Organiza la navegación secundaria en la zona de llegada natural del primer movimiento diagonal |
+| Punto 4 | Inferior derecha | Botón de acción primaria (registro de lote, nueva venta) o resumen de estado del sistema | Ubica la acción principal en el punto de conclusión del recorrido visual |
+
+**Principios de aplicación del patrón Z en Restock Web:**
+
+- Los elementos de mayor jerarquía visual (logo, alertas críticas, métricas de stock) se posicionan en los extremos del eje horizontal superior, aprovechando que son los primeros puntos que el usuario fija al iniciar la sesión.
+- El contenido informativo de mayor densidad, como las tablas de inventario y los dashboards de métricas, se ubica en la zona central de la diagonal, donde el ojo transita de forma natural sin requerir esfuerzo adicional de búsqueda.
+- Los botones de acción primaria se posicionan en la esquina inferior derecha, coincidiendo con el punto de conclusión del recorrido Z, lo que reduce la distancia cognitiva entre la lectura de la información y la ejecución de la acción correspondiente.
+- En vistas de listado de insumos y tablas de stock, el patrón Z se aplica a nivel de componente: el nombre del insumo y su estado de stock ocupan los extremos superiores de cada fila, mientras las acciones de edición o reposición se ubican en el extremo derecho inferior de la tarjeta o fila.
+
 #### 5.1.2.2. Mobile Style Guidelines
 
 La aplicación móvil de Restock está desarrollada con Dart y Flutter, orientada a los mismos segmentos de usuarios que la plataforma web: administradores de restaurantes y tiendas retail que necesitan consultar el estado del inventario, registrar movimientos de stock y recibir alertas en tiempo real desde sus dispositivos móviles. Las decisiones de diseño móvil priorizan la simplicidad de la interacción táctil y la legibilidad de datos operativos en contextos de uso dinámico como cocinas o almacenes.
@@ -379,24 +400,7 @@ Sin asignar
 ```
 El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
-##### 5.1.2.3.2. Sistema de señalización LED
-
-El LED de señalización incluido en el kit básico de componentes actúa como canal de retroalimentación visual instantánea, complementando la información del display LCD con un indicador de estado perceptible desde mayor distancia y sin necesidad de leer texto.
-
-La codificación semántica del LED replica la lógica cromática de la paleta de Restock: el verde corresponde al color primario de la plataforma, asociado a operación correcta; el rojo corresponde al color terciario, reservado para situaciones que requieren atención inmediata.
-
-**Patrones de señalización por estado:**
-
-| Estado del sistema                          | Color | Comportamiento       |
-|---------------------------------------------|-------|----------------------|
-| Insumo asignado — stock con valor detectado | Verde | Encendido continuo   |
-| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz)|
-| Dispositivo sin insumo asignado             | —     | LED apagado          |
-| Inicialización del sistema (boot)           | Verde | 3 destellos cortos   |
-
-La distinción entre LED encendido en verde de forma continua y parpadeo en rojo permite que el operario identifique desde distancia si el dispositivo está registrando peso correctamente o si el contenedor está vacío o sin lectura válida, sin necesidad de acercarse al display.
-
-##### 5.1.2.3.3. Estándares generales de interacción con la interfaz física
+##### 5.1.2.3.2. Estándares generales de interacción con la interfaz física
 
 El diseño de la interfaz física del dispositivo IoT de Restock responde a los mismos valores de claridad y empatía con el usuario operativo que definen el tono de comunicación de la plataforma.
 
@@ -416,6 +420,33 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
 ### 5.2.5. Navigation Systems
+
+En esta sección se describen las acciones y técnicas que guiarán a los usuarios a través del Landing Page y las aplicaciones (web, móvil e IoT), permitiéndoles cumplir sus metas e interactuar de forma satisfactoria con el producto. Se incluyen los recorridos principales, los patrones de interacción y las tácticas UX que facilitan la navegación y la conversión hacia tareas de valor.
+
+El sistema de navegación de Restock se estructura en tres niveles complementarios:
+
+- **Navegación global:** permite desplazarse entre las secciones principales del Landing Page y entre los módulos de las aplicaciones web y móvil. En el Landing Page se implementa mediante el menú superior y los CTA principales; en la aplicación web, mediante la sidebar o barra superior que conduce a Dashboard, Inventario, Sucursales, Alertas y Configuración; y en la aplicación móvil, mediante la barra de navegación inferior y accesos al menú lateral.
+- **Navegación local:** facilita el acceso a subniveles dentro de una sección o pantalla. Incluye tabs internos, filtros y acciones contextuales para pasar de una vista general a otra más específica, por ejemplo, ingresar al inventario de una sucursal desde su card, abrir el detalle de un insumo desde una tabla o cambiar entre vistas relacionadas dentro de un mismo módulo.
+- **Sistemas de orientación:** ayudan al usuario a entender dónde está y cómo volver. Se aplican botones de retorno, breadcrumbs en la web cuando el flujo lo requiere y patrones de cierre o retorno en móvil. En la aplicación web y móvil sí se implementan rutas de regreso claras desde pantallas de detalle, modales y formularios; en el Landing Page no se prioriza un botón de retorno interno porque la navegación se resuelve por scroll, anclas y acceso directo a secciones.
+
+Principios y técnicas clave:
+
+- **Camino claro hacia la acción:** el Landing Page presenta un "hero" con un CTA principal (ej. "Registrarse", "Solicitar demo", "Descargar app") visible above‑the‑fold para reducir fricción y dirigir al usuario al flujo objetivo.
+- **Estructura de anclas y scroll lineal:** el contenido se organiza en secciones con anclas (beneficios, funcionalidades, precios, testimonios) para permitir navegación rápida y enlaces profundos desde menús y emails.
+- **Onboarding guiado y checklist:** al registrarse, un asistente guía los pasos esenciales (crear cuenta, añadir sucursal, registrar balanza, asignar insumo) con tooltips y checklist para lograr "primer valor" cuanto antes.
+- **Observabilidad y optimización:** eventos de navegación y conversiones se miden (KPIs) para reordenar y optimizar las rutas críticas.
+
+En el caso de la aplicación web, la navegación global se apoya en una estructura persistente de módulos, mientras que la navegación local se concentra en tabs, cards y accesos directos para reducir la profundidad de clics. En la aplicación móvil, la navegación global prioriza la barra inferior y la navegación local se resuelve con tarjetas, listas y acciones por gesto. En ambos casos, los botones de retorno y cierre se reservan para flujos de detalle, edición y confirmación, reforzando la orientación del usuario sin duplicar controles innecesarios.
+
+Ejemplos de recorridos de usuario:
+
+- **Visitante → Hero CTA → Beneficios → Registro rápido → Onboarding → Dashboard inicial.**
+- **Administrador → Login → Dashboard → Lista de insumos críticos → Detalle de insumo → Ajustar stock / Generar tarea de conciliación.**
+- **Operario móvil → Barra inferior → Inventario → Seleccionar tarjeta → Swipe para acción rápida → Confirmación.**
+
+Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso —desde el primer contacto en el Landing Page hasta las tareas operativas diarias— reduciendo esfuerzo y mejorando la satisfacción y eficacia en la gestión del inventario.
+
+
 ## 5.3. Landing Page UI Design
 ### 5.3.1. Landing Page Wireframe
 ### 5.3.2. Landing Page Mock-up
@@ -591,6 +622,271 @@ Aquí tienes el mismo bloque corregido, sin los links de imagen:
 ### Mobile Application
 
 ### 5.4.2. Applications Wireflow Diagrams
+
+Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
+
+**- Task Flow 1**: Registro de un nuevo usuario y activación de su suscripción
+
+<p align="center">
+  <img src="https://i.imgur.com/bMmb1kl.png"
+    alt="task-flow-1"/>
+</p>
+
+#### Pasos del Task Flow 1:
+
+1. El visitante ingresa a la aplicación web
+2. El visitante va a la sección de registro
+3. El Visitante elige su rol de negocio
+4. El Visitante completa su correo y contraseña
+5. El Visitante completa sus datos de perfil
+6. El Visitante completa sus datos de negocio
+7. El Visitante completa los datos del negocio
+8. El Visitante elige un plan de suscripción y paga
+9. Va a la sección de Inicio
+
+
+**- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+<p align="center">
+  <img src="https://i.imgur.com/9G2937P.png"
+    alt="wire-flow-1"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/2579pQG.png"
+    alt="wire-flow-1"/>
+</p>
+
+El visitante ingresa a la web app y se registra eligiendo su rol (administrador de restaurnate o retail); luego completa sus datos personales y de negocio, selecciona un plan y realiza el pago para activar su suscripción. Al finalizar el proceso, accede al dashboard principal de la plataforma y puede comenzar a gestionar su inventario.
+
+**- Task Flow 2**: Inicio de sesión y recuperación de contraseña
+
+<p align="center">
+  <img src="https://i.imgur.com/0RFEmnX.png"
+    alt="task-flow-2"/>
+</p>
+
+#### Pasos del Task Flow 2:
+
+1. El usuario ingresa a la aplicación web
+2. El visitante va a la seccion de "Olvidaste tu contraseña"
+3. El usuario ingresa su correo
+4. El usuario ingresa el código de 6 dígitos
+5. El usuario restablece su contraseña
+6. El usuario ingresa su correo y nueva contraseña
+7. El usuario ingresa a Inicio
+
+**- User Goal 2**: Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta.
+
+<p align="center">
+  <img src="https://i.imgur.com/2mNOzqX.png"
+    alt="wire-flow-2"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/wT7ghaG.png"
+    alt="wire-flow-2"/>
+</p>
+
+El usuario registrado accede a la web app y puede iniciar sesión directamente con sus credenciales. Si olvidó su contraseña, inicia el flujo de recuperación ingresando su correo, recibiendo y validando un código de 6 dígitos, y estableciendo una nueva contraseña, para finalmente iniciar sesión y acceder a su cuenta.
+
+**- Task Flow 3**: Gestión de suministros
+
+<p align="center">
+  <img src="https://i.imgur.com/HhxJUxF.png"
+    alt="task-flow-3"/>
+</p>
+
+#### Pasos del Task Flow 3:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador selecciona "Agregar un suministro"
+3. El administrador completa el formulario de registro
+4. El administrador visualiza su nuevo suministro en su catálogo
+5. El administrador selecciona el suministro creado
+6. El administrador visualiza los detalles de ese suministro creado
+
+**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario. 
+
+<p align="center">
+  <img src="https://i.imgur.com/64Bmz5l.png"
+    alt="wire-flow-3"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/huTCM9n.png"
+    alt="wire-flow-3"/>
+</p>
+
+El administrador navega a la sección de inventario y, si aún no tiene insumos, usa la opción de agregar el primero; si ya tiene insumos registrados, puede crear uno nuevo. En ambos casos completa el formulario de creación del insumo y, al guardarlo, el nuevo producto queda disponible en el catálogo con su información.
+
+**- Task Flow 4**: Gestión de Recetas
+
+<p align="center">
+  <img src="https://i.imgur.com/B9SZIFs.png"
+    alt="task-flow-4"/>
+</p>
+
+#### Pasos del Task Flow 4:
+
+1. El administrador de restaurante ingresa a la sección de recetas
+2. El administrador de restaurante selecciona "Agregar receta"
+3. El administrador completa el formulario de registro de receta
+4. El administrador visualiza su nueva receta en su catálogo
+5. El administrador selecciona la receta creado
+6. El administrador visualiza los detalles de esa receta creado
+
+**- User Goal 4**: Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+<p align="center">
+  <img src="https://i.imgur.com/yvfuzKo.png"
+    alt="wire-flow-4"/>
+</p>
+
+El administrador de restaurante accede a la sección de recetas y selecciona la opción de crear una receta nueva; completa el formulario con nombre, imagen y los ingredientes que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle de la receta creada y verificar su disponibilidad.
+
+**- Task Flow 5**: Gestión de Kits / Combos
+
+<p align="center">
+  <img src="https://i.imgur.com/Na89SRx.png"
+    alt="task-flow-5"/>
+</p>
+
+#### Pasos del Task Flow 5:
+
+1. El administrador retail ingresa a la sección de kits (combos)
+2. El administrador retail selecciona "Agregar combo"
+3. El administrador completa el formulario de registro del combo
+4. El administrador visualiza su nuevo combo en su catálogo
+5. El administrador selecciona el combo creado
+6. El administrador visualiza los detalles de ese combo creado
+
+**- User Goal 5**: Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/qCFeaCC.png"
+    alt="wire-flow-5"/>
+</p>
+
+El administrador retail accede a la sección de kits y selecciona la opción de crear un kit nuevo; completa el formulario con nombre, imagen y los productos que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle del kit creado y verificar su disponibilidad operacional basada en el stock real de cada componente.
+
+**- Task Flow 6**: Gestión de Lotes (Batches) y Transferencia de Stock
+
+<p align="center">
+  <img src="https://i.imgur.com/AwvA8VH.png"
+    alt="task-flow-6"/>
+</p>
+
+#### Pasos del Task Flow 6:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador retail selecciona "Agregar un lote"
+3. El administrador completa selecciona una suministro y su cantidad de stock
+4. El administrador visualiza el nuevo lote en el inventario
+5. El administrador selecciona "Transferir lote"
+6. El administrador ingresa el lote y la sucursal de origen y de destino
+7. El lote se elimina de la sucursal de origen y pasa a visualizarse en la sucursal de destino
+
+
+**- User Goal 6**: Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+<p align="center">
+  <img src="https://i.imgur.com/s5OWiSC.png"
+    alt="wire-flow-6"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ty5WeSE.png"
+    alt="wire-flow-6"/>
+</p>
+
+El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
+
+
+**- Task Flow 7**: Conciliación de discrepancias de inventario
+
+<p align="center">
+  <img src="https://i.imgur.com/MHcvbcM.png"
+    alt="task-flow-7"/>
+</p>
+
+#### Pasos del Task Flow 7:
+
+1. El administrador ingresa a la sección de discrepancias de inventario
+2. El administrador selecciona una discrepancia
+3. El administrador resuelve la discrepancia de stock
+4. El administrador ya no visualiza la discrepancia resuelta
+
+**- User Goal 7**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/5YqlQLQ.png"
+    alt="wire-flow-7"/>
+</p>
+
+El administrador accede a la sección de discrepancias de inventario y selecciona una discrepancia específica para ver su detalle, donde puede revisar las diferencias entre el stock físico y el digital junto a su historial. Desde esa vista, elige la opción de resolver la discrepancia, completa el formulario de justificación con los datos correspondientes y confirma la acción para registrar la corrección.
+
+
+**- Task Flow 8**: Gestión de dispositivos
+
+<p align="center">
+  <img src="https://i.imgur.com/6blSmB0.png"
+    alt="task-flow-8"/>
+</p>
+
+#### Pasos del Task Flow 8:
+
+1. El administrador ingresa a la sección de dispositivos
+2. El administrador selecciona "Agregar dispositivo"
+3. El administrador completa el formulario de registro de un dispositivo
+4. El administrador visualiza el dispositivo en la sección de dispositivos
+5. El administrador selecciona el dispositivo creado
+6. El administrador asigna un suministro a ese dispositivo
+7. El administrador configura el peso, temperatura y humedad limites que debe validar el dispositivo
+
+**- User Goal 8**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/2y4W9Ic.png"
+    alt="wire-flow-8"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/rMo2n4s.png"
+    alt="wire-flow-8"/>
+</p>
+
+El administrador ingresa a la sección de dispositivos y registra un nuevo inventario inteligente completando su formulario; una vez creado, accede al detalle del dispositivo para asignarle un insumo del catálogo. Luego completa el formulario de asignación y configura los límites de peso, temperatura y humedad que activarán alertas automáticas, permitiendo así automatizar el seguimiento del stock en tiempo real.
+
+
+**- Task Flow 9**:
+
+<p align="center">
+  <img src="https://i.imgur.com/Y3X9GEn.png"
+    alt="task-flow-9"/>
+</p>
+
+#### Pasos del Task Flow 9:
+
+1. El administrador ingresa a la configuración de la cuenta
+2. El administrador ingresa a la sección de sucursales
+3. El administrador selecciona "Agregar sucursal"
+4. El administrador completa el formulario de registro de una sucursal
+5. Se actualiza la seccion de sucursales con la nueva creada anteriormente
+
+**- User Goal 9**: Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+<p align="center">
+  <img src="https://i.imgur.com/gsnzuuh.png"
+    alt="wire-flow-9"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/MAcfEL3.png"
+    alt="wire-flow-9"/>
+</p>
+
+El administrador accede a la configuración de cuenta y navega a la sección de sucursales, donde puede ver las ubicaciones ya registradas. Desde allí selecciona la opción de agregar una nueva sucursal, completa el formulario con nombre, teléfono, dirección y demás datos de la ubicación, y al guardar la nueva sucursal queda visible en el listado para organizar las operaciones por local.
 
 
 ### 5.4.2. Applications Mock-ups
@@ -833,168 +1129,573 @@ En esta pantalla el usuario puede asociar y configurar los suministros que será
 
 En esta sección se presentarán los mockups de la aplicación móvil, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
 
-#### Registro de cuenta
+**Inicio de Sesión**
+
+**Descripción:** Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/main-login-screen.png" alt="Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo." height="600">
 </div>
 
-#### Registro de empresa
+**Error de Inicio de Sesión**
+
+**Descripción:** Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/login-error-screen.png" alt="Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas." height="600">
 </div>
 
-#### Inicio de sesión
+**Registro de Usuario**
+
+**Descripción:** Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/register-screen.png" alt="Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros." height="600">
 </div>
 
-#### Fallo de inicio de sesión
+**Recuperación de Contraseña**
+
+**Descripción:** Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-request.png" alt="Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación." height="600">
 </div>
 
-#### Lista de sucursales
+**Verificación de Código**
+
+**Descripción:** Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-verify.png" alt="Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales." height="600">
 </div>
 
-#### Crear una nueva sucursal
+**Nueva Contraseña**
+
+**Descripción:** Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-create.png" alt="Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma." height="600">
 </div>
 
-#### Recuperar contraseña
+**Selección de Rol**
+
+**Descripción:** Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/role-selection-screen.png" alt="Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema." height="600">
 </div>
 
-#### Pago de plan de suscripción
+**Datos Personales**
+
+**Descripción:** Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-personal-details.png" alt="Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo." height="600">
 </div>
 
-#### Inventario vacío
+**Detalles del Negocio**
+
+**Descripción:** Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-business-details.png" alt="Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock." height="600">
 </div>
 
-#### Lotes registrados
+**Selección de Plan**
+
+**Descripción:** Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/subscription-plan-selection.png" alt="Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel." height="600">
 </div>
 
-#### Registro de lote
+**Detalles de Pago**
+
+**Descripción:** Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/payment-details-screen.png" alt="Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito." height="600">
 </div>
 
-#### Catálogo de suministros
+**Dashboard de Monitoreo General**
+
+**Descripción:** Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/scale-monitoring-dashboard.png" alt="Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock." height="600">
 </div>
 
-#### Registrar un nuevo suministro
+**Empty Inventory State**
+
+**Descripción:** Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/empty-inventory-state.png" alt="Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema." height="600">
 </div>
 
-#### Editar un suministro
+**Inventory Dashboard**
+
+**Descripción:** Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/inventory-dashboard.png" alt="Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría." height="600">
 </div>
 
-#### Catálogo de combos
+**Add New Batch**
+
+**Descripción:** Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/add-new-batch.png" alt="Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto." height="600">
 </div>
 
-#### Detalle de combo
+**Batch Details View**
+
+**Descripción:** Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/batch-details-view.png" alt="Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental." height="600">
 </div>
 
-#### Catálogo de recetas
+**Edit Batch Modal**
+
+**Descripción:** Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-batch-modal.png" alt="Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales." height="600">
 </div>
 
-#### Detalle de receta
+**Custom Supplies List**
+
+**Descripción:** Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/custom-supplies-list.png" alt="Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos." height="600">
 </div>
 
-#### Retail Dashboard
+**Create Custom Supply**
+
+**Descripción:** Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/create-custom-supply.png" alt="Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad." height="600">
 </div>
 
-#### Restaurant Dashboard
+**Edit Custom Supply**
+
+**Descripción:** Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-custom-supply.png" alt="Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto." height="600">
 </div>
 
-#### Planes de suscripción
+**Transfer Batch Stock**
+
+**Descripción:** Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/transfer-batch-stock.png" alt="Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real." height="600">
 </div>
 
-#### Configuración y preferencias
+**Device Directory**
+
+**Descripción:** Directorio principal de dispositivos que muestra el estado general de las básculas, alertas de inventario y condiciones ambientales mediante tarjetas informativas y una lista detallada.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/device-directory-overview.png" alt="Directorio principal de dispositivos con resumen de estados y lista de básculas activas." height="600">
 </div>
 
-#### Perfil del negocio
+**Register Device Modal**
+
+**Descripción:** Interfaz de registro para nuevos dispositivos que permite capturar el alias de la báscula y su dirección MAC única para la integración en la red del establecimiento.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/register-device-modal.png" alt="Formulario de registro de dispositivo para ingresar alias y dirección MAC." height="600">
 </div>
 
-#### Perfil del usuario
+**Unassigned Device State**
+
+**Descripción:** Vista detallada de una báscula recién registrada en estado de espera, indicando que el hardware requiere la asignación de un lote de inventario para iniciar el monitoreo.
 
 <div align="center">
-  <img src="">
-</div>
-x`
-#### Notificaciones
-
-<div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/unassigned-scale-details.png" alt="Vista de detalle de dispositivo sin lote asignado y configuración bloqueada." height="600">
 </div>
 
-#### Configuración de dispositivos IoT
+**Batch Assignment Modal**
+
+**Descripción:** Modal de configuración de pesaje donde se selecciona el producto (lote) y se definen los parámetros de peso unitario y tara para la calibración del sensor.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/assign-batch-modal.png" alt="Configuración de asignación de lote con campos para peso unitario, tara y puesta a cero." height="600">
 </div>
 
-#### Detalle de dispositivo IoT
+**Edit Device Info**
+
+**Descripción:** Ventana de edición para modificar la información de identificación del dispositivo, permitiendo actualizar el alias y verificar la dirección MAC asignada.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-scale-info-modal.png" alt="Interfaz de edición de información básica de la báscula y sincronización de red." height="600">
+</div>
+
+**Edit Thresholds Modal**
+
+**Descripción:** Panel de configuración de umbrales críticos para el control de inventario y límites ambientales de temperatura y humedad, con advertencia de impacto en reportes históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-thresholds-modal.png" alt="Edición de umbrales de stock, temperatura y humedad con advertencia de cambios retroactivos." height="600">
+</div>
+
+**Unlink Device Confirmation**
+
+**Descripción:** Pantalla de confirmación de seguridad para la desvinculación de dispositivos, requiriendo validación del ID para detener el rastreo de inventario y borrar datos de calibración.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/unlink-scale-confirmation.png" alt="Proceso de confirmación para desvincular un dispositivo de forma permanente." height="600">
+</div>
+
+**Active Device Details**
+
+**Descripción:** Vista de monitoreo activo de una báscula en funcionamiento, mostrando la fuerza de la señal, el tiempo desde la última actualización y el resumen de umbrales configurados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/active-scale-configuration.png" alt="Detalle de báscula en línea con indicadores de señal, lote asignado y umbrales de control." height="600"> 
+</div>
+
+**alerts-notifications-main**
+
+**Descripción:** Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/alerts-notifications-main.png" alt="Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa." height="600">
+</div>
+
+**confirm-stock-transfer-modal**
+
+**Descripción:** Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/confirm-stock-transfer-modal.png" alt="Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP." height="600">
+</div>
+
+**data-mismatch-discrepancy-detail**
+
+**Descripción:** Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/data-mismatch-discrepancy-detail.png" alt="Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor." height="600">
+</div>
+
+**hardware-offline-diagnostic-detail**
+
+**Descripción:** Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/hardware-offline-diagnostic-detail.png" alt="Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo." height="600">
+</div>
+
+**settings-general-configuration**
+
+**Descripción:** Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-general-configuration.png" alt="Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas." height="600">
+</div>
+
+**settings-profile-personal-details**
+
+**Descripción:** Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-personal-details.png" alt="Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta." height="600">
+</div>
+
+**settings-profile-business-info**
+
+**Descripción:** Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-business-info.png" alt="Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados." height="600">
+</div>
+
+**settings-subscription-billing**
+
+**Descripción:** Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-subscription-billing.png" alt="Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas." height="600">
+</div>
+
+**settings-branches-directory**
+
+**Descripción:** Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-directory.png" alt="Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas." height="600">
+</div>
+
+**settings-branches-create-modal**
+
+**Descripción:** Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-create-modal.png" alt="Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial." height="600">
+</div>
+
+**settings-branches-edit-modal**
+
+**Descripción:** Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-edit-modal.png" alt="Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo." height="600">
+</div>
+
+**settings-branches-delete-active-warning**
+
+**Descripción:** Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-active-warning.png" alt="Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos." height="600">
+</div>
+
+**settings-branches-delete-confirmation**
+
+**Descripción:** Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-confirmation.png" alt="Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos." height="600">
 </div>
 
 ### 5.4.3. Applications User Flow Diagrams
+
+#### User Flow 1: Registro y Onboarding
+
+**User Goal:** Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+##### Happy Path
+
+El visitante accede a la pantalla de Login y hace clic en "Sign up". Es redirigido a la pantalla Register donde ingresa su email, contraseña y confirma la contraseña. Hace clic en "Create Account" y avanza a "How will you use Restock?" donde selecciona su rol (Restaurant Administrator o Retail Administrator). Hace clic en "Continue" y completa el formulario "Create your Account" con nombre, apellido, teléfono, ubicación y avatar. Hace clic en "Next: Business Details" y completa el "Registration - Business Profile" con nombre comercial, descripción, categorías y dirección. Hace clic en "Create Account" y es redirigido a "Subscription Plans" donde selecciona el plan Premium. Hace clic en "Select Plan" y es redirigido al "Payment Gateway" donde ingresa sus datos de tarjeta. El pago es procesado exitosamente y el usuario accede al Dashboard.
+
+
+![User Flow 1 - Happy Path Web](https://imgur.com/qCOMFK3.png)
+
+![User Flow 1 - Happy Path Mobile](https://imgur.com/32OLoEy.png)
+
+
+##### Unhappy Path
+
+El visitante intenta registrarse con un correo ya existente o deja campos obligatorios vacíos. El sistema muestra mensajes de error en los campos correspondientes y bloquea el avance hasta que los datos sean corregidos. Si en el Payment Gateway los datos de tarjeta son inválidos, el sistema muestra un aviso de fallo en la transacción y bloquea el pago hasta que el usuario corrija la información.
+
+
+![User Flow 1 - Unhappy Path Web](https://imgur.com/w0ilFpl.png)
+
+![User Flow 1 - Unhappy Path Mobile](https://imgur.com/unYReLb.png)
+
+
+#### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
+
+**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Intiva.
+
+##### Happy Path
+
+El usuario accede a la pantalla Login, ingresa su email y contraseña correctos y hace clic en "Login". El sistema valida las credenciales y redirige al Dashboard principal.
+
+![User Flow 2 - Happy Path Web](https://imgur.com/WLtfwZY.png)
+
+![User Flow 2 - Happy Path Mobile](https://imgur.com/qHmQ3YJ.png)
+
+
+##### Unhappy Path
+
+El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el mensaje "Incorrect credentials. Please try again." El usuario hace clic en "Forgot your password?" y es redirigido a Reset Password donde ingresa su email y hace clic en "Send recovery code". Recibe un código de 6 dígitos en su correo, lo ingresa en la pantalla de verificación y establece una nueva contraseña válida para recuperar el acceso.
+
+![User Flow 2 - Unhappy Path Web](https://imgur.com/lsTwfc3.png)
+
+![User Flow 2 - Unhappy Path Mobile](https://imgur.com/oRD1Bbc.png)
+
+
+
+#### User Flow 3: Gestión de Insumos / Custom Supplies
+
+**User Goal:** Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario.
+
+##### Happy Path
+
+El administrador navega desde el Dashboard al módulo Inventory y accede a la sección Custom Supplies. Visualiza el catálogo con los insumos existentes. Hace clic en "+ Add Supply", se abre el modal "Create Custom Supply" donde selecciona la categoría, ingresa el nombre del insumo, la unidad de medida, capacidad mínima, máxima y marca si es perecible. Guarda los cambios y el nuevo insumo aparece en el catálogo. Para editar, hace clic en "Edit" sobre un insumo existente, se abre el modal "Edit Custom Supply" con los datos precargados, realiza los cambios y hace clic en "Update Supply".
+
+
+![User Flow 3 - Happy Path Web](https://imgur.com/b5BxBnj.png)
+
+![User Flow 3 - Happy Path Mobile](https://imgur.com/QtC4zEP.png)
+
+
+##### Unhappy Path
+
+El administrador deja campos obligatorios vacíos o ingresa valores inválidos en el modal "Create Custom Supply". El sistema bloquea el guardado y muestra mensajes de error en los campos correspondientes hasta que los datos sean corregidos.
+
+![User Flow 3 - Unhappy Path Web](https://imgur.com/5GCD8R1.png)
+
+![User Flow 3 - Unhappy Path Mobile](https://imgur.com/4KDJ6CR.png)
+
+
+#### User Flow 4: Gestión de Recetas
+
+**User Goal:** Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+
+##### Happy Path
+
+El administrador accede al módulo Recipes desde el sidebar. Visualiza el Recipe Catalog con las recetas activas organizadas en Main Courses, Starters y Beverages. Hace clic en "+ Add Recipe", se abre el modal "Create New Recipe" donde ingresa el nombre, precio estimado y agrega ingredientes desde el inventario con sus cantidades. Hace clic en "Save Recipe" y la receta aparece en el catálogo. Al hacer clic en una receta accede al "Recipe Detail Builder" donde visualiza el costo estimado, precio de venta e ingredientes vinculados. Para editar, hace clic en "Edit Recipe", se abre el modal con los datos precargados, modifica los ingredientes o cantidades y hace clic en "Update Recipe".
+
+![User Flow 4 - Happy Path Web](https://imgur.com/H2U0c80.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una receta sin ingredientes o con cantidades inválidas. El sistema bloquea el guardado y muestra el mensaje de error correspondiente. Si decide eliminar una receta, aparece el modal "Delete Recipe?" con advertencia de que la acción es permanente. Si confirma haciendo clic en "Yes, delete recipe", la receta es eliminada del catálogo.
+
+
+![User Flow 4 - Unhappy Path Web](https://imgur.com/Wnwo46O.png)
+
+
+
+#### User Flow 5: Gestión de Kits / Combos
+
+**User Goal:** Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad operativa según el stock real.
+
+##### Happy Path
+
+El administrador retail accede al módulo Kits desde el sidebar. Visualiza el Kits & Combos Catalog con los combos existentes. Hace clic en "+ Create Kit", se abre el modal "Create New Kit" donde sube una imagen, ingresa el nombre del kit, selecciona los productos desde el inventario con sus cantidades y hace clic en "Add Kit". El kit aparece en el catálogo. Al acceder al detalle del kit visualiza la disponibilidad operativa calculada según el stock de los componentes. Para editar, hace clic en "Edit Kit", modifica los componentes y hace clic en "Update Kit". Desde el módulo Sales, el administrador agrega el kit al Order Ticket, hace clic en "Log Sale & Update Stock" y el sistema registra la venta mostrando el modal "Sale Registered Successfully".
+
+
+![User Flow 5 - Happy Path Web](https://imgur.com/aLFOxY2.png)
+
+
+
+##### Unhappy Path
+
+El administrador intenta registrar una venta con un kit cuyos componentes no tienen stock físico suficiente. El sistema muestra el modal "Action Blocked: Insufficient Physical Inventory" indicando el componente faltante con el stock disponible vs el requerido. El administrador debe hacer clic en "Go to Restock from Stock" para ir al inventario y reponer el componente antes de poder completar la venta.
+
+
+![User Flow 5 - Unhappy Path Web](https://imgur.com/31DxN7R.png)
+
+
+#### User Flow 6: Gestión de Lotes (Batches) y Transferencia de Stock
+
+**User Goal:** Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y visualiza la vista de Batches con la lista de lotes activos, stock total, fechas de vencimiento y alertas. Hace clic en "+ Add Batch", se abre el modal "Add New Batch" donde selecciona el insumo, ingresa el stock inicial y la fecha de vencimiento y hace clic en "Add Batch". Para ver el detalle de un lote hace clic sobre él y se abre el modal "Batch Detail". Para editar hace clic en "Update Batch", modifica los campos en el modal "Edit Batch" y confirma los cambios. Para transferir stock hace clic en "Transfer Batch Stock", se abre el drawer "Stock Transfer" donde selecciona la sucursal origen, destino, el lote y la cantidad, y confirma la transferencia actualizando el stock de ambas sucursales.
+
+
+![User Flow 6 - Happy Path Web](https://imgur.com/neT8TRY.png)
+
+
+![User Flow 6 - Happy Path Mobile](https://imgur.com/MXuIxpP.png)
+
+
+##### Unhappy Path
+
+Si el administrador accede al inventario por primera vez sin insumos registrados, el sistema muestra la pantalla "Empty Inventory" con el mensaje "Your inventory is empty" y la opción de agregar el primer insumo haciendo clic en "+ Add First Supply". Si en el drawer de transferencia ingresa una cantidad mayor al stock disponible del lote, el sistema muestra el indicador en rojo y bloquea la confirmación hasta que se corrija la cantidad.
+
+
+![User Flow 6 - Unhappy Path Web](https://imgur.com/lb9bjQ8.png)
+
+
+![User Flow 6 - Unhappy Path Mobile](https://imgur.com/BztsoNr.png)
+
+
+
+#### User Flow 7: Conciliación de Discrepancias de Inventario
+
+**User Goal:** Como administrador del negocio, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y selecciona la sección "Conciliation Tasks". Visualiza la lista de discrepancias activas con su nivel de criticidad. Hace clic en una discrepancia activa para acceder al "Discrepancy Detail" donde visualiza el stock digital, la lectura del smart scale y la gráfica de peso vs tiempo. Selecciona la causa de la discrepancia desde el dropdown, ingresa la justificación y hace clic en "Confirm & Apply Action". El sistema actualiza el inventario digital, cierra la tarea y registra el evento en el "Resolution History".
+
+
+![User Flow 7 - Happy Path Web](https://imgur.com/Tp0Slyz.png)
+
+
+##### Unhappy Path
+
+El administrador detecta que el smart scale reporta lecturas inconsistentes y hace clic en "Recalibrate Scale". Se abre el modal "Recalibrate Scale" con las opciones "Force Reset (Stay Calibrated)" o "Schedule On-site Visit Maintenance". Si el dispositivo no responde al reset, el sistema bloquea la confirmación y muestra error de conectividad. El administrador puede registrar la discrepancia como "Unresolved" con comentario o programar visita técnica mediante "Recalibrate & Create Discrepancy".
+
+
+![User Flow 7 - Unhappy Path Web](https://imgur.com/e0L6mW6.png)
+
+#### User Flow 8: Gestión de Dispositivos (Smart Scales)
+
+**User Goal:** Como administrador, quiero registrar y configurar los dispositivos de monitoreo de inventario en mis sucursales, para automatizar el seguimiento de stock y recibir alertas oportunas según los umbrales definidos.
+
+
+##### Happy Path
+
+El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
+
+
+![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
+
+
+![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
+
+
+
+##### Unhappy Path — Desvinculación de dispositivo activo
+
+El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
+
+
+![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
+
+![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
+
+
+#### User Flow 9: Gestión de Sucursales
+
+**User Goal:** Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+
+##### Happy Path
+
+El administrador accede a Settings, Branch Management desde el sidebar. Visualiza las tarjetas de las sucursales activas con sus métricas de devices, staff y alerts. Hace clic en "+ Add New Branch" y se abre el drawer "Create New Branch" donde sube la foto de la instalación, ingresa el nombre, número de teléfono, dirección, ciudad, zip code y activa el Branch Status. Hace clic en "Save Branch" y la nueva sucursal aparece en el panel. Para editar, hace clic en "Manage Branch" de una sucursal existente, se abre el drawer "Edit Branch" con los datos precargados, realiza los cambios y hace clic en "Update Branch".
+
+![User Flow 9 - Happy Path Web](https://imgur.com/NDLjokQ.png)
+
+![User Flow 9 - Happy Path Mobile](https://imgur.com/YRUpB5y.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una nueva sucursal dejando campos obligatorios vacíos o con datos inválidos. El sistema bloquea el guardado en el drawer "Create New Branch" y muestra mensajes de error en los campos correspondientes hasta que la información sea corregida y completada.
+
+
+![User Flow 9 - Unhappy Path Web](https://imgur.com/DHtm8WS.png)
+
+![User Flow 9 - Unhappy Path Mobile](https://imgur.com/7Ge84z7.png)
+
+
 ## 5.5. Applications Prototyping
+
+En esta sección, se evidencian pruebas de uso del prototipo de la aplicación web y móvil. Además, se adjunta un video donde se usa el prototipo y las interacciones con el prototipo se basan en los User Flows descritos previamente.
+
+#### Prototipo de la aplicación web 
+
+<p align="center">
+  <img src="https://i.imgur.com/6o0juzg.png">
+
+
+Video demostrativo de la aplicación web: https://acortar.link/tcLixm
+
+
+#### Prototipo de la aplicación móvil
+
+<p align="center">
+  <img src="https://i.imgur.com/ey1iDmG.png">
+
+Video demostrativo de la aplicación móvil: https://acortar.link/uvTr3x
+
 ## 5.6. IoT Device Design

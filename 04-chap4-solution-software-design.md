@@ -6,7 +6,64 @@ En esta sección se aborda el enfoque de Strategic-Level Domain-Driven Design (D
 
 ### 4.1.1. Design-Level EventStorming
 
-En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos y reglas de negocio. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
+En esta sección se presenta el Design-Level Event Storming, técnica utilizada para detallar el comportamiento del sistema mediante la identificación de eventos, comandos, actores, políticas, modelos de lectura, sistemas externos y agregados. Este enfoque permite profundizar en los bounded contexts definidos previamente y comprender con mayor precisión las interacciones dentro del dominio.
+
+A partir del Big Picture EventStorming, el equipo identificó los siguientes pain points distribuidos en los distintos flujos del negocio. Estos puntos de fricción representan situaciones sin resolver en la operación actual y constituyeron el punto de partida para el diseño detallado del sistema:
+
+**Flujo de cierre de caja:**
+- **"What happens if the count was not done correctly?"**: Existía ambigüedad sobre qué ocurre cuando el conteo físico de caja presenta errores. Este pain point evidenció la necesidad de modelar un flujo de corrección que contemple la detección de diferencias, su resolución y el registro de justificaciones.
+- **"What do I do with the missing money?"**: No estaba definido el proceso a seguir cuando se detecta una diferencia de caja no resuelta. Este punto señaló la necesidad de un flujo de escalamiento hacia el manager y generación de reportes de cierre.
+
+**Flujo de gestión de inventario en restaurante:**
+- **"How do I reduce the wastage?"**: La operación manual de inventario no disponía de mecanismos para controlar el desperdicio de insumos. Este painpoint motivó el diseño de alertas de stock y seguimiento de mermas en el sistema.
+- **"What happens if no provider has the supply needed?"**: El flujo de reabastecimiento no contemplaba el escenario en que ningún proveedor disponga del insumo requerido, dejando al negocio sin alternativa. Este punto evidenció la necesidad de gestionar proveedores alternativos o generar alertas críticas.
+- **"What happens if the order is rejected?"**: No estaba modelado qué ocurre cuando el proveedor rechaza la orden de compra, interrumpiendo el flujo de reabastecimiento.
+
+**Flujo de gestión de inventario en tienda retail:**
+- **"What happens if no provider has the supply needed?"**: Pain point análogo al del sector restaurante, evidenciando la misma brecha en ambos segmentos objetivo.
+- **"What happens if the order is rejected?"**: Igualmente presente en el sector retail, señalando la ausencia de un flujo de contingencia ante rechazos de proveedores.
+- **"What happens with the expired products?"**: El proceso de ajuste de stock por diferencias detectadas no contemplaba el tratamiento específico de productos vencidos, generando una brecha en el control de inventario.
+
+**Flujo de organización de góndolas:**
+- **"What happens with the products in the back of the gondola?"**: El flujo de reposición en góndola no definía qué hacer con los productos ubicados en la parte trasera, una práctica crítica para el control de vencimientos mediante rotación FIFO.
+
+**Flujo de preparación de platos:**
+- **"How much time does the order take to reach the kitchen?"**: No estaba definido el tiempo máximo aceptable ni el mecanismo de seguimiento del estado del pedido entre sala y cocina.
+- **"What happens if we prepared the wrong dish?"**: El flujo de preparación no contemplaba el manejo de errores en la elaboración del plato ni la reposición de insumos afectados.
+
+**Flujo de atención al cliente en restaurante:**
+- **"How much time does the order take to reach the kitchen?"**: Pain point recurrente también presente en el flujo de atención al cliente, reforzando la necesidad de visibilidad del estado del pedido.
+- **"What happens if the calculations are wrong?"**: El cálculo del precio de la orden podía presentar errores sin un mecanismo de corrección definido antes del cobro.
+- **"What happens if the system goes down?"**: La dependencia del POS para procesar pagos dejaba al negocio sin alternativa ante una caída del sistema.
+
+**Flujo de atención al cliente en tienda retail:**
+- **"What happens if the customer needs a product that I don't have?"**: El flujo de atención no contemplaba cómo gestionar la demanda de productos agotados o no disponibles en tienda.
+- **"What happens if the system goes down?"**: Análogo al restaurante, la dependencia del POS presentaba el mismo riesgo operativo.
+
+**Flujo de ideación y registro de ofertas:**
+- **"What happens if the offer doesn't work?"**: No estaba definido el proceso de evaluación y retiro de una oferta que no genera el impacto esperado en ventas.
+
+**Flujo de creación y prueba de recetas:**
+- **"What happens if I don't calculate the correct price?"**: El cálculo del costo teórico de una receta podía presentar errores sin un mecanismo de validación definido antes de su aprobación.
+- **"How do I know the new recipe will work?"**: No estaba definido el criterio de aceptación de una receta nueva, dejando la decisión sin un proceso estructurado de prueba y validación.
+
+**Flujo de cierre de día en restaurante y retail:**
+- **"What if the place gets robbed?"**: Presente en ambos sectores, este pain point señalaba la ausencia de un protocolo de seguridad ante incidentes físicos al cierre del establecimiento.
+
+Estos pain points del Big Picture evidenciaron las principales brechas operativas de los negocios objetivo y orientaron las decisiones de diseño del sistema. Aquellos directamente relacionados con la gestión de inventarios, el control de stock, la detección de discrepancias y la trazabilidad de insumos fueron priorizados en el Design-Level EventStorming, ya que constituyen el núcleo de valor de la solución Restock. Los pain points relacionados con operaciones fuera del alcance del sistema (seguridad física, atención al cliente presencial, elaboración de platos) fueron registrados como contexto del problema pero no forman parte del diseño técnico de la plataforma.
+
+A partir de este análisis, el equipo avanzó con la construcción del modelo detallado identificando los siguientes pain points específicos para resolver dentro del Design-Level:
+
+- **"How do I access the services?"**: Resuelto mediante el modelado del flujo de Sign up y Sign in en IAM.
+- **"What information does a recipe require?"**: Resuelto estableciendo los eventos de registro de receta en Design and Planning.
+- **"What information does a Kit require?"**: Resuelto estableciendo los eventos de registro de kit en Design and Planning.
+- **"How do I record a sale?"**: Resuelto con el flujo de venta y sus políticas automáticas en Sales Management.
+- **"How do you register a branch?"**: Resuelto con el flujo de alta de sucursal en Asset and Resource Management.
+- **"How do you register a custom supply?"**: Resuelto con el flujo de registro de insumo personalizado en Asset and Resource Management.
+
+Con estos pain points identificados y priorizados, el equipo avanzó con la construcción del modelo completo siguiendo los nueve pasos del Design-Level Event Storming.
+
+Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados:
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention">
@@ -16,18 +73,24 @@ Con el fin de mantener la consistencia y facilitar la interpretación del modelo
 
 #### Paso 1: Event
 
-El primer paso del Design Level Event Storming consistió en la identificación de los eventos de dominio del sistema, el cual representa un hecho relevante que ya ocurrió dentro del negocio, y se expresa siempre en tiempo pasado. En esta técnica, los eventos se representan con tarjetas de color naranja.
+El primer paso consistió en la identificación de los eventos de dominio del sistema. Un evento de dominio representa un hecho relevante que ya ocurrió dentro del negocio y se expresa en tiempo pasado. En esta técnica los eventos se representan con tarjetas de color naranja.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/99oEpmr.png" alt="event">
   <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema.
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: User data was saved, Payment accepted, Plan activated, Account created, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded, Kit description entered, Kit saved into the catalog, Sale confirmed, Branch registered, Custom Supply created, Batch created, Transfer confirmed, Weight registered, Temperature registered, Humidity registered, Values checked, Physical stock estimated, Data anomaly detected, Discrepancy detected, Stock verified, Anomaly detected, Notification sent to the center, entre otros.
+
+Se eliminaron los eventos de captura de campos individuales de formulario ( `Name entered`, `Category selected`, `Unit price entered`, `Unit of measurement entered` y `Branch name was entered`) dado que no generan reacciones de dominio ni disparan políticas o comandos independientes. En su lugar, se conservan únicamente los eventos que agrupan la información capturada o que representan un cambio de estado significativo en el dominio.
+
+Adicionalmente, se incorporaron eventos de lectura en los bounded contexts donde el actor consulta información antes de emitir un comando, siguiendo el principio de que toda interacción relevante con el sistema debe quedar registrada. Los eventos de lectura añadidos son: `Recipe catalog consulted`, `Kit catalog consulted`, `Branch list consulted`, `Inventory consulted`, `Device list consulted`, `Subscription plans consulted`, `Sales history consulted`, `Profile consulted` y `Stock record consulted`.
+
+Los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables monitoreadas por los dispositivos IoT.
 
 #### Paso 2: Timelines
 
-El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo, agrupándolos bajo sus respectivos encabezados de contexto.
+El segundo paso consistió en organizar los eventos de dominio dentro de líneas de tiempo por cada bounded context del sistema. El objetivo fue establecer el orden cronológico natural en que los hechos ocurren dentro de cada flujo.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/N3A08JD.png" alt="time-line">
@@ -37,26 +100,49 @@ El segundo paso consistió en organizar los eventos de dominio dentro de líneas
   <img src="https://imgur.com/0LdKD0Q.png" alt="time-line">
 </div>
 
-El equipo organizó los eventos en secuencias horizontales ordenadas bajo diez bounded contexts claramente etiquetados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Communications, Asset and Resource Management (ARM), Design and Planning, Sales Management, Analytics, Device Management y Tracking. Cada línea de tiempo muestra los eventos en el orden en que ocurren naturalmente dentro del flujo de negocio correspondiente, permitiendo al equipo verificar que la narrativa del sistema sea coherente y completa de extremo a extremo.
+El equipo organizó los eventos en secuencias horizontales ordenadas bajo los bounded contexts identificados: Identity and Access Management (IAM), Subscriptions and Payments, Profiles and Preferences, Asset and Resource Management, Design and Planning, Sales Management, Device Management y Tracking.
+
+En **Design and Planning**, el flujo de receta: `Profile consulted` → `Recipe catalog consulted` → `Recipe information entered` → `Supplies selected` → `The quantity of supplies was established` → `Recipe image uploaded` → `Recipe saved`. El flujo de kit: `Kit catalog consulted` → `Kit description entered` → `Supplies selected` → `Quantity of supplies established` → `Recipe image uploaded` → `Kit saved into the catalog`.
+
+En **Asset and Resource Management**, el flujo de sucursal: `Branch list consulted` → `Branch location was selected` → `Branch image was loaded` → `Branch registered`. El flujo de insumo personalizado se consolida en: `Inventory consulted` → `Custom Supply created`.
+
+En **Subscriptions and Payments**, el flujo incorpora: `Subscription plans consulted` → `Plan selected` → `Payment details entered` → `Payment accepted` → `Plan activated`.
+
+En **Sales Management**, el flujo incorpora: `Sales history consulted` → `Sale initialized` → `Branch selected` → `Recipes selected` → `Additional supplies were registered` → `Calculate total price` → `Sale confirmed`.
+
+El bounded context de **Tracking** incluye tres flujos diferenciados: el flujo de telemetría física (`Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Approximated supply data processed` → `Physical stock estimated`), el flujo de comparación de stock (`Physical stock received` → `Digital stock received` → `Stock record consulted` → `Difference evaluated` → `Discrepancy detected` / `Stock verified`) y el flujo de salud del dispositivo (`Voltage registered` → `CPU usage registered` → `Memory usage registered` → `Device temperature registered` → `Data analyzed` / `Anomaly detected`).
+
 
 #### Paso 3: Paint Point
 
-El tercer paso incorporó la identificación de los puntos de dolor, también llamados pain points, dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas, riesgos o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
+El tercer paso incorporó la identificación de los pain points dentro de los flujos ya organizados. Los pain points se representan con tarjetas en forma de rombo de color rosa y señalan fricciones, dudas o decisiones de diseño pendientes que el equipo detectó al revisar las líneas de tiempo.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
-  <img src="https://imgur.com/U8QiL0s" alt="paint-point">
+  <img src="https://imgur.com/U8QiL0s.png" alt="paint-point">
   <img src="https://imgur.com/0C8oOMR.png" alt="paint-point">
   <img src="https://imgur.com/jIvMoqL.png" alt="paint-point">
   <img src="https://imgur.com/3rKIBL0.png" alt="paint-point">
   <img src="https://imgur.com/Pp4xgKP.png" alt="paint-point">
 </div>
 
-El equipo incorporó pain points en los contextos donde surgieron preguntas sin resolver. En IAM se identificó el pain point "How do I access the services?", relacionado con el flujo de registro inicial de un usuario en el sistema. En Design and Planning se marcaron dos pain points: "What information does a recipe require?" y "What information does a Kit require?", señalando la necesidad de definir los datos mínimos para registrar cada elemento. En Sales Management se levantó la pregunta "How do I record a sale?", referida al proceso y condiciones necesarias para confirmar una venta. En Asset and Resource Management se plantearon las preguntas "How do you register a branch?", cuestionando los datos y pasos requeridos para dar de alta una sucursal, y "How do you register a custom supply?", indicando dudas sobre la información mínima necesaria para crear un insumo personalizado. Estos puntos quedaron visibles en el tablero como señales de alerta para ser resueltos en iteraciones posteriores del diseño.
+Se identificaron seis pain points distribuidos en los bounded contexts con mayor ambigüedad de diseño. Cada uno fue resuelto en el transcurso del Design-Level EventStorming tal como se describe al inicio de esta sección:
+
+- **"How do I access the services?"** en IAM. Resuelto mediante el modelado del flujo Sign up con sus cuatro eventos (User entered personal data, User entered their password, User Role was chosen, User data was saved) y la política automática Create profile automatically.
+
+- **"What information does a recipe require?"** en Design and Planning. Resuelto estableciendo seis eventos de registro: Recipe register initialized, Category selected, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded.
+
+- **"What information does a Kit require?"** en Design and Planning. Resuelto estableciendo siete eventos: Kit register initialized, Category selected, Kit description entered, Supplies selected, Quantity of supplies established, Recipe image uploaded, Kit saved into the catalog.
+
+- **"How do I record a sale?"** en Sales Management. Resuelto mediante el flujo de seis eventos: Sale initialized, Branch selected, Recipes selected, Additional supplies were registered, Calculate total price, Sale confirmed; con dos políticas automáticas que calculan el total y descuentan el stock.
+
+- **"How do you register a branch?"** en Asset and Resource Management. Resuelto con cinco eventos: Branch register was initialized, Branch name was entered, Branch location was selected, Branch image was loaded, Branch registered; más la restricción Cannot delete branch with stock available.
+
+- **"How do you register a custom supply?"** en Asset and Resource Management. Resuelto con seis eventos: Name entered, Category selected, Unit price entered, Unit of measurement entered, Custom Supply image was loaded, Custom Supply created.
 
 #### Paso 4: Pivotal Points
 
-El cuarto paso incorporó la identificación de los pivotal points dentro de los flujos ya organizados. Estos puntos se representan como las líneas o momentos de transición más relevantes dentro del recorrido, y permiten visualizar dónde ocurre un cambio significativo en la dirección, el contexto o la decisión del proceso. Su identificación ayudó a comprender cómo se conectan las distintas etapas del negocio y cuáles son los momentos clave que estructuran la experiencia analizada.
+El cuarto paso incorporó la identificación de los pivotal points, representados como líneas verticales de separación entre bounded contexts. Estos puntos señalan los momentos de transición más relevantes en el recorrido del sistema, donde el flujo cambia de contexto o de responsabilidad.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/RGOcMYK.png" alt="pivotal-point">
@@ -68,11 +154,20 @@ El cuarto paso incorporó la identificación de los pivotal points dentro de los
   <img src="https://imgur.com/vpFvHI9.png" alt="pivotal-point">
 </div>
 
-En este paso, el equipo reconoció pivotal points en los contextos donde el flujo presenta una transición importante. En IAM, se observó el momento en que el visitante pasa del acceso general al inicio del registro como usuario. En Asset and Resource Management, se identificaron dos pivotal points: el primero en el momento en que la intención de crear una sucursal se transforma en el registro formal de sus datos, y el segundo cuando se pasa de la gestión general del inventario al alta específica de un insumo personalizado. En Design and Planning, los pivotal points aparecen cuando el actor debe definir la composición necesaria para registrar una receta o un kit. En Sales Management, el punto crítico se ubica en la transición hacia la confirmación de una venta. En Tracking, el pivotal point se encuentra en el momento en que el flujo de telemetría pasa del monitoreo continuo a la detección de una anomalía de stock. En Communications y Analytics no se identificaron pivotal points relevantes, debido a que sus flujos mantienen una secuencia continua sin cambios de dirección marcados.
+El equipo reconoció pivotal points en los siguientes momentos:
+
+- En **IAM**, la transición entre el flujo de Sign up y el flujo de Sign in marca el cambio de actor (de Visitant a User) y de intención.
+- En **Subscriptions and Payments**, la transición entre la selección del plan y el procesamiento del pago marca el momento en que el sistema externo Stripe toma control del flujo financiero.
+- En **Asset and Resource Management**, la transición entre la gestión de sucursales y la gestión de insumos personalizados representa un cambio de objeto de dominio.
+- En **Design and Planning**, la transición entre el flujo de recetas y el flujo de kits marca el cambio de actor responsable.
+- En **Sales Management**, la transición hacia el cálculo del precio total y la confirmación de la venta representa el momento de mayor impacto operativo, ya que dispara políticas automáticas de descuento de stock.
+- En **Tracking**, la transición desde la recepción de telemetría hacia la comparación de stock y la detección de discrepancias marca el punto donde el sistema pasa del monitoreo pasivo a la acción correctiva.
+
+En Communications y Profiles and Preferences no se identificaron pivotal points relevantes, ya que sus flujos mantienen una secuencia continua sin cambios de contexto marcados.
 
 #### Paso 5: Commands
 
-El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican inmediatamente antes del evento de dominio que producen.
+El quinto paso consistió en identificar los comandos del sistema. Un comando representa la intención de un actor de provocar un cambio de estado en el dominio. Los comandos se representan con tarjetas de color azul y se ubican antes del evento de dominio que producen.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/oChmol2.png" alt="commands">
@@ -83,11 +178,27 @@ El quinto paso consistió en identificar los comandos del sistema. Un comando re
   <img src="https://imgur.com/IAtSW8V.png" alt="commands">
 </div>
 
-El equipo incorporó los comandos en cada línea de tiempo. En IAM se definieron: Sign up, Sign in y Register new user for account. En Profiles and Preferences se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts. En Subscriptions and Payments se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account. En Asset and Resource Management se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Register batch, Add supply batch stock, Transfer supply batch stock y Subtrack batch stock. En Design and Planning se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit. En Sales Management se definieron: Register sale y Show sales. En Device Management se definieron: Register new device, Configure a device y Deactivate device. En Tracking se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock comparison, Register threshold, Edit threshold, Verify threshold y Perform stock adjustment.
+El equipo incorporó los comandos en cada línea de tiempo de la siguiente manera:
+
+- En **IAM** se definieron: Sign up, Sign in y Register new user for account.
+
+- En **Profiles and Preferences** se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts.
+
+- En **Subscriptions and Payments** se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account.
+
+- En **Asset and Resource Management** se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Add supply batch stock, Subtrack supply batch stock y Transfer supply batch stock.
+
+- En **Design and Planning** se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit.
+
+- En **Sales Management** se definieron: Register sale y Show sales.
+
+- En **Device Management** se definieron: Register new device, Configure a device y Deactivate device.
+
+- En **Tracking** se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock adjustment, Register threshold, Edit threshold y Verify threshold.
 
 #### Paso 6: Policies and Actors
 
-El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores son los roles de personas que interactúan con el sistema emitiendo comandos, representados con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, representadas con tarjetas de color lila.
+El sexto paso incorporó al modelo los actores y las políticas del sistema. Los actores se representan con tarjetas pequeñas de color amarillo. Las políticas son reglas de negocio automáticas que, ante la ocurrencia de un evento, disparan un nuevo comando sin intervención humana directa, y se representan con tarjetas de color lila.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/ZSbeOHv.png" alt="policies-actors">
@@ -96,8 +207,23 @@ El sexto paso incorporó al modelo los actores y las políticas del sistema. Los
   <img src="https://imgur.com/i98m21X.png" alt="policies-actors">
 </div>
 
-El equipo identificó como actores principales al Retail Manager y al Restaurant Manager, presentes en la mayoría de los contextos del sistema. El actor Visitant fue identificado únicamente en el contexto de IAM para el flujo de registro inicial. El actor User fue identificado en los contextos de IAM, Subscriptions and Payments y Profiles and Preferences. El actor Device fue identificado en los contextos de Device Management y Tracking como emisor automático de eventos de telemetría.
-Las políticas fueron incorporadas en los flujos donde el sistema debe reaccionar automáticamente ante ciertos eventos. En IAM se definió una política que crea el perfil del usuario automáticamente al completarse el registro. En Subscriptions and Payments se definieron cuatro políticas: una que genera una orden de pago en Stripe con los detalles del plan seleccionado, una que configura los límites del plan para la cuenta al detectarse un nuevo plan, una que crea una nueva cuenta para el negocio al completarse el proceso de cuenta, y una que envía el resumen del pago al usuario una vez generado. En Profiles and Preferences se definió una política que sube la foto a la API de Cloudinary y obtiene el enlace al actualizarse la imagen de perfil o negocio. En Design and Planning se definieron políticas que suben la foto a la API de Cloudinary y obtienen el enlace al cargarse o actualizarse imágenes de recetas y kits. En Sales Management se definió una política que suma automáticamente los precios de las recetas y los insumos adicionales para calcular el total, y otra que envía la información de la venta confirmada. En Asset and Resource Management se definió una política que verifica el stock actual del almacén y lo descuenta al transferir stock entre sucursales, y otra que obtiene la información y envía un mensaje al añadir stock al inventario. En Device Management se definió una política que obtiene la información del cambio y envía una notificación ante eventos de configuración del dispositivo, y otra que crea o edita un registro de umbral para el manejo de alertas. En Tracking se definieron políticas que dividen el peso recibido y configuran el cálculo del stock físico.
+El equipo identificó como actores principales al **Retail Manager** y al **Restaurant Manager**, presentes en la mayoría de los bounded contexts operativos. El actor **Visitant** fue identificado únicamente en IAM para el flujo de Sign up. El actor **User** fue identificado en IAM, Subscriptions and Payments y Profiles and Preferences. El actor **Device** fue identificado en Tracking como emisor autónomo de eventos de telemetría.
+
+Las políticas identificadas por bounded context son las siguientes:
+
+- En **IAM:** Create profile automatically, disparada tras User data was saved, y Access the dashboard when logging in, disparada tras Worker data was saved.
+
+- En **Subscriptions and Payments:** Generate a payment order in Stripe with details, disparada tras Payment details entered; Configures the plan limits for the account, disparada tras New plan chosen; Creates a new account for the business, disparada tras Account created; y Sends the payment summary to the user, disparada tras Summary generated.
+
+- En **Profiles and Preferences** y **Design and Planning:** Upload the photo to the API and get the link, disparada cada vez que se carga o actualiza una imagen de perfil, negocio, receta o kit a través de Cloudinary API.
+
+- En **Sales Management:** Sum all the prices of the recipes and additional supplies, disparada tras Additional supplies were registered para calcular el total; y Subtract automatically the stock of the sold supplies, disparada tras Sale confirmed para actualizar el inventario.
+
+- En **Asset and Resource Management:** Gets the info and sends a message, disparada tras Batch stock added to the inventory; y Verifies the current stock of the warehouse and subtracts it, disparada durante la transferencia de stock entre sucursales.
+
+- En **Device Management:** Gets info of the change and sends a notification, disparada tras Configuration confirmed; y Creates or edits a threshold record for alert handling, disparada tras configuraciones de umbrales en el dispositivo.
+
+- En **Tracking:** Divide the weight received to calculate the physical stock, disparada al procesar los datos de telemetría para estimar el stock físico.
 
 #### 4.1.1.1 Candidate Context Discovery
 
@@ -105,7 +231,7 @@ Luego de identificar los eventos, flujos, comandos y políticas del dominio, el 
 
 #### Paso 7: Read models
 
-El séptimo paso consistió en identificar los modelos de lectura (read models) del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas o proyecciones de datos que los actores necesitan consultar para poder tomar una decisión y emitir un comando.
+El séptimo paso consistió en identificar los modelos de lectura del sistema. Los read models se representan con tarjetas de color verde y corresponden a las vistas que los actores necesitan consultar antes de emitir un comando.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/X0h65gU.png" alt="read-models">
@@ -115,11 +241,25 @@ El séptimo paso consistió en identificar los modelos de lectura (read models) 
   <img src="https://imgur.com/z2zBn1G.png" alt="read-models">
 </div>
 
-El equipo incorporó los read models en los puntos del flujo donde el actor necesita información disponible antes de actuar. En IAM se identificaron las vistas de Sign-up Form y Sign-in Form, que el visitante y el usuario consultan antes de registrarse o autenticarse. En Profiles and Preferences se definieron las vistas de Profile settings, utilizada al cambiar contraseña o actualizar datos personales, y Business Profile, utilizada al registrar o actualizar la información del negocio. Asimismo, se definió la vista de Workers Management, consultada por el Retail Manager y Restaurant Manager al registrar un nuevo usuario para la cuenta. En Subscriptions and Payments se identificó la vista de Subscription plans, que el usuario consulta antes de seleccionar o actualizar un plan. En Asset and Resource Management se identificaron las vistas de Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock de lotes; y Batch Management, consultada al registrar un lote o transferir stock al almacén. En Design and Planning se identificaron las vistas de Recipe Catalog y Kit Catalog, que permiten al manager consultar el catálogo existente antes de editar o eliminar un ítem. En Sales Management se identificó la vista de Sales Management, consultada al registrar o filtrar ventas. En Device Management se definió la vista de Device Management, consultada al registrar, configurar o desactivar un dispositivo.
+El equipo incorporó los read models en los siguientes bounded contexts:
+
+- En **IAM:** Sign-up Form, consultada por el Visitant antes de registrarse; y Sign-in Form, consultada por el User antes de autenticarse.
+
+- En **Profiles and Preferences:** Profile settings, consultada al cambiar contraseña o actualizar datos personales; Business Profile, consultada al registrar o actualizar la información del negocio; y Workers Management, consultada al registrar un nuevo usuario para la cuenta.
+
+- En **Subscriptions and Payments:** Subscription plans, consultada por el User antes de seleccionar o actualizar un plan de suscripción.
+
+- En **Design and Planning:** Recipe Catalog, consultada por el Restaurant Manager al registrar, editar o eliminar una receta; y Kit Catalog, consultada por el Retail Manager al registrar, editar o eliminar un kit.
+
+- En **Sales Management:** Sales Management, consultada al registrar una venta o filtrar el historial de ventas.
+
+- En **Asset and Resource Management:** Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock; y Batch Management, consultada al registrar un lote.
+
+En **Device Management:** Device Management, consultada al registrar, configurar o desactivar un dispositivo.
 
 #### Paso 8: External Systems
 
-El octavo paso consistió en incorporar al modelo los sistemas externos con los que el sistema interactúa. Los sistemas externos se representan con tarjetas de color rosa oscuro y corresponden a servicios o plataformas fuera del dominio propio que participan en los flujos de negocio.
+El octavo paso consistió en incorporar al modelo los sistemas externos. Los sistemas externos se representan con tarjetas de color rojo o rosa oscuro y corresponden a servicios fuera del dominio propio que participan en los flujos de negocio.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/SaHLR0Z.png" alt="external-systems">
@@ -129,27 +269,63 @@ El octavo paso consistió en incorporar al modelo los sistemas externos con los 
   <img src="https://imgur.com/Dhrs7SO.png" alt="external-systems">
 </div>
 
-El equipo identificó tres sistemas externos. El primero es Cloudinary API, presente en los contextos de Profiles and Preferences, Asset and Resource Management y Design and Planning, siendo responsable de la carga, almacenamiento y recuperación de imágenes del sistema mediante la política "Upload the photo to the API and get the link". El segundo es Stripe, integrado en el contexto de Subscriptions and Payments, encargado de procesar los pagos de suscripción mediante la generación de una orden de pago con los detalles del plan seleccionado. El tercero es OneSignal API, integrado en el contexto de Communications, responsable de obtener la información del evento y enviar el mensaje de notificación push correspondiente a los usuarios del sistema.
+El equipo identificó tres sistemas externos:
+
+- **Cloudinary API** presente en Profiles and Preferences (carga de imágenes de perfil y negocio), Asset and Resource Management (carga de imágenes de sucursales e insumos) y Design and Planning (carga de imágenes de recetas y kits). Es activada mediante la política Upload the photo to the API and get the link.
+
+- **Stripe** presente en Subscriptions and Payments, encargado de procesar los pagos de suscripción. Aparece en el flujo entre Payment details entered y Pay subscription plan, activado mediante la política Generate a payment order in Stripe with details.
+
+- **OneSignal API** presente en Communications, responsable de enviar notificaciones push a los usuarios. Es activado mediante la política Gets the info and sends a message, disparada tras el evento Notification sent to the center.
 
 #### Paso 9: Add Aggregates
 
-El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio, encapsulando la lógica de negocio dentro de sus límites.
+El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio.
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
-  <img src="https://imgur.com/bz39Etw.png" alt="aggregates">
-  <img src="https://imgur.com/NKfdPMt.png" alt="aggregates">
+  <img src="https://imgur.com/Zvyn232.png" alt="aggregates">
+  <img src="https://imgur.com/1KBSr9c.png" alt="aggregates">
   <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
   <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
   <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
   <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
   <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
-  <img src="https://imgur.com/1RTkenv.png" alt="aggregates">
+  <img src="https://imgur.com/nSjYQkn.png" alt="aggregates">
   <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
   <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
 
-El equipo identificó los aggregates en cada bounded context. En IAM se identificó el aggregate User, que agrupa los flujos de registro, autenticación y registro de nuevos usuarios para una cuenta. En Subscriptions and Payments se identificaron tres aggregates: Subscription, que agrupa los eventos de selección y actualización de planes junto con el procesamiento mediante Stripe; Plan, que agrupa la detección y configuración de límites del plan; y Payment, que agrupa el registro del pago y la generación del resumen. En Profiles and Preferences se identificaron dos aggregates: Profile, que agrupa los flujos de cambio de contraseña, actualización de datos personales y carga de imágenes mediante Cloudinary API; y Business, que agrupa el registro y actualización de la información del negocio. En Asset and Resource Management se identificaron cuatro aggregates: Branch, que agrupa la creación, edición y eliminación de sucursales junto con la integración de Cloudinary API para imágenes; Custom Supply, que agrupa el registro, edición y eliminación de insumos personalizados con su respectiva carga de imágenes; Inventory, que agrupa los flujos de adición y transferencia de stock entre sucursales; y Batch, que agrupa el registro de lotes, la transferencia de stock al almacén y el descuento de stock. En Design and Planning se identificaron dos aggregates: Recipe, que agrupa el registro, edición y eliminación de recetas junto con la integración de Cloudinary API; y Kit, que agrupa el registro, edición y eliminación de kits con su respectiva carga de imágenes. En Sales Management se identificó el aggregate Sales Order, que agrupa los flujos de registro de ventas, cálculo del precio total y filtrado de ventas. En Communications se identificó el aggregate Notification, que agrupa la generación de notificaciones y su envío mediante OneSignal API. En Device Management se identificó el aggregate Device, que agrupa el registro, configuración y desactivación de dispositivos. En Tracking se identificaron cuatro aggregates: Device Health Record, que agrupa el monitoreo del estado del dispositivo; Box State Record, que agrupa el registro de telemetría física del contenedor incluyendo peso, temperatura y humedad; Stock Comparison, que agrupa la comparación entre el stock físico estimado y el stock digital para detectar discrepancias; Power Schedule, que agrupa la configuración del encendido y apagado programado del dispositivo; Conciliation Task, que agrupa el proceso de ajuste de stock al detectarse diferencias; y Box Threshold, que agrupa el registro, edición y verificación de umbrales de alerta por dispositivo.
+El equipo identificó los agregados en cada bounded context de la siguiente manera:
+
+- En **IAM** se identificó el agregado **User**, que centraliza los flujos de Sign up, Sign in y Register new user for account, garantizando que la identidad y el acceso de cada actor estén correctamente gestionados.
+
+- En **Subscriptions and Payments** se identificaron tres agregados: **Subscription**, que agrupa los eventos de selección de plan y procesamiento mediante Stripe; **Plan**, que gestiona la detección y configuración de límites del plan contratado; y **Payment**, que agrupa el registro del pago, la recepción del monto y la generación del resumen de facturación.
+
+- En **Profiles and Preferences** se identificaron dos agregados: **Profile**, que centraliza la creación de perfil, el cambio de contraseña, la actualización de datos personales y la carga de imágenes mediante Cloudinary API; y **Business**, que gestiona el registro y actualización de la información comercial del negocio.
+
+- En **Asset and Resource Management** se identificaron cuatro agregados: **Branch**, que gestiona el ciclo de vida completo de las sucursales incluyendo la restricción de eliminación cuando existe stock disponible e integración con Cloudinary API, exponiendo los eventos `Branch location was selected`, `Branch image was loaded`, `Branch registered`, `Branch edited` y `Branch deleted`; **Custom Supply**, que gestiona el catálogo de insumos personalizados consolidando su creación en el evento `Custom Supply created` y exponiendo adicionalmente `Custom Supply edited` y `Custom Supply deleted`; **Inventory**, que centraliza las operaciones de adición y transferencia de stock entre sucursales; y **Batch**, que gestiona los lotes de inventario, incluyendo su creación, transferencia y descuento de stock.
+
+- En **Design and Planning** se identificaron dos agregados: **Recipe**, que centraliza el registro y edición de recetas exponiendo los eventos `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`, `Recipe saved`, `Recipe edited` y `Recipe deleted`; y **Kit**, que gestiona la composición de kits comerciales para el sector retail exponiendo los eventos `Kit description entered`, `Supplies selected`, `Quantity of supplies established`, `Recipe image uploaded`, `Kit saved into the catalog`, `Kit edited` y `Kit deleted`.
+
+- En **Sales Management** se identificó el agregado **Sales Order**, que centraliza el registro de ventas, el cálculo automático del precio total y el filtrado del historial de ventas.
+
+- En **Communications** se identificó el agregado **Notification**, que gestiona la generación de notificaciones ante eventos del sistema y su despacho mediante OneSignal API.
+
+- En **Device Management** se identificó el agregado **Device**, que centraliza el registro, configuración y desactivación de dispositivos IoT, incluyendo la asignación de sucursal, insumo de seguimiento, umbrales de peso, humedad y temperatura, y programación de encendido y apagado.
+
+En **Tracking** se identificaron seis agregados:
+
+- **Device Health Record**, que gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
+
+- **Box State Record**, que centraliza el flujo de telemetría física del dispositivo: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos posibles derivaciones: `Processed data stored` o `Data anomaly detected`. Este agregado incorpora explícitamente el registro de temperatura y humedad como variables monitoreadas junto al peso.
+
+- **Stock Comparison**, que gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
+
+- **Power Schedule**, que gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
+
+- **Conciliation Task**, que gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
+
+- **Box Threshold**, que centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de peso, humedad y temperatura junto al nombre del insumo. Al verificar un umbral se calcula si los datos actuales superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
@@ -5624,13 +5800,13 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo
 
 <img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Management" width="800px">
 
-### 4.2.8. Bounded Context: Communication
+## 4.2.8. Bounded Context: Communication
 
 #### 4.2.8.1. Domain Layer
 
-La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Service Operation and Monitoring y Sales Order Management para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Tracking, Asset and Resource Management y Sales Order Management, así como de eventos físicos generados por los dispositivos IoT a través de la Edge Application, para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
 
-##### Aggregates & Entities
+#### Aggregates & Entities
 
 Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
 
@@ -5647,13 +5823,13 @@ Estas clases representan los pilares transaccionales del sistema. El Aggregate R
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Notification</strong></td>
       <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, la cuenta del destinatario, la sucursal de origen y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, el usuario destinatario (<code>userId</code>), la cuenta del negocio (<code>businessId</code>), la sucursal de origen (<code>branchId</code>) y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
     </tr>
   </tbody>
 </table>
 <br>
 
-##### Value Objects
+#### Value Objects
 
 Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
 
@@ -5685,12 +5861,12 @@ Estas clases modelan conceptos propios del dominio y permiten evitar el uso indi
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>SituationData</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador de la cuenta (<code>accountId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador del negocio (<code>businessId</code>), identificador del usuario destinatario (<code>userId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, AccountId, BranchId</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, BusinessId, BranchId, UserId</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>notificationId</code>, <code>accountId</code> y <code>branchId</code> de la colección.</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>_id</code>, <code>business_id</code>, <code>branch_id</code> y <code>user_id</code> de la colección <code>notifications</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -5713,17 +5889,17 @@ Los commands representan intenciones de cambio de estado dentro del dominio. Son
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GenerateNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: accountId, branchId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: businessId, branchId, userId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo desde Asset and Resource Management, Tracking, Sales Order Management o la Edge Application.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>MarkNotificationAsReadCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para marcar una notificación como leída dentro del aggregate.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el userId para marcar una notificación como leída dentro del aggregate.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>DispatchNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el userId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
@@ -5746,12 +5922,12 @@ Las queries representan intenciones de consulta de información sin modificar el
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GetRecentNotificationsQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de una cuenta, con soporte de filtros por branchId, tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de un usuario autenticado, con soporte de filtros por branchId, tipo y prioridad.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GetNotificationByIdQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el accountId para recuperar su detalle completo desde la capa de infraestructura.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el userId para recuperar su detalle completo desde la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
@@ -5774,7 +5950,7 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>NotificationGeneratedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event</td>
-      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío.</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío. También es consumido por Analytics para actualizar el dashboard con las alertas recientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>NotificationSentEvent</strong></td>
@@ -5784,12 +5960,22 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>StockAnomalyDetectedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
-      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Tracking o de la Edge Application que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>DeviceFailureDetectedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
-      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Tracking o de la Edge Application que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>LowStockDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Asset and Resource Management que notifica que un insumo ha alcanzado su umbral mínimo de stock. Dispara la creación de una notificación de tipo LOW_STOCK a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SaleCompletedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Sales Order Management que notifica el registro exitoso de una venta. Dispara la creación de una notificación informativa dentro del contexto a través del ACL.</td>
     </tr>
   </tbody>
 </table>
@@ -5797,9 +5983,9 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
 
 #### 4.2.8.2. Interface Layer
 
-La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts generen notificaciones sin acoplarse al modelo interno de este contexto.
+La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts —Asset and Resource Management, Tracking, Sales Order Management y la Edge Application— generen notificaciones sin acoplarse al modelo interno de este contexto.
 
-##### NotificationController
+#### NotificationController
 
 <p><em>Tabla de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -5820,7 +6006,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de una cuenta, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de un usuario autenticado, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
@@ -5829,6 +6015,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
   </tbody>
 </table>
 <br>
+
 <p><em>Tabla de métodos de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -5843,7 +6030,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     <tr>
       <td style="padding: 10px; border: 1px solid;">GetRecent</td>
       <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones de la cuenta en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones del usuario autenticado en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
       <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
     </tr>
     <tr>
@@ -5860,6 +6047,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     </tr>
   </tbody>
 </table>
+<br>
 
 #### ACL (Anti-Corruption Layer)
 
@@ -5878,14 +6066,15 @@ La interfaz del ACL se expone desde la capa de interfaz del Bounded Context de C
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>INotificationContextFacade</strong></td>
       <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code> y <code>generateDeviceAlert</code> para que otros bounded contexts puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code>, <code>generateDeviceAlert</code>, <code>generateLowStockAlert</code> y <code>generateSaleNotification</code> para que otros bounded contexts —Asset and Resource Management, Tracking, Sales Order Management y la Edge Application— puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.3. Application Layer
 
-La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
+La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application, crear notificaciones correctamente tipificadas y priorizadas, delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura y notificar al bounded context Analytics cuando una nueva alerta es generada para mantener el dashboard actualizado.
 
 #### NotificationContextFacade
 
@@ -5902,24 +6091,13 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
       <td style="padding: 10px; border: 1px solid;">NotificationContextFacade</td>
     </tr>
-  </tbody>
-</table>
-
-<br>
-
-<p><em>Tabla de Interacciones del Componente webProfile</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
       <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -5950,7 +6128,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code> y desencadenar su despacho a través de OneSignal.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code>, desencadenar su despacho a través de OneSignal y emitir el evento <code>NotificationGeneratedEvent</code> para que Analytics actualice el dashboard.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -6043,7 +6221,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones de la cuenta autenticada filtrando por <code>accountId</code> y <code>branchId</code>, incluyendo tipo, prioridad, sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
+      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones del usuario autenticado filtrando por <code>userId</code>, con soporte adicional de filtros por <code>branchId</code>, tipo y prioridad, incluyendo sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
@@ -6074,7 +6252,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y accountId, exponiendo todos los campos de la colección al cliente solicitante.</td>
+      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y userId, exponiendo todos los campos de la colección al cliente solicitante.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
@@ -6105,7 +6283,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Service Operation and Monitoring cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Tracking o la Edge Application cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -6136,11 +6314,73 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Service Operation and Monitoring, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Tracking o la Edge Application, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
       <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### LowStockDetectedEventHandler
+
+<p><em>Tabla de LowStockDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">LowStockDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Asset and Resource Management cuando un insumo alcanza su umbral mínimo de stock, invocando el ACL para crear una notificación de tipo LOW_STOCK con la prioridad correspondiente e iniciando su despacho al administrador afectado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">LowStockDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### SaleCompletedEventHandler
+
+<p><em>Tabla de SaleCompletedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SaleCompletedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Sales Order Management al registrar una venta completada, invocando el ACL para generar una notificación informativa y despachándola al administrador de la cuenta correspondiente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SaleCompletedEvent</td>
     </tr>
   </tbody>
 </table>
@@ -6167,7 +6407,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code> y actualizando el campo <code>sentAt</code> al confirmar el envío.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code>, actualizando el campo <code>sentAt</code> al confirmar el envío y notificando a Analytics mediante el evento para actualizar el dashboard con las alertas recientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -6175,10 +6415,11 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.4. Infrastructure Layer
 
-La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
+La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application, así como para publicar eventos de dominio hacia Analytics. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
 
 #### NotificationRepository
 
@@ -6201,7 +6442,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>accountId</code>, <code>branchId</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sentAt</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por cuenta, así como filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>business_id</code>, <code>branch_id</code>, <code>user_id</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sent_at</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por <code>user_id</code>, así como filtros por tipo y prioridad.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6232,7 +6473,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema, incluyendo el mapeo de los campos <code>business_id</code>, <code>branch_id</code> y <code>user_id</code> como referencias externas.</td>
     </tr>
   </tbody>
 </table>
@@ -6259,7 +6500,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sentAt</code>.</td>
+      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sent_at</code>.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6290,7 +6531,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Service Operation and Monitoring (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>) y por Sales Order Management, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Asset and Resource Management (<code>LowStockDetectedEvent</code>), Tracking (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>), Sales Order Management (<code>SaleCompletedEvent</code>) y la Edge Application, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6321,7 +6562,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> o <code>NotificationSentEvent</code>, para que otros contextos interesados puedan reaccionar de forma desacoplada si fuese necesario.</td>
+      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> y <code>NotificationSentEvent</code>, hacia Analytics para que actualice el dashboard con las alertas recientes, y hacia otros contextos interesados que puedan reaccionar de forma desacoplada.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6329,6 +6570,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -6338,7 +6580,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context C
 
 El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
 
-<img src="https://imgur.com/gkH6zra.png" alt="web-communication">
+<img src="https://imgur.com/PxlAde4.png" alt="web-communicaiton">
 
 El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
 
@@ -6346,7 +6588,7 @@ El diagrama evidencia que el componente Communications posee una responsabilidad
 
 El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
 
-<img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communication">
+<img src="https://imgur.com/U7rHdMJ.png" alt="mobile-communicaiton">
 
 El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
 
@@ -6354,30 +6596,27 @@ El diagrama muestra que el componente Communications de la aplicación móvil re
 
 El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
 
-<img src="https://imgur.com/P0X1a9t.png" alt="api-communication">
+<img src="https://imgur.com/jvqpzjx.png" alt="api-communicaiton">
 
 El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
 
 #### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Service Operation and Monitoring. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
-
 ##### 4.2.8.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una notificación, desde su generación ante un evento crítico externo hasta su despacho al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates y value objects que definen la estructura y las reglas del dominio, y services, que contiene los commands, queries, domain events y la interfaz del ACL que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
 
-<img src="https://i.imgur.com/4zZQIyx.jpeg" alt="class-diagram-communication">
+<img src="https://imgur.com/WB0oHIf.png" alt="class-diagram-communication">
 
-El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como send(), markAsRead() y markAsFailed(), en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, AccountId, BranchId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. Cabe destacar que el Domain Layer no expone interfaces de repositorio ni entidades adicionales, ya que NotificationRecipient fue eliminado al no ser necesario en el modelo actual, y la abstracción de persistencia corresponde a la capa de infraestructura, manteniendo así la pureza del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos generateStockAlert y generateDeviceAlert para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como `send()`, `markAsRead()` y `markAsFailed()`, en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, BusinessId, BranchId, UserId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent, LowStockDetectedEvent, SaleCompletedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos `generateStockAlert`, `generateDeviceAlert`, `generateLowStockAlert` y `generateSaleNotification` para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.  
 
 ##### 4.2.8.6.2. Bounded Context Database Design Diagram
 
-El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones y sus destinatarios. Este esquema organiza la colección principal, sus atributos y las relaciones entre documentos, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
+El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones. Este esquema organiza la colección principal, sus atributos y las referencias externas hacia otros bounded contexts, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
 
 <img src="https://imgur.com/WjWyVzo.png" alt="database-communication">
 
-El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (business_id), la sucursal asociada (branch_id), el usuario destinatario (user_id), el tipo de evento que la originó (type), el título y cuerpo del mensaje (title, message), la prioridad asignada (priority), la fecha y hora de envío (sent_at) y el estado de lectura (read).
-A diferencia de un modelo relacional con tablas separadas para alertas y notificaciones, este diseño en MongoDB consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por user_id, business_id o type. El campo read permite gestionar el estado de lectura directamente sobre el documento sin requerir una entidad adicional, mientras que sent_at registra el momento exacto en que la notificación fue despachada a través de OneSignal. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones de alertas separadas.
+El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (`business_id` como FK), la sucursal asociada (`branch_id` como FK), el usuario destinatario (`user_id` como FK), el tipo de evento que la originó (`type`), el título y cuerpo del mensaje (`title`, `message`), la prioridad asignada (`priority`), la fecha y hora de envío (`sent_at`) y el estado de lectura (`read`). Los campos `business_id`, `branch_id` y `user_id` actúan como referencias externas hacia los bounded contexts de Profiles and Preferences e Identity and Access Management, respectivamente, sin establecer joins físicos dado el modelo documental de MongoDB. A diferencia de un modelo relacional con tablas separadas, este diseño consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por `user_id`, `business_id` o `type`. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones adicionales.
 
 ### 4.2.9. Bounded Context: Device Management
 
@@ -6397,9 +6636,284 @@ A diferencia de un modelo relacional con tablas separadas para alertas y notific
 
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
-### 4.2.10. Bounded Context: Analytics
+## 4.2.10. Bounded Context: Analytics
 
-#### 4.2.10.1. Bounded Context Software Architecture Component Level Diagrams
+#### 4.2.10.1. Domain Layer
+
+La capa de dominio del Bounded Context de Analytics encapsula las reglas de negocio relacionadas con la construcción, consulta y presentación de indicadores operativos del inventario. Este contexto actúa como agregador de información proveniente de otros bounded contexts como Tracking, Asset and Resource Management y Communication, para transformarla en métricas accionables dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que el dashboard refleje en todo momento el estado real del negocio: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+
+#### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+*Tabla de Aggregates en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **Metric** | Aggregate Root | Representa el estado consolidado del dashboard para una cuenta de negocio en un momento dado. Agrupa los indicadores operativos clave: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. Controla su ciclo de vida: construcción, actualización ante eventos de inventario o alerta, y consulta por parte de los administradores. Garantiza que los indicadores presentados correspondan siempre a la sucursal o cuenta activa del usuario autenticado. |
+
+#### Value Objects
+
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+
+*Tabla de Value Objects en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **StockIndicator** | Value Object | Encapsula la información de un insumo en estado crítico: identificador del insumo, nombre, cantidad actual, umbral mínimo y sucursal de origen. Permite clasificar el insumo como zero_stock o low_stock según la comparación entre la cantidad actual y el umbral configurado. |
+| **RecentSupplyEntry** | Value Object | Encapsula los datos de un insumo registrado recientemente en el sistema: identificador, nombre, categoría, fecha de registro y sucursal de origen. Permite presentar al administrador los últimos insumos incorporados al inventario sin exponer el modelo completo del insumo. |
+| **RecentAlertEntry** | Value Object | Encapsula los datos de una alerta reciente generada por el sistema: identificador, tipo de alerta, mensaje, prioridad, sucursal de origen y timestamp. Permite al dashboard presentar las últimas alertas sin depender directamente del modelo interno del Bounded Context Communication. |
+| **DashboardSummaryId, BusinessId, BranchId** | Value Object | Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos de identificación del negocio y la sucursal activa del usuario autenticado. |
+
+#### Commands
+
+Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
+
+*Tabla de Commands en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **RefreshDashboardSummaryCommand** | Command | Encapsula los datos necesarios para reconstruir el resumen del dashboard de una cuenta: businessId, branchId opcional y timestamp de actualización. Es invocado por los Event Handlers cuando llegan eventos de inventario o alerta desde Asset and Resource Management, Tracking o Communication. |
+
+#### Queries
+
+Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
+
+*Tabla de Queries en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **GetDashboardSummaryQuery** | Query | Encapsula los criterios de consulta para recuperar el resumen del dashboard de una cuenta autenticada: businessId y branchId opcional. Retorna los indicadores de stock cero, bajo stock, últimos insumos registrados y alertas recientes. |
+| **GetZeroStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos con stock igual a cero para una cuenta y sucursal determinadas. |
+| **GetLowStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos cuya cantidad actual se encuentra por debajo del umbral mínimo configurado, ordenados por nivel de criticidad. |
+| **GetRecentSuppliesQuery** | Query | Encapsula los criterios para recuperar los últimos insumos registrados en el inventario de una cuenta, con soporte de filtro por sucursal y límite de resultados. |
+| **GetRecentAlertsQuery** | Query | Encapsula los criterios para recuperar las últimas alertas generadas por el sistema para una cuenta, con soporte de filtro por tipo de alerta y sucursal de origen. |
+
+#### Domain Events
+
+Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+
+*Tabla de Domain Events en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **DashboardSummaryRefreshedEvent** | Domain Event | Emitido por el aggregate Metric al completar su actualización exitosamente. Permite que otros componentes del contexto reaccionen para invalidar cachés o notificar a clientes conectados mediante WebSocket. |
+| **StockLevelChangedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica un cambio en el nivel de stock de un insumo. Dispara la actualización de los indicadores de stock cero y bajo stock en el dashboard. |
+| **SupplyRegisteredEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica el registro de un nuevo insumo en el catálogo. Dispara la actualización del indicador de últimos insumos registrados en el dashboard. |
+| **NotificationGeneratedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Communication que notifica la generación de una nueva alerta. Dispara la actualización del indicador de alertas recientes en el dashboard. |
+
+#### 4.2.10.2. Interface Layer
+
+La capa de interfaz del Bounded Context de Analytics expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar los indicadores del dashboard desde la aplicación web y móvil. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries y delega su ejecución a la capa de aplicación. Los datos consultados se sirven desde la caché Redis cuando están disponibles, garantizando tiempos de respuesta bajos para las vistas de mayor frecuencia de acceso.
+
+#### AnalyticsController
+
+*Tabla de AnalyticsController en el Interface Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsController |
+| **Categoría** | Controller |
+| **Propósito** | Exponer endpoints para consultar el resumen del dashboard, los insumos con stock cero, los insumos con bajo stock, los últimos insumos registrados y las alertas recientes de una cuenta autenticada. |
+| **Ruta** | /api/v1/analytics |
+
+*Tabla de métodos de AnalyticsController en el Interface Layer*
+
+| Nombre | Ruta | Acción | Handle (Command/Query) |
+|---|---|---|---|
+| GetDashboardSummary | /dashboard (GET) | Retorna el resumen consolidado del dashboard con todos los indicadores operativos para la cuenta autenticada. | GetDashboardSummaryQuery |
+| GetZeroStockSupplies | /supplies/zero-stock (GET) | Retorna el listado de insumos con stock igual a cero para la cuenta y sucursal activa. | GetZeroStockSuppliesQuery |
+| GetLowStockSupplies | /supplies/low-stock (GET) | Retorna el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad. | GetLowStockSuppliesQuery |
+| GetRecentSupplies | /supplies/recent (GET) | Retorna los últimos insumos registrados en el inventario de la cuenta autenticada. | GetRecentSuppliesQuery |
+| GetRecentAlerts | /alerts/recent (GET) | Retorna las últimas alertas generadas por el sistema para la cuenta autenticada. | GetRecentAlertsQuery |
+
+#### 4.2.10.3. Application Layer
+
+La capa de aplicación del Bounded Context de Analytics orquesta los casos de uso relacionados con la construcción y consulta de indicadores del dashboard. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de Asset and Resource Management, Tracking y Communication, reconstruir los indicadores del dashboard, almacenarlos en la caché Redis para optimizar las consultas frecuentes y exponerlos a los clientes a través de la capa de interfaz.
+
+#### RefreshDashboardSummaryCommandHandler
+
+*Tabla de RefreshDashboardSummaryCommandHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | RefreshDashboardSummaryCommandHandler |
+| **Categoría** | Command Handler |
+| **Propósito** | Orquestar la reconstrucción del resumen del dashboard consultando los datos actualizados de inventario desde Asset and Resource Management y las alertas recientes desde Communication, persistiendo el resultado en la caché Redis e invalidando los datos anteriores para garantizar consistencia. |
+| **Comando** | RefreshDashboardSummaryCommand |
+
+#### GetDashboardSummaryQueryHandler
+
+*Tabla de GetDashboardSummaryQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetDashboardSummaryQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el resumen consolidado del dashboard desde la caché Redis para la cuenta autenticada. Si los datos no están disponibles en caché, delega la reconstrucción al RefreshDashboardSummaryCommandHandler antes de retornar la respuesta al cliente. |
+| **Query** | GetDashboardSummaryQuery |
+
+#### GetZeroStockSuppliesQueryHandler
+
+*Tabla de GetZeroStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetZeroStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock igual a cero para la cuenta y sucursal activa, recuperando los datos desde la caché Redis o delegando la consulta al repositorio de inventario si la caché está expirada. |
+| **Query** | GetZeroStockSuppliesQuery |
+
+#### GetLowStockSuppliesQueryHandler
+
+*Tabla de GetLowStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetLowStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad, desde la caché Redis o delegando al repositorio de inventario cuando sea necesario. |
+| **Query** | GetLowStockSuppliesQuery |
+
+#### GetRecentSuppliesQueryHandler
+
+*Tabla de GetRecentSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar los últimos insumos registrados en el inventario de la cuenta autenticada, con soporte de filtro por sucursal y límite de resultados, recuperando los datos desde la caché Redis o delegando al repositorio cuando sea necesario. |
+| **Query** | GetRecentSuppliesQuery |
+
+#### GetRecentAlertsQueryHandler
+
+*Tabla de GetRecentAlertsQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentAlertsQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar las últimas alertas generadas por el sistema para la cuenta autenticada, con soporte de filtro por tipo de alerta y sucursal, recuperando los datos desde la caché Redis o delegando al repositorio de alertas cuando sea necesario. |
+| **Query** | GetRecentAlertsQuery |
+
+#### StockLevelChangedEventHandler
+
+*Tabla de StockLevelChangedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | StockLevelChangedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando cambia el nivel de stock de un insumo, invocando el RefreshDashboardSummaryCommand para actualizar los indicadores de stock cero y bajo stock en el dashboard. |
+| **Evento** | StockLevelChangedEvent |
+
+#### SupplyRegisteredEventHandler
+
+*Tabla de SupplyRegisteredEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | SupplyRegisteredEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando se registra un nuevo insumo en el catálogo, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de últimos insumos registrados en el dashboard. |
+| **Evento** | SupplyRegisteredEvent |
+
+#### NotificationGeneratedEventHandler
+
+*Tabla de NotificationGeneratedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | NotificationGeneratedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Communication cuando se genera una nueva alerta en el sistema, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de alertas recientes en el dashboard. |
+| **Evento** | NotificationGeneratedEvent |
+
+#### 4.2.10.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Analytics resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de resúmenes del dashboard, se configura la integración con la caché Redis para optimizar las consultas frecuentes, se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Asset and Resource Management, Tracking y Communication, y se configuran las consultas de lectura sobre MongoDB para los indicadores que no están en caché. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia en caché, consultas de lectura sobre las colecciones de otros bounded contexts y consumo de eventos de integración.
+
+#### AnalyticsCacheRepository
+
+*Tabla de AnalyticsCacheRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsCacheRepository |
+| **Categoría** | Cache Repository |
+| **Propósito** | Persistir y recuperar los resúmenes del dashboard, los indicadores de stock crítico, los últimos insumos registrados y las alertas recientes desde la caché Redis, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados en el dashboard. |
+| **Interfaz** | IAnalyticsCacheRepository |
+
+#### AnalyticsReadRepository
+
+*Tabla de AnalyticsReadRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsReadRepository |
+| **Categoría** | Read Repository |
+| **Propósito** | Ejecutar consultas de solo lectura sobre la colección `notifications` de MongoDB de Communication para construir el indicador de alertas recientes cuando los datos no están disponibles en la caché Redis. |
+| **Interfaz** | IAnalyticsReadRepository |
+
+#### IntegrationEventConsumer
+
+*Tabla de IntegrationEventConsumer en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | IntegrationEventConsumer |
+| **Categoría** | Message Broker Consumer |
+| **Propósito** | Consumir eventos de integración emitidos por Asset and Resource Management (`StockLevelChangedEvent`, `SupplyRegisteredEvent`) y Communication (`NotificationGeneratedEvent`), transformándolos en comandos internos que disparan la actualización de los indicadores del dashboard dentro del contexto. |
+| **Interfaz** | IIntegrationEventConsumer |
+
+#### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context Analytics, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la construcción y presentación de los indicadores del dashboard.
+
+##### Web Application Component Diagram
+
+El componente Analytics dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
+
+![web-analytics](https://imgur.com/b7pXs3Y.png)
+
+El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
+
+##### Mobile Application Component Diagram
+
+El componente Analytics dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar los indicadores del dashboard y los resúmenes de stock, permitiendo que los administradores consulten el estado operativo de su negocio desde sus dispositivos móviles.
+
+![mobile-analytics](https://imgur.com/VJjhLSh.png)
+
+El diagrama muestra que el componente Analytics de la aplicación móvil replica estructuralmente el comportamiento del componente web, adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente garantiza una experiencia consistente independientemente del dispositivo utilizado.
+
+##### Backend Application Component Diagram
+
+El componente Analytics dentro del Restock Cloud Server Side App concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
+
+![api-analytics](https://imgur.com/Pp1B3S3.png)
+
+El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communication, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
+
+#### 4.2.10.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.10.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama de clases de la capa de dominio del Bounded Context de Analytics modela las responsabilidades estructurales del sistema de indicadores operativos del inventario. Su diseño refleja cómo el dominio encapsula el ciclo de vida de un resumen del dashboard, desde su construcción ante un evento de inventario o alerta externo hasta su consulta por parte de los administradores, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates, value objects y domain events que definen la estructura y las reglas del dominio, y services, que contiene los commands y queries que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
+
+![class-diagram-analytics](assets/images/chapter4/class-diagram.svg)
+
+El diagrama de clases del Bounded Context de Analytics se centra en un único Aggregate Root, Metric, que actúa como la unidad principal de consistencia del dashboard. Toda la lógica de actualización de indicadores se gestiona únicamente a través de su método `refresh()`, evitando cambios de estado fuera del aggregate. El modelo representa un dominio orientado a la agregación de datos, donde Metric consolida cuatro colecciones de Value Objects: `zeroStockSupplies` y `lowStockSupplies`, ambas compuestas por instancias de StockIndicator que encapsulan el estado crítico de cada insumo y exponen los métodos `isZeroStock()` e `isLowStock()` para clasificar automáticamente el nivel de criticidad; `recentSupplies`, compuesta por instancias de RecentSupplyEntry que representan los últimos insumos incorporados al catálogo; y `recentAlerts`, compuesta por instancias de RecentAlertEntry que presentan las últimas alertas generadas por el sistema sin depender del modelo interno del Bounded Context Communication. La consistencia se refuerza además con el uso de identificadores fuertemente tipados como DashboardSummaryId, BusinessId y BranchId, agrupados dentro del paquete valueobjects bajo model. El enum StockStatus, que restringe los valores válidos del estado de stock a `ZERO_STOCK`, `LOW_STOCK` y `NORMAL`, se define en el Bounded Context Shared dado que es utilizado tanto por Analytics como por Asset and Resource Management. El paquete services agrupa el command RefreshDashboardSummaryCommand, invocado por los event handlers ante eventos entrantes de inventario o alerta, y las queries GetDashboardSummaryQuery, GetZeroStockSuppliesQuery, GetLowStockSuppliesQuery, GetRecentSuppliesQuery y GetRecentAlertsQuery, que permiten consultar los indicadores del dashboard sin modificar el estado del dominio. Los domain events del paquete events incluyen DashboardSummaryRefreshedEvent, emitido por el aggregate al completar su actualización, y los eventos entrantes StockLevelChangedEvent, SupplyRegisteredEvent y NotificationGeneratedEvent, que actúan como disparadores del proceso de refresh. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como `LocalDateTime`, `Double`, `int` y `boolean`, manteniendo una implementación coherente con la tecnología del proyecto.
+
+##### 4.2.10.6.2. Bounded Context Database Design Diagram
+
+El diagrama de diseño de base de datos del Bounded Context Analytics muestra la estructura de almacenamiento que soporta los indicadores del dashboard. Analytics no posee colecciones transaccionales propias en MongoDB: opera como un contexto de solo lectura que consolida información proveniente de Asset and Resource Management y Communication, y persiste los resultados procesados en la caché Redis para optimizar las consultas frecuentes del dashboard.
+
+![database-analytics-1](https://imgur.com/c7DmnS9.png)
+
+El diagrama evidencia que Analytics no gestiona colecciones propias en MongoDB. Su modelo de persistencia se basa en dos mecanismos complementarios: consultas de solo lectura sobre la colección `notifications` de Communication para construir el indicador de alertas recientes; y almacenamiento en Redis de los resúmenes consolidados del dashboard, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados.
+
+La única estructura de persistencia propia del contexto es la entrada **`dashboard_snapshot`** en Redis, que almacena el estado más reciente del resumen del dashboard por cuenta y sucursal activa. Cada entrada agrupa los cuatro indicadores operativos —insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes— como un documento serializado con TTL configurable. Este diseño refleja una decisión arquitectónica deliberada: Analytics es un contexto de agregación y presentación, no de escritura, lo que elimina la necesidad de colecciones transaccionales propias y reduce la duplicación de datos en el sistema.
 
 ### 4.2.11. Bounded Context: Shared Kernel
 
