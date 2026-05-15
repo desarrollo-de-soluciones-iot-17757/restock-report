@@ -1,164 +1,179 @@
-<div style="text-align: center;" id="cover-page">
-<br>
-<img src="assets/images/presentation/logo-upc.png" alt="Logo UPC" style="width: 150px; height: auto;" />
+# Restock Report
 
-**_Universidad Peruana de Ciencias Aplicadas_**
+Repositorio oficial del informe académico del proyecto **Restock**, desarrollado por el equipo **UI-Topic** para el curso **Desarrollo de Soluciones IoT** de la Universidad Peruana de Ciencias Aplicadas.
 
-**_Ingeniería de Software_**
-
-_**Periodo:** 2026-10_
-
-_**Curso:**  1ASI0572 - Desarrollo de Soluciones IoT_
-
-_**NRC:** 17757_
-
-_**Docente:** Angel_
-
-### Informe de Trabajo Final
-
-_**Startup:** UI-Topic_
-
-_**Producto:** Restock_
-
-### Relación de Integrantes
-
-<div style="text-align: left; display: inline-block; margin-top: 0px;">
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center;">Código</th>
-      <th style="text-align: center;">Apellidos y Nombres</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center;">u202021885</td>
-      <td style="text-align: center;">Castro Alejos, Julio</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"></td>
-      <td style="text-align: center;"></td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">u202319831</td>
-      <td style="text-align: center;">Guerra Perez, José Jahaziel</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"></td>
-      <td style="text-align: center;"></td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">u202319448</td>
-      <td style="text-align: center;">Shapiama Rivera, Gabriela Nicole</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+Restock es una solución IoT orientada a la gestión inteligente de inventarios para restaurantes y negocios retail. La propuesta integra dispositivos de monitoreo, aplicaciones web/móviles y servicios backend para mejorar el control de stock, detectar discrepancias y apoyar la toma de decisiones operativas.
 
 ---
 
-_**Mes y Año**: Abril 2026_
+## Información del Proyecto
 
-</div>
+| Campo             | Descripción                              |
+| ----------------- | ----------------------------------------- |
+| Universidad       | Universidad Peruana de Ciencias Aplicadas |
+| Carrera           | Ingeniería de Software                   |
+| Curso             | Desarrollo de Soluciones IoT              |
+| Código del curso | 1ASI0572                                  |
+| NRC               | 17757                                     |
+| Startup           | UI-Topic                                  |
+| Producto          | Restock                                   |
+| Ciclo académico  | 202610                                    |
 
-<div class="page"></div>
+---
 
-## Registro de Versiones
+## Propósito del Repositorio
 
-| *Versión* | *Fecha* | *Autor* | *Descripción de modificación* |
-| :----------: | :-------: | :-------- | :-------------------------------- |
-|     1.2     |          |           |                                   |
-|     1.3     |          |           |                                   |
-|     1.4     |          |           |                                   |
-|     1.5     |          |           |                                   |
-|     1.6     |          |           |                                   |
-|     1.7     |          |           |                                   |
+Este repositorio contiene el **informe académico del proyecto Restock**.
 
-# Project Report Collaboration Insights
+El informe se gestiona como un documento versionado mediante archivos Markdown, imágenes, diagramas y evidencias del proyecto.
 
-**Avance 1 - Informe inicial - (Semana 4)**
+Aunque este repositorio está orientado a documentación, se trabaja con un flujo similar al desarrollo de software para mantener trazabilidad, colaboración ordenada y control de calidad en los cambios realizados.
 
-# Contenido
+---
 
-## Tabla de contenidos
+## Estructura del Repositorio
 
-- [Student Outcome](README.md#student-outcome)
-- [Capítulo I: Introducción](01-chap1-introduction.md)
+```text
+restock-report/
+├── assets/
+│   └── images/
+├── 00-cover.md
+├── 01-chap1-introduction.md
+├── 02-chap2-requirements-elicitation-and-analysis.md
+├── 03-chap3-requirements-specification.md
+├── 04-chap4-solution-software-design.md
+├── 05-chap5-solution-ui-ux-design.md
+├── 06-chap6-product-implementation-validation-and-deployment.md
+├── 07-conclusions.md
+├── 08-bibliography.md
+├── 09-annexes.md
+└── README.md
+```
 
-  - [1.1. Startup Profile](01-chap1-introduction.md#11-startup-profile)
-    - [1.1.1. Descripción de la Startup](01-chap1-introduction.md#111-descripción-de-la-startup)
-    - [1.1.2. Perfiles de integrantes del equipo](01-chap1-introduction.md#112-perfiles-de-integrantes-del-equipo)
-  - [1.2. Solution Profile](01-chap1-introduction.md#12-solution-profile)
-    - [1.2.1. Antecedentes y problemática](01-chap1-introduction.md#121-antecedentes-y-problemática)
-    - [1.2.2. Lean UX Process](01-chap1-introduction.md#122-lean-ux-process)
-      - [1.2.2.1. Lean UX Problem Statements](01-chap1-introduction.md#1221-lean-ux-problem-statements)
-      - [1.2.2.2. Lean UX Assumptions](01-chap1-introduction.md#1222-lean-ux-assumptions)
-      - [1.2.2.3. Lean UX Hypothesis Statements](01-chap1-introduction.md#1223-lean-ux-hypothesis-statements)
-      - [1.2.2.4. Lean UX Canvas](01-chap1-introduction.md#1224-lean-ux-canvas)
-  - [1.3. Segmentos objetivo](01-chap1-introduction.md#13-segmentos-objetivo)
-- [Capítulo II: Requirements Elicitation &amp; Analysis](02-chap2-requirements-elicitation-and-analysis.md)
+---
 
-  - [2.1. Competidores](02-chap2-requirements-elicitation-and-analysis.md#21-competidores)
-    - [2.1.1. Análisis competitivo](02-chap2-requirements-elicitation-and-analysis.md#211-análisis-competitivo)
-    - [2.1.2. Estrategias y tácticas frente a competidores](02-chap2-requirements-elicitation-and-analysis.md#212-estrategias-y-tácticas-frente-a-competidores)
-  - [2.2. Entrevistas](02-chap2-requirements-elicitation-and-analysis.md#22-entrevistas)
-    - [2.2.1. Diseño de entrevistas](02-chap2-requirements-elicitation-and-analysis.md#221-diseño-de-entrevistas)
-    - [2.2.2. Registro de entrevistas](02-chap2-requirements-elicitation-and-analysis.md#222-registro-de-entrevistas)
-    - [2.2.3. Análisis de entrevistas](02-chap2-requirements-elicitation-and-analysis.md#223-análisis-de-entrevistas)
-  - [2.3. Needfinding](02-chap2-requirements-elicitation-and-analysis.md#23-needfinding)
-    - [2.3.1. User Personas](02-chap2-requirements-elicitation-and-analysis.md#231-user-personas)
-    - [2.3.2. User Task Matrix](02-chap2-requirements-elicitation-and-analysis.md#232-user-task-matrix)
-    - [2.3.3. User Journey Mapping](02-chap2-requirements-elicitation-and-analysis.md#233-user-journey-mapping)
-    - [2.3.4. Empathy Mapping](02-chap2-requirements-elicitation-and-analysis.md#234-empathy-mapping)
-  - [2.4. Big Picture EventStorming](02-chap2-requirements-elicitation-and-analysis.md#24-big-picture-eventstorming)
-  - [2.5. Ubiquitous Language](02-chap2-requirements-elicitation-and-analysis.md#25-ubiquitous-language)
-- [Capítulo III: Requirements Specification](03-chap3-requirements-specification.md)
+## Secciones Principales
 
-  - [3.1. User Stories](03-chap3-requirements-specification.md#31-user-stories)
-  - [3.2. Impact Mapping](03-chap3-requirements-specification.md#32-impact-mapping)
-  - [3.3. Product Backlog](03-chap3-requirements-specification.md#33-product-backlog)
-- [Capítulo IV: Solution Software Design](04-chap4-solution-software-design.md)
+| Archivo                                                          | Contenido                                                                                               |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `00-cover.md`                                                  | Carátula, registro de versiones y metadatos generales del informe.                                     |
+| `01-chap1-introduction.md`                                     | Perfil de la startup, perfil de la solución, proceso Lean UX y segmentos objetivo.                     |
+| `02-chap2-requirements-elicitation-and-analysis.md`            | Análisis competitivo, entrevistas, needfinding, EventStorming y lenguaje ubicuo.                       |
+| `03-chap3-requirements-specification.md`                       | User stories, impact mapping y product backlog.                                                         |
+| `04-chap4-solution-software-design.md`                         | Diseño estratégico y táctico con DDD, bounded contexts y diagramas de arquitectura.                  |
+| `05-chap5-solution-ui-ux-design.md`                            | Guías de estilo, arquitectura de información, diseño UI, prototipos y diseño del dispositivo IoT.   |
+| `06-chap6-product-implementation-validation-and-deployment.md` | Gestión de configuración, implementación por sprint, evidencia de testing y evidencia de despliegue. |
+| `07-conclusions.md`                                            | Conclusiones y recomendaciones del proyecto.                                                            |
+| `08-bibliography.md`                                           | Referencias bibliográficas utilizadas en el informe.                                                   |
+| `09-annexes.md`                                                | Anexos, evidencias complementarias y materiales de soporte.                                             |
 
-  - [4.1. Strategic-Level Domain-Driven Design](04-chap4-solution-software-design.md#41-strategic-level-domain-driven-design)
+---
 
-    - [4.1.1. Design-Level EventStorming](04-chap4-solution-software-design.md#411-design-level-eventstorming)
-      - [4.1.1.1. Candidate Context Discovery](04-chap4-solution-software-design.md#4111-candidate-context-discovery)
-      - [4.1.1.2. Domain Message Flows Modeling](04-chap4-solution-software-design.md#4112-domain-message-flows-modeling)
-      - [4.1.1.3. Bounded Context Canvases](04-chap4-solution-software-design.md#4113-bounded-context-canvases)
-    - [4.1.2. Context Mapping](04-chap4-solution-software-design.md#412-context-mapping)
-    - [4.1.3. Software Architecture](04-chap4-solution-software-design.md#413-software-architecture)
-      - [4.1.3.1. System Landscape Diagram](04-chap4-solution-software-design.md#4131-system-landscape-diagram)
-      - [4.1.3.2. Context Level Diagrams](04-chap4-solution-software-design.md#4132-context-level-diagrams)
-      - [4.1.3.3. Container Level Diagrams](04-chap4-solution-software-design.md#4133-container-level-diagrams)
-      - [4.1.3.4. Deployment Diagrams](04-chap4-solution-software-design.md#4134-deployment-diagrams)
-  - [4.2. Tactical-Level Domain-Driven Design](04-chap4-solution-software-design.md#42-tactical-level-domain-driven-design)
-- [Capítulo V: Solution UI/UX Design](05-chap5-solution-ui-ux-design.md)
+## Flujo de Trabajo
 
-  - [5.1. Style Guidelines](05-chap5-solution-ui-ux-design.md#51-style-guidelines)
-  - [5.2. Information Architecture](05-chap5-solution-ui-ux-design.md#52-information-architecture)
-  - [5.3. Landing Page UI Design](05-chap5-solution-ui-ux-design.md#53-landing-page-ui-design)
-  - [5.4. Applications UX/UI Design](05-chap5-solution-ui-ux-design.md#54-applications-uxui-design)
-  - [5.5. Applications Prototyping](05-chap5-solution-ui-ux-design.md#55-applications-prototyping)
-  - [5.6. IoT Device Design](05-chap5-solution-ui-ux-design.md#56-iot-device-design)
-- [Capítulo VI: Product Implementation, Validation &amp; Deployment](06-chap6-product-implementation-validation-and-deployment.md)
+El equipo utiliza un flujo de trabajo basado en ramas para desarrollar cada sección del informe de manera organizada e independiente.
 
-  - [6.1. Software Configuration Management](06-chap6-product-implementation-validation-and-deployment.md#61-software-configuration-management)
-  - [6.2. Implementation (Sprints)](06-chap6-product-implementation-validation-and-deployment.md#62-implementation-sprints)
-  - [6.3. Validation Interviews](06-chap6-product-implementation-validation-and-deployment.md#63-validation-interviews)
-  - [6.4. Video About-the-Product](06-chap6-product-implementation-validation-and-deployment.md#64-video-about-the-product)
-- [Conclusiones](07-conclusions.md)
-- [Bibliografía](08-bibliography.md)
-- [Anexos](09-annexes.md)
+### Ramas Principales
 
-# Student Outcome
+| Rama                       | Propósito                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------- |
+| `main`                   | Contiene la versión estable del informe.                                                       |
+| `develop`                | Rama de integración para cambios validados antes de pasar a una versión estable.              |
+| `feature/<section-name>` | Ramas utilizadas para trabajar secciones específicas, mejoras o nuevas evidencias del informe. |
 
-**ABET – EAC - Student Outcome 5**
+### Ejemplos de Ramas
 
-**Criterio:** aaaa
+```text
+feature/chapter-1-base-version
+feature/chapter-4-device-management
+feature/update-event-storming
+feature/testing-evidence
+fix/report-formatting
+```
 
-En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 5.
+---
 
-| Criterio específico | Acciones realizadas | Conclusiones |
-| -------------------- | ------------------- | ------------ |
-| **Actua--**    |                     |              |
-| **Reco-**      |                     |              |
+## Convención de Commits
+
+Este repositorio sigue la convención **Conventional Commits**.
+
+Aunque el repositorio contiene principalmente documentación, los commits se redactan de acuerdo con la intención del cambio realizado. Por ello, no todos los commits deben usar `docs:`. Si el cambio agrega una nueva sección, corrige contenido, reorganiza estructura o ajusta formato, se utiliza el tipo de commit correspondiente.
+
+### Tipos de Commit Recomendados
+
+| Tipo          | Uso                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------- |
+| `feat:`     | Agrega una nueva sección, diagrama, tabla, evidencia o artefacto del informe.      |
+| `fix:`      | Corrige contenido, formato, redacción, numeración o rutas de imágenes.           |
+| `refactor:` | Reorganiza la estructura del informe sin cambiar el significado del contenido.      |
+| `style:`    | Mejora la presentación visual, espaciado, tamaño de imágenes o formato Markdown. |
+| `chore:`    | Actualiza organización del repositorio, assets o archivos auxiliares.              |
+
+### Ejemplos de Commits
+
+```text
+feat: add device management bounded context
+fix: correct tracking database diagram description
+style: adjust image sizes for UI mockups
+refactor: reorganize sprint evidence tables
+chore: add event storming images
+```
+
+---
+
+## Lineamientos para Pull Requests
+
+Antes de integrar una rama, cada integrante debe verificar que:
+
+- La sección en Markdown se visualice correctamente.
+- Las rutas de imágenes funcionen.
+- Las tablas sean legibles.
+- Los títulos respeten la numeración del informe.
+- El cambio corresponda a la sección asignada.
+- Los commits sigan la convención definida.
+- La rama esté actualizada con los últimos cambios de `develop`.
+
+---
+
+## Lineamientos para Imágenes y Assets
+
+Todas las imágenes utilizadas en el informe deben almacenarse dentro de:
+
+```text
+assets/images/
+```
+
+Se recomienda organizar las imágenes por capítulo o tipo de evidencia:
+
+```text
+assets/images/chapter4/
+assets/images/chapter5/
+assets/images/chapter6/
+assets/images/project-insights/
+```
+
+Para insertar imágenes en el informe, se deben usar rutas relativas:
+
+```html
+<img src="assets/images/chapter4/example.png" alt="Diagram" width="500px">
+```
+
+---
+
+## Integrantes del Equipo
+
+| Código    | Integrante                         |
+| ---------- | ---------------------------------- |
+| u202021885 | Castro Alejos, Julio Daniel        |
+| u202312508 | Coronel Espinoza, Farid Sebastian  |
+| u202311938 | Diaz Quispe, Matias Sebastian      |
+| u202319831 | Guerra Perez, José Jahaziel       |
+| u202317483 | Juarez Leon, Nicolas Emilio Walter |
+| u202314101 | Navarro Chinga, Antonio Jhair      |
+| u202319448 | Shapiama Rivera, Gabriela Nicole   |
+
+---
+
+Restock nace frente a un problema real: negocios que aún pierden tiempo, dinero y oportunidades por no contar con una visión precisa de su inventario. Este informe documenta el proceso de análisis, diseño y validación de una solución IoT orientada a transformar esa realidad, conectando sensores, software y decisiones operativas en un mismo ecosistema.
+
+Más que un repositorio de documentación, este proyecto representa la evolución de una idea hacia una propuesta tecnológica con propósito: ayudar a restaurantes y negocios retail a reducir errores, anticipar quiebres de stock y gestionar sus recursos con mayor inteligencia, trazabilidad y confianza.

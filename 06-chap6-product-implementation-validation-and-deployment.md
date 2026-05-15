@@ -133,8 +133,6 @@ A continuación, se explica el estándar definido para los commits dentro de la 
 
 ### 6.1.3. Source Code Style Guide & Conventions
 
-### 6.1.3. Source Code Style Guide & Conventions
-
 En esta sección se describen las configuraciones y pasos necesarios para desplegar correctamente los distintos productos digitales que conforman la solución Restock, partiendo desde sus respectivos repositorios de código fuente. Asimismo, se especifican las tecnologías, plataformas y servicios utilizados para la publicación y ejecución de cada componente del sistema.
 
 La solución Restock está compuesta por los siguientes productos digitales:
