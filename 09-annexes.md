@@ -8,11 +8,19 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 [https://acortar.link/PPqh22](https://acortar.link/PPqh22)
 
+**Exposición del TB1**
+
+[PONER ENLACE AQUI]
+
+<div style="page-break-after: always;"></div>
+
 ## Anexo B. Video de las entrevistas
 
 Se realizaron entrevistas a cada segmento objetivo con la meta de poder entender su situación y analizar qué podría ayudarlos con su problema.
 
 [https://bit.ly/41kf54H](https://bit.ly/41kf54H)
+
+<div style="page-break-after: always;"></div>
 
 ## Anexo C. Acceso al workspace en Miro
 
