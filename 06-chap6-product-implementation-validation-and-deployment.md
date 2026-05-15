@@ -708,11 +708,11 @@ Además, el alcance del sprint llega hasta la implementación de una primera ver
   </tr>
   <tr>
     <td>Sprint 1 Velocity</td>
-    <td>40</td>
+    <td>22</td>
   </tr>
   <tr>
     <td>Sum of Story Points</td>
-    <td>40</td>
+    <td>32</td>
   </tr>
 </table>
 
