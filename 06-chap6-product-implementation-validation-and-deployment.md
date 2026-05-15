@@ -42,14 +42,14 @@ Además, se usa Git Flow como flujo de trabajo para el control de versiones y la
 
 #### Repositorios de productos de software
 
-| Producto de software | URL del repositorio en Github                          | 
-| -------------------- | ------------------------------------------------------ | 
-| Landing Page         |                                                        | 
-| Web Application      |                                                        |
-| Mobile Application   |                                                        |
-| REST Services API    |                                                        |
-| Edge Services API    |                                                        |
-| Embedded Application |                                                        |
+| Producto de software | URL del repositorio en Github                                                | 
+|----------------------|------------------------------------------------------------------------------| 
+| Landing Page         | https://github.com/desarrollo-de-soluciones-iot-17757/restock-landing-page   | 
+| Web Application      | https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-application |
+| Mobile Application   | https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-application |
+| REST Services API    | No se incluye para este entregable.                                          |
+| Edge Services API    | No se incluye para este entregable.                                          |
+| Embedded Application | No se incluye para este entregable.                                          |
 
 #### Uso de GitFlow
 
@@ -812,6 +812,7 @@ A continuación, se muestra una tabla que contiene la información sobre los **c
 | restock-web-application | feature/sales-management | 4df66f6fb80b50c629ad43a0c316dcbb5868ebad | feat(sales): add lazy loading for sales routes and update sales api service for retrieving sales by branch id. | 13/05/26    |
 | restock-web-application | feature/sign-up          | 623bdd8e147cd9f3d89af70ac425c5753b2eefbc | fix(sign-up): update endpoint name for sign up.                                                                | 14/05/26    |
 
+
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
@@ -822,8 +823,19 @@ A continuación, se muestran las capturas de pantalla y enlaces de acceso a cada
 
 ## **Landing Page**
 
-Se adjuntan los enlaces para acceder al sitio web estático desplegado y al vídeo de demostración. El vídeo muestra el funcionamiento de cada sección del sitio web y su visualización en un navegador web.
-- Vídeo de ejecución: https://acortar.link/IoO3Qp
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 1 para la landing page. El esfuerzo de desarrollo se centró en habilitar secciones clave que permiten a los visitantes comprender el valor de negocio de la plataforma, conocer al equipo detrás del proyecto, acceder a la aplicación web y móvil, así como obtener información sobre beneficios, testimonios y preguntas frecuentes.
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Acerca de nosotros**: Sección que presenta información sobre la startup UI-Topic, su propuesta de valor y misión enfocada en el manejo inteligente de inventarios para restaurantes y retail.
+* **Beneficios**: Sección que presenta los beneficios de la plataforma para cada segmento objetivo.
+* **Integrantes**: Sección que muestra al equipo detrás de Restock con fotos y roles.
+* **FAQ y testimonios**: Sección que presenta preguntas frecuentes y testimonios de clientes reales.
+
+<img src="https://i.imgur.com/2YR5pys.png" alt="Evidencia de Ejecución - App App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/IoO3Qp](https://acortar.link/IoO3Qp)
 
 #### Sección Hero
 
@@ -921,14 +933,41 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 **Evidencias de la demostración:**
 **Vídeo de navegación (Product Navigation):** [https://shortlink.uk/1pF66](https://shortlink.uk/1pF66)
 
-**Duración del vídeo:** [06:57]
+#### Gestión de inventario
 
+Vista del módulo de inventario que muestra lotes activos y próximos a vencer. La tabla lista insumos con su categoría, unidad de medida, fecha de vencimiento y stock actual.
 
-#### 6.2.1.7. Services Documentation Evidence for Sprint Review
+<img src="https://i.imgur.com/1zlXafL.png" alt="sales" style="width: 100%; height: auto;"/>
 
-#### 6.2.1.8. Software Deployment Evidence for Sprint Review
+#### Gestión de ventas
 
-#### 6.2.1.9. Team Collaboration Insights during Sprint
+Pantalla del módulo de ventas sin transacciones registradas aún. Muestra cero en ventas totales del mes y cero transacciones, con un mensaje invitando al usuario a registrar su primera venta para comenzar a visualizar métricas e historial.
+
+<img src="https://i.imgur.com/1qO4O2Q.png" alt="sales" style="width: 100%; height: auto;"/>
+
+Vista del resumen de ventas con varias transacciones registradas junto a su precio total. La tabla muestra cada venta con su ID, fecha, cantidad de ítems, valor total y estado (completed, pending o cancelled), diferenciando visualmente las canceladas en rojo.
+
+<img src="https://i.imgur.com/RiLXMTZ.png" alt="sales" style="width: 100%; height: auto;"/>
+
+Panel lateral con el detalle de una transacción completada que incluye dos ítems correspondientes a esa venta.
+
+<img src="https://i.imgur.com/O6Wg529.png" alt="sales" style="width: 100%; height: auto;"/>
+
+#### Gestión de dispositivos
+
+Panel de gestión de dispositivos con cuatro métricas clave: escalas activas, alertas de stock, alertas ambientales y dispositivos offline.
+
+<img src="https://i.imgur.com/MjGYnGP.png" alt="devices" style="width: 100%; height: auto;"/>
+
+#### Preferencias del usuario
+
+Pantalla de configuración general de la cuenta con opciones de zona horaria, moneda e idioma. A la derecha se muestran preferencias de comunicación.
+
+<img src="https://i.imgur.com/q5UjJzB.png" alt="sales" style="width: 100%; height: auto;"/>
+
+Sección de perfil personal dentro de la configuración de cuenta, con campos para nombre, apellido, género y teléfono, además de opción para subir foto de perfil.
+
+<img src="https://i.imgur.com/EXpBRWM.png" alt="sales" style="width: 100%; height: auto;"/>
 
 Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
 
