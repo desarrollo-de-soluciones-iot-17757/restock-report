@@ -4124,9 +4124,9 @@ En esta sección se presentan los diagramas de componentes del bounded context A
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops. Se comunica con el backend mediante Kong Gateway.
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops. Se comunica con el backend a través de un NGNIX Load Balancer. 
 
-<img src="https://i.imgur.com/dlTD59E.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/mWzflhf.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
 
@@ -4161,9 +4161,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>kongGateway</strong> (Proxy)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend.</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend a través de Kong Gateway.</td>
     </tr>
   </tbody>
 </table>
@@ -4172,7 +4172,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
 
-<img src="https://i.imgur.com/5JjHGuY.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/5Gotxx8.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
 
@@ -4208,9 +4208,9 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
   <tbody>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>kongGateway</strong> (Proxy)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend.</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend a través de Kong Gateway.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>mobileLocalDatabase</strong> (SQLite)</td>
