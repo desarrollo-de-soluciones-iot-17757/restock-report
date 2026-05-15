@@ -1198,7 +1198,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 El componente de la aplicación web cliente, desarrollado en Angular, se ejecuta en el navegador del usuario para proporcionar una experiencia de gestión de identidad fluida en dispositivos de escritorio. Este componente orquesta la comunicación con el backend mediante un Auth Service que consume los endpoints de autenticación a través de un balanceador NGINX, gestionando de forma segura el ciclo de vida de los tokens JWT en el lado del cliente para asegurar que cada petición de la interfaz esté debidamente autorizada.
 
-`<img src="assets/images/chapter4/bc-iam/frontend-iam-component.png" alt="Web Identity and Access Management Component Diagram" width="500px">`
+<img src="assets/images/chapter4/bc-iam/frontend-iam-component.png" alt="Web Identity and Access Management Component Diagram" width="500px">
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
