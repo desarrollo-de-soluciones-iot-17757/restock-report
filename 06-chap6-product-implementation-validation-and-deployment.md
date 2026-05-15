@@ -968,21 +968,51 @@ Sección de perfil personal dentro de la configuración de cuenta, con campos pa
 
 ### 6.2.1.7. Software Deployment Evidence for Sprint Review.
 
-Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
+Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales incluidos en el alcance del proyecto. Estas labores formaron parte del proceso de entrega continua y permitieron validar que las soluciones desarrolladas podían publicarse correctamente en un entorno real, con sincronización automática respecto a los cambios realizados en los repositorios de código fuente.
 
-En el caso de la Landing Page, se confirmó su despliegue continuo en Vercel, plataforma elegida para hospedar el sitio institucional del proyecto. Esta publicación permitió validar que el repositorio se encontraba correctamente vinculado al entorno de producción y que cada actualización podía reflejarse de manera automática, asegurando así la difusión pública de la propuesta de valor de Restock.
+En esta iteración, el esfuerzo de deployment se centró en dos productos principales: la Landing Page institucional y la Web Application administrativa. Para ambos casos, se verificó la configuración del proveedor de hosting, la vinculación con los repositorios correspondientes, la correcta detección del proyecto y la disponibilidad pública de las versiones desplegadas. De esta manera, el sprint no solo contempló la implementación funcional, sino también la preparación de los entornos necesarios para su publicación y validación.
+
+##### Despliegue de la Landing Page
+
+La Landing Page fue desplegada en Vercel como sitio institucional del proyecto. Esta publicación permitió comprobar que el repositorio estaba correctamente asociado al entorno de producción y que la plataforma podía reconstruir y publicar automáticamente cada actualización realizada por el equipo.
+
+Los pasos seguidos para este despliegue fueron los siguientes:
+
+1. Se vinculó el repositorio correspondiente a la Landing Page con la cuenta de Vercel.
+2. Se configuró el proyecto con el directorio raíz como origen de publicación.
+3. Se verificó que Vercel detectara automáticamente el tipo de proyecto estático.
+4. Se ejecutó el despliegue inicial para generar la URL pública de acceso.
+5. Se comprobó que la versión publicada mostrara correctamente el contenido institucional del proyecto.
+
+Como parte de la verificación, se revisó que la página principal quedara disponible públicamente y que su contenido reflejara la propuesta de valor del sistema Restock. La evidencia siguiente muestra el resultado del despliegue realizado durante el sprint:
 
 <p align="center">
   <img src="https://i.ibb.co/dJQJhjjc/landingpage-vercel.png" alt="Despliegue de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
 </p>
 
-De forma complementaria, la Web Application también fue desplegada en Vercel como parte del flujo de integración continua definido para este sprint. Esta publicación permitió comprobar la disponibilidad del frontend administrativo y la correcta exposición de las funcionalidades implementadas durante la iteración, tales como la administración de perfiles, inventarios y otros módulos iniciales del sistema.
+La imagen anterior evidencia la instancia publicada de la Landing Page en Vercel. En ella se valida que el sitio institucional quedó accesible en línea y que el flujo de despliegue continuo funcionó de acuerdo con lo planificado para el sprint.
+
+##### Despliegue de la Web Application
+
+De forma complementaria, la Web Application también fue desplegada en Vercel como parte del mismo flujo de integración y publicación continua. En este caso, se verificó la disponibilidad del frontend administrativo y la exposición correcta de las funcionalidades desarrolladas durante la iteración, entre ellas la administración de perfiles, inventarios y otros módulos iniciales del sistema.
+
+Los pasos seguidos para este despliegue fueron los siguientes:
+
+1. Se vinculó el repositorio de la Web Application con la cuenta de Vercel.
+2. Se configuraron los comandos de instalación y compilación requeridos por el proyecto Angular.
+3. Se definió el directorio de salida generado por el build de producción.
+4. Se ejecutó la publicación automática de la rama configurada para producción.
+5. Se validó que la URL pública expusiera la interfaz administrativa desarrollada durante el sprint.
+
+Antes de la publicación, se confirmaron los ajustes necesarios en el proyecto frontend para que la compilación y el despliegue se ejecutaran sin incidencias. Luego, se validó la URL pública generada por la plataforma para asegurar que el entorno de producción mostrara la versión aprobada del sprint.
 
 <p align="center">
   <img src="https://i.ibb.co/93bgYPbQ/webapp-vercel.png" alt="Despliegue de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
 </p>
 
-En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto.
+La captura anterior corresponde a la Web Application desplegada en Vercel. Esta evidencia confirma que el frontend administrativo se encuentra publicado y accesible, lo cual valida la preparación del entorno de deployment y su correcta integración con el repositorio de desarrollo.
+
+En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto, cumpliendo con la necesidad de acompañar cada despliegue con capturas y una explicación clara de los pasos realizados durante el sprint.
 
 ### 6.2.1.8. Team Collaboration Insights during Sprint.
 
