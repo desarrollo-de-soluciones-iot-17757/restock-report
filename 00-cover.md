@@ -571,7 +571,7 @@ Para el desarrollo del **Project Report**, el equipo utiliza un repositorio dent
 
 **Repositorio del informe del proyecto:** [https://shortlink.uk/1oqQ5](https://shortlink.uk/1oqQ5)
 
-**Total de commits:** 171 
+**Total de commits:** 254 
 
 **Autores contribuyentes:**
 
@@ -611,8 +611,34 @@ fix(chapter-02): correct user persona descriptions
 ![Contributors AV1](./assets/images/project-insights/contributors-av1.png)
 *Figura: Contribuciones por integrante durante el AV1*
 
-![Network AV1](./assets/images/project-insights/network-av1.png)
-*Figura: Historial de commits del repositorio – AV1*
+
+---
+
+## TB1 – Stage Review – Semana 7
+
+Durante esta fase, el equipo se enfocó en la mejora de artefactos previos y en la estructuración e implementación de la primera fase de desarrollo de la solución IoT. Los entregables abarcaron:
+
+- **Versión corregida y mejorada** de los Capítulos I al IV, incluyendo actualizaciones en el Lean UX Canvas, diagramas de EventStorming y Tactical-Level Domain-Driven Design.
+- **Actualización** del Registro de Versiones, Project Report Collaboration Insights y la sección Student Outcome (corrigiendo las referencias a "AV1").
+- **Capítulo V: Solution UI/UX Design**, cubriendo Style Guidelines, Information Architecture, Landing Page UI Design, Applications UX/UI Design y el IoT Device Design.
+- **Capítulo VI: Product Implementation, Validation & Deployment**, enfocado en Software Configuration Management y todas las evidencias de planificación, desarrollo, documentación, pruebas y despliegue del Sprint 1.
+- **Implementación y despliegue** de la primera versión del Landing Page y Frontend Web Applications.
+- **Conclusiones, Bibliografía y Anexos**, ampliados y actualizados según los requisitos de esta entrega.
+
+Al igual que en el avance anterior, cada nueva sección y actualización fue trabajada en ramas `feature/<sección>` (por ejemplo, `feature/chapter-05-ui-ux`, `feature/chapter-06-sprint1`) o ramas `fix/<sección>` para las correcciones de entregas pasadas. Los commits siguieron la convención establecida, reflejando las tareas de diseño, documentación y despliegue asignadas en el tablero Scrum:
+
+
+```text
+feat(chapter-01): add startup profile and problem statement
+chore(annexes): add supplementary files and bibliography
+fix(chapter-02): correct user persona descriptions
+```
+
+**Analíticos de colaboración – GitHub Insights:**
+
+![Contributors AV1](./assets/images/project-insights/contributors-tb1.png)
+*Figura: Contribuciones por integrante durante el TB1*
+
 
 # Contenido
 
