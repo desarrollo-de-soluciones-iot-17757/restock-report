@@ -6580,6 +6580,13 @@ El diagrama evidencia una estructura centrada en la colección notifications, qu
 
 #### 4.2.9.5. Bounded Context Software Architecture Component Level Diagrams
 
+![web-devices](https://i.imgur.com/Mdvk6w5.png)
+
+
+![web-devices](https://i.imgur.com/jlr7D1x.png)
+
+![web-devices](https://i.imgur.com/wrG0za7.png)
+
 #### 4.2.9.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 4.2.9.6.1. Bounded Context Domain Layer Class Diagrams
@@ -6587,6 +6594,7 @@ El diagrama evidencia una estructura centrada en la colección notifications, qu
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
 ## 4.2.10. Bounded Context: Analytics
+
 
 #### 4.2.10.1. Domain Layer
 
