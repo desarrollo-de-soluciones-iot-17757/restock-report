@@ -3781,16 +3781,71 @@ En esta etapa final se definen los elementos visuales basándose en los servicio
   </tr>
 </table>
 
+
 ### Diseño físico y de circuito del dispositivo IoT
 
 Por otro lado, se realiza una propuesta de diseño físico y del circuito del dispositivo IoT, el cual ayuda a tener una idea de los componentes a usar y cómo se conectan con el ESP32 central del dispositivo.
 
-### Flujos de interacción del dispositivo IoT
+**Diseño del circuito:**
 
-Finalmente, se diseñan diagramas que explican los flujos de interacción para el dispositivo IoT, los cuales incluyen la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
+El diseño de circuito incluye la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
 
 En la siguiente imagen elaborada en Cirkit Deisgner, se muestra el prototipo físico del dispositivo IoT, el cual incluye la ubicación de los sensores, el display LCD y el microcontrolador ESP32. Además, se muestran las conexiones eléctricas entre los componentes para una mejor visualización del diseño del circuito.
 
 <div align="center">
-  <img src="https://i.ibb.co/pB2Gny8J/image.png" alt="Prototipo físico del dispositivo IoT"/>
+  <img src="https://i.ibb.co/pB2Gny8J/image.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Diseño físico:**
+
+El diseño físico del dispositivo IoT de Restock se plantea como una plataforma de pesaje de perfil bajo, pensada para colocarse en la base de estantes de almacenes, restaurantes o tiendas retail. Su forma rectangular y compacta permite ubicar productos, cajas o bandejas sobre la superficie sin elevar demasiado la carga ni interferir con el uso cotidiano del estante.
+
+El dispositivo integra una pantalla LCD 16x2 en la parte superior para mostrar una métrica local a la vez, como peso, temperatura o humedad. Además, considera cuatro celdas de carga distribuidas en las esquinas para mejorar la estabilidad de la medición, un módulo HX711 para la conversión de señal, un ESP32 como nodo principal de captura y transmisión, y un sensor DHT22 para el monitoreo ambiental del producto almacenado. La entrada de alimentación de 5V DC se ubica en un lateral para facilitar la conexión sin afectar la plataforma de pesaje.
+
+La siguiente propuesta muestra el diseño físico externo del dispositivo, incluyendo la vista superior, frontal y lateral. En ella se evidencia el perfil bajo del prototipo, la ubicación de la pantalla LCD, la entrada de alimentación de 5V DC y las dimensiones aproximadas consideradas para su uso en la base de estantes.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/diseno_fisico.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+La vista explosionada permite observar la distribución interna de los principales componentes electrónicos del dispositivo. Se identifican las celdas de carga ubicadas en las esquinas, el módulo HX711, el ESP32, el sensor DHT22, la pantalla LCD 16x2 y la base inferior que protege el circuito interno del prototipo.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/diseno_fisico_expandido.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+### Flujos de interacción del dispositivo IoT
+
+Los flujos de interacción del dispositivo IoT representan la forma en que el usuario, el hardware y el sistema Restock se relacionan durante la operación diaria. Estos flujos permiten evidenciar que el diseño físico no solo responde a una distribución de componentes, sino también a decisiones de uso, instalación, monitoreo y mantenimiento.
+
+**Flujo 1: Instalación y encendido del dispositivo IoT**
+
+Este flujo describe la secuencia inicial de puesta en funcionamiento del dispositivo IoT dentro del entorno de uso. Se muestra cómo el operador instala el dispositivo en la base del estante, conecta la alimentación eléctrica y permite que el sistema inicie, verifique sus componentes y establezca comunicación con la capa Edge y la nube.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo1.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Flujo 2: Monitoreo normal de inventario**
+
+Este flujo representa el funcionamiento habitual del dispositivo durante la operación diaria del sistema. A través de este proceso, el dispositivo captura el peso del producto colocado sobre la plataforma, procesa la lectura localmente y la transmite hacia la capa Edge y el backend para mantener actualizado el inventario físico en tiempo casi real.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo2.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+F**lujo 3: Monitoreo ambiental del producto**
+
+Este flujo muestra cómo el dispositivo supervisa las condiciones ambientales del entorno donde se encuentra almacenado el producto. En particular, se describe la captura de temperatura y humedad, su procesamiento en el nodo IoT y su evaluación posterior en la capa Edge, con el fin de registrar el estado ambiental o detectar posibles condiciones fuera del rango esperado.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo3.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Flujo 4: Alerta por stock crítico o condición ambiental**
+
+Este flujo presenta el comportamiento del sistema ante la detección de una situación crítica relacionada con el inventario o el ambiente. A partir de la lectura enviada por el dispositivo, la capa Edge analiza la información y, si identifica una anomalía, el backend genera una alerta para que el administrador tome una acción correctiva oportuna.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo4.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
 </div>
