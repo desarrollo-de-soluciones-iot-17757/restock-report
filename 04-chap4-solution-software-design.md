@@ -5831,13 +5831,104 @@ En esta sección se presentan los diagramas de componentes del bounded context d
 
 El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Se comunica vía Kong Gateway para poder comunicarse con el Backend.
 
-<img src="https://i.imgur.com/IA3g7lo.png" alt="Web Sales Order Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/diT66Gk.png" alt="Web Sales Order Management Component Diagram" width="100%">
+
+<p><em>Tabla de Componentes de la Web Application para Sales Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>webSales</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para visualizar y gestionar las venta, permitiendo a los usuarios consultar el estado de sus ventas, detalles de cada orden y realizar acciones como actualizar o cancelarlas.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente webAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para sincronizar y actualizar la información de activos, inventarios y dispositivos IoT en el backend a través de Kong Gateway.</td>
+    </tr>
+  </tbody>
+</table>
 
 ##### Backend Application Component Diagram
 
 El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App, actúa como el núcleo del procesamiento: recibe solicitudes del Kong Gateway y valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
 
 <img src="https://i.imgur.com/HWSxEVk.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+
+
+<p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiSalesManagement</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de control de ventas, gestionando la creación, actualización y consulta de órdenes de venta, y orquestando las interacciones con otros componentes para mantener la coherencia del sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiAssetAndResource</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera los documentos relacionados a insumos, sucursales, lotes de inventario y dispositivos registrados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiServiceDesignAndPlanning</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la verificación de cantidades de recetas o kits en stock cada vez que se registra una nueva orden de venta, para mantener la coherencia entre las ventas y el inventario disponible.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResourceManagement</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia interna</td>
+      <td style="padding: 10px; border: 1px solid;">Solicita la actualización de cantidades de insumos en stock cada vez que se registra una nueva orden de venta, para mantener la coherencia entre las ventas y el inventario disponible.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
 
