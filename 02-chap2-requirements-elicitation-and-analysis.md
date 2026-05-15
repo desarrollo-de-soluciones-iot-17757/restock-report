@@ -605,6 +605,10 @@ Luego de identificar a los eventos significativos del negocio, se formaron líne
 | **Supply weight** *(Peso del insumo)* | Peso total detectado del insumo contenido en una cabina. |
 | **Unit weight** *(Peso unitario)* | Peso de referencia de una unidad del insumo, usado para estimar cuántas unidades hay disponibles. |
 | **Telemetry** *(Telemetría)* | Datos transmitidos por el dispositivo, como peso y otros valores operativos. |
+| **Temperature** *(Temperatura)* | Valor en °C medido por el sensor ambiental integrado (DHT22); aporta contexto a las lecturas de stock y a la conservación de insumos. |
+| **Humidity** *(Humedad relativa)* | Porcentaje de humedad relativa medido por el DHT22; usado para alertas de conservación y diagnóstico del entorno. |
+| **Environmental conditions** *(Condiciones ambientales)* | Conjunto {temperature, humidity, timestamp} enviado con la telemetría del dispositivo; usado para contextualizar y analizar lecturas. |
+| **DHT22** *(Sensor DHT22)* | Sensor integrado que mide temperatura y humedad; su salud influye en la validez de la telemetría y en la detección de anomalías ambientales. |
 | **Analytics** *(Analítica)* | Procesamiento e interpretación de datos de telemetría e inventario para generar decisiones o alertas. |
 | **Status check** *(Verificación de estado)* | Evaluación del estado actual del stock o del dispositivo luego de recibir datos. |
 | **Stock anomaly** *(Anomalía de stock)* | Comportamiento irregular del stock detectado por el sistema, como variaciones inesperadas o inconsistentes. |

@@ -290,6 +290,27 @@ La plataforma web de Restock aplica los estándares WCAG 2.1 de nivel AA/AAA, va
 
 - El **etiquetado semántico** de los componentes sigue las convenciones ARIA: los íconos Tabler Icons que comunican información de estado llevan `aria-label` descriptivo; las tablas de inventario emplean encabezados con `role="columnheader"`; las alertas de stock crítico emplean `role="alert"` para anunciarse automáticamente a lectores de pantalla; los modales de confirmación emplean `role="dialog"` con `aria-labelledby` y `aria-modal="true"`.
 
+##### 5.1.2.1.5. Patrón Z en la interfaz web
+
+El patrón Z es un principio de diseño visual que describe la trayectoria natural del ojo humano al escanear una interfaz. El usuario inicia la lectura en la esquina superior izquierda, se desplaza horizontalmente hacia la esquina superior derecha, realiza un movimiento diagonal hacia la esquina inferior izquierda y concluye en la esquina inferior derecha. Esta trayectoria en forma de "Z" se repite de forma instintiva en interfaces con estructura horizontal, como dashboards, landing pages y vistas de gestión de datos (Zeldman, 2024).
+
+En Restock Web, el patrón Z se aplica de la siguiente manera:
+
+| Zona | Posición | Contenido asignado | Justificación |
+|------|----------|--------------------|---------------|
+| Punto 1 | Superior izquierda | Logo de Restock y nombre de la sucursal activa | Ancla la identidad de marca y el contexto operativo del usuario |
+| Punto 2 | Superior derecha | Ícono de notificaciones, perfil de usuario y acceso rápido a alertas | Concentra los controles de mayor frecuencia de uso en sesión activa |
+| Diagonal | Centro | Contenido principal del dashboard: métricas de stock, widgets de alertas y gráficos de rotación | La zona de mayor densidad informativa aprovecha el tránsito visual natural entre los dos puntos superiores e inferiores |
+| Punto 3 | Inferior izquierda | Sidebar de navegación con accesos a módulos: Inventario, Sucursales, Dispositivos, Ventas | Organiza la navegación secundaria en la zona de llegada natural del primer movimiento diagonal |
+| Punto 4 | Inferior derecha | Botón de acción primaria (registro de lote, nueva venta) o resumen de estado del sistema | Ubica la acción principal en el punto de conclusión del recorrido visual |
+
+**Principios de aplicación del patrón Z en Restock Web:**
+
+- Los elementos de mayor jerarquía visual (logo, alertas críticas, métricas de stock) se posicionan en los extremos del eje horizontal superior, aprovechando que son los primeros puntos que el usuario fija al iniciar la sesión.
+- El contenido informativo de mayor densidad, como las tablas de inventario y los dashboards de métricas, se ubica en la zona central de la diagonal, donde el ojo transita de forma natural sin requerir esfuerzo adicional de búsqueda.
+- Los botones de acción primaria se posicionan en la esquina inferior derecha, coincidiendo con el punto de conclusión del recorrido Z, lo que reduce la distancia cognitiva entre la lectura de la información y la ejecución de la acción correspondiente.
+- En vistas de listado de insumos y tablas de stock, el patrón Z se aplica a nivel de componente: el nombre del insumo y su estado de stock ocupan los extremos superiores de cada fila, mientras las acciones de edición o reposición se ubican en el extremo derecho inferior de la tarjeta o fila.
+
 #### 5.1.2.2. Mobile Style Guidelines
 
 La aplicación móvil de Restock está desarrollada con Dart y Flutter, orientada a los mismos segmentos de usuarios que la plataforma web: administradores de restaurantes y tiendas retail que necesitan consultar el estado del inventario, registrar movimientos de stock y recibir alertas en tiempo real desde sus dispositivos móviles. Las decisiones de diseño móvil priorizan la simplicidad de la interacción táctil y la legibilidad de datos operativos en contextos de uso dinámico como cocinas o almacenes.
@@ -379,24 +400,7 @@ Sin asignar
 ```
 El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
-##### 5.1.2.3.2. Sistema de señalización LED
-
-El LED de señalización incluido en el kit básico de componentes actúa como canal de retroalimentación visual instantánea, complementando la información del display LCD con un indicador de estado perceptible desde mayor distancia y sin necesidad de leer texto.
-
-La codificación semántica del LED replica la lógica cromática de la paleta de Restock: el verde corresponde al color primario de la plataforma, asociado a operación correcta; el rojo corresponde al color terciario, reservado para situaciones que requieren atención inmediata.
-
-**Patrones de señalización por estado:**
-
-| Estado del sistema                          | Color | Comportamiento       |
-|---------------------------------------------|-------|----------------------|
-| Insumo asignado — stock con valor detectado | Verde | Encendido continuo   |
-| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz)|
-| Dispositivo sin insumo asignado             | —     | LED apagado          |
-| Inicialización del sistema (boot)           | Verde | 3 destellos cortos   |
-
-La distinción entre LED encendido en verde de forma continua y parpadeo en rojo permite que el operario identifique desde distancia si el dispositivo está registrando peso correctamente o si el contenedor está vacío o sin lectura válida, sin necesidad de acercarse al display.
-
-##### 5.1.2.3.3. Estándares generales de interacción con la interfaz física
+##### 5.1.2.3.2. Estándares generales de interacción con la interfaz física
 
 El diseño de la interfaz física del dispositivo IoT de Restock responde a los mismos valores de claridad y empatía con el usuario operativo que definen el tono de comunicación de la plataforma.
 
@@ -411,18 +415,2106 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 **Comportamiento ante pérdida de conectividad WiFi.** Cuando el dispositivo pierde la conexión con el edge local o con la plataforma en la nube, el display continúa mostrando el estado actual del peso medido y el LED mantiene su señalización de estado. Los datos de telemetría generados durante el período sin conectividad se almacenan localmente en el edge para ser enviados al sistema central cuando la conexión se restablezca, garantizando la trazabilidad del inventario sin pérdida de registros.
 
 ## 5.2. Information Architecture
+
+En esta sección el equipo de Restock presenta las decisiones y fundamentos relacionados con la organización del contenido dentro de las experiencias web y móvil, incluyendo el Landing Page y las aplicaciones del sistema. El objetivo es garantizar que los usuarios puedan interactuar de manera intuitiva con la plataforma, facilitando el acceso a las funcionalidades, información y recursos necesarios de forma rápida y sencilla. Asimismo, se detallan las decisiones tomadas respecto a los Organization Systems, Labeling Systems, Navigation Systems y Searching Systems, con el propósito de mejorar la experiencia de usuario y optimizar la usabilidad del producto.
+
 ### 5.2.1. Organization Systems
+
+Restock utiliza un esquema de organización visual que combina tres tipos principales de ordenamiento: jerárquico, secuencial y categórico. Cada uno responde a una necesidad distinta del usuario y permite presentar la información de forma clara, eficiente y alineada con los roles de las diferentes audiencias.
+
+#### Organización visual jerárquica
+
+En el sistema Restock, la organización jerárquica prioriza visualmente la información crítica capturada por los sensores IoT, como los niveles de stock bajo mínimos y las alertas de productos próximos a vencer. Esta jerarquía visual garantiza que el usuario identifique de inmediato las anomalías en el peso o cantidad de los insumos antes de revisar métricas secundarias, facilitando una toma de decisiones rápida basada en datos en tiempo real.
+
+Representación de la Arquitectura jerárquica:
+
+<p align="center">Organización en el landing page</p>
+
+<img src="assets/images/chapter5/sitemaps/organizacion-landing.png" alt="Landing page - sitemap" height=90%>
+
+Este diagrama representa la jerarquía informativa orientada al usuario externo. Estructura el flujo desde el inicio (propuesta de valor), pasando por los beneficios específicos para restaurantes y retail, hasta culminar en la conversión mediante la visualización de planes de suscripción.
+
+<p align="center">Organización de la aplicación</p>
+
+<img src="assets/images/chapter5/sitemaps/organizacion-front.png" alt="Web App - sitemap" height=90%>
+
+Este esquema detalla la arquitectura interna del software de gestión. La organización jerárquica parte de un Dashboard central (Overview) que ramifica el acceso hacia los módulos operativos clave como el inventario, las recetas (Recipes), los kits, y la gestión de dispositivos IoT.
+
+Casos de aplicación:
+- Dashboards donde los indicadores de stock crítico, discrepancias y alertas aparecen en la parte superior o en paneles destacados.
+- Vistas de inventario en las que los colores, badges y tipografías jerarquizan el estado de cada insumo.
+- Páginas de resumen donde los totales y los mensajes de alerta se distinguen claramente del resto del contenido.
+
+#### Organización secuencial
+
+El sistema también aplica una organización secuencial en procesos operativos que requieren una progresión lógica y una guía paso a paso. Esto es especialmente relevante en flujos de configuración y en tareas donde el orden de las acciones impacta directamente en la precisión del sistema.
+
+Casos de aplicación:
+- Vinculación de insumos específicos a sensores de peso, donde el usuario primero selecciona el insumo, luego ajusta el sensor y finalmente confirma la asignación.
+- Configuración de umbrales de alerta, que sigue pasos de definición de stock mínimo, stock máximo y reglas de notificación.
+- Onboarding de nuevos dispositivos IoT y de nuevas sucursales, donde el proceso se descompone en etapas claras de verificación, configuración y validación.
+
+Al agrupar estos casos bajo el concepto de organización secuencial, se refuerza la idea de que el sistema debe guiar al usuario sin saltos ni confusiones, con instrucciones y estados intermedios visibles en cada paso.
+
+#### Esquemas de categorización de contenido
+
+Para gestionar el volumen de información y facilitar el acceso rápido a los datos relevantes, Restock implementa esquemas de categorización que combinan criterios cronológicos, temáticos y por audiencia.
+
+- Organización cronológica: se utiliza para el historial de telemetría de los sensores, los registros de ventas y el seguimiento de las compras realizadas, presentando siempre los eventos más recientes en primer plano.
+- Organización por tópicos: agrupa los insumos según su naturaleza, como lácteos, carnes, abarrotes, o según su estado de almacenamiento (fresco, refrigerado, seco).
+- Organización por audiencia: separa las vistas y funciones según los dos perfiles reales del sistema: administradores de restaurantes y usuarios de retail.
+
+Esta categorización por audiencias permite que cada perfil vea información relevante para su rol:
+- Administradores de restaurante: vista de recetas, costos, mermas y reabastecimiento.
+- Retail: vista de kits y paquetes de insumos, enfocada en pedidos y gestión de surtido.
+
+De esta manera, el sistema organiza la información por su contenido y por el contexto de uso de los dos perfiles reales del producto.
+
+#### Segmentación por roles y audiencias
+
+Además de los criterios anteriores, Restock distingue claramente entre los dos perfiles disponibles en la plataforma. La segmentación por audiencias refuerza que:
+- los administradores visualizan herramientas de gestión de mermas, control de stock y análisis de ventas;
+- los usuarios de retail tienen acceso a vistas centradas en kits de productos, paquetes y opciones de surtido.
+
+Con este enfoque, cada perfil obtiene una experiencia personalizada según su rol, reduciendo la complejidad y mejorando la eficacia en la toma de decisiones.
+
 ### 5.2.2. Labeling Systems
+
+En esta sección se presenta el sistema de etiquetado (labeling system) para la plataforma de Restock. Este sistema prioriza la claridad y la sencillez visual. Usamos términos familiares para que el sistema sea fácil de usar, manteniendo siempre la estética definida en nuestros estándares de diseño.
+
+Se ha priorizado la claridad semántica y la coherencia con el lenguaje visual del producto, especialmente con el tono de comunicación cercano y profesional.
+
+#### A. Landing Page
+El etiquetado en el sitio público utiliza un lenguaje persuasivo, directo y coherente con la propuesta de valor de Restock.
+
+- **Secciones de Navegación:**
+  - **Inicio:** Sección de bienvenida con la propuesta de valor principal.
+  - **Beneficios:** Ventajas segmentadas para restaurantes y tiendas retail.
+  - **Testimonios:** Validación social mediante comentarios de usuarios reales.
+  - **Preguntas Frecuentes:** Resolución de dudas comunes de forma clara.
+
+- **Botones de llamada a la acción (CTA):**
+  - **"Prueba Gratis":** Invita al usuario a iniciar una prueba sin costo inicial.
+  - **"Contáctanos":** Facilita el contacto rápido con el equipo de ventas.
+  - **"Iniciar Sesión":** Acceso a la plataforma para usuarios registrados.
+  - **"Solicitar Demo":** Alternativa para usuarios que prefieren ver la plataforma antes de probarla.
+
+#### B. Aplicación Web
+El etiquetado se adapta según el perfil del usuario para optimizar su flujo de trabajo específico:
+
+- **Administradores de Restaurantes:**
+  - **Overview:** Monitoreo de métricas críticas y comparación de inventario real vs. esperado.
+  - **Inventario:** Gestión de lotes, control de mermas y conciliación de discrepancias.
+  - **Recetas:** Registro de platos vinculados a insumos para optimizar compras y consumo.
+  - **Ventas:** Control de transacciones, historial de tickets y rendimiento mensual.
+  - **Alertas:** Notificaciones sobre stock bajo, fallos de conexión o movimientos manuales.
+  - **Dispositivos:** Gestión de salud y estado de conexión de las balanzas IoT.
+- **Administradores del Sector Retail:**
+  - **Kits:** Esta etiqueta reemplaza a "Recetas" en este perfil, consistiendo en un catálogo de productos combinados para la gestión de ofertas comerciales.
+
+*Nota de consistencia:* El resto de etiquetas (**Overview, Inventario, Ventas, Alertas y Dispositivos**) se mantiene idéntico entre los perfiles para asegurar la estandarización operativa del sistema.
+
+#### C. Aplicación Móvil
+Diseñada para la supervisión rápida en movimiento, la app móvil usa etiquetas claras y orientadas a la acción:
+
+- **Overview:** Resumen ejecutivo de las balanzas activas y el estado general del local.
+- **Inventory:** Consulta rápida de niveles de stock y estados actuales de los insumos.
+- **Alertas:** Centro de notificaciones críticas que requieren atención inmediata.
+- **Device:** Monitoreo del estado de conexión y batería de los sensores IoT.
+- **Settings:** Configuración de preferencias de usuario y parámetros de la cuenta.
+
+#### D. Etiquetas en Formularios y Botones Operativos
+Se definen etiquetas estándar para campos de entrada y acciones frecuentes, con la intención de reducir la carga cognitiva en todas las plataformas.
+
+- **Campos de Formulario:**
+  - **"Nombre del Insumo":** Identificador del producto vinculado al sensor.
+  - **"Umbral Mínimo (kg)":** Límite para disparar alertas automáticas de reabastecimiento.
+  - **"Correo Electrónico":** Entrada para credenciales o contacto.
+  - **"Contraseña":** Campo seguro para acceso de usuario.
+  - **"Nombre del negocio":** Nombre del restaurante o tienda retail.
+  - **"Mensaje":** Texto libre para descripciones o solicitudes.
+
+- **Botones de Acción:**
+  - **"Guardar Cambios":** Confirma la edición de configuraciones o perfiles.
+  - **"Vincular Dispositivo":** Inicia la sincronización de un nuevo sensor IoT.
+  - **"Registrar Salida":** Acción manual para descontar stock fuera del flujo de venta automática.
+  - **"Enviar consulta":** Envía un formulario de contacto o solicitud.
+  - **"Solicitar demo":** Pide una demostración personalizada del sistema.
+  - **"Suscribirme":** Registra el correo para recibir actualizaciones.
+
 ### 5.2.3. SEO Tags and Meta Tags
+
+### 5.2.3. SEO Tags and Meta Tags
+
+Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los motores de búsqueda y facilitar que dueños de restaurantes y administradores de retail encuentren una solución automatizada a sus problemas de inventario, se ha definido la siguiente estrategia de etiquetado HTML.
+
+**Landing Page**
+
+- **Title:**
+    `<title>Restock | Gestión de Inventario Inteligente con Sensores IoT</title>`
+    - **Propósito:** Incluye el nombre de la marca y las palabras clave de mayor volumen de búsqueda como "gestión de inventario" e "IoT", posicionando el diferencial tecnológico de inmediato.
+
+- **Meta Description:**
+    `<meta name="description" content="Restock automatiza el control de tus insumos mediante sensores de peso IoT. Evita mermas, recibe alertas de stock bajo en tiempo real y optimiza tus recetas. La solución definitiva para restaurantes y retail inteligente.">`
+    - **Propósito:** Explica el funcionamiento (sensores de peso) y los beneficios (evitar mermas, alertas en tiempo real), incitando al clic mediante una propuesta de valor clara.
+
+- **Meta Keywords:**
+    `<meta name="keywords" content="Restock, inventario IoT, control de insumos, sensores de peso, gestión de mermas, stock restaurantes, automatización de inventario, retail inteligente, pesaje digital">`
+    - **Propósito:** Agrupa términos técnicos y de negocio que los clientes potenciales utilizan para buscar soluciones de modernización de almacenes.
+
+- **Meta Author:**
+    `<meta name="author" content="Equipo Restock – Innovación en IoT y Experiencia de Usuario">`
+
+---
+
+**Web Application – Dashboard Principal**
+
+- **Title:**
+    `<title>Dashboard Operativo – Restock | Monitoreo de Insumos en Tiempo Real</title>`
+    - **Propósito:** Enfocado en la utilidad de la herramienta. El uso de "Monitoreo en Tiempo Real" refuerza que la aplicación web es una consola de control activa.
+
+- **Meta Description:**
+    `<meta name="description" content="Accede a tu panel de control de Restock. Visualiza el peso exacto de tus insumos, gestiona alertas críticas de stock y monitorea la salud de tus dispositivos IoT desde cualquier lugar.">`
+    - **Propósito:** Resume las funciones principales del dashboard (visualizar peso, alertas, salud de dispositivos) para usuarios que ya conocen la plataforma o buscan herramientas de monitoreo.
+
+- **Meta Keywords:**
+    `<meta name="keywords" content="panel de control IoT, telemetría de sensores, monitoreo de stock, gestión de recetas, dashboard administrativo, alertas de peso, control de dispositivos IoT">`
+    - **Propósito:** Palabras clave específicas para el entorno de trabajo (telemetría, dashboard, dispositivos) que ayudan a la indexación de la herramienta interna.
+
+- **Meta Author:**
+    `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
+    - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
+
 ### 5.2.4. Searching Systems
+
+En Restock, los sistemas de búsqueda se definen de acuerdo con las funcionalidades establecidas en las User Stories del Capítulo 3, especialmente en los flujos de gestión de suministros, recetas, kits, lotes, discrepancias, dispositivos y sucursales. Por ello, la propuesta se centra en mecanismos de búsqueda simples y filtros operativos concretos, evitando funcionalidades avanzadas no contempladas en el alcance del producto.
+
+El objetivo principal es que el usuario encuentre rápidamente registros existentes para ejecutar sus tareas (consultar, editar, resolver o transferir), sin sentirse perdido frente al volumen de información.
+
+#### 5.2.4.1. Medios de ayuda para la búsqueda
+
+Para apoyar al usuario durante la consulta de datos, la interfaz incorpora ayudas directas:
+
+- **Campo de búsqueda visible por módulo:** ubicado en la parte superior de listas o tablas con textos guía como "Buscar insumo", "Buscar lote" o "Buscar sucursal".
+- **Filtros básicos de contexto:** controles de selección por estado, sucursal o fecha, según el módulo.
+- **Indicador de resultados:** mensaje de apoyo como "Mostrando X resultados" para confirmar que la búsqueda fue aplicada.
+- **Acción "Limpiar":** permite quitar el texto y filtros seleccionados para volver al listado completo.
+- **Estado sin resultados:** mensaje claro cuando no hay coincidencias, invitando a cambiar el término ingresado o ajustar filtros.
+
+Estas ayudas siguen el tono de comunicación definido en Restock: claro, directo y orientado a la acción.
+
+#### 5.2.4.2. Opciones de búsqueda por aplicación
+
+| Plataforma | Tipo de búsqueda | Alcance |
+|------------|------------------|---------|
+| Landing Page | Navegación por secciones (anclas y menú) | Permite ubicar contenido informativo (beneficios, funcionalidades, planes, FAQ) sin un motor de búsqueda dedicado |
+| Aplicación web | Búsqueda textual por módulo + filtros básicos | Permite localizar registros en tablas/listas de trabajo según las tareas de administración |
+| Aplicación móvil | Búsqueda textual por pantalla + filtros simplificados | Permite consultar los mismos datos clave de la web con interacción táctil |
+| Dispositivo IoT | No aplica búsqueda textual | El dispositivo muestra estado operativo y lectura actual en el display, sin flujo de búsqueda manual |
+
+#### 5.2.4.3. Filtros definidos por módulo (alineados a User Stories)
+
+| Módulo | Búsqueda textual | Filtros disponibles |
+|--------|------------------|---------------------|
+| Suministros / Inventario (US-14, US-15, US-19) | Nombre de insumo o producto | Estado (activo/inactivo), categoría, sucursal |
+| Lotes (Task/User Flow 6) | Código o nombre de lote/insumo | Sucursal, estado del lote, rango de vencimiento |
+| Discrepancias (Task/User Flow 7) | Insumo o identificador de discrepancia | Estado (pendiente/resuelta), criticidad, rango de fecha |
+| Dispositivos (Task/User Flow 8) | Alias o identificador del dispositivo | Estado (online/offline), sucursal |
+| Recetas (Task/User Flow 4) | Nombre de receta | Categoría de receta, estado (activa/inactiva) |
+| Kits/Combos (Task/User Flow 5) | Nombre de kit/combo | Estado (activo/inactivo), disponibilidad |
+| Sucursales (Task/User Flow 9) | Nombre de sucursal o ubicación | Estado (activa/inactiva), ciudad |
+
+#### 5.2.4.4. Visualización de resultados después de la búsqueda
+
+Después de aplicar búsqueda o filtros, los datos se muestran manteniendo el mismo formato base de cada módulo:
+
+- **Web:** tablas o listas con columnas clave (nombre, estado, sucursal, fecha o stock según el caso).
+- **Móvil:** tarjetas o listas resumidas con los datos críticos del registro y acceso al detalle.
+- **Consistencia de estado:** siempre se muestra si la búsqueda devolvió resultados, si no hubo coincidencias o si se debe limpiar/ajustar filtros.
+
+Comportamientos esperados:
+
+- **Con resultados:** se visualiza el subconjunto filtrado y el contador de coincidencias.
+- **Sin resultados:** se muestra estado vacío con mensaje orientativo.
+- **Al limpiar filtros:** se restaura el listado completo del módulo.
+
+#### 5.2.4.5. Criterio de alcance funcional
+
+El sistema de búsqueda propuesto no introduce funcionalidades complejas adicionales (por ejemplo, búsqueda semántica, recomendaciones inteligentes o consultas predictivas), ya que no forman parte de los requerimientos funcionales priorizados en el Capítulo 3. De esta manera, la sección se mantiene consistente con el backlog del producto y con los flujos de uso definidos para la versión actual de Restock.
+
 ### 5.2.5. Navigation Systems
+
+En esta sección se describen las acciones y técnicas que guiarán a los usuarios a través del Landing Page y las aplicaciones (web, móvil e IoT), permitiéndoles cumplir sus metas e interactuar de forma satisfactoria con el producto. Se incluyen los recorridos principales, los patrones de interacción y las tácticas UX que facilitan la navegación y la conversión hacia tareas de valor.
+
+El sistema de navegación de Restock se estructura en tres niveles complementarios:
+
+- **Navegación global:** permite desplazarse entre las secciones principales del Landing Page y entre los módulos de las aplicaciones web y móvil. En el Landing Page se implementa mediante el menú superior y los CTA principales; en la aplicación web, mediante la sidebar o barra superior que conduce a Dashboard, Inventario, Sucursales, Alertas y Configuración; y en la aplicación móvil, mediante la barra de navegación inferior y accesos al menú lateral.
+- **Navegación local:** facilita el acceso a subniveles dentro de una sección o pantalla. Incluye tabs internos, filtros y acciones contextuales para pasar de una vista general a otra más específica, por ejemplo, ingresar al inventario de una sucursal desde su card, abrir el detalle de un insumo desde una tabla o cambiar entre vistas relacionadas dentro de un mismo módulo.
+- **Sistemas de orientación:** ayudan al usuario a entender dónde está y cómo volver. Se aplican botones de retorno, breadcrumbs en la web cuando el flujo lo requiere y patrones de cierre o retorno en móvil. En la aplicación web y móvil sí se implementan rutas de regreso claras desde pantallas de detalle, modales y formularios; en el Landing Page no se prioriza un botón de retorno interno porque la navegación se resuelve por scroll, anclas y acceso directo a secciones.
+
+Principios y técnicas clave:
+
+- **Camino claro hacia la acción:** el Landing Page presenta un "hero" con un CTA principal (ej. "Registrarse", "Solicitar demo", "Descargar app") visible above‑the‑fold para reducir fricción y dirigir al usuario al flujo objetivo.
+- **Estructura de anclas y scroll lineal:** el contenido se organiza en secciones con anclas (beneficios, funcionalidades, precios, testimonios) para permitir navegación rápida y enlaces profundos desde menús y emails.
+- **Onboarding guiado y checklist:** al registrarse, un asistente guía los pasos esenciales (crear cuenta, añadir sucursal, registrar balanza, asignar insumo) con tooltips y checklist para lograr "primer valor" cuanto antes.
+- **Observabilidad y optimización:** eventos de navegación y conversiones se miden (KPIs) para reordenar y optimizar las rutas críticas.
+
+En el caso de la aplicación web, la navegación global se apoya en una estructura persistente de módulos, mientras que la navegación local se concentra en tabs, cards y accesos directos para reducir la profundidad de clics. En la aplicación móvil, la navegación global prioriza la barra inferior y la navegación local se resuelve con tarjetas, listas y acciones por gesto. En ambos casos, los botones de retorno y cierre se reservan para flujos de detalle, edición y confirmación, reforzando la orientación del usuario sin duplicar controles innecesarios.
+
+Ejemplos de recorridos de usuario:
+
+- **Visitante → Hero CTA → Beneficios → Registro rápido → Onboarding → Dashboard inicial.**
+- **Administrador → Login → Dashboard → Lista de insumos críticos → Detalle de insumo → Ajustar stock / Generar tarea de conciliación.**
+- **Operario móvil → Barra inferior → Inventario → Seleccionar tarjeta → Swipe para acción rápida → Confirmación.**
+
+Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso —desde el primer contacto en el Landing Page hasta las tareas operativas diarias— reduciendo esfuerzo y mejorando la satisfacción y eficacia en la gestión del inventario.
+
+
 ## 5.3. Landing Page UI Design
 ### 5.3.1. Landing Page Wireframe
 ### 5.3.2. Landing Page Mock-up
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
+
+### Web Application
+
+Aquí tienes el mismo bloque corregido, sin los links de imagen:
+
+#### Registro de cuenta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de empresa
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Fallo de inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lista de sucursales
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Crear una nueva sucursal
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Recuperar contraseña
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Pago de plan de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inventario vacío
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lotes registrados
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de lote
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de suministros
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registrar un nuevo suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Editar un suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de combos
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de combo
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de recetas
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de receta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Retail Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Restaurant Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Planes de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración y preferencias
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del negocio
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del usuario
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Notificaciones
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración de dispositivos IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de dispositivo IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+### Mobile Application
+
 ### 5.4.2. Applications Wireflow Diagrams
+
+Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
+
+**- Task Flow 1**: Registro de un nuevo usuario y activación de su suscripción
+
+<p align="center">
+  <img src="https://i.imgur.com/bMmb1kl.png"
+    alt="task-flow-1"/>
+</p>
+
+#### Pasos del Task Flow 1:
+
+1. El visitante ingresa a la aplicación web
+2. El visitante va a la sección de registro
+3. El Visitante elige su rol de negocio
+4. El Visitante completa su correo y contraseña
+5. El Visitante completa sus datos de perfil
+6. El Visitante completa sus datos de negocio
+7. El Visitante completa los datos del negocio
+8. El Visitante elige un plan de suscripción y paga
+9. Va a la sección de Inicio
+
+
+**- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+<p align="center">
+  <img src="https://i.imgur.com/9G2937P.png"
+    alt="wire-flow-1"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/2579pQG.png"
+    alt="wire-flow-1"/>
+</p>
+
+El visitante ingresa a la web app y se registra eligiendo su rol (administrador de restaurnate o retail); luego completa sus datos personales y de negocio, selecciona un plan y realiza el pago para activar su suscripción. Al finalizar el proceso, accede al dashboard principal de la plataforma y puede comenzar a gestionar su inventario.
+
+**- Task Flow 2**: Inicio de sesión y recuperación de contraseña
+
+<p align="center">
+  <img src="https://i.imgur.com/0RFEmnX.png"
+    alt="task-flow-2"/>
+</p>
+
+#### Pasos del Task Flow 2:
+
+1. El usuario ingresa a la aplicación web
+2. El visitante va a la seccion de "Olvidaste tu contraseña"
+3. El usuario ingresa su correo
+4. El usuario ingresa el código de 6 dígitos
+5. El usuario restablece su contraseña
+6. El usuario ingresa su correo y nueva contraseña
+7. El usuario ingresa a Inicio
+
+**- User Goal 2**: Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta.
+
+<p align="center">
+  <img src="https://i.imgur.com/2mNOzqX.png"
+    alt="wire-flow-2"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/wT7ghaG.png"
+    alt="wire-flow-2"/>
+</p>
+
+El usuario registrado accede a la web app y puede iniciar sesión directamente con sus credenciales. Si olvidó su contraseña, inicia el flujo de recuperación ingresando su correo, recibiendo y validando un código de 6 dígitos, y estableciendo una nueva contraseña, para finalmente iniciar sesión y acceder a su cuenta.
+
+**- Task Flow 3**: Gestión de suministros
+
+<p align="center">
+  <img src="https://i.imgur.com/HhxJUxF.png"
+    alt="task-flow-3"/>
+</p>
+
+#### Pasos del Task Flow 3:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador selecciona "Agregar un suministro"
+3. El administrador completa el formulario de registro
+4. El administrador visualiza su nuevo suministro en su catálogo
+5. El administrador selecciona el suministro creado
+6. El administrador visualiza los detalles de ese suministro creado
+
+**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario. 
+
+<p align="center">
+  <img src="https://i.imgur.com/64Bmz5l.png"
+    alt="wire-flow-3"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/huTCM9n.png"
+    alt="wire-flow-3"/>
+</p>
+
+El administrador navega a la sección de inventario y, si aún no tiene insumos, usa la opción de agregar el primero; si ya tiene insumos registrados, puede crear uno nuevo. En ambos casos completa el formulario de creación del insumo y, al guardarlo, el nuevo producto queda disponible en el catálogo con su información.
+
+**- Task Flow 4**: Gestión de Recetas
+
+<p align="center">
+  <img src="https://i.imgur.com/B9SZIFs.png"
+    alt="task-flow-4"/>
+</p>
+
+#### Pasos del Task Flow 4:
+
+1. El administrador de restaurante ingresa a la sección de recetas
+2. El administrador de restaurante selecciona "Agregar receta"
+3. El administrador completa el formulario de registro de receta
+4. El administrador visualiza su nueva receta en su catálogo
+5. El administrador selecciona la receta creado
+6. El administrador visualiza los detalles de esa receta creado
+
+**- User Goal 4**: Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+<p align="center">
+  <img src="https://i.imgur.com/yvfuzKo.png"
+    alt="wire-flow-4"/>
+</p>
+
+El administrador de restaurante accede a la sección de recetas y selecciona la opción de crear una receta nueva; completa el formulario con nombre, imagen y los ingredientes que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle de la receta creada y verificar su disponibilidad.
+
+**- Task Flow 5**: Gestión de Kits / Combos
+
+<p align="center">
+  <img src="https://i.imgur.com/Na89SRx.png"
+    alt="task-flow-5"/>
+</p>
+
+#### Pasos del Task Flow 5:
+
+1. El administrador retail ingresa a la sección de kits (combos)
+2. El administrador retail selecciona "Agregar combo"
+3. El administrador completa el formulario de registro del combo
+4. El administrador visualiza su nuevo combo en su catálogo
+5. El administrador selecciona el combo creado
+6. El administrador visualiza los detalles de ese combo creado
+
+**- User Goal 5**: Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/qCFeaCC.png"
+    alt="wire-flow-5"/>
+</p>
+
+El administrador retail accede a la sección de kits y selecciona la opción de crear un kit nuevo; completa el formulario con nombre, imagen y los productos que lo componen junto a sus cantidades. Una vez guardado, puede ingresar al detalle del kit creado y verificar su disponibilidad operacional basada en el stock real de cada componente.
+
+**- Task Flow 6**: Gestión de Lotes (Batches) y Transferencia de Stock
+
+<p align="center">
+  <img src="https://i.imgur.com/AwvA8VH.png"
+    alt="task-flow-6"/>
+</p>
+
+#### Pasos del Task Flow 6:
+
+1. El administrador ingresa a la sección de inventario
+2. El administrador retail selecciona "Agregar un lote"
+3. El administrador completa selecciona una suministro y su cantidad de stock
+4. El administrador visualiza el nuevo lote en el inventario
+5. El administrador selecciona "Transferir lote"
+6. El administrador ingresa el lote y la sucursal de origen y de destino
+7. El lote se elimina de la sucursal de origen y pasa a visualizarse en la sucursal de destino
+
+
+**- User Goal 6**: Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+<p align="center">
+  <img src="https://i.imgur.com/s5OWiSC.png"
+    alt="wire-flow-6"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/ty5WeSE.png"
+    alt="wire-flow-6"/>
+</p>
+
+El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
+
+
+**- Task Flow 7**: Conciliación de discrepancias de inventario
+
+<p align="center">
+  <img src="https://i.imgur.com/MHcvbcM.png"
+    alt="task-flow-7"/>
+</p>
+
+#### Pasos del Task Flow 7:
+
+1. El administrador ingresa a la sección de discrepancias de inventario
+2. El administrador selecciona una discrepancia
+3. El administrador resuelve la discrepancia de stock
+4. El administrador ya no visualiza la discrepancia resuelta
+
+**- User Goal 7**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/5YqlQLQ.png"
+    alt="wire-flow-7"/>
+</p>
+
+El administrador accede a la sección de discrepancias de inventario y selecciona una discrepancia específica para ver su detalle, donde puede revisar las diferencias entre el stock físico y el digital junto a su historial. Desde esa vista, elige la opción de resolver la discrepancia, completa el formulario de justificación con los datos correspondientes y confirma la acción para registrar la corrección.
+
+
+**- Task Flow 8**: Gestión de dispositivos
+
+<p align="center">
+  <img src="https://i.imgur.com/6blSmB0.png"
+    alt="task-flow-8"/>
+</p>
+
+#### Pasos del Task Flow 8:
+
+1. El administrador ingresa a la sección de dispositivos
+2. El administrador selecciona "Agregar dispositivo"
+3. El administrador completa el formulario de registro de un dispositivo
+4. El administrador visualiza el dispositivo en la sección de dispositivos
+5. El administrador selecciona el dispositivo creado
+6. El administrador asigna un suministro a ese dispositivo
+7. El administrador configura el peso, temperatura y humedad limites que debe validar el dispositivo
+
+**- User Goal 8**: Como administrador, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+<p align="center">
+  <img src="https://i.imgur.com/2y4W9Ic.png"
+    alt="wire-flow-8"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/rMo2n4s.png"
+    alt="wire-flow-8"/>
+</p>
+
+El administrador ingresa a la sección de dispositivos y registra un nuevo inventario inteligente completando su formulario; una vez creado, accede al detalle del dispositivo para asignarle un insumo del catálogo. Luego completa el formulario de asignación y configura los límites de peso, temperatura y humedad que activarán alertas automáticas, permitiendo así automatizar el seguimiento del stock en tiempo real.
+
+
+**- Task Flow 9**:
+
+<p align="center">
+  <img src="https://i.imgur.com/Y3X9GEn.png"
+    alt="task-flow-9"/>
+</p>
+
+#### Pasos del Task Flow 9:
+
+1. El administrador ingresa a la configuración de la cuenta
+2. El administrador ingresa a la sección de sucursales
+3. El administrador selecciona "Agregar sucursal"
+4. El administrador completa el formulario de registro de una sucursal
+5. Se actualiza la seccion de sucursales con la nueva creada anteriormente
+
+**- User Goal 9**: Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+<p align="center">
+  <img src="https://i.imgur.com/gsnzuuh.png"
+    alt="wire-flow-9"/>
+</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/MAcfEL3.png"
+    alt="wire-flow-9"/>
+</p>
+
+El administrador accede a la configuración de cuenta y navega a la sección de sucursales, donde puede ver las ubicaciones ya registradas. Desde allí selecciona la opción de agregar una nueva sucursal, completa el formulario con nombre, teléfono, dirección y demás datos de la ubicación, y al guardar la nueva sucursal queda visible en el listado para organizar las operaciones por local.
+
+
 ### 5.4.2. Applications Mock-ups
+
+En esta sección se presentarán los mockups de las aplicaciones, los cuales fueron diseñas en Figma.
+
+### Web Application
+
+En esta sección se presentarán los mockups de la aplicación web, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
+#### Registro de cuenta
+
+Esta es la pantalla de registro de cuenta, donde el usuario puede crear una nueva cuenta para acceder a la plataforma Restock. El formulario solicita información básica como nombre, correo electrónico y contraseña.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/WogEZ03.png">
+</div>
+
+#### Registro de empresa
+
+Esta es la pantalla de registro de empresa, donde el usuario debe crear una cuenta de empresa para empezar a gestionar su inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/A2bjmuO.png">
+</div>
+
+#### Inicio de sesión
+
+En esta pantalla de inicio de sesión, el usuario puede acceder a su cuenta de Restock ingresando su correo electrónico y contraseña registrados. También se ofrece la opción de recuperar la contraseña en caso de haberla olvidado.
+
+<div align="center">
+  <img src="https://i.imgur.com/0vskI7b.png">
+</div>
+
+#### Fallo de inicio de sesión
+
+Esta pantalla muestra el estado de error cuando el usuario ingresa credenciales incorrectas al intentar iniciar sesión. Se despliega un mensaje de advertencia indicando que el correo electrónico o la contraseña son inválidos, invitando al usuario a intentarlo nuevamente.
+
+<div align="center">
+  <img src="https://i.imgur.com/uIvivp4.png">
+</div>
+
+#### Lista de sucursales
+
+En esta pantalla se muestra el listado de todas las sucursales registradas bajo la cuenta de la empresa. El usuario puede visualizar información general de cada sucursal y acceder a su gestión individual, así como agregar nuevas sucursales desde esta vista.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/7SZem7C.png">
+</div>
+
+#### Crear una nueva sucursal
+
+Esta pantalla presenta el formulario para registrar una nueva sucursal dentro de la plataforma. El usuario debe completar datos como el nombre de la sucursal, dirección y otros detalles relevantes para su correcta identificación y gestión.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/R6rZej6.png">
+</div>
+
+#### Recuperar contraseña
+
+En esta pantalla el usuario puede solicitar la recuperación de su contraseña ingresando el correo electrónico asociado a su cuenta. La plataforma enviará un enlace o código para restablecer la contraseña de forma segura.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/ldrNJsk.png">
+</div>
+
+#### Pago de plan de suscripción 
+
+Esta pantalla corresponde al proceso de pago del plan de suscripción seleccionado. El usuario puede ingresar los datos de su método de pago y confirmar la transacción para activar o renovar su plan dentro de la plataforma Restock.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/tbRwP8W.png">
+</div>
+
+#### Inventario vacío
+
+Esta pantalla se muestra cuando el usuario aún no ha registrado ningún producto o lote en su inventario. Se presenta un mensaje informativo junto a una opción para comenzar a agregar elementos al inventario.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/k6Kdmbj.png">
+</div>
+
+#### Lotes registrados
+
+En esta pantalla se visualizan todos los lotes de productos que han sido registrados en el inventario de la sucursal. El usuario puede revisar detalles como cantidades disponibles y el estado de cada lote.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/Vq8uGTA.png">
+</div>
+
+#### Registro de lote
+
+Esta pantalla presenta el formulario para registrar un nuevo lote de productos en el inventario. El usuario debe ingresar información como el producto asociado, cantidad y fecha de vencimiento, entre otros campos relevantes.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/8QhpRcn.png">
+</div>
+
+#### Catálogo de suministros
+
+En esta pantalla se muestra el catálogo completo de suministros disponibles en la plataforma. El usuario puede gestionar los distintos insumos registrados, así como acceder a las opciones de edición o eliminación de cada uno.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/S7d8Jcx.png">
+</div>
+
+#### Registrar un nuevo suministro
+
+Esta pantalla presenta el formulario para dar de alta un nuevo suministro en el sistema. El usuario debe completar campos como nombre del insumo, unidad de medida y descripción, entre otros datos necesarios para su correcta gestión.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/ci7VsN5.png">
+</div>
+
+#### Editar un suministro
+
+En esta pantalla el usuario puede modificar la información de un suministro previamente registrado. Se muestran los mismos campos del formulario de creación, precargados con los datos actuales del insumo, permitiendo actualizar la información de manera sencilla.
+
+<div align="center">
+  <img src="https://i.imgur.com/beQqlcQ.png">
+</div>
+
+
+#### Catálogo de combos 
+
+Esta pantalla muestra el listado de combos disponibles configurados en la plataforma. El usuario puede visualizar los combos existentes, acceder al detalle de cada uno y gestionar su composición según los suministros o productos que los integran.
+
+<div align="center">
+  <img src="https://i.imgur.com/jImC02b.png">
+</div>
+
+#### Detalle de combo
+
+En esta pantalla se presenta la información detallada de un combo específico, incluyendo los productos o suministros que lo componen, sus cantidades y el precio o condiciones asociadas. El usuario puede editar o eliminar el combo desde esta vista.
+
+<div align="center">
+  <img src="https://i.imgur.com/bRfra7h.png">
+</div>
+
+#### Cátalogo de recetas
+
+Esta pantalla muestra el listado de recetas registradas en la plataforma, orientada principalmente al segmento de restaurantes. El usuario puede explorar las recetas existentes y acceder a su detalle o crear nuevas recetas vinculadas a los suministros disponibles.
+
+<div align="center">
+  <img src="https://i.imgur.com/I96OyZ0.png">
+</div>
+
+#### Detalle de receta
+
+En esta pantalla se visualiza la información completa de una receta en particular, incluyendo los ingredientes necesarios y sus cantidades. Esta vista permite al usuario gestionar los insumos requeridos y mantener un control preciso del consumo de inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/4oOxbng.png">
+</div>
+
+#### Retail Dashboard
+
+Esta pantalla corresponde al panel principal para negocios de tipo retail, donde el usuario puede visualizar métricas clave del inventario, alertas de stock bajo, movimientos recientes y un resumen general del estado de sus productos y sucursales.
+
+<div align="center">
+  <img src="https://i.imgur.com/W4VMaSZ.png">
+</div>
+
+#### Restaurant Dashboard
+
+Esta pantalla es el panel principal para negocios de tipo restaurante, mostrando indicadores relevantes como el consumo de insumos y discrepancias entre entra las cantidades del stock actual.
+
+<div align="center">
+  <img src="https://i.imgur.com/azgMSRd.png">
+</div>
+
+#### Planes de suscripción
+
+En esta pantalla se presentan los distintos planes de suscripción disponibles en la plataforma Restock. El usuario puede comparar las características y beneficios de cada plan para seleccionar el que mejor se adapte a las necesidades de su negocio.
+
+<div align="center">
+  <img src="https://i.imgur.com/BTcOQaV.png">
+</div>
+
+#### Configuración y preferencias
+
+Esta pantalla permite al usuario personalizar las preferencias generales de la plataforma, como notificaciones, idioma, zona horaria y otras opciones de configuración que afectan la experiencia de uso dentro de Restock.
+
+<div align="center">
+  <img src="https://i.imgur.com/bcj4I7K.png">
+</div>
+
+#### Perfil del negocio
+
+En esta pantalla el usuario puede visualizar y editar la información general de su negocio registrado en la plataforma, incluyendo nombre, dirección y datos de contacto.
+
+<div align="center">
+  <img src="https://i.imgur.com/M0ntofi.png">
+</div>
+
+#### Perfil del usuario
+
+Esta pantalla muestra la información personal del usuario principal de la cuenta, muestra como nombre, correo electrónico y opciones para actualizar sus datos.
+
+<div align="center">
+  <img src="https://i.imgur.com/a60Y9eI.png">
+</div>
+
+#### Notificaciones
+
+En esta pantalla el usuario puede revisar todas las notificaciones generadas por la plataforma, tales como alertas de stock bajo, productos próximos a vencer, actualizaciones del sistema y otros avisos relevantes para la gestión del inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/vMzvB0c.png">
+</div>
+
+#### Monitoreo de dispositivos IoT
+
+Esta pantalla permite al usuario visualizar en tiempo real el estado de los dispositivos IoT conectados a la plataforma, mostrando métricas como niveles de stock detectados por sensores, estado de conexión de cada dispositivo y últimas lecturas registradas.
+
+<div align="center">
+  <img src="https://i.imgur.com/d7p4XBH.png">
+</div>
+
+#### Configuración de suministro a dispositivo IoT
+
+En esta pantalla el usuario puede asociar y configurar los suministros que serán monitoreados por un dispositivo IoT específico. Se definen parámetros como umbrales mínimos de stock y el tipo de suministro vinculado al sensor correspondiente.
+
+<div align="center">
+  <img src="https://i.imgur.com/mlg3g3Z.png">
+</div>
+
+
+### Mobile Application
+
+En esta sección se presentarán los mockups de la aplicación móvil, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
+**Inicio de Sesión**
+
+**Descripción:** Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/main-login-screen.png" alt="Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo." height="600">
+</div>
+
+**Error de Inicio de Sesión**
+
+**Descripción:** Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/login-error-screen.png" alt="Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas." height="600">
+</div>
+
+**Registro de Usuario**
+
+**Descripción:** Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/register-screen.png" alt="Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros." height="600">
+</div>
+
+**Recuperación de Contraseña**
+
+**Descripción:** Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-request.png" alt="Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación." height="600">
+</div>
+
+**Verificación de Código**
+
+**Descripción:** Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-verify.png" alt="Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales." height="600">
+</div>
+
+**Nueva Contraseña**
+
+**Descripción:** Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-create.png" alt="Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma." height="600">
+</div>
+
+**Selección de Rol**
+
+**Descripción:** Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/role-selection-screen.png" alt="Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema." height="600">
+</div>
+
+**Datos Personales**
+
+**Descripción:** Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-personal-details.png" alt="Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo." height="600">
+</div>
+
+**Detalles del Negocio**
+
+**Descripción:** Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-business-details.png" alt="Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock." height="600">
+</div>
+
+**Selección de Plan**
+
+**Descripción:** Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/subscription-plan-selection.png" alt="Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel." height="600">
+</div>
+
+**Detalles de Pago**
+
+**Descripción:** Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/payment-details-screen.png" alt="Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito." height="600">
+</div>
+
+**Dashboard de Monitoreo General**
+
+**Descripción:** Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/scale-monitoring-dashboard.png" alt="Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock." height="600">
+</div>
+
+**Empty Inventory State**
+
+**Descripción:** Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/empty-inventory-state.png" alt="Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema." height="600">
+</div>
+
+**Inventory Dashboard**
+
+**Descripción:** Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/inventory-dashboard.png" alt="Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría." height="600">
+</div>
+
+**Add New Batch**
+
+**Descripción:** Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/add-new-batch.png" alt="Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto." height="600">
+</div>
+
+**Batch Details View**
+
+**Descripción:** Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/batch-details-view.png" alt="Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental." height="600">
+</div>
+
+**Edit Batch Modal**
+
+**Descripción:** Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-batch-modal.png" alt="Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales." height="600">
+</div>
+
+**Custom Supplies List**
+
+**Descripción:** Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/custom-supplies-list.png" alt="Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos." height="600">
+</div>
+
+**Create Custom Supply**
+
+**Descripción:** Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/create-custom-supply.png" alt="Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad." height="600">
+</div>
+
+**Edit Custom Supply**
+
+**Descripción:** Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-custom-supply.png" alt="Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto." height="600">
+</div>
+
+**Transfer Batch Stock**
+
+**Descripción:** Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/transfer-batch-stock.png" alt="Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real." height="600">
+</div>
+
+**Device Directory**
+
+**Descripción:** Directorio principal de dispositivos que muestra el estado general de las básculas, alertas de inventario y condiciones ambientales mediante tarjetas informativas y una lista detallada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/device-directory-overview.png" alt="Directorio principal de dispositivos con resumen de estados y lista de básculas activas." height="600">
+</div>
+
+**Register Device Modal**
+
+**Descripción:** Interfaz de registro para nuevos dispositivos que permite capturar el alias de la báscula y su dirección MAC única para la integración en la red del establecimiento.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/register-device-modal.png" alt="Formulario de registro de dispositivo para ingresar alias y dirección MAC." height="600">
+</div>
+
+**Unassigned Device State**
+
+**Descripción:** Vista detallada de una báscula recién registrada en estado de espera, indicando que el hardware requiere la asignación de un lote de inventario para iniciar el monitoreo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/unassigned-scale-details.png" alt="Vista de detalle de dispositivo sin lote asignado y configuración bloqueada." height="600">
+</div>
+
+**Batch Assignment Modal**
+
+**Descripción:** Modal de configuración de pesaje donde se selecciona el producto (lote) y se definen los parámetros de peso unitario y tara para la calibración del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/assign-batch-modal.png" alt="Configuración de asignación de lote con campos para peso unitario, tara y puesta a cero." height="600">
+</div>
+
+**Edit Device Info**
+
+**Descripción:** Ventana de edición para modificar la información de identificación del dispositivo, permitiendo actualizar el alias y verificar la dirección MAC asignada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-scale-info-modal.png" alt="Interfaz de edición de información básica de la báscula y sincronización de red." height="600">
+</div>
+
+**Edit Thresholds Modal**
+
+**Descripción:** Panel de configuración de umbrales críticos para el control de inventario y límites ambientales de temperatura y humedad, con advertencia de impacto en reportes históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-thresholds-modal.png" alt="Edición de umbrales de stock, temperatura y humedad con advertencia de cambios retroactivos." height="600">
+</div>
+
+**Unlink Device Confirmation**
+
+**Descripción:** Pantalla de confirmación de seguridad para la desvinculación de dispositivos, requiriendo validación del ID para detener el rastreo de inventario y borrar datos de calibración.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/unlink-scale-confirmation.png" alt="Proceso de confirmación para desvincular un dispositivo de forma permanente." height="600">
+</div>
+
+**Active Device Details**
+
+**Descripción:** Vista de monitoreo activo de una báscula en funcionamiento, mostrando la fuerza de la señal, el tiempo desde la última actualización y el resumen de umbrales configurados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/active-scale-configuration.png" alt="Detalle de báscula en línea con indicadores de señal, lote asignado y umbrales de control." height="600"> 
+</div>
+
+**alerts-notifications-main**
+
+**Descripción:** Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/alerts-notifications-main.png" alt="Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa." height="600">
+</div>
+
+**confirm-stock-transfer-modal**
+
+**Descripción:** Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/confirm-stock-transfer-modal.png" alt="Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP." height="600">
+</div>
+
+**data-mismatch-discrepancy-detail**
+
+**Descripción:** Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/data-mismatch-discrepancy-detail.png" alt="Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor." height="600">
+</div>
+
+**hardware-offline-diagnostic-detail**
+
+**Descripción:** Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/hardware-offline-diagnostic-detail.png" alt="Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo." height="600">
+</div>
+
+**settings-general-configuration**
+
+**Descripción:** Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-general-configuration.png" alt="Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas." height="600">
+</div>
+
+**settings-profile-personal-details**
+
+**Descripción:** Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-personal-details.png" alt="Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta." height="600">
+</div>
+
+**settings-profile-business-info**
+
+**Descripción:** Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-business-info.png" alt="Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados." height="600">
+</div>
+
+**settings-subscription-billing**
+
+**Descripción:** Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-subscription-billing.png" alt="Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas." height="600">
+</div>
+
+**settings-branches-directory**
+
+**Descripción:** Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-directory.png" alt="Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas." height="600">
+</div>
+
+**settings-branches-create-modal**
+
+**Descripción:** Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-create-modal.png" alt="Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial." height="600">
+</div>
+
+**settings-branches-edit-modal**
+
+**Descripción:** Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-edit-modal.png" alt="Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo." height="600">
+</div>
+
+**settings-branches-delete-active-warning**
+
+**Descripción:** Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-active-warning.png" alt="Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos." height="600">
+</div>
+
+**settings-branches-delete-confirmation**
+
+**Descripción:** Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-confirmation.png" alt="Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos." height="600">
+</div>
+
 ### 5.4.3. Applications User Flow Diagrams
+
+#### User Flow 1: Registro y Onboarding
+
+**User Goal:** Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
+
+##### Happy Path
+
+El visitante accede a la pantalla de Login y hace clic en "Sign up". Es redirigido a la pantalla Register donde ingresa su email, contraseña y confirma la contraseña. Hace clic en "Create Account" y avanza a "How will you use Restock?" donde selecciona su rol (Restaurant Administrator o Retail Administrator). Hace clic en "Continue" y completa el formulario "Create your Account" con nombre, apellido, teléfono, ubicación y avatar. Hace clic en "Next: Business Details" y completa el "Registration - Business Profile" con nombre comercial, descripción, categorías y dirección. Hace clic en "Create Account" y es redirigido a "Subscription Plans" donde selecciona el plan Premium. Hace clic en "Select Plan" y es redirigido al "Payment Gateway" donde ingresa sus datos de tarjeta. El pago es procesado exitosamente y el usuario accede al Dashboard.
+
+
+![User Flow 1 - Happy Path Web](https://imgur.com/qCOMFK3.png)
+
+![User Flow 1 - Happy Path Mobile](https://imgur.com/32OLoEy.png)
+
+
+##### Unhappy Path
+
+El visitante intenta registrarse con un correo ya existente o deja campos obligatorios vacíos. El sistema muestra mensajes de error en los campos correspondientes y bloquea el avance hasta que los datos sean corregidos. Si en el Payment Gateway los datos de tarjeta son inválidos, el sistema muestra un aviso de fallo en la transacción y bloquea el pago hasta que el usuario corrija la información.
+
+
+![User Flow 1 - Unhappy Path Web](https://imgur.com/w0ilFpl.png)
+
+![User Flow 1 - Unhappy Path Mobile](https://imgur.com/unYReLb.png)
+
+
+#### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
+
+**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Intiva.
+
+##### Happy Path
+
+El usuario accede a la pantalla Login, ingresa su email y contraseña correctos y hace clic en "Login". El sistema valida las credenciales y redirige al Dashboard principal.
+
+![User Flow 2 - Happy Path Web](https://imgur.com/WLtfwZY.png)
+
+![User Flow 2 - Happy Path Mobile](https://imgur.com/qHmQ3YJ.png)
+
+
+##### Unhappy Path
+
+El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el mensaje "Incorrect credentials. Please try again." El usuario hace clic en "Forgot your password?" y es redirigido a Reset Password donde ingresa su email y hace clic en "Send recovery code". Recibe un código de 6 dígitos en su correo, lo ingresa en la pantalla de verificación y establece una nueva contraseña válida para recuperar el acceso.
+
+![User Flow 2 - Unhappy Path Web](https://imgur.com/lsTwfc3.png)
+
+![User Flow 2 - Unhappy Path Mobile](https://imgur.com/oRD1Bbc.png)
+
+
+
+#### User Flow 3: Gestión de Insumos / Custom Supplies
+
+**User Goal:** Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario.
+
+##### Happy Path
+
+El administrador navega desde el Dashboard al módulo Inventory y accede a la sección Custom Supplies. Visualiza el catálogo con los insumos existentes. Hace clic en "+ Add Supply", se abre el modal "Create Custom Supply" donde selecciona la categoría, ingresa el nombre del insumo, la unidad de medida, capacidad mínima, máxima y marca si es perecible. Guarda los cambios y el nuevo insumo aparece en el catálogo. Para editar, hace clic en "Edit" sobre un insumo existente, se abre el modal "Edit Custom Supply" con los datos precargados, realiza los cambios y hace clic en "Update Supply".
+
+
+![User Flow 3 - Happy Path Web](https://imgur.com/b5BxBnj.png)
+
+![User Flow 3 - Happy Path Mobile](https://imgur.com/QtC4zEP.png)
+
+
+##### Unhappy Path
+
+El administrador deja campos obligatorios vacíos o ingresa valores inválidos en el modal "Create Custom Supply". El sistema bloquea el guardado y muestra mensajes de error en los campos correspondientes hasta que los datos sean corregidos.
+
+![User Flow 3 - Unhappy Path Web](https://imgur.com/5GCD8R1.png)
+
+![User Flow 3 - Unhappy Path Mobile](https://imgur.com/4KDJ6CR.png)
+
+
+#### User Flow 4: Gestión de Recetas
+
+**User Goal:** Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
+
+
+##### Happy Path
+
+El administrador accede al módulo Recipes desde el sidebar. Visualiza el Recipe Catalog con las recetas activas organizadas en Main Courses, Starters y Beverages. Hace clic en "+ Add Recipe", se abre el modal "Create New Recipe" donde ingresa el nombre, precio estimado y agrega ingredientes desde el inventario con sus cantidades. Hace clic en "Save Recipe" y la receta aparece en el catálogo. Al hacer clic en una receta accede al "Recipe Detail Builder" donde visualiza el costo estimado, precio de venta e ingredientes vinculados. Para editar, hace clic en "Edit Recipe", se abre el modal con los datos precargados, modifica los ingredientes o cantidades y hace clic en "Update Recipe".
+
+![User Flow 4 - Happy Path Web](https://imgur.com/H2U0c80.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una receta sin ingredientes o con cantidades inválidas. El sistema bloquea el guardado y muestra el mensaje de error correspondiente. Si decide eliminar una receta, aparece el modal "Delete Recipe?" con advertencia de que la acción es permanente. Si confirma haciendo clic en "Yes, delete recipe", la receta es eliminada del catálogo.
+
+
+![User Flow 4 - Unhappy Path Web](https://imgur.com/Wnwo46O.png)
+
+
+
+#### User Flow 5: Gestión de Kits / Combos
+
+**User Goal:** Como administrador retail, quiero configurar kits que agrupen productos individuales para ofrecer combos estandarizados y consultar su disponibilidad operativa según el stock real.
+
+##### Happy Path
+
+El administrador retail accede al módulo Kits desde el sidebar. Visualiza el Kits & Combos Catalog con los combos existentes. Hace clic en "+ Create Kit", se abre el modal "Create New Kit" donde sube una imagen, ingresa el nombre del kit, selecciona los productos desde el inventario con sus cantidades y hace clic en "Add Kit". El kit aparece en el catálogo. Al acceder al detalle del kit visualiza la disponibilidad operativa calculada según el stock de los componentes. Para editar, hace clic en "Edit Kit", modifica los componentes y hace clic en "Update Kit". Desde el módulo Sales, el administrador agrega el kit al Order Ticket, hace clic en "Log Sale & Update Stock" y el sistema registra la venta mostrando el modal "Sale Registered Successfully".
+
+
+![User Flow 5 - Happy Path Web](https://imgur.com/aLFOxY2.png)
+
+
+
+##### Unhappy Path
+
+El administrador intenta registrar una venta con un kit cuyos componentes no tienen stock físico suficiente. El sistema muestra el modal "Action Blocked: Insufficient Physical Inventory" indicando el componente faltante con el stock disponible vs el requerido. El administrador debe hacer clic en "Go to Restock from Stock" para ir al inventario y reponer el componente antes de poder completar la venta.
+
+
+![User Flow 5 - Unhappy Path Web](https://imgur.com/31DxN7R.png)
+
+
+#### User Flow 6: Gestión de Lotes (Batches) y Transferencia de Stock
+
+**User Goal:** Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y visualiza la vista de Batches con la lista de lotes activos, stock total, fechas de vencimiento y alertas. Hace clic en "+ Add Batch", se abre el modal "Add New Batch" donde selecciona el insumo, ingresa el stock inicial y la fecha de vencimiento y hace clic en "Add Batch". Para ver el detalle de un lote hace clic sobre él y se abre el modal "Batch Detail". Para editar hace clic en "Update Batch", modifica los campos en el modal "Edit Batch" y confirma los cambios. Para transferir stock hace clic en "Transfer Batch Stock", se abre el drawer "Stock Transfer" donde selecciona la sucursal origen, destino, el lote y la cantidad, y confirma la transferencia actualizando el stock de ambas sucursales.
+
+
+![User Flow 6 - Happy Path Web](https://imgur.com/neT8TRY.png)
+
+
+![User Flow 6 - Happy Path Mobile](https://imgur.com/MXuIxpP.png)
+
+
+##### Unhappy Path
+
+Si el administrador accede al inventario por primera vez sin insumos registrados, el sistema muestra la pantalla "Empty Inventory" con el mensaje "Your inventory is empty" y la opción de agregar el primer insumo haciendo clic en "+ Add First Supply". Si en el drawer de transferencia ingresa una cantidad mayor al stock disponible del lote, el sistema muestra el indicador en rojo y bloquea la confirmación hasta que se corrija la cantidad.
+
+
+![User Flow 6 - Unhappy Path Web](https://imgur.com/lb9bjQ8.png)
+
+
+![User Flow 6 - Unhappy Path Mobile](https://imgur.com/BztsoNr.png)
+
+
+
+#### User Flow 7: Conciliación de Discrepancias de Inventario
+
+**User Goal:** Como administrador del negocio, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
+
+
+##### Happy Path
+
+El administrador accede al módulo Inventory y selecciona la sección "Conciliation Tasks". Visualiza la lista de discrepancias activas con su nivel de criticidad. Hace clic en una discrepancia activa para acceder al "Discrepancy Detail" donde visualiza el stock digital, la lectura del smart scale y la gráfica de peso vs tiempo. Selecciona la causa de la discrepancia desde el dropdown, ingresa la justificación y hace clic en "Confirm & Apply Action". El sistema actualiza el inventario digital, cierra la tarea y registra el evento en el "Resolution History".
+
+
+![User Flow 7 - Happy Path Web](https://imgur.com/Tp0Slyz.png)
+
+
+##### Unhappy Path
+
+El administrador detecta que el smart scale reporta lecturas inconsistentes y hace clic en "Recalibrate Scale". Se abre el modal "Recalibrate Scale" con las opciones "Force Reset (Stay Calibrated)" o "Schedule On-site Visit Maintenance". Si el dispositivo no responde al reset, el sistema bloquea la confirmación y muestra error de conectividad. El administrador puede registrar la discrepancia como "Unresolved" con comentario o programar visita técnica mediante "Recalibrate & Create Discrepancy".
+
+
+![User Flow 7 - Unhappy Path Web](https://imgur.com/e0L6mW6.png)
+
+#### User Flow 8: Gestión de Dispositivos (Smart Scales)
+
+**User Goal:** Como administrador, quiero registrar y configurar los dispositivos de monitoreo de inventario en mis sucursales, para automatizar el seguimiento de stock y recibir alertas oportunas según los umbrales definidos.
+
+
+##### Happy Path
+
+El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
+
+
+![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
+
+
+![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
+
+
+
+##### Unhappy Path — Desvinculación de dispositivo activo
+
+El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
+
+
+![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
+
+![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
+
+
+#### User Flow 9: Gestión de Sucursales
+
+**User Goal:** Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
+
+
+##### Happy Path
+
+El administrador accede a Settings, Branch Management desde el sidebar. Visualiza las tarjetas de las sucursales activas con sus métricas de devices, staff y alerts. Hace clic en "+ Add New Branch" y se abre el drawer "Create New Branch" donde sube la foto de la instalación, ingresa el nombre, número de teléfono, dirección, ciudad, zip code y activa el Branch Status. Hace clic en "Save Branch" y la nueva sucursal aparece en el panel. Para editar, hace clic en "Manage Branch" de una sucursal existente, se abre el drawer "Edit Branch" con los datos precargados, realiza los cambios y hace clic en "Update Branch".
+
+![User Flow 9 - Happy Path Web](https://imgur.com/NDLjokQ.png)
+
+![User Flow 9 - Happy Path Mobile](https://imgur.com/YRUpB5y.png)
+
+
+##### Unhappy Path
+
+El administrador intenta guardar una nueva sucursal dejando campos obligatorios vacíos o con datos inválidos. El sistema bloquea el guardado en el drawer "Create New Branch" y muestra mensajes de error en los campos correspondientes hasta que la información sea corregida y completada.
+
+
+![User Flow 9 - Unhappy Path Web](https://imgur.com/DHtm8WS.png)
+
+![User Flow 9 - Unhappy Path Mobile](https://imgur.com/7Ge84z7.png)
+
+
 ## 5.5. Applications Prototyping
+
+En esta sección, se evidencian pruebas de uso del prototipo de la aplicación web y móvil. Además, se adjunta un video donde se usa el prototipo y las interacciones con el prototipo se basan en los User Flows descritos previamente.
+
+#### Prototipo de la aplicación web 
+
+<p align="center">
+  <img src="https://i.imgur.com/6o0juzg.png">
+
+
+Video demostrativo de la aplicación web: https://acortar.link/tcLixm
+
+
+#### Prototipo de la aplicación móvil
+
+<p align="center">
+  <img src="https://i.imgur.com/ey1iDmG.png">
+
+Video demostrativo de la aplicación móvil: https://acortar.link/uvTr3x
+
 ## 5.6. IoT Device Design
+
+### Diseño del dispositivo IoT
+
+Además del diseño de experiencia e interfaces de las aplicaciones convencionales, también es necesario detallar el diseño del dispositivo IoT del proyecto, el cual se encarga de tomar medidas de peso, temperatura y humedad del suministro que se encuentre almacenado.
+Por un lado, se utiliza la propuesta de 12 pasos para el diseño de dispositivos IoT hecha por Eulalia Balestrieri, Luca De Vito, Francesco Lamonaca, Francesco Picariello, Sergio Rapuano y Ioan Tudosa, la cual se basa en capacidades de suministro de energía y restricciones de retraso de tiempo (time-delay) que deba poseer el dispositivo.
+
+<div align="center">
+  <img src="https://i.imgur.com/KIXRbiB.png" alt="Flujo del diseño de dispositivos iot en 12 pasos"/>
+</div>
+
+#### Paso 1: Definición de los requisitos del sistema
+
+En este paso se toma en consideración los requisitos en general del sistema. Para que sean específicos y no redunden con pasos siguientes, se definen requisitos basados en la capacidad de suministro de energía del dispositivo y las restricciones de retraso de tiempo.
+
+<table>
+  <tr>
+    <th> Criterios </th>
+    <th> Especificación </th>
+  </tr>
+  <tr>
+    <td rowspan="3"> <strong> Capacidades de suministro de energía </strong> </td>
+    <td> <strong> Centro de operación: </strong> El sistema operará en entornos cerrados (más específicamente, en almacenes) de las tiendas retail y restaurantes donde se dispone de acceso constante a la red eléctrica comercial.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Entrada de alimentación: </strong> Se requiere una entrada de alimentación estándar (enchufe) que proporcione <strong> 5V DC </strong> con una capacidad de corriente mínima de <strong> 2 A </strong> para cubrir el consumo del microcontrolador y los sensores periféricos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Limitaciones: </strong> No se contempla el uso de baterías ni sistemas de recolección de energía (harvesting). </td>
+  </tr>
+  <tr>
+    <td rowspan="4"> <strong> Restricciones de time-delay </strong> </td>
+    <td> <strong> Sistema basado en eventos: </strong> El sistema operará bajo un modelo de programación reactiva (event-driven) para optimizar la eficiencia del procesamiento en el borde (Edge Analytics).  </td>
+  </tr>
+  <tr>
+    <td> <strong> Reacción ante cambios físicos: </strong> La detección de cambios físicos (cambios de peso ≥ 5–10 g) deberá activar una notificación inmediata con un tiempo de respuesta en el nodo no mayor a 300 ms. </td>
+  </tr>
+  <tr>
+    <td> <strong> Lectura de estado de salud: </strong> Para garantizar la calidad de servicio (QoS) y la detección de fallos de red, el sistema enviará un mensaje de estado ("heartbeat") cada 60 segundos en ausencia de eventos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Reacción ante eventos críticos: </strong> Ante un evento crítico (discrepancia detectada o temperatura fuera de rango), el sistema priorizará este paquete sobre el tráfico normal, garantizando una latencia end-to-end (sensor a nube) menor a 2 segundos para permitir una toma de decisiones en tiempo casi real por parte del administrador </td>
+  </tr>
+</table>
+
+#### Paso 2: Elección de la tipología de sistema IoT
+
+A continuación, se identifica la tipología adecuada para nuesto sistema IoT basándonos en las mismas características que el paso anterior (capacidad de suministro de energía y restricciones de time-delay).
+Esto significa, escoger una unión de estructuras definidas entre los dos parámetros mencionados (alimentado por red o batería y en tiempo real o con retraso), lo cual ayuda a enfocar mejor las decisiones de diseño en los próximos pasos.
+
+<table>
+  <tr>
+    <th> Parámetro de clasificación </th>
+    <th> Estructura definida </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Capacidades de suministro de energía </strong> </td>
+    <td> Alimentado por red (Network-powered) </td>
+    <td> Los dispositivos se instalarán en espacios cerrados (almacenes) con acceso a la red eléctrica comercial de la tienda o restaurante. </td>
+  </tr>
+  <tr>
+    <td> <strong> Restricción de retardo (time-delay) </strong> </td>
+    <td> High Delay (No Real-Time) </td>
+    <td> La aplicación permite latencias de segundos para la actualización de stock físico, no siendo una aplicación de seguridad crítica. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología Final </strong> </td>
+    <td> Network-powered IoT system </td>
+    <td> Clasificación estándar para sistemas alimentados por red sin restricciones críticas de tiempo. </td>
+  </tr>
+</table>
+
+#### Paso 3: Definición de requisitos para la capa física
+
+Luego, se definen los nodos, sensores y actuadores necesarios para el dispositivo. En este paso, no se entra en detalle de modelos de sensores o actuadores, sino que se detalla lo relacionado a la lectura de datos que realizan los sensores y la precisión de los actuadores.
+
+<table>
+  <tr>
+    <th> Parámetro </th>
+    <th> Definición </th>
+  </tr>
+  <tr>
+    <td> <strong> Número y tipos de nodos, sensores y actuators  </strong> </td>
+    <td>  
+- Se requiere 1 nodo IoT integral para el dispositivo (Smart Inventory Device). <br>
+- Sensores: 4 celdas de carga, 1 sensor digital de temperatura y 1 de humedad. <br>
+- Actuadores: 1 Display de tipo LCD para retroalimentación local al usuario </td>
+  </tr>
+  <tr>
+    <td> <strong> Target uncertainty, relacionada con las cantidades físicas medidas por cada sensor </strong> </td>
+    <td> 
+- El sensor de celda de carga debe tener una precisión máxima de ±0.05% F.S. (Full Scale). <br>
+- El sensor de temperatura debe tener una precisión máxima de ±0.5 °C (grados celsius). <br>
+- El sensor de humedad debe tener una precisión máxima de ±2% HR (humedad relativa) para detección de ambientes propensos a descomposición.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Target accuracy and precision de los actuadores </strong> </td>
+    <td> LCD: Garantizar una tasa de refresco de datos procesados (Edge) cada 1 segundo con integridad de caracteres del 100%, asegurando que la lectura física coincida con la telemetría enviada. </td>
+  </tr>
+  <tr>
+    <td> <strong> Processing Power para los algoritmos de procesamiento de datos que se implementarán en el nodo </strong> </td>
+    <td>  
+- Se requiere una memoria RAM de al menos 256 KB para manejar el stack de WiFi y el buffer de datos. <br>
+- Algoritmos: Implementación de Edge Analytics mediante: <br>
+  1) Filtro de promedio móvil para estabilizar el peso. <br>
+  2) Algoritmo de compensación térmica y tara automática basada en memoria no volátil (NVS).
+  </tr>
+</table>
+
+#### Paso 4: Definición de requisitos para la capa de intercambio de datos
+
+Continuando con el cuarto paso, aquí se define la forma en la que los datos son transportados, es decir, cómo viajan desde el dispositivo al gateway. Es por eso que, se definen restricciones de tiempo para el transporte, protocolos de comunicación y de red, la distancia entre nodos y gateway y qué tipo de seguridad se aplica a los datos para un traslado seguro.
+
+<table>
+  <tr>
+    <th> Parámetro </th>
+    <th> Definición </th>
+  </tr>
+  <tr>
+    <td> <strong> Máximo time-delay permitido </strong> </td>
+    <td> El retardo en la transmisión del paquete desde el nodo hasta el gateway no debe exceder los 500 ms para asegurar que la latencia end-to-end total se mantenga bajo los 2 segundos definidos en el Paso 1. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología de comunicación </strong> </td>
+    <td> Se requiere una comunicación inalámbrica (wireless) debido a la necesidad de moLilidad y facilidad de instalación en góndolas en tiendas retail y almacenes de restaurantes y tiendas retail, evitando el cableado estructurado costoso. </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipología de la red </strong> </td>
+    <td> Topología de estrella, donde cada dispositivo se comunica directamente con un punto de acceso (Access Point/Router) central. </td>
+  </tr>
+  <tr>
+    <td> <strong> Distancias de comunicación </strong> </td>
+    <td> Red local: el gateway y los dispositivos se encuentran en el mismo espacio físico. El sistema debe operar en un rango de 30 a 50 metros en interiores, considerando la penetración de obstáculos como estanterías metálicas o paredes de cocina. </td>
+  </tr>
+  <tr>
+    <td> <strong> Consumo de potencia máximo </strong> </td>
+    <td> 
+Se establece un límite de consumo máximo de 300 mA para la etapa de radio durante ráfagas de transmisión activa (Tx/Rx). Dado que el sistema es alimentado por red (network-powered), el objetivo de este límite es independiente del ahorro energético, centrándose exclusivamente en garantizar la estabilidad del bus de sensores y evitar caídas de tensión (brownouts). Este valor se mantiene dentro del Power Budget de 2000 mA definido en el Paso 1, permitiendo un margen de maniobra suficiente para el funcionamiento simultáneo de la lógica de control, los sensores de alta precisión y el actuador visual (LCD). </td>
+  </tr>
+  <tr>
+    <td> <strong> Tipo de criptografía de datos </strong> </td>
+    <td> 
+Se requiere el uso de TLS 1.2/1.3 para la comunicación nodo-nube y soporte para cifrado AES-256. El dispositivo debe ser compatible con protocolos de seguridad WPA2/WPA3 para su integración en la infraestructura WiFi del cliente. Esto garantiza la integridad de los datos de inventario y evita interceptaciones en la red del restaurante. </td>
+  </tr>
+</table>
+
+#### Paso 5: Definición de requisitos para la capa de información
+
+En el quinto paso, empezamos a definir quienes serán los usuarios finales que usarán el dispositivo. Además, se inicia la detección de posibles servicios que cada usuario requiere para el ecosistema IoT de Restock. Por otro lado, se asocia cada servicio identificado con la información necesaria para satisfacer el servicio propuesto.
+
+<table>
+  <tr>
+    <th> Criterios </th>
+    <th> Especificación </th>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Definición de usuarios finales </strong> </td>
+    <td> <strong> Operador del sistema: </strong> son los encargados del mantenimiento de dispositivos y de su estado.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Administrador de tienda retail o restaurante: </strong> usuarios que gestionan el inventario de sus productos y su bienestar para evitar pérdidas y tener un control de las operaciones del inventario.  </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Servicios por usuario final identificado </strong> </td>
+    <td> <strong> Operador del sistema: </strong> supervisión del estado del dispositivo/nodo (uptime, conectividad).  </td>
+  </tr>
+  <tr>
+    <td> 
+<strong> Administrador de tienda retail o restaurante: </strong> configuración de producto asignado al dispositivo, monitoreo del estado de un producto (frescura ambiental), recibir alertas por estado crítico del producto (quiebre de stock o degradación ambienta), monitoreo de desfase entre stock físico y digital. </td>
+  </tr>
+  <tr>
+    <td rowspan="5"> <strong> Necesidades de información para satisfacer cada servicio identificado </strong> </td>
+    <td> <strong> Supervisión del estado del dispositivo: </strong> se necesitan datos de salud que envían los dispositivos como temperatura de CPU, voltaje actual (reporte de uptime y estabilidad de voltaje del nodo). </td>
+  </tr>
+  <tr>
+    <td> <strong> Configuración de asignación de producto al dispositivo: </strong> se necesitan los datos del producto asignado como peso aproximado por producto, límites de stock y nombre. </td>
+  </tr>
+  <tr>
+    <td> <strong> Monitoreo del estado de productos: </strong> se necesita el peso leído por las celdas de carga y el peso aproximado del producto configurado y los datos leídos por los sensores de temperatura y humedad. </td>
+  </tr>
+  <tr>
+    <td> <strong> Generación de alertas por eventos críticos detectados: </strong> se necesitan los límites de stock, temperatura y humedad configurados por el usuario para evaluar el dato leído del dispositivo. </td>
+  </tr>
+  <tr>
+    <td> <strong> Supervisión de desafe entre stock físico y digital: </strong> se necesita el valor convertido de kilogramos a "unidades de producto" tras aplicar el factor de peso unitario y el dato del stock digital almacenado en la nube. </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Arquitectura de procesamiento (Nodo vs. Nube) </strong> </td>
+    <td> <strong> En el Gateway: </strong> Filtrado de ruido (promedio móvil), detección de eventos de cambio de peso asíncronos y evaluación del estado de salud de los dispositivos. </td>
+  </tr>
+  <tr>
+    <td> <strong> En Cloud: </strong> Comparación del stock físico recibido con la base de datos de inventario digital y gestión de logs históricos </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Evaluación de complejidad computacional </strong> </td>
+    <td> <strong> Gateway: </strong> Baja complejidad (algoritmos lineales de filtrado y comparación de umbrales), ideal para el microcontrolador a seleccionar. </td>
+  </tr>
+  <tr>
+    <td> <strong> Nube: </strong> Complejidad media (consultas a base de datos en tiempo real y orquestación de notificaciones push/correo). </td>
+  </tr>
+  <tr>
+    <td rowspan="2"> <strong> Tiempo de procesamiento requerido </strong> </td>
+    <td> <strong> Información de stock: </strong> Generación del dato integrado en menos de 700 ms tras recibir el evento del nodo.  </td>
+  </tr>
+  <tr>
+    <td> <strong> Alertas por eventos críticos: </strong> Disparo de notificación en menos de 1 segundo tras la detección de la anomalía. </td>
+  </tr>
+</table>
+
+#### Paso 6: Definición de requisitos para la capa de servicios de aplicación
+
+Ya habiendo definido los servicios en el anterior paso y la información necesaria para cumplir con estos servicios, en este paso se definen los requisitos para dichos servicios.
+Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados. 
+
+<table>
+  <tr>
+    <th> Requisitos </th>
+    <th> Especificación de requisitos asociados </th>
+    <th> Complejidad de Algoritmos en Disp. Usuario </th>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de monitoreo de estado de un producto </strong> </td>
+    <td>  
+- Uso del Display LCD en el dispositivo para mostrar el stock de un producto asociado. <br>
+- Uso del Display LCD en el dispositivo para mostrar la temperatura y humedad actual del producto asociado. <br>
+- Interfaz gráfica en las aplicaciones web y móvil para visualizar el producto y su información de estado actual.
+    </td>
+    <td> Baja: Renderizado de datos en tiempo real recibidos desde el middleware. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de resumen de información recolectada </strong> </td>
+    <td>  
+- Interfaz gráfica en las aplicaciones web y móvil donde se visualizan las alertas generadas recientemente. <br>
+- Gráficos que muestren la información de estado de un producto (variación de stock, temperatura y humedad).
+    </td>
+    <td> Media: Procesamiento de datos históricos y renderizado de bibliotecas gráficas. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de configuración de dispositivos </strong> </td>
+    <td>  
+- Interfaz gráfica en la aplicación web donde el usuario registra un dispositivo a su nombre con el uso de un código especial asignado a dicho dispositivo. <br>
+- Interfaz gráfica en la aplicación web donde el usuario configura el dispositivo asignándole un producto registrado.
+    </td>
+    <td> Baja: Gestión de formularios estándar y envío de comandos CRUD. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de configuración de información sobre productos </strong> </td>
+    <td>  
+- Interfaz gráfica en las aplicaciones web y móvil donde el usuario puede configurar información del producto como nombre y peso promedio. <br>
+- Opción de asignar límites de stock a un producto. <br>
+- Opción de definir una temperatura y humedad adecuada para el producto registrado.
+    </td>
+    <td> Baja: Interfaz de entrada de datos y actualización de parámetros en la nube. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de mantenimiento de dispositivos </strong> </td>
+    <td>  
+- Envío automático de alertas ante anomalías técnicas detectadas (caídas de voltaje o pérdida de conexión). <br>
+- Módulo de Reporte: Formulario simple en el dashboard para que el administrador registre o reporte fallas manuales del nodo en la aplicación Web.
+    </td>
+    <td> Baja: Lógica de activación de disparadores (triggers) de eventos y manejo de formularios. </td>
+  </tr>
+  <tr>
+    <td> <strong> Servicio de alertas por estado de productos </strong> </td>
+    <td>  
+- Panel donde se reunen las alertas generadas por el sistema en las aplicaciones Web y Móvil. <br>
+- Cuando algún dato leído por el dispositivo esté fuera de los límites definidos, se alerta al usuario.
+    </td>
+    <td> Baja: Lógica de recepción y visualización de notificaciones push. </td>
+  </tr>
+</table>
+
+#### Paso 7: Elección de la arquitectura de las capas de intercambio de datos y de información
+
+Con los requisitos más claros, se elige la arquitectura final para las capas de intercambio de datos e integración de información. Además, se analizan las restricciones de tiempo de los pasos anteriores para evaluar la arquitectura elegida.
+
+**Selección de arquitectura**
+
+<table>
+  <tr>
+    <th> Capa </th>
+    <th> Arquitectura seleccionada </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Intercambio de Datos </strong> </td>
+    <td> Arquitectura basada en Nodo Concentrador (SBC) </td>
+    <td> 
+Se selecciona un concentrador basado en una Single Board Computer (SBC) para centralizar la recepción de datos provenientes de los nodos sensores IoT. Este concentrador actúa como capa Edge, recibiendo lecturas de peso, temperatura, humedad y estado del dispositivo, para luego validarlas, procesarlas y publicar la telemetría procesada hacia la nube mediante MQTT sobre WiFi. Esto permite una gestión local más robusta, desacopla los nodos sensores del backend y facilita la comunicación segura mediante TLS/SSL planteada en el Paso 4.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Integración de Información </strong> </td>
+    <td> Arquitectura Monolítica en la Nube </td>
+    <td>
+Para los servicios definidos en el Paso 5, se opta por un monolito desarrollado en Spring Boot con MongoDB. Según la fuente, esta capa debe asegurar la interoperabilidad y protección de datos. Un monolito centraliza el procesamiento de inventario y la lógica de negocio, facilitando el mantenimiento y despliegue inicial del sistema Restock.
+    </td>
+  </tr>
+</table>
+
+**Análisis de retardo en la comunicación en la arquitectura**
+
+<table>
+  <tr>
+    <th> Segmento del flujo de datos </th>
+    <th> Acción técnica </th>
+    <th> Retardo estimado (ms) </th>
+    <th> Justificación </th>
+  </tr>
+  <tr>
+    <td> <strong> Nodo → Concentrador (Edge) </strong> </td>
+    <td> Comunicación Local (WiFi Direct/Serial) </td>
+    <td> 200 ms </td>
+    <td> Los nodos sensores envían los datos de telemetría al concentrador local para su procesamiento inicial. </td>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Concentrador (Edge) → Broker MQTT </strong> </td>
+    <td> Publicación vía MQTT/TLS </td>
+    <td> 400 ms </td>
+    <td> El Edge procesa el dato y lo publica en el broker bajo cifrado para asegurar la privacidad. </td>
+  </tr>
+  <tr>
+    <td> <strong> Broker MQTT → Cloud </strong> </td>
+    <td> Suscripción y Procesamiento </td>
+    <td> 300 ms </td>
+    <td> El servidor recibe el mensaje y actualiza el estado del stock en la base de datos. </td>
+  </tr>
+  <tr>
+    <td> <strong> Cloud  → Aplicación </strong> </td>
+    <td> Comunicación via API/HTTPS </td>
+    <td> 200 ms </td>
+    <td> El usuario consulta el estado vía API HTTPS o recibe la alerta de inventario crítico. </td>
+  </tr>
+  <tr>
+    <td> <strong> Total Estimado (End-to-End) </strong> </td>
+    <td> Latencia total de transporte </td>
+    <td> 1500 ms (1.5s) </td>
+    <td> El tiempo acumulado es menor al límite de 2.00 s definido en la QoS del Paso 1. </td>
+  </tr>
+</table>
+
+#### Paso 8: Elección de sensores y actuadores
+
+Al tener definida la arquitectura y la comunicación entre nodos y gateway, es momento de elegir los sensores y actuadores necesarios que cumplan con los requisitos identificados. Estos requisitos se centran en incertidumbre máxima, dato a leer y capacidad de suministro de energía.
+
+<table>
+  <tr>
+    <th> Sensor o actuador identificado </th>
+    <th> Modelo elegido </th>
+    <th> Justificación técnica </th>
+  </tr>
+  <tr>
+    <td> <strong> Medición de peso </strong> </td>
+    <td> Celda de carga WSS-5KG + Módulo HX711 </td>
+    <td> 
+La celda de carga permite un rango de hasta 5kg, ideal para productos de restaurante. El HX711 actúa como un convertidor analógico-digital (ADC) de 24 bits, lo que garantiza una alta resolución metrológica para detectar variaciones mínimas de stock. Eléctricamente, opera entre 2.6V y 5.5V, siendo compatible con los niveles lógicos del nodo.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Medición de Temperatura y Humedad </strong> </td>
+    <td> Sensor Digital DHT22 (AM2302) </td>
+    <td>
+Se elige sobre el DHT11 por su mayor precisión (±0.5°C frente a ±2°C) y un rango de humedad más amplio (0-100%). Proporciona una señal digital mediante un bus de un solo cable, lo que facilita la integración y reduce el ruido eléctrico en la medición. Además, es más preciso que su versión anterior el DHT11 para estas mediciones.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Interfaz Visual Local (Actuador) </strong> </td>
+    <td> Display LCD 1602A con Módulo I2C (PCF8574) </td>
+    <td>
+Este actuador de información permite visualizar el estado del stock "in situ" sin necesidad de la app. El uso del protocolo I2C es una decisión eléctrica clave, ya que reduce el uso de pines GPIO de 6 a solo 2 (SDA/SCL), optimizando los recursos del microcontrolador.
+    </td>
+  </tr>
+</table>
+
+#### Paso 9: Elección del microcontrolador y transceptores de radio del dispositivo
+
+Previamente se definieron los sensores y actuadores que se encargan de actuar ante eventos del entorno y ante comandos, respectivamente. Sin embargo, ahora es momento de definir cómo es que estos datos van a ser comunicados hacia el gateway.
+Es por ello, que, se define, a su vez, el modelo del 'cerebro' del dispositivo y el gateway.
+
+<table>
+  <tr>
+    <th> Nodo asignado </th>
+    <th> Modelo seleccionado </th>
+    <th> Transceptor de radio </th>
+    <th> Justificación </th>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Sensor (Dispositivo) </strong> </td>
+    <td> ESP32 DevKitV1 </td>
+    <td> Wi-Fi 802.11 b/g/n (Integrado) </td>
+    <td> 
+Se selecciona este System-on-a-Chip (SoC) por su bajo consumo en modos de suspensión y su doble núcleo de 240 MHz, suficiente para el filtrado de datos. Cuenta con los periféricos necesarios: pines GPIO para el DHT22 y bus I2C para el LCD. Opera a 3.3V, compatible con los sensores elegidos en el Paso 8. Se encarga de controlar el hardware del dispositivo como sensores y actuadores. Además, es el encargado de transmitir los datos leídos al gateway.
+    </td>
+  </tr>
+  <tr>
+    <td> <strong> Nodo Concentrador (Gateway) </strong> </td>
+    <td> Raspberry Pi 4 Model B </td>
+    <td> Wi-Fi Dual Band + Bluetooth 5.0 </td>
+    <td> 
+Al ser una Single Board Computer (SBC), ofrece una potencia de 1.5 GHz y hasta 4GB de RAM, superando ampliamente a un microcontrolador para tareas de Edge Analytics. Su capacidad de procesamiento permite gestionar el Broker MQTT local y la comunicación segura hacia la nube sin cuellos de botella. Se encarga de la recepción de datos de los dispositivos asignados y procesar toda la información para obtener un conjunto de datos limpios y útiles para los usuarios finales.
+    </td>
+  </tr>
+</table>
+
+#### Paso 10: Definición de los algoritmos de procesamiento de datos
+
+A continuación, se definen los algoritmos necesarios para procesar los datos en las diversas capas del ecosistema IoT.
+Para este caso, se definen algoritmos que se ejecutan en el nodo (ESP32), en el gateway y en la nube. Además, se brinda una breve descripción de la responsabilidad del algoritmo a implementar.
+
+<table>
+  <tr>
+    <th> Algoritmo a implementar </th>
+    <th> Responsabilidad </th>
+    <th> Ubicación </th>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de calibración (Calibración y Tara) </strong> </td>
+    <td> Calibrar los datos leídos por los sensores antes de enviarlos al gateway. Ejecuta la rutina de ajuste del sensor HX711 usando un peso de referencia para eliminar el offset inicial. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de filtrado de Ruido (Sampling) </strong> </td>
+    <td> Implementa un método de muestreo consciente de la energía para promediar lecturas y eliminar fluctuaciones eléctricas en los sensores de temperatura y peso. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de normalización de Datos </strong> </td>
+    <td> Convierte las lecturas de bits del ADC (HX711) y el sensor DHT22 a unidades del SI (kg, °C, %) antes de su transmisión inalámbrica. </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de compensación </strong> </td>
+    <td> Tomando en cuenta la incertidumbre de los datos leídos por los sensores, se debe realizar un cálculo aproximado del valor real del dato sin la incertidumbre. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de transformación a stock </strong> </td>
+    <td> Para el caso del peso de los productos, se aplica una función de división entre el peso total recibido y el peso unitario configurado para el insumo, derivando las existencias reales en unidades para enviar únicamente el dato consolidado hacia la nube. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de validación de límites </strong> </td>
+    <td> Tomar la configuración del producto asignado, leer sus límites definidos y validarlos con el dato procesado para evaluar la generación de alertas sobre el estado del producto. </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de verificación de salud de dispositivos </strong> </td>
+    <td> Verificar los límites para temperatura de CPU y voltaje permitido para determinar el correcto estado y funcionamiento de los dispositivos.  </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de sincronización de inventario </strong> </td>
+    <td> Ejecuta la lógica de comparación entre el stock calculado físicamente y el registro digital en la base de datos para detectar discrepancias. </td>
+    <td> En la nube </td>
+  </tr>
+</table>
+
+#### Paso 11: Análisis del esfuerzo computacional de los algoritmos
+
+Luego, se analiza el esfuerzo computacional de los algoritmos elegidos. Es por ello, que elegimos como métricas clave la complejidad según Big O del algoritmo, el tiempo de ejecución y el consumo de memoria,
+
+<table>
+  <tr>
+    <th> Algoritmo a implementar </th>
+    <th> Complejidad (Big O) </th>
+    <th> Uso en Memoria </th>
+    <th> Tiempo de ejecución (estimación) </th>
+    <th> Ubicación </th>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de calibración (Calibración y Tara) </strong> </td>
+    <td> O(N) </td>
+    <td> Muy Bajo (< 1 KB) </td>
+    <td> 100 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de filtrado de Ruido (Sampling) </strong> </td>
+    <td> O(N) </td>
+    <td> Bajo (~2 KB) </td>
+    <td> 50 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de normalización de Datos </strong> </td>
+    <td> O(1) </td>
+    <td> Mínimo (Bytes) </td>
+    <td> 10 ms </td>
+    <td> En el Nodo Sensor (ESP32) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de compensación </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (< 1 KB) </td>
+    <td> 40 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de transformación a stock </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (< 1 KB) </td>
+    <td> 30 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de validación de límites </strong> </td>
+    <td> O(1) </td>
+    <td> Mínimo (Bytes) </td>
+    <td> 20 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de verificación de salud de dispositivos </strong> </td>
+    <td> O(1) </td>
+    <td> Bajo (~1 KB) </td>
+    <td> 50 ms </td>
+    <td> En el Gateway (Edge) </td>
+  </tr>
+  <tr>
+    <td> <strong> Algoritmo de sincronización de inventario </strong> </td>
+    <td> O(1) </td>
+    <td> Moderado (~10 KB) </td>
+    <td> 200 ms </td>
+    <td> En la nube </td>
+  </tr>
+</table>
+
+**Justificación Técnica de los Parámetros**
+
+**1. Justificación de Complejidad (***O***):**
+
+- Algoritmos *O*(*N*): La Calibración y el Filtrado (Sampling) requieren procesar un conjunto de *N* muestras consecutivas para promediar el peso y eliminar el ruido eléctrico. El esfuerzo crece linealmente con el número de muestras seleccionadas (ej. 100 muestras).
+- Algoritmos *O*(1): Procesos como la Normalización, Transformación y Validación consisten en operaciones aritméticas directas o comparaciones de umbrales que no dependen del volumen de datos almacenados, ejecutándose en tiempo constante.
+
+**2. Justificación de los Tiempos de Ejecución:**
+
+- Capacidad del ESP32: Con una velocidad de reloj de 240 MHz, el microcontrolador puede realizar millones de instrucciones por segundo. Tiempos de 10 ms a 100 ms son valores conservadores que incluyen el tiempo de adquisición del sensor HX711 y el procesamiento básico, garantizando que el nodo no sea un cuello de botella.
+- Capacidad del Edge (Raspberry Pi): Al ser una Single Board Computer (SBC) de 1.5 GHz con arquitectura ARM, la ejecución de lógica de negocio (Transformación y Salud) en milisegundos es sumamente eficiente, permitiendo realizar Edge Analytics en tiempo real sin degradar el sistema.
+- Impacto en la QoS: La sumatoria de estos tiempos de procesamiento local (aprox 500 ms en total) es una fracción menor del presupuesto de 2 segundos de QoS definido en el Paso 1, dejando el margen necesario para la latencia de red y el transporte de datos analizado en el Paso 7.
+
+**3. Uso de Memoria:**
+
+- El uso de memoria es Bajo en los nodos periféricos porque se manejan tipos de datos primitivos (float, int) y buffers de muestreo pequeños, lo que optimiza los 520 KB de RAM del ESP32.
+
+#### Paso 12: Definición de la interfaz de usuario gráfica 
+
+En esta etapa final se definen los elementos visuales basándose en los servicios de información integrada y comandos operativos requeridos por el usuario final. A continuación, se detalla el módulo y su responsabilidad en el sistema:
+
+<table>
+  <tr>
+    <th> Servicio/Módulo (Tipología) </th>
+    <th> Plataformas de Interfaz </th>
+    <th> Elementos Clave </th>
+    <th> Justificación Funcional (Metodología) </th>
+  </tr>
+  <tr>
+    <td> <strong> Monitoreo de Salud del Dispositivo </strong> </td>
+    <td> Web / Mobile / LCD local </td>
+    <td> Indicadores de conectividad, batería y alertas de falla técnica. </td>
+    <td> Permite visualizar el autodiagnóstico y reconocer automáticamente fallas del hardware. </td>
+  </tr>
+  <tr>
+    <td> <strong> Inventario Físico en Tiempo Real </strong> </td>
+    <td> Web / Mobile </td>
+    <td> Monitor de stock en masa (kg) y unidades calculadas. </td>
+    <td> Proporciona la información integrada y comprimida necesaria para la operación del restaurante. </td>
+  </tr>
+  <tr>
+    <td> <strong> Configuración de Hardware </strong> </td>
+    <td> Web </td>
+    <td> Panel para asignar productos a sensores y ajustar pesos unitarios. </td>
+    <td> Permite el envío de comandos operativos para el control remoto de los recursos (Resource Control). </td>
+  </tr>
+  <tr>
+    <td> <strong> Notificaciones  </strong> </td>
+    <td> Web / Mobile </td>
+    <td> Avisos visuales de stock crítico o temperatura. </td>
+    <td> Cumple con la prioridad de QoS para servicios que requieren procesamiento y reacción en tiempo real. </td>
+  </tr>
+  <tr>
+    <td> <strong> Análisis de Históricos </strong> </td>
+    <td> Web </td>
+    <td> Gráficas de tendencias de consumo y reportes de discrepancias. </td>
+    <td> Utiliza la capacidad de almacenamiento y procesamiento del middleware para mostrar datos históricos </td>
+  </tr>
+  </tr>
+</table>
+
+### Diseño físico y de circuito del dispositivo IoT
+
+Por otro lado, se realiza una propuesta de diseño físico y del circuito del dispositivo IoT, el cual ayuda a tener una idea de los componentes a usar y cómo se conectan con el ESP32 central del dispositivo.
+
+### Flujos de interacción del dispositivo IoT
+
+Finalmente, se diseñan diagramas que explican los flujos de interacción para el dispositivo IoT, los cuales incluyen la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
