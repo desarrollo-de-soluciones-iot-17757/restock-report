@@ -819,6 +819,23 @@ A continuación, se muestra una tabla que contiene la información sobre los **c
 
 #### 6.2.1.7. Software Deployment Evidence for Sprint Review
 
+Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
+
+En el caso de la Landing Page, se confirmó su despliegue continuo en Vercel, plataforma elegida para hospedar el sitio institucional del proyecto. Esta publicación permitió validar que el repositorio se encontraba correctamente vinculado al entorno de producción y que cada actualización podía reflejarse de manera automática, asegurando así la difusión pública de la propuesta de valor de Restock.
+
+<p align="center">
+  <img src="https://i.ibb.co/dJQJhjjc/landingpage-vercel.png" alt="Despliegue de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+De forma complementaria, la Web Application también fue desplegada en Vercel como parte del flujo de integración continua definido para este sprint. Esta publicación permitió comprobar la disponibilidad del frontend administrativo y la correcta exposición de las funcionalidades implementadas durante la iteración, tales como la administración de perfiles, inventarios y otros módulos iniciales del sistema.
+
+<p align="center">
+  <img src="https://i.ibb.co/93bgYPbQ/webapp-vercel.png" alt="Despliegue de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto.
+
+
 #### 6.2.1.8. Team Collaboration Insights during Sprint
 
 ### 6.2.2. Sprint 2
