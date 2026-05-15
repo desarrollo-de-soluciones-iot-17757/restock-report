@@ -1022,3 +1022,9 @@ Por otro lado, se realiza una propuesta de diseño físico y del circuito del di
 ### Flujos de interacción del dispositivo IoT
 
 Finalmente, se diseñan diagramas que explican los flujos de interacción para el dispositivo IoT, los cuales incluyen la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
+
+En la siguiente imagen elaborada en Cirkit Deisgner, se muestra el prototipo físico del dispositivo IoT, el cual incluye la ubicación de los sensores, el display LCD y el microcontrolador ESP32. Además, se muestran las conexiones eléctricas entre los componentes para una mejor visualización del diseño del circuito.
+
+<div align="center">
+  <img src="https://i.ibb.co/pB2Gny8J/image.png" alt="Prototipo físico del dispositivo IoT"/>
+</div>
