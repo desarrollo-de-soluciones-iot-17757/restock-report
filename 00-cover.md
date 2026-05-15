@@ -347,6 +347,222 @@
     <td> Julio Castro </th>
     <td> Se añadió la sección del Collaboration Insights. </th>
   </tr>
+  <tr>
+    <td> 1.93 </th>
+    <td> 26/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del Collaboration Insights. </th>
+  </tr>
+  <tr>
+    <td> 2.01 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del General Style Guidelines </th>
+  </tr>
+  <tr>
+    <td> 2.02 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Web, Mobile and IoT Style Guidelines. </th>
+  </tr>
+  <tr>
+    <td> 2.03 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se corrigieron las historias de usuario. </th>
+  </tr>
+  <tr>
+    <td> 2.04 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se actualizó el Product Backlog con los cambios aplicados en las historias de usuario </th>
+  </tr>
+  <tr>
+    <td> 2.05 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Software Development Environment Configuration. </th>
+  </tr>
+  <tr>
+    <td> 2.06 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Source Code Management. </th>
+  </tr>
+  <tr>
+    <td> 2.07 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se actualizó el event storming agregando detalles de lectura de humedad y temperatura. </th>
+  </tr>
+  <tr>
+    <td> 2.08 </th>
+    <td> 06/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se corregió la sección de Candidate Context Discovery según los cambios efectuados en el event storming. </th>
+  </tr>
+  <tr>
+    <td> 2.09 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el Context Mapping agregando los contextos de Tracking, Device Management y Analytics. </th>
+  </tr>
+  <tr>
+    <td> 2.091 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se diseñaron nuevos Bounded Contexts Canvasses para los nuevos contextos agregados. </th>
+  </tr>
+  <tr>
+    <td> 2.10 </th>
+    <td> 07/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la descripción de los 12 pasos en la sección del IoT Device Design. </th>
+  </tr>
+  <tr>
+    <td> 2.11 </th>
+    <td> 09/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió la sección del Lean UX Assumptions. </th>
+  </tr>
+  <tr>
+    <td> 2.12 </th>
+    <td> 09/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió la sección del Lean UX Hypothesis Statements. </th>
+  </tr>
+  <tr>
+    <td> 2.13 </th>
+    <td> 10/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se corrigió el diagrama C4 de despliegue </th>
+  </tr>
+  <tr>
+    <td> 2.14 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Organization Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.15 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Labeling Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.16 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de SEO Tags and Meta Tags. </th>
+  </tr>
+  <tr>
+    <td> 2.17 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Searching Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.18 </th>
+    <td> 11/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección de Navigation Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.20 </th>
+    <td> 11/05/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Web and Mobile Applications Wireframes </th>
+  </tr>
+  <tr>
+    <td> 2.21 </th>
+    <td> 11/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Wireflow Diagrams. </th>
+  </tr>
+  <tr>
+    <td> 2.22 </th>
+    <td> 11/05/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Web and Mobile Applications Mockups </th>
+  </tr>
+  <tr>
+    <td> 2.23 </th>
+    <td> 11/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección de Userflow Diagrams. </th>
+  </tr>
+  <tr>
+    <td> 2.24 </th>
+    <td> 11/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Web and Mobile Applications Prototypes. </th>
+  </tr>
+  <tr>
+    <td> 2.30 </th>
+    <td> 11/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Source Code Style Guide & Conventions. </th>
+  </tr>
+  <tr>
+    <td> 2.31 </th>
+    <td> 11/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Software Deployment Configuration. </th>
+  </tr>
+  <tr>
+    <td> 2.32 </th>
+    <td> 11/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Sprint Planning 1. </th>
+  </tr>
+  <tr>
+    <td> 2.33 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de la matriz de Aspect Leaders & Collaborators. </th>
+  </tr>
+  <tr>
+    <td> 2.34 </th>
+    <td> 12/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Sprint Backlog 1. </th>
+  </tr>
+  <tr>
+    <td> 2.41 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Development Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.42 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Execution Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.43 </th>
+    <td> 14/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección de Deployment Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.44 </th>
+    <td> 14/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de Team Collaboration Insights for Sprint 1 Review. </th>
+  </tr>
+  <tr>
+    <td> 2.50 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadieron conclusiones según el segundo avance del proyecto. </th>
+  </tr>
+  <tr>
+    <td> 2.51 </th>
+    <td> 14/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió nueva Bibliografía complementando lo progresado en el segundo avance. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
