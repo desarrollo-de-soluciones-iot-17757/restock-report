@@ -1,4 +1,5 @@
 # Capítulo V: Solution UI/UX Design
+
 ## 5.1. Style Guidelines
 
 En esta sección se presentan las Style Guidelines, entendidas como un conjunto de principios y criterios que orientan la creación de productos digitales de manera coherente, funcional y visualmente consistente. Su propósito es asegurar que cada elemento de la interfaz mantenga uniformidad en la experiencia del usuario, facilitando la legibilidad, la accesibilidad y el reconocimiento de la identidad del producto. A través de estas pautas, se establecen reglas sobre tipografía, colores, espaciado, componentes e interacciones, promoviendo una comunicación clara y una experiencia ordenada, intuitiva y profesional.
@@ -23,13 +24,13 @@ Investigaciones recientes señalan que las interfaces que emplean paletas cromá
 
 El verde esmeralda (`#10B981`) y sus variantes constituyen el color principal del sistema. Esta elección responde a su asociación semántica con crecimiento, eficiencia y control, conceptos directamente alineados con la propuesta de valor de Restock como plataforma de gestión de inventarios. A nivel perceptivo, los tonos verdes de media saturación favorecen la concentración y reducen la fatiga visual en sesiones de uso prolongado, lo que resulta especialmente relevante para administradores que interactúan con dashboards y métricas durante largas jornadas operativas.
 
-| Nombre          | Hex       | Uso principal                                                              | Justificación                                                            |
-|-----------------|-----------|----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Verde Esmeralda | `#10B981` | Botones primarios, barras de navegación, estados activos, íconos de acción | Color de marca principal; contraste mínimo 4.5:1 sobre blanco |
-| Verde Profundo  | `#065F46` | Encabezados, textos sobre fondo claro, estados hover en elementos primarios | Mayor oscuridad para jerarquía tipográfica y contraste AAA               |
-| Verde Medio     | `#059669` | Confirmaciones, indicadores de éxito, badges de estado activo              | Variante funcional para señalización positiva del sistema                |
-| Verde Claro     | `#6EE7B7` | Fondos de sección destacada, chips informativos, estados seleccionados     | Variante de baja saturación para fondos y contenedores secundarios       |
-| Verde Menta     | `#D1FAE5` | Fondos sutiles, zonas de descanso visual, tarjetas informativas            | Proporciona respiro visual sin competir con elementos interactivos       |
+| Nombre          | Hex         | Uso principal                                                                 | Justificación                                                      |
+| --------------- | ----------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Verde Esmeralda | `#10B981` | Botones primarios, barras de navegación, estados activos, íconos de acción | Color de marca principal; contraste mínimo 4.5:1 sobre blanco      |
+| Verde Profundo  | `#065F46` | Encabezados, textos sobre fondo claro, estados hover en elementos primarios   | Mayor oscuridad para jerarquía tipográfica y contraste AAA        |
+| Verde Medio     | `#059669` | Confirmaciones, indicadores de éxito, badges de estado activo                | Variante funcional para señalización positiva del sistema         |
+| Verde Claro     | `#6EE7B7` | Fondos de sección destacada, chips informativos, estados seleccionados       | Variante de baja saturación para fondos y contenedores secundarios |
+| Verde Menta     | `#D1FAE5` | Fondos sutiles, zonas de descanso visual, tarjetas informativas               | Proporciona respiro visual sin competir con elementos interactivos  |
 
 - **Jerarquía visual:** El tono más oscuro ancla la estructura de navegación, mientras los tonos más claros señalizan niveles de interacción progresivos, reduciendo la carga cognitiva al distinguir zonas estáticas de dinámicas.
 - **Consistencia de marca:** Los tres verdes principales comparten la misma temperatura de color, evitando derivaciones que puedan confundir al usuario respecto a la identidad de la plataforma (Wheeler & Meyerson, 2024).
@@ -43,13 +44,13 @@ El verde esmeralda (`#10B981`) y sus variantes constituyen el color principal de
 
 El azul marino oscuro (`#111827`) actúa como color de soporte estructural del sistema. Su alta oscuridad y neutralidad cromática lo convierten en el soporte ideal para textos principales, fondos de paneles laterales y encabezados de sección, generando un contraste sólido con los elementos primarios verdes.
 
-| Nombre          | Hex       | Uso principal                                                       | Justificación                                                                |
-|-----------------|-----------|---------------------------------------------------------------------|------------------------------------------------------------------------------|
-| Azul Marino     | `#111827` | Textos principales, barras laterales, fondos de modo oscuro         | Contraste superior a 15:1 con blanco; cumple WCAG AAA para tipografía       |
-| Gris Medianoche | `#1F2937` | Paneles secundarios, encabezados de tabla, fondos de tarjeta oscura | Variante ligeramente más clara para crear profundidad en capas               |
-| Gris Acero      | `#374151` | Labels de formularios, bordes de componentes, íconos inactivos      | Tono intermedio que establece límites sin saturar visualmente                |
-| Gris Suave      | `#6B7280` | Textos de ayuda contextual, placeholders, metadatos                 | Legibilidad confortable para información de menor jerarquía                  |
-| Gris Perla      | `#9CA3AF` | Texto desactivado, elementos inactivos                              | Señaliza estados no interactivos manteniendo contraste mínimo 3:1            |
+| Nombre          | Hex         | Uso principal                                                       | Justificación                                                         |
+| --------------- | ----------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Azul Marino     | `#111827` | Textos principales, barras laterales, fondos de modo oscuro         | Contraste superior a 15:1 con blanco; cumple WCAG AAA para tipografía |
+| Gris Medianoche | `#1F2937` | Paneles secundarios, encabezados de tabla, fondos de tarjeta oscura | Variante ligeramente más clara para crear profundidad en capas        |
+| Gris Acero      | `#374151` | Labels de formularios, bordes de componentes, íconos inactivos     | Tono intermedio que establece límites sin saturar visualmente         |
+| Gris Suave      | `#6B7280` | Textos de ayuda contextual, placeholders, metadatos                 | Legibilidad confortable para información de menor jerarquía          |
+| Gris Perla      | `#9CA3AF` | Texto desactivado, elementos inactivos                              | Señaliza estados no interactivos manteniendo contraste mínimo 3:1    |
 
 - **Jerarquía visual:** Los tonos secundarios crean la estructura invisible de la interfaz, diferenciando zonas de navegación, contenido y datos sin competir con los elementos primarios.
 - **Consistencia:** Todos los tonos comparten la misma temperatura de color fría, garantizando transiciones fluidas entre secciones de la plataforma.
@@ -63,12 +64,12 @@ El azul marino oscuro (`#111827`) actúa como color de soporte estructural del s
 
 El rojo coral intenso (`#DC2626`) se reserva para comunicar urgencia, errores críticos y alertas de alta prioridad. Su uso estratégico garantiza que el usuario identifique de inmediato situaciones que requieren intervención, como quiebres de stock, discrepancias críticas de inventario o fallas en dispositivos IoT. Este color no debe emplearse de manera decorativa ni en elementos de navegación habitual, ya que su impacto semántico perdería efectividad.
 
-| Nombre      | Hex       | Uso principal                                                  | Justificación                                                                    |
-|-------------|-----------|----------------------------------------------------------------|----------------------------------------------------------------------------------|
-| Rojo Alerta | `#DC2626` | Alertas críticas, botones de cancelación, indicadores de error | Semántica de peligro universalmente reconocida; contraste AAA con blanco         |
-| Rojo Oscuro | `#991B1B` | Estados hover en alertas, bordes de campos con error           | Variante oscura para estados activos en contextos de alerta                      |
-| Rojo Claro  | `#FCA5A5` | Fondos de mensajes de error, chips de alerta                   | Variante suave para contenedores de advertencia sin saturar la vista             |
-| Rojo Mínimo | `#FEE2E2` | Fondos de sección con notificación crítica                     | Fondo de alerta de muy baja saturación para no distraer del contenido principal  |
+| Nombre       | Hex         | Uso principal                                                    | Justificación                                                                   |
+| ------------ | ----------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Rojo Alerta  | `#DC2626` | Alertas críticas, botones de cancelación, indicadores de error | Semántica de peligro universalmente reconocida; contraste AAA con blanco        |
+| Rojo Oscuro  | `#991B1B` | Estados hover en alertas, bordes de campos con error             | Variante oscura para estados activos en contextos de alerta                      |
+| Rojo Claro   | `#FCA5A5` | Fondos de mensajes de error, chips de alerta                     | Variante suave para contenedores de advertencia sin saturar la vista             |
+| Rojo Mínimo | `#FEE2E2` | Fondos de sección con notificación crítica                    | Fondo de alerta de muy baja saturación para no distraer del contenido principal |
 
 - **Jerarquía visual:** El uso restringido del rojo garantiza que su aparición en pantalla sea siempre significativa, evitando la normalización que reduciría su efectividad como señal de alerta.
 - **Consistencia:** Los cuatro tonos comparten la misma temperatura cálida, manteniendo una señalización coherente en todos los estados de error y alerta del sistema.
@@ -82,11 +83,11 @@ El rojo coral intenso (`#DC2626`) se reserva para comunicar urgencia, errores cr
 
 El blanco grisáceo (`#F4F7F6`) y su familia de neutros constituyen el lienzo sobre el cual se despliegan todos los elementos de la interfaz. Su función es proporcionar descanso visual, mejorar el contraste con los colores funcionales y mantener una sensación de orden y limpieza en las vistas de gestión de inventario.
 
-| Nombre          | Hex       | Uso principal                                               | Justificación                                               |
-|-----------------|-----------|-------------------------------------------------------------|-------------------------------------------------------------|
+| Nombre           | Hex         | Uso principal                                                 | Justificación                                                 |
+| ---------------- | ----------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
 | Blanco Grisáceo | `#F4F7F6` | Fondo general de la aplicación, fondos de página            | Lienzo principal; reduce el contraste agresivo del blanco puro |
-| Blanco Puro     | `#FFFFFF` | Tarjetas, modales, paneles flotantes                        | Máximo contraste para contenedores de información crítica   |
-| Gris Borde      | `#E5E7EB` | Líneas divisorias, bordes de inputs, separadores de sección | Define límites de componentes sin generar ruido visual      |
+| Blanco Puro      | `#FFFFFF` | Tarjetas, modales, paneles flotantes                          | Máximo contraste para contenedores de información crítica   |
+| Gris Borde       | `#E5E7EB` | Líneas divisorias, bordes de inputs, separadores de sección | Define límites de componentes sin generar ruido visual        |
 
 - **Jerarquía visual:** La escala neutral define los niveles de importancia del contenido sin recurrir a color saturado, permitiendo que el sistema de color semántico (primario, terciario) conserve su impacto.
 - **Consistencia:** Todos los tonos neutros comparten la misma temperatura ligeramente fría, armonizando con el secundario y generando una interfaz visualmente cohesiva.
@@ -108,11 +109,11 @@ Las fuentes sans-serif presentan una geometría que se rasteriza de forma eficie
 
 *Escala tipográfica y usos de la familia Inter en la interfaz de Restock*
 
-| Rol      | Familia | Peso           | Tamaño   | Altura de línea | Uso principal                                                                        |
-|----------|---------|----------------|----------|-----------------|--------------------------------------------------------------------------------------|
-| Headline | Inter   | 500 (Medium)   | 28–36 px | 1.25×           | Títulos de sección, encabezados de página y elementos de alto impacto visual         |
-| Body     | Inter   | 400 (Regular)  | 14–16 px | 1.5×            | Cuerpo de texto, descripciones, datos de inventario y contenido informativo general  |
-| Label    | Inter   | 400–500        | 12–13 px | 1.4×            | Etiquetas de componentes, metadatos, campos de formulario y elementos secundarios    |
+| Rol      | Familia | Peso          | Tamaño   | Altura de línea | Uso principal                                                                       |
+| -------- | ------- | ------------- | --------- | ---------------- | ----------------------------------------------------------------------------------- |
+| Headline | Inter   | 500 (Medium)  | 28–36 px | 1.25×           | Títulos de sección, encabezados de página y elementos de alto impacto visual     |
+| Body     | Inter   | 400 (Regular) | 14–16 px | 1.5×            | Cuerpo de texto, descripciones, datos de inventario y contenido informativo general |
+| Label    | Inter   | 400–500      | 12–13 px | 1.4×            | Etiquetas de componentes, metadatos, campos de formulario y elementos secundarios   |
 
 La elección de Inter responde a cuatro criterios técnicos fundamentales:
 
@@ -147,34 +148,34 @@ Este enfoque ofrece ventajas técnicas y de usabilidad concretas: garantiza cons
 
 *Escala de espaciado del sistema de diseño de Restock*
 
-| Token     | Valor | Uso principal                                                                        |
-|-----------|-------|--------------------------------------------------------------------------------------|
-| spacing-1 | 4 px  | Separación mínima entre íconos y etiquetas, espaciado interno de badges y chips      |
-| spacing-2 | 8 px  | Separación entre elementos funcionalmente relacionados, padding de botones pequeños  |
+| Token     | Valor | Uso principal                                                                         |
+| --------- | ----- | ------------------------------------------------------------------------------------- |
+| spacing-1 | 4 px  | Separación mínima entre íconos y etiquetas, espaciado interno de badges y chips    |
+| spacing-2 | 8 px  | Separación entre elementos funcionalmente relacionados, padding de botones pequeños |
 | spacing-3 | 12 px | Padding vertical de inputs, separación entre campos de formulario                    |
-| spacing-4 | 16 px | Padding interno de tarjetas, separación estándar entre componentes de lista          |
+| spacing-4 | 16 px | Padding interno de tarjetas, separación estándar entre componentes de lista         |
 | spacing-6 | 24 px | Separación entre secciones dentro de una vista, márgenes de paneles                 |
-| spacing-8 | 32 px | Separación entre bloques de contenido independientes, márgenes de página             |
+| spacing-8 | 32 px | Separación entre bloques de contenido independientes, márgenes de página           |
 
 *Directrices de espaciado para elementos de texto en Restock*
 
 | Elemento    | Tamaño   | Altura de línea | Margen inferior |
-|-------------|----------|-----------------|-----------------|
-| Headline H1 | 36 px    | 44 px (1.22×)   | 32 px           |
-| Headline H2 | 28 px    | 36 px (1.28×)   | 24 px           |
-| Body        | 16 px    | 24 px (1.5×)    | 16 px           |
-| Body small  | 14 px    | 20 px (1.43×)   | 12 px           |
+| ----------- | --------- | ---------------- | --------------- |
+| Headline H1 | 36 px     | 44 px (1.22×)   | 32 px           |
+| Headline H2 | 28 px     | 36 px (1.28×)   | 24 px           |
+| Body        | 16 px     | 24 px (1.5×)    | 16 px           |
+| Body small  | 14 px     | 20 px (1.43×)   | 12 px           |
 | Label       | 12–13 px | 18 px (1.4×)    | 8 px            |
 
 *Directrices de padding y margen para los componentes principales de Restock*
 
-| Componente               | Padding interno                        | Margen externo | Gutter |
-|--------------------------|----------------------------------------|----------------|--------|
-| Botón primario           | 10 px (vertical) × 20 px (horizontal) | 8 px           | —      |
-| Input / Campo de formulario | 10 px (vertical) × 14 px (horizontal) | 12 px        | —      |
-| Tarjeta (Card)           | 16 px                                  | 16 px          | 16 px  |
-| Navbar / Sidebar         | 20 px                                  | —              | —      |
-| Grid de contenido        | —                                      | —              | 16 px  |
+| Componente                  | Padding interno                        | Margen externo | Gutter |
+| --------------------------- | -------------------------------------- | -------------- | ------ |
+| Botón primario             | 10 px (vertical) × 20 px (horizontal) | 8 px           | —     |
+| Input / Campo de formulario | 10 px (vertical) × 14 px (horizontal) | 12 px          | —     |
+| Tarjeta (Card)              | 16 px                                  | 16 px          | 16 px  |
+| Navbar / Sidebar            | 20 px                                  | —             | —     |
+| Grid de contenido           | —                                     | —             | 16 px  |
 
 **Principios de agrupamiento y alineación:**
 
@@ -200,12 +201,12 @@ El tono de Restock se define en las siguientes dimensiones:
 
 *Dimensiones del tono de comunicación de Restock*
 
-| Dimensión               | Posición                              | Justificación                                                                                                                                                  |
-|-------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Divertido / Serio       | Inclinado hacia serio                 | La plataforma gestiona operaciones críticas de negocio. La comunicación prioriza claridad y precisión sobre el humor, sin resultar fría ni distante            |
-| Formal / Casual         | Punto intermedio, levemente casual    | Se evita el lenguaje corporativo excesivo. Las instrucciones son directas y comprensibles para administradores de distintos niveles de experiencia tecnológica |
-| Respetuoso / Irreverente| Marcadamente respetuoso               | El lenguaje mantiene en todo momento un tono empático y profesional, reconociendo la exigencia del contexto operativo del usuario                             |
-| Entusiasta / Sereno     | Levemente entusiasta                  | La plataforma motiva la acción sin generar ansiedad. Los mensajes de alerta son informativos, no alarmistas; las confirmaciones son afirmativas sin exagerar  |
+| Dimensión               | Posición                          | Justificación                                                                                                                                                  |
+| ------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Divertido / Serio        | Inclinado hacia serio              | La plataforma gestiona operaciones críticas de negocio. La comunicación prioriza claridad y precisión sobre el humor, sin resultar fría ni distante         |
+| Formal / Casual          | Punto intermedio, levemente casual | Se evita el lenguaje corporativo excesivo. Las instrucciones son directas y comprensibles para administradores de distintos niveles de experiencia tecnológica |
+| Respetuoso / Irreverente | Marcadamente respetuoso            | El lenguaje mantiene en todo momento un tono empático y profesional, reconociendo la exigencia del contexto operativo del usuario                              |
+| Entusiasta / Sereno      | Levemente entusiasta               | La plataforma motiva la acción sin generar ansiedad. Los mensajes de alerta son informativos, no alarmistas; las confirmaciones son afirmativas sin exagerar   |
 
 **Principios de comunicación aplicados:**
 
@@ -216,13 +217,13 @@ El tono de Restock se define en las siguientes dimensiones:
 
 *Patrones de tono aplicados según el contexto de interacción en Restock*
 
-| Contexto                      | Tono                            | Ejemplo                                                                                                          |
-|-------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------|
-| Confirmación de acción        | Afirmativo y directo             | "Lote registrado correctamente."                                                                                 |
-| Alerta de stock bajo          | Claro y orientado a la acción    | "El insumo Harina de trigo ha alcanzado su nivel mínimo. Se recomienda reponer el stock."                       |
-| Error del sistema             | Sobrio y tranquilizador          | "No fue posible completar la operación. Verifique su conexión e intente nuevamente."                            |
-| Mensaje de bienvenida         | Cercano y profesional            | "Bienvenido a Restock. Comience registrando su primera sucursal."                                               |
-| Notificación de discrepancia  | Informativo y preciso            | "Se detectó una diferencia entre el stock físico y el registrado en Aceite de oliva. Revise la conciliación."  |
+| Contexto                      | Tono                           | Ejemplo                                                                                                          |
+| ----------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Confirmación de acción      | Afirmativo y directo           | "Lote registrado correctamente."                                                                                 |
+| Alerta de stock bajo          | Claro y orientado a la acción | "El insumo Harina de trigo ha alcanzado su nivel mínimo. Se recomienda reponer el stock."                       |
+| Error del sistema             | Sobrio y tranquilizador        | "No fue posible completar la operación. Verifique su conexión e intente nuevamente."                           |
+| Mensaje de bienvenida         | Cercano y profesional          | "Bienvenido a Restock. Comience registrando su primera sucursal."                                                |
+| Notificación de discrepancia | Informativo y preciso          | "Se detectó una diferencia entre el stock físico y el registrado en Aceite de oliva. Revise la conciliación." |
 
 **Vocabulario preferido:**
 
@@ -247,9 +248,7 @@ La cuadrícula de Restock Web se basa en una estructura modular que organiza el 
 La estructura de columnas se adapta según el dispositivo:
 
 - En **escritorio** (pantallas amplias): se emplea una distribución multicolumna que permite mostrar el dashboard, el sidebar de navegación y los paneles de datos de inventario de forma simultánea. El sidebar ocupa una fracción del ancho total y el contenido principal ocupa el resto, separados por un gutter de 24 px. Los márgenes laterales del contenedor son de 32 px.
-
 - En **tableta** (pantallas medianas): el sidebar de navegación se colapsa o reduce, y el contenido principal se reorganiza en menos columnas. Los márgenes laterales se reducen a 24 px y el gutter entre columnas a 16 px.
-
 - En **móvil** (pantallas pequeñas): el contenido adopta una disposición de columna única. El sidebar se convierte en un menú desplegable, las tarjetas de inventario se apilan verticalmente y los márgenes laterales se reducen a 16 px.
 
 El espaciado interno de los componentes sigue la escala establecida: los botones primarios emplean 10 px de padding vertical y 20 px horizontal; los inputs usan 10 px vertical y 14 px horizontal; las tarjetas tienen 16 px de padding interno y 16 px de margen externo entre ellas. La separación entre secciones independientes del dashboard es de 24 px, y entre bloques de contenido mayor de 32 px.
@@ -261,11 +260,8 @@ La plataforma web de Restock adopta una estrategia de diseño responsivo que gar
 **Comportamiento de los componentes clave según el dispositivo:**
 
 - Las **tablas de inventario**, componente central de la plataforma, adaptan su presentación según el ancho disponible. En escritorio muestran todas las columnas (nombre del insumo, stock físico, stock registrado, umbral, estado y acciones). En tableta se priorizan las columnas de mayor relevancia operativa y se habilita scroll horizontal para las restantes. En móvil se presenta una vista de tarjeta por insumo en lugar de tabla, conservando los datos esenciales.
-
 - El **dashboard** con métricas de stock y ventas emplea una distribución de widgets en cuadrícula en escritorio. En tableta los widgets se reorganizan en dos columnas. En móvil se apilan en una sola columna con scroll vertical, manteniendo los indicadores de alerta crítica visibles en la parte superior de la vista.
-
 - El **sidebar de navegación** permanece visible y expandido en escritorio. En tableta se colapsa a un sidebar de íconos sin etiquetas de texto. En móvil se convierte en un menú desplegable accesible desde un botón de navegación en el encabezado, empleando íconos Tabler Icons en variante outline de 24 px.
-
 - Los **formularios** de registro de insumos, sucursales y configuración de balanzas adaptan sus campos al ancho disponible. En escritorio los campos se disponen en dos columnas. En tableta y móvil adoptan disposición de columna única con campos a ancho completo. Los labels emplean la fuente Inter 400 Regular en 12–13 px (color `#374151`, Gris Acero), y los inputs aplican el padding definido en la escala de espaciado.
 
 ##### 5.1.2.1.3. Tipografía en la interfaz web
@@ -273,11 +269,8 @@ La plataforma web de Restock adopta una estrategia de diseño responsivo que gar
 La plataforma web aplica la familia **Inter** en todos sus niveles tipográficos, conforme a la decisión establecida en las General Style Guidelines. La jerarquía tipográfica en la interfaz web se implementa de la siguiente manera:
 
 - Los **encabezados de sección y títulos de página** (Headline) emplean Inter Medium 500 en tamaños entre 28 y 36 px, con altura de línea de 1.25×. Se aplican en tonos del color secundario (`#111827` Azul Marino o `#065F46` Verde Profundo) para establecer jerarquía visual sobre el fondo neutro (`#F4F7F6`).
-
 - El **cuerpo de texto** de descripciones, datos de inventario y contenido informativo emplea Inter Regular 400 en 14–16 px con altura de línea de 1.5×. El color principal para cuerpo de texto es `#111827` sobre fondos claros, garantizando un contraste superior a 15:1 conforme a WCAG AAA.
-
 - Las **etiquetas de componentes**, metadatos de tabla, placeholders de inputs y textos secundarios emplean Inter Regular 400 o Medium 500 en 12–13 px con altura de línea de 1.4×. Los placeholders y textos de ayuda contextual usan `#6B7280` (Gris Suave); los textos desactivados usan `#9CA3AF` (Gris Perla).
-
 - Los **valores numéricos** de stock, cantidades, precios y métricas del dashboard emplean Inter Medium 500 en tamaños de 16–28 px según su nivel de jerarquía, asegurando la distinción inmediata de cifras críticas como niveles de stock bajo o discrepancias detectadas.
 
 ##### 5.1.2.1.4. Accesibilidad en la interfaz web
@@ -285,9 +278,7 @@ La plataforma web aplica la familia **Inter** en todos sus niveles tipográficos
 La plataforma web de Restock aplica los estándares WCAG 2.1 de nivel AA/AAA, validados para toda la paleta cromática del sistema. Los criterios de accesibilidad aplicados son:
 
 - En cuanto al **contraste cromático**, todos los textos de cuerpo sobre fondos claros superan el ratio de 4.5:1. Los encabezados grandes superan el ratio de 3:1. Los íconos funcionales y bordes de componentes cumplen el ratio mínimo de 3:1 sobre el fondo.
-
 - Para la **navegación con teclado**, todos los elementos interactivos de la interfaz botones de acción, inputs, selectores de sucursal, controles del dashboard— son accesibles mediante la tecla Tab en un orden lógico que sigue el flujo de lectura de la pantalla. Los elementos decorativos quedan excluidos del tabulado. El indicador de foco visible emplea el color primario Verde Esmeralda (`#10B981`) con borde de 3 px para garantizar su visibilidad.
-
 - El **etiquetado semántico** de los componentes sigue las convenciones ARIA: los íconos Tabler Icons que comunican información de estado llevan `aria-label` descriptivo; las tablas de inventario emplean encabezados con `role="columnheader"`; las alertas de stock crítico emplean `role="alert"` para anunciarse automáticamente a lectores de pantalla; los modales de confirmación emplean `role="dialog"` con `aria-labelledby` y `aria-modal="true"`.
 
 #### 5.1.2.2. Mobile Style Guidelines
@@ -298,7 +289,8 @@ La aplicación móvil de Restock está desarrollada con Dart y Flutter, orientad
 
 La aplicación móvil aplica la misma paleta definida en las General Style Guidelines de Restock, garantizando coherencia visual entre la plataforma web y la aplicación móvil. El color primario Verde Esmeralda (`#10B981`) se emplea en los elementos de navegación activos, botones principales y badges de estado normal. El color terciario Rojo Alerta (`#DC2626`) identifica alertas críticas, errores y acciones destructivas. Los fondos de pantalla emplean el Blanco Grisáceo (`#F4F7F6`) y el Blanco Puro (`#FFFFFF`) para los paneles flotantes y tarjetas de datos.
 
-La tipografía **Inter** se integra como fuente personalizada en el bundle de la aplicación Flutter, aplicando los mismos pesos y tamaños definidos en las General Style Guidelines: 
+La tipografía **Inter** se integra como fuente personalizada en el bundle de la aplicación Flutter, aplicando los mismos pesos y tamaños definidos en las General Style Guidelines:
+
 - Inter Medium 500 para títulos de pantalla y etiquetas denavegación activa, Inter Regular 400 para cuerpos de texto y datos de inventario.
 - El escalado de tipografía respeta la configuración de accesibilidad del sistema operativo del usuario, permitiendo que la fuente escale con Dynamic Type en iOS o con el ajuste de tamaño de fuente en Android sin romper el layout.
 
@@ -319,13 +311,9 @@ El **encabezado de pantalla** presenta el título de la sección en Inter Medium
 Las interacciones táctiles de la aplicación móvil de Restock responden a las acciones operativas más frecuentes de los administradores de inventario:
 
 - El **tap** activa la selección de un insumo, la apertura del detalle de un lote o la confirmación de una acción. La respuesta visual se produce mediante un efecto de tinta en el color primario con opacidad reducida, confirmando al usuario que la pulsación fue registrada.
-
 - El **deslizamiento vertical** en listas de inventario y tablas de stock activa la actualización de datos con la acción pull-to-refresh, mostrando un indicador de carga en Verde Esmeralda (`#10B981`) mientras el sistema consulta el estado actualizado del inventario desde el servidor.
-
 - El **deslizamiento horizontal** sobre una tarjeta de insumo o un ítem de la lista de alertas revela opciones contextuales de acción rápida como editar, desactivar o marcar como revisado, reduciendo la cantidad de pasos necesarios para ejecutar operaciones frecuentes.
-
 - La **pulsación prolongada** sobre un insumo o una sucursal en modo listado activa un menú contextual con opciones adicionales. Este gesto se emplea de forma selectiva para acciones que requieren confirmación explícita, como la transferencia de lotes entre sucursales o la desactivación de un dispositivo IoT.
-
 - Las transiciones entre pantallas emplean deslizamiento horizontal consistente con las convenciones nativas del sistema operativo, completándose en tiempos que garantizan fluidez sin generar sensación de lentitud.
 
 ##### 5.1.2.2.4. Componentes visuales en móvil
@@ -355,12 +343,14 @@ Cada mensaje ocupa las dos líneas disponibles de forma complementaria: la líne
 El display contempla únicamente dos vistas en rotación: la vista de stock del insumo asignado y la vista de condiciones ambientales capturadas por el sensor DHT22. La rotación entre ambas vistas es periódica y automática, controlada por el firmware del ESP32.
 
 Cuando el dispositivo opera con un insumo asignado y peso estable, el display muestra:
+
 ```
 [Nombre del insumo]
 Stock: [XX.X] [unidad]
 ```
 
 Por ejemplo:
+
 ```
 Harina de trigo
 
@@ -368,15 +358,19 @@ Stock: 4.2 kg
 ```
 
 La vista de condiciones ambientales se presenta durante un intervalo breve antes de volver a la vista de stock principal:
+
 ```
 Temp: [XX.X] C
 Hum:  [XX.X] %
 ```
+
 Cuando el dispositivo está operativo pero no tiene un insumo asignado desde la plataforma, el display muestra:
+
 ```
 Restock Balanza
 Sin asignar
 ```
+
 El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
 ##### 5.1.2.3.2. Sistema de señalización LED
@@ -387,12 +381,12 @@ La codificación semántica del LED replica la lógica cromática de la paleta d
 
 **Patrones de señalización por estado:**
 
-| Estado del sistema                          | Color | Comportamiento       |
-|---------------------------------------------|-------|----------------------|
-| Insumo asignado — stock con valor detectado | Verde | Encendido continuo   |
-| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz)|
-| Dispositivo sin insumo asignado             | —     | LED apagado          |
-| Inicialización del sistema (boot)           | Verde | 3 destellos cortos   |
+| Estado del sistema                           | Color | Comportamiento        |
+| -------------------------------------------- | ----- | --------------------- |
+| Insumo asignado — stock con valor detectado | Verde | Encendido continuo    |
+| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz) |
+| Dispositivo sin insumo asignado              | —    | LED apagado           |
+| Inicialización del sistema (boot)           | Verde | 3 destellos cortos    |
 
 La distinción entre LED encendido en verde de forma continua y parpadeo en rojo permite que el operario identifique desde distancia si el dispositivo está registrando peso correctamente o si el contenedor está vacío o sin lectura válida, sin necesidad de acercarse al display.
 
@@ -411,20 +405,35 @@ El diseño de la interfaz física del dispositivo IoT de Restock responde a los 
 **Comportamiento ante pérdida de conectividad WiFi.** Cuando el dispositivo pierde la conexión con el edge local o con la plataforma en la nube, el display continúa mostrando el estado actual del peso medido y el LED mantiene su señalización de estado. Los datos de telemetría generados durante el período sin conectividad se almacenan localmente en el edge para ser enviados al sistema central cuando la conexión se restablezca, garantizando la trazabilidad del inventario sin pérdida de registros.
 
 ## 5.2. Information Architecture
+
 ### 5.2.1. Organization Systems
+
 ### 5.2.2. Labeling Systems
+
 ### 5.2.3. SEO Tags and Meta Tags
+
 ### 5.2.4. Searching Systems
+
 ### 5.2.5. Navigation Systems
+
 ## 5.3. Landing Page UI Design
+
 ### 5.3.1. Landing Page Wireframe
+
 ### 5.3.2. Landing Page Mock-up
+
 ## 5.4. Applications UX/UI Design
+
 ### 5.4.1. Applications Wireframes
+
 ### 5.4.2. Applications Wireflow Diagrams
+
 ### 5.4.2. Applications Mock-ups
+
 ### 5.4.3. Applications User Flow Diagrams
+
 ## 5.5. Applications Prototyping
+
 ## 5.6. IoT Device Design
 
 ### Diseño del dispositivo IoT
@@ -639,7 +648,7 @@ En el quinto paso, empezamos a definir quienes serán los usuarios finales que u
 #### Paso 6: Definición de requisitos para la capa de servicios de aplicación
 
 Ya habiendo definido los servicios en el anterior paso y la información necesaria para cumplir con estos servicios, en este paso se definen los requisitos para dichos servicios.
-Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados. 
+Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados.
 
 <table>
   <tr>
@@ -971,7 +980,7 @@ Luego, se analiza el esfuerzo computacional de los algoritmos elegidos. Es por e
 
 - El uso de memoria es Bajo en los nodos periféricos porque se manejan tipos de datos primitivos (float, int) y buffers de muestreo pequeños, lo que optimiza los 520 KB de RAM del ESP32.
 
-#### Paso 12: Definición de la interfaz de usuario gráfica 
+#### Paso 12: Definición de la interfaz de usuario gráfica
 
 En esta etapa final se definen los elementos visuales basándose en los servicios de información integrada y comandos operativos requeridos por el usuario final. A continuación, se detalla el módulo y su responsabilidad en el sistema:
 
@@ -985,7 +994,7 @@ En esta etapa final se definen los elementos visuales basándose en los servicio
   <tr>
     <td> <strong> Monitoreo de Salud del Dispositivo </strong> </td>
     <td> Web / Mobile / LCD local </td>
-    <td> Indicadores de conectividad, batería y alertas de falla técnica. </td>
+    <td> Indicadores de conectividad y alertas de falla técnica. </td>
     <td> Permite visualizar el autodiagnóstico y reconocer automáticamente fallas del hardware. </td>
   </tr>
   <tr>
