@@ -7218,27 +7218,27 @@ En esta sección se presentan los diagramas de componentes del Bounded Context A
 
 ##### Web Application Component Diagram
 
-El componente Analytics dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
+El componente Analytics dentro de la Restock Web Application actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
 
-![web-analytics](https://i.imgur.com/qf1Sm43.png)
+![web-analytics](https://imgur.com/e3jIpJG.png)
 
-El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
+El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Cloud REST API mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
 
 ##### Mobile Application Component Diagram
 
 El componente Analytics dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar los indicadores del dashboard y los resúmenes de stock, permitiendo que los administradores consulten el estado operativo de su negocio desde sus dispositivos móviles.
 
-![mobile-analytics](https://i.imgur.com/L6Su3aC.png)
+![mobile-analytics](https://imgur.com/GsDakGi.png)
 
 El diagrama muestra que el componente Analytics de la aplicación móvil replica estructuralmente el comportamiento del componente web, adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente garantiza una experiencia consistente independientemente del dispositivo utilizado.
 
 ##### Backend Application Component Diagram
 
-El componente Analytics dentro del Restock Cloud Server Side App concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
+El componente Analytics dentro del Cloud REST API concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
 
-![api-analytics](https://i.imgur.com/1Tfxf5R.png)
+![api-analytics](https://imgur.com/gVLT1Cp.png)
 
-El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communication, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
+El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communications, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
 
 #### 4.2.10.6. Bounded Context Software Architecture Code Level Diagrams
 
