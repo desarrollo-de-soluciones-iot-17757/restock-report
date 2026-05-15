@@ -76,7 +76,7 @@ Con estos pain points identificados y priorizados, el equipo avanzó con la cons
 Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados:
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention">
+  <img src="https://imgur.com/OfzjwJm.png" alt="event-storming-color-convention" width="500px">
 </div>
 
 Con el fin de mantener la consistencia y facilitar la interpretación del modelo, el equipo definió una convención de colores para los post-its utilizados durante la tercera fase del Design-Level Event Storming. Esta convención permitió identificar de manera visual los distintos elementos del dominio, tales como eventos, comandos, actores, políticas, modelos de lectura y sistemas externos, facilitando la comprensión de las relaciones y flujos dentro del sistema.
@@ -270,17 +270,17 @@ El equipo identificó tres sistemas externos:
 El noveno paso consistió en identificar los agregados del dominio y agrupar en torno a ellos los comandos, eventos y políticas correspondientes. Los agregados se representan con tarjetas de color amarillo de mayor tamaño y constituyen la unidad de consistencia del dominio.
 
 <div style="display: flex; align-items: center;">
-  <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
-  <img src="https://imgur.com/Zvyn232.png" alt="aggregates">
-  <img src="https://imgur.com/1KBSr9c.png" alt="aggregates">
-  <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
-  <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
-  <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
-  <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
-  <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
-  <img src="https://imgur.com/nSjYQkn.png" alt="aggregates">
-  <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
-  <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
+  <img src="https://imgur.com/PBMkzAf.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/Zvyn232.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/1KBSr9c.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/LgEVu9L.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/x1YNoUB.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/SCVcxva.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/MhiSYQl.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/jCdhakC.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/nSjYQkn.png" alt="aggregates" width="400px"><br>
+  <img src="https://imgur.com/xKjeZEy.png" alt="aggregates" width="400px"><br>
+  <img src="assets/images/chapter4/eventstorming-steps/bc-tracking-aggregates.png" alt="aggregates" width="400px"><br>
 </div>
 
 El equipo identificó los agregados en cada bounded context de la siguiente manera:
@@ -294,14 +294,15 @@ El equipo identificó los agregados en cada bounded context de la siguiente mane
 - En **Communications** se identificó el agregado **Notification**, que gestiona la generación de notificaciones ante eventos del sistema y su despacho mediante OneSignal API.
 - En **Device Management** se identificó el agregado **Device**, que centraliza el registro, configuración y desactivación de dispositivos IoT, incluyendo la asignación de sucursal, insumo de seguimiento, umbrales de peso, humedad y temperatura, y programación de encendido y apagado.
 
-En **Tracking** se identificaron seis agregados:
+En **Tracking** se identificaron cinco agregados principales:
 
-- **Device Health Record** gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
-- **Box State Record** centraliza el flujo completo de telemetría física del dispositivo, incorporando explícitamente las tres variables ambientales monitoreadas: peso, temperatura y humedad. El flujo es: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos derivaciones posibles: `Processed data stored` o `Data anomaly detected`. La inclusión de temperatura y humedad como variables de primer nivel responde al requisito de monitorear no solo la cantidad del insumo sino también sus condiciones de conservación.
-- **Stock Comparison** gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
-- **Power Schedule** gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
-- **Conciliation Task** gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
-- **Box Threshold** centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de las tres variables monitoreadas — **peso**, **temperatura** y **humedad** — junto al nombre del insumo asociado. Al verificar un umbral, el sistema evalúa si los valores actuales de cualquiera de estas tres variables superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
+- **Device Health Record**: gestiona el monitoreo técnico del dispositivo a partir de métricas como voltaje, uso de CPU, uso de memoria y temperatura interna. El flujo considera `Voltage registered` → `CPU usage registered` → `Memory usage registered` → `Device temperature registered` → `Data analyzed`, pudiendo derivar en `Anomaly report received`, `Health record stored` y `Health history updated`.
+- **Plate State Record**: centraliza la telemetría física del dispositivo. Registra las variables principales `Weight registered`, `Temperature registered` y `Humidity registered`, luego valida los valores con `Values checked` y calcula el stock físico mediante la política `Divide the weight received to calculate the physical stock`. El resultado puede ser `Physical stock estimated`, `Processed data stored`, `Processed data sent` o `Data anomaly detected`.
+- **Stock Comparison**: compara el stock físico estimado con el stock digital registrado. El flujo parte de `Physical stock received` y `Digital stock received`, ejecuta `Perform stock comparison` y deriva en `Difference evaluated`, `Discrepancy detected` o `Stock verified`. Si existe discrepancia, se activa la política para crear una tarea de conciliación.
+- **Conciliation Task**: gestiona el ajuste de inventario cuando se detecta una diferencia entre stock físico y digital. El flujo sigue: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
+- **Plate Threshold**: administra la configuración y verificación de umbrales por dispositivo. Registra límites mínimos y máximos de peso, temperatura y humedad, junto con el insumo asociado. Luego compara los datos calculados contra dichos límites mediante `Compare the data read with the threshold`. Si se supera un umbral, se genera `Device threshold surpassed` y la política `Generates an alert of surpassed threshold`.
+
+A partir del Event Storming actualizado, **Tracking** se enfoca en procesar lecturas del dispositivo, estimar stock físico, comparar inventario, evaluar umbrales, registrar salud operativa y generar alertas o tareas de conciliación. La configuración administrativa del dispositivo, como horarios de encendido o apagado, queda fuera de este bounded context y pertenece a **Device Management**.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
@@ -319,41 +320,49 @@ Se trazaron fronteras alrededor de los grupos identificados, estableciendo los l
 
 Finalmente, se seleccionaron nombres para los bounded context. Dando como resultado la definición de 8 bounded contexts y la **versión final del Event Storming**:
 
-<img src="https://imgur.com/oI92pdH.png" alt=“DDD” width="800px">
+<img src="assets/images/chapter4/event_storming.png" alt=“DDD” width="800px">
 
 A continuación, se explicará en qué consiste cada bounded context:
 
 **Identity and Access Management:** También llamado "IAM", este bounded context contiene el proceso de ingreso del usuario a la plataforma, ya sea iniciando sesión o registrandose.
 
-<img src="assets/images/chapter4/candidate_context/bounded_iam.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_iam.png" alt=“DDD” width="500px">
 
 **Subscriptions and Payments:** También llamado "Subscriptions", este bounded context contiene el proceso de selección de planes, configuración de suscripciones, procesamiento de pagos e inicialización de cuentas de negocio, incluyendo la integración con plataformas externas como Stripe.
 
-<img src="assets/images/chapter4/candidate_context/bounded_subscriptions.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_subscriptions.png" alt=“DDD” width="500px">
 
-**Profiles and Preferences:** También llamado "Profile", este bounded context contiene el proceso de gestión de la información personal del usuario, incluyendo la actualización de datos, cambio de contraseña y configuración de preferencias, así como la gestión de información del negocio.
+**Profiles and Preferences:** También llamado "Profiles", este bounded context contiene el proceso de gestión de la información personal del usuario, incluyendo la actualización de datos, cambio de contraseña y configuración de preferencias, así como la gestión de información del negocio.
 
-<img src="assets/images/chapter4/candidate_context/bounded_profile.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_profiles.png" alt=“DDD” width="500px">
 
-**Communication:** También llamado "Notifications", este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
+**Communications:** Este bounded context contiene el proceso de generación, envío y recepción de notificaciones dentro de la plataforma, a partir de eventos relevantes del sistema como alertas de stock o incidencias, integrándose con servicios externos como OneSignal para la distribución de mensajes.
 
-<img src="https://imgur.com/5iFcZh6.jpg" alt="DDD" width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_communications.png" alt="DDD" width="500px">
 
 **Asset and Resource Management:** También llamado "Resource", este bounded context contiene el proceso de gestión de inventario, insumos, lotes y sucursales, incluyendo el registro, actualización y control de stock, así como la administración de proveedores y recursos asociados.
 
-<img src="assets/images/chapter4/candidate_context/bounded_resource.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_resource.png" alt=“DDD” width="500px">
 
 **Service Design and Planning:** También llamado "Planning", este bounded context contiene el proceso de diseño y gestión de recetas y kits, incluyendo la selección de insumos, categorización, actualización de información y almacenamiento de imágenes, permitiendo definir cómo se estructuran los productos dentro del sistema.
 
-<img src="assets/images/chapter4/candidate_context/bounded_planning.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_planning.png" alt=“DDD” width="500px">
 
 **Sales Order Management:** También llamado "Sales", este bounded context contiene el proceso de registro y gestión de ventas, incluyendo la selección de productos, cálculo del total, confirmación de la venta y actualización automática del stock disponible.
 
-<img src="assets/images/chapter4/candidate_context/bounded_sales.jpg" alt="DDD" width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_sales.png" alt="DDD" width="500px">
 
-**Service Operation and Monitoring:** También llamado "Monitoring", este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
+**Device Management:** También llamado "Device", este bounded context contiene el proceso de registro, asignación, configuración y desactivación de dispositivos IoT dentro de la plataforma, incluyendo la asociación del dispositivo a una sucursal, a un insumo personalizado y a sus parámetros básicos de medición.
 
-<img src="assets/images/chapter4/candidate_context/bounded_monitoring.jpg" alt=“DDD” width="500px">
+<img src="assets/images/chapter4/candidate_context/bounded_device.png" alt="DDD" width="500px">
+
+**Tracking:** Este bounded context contiene el proceso de monitoreo del estado del inventario físico y dispositivos, incluyendo la recepción de datos desde sensores, detección de anomalías, gestión de umbrales de stock y generación de tareas de conciliación o alertas ante inconsistencias.
+
+<img src="assets/images/chapter4/candidate_context/bounded_tracking.png" alt=“DDD” width="500px">
+
+**Analytics:** Este bounded context contiene el proceso de análisis de información operativa del sistema, incluyendo la generación de reportes, métricas, visualizaciones e indicadores sobre inventario, ventas, alertas, discrepancias y comportamiento de los dispositivos, con el fin de apoyar la toma de decisiones del administrador.
+
+<img src="assets/images/chapter4/candidate_context/bounded_analytics.png" alt="DDD" width="500px">
 
 #### 4.1.1.2 Domain Message Flows Modeling
 
@@ -361,32 +370,37 @@ Los Domain Message Flows modelan las interacciones entre los diferentes bounded 
 
 * **Access to platform:** En este flujo se muestra la interacción entre el bounded context IAM y el bounded context Profiles al momento en que un usuario se registra de forma omnicanal (Web o App) y se crea su perfil correspondiente.
 
-  <img src="assets/images/chapter4/message_flows/access_to_platform.png" alt="Domain Message Flow - Access to platform" height="500px">
-* **Record a recipe:** En este flujo se muestra la interacción entre el bounded context Planning y el bounded context Resource al momento en que un administrador diseña y registra una nueva receta, vinculando los insumos necesarios del almacén.
+  <img src="assets/images/chapter4/message_flows/access_to_platform.png" alt="Domain Message Flow - Access to platform" height="300px">
 
-  <img src="assets/images/chapter4/message_flows/record_a_recipe.png" alt="Domain Message Flow - Record a recipe" height="500px">
-* **Register a restaurant sale and update inventory:** En este flujo se modela la complejidad de una venta en restaurante, donde el sistema interactúa con las recetas para deducir de Resource las cantidades exactas de insumos utilizados tras confirmar el ticket.
+* **Delete a recipe:** En este flujo se detalla la interacción iniciada por el Restaurant Manager al eliminar una receta. El bounded context Planning procesa el evento de confirmación y emite comandos hacia los contextos Communications (para el envío de notificaciones vía OneSignal) y Analytics, permitiendo que la aplicación actualice y muestre las alertas recientes.
 
-  <img src="assets/images/chapter4/message_flows/register_a_restaurant_sale.png" alt="Domain Message Flow - Register a restaurant sale" height="500px">
-* **IoT Monitoring and Anomaly Detection:** En este escenario crítico se muestra la interacción entre Monitoring (Service Operation) y Resource. La telemetría capturada por el hardware solicita el stock teórico, detecta discrepancias físicas y genera tareas de conciliación para el administrador.
+  <img src="assets/images/chapter4/message_flows/delete_a_recipe.png" alt="Domain Message Flow - Delete a recipe" height="300px">
 
-  <img src="assets/images/chapter4/message_flows/iot_monitoring_and_anomaly_detection.png" alt="Domain Message Flow - IoT Monitoring" height="500px">
-* **Push Notification Dispatch:** En este flujo se detalla cómo el bounded context de Comunications reacciona a eventos anómalos del sistema, filtrando destinatarios y delegando el envío de alertas a dispositivos móviles mediante una integración con una API externa (OneSignal).
+* **Push Notification Dispatch:** En este escenario se detalla cómo el bounded context ARM delega el envío de alertas. Tras el evento de añadir un lote al inventario, se envía un comando al bounded context Communications, el cual utiliza la API de OneSignal para disparar el evento de notificación hacia los dispositivos web y móviles de los usuarios.
 
-  <img src="assets/images/chapter4/message_flows/push_notification_dispatch.png" alt="Domain Message Flow - Push Notification Dispatch" height="500px">
+  <img src="assets/images/chapter4/message_flows/push_notification_dispatch.png" alt="Domain Message Flow - Push Notification Dispatch" height="300px">
 
-Adicionalmente, se presentan flujos de escenarios relevantes para el core del negocio, pero que por su alta cohesión resuelven sus procesos sin requerir interacción con otros bounded contexts externos:
+* **Record a batch in the inventory:** En este flujo, el Manager registra un lote desde la interfaz. El evento de creación es procesado por el bounded context ARM, el cual genera un comando hacia el bounded context Communications para que este emita el evento de notificación enviada y actualice el centro de alertas en la aplicación.
 
-* **Subscribe to a plan:** En este flujo se muestra el proceso de onboarding comercial, donde el registro empresarial y la confirmación de pago se orquestan internamente dentro del bounded context de Subscription.
+  <img src="assets/images/chapter4/message_flows/record_a_batch_in_the_inventory.png" alt="Domain Message Flow - Record a batch in the inventory" height="300px">
 
-  <img src="assets/images/chapter4/message_flows/subscribe_to_a_plan.png" alt="Domain Message Flow - Subscribe to a plan" height="500px">
-* **Record a supply in the inventory:** En este flujo se modela el ingreso manual o la actualización de existencias de un insumo, el cual es procesado exclusivamente dentro del bounded context Resource.
+* **Register a retail sale and update inventory:** En este flujo se observa la sincronización automática entre ventas y almacén. Al confirmarse una venta por el Retail Manager, el bounded context Sales emite un comando directo al bounded context ARM para ejecutar la sustracción del stock en el lote de insumos correspondiente.
 
-  <img src="assets/images/chapter4/message_flows/record_a_supply_in_the_inventory.png" alt="Domain Message Flow - Record a supply" height="500px">
-* **Register a physical branch and assign IoT devices:** En este flujo se evidencia el proceso de digitalización de una nueva sucursal y la vinculación de sus sensores físicos, consolidando entidades fuertemente acopladas dentro del bounded context Resource (Asset and Resource Management) y utilizando una API externa para la gestión de imágenes.
+  <img src="assets/images/chapter4/message_flows/register_a_retail_sale_and_update_inventory.png" alt="Domain Message Flow - Register a retail sale and update inventory" height="300px">
 
-  <img src="assets/images/chapter4/message_flows/register_a_physical_branch_and_assign_devices.png" alt="Domain Message Flow - Register branch and devices" height="500px">
+* **Signup and create branch:** En este flujo omnicanal, el proceso inicia en el bounded context IAM con el guardado de datos del usuario. Posteriormente, el flujo pasa al bounded context Subscriptions para la selección y activación de un plan, lo que finalmente desencadena un comando hacia el bounded context ARM para registrar e inicializar la sucursal única del sistema.
 
+  <img src="assets/images/chapter4/message_flows/signup_and_create_branch.png" alt="Domain Message Flow - Signup and create branch" height="300px">
+
+* **Subscribe to a plan:** En este flujo financiero, el usuario interactúa con la aplicación para elegir una suscripción. El bounded context Subscription orquesta el proceso emitiendo el comando de pago a la pasarela externa (Stripe), capturando el evento de éxito para finalmente activar el plan de forma global en la plataforma.
+
+  <img src="assets/images/chapter4/message_flows/subscribe_to_a_plan.png" alt="Domain Message Flow - Subscribe to a plan" height="300px">
+
+* **Tracking and Anomaly Detection:** En este flujo crítico de telemetría, la aplicación embebida (báscula inteligente) detecta que un umbral ha sido superado y emite un evento al bounded context Tracking. Este interactúa con Notification para generar la alerta, fluyendo luego hacia Analytics para que las aplicaciones de usuario final consuman y muestren la alerta reciente en el dashboard.
+
+  <img src="assets/images/chapter4/message_flows/tracking_and_anomaly_detection.png" alt="Domain Message Flow - Tracking and Anomaly Detection" height="300px">
+
+  
 #### 4.1.1.3 Bounded Context Canvases
 
 Un Bounded Context Canvas es una herramienta visual que ayuda a documentar lo necesario para un bounded context identificado. A continuación se describe el diseño de cada contexto, incluyendo la definición del contexto, su clasificación, las reglas de negocio, el lenguaje ubicuo utilizado para este context, y la comunicación de este contexto.
@@ -1190,9 +1204,9 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
+El componente de la aplicación web cliente, desarrollado en Angular, se ejecuta en el navegador del usuario para proporcionar una experiencia de gestión de identidad fluida en dispositivos de escritorio. Este componente orquesta la comunicación con el backend mediante un Auth Service que consume los endpoints de autenticación a través de un balanceador NGINX, gestionando de forma segura el ciclo de vida de los tokens JWT en el lado del cliente para asegurar que cada petición de la interfaz esté debidamente autorizada.
 
-<img src="https://i.imgur.com/8tKVYV8.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="assets/images/chapter4/bc-iam/frontend-iam-component .png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
@@ -1241,9 +1255,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 ##### Web Application Component Diagram
 
-El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
+El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización mediante un Auth Service dedicado, asegurando que solo los usuarios verificados accedan a sus funciones. Este componente gestiona de forma segura el almacenamiento local del token JWT para permitir sesiones persistentes y se comunica a través de un balanceador NGINX para validar las credenciales contra el backend, garantizando un flujo de identidad robusto y eficiente para los administradores de restaurantes y comercios minoristas.
 
-<img src="https://i.imgur.com/qUANBdt.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="assets/images/chapter4/bc-iam/mobile-app-component-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
 
@@ -1302,9 +1316,9 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
 
 ##### Backend Application Component Diagram
 
-El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
+El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad de la plataforma. Se encarga de centralizar la autenticación y autorización mediante un esquema stateless (JWT), optimizando el rendimiento con una capa de caché en Redis y delegando la gestión de recursos multimedia a Cloudinary. Bajo una arquitectura protegida por un balanceador NGINX, asegura que todas las interacciones entre los microservicios y las aplicaciones cliente estén validadas, garantizando la integridad y resiliencia del sistema.
 
-<img src="https://i.imgur.com/BbOzGKT.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+<img src="assets/images/chapter4/bc-iam/cloud-iam-component.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
 
@@ -1375,11 +1389,13 @@ El componente de gestión de identidad y acceso (IAM) en el backend es el núcle
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
+En esta sección se presenta el Diagrama de Clases UML detallado de la capa de dominio para el Bounded Context de **Identity and Access Management (IAM)**. Este diseño visual consolida la gestión de identidades y la administración de permisos, asegurando un control de acceso centralizado y escalable para todos los servicios que componen la plataforma Restock.
 
-El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
+El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíces de agregación (**User** y **Role**) centralizan la lógica de decisión. En lugar de ser estructuras pasivas de datos, estas entidades exponen métodos con lógica de negocio explícita —tales como `signUp()`, `signIn()`, `updateSubscription()` y `assignRole()`— que validan invariantes de seguridad y políticas de acceso antes de procesar cualquier cambio de estado. 
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="class diagram identity and access management" border="0">
+Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
+
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
@@ -4082,7 +4098,7 @@ En esta sección se presentan los diagramas de componentes del bounded context A
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops. Se comunica con el backend a través de un NGNIX Load Balancer. 
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops. Se comunica con el backend a través de un NGNIX Load Balancer.
 
 <img src="https://i.imgur.com/mWzflhf.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
 
@@ -5160,8 +5176,8 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 ##### Web Application Component Diagram
 
-Este diagrama muestra el componente **Tracking UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios visualizar la información en tiempo real que leen los dispositivos IoT. 
-Las solicitudes del cliente se envían hacia **NGINX Load Balancer**, que actúa como punto de entrada, balanceador, rate limiting y enrutamiento hacia los contextos internos autorizados. 
+Este diagrama muestra el componente **Tracking UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios visualizar la información en tiempo real que leen los dispositivos IoT.
+Las solicitudes del cliente se envían hacia **NGINX Load Balancer**, que actúa como punto de entrada, balanceador, rate limiting y enrutamiento hacia los contextos internos autorizados.
 
 <img src="https://i.imgur.com/3cdXScV.png" alt="Relaciones del dominio de Tracking en la aplicación web">
 
@@ -5879,7 +5895,6 @@ El diagrama representa la implementación del bounded context de Sales Order Man
 El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App, actúa como el núcleo del procesamiento: recibe solicitudes del Kong Gateway y valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
 
 <img src="https://i.imgur.com/HWSxEVk.png" alt="Backend Sales Order Management Component Diagram" width="100%">
-
 
 <p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
 
@@ -6731,14 +6746,11 @@ El componente Communications dentro de la Restock Web Application actúa como pu
 
 El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Cloud REST API mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
 
-
 ##### Mobile Application Component Diagram
 
 El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
 
-
 <img src="https://imgur.com/M6yta1c.png" alt="mobile-communicaiton">
-
 
 El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
 
@@ -6746,11 +6758,9 @@ El diagrama muestra que el componente Communications de la aplicación móvil re
 
 El componente Communications dentro del Cloud REST API concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
 
-
 <img src="https://imgur.com/a2PNUBA.png" alt="api-communicaiton">
 
 El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Restock Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
-
 
 #### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
 
