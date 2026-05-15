@@ -63,7 +63,7 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
 
 ##### **Analíticos de colaboración — Web Application**
 
-![Mobile Collaboration](assets/images/cap4/collaboration/web_sprint_1.png)
+![Web Collaboration](https://i.imgur.com/EhFqlov.png)
 
 - Total de commits (Web): **100**
 - Total de autores contribuyentes: **7**
