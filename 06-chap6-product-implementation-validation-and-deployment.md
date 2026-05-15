@@ -617,11 +617,9 @@ Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficie
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
 
-#### 6.2.1.7. Services Documentation Evidence for Sprint Review
+#### 6.2.1.7. Software Deployment Evidence for Sprint Review
 
-#### 6.2.1.8. Software Deployment Evidence for Sprint Review
-
-#### 6.2.1.9. Team Collaboration Insights during Sprint
+#### 6.2.1.8. Team Collaboration Insights during Sprint
 
 ### 6.2.2. Sprint 2
 
