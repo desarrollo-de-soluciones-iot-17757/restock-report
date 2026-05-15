@@ -80,13 +80,13 @@ El primer paso consistió en la identificación de los eventos de dominio del si
   <img src="https://imgur.com/uF1M7Jc.png" alt="event">
 </div>
 
-El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: User data was saved, Payment accepted, Plan activated, Account created, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded, Kit description entered, Kit saved into the catalog, Sale confirmed, Branch registered, Custom Supply created, Batch created, Transfer confirmed, Weight registered, Temperature registered, Humidity registered, Values checked, Physical stock estimated, Data anomaly detected, Discrepancy detected, Stock verified, Anomaly detected, Notification sent to the center, entre otros.
+El equipo identificó los eventos de dominio agrupados por columnas, representando los distintos flujos del sistema. Entre los eventos identificados se encuentran: `User data was saved`, `Payment accepted`, `Plan activated`, `Account created`, `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`, `Kit description entered`, `Kit saved into the catalog`, `Sale confirmed`, `Branch registered`, `Custom Supply created`, `Batch created`, `Transfer confirmed`, `Weight registered`, `Temperature registered`, `Humidity registered`, `Values checked`, `Physical stock estimated`, `Data anomaly detected`, `Discrepancy detected`, `Stock verified`, `Anomaly detected`, `Notification sent to the center`, entre otros.
 
-Se eliminaron los eventos de captura de campos individuales de formulario ( `Name entered`, `Category selected`, `Unit price entered`, `Unit of measurement entered` y `Branch name was entered`) dado que no generan reacciones de dominio ni disparan políticas o comandos independientes. En su lugar, se conservan únicamente los eventos que agrupan la información capturada o que representan un cambio de estado significativo en el dominio.
+Se eliminaron los eventos de captura de campos individuales de formulario dado que no representan cambios de estado significativos en el dominio ni disparan políticas o comandos independientes. Este criterio aplica de forma transversal a todos los bounded contexts: en lugar de modelar `Name entered`, `Category selected`, `Unit price entered` o `Branch name was entered` como eventos separados, se consolidan bajo un único evento que agrupa la captura del formulario completo (por ejemplo, `Custom Supply data entered` o `Branch data entered`). Solo se conservan como eventos aquellos hechos que agrupan información capturada o que representan un cambio de estado observable en el dominio.
 
 Adicionalmente, se incorporaron eventos de lectura en los bounded contexts donde el actor consulta información antes de emitir un comando, siguiendo el principio de que toda interacción relevante con el sistema debe quedar registrada. Los eventos de lectura añadidos son: `Recipe catalog consulted`, `Kit catalog consulted`, `Branch list consulted`, `Inventory consulted`, `Device list consulted`, `Subscription plans consulted`, `Sales history consulted`, `Profile consulted` y `Stock record consulted`.
 
-Los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables monitoreadas por los dispositivos IoT.
+Los eventos de telemetría incluyen explícitamente el registro de peso, temperatura y humedad como variables ambientales monitoreadas por los dispositivos IoT, dado que el sistema no solo controla la cantidad del insumo sino también sus condiciones de conservación.
 
 #### Paso 2: Timelines
 
@@ -104,14 +104,17 @@ El equipo organizó los eventos en secuencias horizontales ordenadas bajo los bo
 
 En **Design and Planning**, el flujo de receta: `Profile consulted` → `Recipe catalog consulted` → `Recipe information entered` → `Supplies selected` → `The quantity of supplies was established` → `Recipe image uploaded` → `Recipe saved`. El flujo de kit: `Kit catalog consulted` → `Kit description entered` → `Supplies selected` → `Quantity of supplies established` → `Recipe image uploaded` → `Kit saved into the catalog`.
 
-En **Asset and Resource Management**, el flujo de sucursal: `Branch list consulted` → `Branch location was selected` → `Branch image was loaded` → `Branch registered`. El flujo de insumo personalizado se consolida en: `Inventory consulted` → `Custom Supply created`.
+En **Asset and Resource Management**, el flujo de sucursal: `Branch list consulted` → `Branch location was selected` → `Branch image was loaded` → `Branch registered`. El flujo de insumo personalizado se consolida en: `Inventory consulted` → `Custom Supply data entered` → `Custom Supply created`.
 
 En **Subscriptions and Payments**, el flujo incorpora: `Subscription plans consulted` → `Plan selected` → `Payment details entered` → `Payment accepted` → `Plan activated`.
 
 En **Sales Management**, el flujo incorpora: `Sales history consulted` → `Sale initialized` → `Branch selected` → `Recipes selected` → `Additional supplies were registered` → `Calculate total price` → `Sale confirmed`.
 
-El bounded context de **Tracking** incluye tres flujos diferenciados: el flujo de telemetría física (`Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Approximated supply data processed` → `Physical stock estimated`), el flujo de comparación de stock (`Physical stock received` → `Digital stock received` → `Stock record consulted` → `Difference evaluated` → `Discrepancy detected` / `Stock verified`) y el flujo de salud del dispositivo (`Voltage registered` → `CPU usage registered` → `Memory usage registered` → `Device temperature registered` → `Data analyzed` / `Anomaly detected`).
+El bounded context de **Tracking** organiza sus flujos diferenciando las capas donde ocurren los eventos. En la capa **Edge**, los eventos son generados directamente por el dispositivo IoT a partir de sus sensores físicos. En la capa **Backend/Cloud**, los eventos corresponden al procesamiento, comparación y acción correctiva que ocurre en el servidor.
 
+En la capa **Edge**, el flujo de telemetría física: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Approximated supply data processed` → `Physical stock estimated`, con dos derivaciones posibles: `Processed data stored` o `Data anomaly detected`. El flujo de salud del dispositivo: `Voltage registered` → `CPU usage registered` → `Memory usage registered` → `Device temperature registered` → `Data analyzed` / `Anomaly detected`.
+
+En la capa **Backend/Cloud**, el flujo de comparación de stock: `Physical stock received` → `Digital stock received` → `Stock record consulted` → `Difference evaluated` → `Discrepancy detected` / `Stock verified`. El flujo de conciliación: `Stock difference received` → `Stock adjusted` → `Real stock stored`.
 
 #### Paso 3: Paint Point
 
@@ -119,7 +122,7 @@ El tercer paso incorporó la identificación de los pain points dentro de los fl
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/0QGK9vD.png" alt="paint-point">
-  <img src="https://imgur.com/U8QiL0s" alt="paint-point">
+  <img src="https://imgur.com/U8QiL0s.png" alt="paint-point">
   <img src="https://imgur.com/0C8oOMR.png" alt="paint-point">
   <img src="https://imgur.com/jIvMoqL.png" alt="paint-point">
   <img src="https://imgur.com/3rKIBL0.png" alt="paint-point">
@@ -128,17 +131,17 @@ El tercer paso incorporó la identificación de los pain points dentro de los fl
 
 Se identificaron seis pain points distribuidos en los bounded contexts con mayor ambigüedad de diseño. Cada uno fue resuelto en el transcurso del Design-Level EventStorming tal como se describe al inicio de esta sección:
 
-- **"How do I access the services?"** en IAM. Resuelto mediante el modelado del flujo Sign up con sus cuatro eventos (User entered personal data, User entered their password, User Role was chosen, User data was saved) y la política automática Create profile automatically.
+- **"How do I access the services?"** en IAM. Resuelto mediante el modelado del flujo Sign up con sus cuatro eventos (`User entered personal data`, `User entered their password`, `User Role was chosen`, `User data was saved`) y la política automática `Create profile automatically`.
 
-- **"What information does a recipe require?"** en Design and Planning. Resuelto estableciendo seis eventos de registro: Recipe register initialized, Category selected, Recipe information entered, Supplies selected, The quantity of supplies was established, Recipe image uploaded.
+- **"What information does a recipe require?"** en Design and Planning. Resuelto estableciendo los eventos de registro: `Recipe register initialized`, `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`.
 
-- **"What information does a Kit require?"** en Design and Planning. Resuelto estableciendo siete eventos: Kit register initialized, Category selected, Kit description entered, Supplies selected, Quantity of supplies established, Recipe image uploaded, Kit saved into the catalog.
+- **"What information does a Kit require?"** en Design and Planning. Resuelto estableciendo los eventos: `Kit register initialized`, `Kit description entered`, `Supplies selected`, `Quantity of supplies established`, `Recipe image uploaded`, `Kit saved into the catalog`.
 
-- **"How do I record a sale?"** en Sales Management. Resuelto mediante el flujo de seis eventos: Sale initialized, Branch selected, Recipes selected, Additional supplies were registered, Calculate total price, Sale confirmed; con dos políticas automáticas que calculan el total y descuentan el stock.
+- **"How do I record a sale?"** en Sales Management. Resuelto mediante el flujo de eventos: `Sale initialized`, `Branch selected`, `Recipes selected`, `Additional supplies were registered`, `Calculate total price`, `Sale confirmed`; con dos políticas automáticas que calculan el total y descuentan el stock.
 
-- **"How do you register a branch?"** en Asset and Resource Management. Resuelto con cinco eventos: Branch register was initialized, Branch name was entered, Branch location was selected, Branch image was loaded, Branch registered; más la restricción Cannot delete branch with stock available.
+- **"How do you register a branch?"** en Asset and Resource Management. Resuelto con los eventos: `Branch register was initialized`, `Branch data entered` (agrupando nombre, ubicación e imagen de la sucursal) y `Branch registered`; más la restricción `Cannot delete branch with stock available`.
 
-- **"How do you register a custom supply?"** en Asset and Resource Management. Resuelto con seis eventos: Name entered, Category selected, Unit price entered, Unit of measurement entered, Custom Supply image was loaded, Custom Supply created.
+- **"How do you register a custom supply?"** en Asset and Resource Management. Resuelto consolidando el flujo de registro en tres eventos de dominio significativos: `Custom Supply register initialized`, `Custom Supply data entered` (agrupando nombre, categoría, precio unitario, unidad de medida e imagen) y `Custom Supply created`. Se descartó el modelado evento a evento de cada campo de formulario, dado que ninguno de ellos genera reacciones de dominio ni dispara políticas o comandos de forma independiente.
 
 #### Paso 4: Pivotal Points
 
@@ -283,14 +286,14 @@ El noveno paso consistió en identificar los agregados del dominio y agrupar en 
 
 <div style="display: flex; align-items: center;">
   <img src="https://imgur.com/PBMkzAf.png" alt="aggregates">
-  <img src="https://imgur.com/bz39Etw.png" alt="aggregates">
-  <img src="https://imgur.com/NKfdPMt.png" alt="aggregates">
+  <img src="https://imgur.com/Zvyn232.png" alt="aggregates">
+  <img src="https://imgur.com/1KBSr9c.png" alt="aggregates">
   <img src="https://imgur.com/LgEVu9L.png" alt="aggregates">
   <img src="https://imgur.com/x1YNoUB.png" alt="aggregates">
   <img src="https://imgur.com/SCVcxva.png" alt="aggregates">
   <img src="https://imgur.com/MhiSYQl.png" alt="aggregates">
   <img src="https://imgur.com/jCdhakC.png" alt="aggregates">
-  <img src="https://imgur.com/1RTkenv.png" alt="aggregates">
+  <img src="https://imgur.com/nSjYQkn.png" alt="aggregates">
   <img src="https://imgur.com/xKjeZEy.png" alt="aggregates">
   <img src="https://imgur.com/AB3T2Wc.png" alt="aggregates">
 </div>
@@ -315,17 +318,17 @@ El equipo identificó los agregados en cada bounded context de la siguiente mane
 
 En **Tracking** se identificaron seis agregados:
 
-- **Device Health Record**, que gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
+- **Device Health Record** gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
 
-- **Box State Record**, que centraliza el flujo de telemetría física del dispositivo: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos posibles derivaciones: `Processed data stored` o `Data anomaly detected`. Este agregado incorpora explícitamente el registro de temperatura y humedad como variables monitoreadas junto al peso.
+- **Box State Record** centraliza el flujo completo de telemetría física del dispositivo, incorporando explícitamente las tres variables ambientales monitoreadas: peso, temperatura y humedad. El flujo es: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos derivaciones posibles: `Processed data stored` o `Data anomaly detected`. La inclusión de temperatura y humedad como variables de primer nivel responde al requisito de monitorear no solo la cantidad del insumo sino también sus condiciones de conservación.
 
-- **Stock Comparison**, que gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
+- **Stock Comparison** gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
 
-- **Power Schedule**, que gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
+- **Power Schedule** gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
 
-- **Conciliation Task**, que gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
+- **Conciliation Task** gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
 
-- **Box Threshold**, que centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de peso, humedad y temperatura junto al nombre del insumo. Al verificar un umbral se calcula si los datos actuales superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
+- **Box Threshold** centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de las tres variables monitoreadas — **peso**, **temperatura** y **humedad** — junto al nombre del insumo asociado. Al verificar un umbral, el sistema evalúa si los valores actuales de cualquiera de estas tres variables superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
 
