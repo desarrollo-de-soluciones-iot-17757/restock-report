@@ -4831,7 +4831,7 @@ En esta sección se presentan los diagramas de componentes del bounded context S
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta la interfaz gráfica (UI) para la manipulación de los catálogos.
 
-<img src="./assets/images/chapter4/bc-planning/web-client-component-diagram.png" alt="Web Service Design and Planning Component Diagram" width="500px">
+<img src="https://i.imgur.com/MQnUeCA.png" alt="Web Service Design and Planning Component Diagram" width="500px">
 
 <p><em>Componentes de la Web Application para Service Design and Planning</em></p>
 
