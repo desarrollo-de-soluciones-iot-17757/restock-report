@@ -4822,13 +4822,13 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
 
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde la perspectiva de la aplicación web y del backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, el API Gateway o servicios externos para la gestión de recetas gastronómicas y la configuración de kits comerciales.
+En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde la perspectiva de la aplicación web y del backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, balanceadores de carga o servicios externos para la gestión de recetas gastronómicas y la configuración de kits comerciales.
 
 ##### Web Application Component Diagram
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta la interfaz gráfica (UI) para la manipulación de los catálogos.
 
-<img src="https://i.imgur.com/KdmrcXs.png" alt="Web Service Design and Planning Component Diagram" width="100%">
+<img src="./assets/images/chapter4/bc-planning/web-client-component.png" alt="Web Service Design and Planning Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Service Design and Planning</em></p>
 
@@ -4863,9 +4863,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>Kong Gateway</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Petición HTTP (JSON/HTTPS)</td>
-      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas y kits enviando las peticiones a través del API Gateway (Manages recipes and kits).</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP (JSON/HTTP)</td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas y kits enviando las peticiones a través del balanceador de carga (Manages recipes and kits).</td>
     </tr>
   </tbody>
 </table>
@@ -4874,9 +4874,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 ##### Backend Application Component Diagram
 
-El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos e internos para la validación de insumos y estructuración comercial.
 
-<img src="https://i.imgur.com/5nXSwzI.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
+<img src="./assets/images/chapter4/bc-planning/cloud-rest-api-component.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Service Design and Planning</em></p>
 
@@ -4891,7 +4891,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
   <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Service Design and Planning</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail. Centraliza la lógica de validación de insumos y estructuración comercial.</td>
+      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail (Handles recipe management for restaurants and kit management for retail stores).</td>
       <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
     </tr>
   </tbody>
@@ -4913,12 +4913,12 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>MongoDB Database</strong></td>
       <td style="padding: 10px; border: 1px solid;">Lectura / Escritura (Spring Data MongoDB)</td>
-      <td style="padding: 10px; border: 1px solid;">Lee y almacena de forma persistente las recetas y los kits (Reads and writes recipes and kits).</td>
+      <td style="padding: 10px; border: 1px solid;">Lee y escribe las recetas y los kits (Reads and writes recipes and kits).</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Asset and Resource Management</strong></td>
       <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
-      <td style="padding: 10px; border: 1px solid;">Resta el stock de los insumos asociados a la receta o kit en el sistema (Subtracts supply stock associated to recipe/kit).</td>
+      <td style="padding: 10px; border: 1px solid;">Resta el stock de los insumos asociados a la receta o kit (Subtracks supply stock asociated to recipe/kit).</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Identity and Access Management</strong></td>
@@ -4928,12 +4928,12 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Subscriptions and Payments</strong></td>
       <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
-      <td style="padding: 10px; border: 1px solid;">Verifica el uso de recursos actuales del usuario para mantener la coherencia del sistema (Checks user's current resource usage).</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica el uso de recursos actuales del usuario (Checks user's current resource usage).</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Cloudinary API</strong></td>
       <td style="padding: 10px; border: 1px solid;">Integración Externa (JSON/HTTPS)</td>
-      <td style="padding: 10px; border: 1px solid;">Sube y recupera imágenes de negocio o perfil asociadas al catálogo (Uploads and retrieves profile or business images).</td>
+      <td style="padding: 10px; border: 1px solid;">Sube y recupera imágenes de perfil o de negocio asociadas (Uploads and retrieves profile or business images with.).</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Sales Order Management</strong></td>
@@ -4942,6 +4942,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
     </tr>
   </tbody>
 </table>
+
 
 #### 4.2.5.6. Bounded Context Software Architecture Code Level Diagrams
 
