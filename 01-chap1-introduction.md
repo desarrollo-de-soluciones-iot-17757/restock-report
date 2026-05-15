@@ -22,8 +22,6 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 ### 1.1.2 Perfiles de integrantes del equipo
 
-[EN ORDEN ALFABETICO POR APELLIDO]
-
 <br>
 
 **Julio Castro Alejos (u202021885)**
