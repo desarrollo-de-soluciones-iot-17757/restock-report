@@ -633,6 +633,175 @@ Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso 
 ### 5.3.2. Landing Page Mock-up
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
+
+### Web Application
+
+Aquí tienes el mismo bloque corregido, sin los links de imagen:
+
+#### Registro de cuenta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de empresa
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Fallo de inicio de sesión
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lista de sucursales
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Crear una nueva sucursal
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Recuperar contraseña
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Pago de plan de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Inventario vacío
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Lotes registrados
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registro de lote
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de suministros
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Registrar un nuevo suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Editar un suministro
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de combos
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de combo
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Catálogo de recetas
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de receta
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Retail Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Restaurant Dashboard
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Planes de suscripción
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración y preferencias
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del negocio
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Perfil del usuario
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Notificaciones
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Configuración de dispositivos IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+#### Detalle de dispositivo IoT
+
+<div align="center">
+  <img src="">
+</div>
+
+### Mobile Application
+
 ### 5.4.2. Applications Wireflow Diagrams
 
 Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
@@ -902,6 +1071,581 @@ El administrador accede a la configuración de cuenta y navega a la sección de 
 
 
 ### 5.4.2. Applications Mock-ups
+
+En esta sección se presentarán los mockups de las aplicaciones, los cuales fueron diseñas en Figma.
+
+### Web Application
+
+En esta sección se presentarán los mockups de la aplicación web, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
+#### Registro de cuenta
+
+Esta es la pantalla de registro de cuenta, donde el usuario puede crear una nueva cuenta para acceder a la plataforma Restock. El formulario solicita información básica como nombre, correo electrónico y contraseña.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/WogEZ03.png">
+</div>
+
+#### Registro de empresa
+
+Esta es la pantalla de registro de empresa, donde el usuario debe crear una cuenta de empresa para empezar a gestionar su inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/A2bjmuO.png">
+</div>
+
+#### Inicio de sesión
+
+En esta pantalla de inicio de sesión, el usuario puede acceder a su cuenta de Restock ingresando su correo electrónico y contraseña registrados. También se ofrece la opción de recuperar la contraseña en caso de haberla olvidado.
+
+<div align="center">
+  <img src="https://i.imgur.com/0vskI7b.png">
+</div>
+
+#### Fallo de inicio de sesión
+
+Esta pantalla muestra el estado de error cuando el usuario ingresa credenciales incorrectas al intentar iniciar sesión. Se despliega un mensaje de advertencia indicando que el correo electrónico o la contraseña son inválidos, invitando al usuario a intentarlo nuevamente.
+
+<div align="center">
+  <img src="https://i.imgur.com/uIvivp4.png">
+</div>
+
+#### Lista de sucursales
+
+En esta pantalla se muestra el listado de todas las sucursales registradas bajo la cuenta de la empresa. El usuario puede visualizar información general de cada sucursal y acceder a su gestión individual, así como agregar nuevas sucursales desde esta vista.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/7SZem7C.png">
+</div>
+
+#### Crear una nueva sucursal
+
+Esta pantalla presenta el formulario para registrar una nueva sucursal dentro de la plataforma. El usuario debe completar datos como el nombre de la sucursal, dirección y otros detalles relevantes para su correcta identificación y gestión.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/R6rZej6.png">
+</div>
+
+#### Recuperar contraseña
+
+En esta pantalla el usuario puede solicitar la recuperación de su contraseña ingresando el correo electrónico asociado a su cuenta. La plataforma enviará un enlace o código para restablecer la contraseña de forma segura.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/ldrNJsk.png">
+</div>
+
+#### Pago de plan de suscripción 
+
+Esta pantalla corresponde al proceso de pago del plan de suscripción seleccionado. El usuario puede ingresar los datos de su método de pago y confirmar la transacción para activar o renovar su plan dentro de la plataforma Restock.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/tbRwP8W.png">
+</div>
+
+#### Inventario vacío
+
+Esta pantalla se muestra cuando el usuario aún no ha registrado ningún producto o lote en su inventario. Se presenta un mensaje informativo junto a una opción para comenzar a agregar elementos al inventario.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/k6Kdmbj.png">
+</div>
+
+#### Lotes registrados
+
+En esta pantalla se visualizan todos los lotes de productos que han sido registrados en el inventario de la sucursal. El usuario puede revisar detalles como cantidades disponibles y el estado de cada lote.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/Vq8uGTA.png">
+</div>
+
+#### Registro de lote
+
+Esta pantalla presenta el formulario para registrar un nuevo lote de productos en el inventario. El usuario debe ingresar información como el producto asociado, cantidad y fecha de vencimiento, entre otros campos relevantes.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/8QhpRcn.png">
+</div>
+
+#### Catálogo de suministros
+
+En esta pantalla se muestra el catálogo completo de suministros disponibles en la plataforma. El usuario puede gestionar los distintos insumos registrados, así como acceder a las opciones de edición o eliminación de cada uno.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/S7d8Jcx.png">
+</div>
+
+#### Registrar un nuevo suministro
+
+Esta pantalla presenta el formulario para dar de alta un nuevo suministro en el sistema. El usuario debe completar campos como nombre del insumo, unidad de medida y descripción, entre otros datos necesarios para su correcta gestión.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/ci7VsN5.png">
+</div>
+
+#### Editar un suministro
+
+En esta pantalla el usuario puede modificar la información de un suministro previamente registrado. Se muestran los mismos campos del formulario de creación, precargados con los datos actuales del insumo, permitiendo actualizar la información de manera sencilla.
+
+<div align="center">
+  <img src="https://i.imgur.com/beQqlcQ.png">
+</div>
+
+
+#### Catálogo de combos 
+
+Esta pantalla muestra el listado de combos disponibles configurados en la plataforma. El usuario puede visualizar los combos existentes, acceder al detalle de cada uno y gestionar su composición según los suministros o productos que los integran.
+
+<div align="center">
+  <img src="https://i.imgur.com/jImC02b.png">
+</div>
+
+#### Detalle de combo
+
+En esta pantalla se presenta la información detallada de un combo específico, incluyendo los productos o suministros que lo componen, sus cantidades y el precio o condiciones asociadas. El usuario puede editar o eliminar el combo desde esta vista.
+
+<div align="center">
+  <img src="https://i.imgur.com/bRfra7h.png">
+</div>
+
+#### Cátalogo de recetas
+
+Esta pantalla muestra el listado de recetas registradas en la plataforma, orientada principalmente al segmento de restaurantes. El usuario puede explorar las recetas existentes y acceder a su detalle o crear nuevas recetas vinculadas a los suministros disponibles.
+
+<div align="center">
+  <img src="https://i.imgur.com/I96OyZ0.png">
+</div>
+
+#### Detalle de receta
+
+En esta pantalla se visualiza la información completa de una receta en particular, incluyendo los ingredientes necesarios y sus cantidades. Esta vista permite al usuario gestionar los insumos requeridos y mantener un control preciso del consumo de inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/4oOxbng.png">
+</div>
+
+#### Retail Dashboard
+
+Esta pantalla corresponde al panel principal para negocios de tipo retail, donde el usuario puede visualizar métricas clave del inventario, alertas de stock bajo, movimientos recientes y un resumen general del estado de sus productos y sucursales.
+
+<div align="center">
+  <img src="https://i.imgur.com/W4VMaSZ.png">
+</div>
+
+#### Restaurant Dashboard
+
+Esta pantalla es el panel principal para negocios de tipo restaurante, mostrando indicadores relevantes como el consumo de insumos y discrepancias entre entra las cantidades del stock actual.
+
+<div align="center">
+  <img src="https://i.imgur.com/azgMSRd.png">
+</div>
+
+#### Planes de suscripción
+
+En esta pantalla se presentan los distintos planes de suscripción disponibles en la plataforma Restock. El usuario puede comparar las características y beneficios de cada plan para seleccionar el que mejor se adapte a las necesidades de su negocio.
+
+<div align="center">
+  <img src="https://i.imgur.com/BTcOQaV.png">
+</div>
+
+#### Configuración y preferencias
+
+Esta pantalla permite al usuario personalizar las preferencias generales de la plataforma, como notificaciones, idioma, zona horaria y otras opciones de configuración que afectan la experiencia de uso dentro de Restock.
+
+<div align="center">
+  <img src="https://i.imgur.com/bcj4I7K.png">
+</div>
+
+#### Perfil del negocio
+
+En esta pantalla el usuario puede visualizar y editar la información general de su negocio registrado en la plataforma, incluyendo nombre, dirección y datos de contacto.
+
+<div align="center">
+  <img src="https://i.imgur.com/M0ntofi.png">
+</div>
+
+#### Perfil del usuario
+
+Esta pantalla muestra la información personal del usuario principal de la cuenta, muestra como nombre, correo electrónico y opciones para actualizar sus datos.
+
+<div align="center">
+  <img src="https://i.imgur.com/a60Y9eI.png">
+</div>
+
+#### Notificaciones
+
+En esta pantalla el usuario puede revisar todas las notificaciones generadas por la plataforma, tales como alertas de stock bajo, productos próximos a vencer, actualizaciones del sistema y otros avisos relevantes para la gestión del inventario.
+
+<div align="center">
+  <img src="https://i.imgur.com/vMzvB0c.png">
+</div>
+
+#### Monitoreo de dispositivos IoT
+
+Esta pantalla permite al usuario visualizar en tiempo real el estado de los dispositivos IoT conectados a la plataforma, mostrando métricas como niveles de stock detectados por sensores, estado de conexión de cada dispositivo y últimas lecturas registradas.
+
+<div align="center">
+  <img src="https://i.imgur.com/d7p4XBH.png">
+</div>
+
+#### Configuración de suministro a dispositivo IoT
+
+En esta pantalla el usuario puede asociar y configurar los suministros que serán monitoreados por un dispositivo IoT específico. Se definen parámetros como umbrales mínimos de stock y el tipo de suministro vinculado al sensor correspondiente.
+
+<div align="center">
+  <img src="https://i.imgur.com/mlg3g3Z.png">
+</div>
+
+
+### Mobile Application
+
+En esta sección se presentarán los mockups de la aplicación móvil, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+
+**Inicio de Sesión**
+
+**Descripción:** Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/main-login-screen.png" alt="Interfaz principal de inicio de sesión que permite el acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo." height="600">
+</div>
+
+**Error de Inicio de Sesión**
+
+**Descripción:** Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/login-error-screen.png" alt="Pantalla de autenticación mostrando una alerta de error por credenciales incorrectas, solicitando al administrador reintentar el acceso a sus métricas." height="600">
+</div>
+
+**Registro de Usuario**
+
+**Descripción:** Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/register-screen.png" alt="Pantalla de registro de nuevos usuarios para el sistema Restock, permitiendo la creación de credenciales mediante correo o proveedores de terceros." height="600">
+</div>
+
+**Recuperación de Contraseña**
+
+**Descripción:** Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-request.png" alt="Interfaz para iniciar la recuperación de contraseña, solicitando el correo electrónico asociado a la cuenta para enviar un código de verificación." height="600">
+</div>
+
+**Verificación de Código**
+
+**Descripción:** Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-verify.png" alt="Pantalla de validación que requiere un código numérico de seis dígitos enviado al usuario para continuar con la recuperación de credenciales." height="600">
+</div>
+
+**Nueva Contraseña**
+
+**Descripción:** Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/password-recovery-create.png" alt="Formulario seguro para definir y confirmar una nueva contraseña, culminando el flujo de restablecimiento de acceso a la plataforma." height="600">
+</div>
+
+**Selección de Rol**
+
+**Descripción:** Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/role-selection-screen.png" alt="Interfaz de configuración donde el usuario selecciona su entorno operativo (administrador de restaurante o retail) para adaptar las métricas del sistema." height="600">
+</div>
+
+**Datos Personales**
+
+**Descripción:** Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-personal-details.png" alt="Primer paso del proceso de configuración de cuenta para ingresar los datos personales y de contacto del perfil administrativo." height="600">
+</div>
+
+**Detalles del Negocio**
+
+**Descripción:** Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/onboarding-business-details.png" alt="Formulario para registrar la información operativa de la organización, incluyendo rubro y ubicación, estructurando así la red de monitoreo de stock." height="600">
+</div>
+
+**Selección de Plan**
+
+**Descripción:** Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/subscription-plan-selection.png" alt="Pantalla de selección de planes de servicio, detallando límites de básculas conectadas, soporte y características de la API según el nivel." height="600">
+</div>
+
+**Detalles de Pago**
+
+**Descripción:** Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/payment-details-screen.png" alt="Formulario de pago seguro para procesar la suscripción al sistema Restock, permitiendo al administrador ingresar los datos de facturación y tarjeta de crédito." height="600">
+</div>
+
+**Dashboard de Monitoreo General**
+
+**Descripción:** Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/scale-monitoring-dashboard.png" alt="Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock." height="600">
+</div>
+
+**Empty Inventory State**
+
+**Descripción:** Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/empty-inventory-state.png" alt="Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema." height="600">
+</div>
+
+**Inventory Dashboard**
+
+**Descripción:** Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/inventory-dashboard.png" alt="Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría." height="600">
+</div>
+
+**Add New Batch**
+
+**Descripción:** Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/add-new-batch.png" alt="Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto." height="600">
+</div>
+
+**Batch Details View**
+
+**Descripción:** Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/batch-details-view.png" alt="Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental." height="600">
+</div>
+
+**Edit Batch Modal**
+
+**Descripción:** Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-batch-modal.png" alt="Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales." height="600">
+</div>
+
+**Custom Supplies List**
+
+**Descripción:** Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/custom-supplies-list.png" alt="Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos." height="600">
+</div>
+
+**Create Custom Supply**
+
+**Descripción:** Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/create-custom-supply.png" alt="Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad." height="600">
+</div>
+
+**Edit Custom Supply**
+
+**Descripción:** Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-custom-supply.png" alt="Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto." height="600">
+</div>
+
+**Transfer Batch Stock**
+
+**Descripción:** Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/transfer-batch-stock.png" alt="Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real." height="600">
+</div>
+
+**Device Directory**
+
+**Descripción:** Directorio principal de dispositivos que muestra el estado general de las básculas, alertas de inventario y condiciones ambientales mediante tarjetas informativas y una lista detallada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/device-directory-overview.png" alt="Directorio principal de dispositivos con resumen de estados y lista de básculas activas." height="600">
+</div>
+
+**Register Device Modal**
+
+**Descripción:** Interfaz de registro para nuevos dispositivos que permite capturar el alias de la báscula y su dirección MAC única para la integración en la red del establecimiento.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/register-device-modal.png" alt="Formulario de registro de dispositivo para ingresar alias y dirección MAC." height="600">
+</div>
+
+**Unassigned Device State**
+
+**Descripción:** Vista detallada de una báscula recién registrada en estado de espera, indicando que el hardware requiere la asignación de un lote de inventario para iniciar el monitoreo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/unassigned-scale-details.png" alt="Vista de detalle de dispositivo sin lote asignado y configuración bloqueada." height="600">
+</div>
+
+**Batch Assignment Modal**
+
+**Descripción:** Modal de configuración de pesaje donde se selecciona el producto (lote) y se definen los parámetros de peso unitario y tara para la calibración del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/assign-batch-modal.png" alt="Configuración de asignación de lote con campos para peso unitario, tara y puesta a cero." height="600">
+</div>
+
+**Edit Device Info**
+
+**Descripción:** Ventana de edición para modificar la información de identificación del dispositivo, permitiendo actualizar el alias y verificar la dirección MAC asignada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-scale-info-modal.png" alt="Interfaz de edición de información básica de la báscula y sincronización de red." height="600">
+</div>
+
+**Edit Thresholds Modal**
+
+**Descripción:** Panel de configuración de umbrales críticos para el control de inventario y límites ambientales de temperatura y humedad, con advertencia de impacto en reportes históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/edit-thresholds-modal.png" alt="Edición de umbrales de stock, temperatura y humedad con advertencia de cambios retroactivos." height="600">
+</div>
+
+**Unlink Device Confirmation**
+
+**Descripción:** Pantalla de confirmación de seguridad para la desvinculación de dispositivos, requiriendo validación del ID para detener el rastreo de inventario y borrar datos de calibración.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/unlink-scale-confirmation.png" alt="Proceso de confirmación para desvincular un dispositivo de forma permanente." height="600">
+</div>
+
+**Active Device Details**
+
+**Descripción:** Vista de monitoreo activo de una báscula en funcionamiento, mostrando la fuerza de la señal, el tiempo desde la última actualización y el resumen de umbrales configurados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/active-scale-configuration.png" alt="Detalle de báscula en línea con indicadores de señal, lote asignado y umbrales de control." height="600"> 
+</div>
+
+**alerts-notifications-main**
+
+**Descripción:** Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/alerts-notifications-main.png" alt="Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa." height="600">
+</div>
+
+**confirm-stock-transfer-modal**
+
+**Descripción:** Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/confirm-stock-transfer-modal.png" alt="Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP." height="600">
+</div>
+
+**data-mismatch-discrepancy-detail**
+
+**Descripción:** Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/data-mismatch-discrepancy-detail.png" alt="Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor." height="600">
+</div>
+
+**hardware-offline-diagnostic-detail**
+
+**Descripción:** Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/hardware-offline-diagnostic-detail.png" alt="Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo." height="600">
+</div>
+
+**settings-general-configuration**
+
+**Descripción:** Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-general-configuration.png" alt="Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas." height="600">
+</div>
+
+**settings-profile-personal-details**
+
+**Descripción:** Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-personal-details.png" alt="Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta." height="600">
+</div>
+
+**settings-profile-business-info**
+
+**Descripción:** Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-profile-business-info.png" alt="Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados." height="600">
+</div>
+
+**settings-subscription-billing**
+
+**Descripción:** Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-subscription-billing.png" alt="Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas." height="600">
+</div>
+
+**settings-branches-directory**
+
+**Descripción:** Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-directory.png" alt="Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas." height="600">
+</div>
+
+**settings-branches-create-modal**
+
+**Descripción:** Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-create-modal.png" alt="Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial." height="600">
+</div>
+
+**settings-branches-edit-modal**
+
+**Descripción:** Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-edit-modal.png" alt="Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo." height="600">
+</div>
+
+**settings-branches-delete-active-warning**
+
+**Descripción:** Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-active-warning.png" alt="Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos." height="600">
+</div>
+
+**settings-branches-delete-confirmation**
+
+**Descripción:** Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-confirmation.png" alt="Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos." height="600">
+</div>
+
 ### 5.4.3. Applications User Flow Diagrams
 
 #### User Flow 1: Registro y Onboarding
