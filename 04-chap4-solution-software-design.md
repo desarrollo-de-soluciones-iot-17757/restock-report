@@ -1204,9 +1204,9 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
+El componente de la aplicación web cliente, desarrollado en Angular, se ejecuta en el navegador del usuario para proporcionar una experiencia de gestión de identidad fluida en dispositivos de escritorio. Este componente orquesta la comunicación con el backend mediante un Auth Service que consume los endpoints de autenticación a través de un balanceador NGINX, gestionando de forma segura el ciclo de vida de los tokens JWT en el lado del cliente para asegurar que cada petición de la interfaz esté debidamente autorizada.
 
-<img src="https://i.imgur.com/8tKVYV8.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="assets/images/chapter4/bc-iam/frontend-iam-component .png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
@@ -1255,9 +1255,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 ##### Web Application Component Diagram
 
-El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
+El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización mediante un Auth Service dedicado, asegurando que solo los usuarios verificados accedan a sus funciones. Este componente gestiona de forma segura el almacenamiento local del token JWT para permitir sesiones persistentes y se comunica a través de un balanceador NGINX para validar las credenciales contra el backend, garantizando un flujo de identidad robusto y eficiente para los administradores de restaurantes y comercios minoristas.
 
-<img src="https://i.imgur.com/qUANBdt.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="assets/images/chapter4/bc-iam/mobile-app-component-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
 
@@ -1316,9 +1316,9 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
 
 ##### Backend Application Component Diagram
 
-El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
+El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad de la plataforma. Se encarga de centralizar la autenticación y autorización mediante un esquema stateless (JWT), optimizando el rendimiento con una capa de caché en Redis y delegando la gestión de recursos multimedia a Cloudinary. Bajo una arquitectura protegida por un balanceador NGINX, asegura que todas las interacciones entre los microservicios y las aplicaciones cliente estén validadas, garantizando la integridad y resiliencia del sistema.
 
-<img src="https://i.imgur.com/BbOzGKT.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+<img src="assets/images/chapter4/bc-iam/cloud-iam-component.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
 
@@ -1389,11 +1389,13 @@ El componente de gestión de identidad y acceso (IAM) en el backend es el núcle
 
 ##### 4.2.1.6.1. Bounded Context Domain Layer Class Diagrams
 
-En esta sección se presenta el Diagrama de Clases UML correspondiente a la capa de dominio del Bounded Context de Identity and Access Management (IAM). El diseño visual refleja la separación de responsabilidades entre la gestión de identidades de los distintos actores del sistema y la administración de permisos mediante roles, asegurando un control de acceso centralizado y coherente para todos los servicios de la plataforma.
+En esta sección se presenta el Diagrama de Clases UML detallado de la capa de dominio para el Bounded Context de **Identity and Access Management (IAM)**. Este diseño visual consolida la gestión de identidades y la administración de permisos, asegurando un control de acceso centralizado y escalable para todos los servicios que componen la plataforma Restock.
 
-El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (principalmente User y Role) no son simples contenedores de datos, sino que exponen métodos con lógica de negocio clara (como signUp, signIn, updateSubscription o assignRole) que validan las reglas de seguridad y las políticas de acceso internas antes de cualquier cambio de estado. Además, se evidencia la encapsulación mediante el uso de modificadores de acceso restrictivos (- para atributos) y el uso extensivo de Value Objects (como Username y Password) para garantizar la integridad de las credenciales y la seguridad de la información desde el momento de su instanciación.
+El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíces de agregación (**User** y **Role**) centralizan la lógica de decisión. En lugar de ser estructuras pasivas de datos, estas entidades exponen métodos con lógica de negocio explícita —tales como `signUp()`, `signIn()`, `updateSubscription()` y `assignRole()`— que validan invariantes de seguridad y políticas de acceso antes de procesar cualquier cambio de estado. 
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="class diagram identity and access management" border="0">
+Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
+
+<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
