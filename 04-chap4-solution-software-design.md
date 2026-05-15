@@ -1386,7 +1386,7 @@ El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíce
 
 Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
+<img src="assets/images/chapter4/bc-iam/iam-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
