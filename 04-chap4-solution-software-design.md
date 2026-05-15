@@ -3120,7 +3120,7 @@ Esta sección presenta el diagrama de componentes del backend para el bounded co
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la visualización y edición de perfiles en pantallas de escritorio o laptops.
 
-<img src="https://i.imgur.com/O0wm8kM.png" alt="Web App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/g4Uw2GV.png" alt="Web App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Web Application para Profiles and Preferences</em></p>
 
@@ -3155,14 +3155,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nginx Load Balancer</strong></td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
       <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar los perfiles de usuario y negocio en el servidor central.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
     </tr>
   </tbody>
 </table>
@@ -3171,7 +3166,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus perfiles de usuario y negocio, adaptando la experiencia de usuario (UX) para pantallas táctiles.
 
-<img src="https://i.imgur.com/MYKTuso.png" alt="Mobile App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/VTVZtya.png" alt="Mobile App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Mobile Application para Profiles and Preferences</em></p>
 
@@ -3206,14 +3201,9 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nginx Load Balancer</strong> (API)</td>
       <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para recuperar y actualizar los perfiles de usuario y negocio desde la aplicación móvil.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Biblioteca Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
+      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS que son redirigidas al API para recuperar y actualizar los perfiles de usuario y negocio desde la aplicación móvil.</td>
     </tr>
   </tbody>
 </table>
@@ -3222,7 +3212,7 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
 
-<img src="https://i.imgur.com/0nuvaFA.png" alt="Cloud API Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/9tLduXo.png" alt="Cloud API Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Backend Application para Profiles and Preferences</em></p>
 
@@ -3245,7 +3235,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+<p><em>Tabla de Interacciones del Componente apiProfiles</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -3262,19 +3252,14 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
       <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la información del perfil de usuario y de negocio.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiSubscriptions</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Comunica el identificador de negocio creado para asociarlo con la cuenta registrada para el usuario.</td>
-    </tr>
-    <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
       <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
       <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la edición de perfiles.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong> / <strong>Utilidades comunes</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para usar objetos de valor de identidad como UserId, BusinessId y DateTime.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>cloudinary</strong> / <strong>Servicio externo para subir avatares</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Servicio externo</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza el API de Cloudinary para subir avatares de usuario y obtener de regreso el URL de la imagen almacenada.</td>
     </tr>
   </tbody>
 </table>
