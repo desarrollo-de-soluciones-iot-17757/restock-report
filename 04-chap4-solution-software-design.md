@@ -2396,13 +2396,13 @@ En esta sección se presentan los diagramas de componentes del bounded context *
 
 ##### Web Application Component Diagram
 
-Este diagrama muestra el componente **Subscriptions UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios consultar los planes de suscripción y ejecutar acciones como elegir, renovar o cancelar una suscripción. Las solicitudes del cliente se envían hacia **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Cuando el flujo de pago lo requiere, el componente también redirige al usuario hacia **Stripe** para completar el checkout externo.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios consultar los planes de suscripción y ejecutar acciones como elegir, renovar o cancelar una suscripción. El componente envía las solicitudes al **NGNIX Load Balancer**, que actúa como punto de entrada seguro hacia el backend gateway. Cuando el flujo de pago lo requiere, el componente también redirige al usuario hacia **Stripe** para completar el checkout externo.
 
 <img src="https://i.ibb.co/XrrMNzVL/Captura-de-pantalla-2026-05-15-a-la-s-10-17-06-a-m.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Mobile Application Component Diagram
 
-Este diagrama muestra el componente **Subscriptions UI** de la aplicación móvil, desarrollado en Dart y Flutter, cuya función es permitir a los usuarios visualizar los beneficios de la suscripción, elegir un plan y renovar su suscripción. El componente envía las solicitudes al **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Además, cuando el flujo de pago lo requiere, la aplicación redirige al usuario hacia **Stripe** para completar el checkout externo.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación móvil, desarrollado en Dart y Flutter, cuya función es permitir a los usuarios visualizar los beneficios de la suscripción, elegir un plan y renovar su suscripción. El componente envía las solicitudes al **NGNIX Load Balancer**, que actúa como punto de entrada seguro hacia el backend gateway. Además, cuando el flujo de pago lo requiere, la aplicación redirige al usuario hacia **Stripe** para completar el checkout externo.
 
 <img src="https://i.ibb.co/DgDMKKkY/Captura-de-pantalla-2026-05-15-a-la-s-10-15-37-a-m.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
 
