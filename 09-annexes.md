@@ -28,7 +28,7 @@ Se realizaron entrevistas a cada segmento objetivo con la meta de poder entender
 
 ## Anexo C. Acceso al workspace en Miro
 
-El equipo trabajo las principales secciones de diseño y arquitectura en un workspace en Miro.
+El equipo trabajó las principales secciones de diseño y arquitectura en un workspace en Miro.
 
 [https://acortar.link/nORWrR](https://acortar.link/nORWrR)
 
