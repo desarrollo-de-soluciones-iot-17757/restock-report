@@ -676,173 +676,932 @@ Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso 
 ## 5.4. Applications UX/UI Design
 ### 5.4.1. Applications Wireframes
 
+En esta sección se presentarán los wireframes de las aplicaciones, los cuales fueron diseñas en Figma.
+
 ### Web Application
 
-Aquí tienes el mismo bloque corregido, sin los links de imagen:
+En esta sección se presentan los wireframes de la aplicación, los cuales consisten en esquemas de baja y media fidelidad que definen la arquitectura de la información y la disposición estructural de los elementos clave. Estos diagramas establecen la jerarquía visual y el flujo de navegación de la solución sin elementos distractores de diseño, sirviendo como la base técnica sobre la cual se desarrollaron posteriormente los mockups de alta fidelidad.
 
-#### Registro de cuenta
+**Vista inicial de registro**
 
-<div align="center">
-  <img src="">
-</div>
-
-#### Registro de empresa
+**Descripción:** Esquema estructural de la interfaz de registro para nuevos usuarios que define la disposición de campos de credenciales básicas bajo la identidad visual de la plataforma.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-01.png" alt="Esquema estructural de registro para nuevos usuarios con campos de correo y contraseña" height="400">
 </div>
 
-#### Inicio de sesión
+**Estado de error en inicio de sesión**
+
+**Descripción:** Esquema de la pantalla de autenticación que representa la disposición de elementos de validación negativa ante el ingreso de credenciales incorrectas.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-02.1.png" alt="Esquema de validación negativa ante el ingreso de credenciales incorrectas" height="400">
 </div>
 
-#### Fallo de inicio de sesión
+**Vista estándar de inicio de sesión**
+
+**Descripción:** Esquema del formulario de acceso convencional que define la estructura de opciones para inicio de sesión empresarial (SSO) y recuperación de cuenta.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-02.png" alt="Esquema de formulario de acceso convencional con integración de SSO empresarial" height="400">
 </div>
 
-#### Lista de sucursales
+**Bienvenida de usuario recurrente**
+
+**Descripción:** Esquema de la pantalla de acceso optimizada para usuarios con cuentas existentes, definiendo la jerarquía de elementos para simplificar el ingreso al panel de control.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-03.png" alt="Esquema de pantalla de acceso optimizada para usuarios con cuentas existentes" height="400">
 </div>
 
-#### Crear una nueva sucursal
+**Solicitud de restablecimiento de contraseña**
+
+**Descripción:** Esquema del módulo de seguridad para la recuperación de acceso, representando la disposición estructural del flujo de envío de código al correo institucional.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-04.png" alt="Esquema del módulo de seguridad para la recuperación de acceso vía correo electrónico" height="400">
 </div>
 
-#### Recuperar contraseña
+**Verificación de código de seguridad**
+
+**Descripción:** Esquema de la interfaz de validación de identidad con la distribución estructural de campos segmentados para la introducción del código numérico de seis dígitos.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-05.png" alt="Esquema de interfaz de validación de identidad con campos para código numérico" height="400">
 </div>
 
-#### Pago de plan de suscripción
+**Creación de nueva contraseña**
+
+**Descripción:** Esquema del formulario final para el establecimiento de nuevas credenciales de acceso, representando la estructura de validación doble de seguridad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-06.png" alt="Esquema del formulario para el establecimiento de nuevas credenciales de acceso" height="400">
 </div>
 
-#### Inventario vacío
+**Selección de entorno operativo**
+
+**Descripción:** Esquema de la pantalla de segmentación operativa que define la disposición de elementos para que el usuario elija el tipo de industria y personalice los sensores de medición.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-07.png" alt="Esquema de pantalla de segmentación operativa según el tipo de industria" height="400">
 </div>
 
-#### Lotes registrados
+**Detalles de perfil personal**
+
+**Descripción:** Esquema estructural de la pantalla de recopilación de metadatos del administrador y datos de ubicación para la configuración regional de los dispositivos de pesado.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-08.png" alt="Esquema de recopilación de metadatos del administrador y datos de ubicación" height="400">
 </div>
 
-#### Registro de lote
+**Información de perfil empresarial**
+
+**Descripción:** Esquema del formulario de registro detallado de la organización y categorías de inventario para el despliegue del sistema de monitoreo en tiempo real.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-09.png" alt="Esquema de registro detallado de la organización y categorías de inventario" height="400">
 </div>
 
-#### Catálogo de suministros
+**Comparativa de planes de suscripción**
+
+**Descripción:** Esquema estructural de la visualización de niveles de servicio y beneficios comerciales adaptados a la escala de la operación logística del cliente.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-10.png" alt="Esquema de visualización de niveles de servicio y beneficios comerciales" height="400">
 </div>
 
-#### Registrar un nuevo suministro
+**Pasarela de pago y suscripción**
+
+**Descripción:** Esquema de la interfaz de checkout que define la disposición del resumen de costos, impuestos aplicables y formulario de pago encriptado.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-11.png" alt="Esquema de interfaz de checkout con resumen de costos e impuestos" height="400">
 </div>
 
-#### Editar un suministro
+**Inventory batches overview**
+
+**Descripción:** Esquema de la vista principal de la tabla de lotes activos con la disposición estructural de indicadores de productos próximos a expirar y niveles de stock por categoría.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-12.png" alt="Esquema de la vista principal de lotes activos e indicadores de expiración" height="400">
 </div>
 
-#### Catálogo de combos
+**Custom supplies catalog**
+
+**Descripción:** Esquema de la galería visual de la lista maestra de suministros, representando la estructura de elementos para edición y auditoría de artículos perecederos.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-13.png" alt="Esquema de la galería de la lista maestra de suministros de la organización" height="400">
 </div>
 
-#### Detalle de combo
+**Create custom supply modal**
+
+**Descripción:** Esquema del formulario flotante para la creación de nuevos ítems, definiendo la estructura de campos para unidades de medida, capacidades mínimas y alertas de perecederos.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-14.png" alt="Esquema del formulario flotante para la creación de nuevos suministros" height="400">
 </div>
 
-#### Catálogo de recetas
+**Edit custom supply modal**
+
+**Descripción:** Esquema de la interfaz de edición de atributos para suministros existentes, representando la disposición de campos para descripción técnica y umbrales de capacidad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-15.png" alt="Esquema de la interfaz de edición de atributos para suministros existentes" height="400">
 </div>
 
-#### Detalle de receta
+**Batch details view**
+
+**Descripción:** Esquema del modal informativo que define la disposición de elementos para mostrar el stock actual, fecha de expiración y unidad de medida de un lote específico.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-16.png" alt="Esquema del modal informativo de stock y expiración de un lote específico" height="400">
 </div>
 
-#### Retail Dashboard
+**Add new batch modal**
+
+**Descripción:** Esquema del formulario para el ingreso de nuevos lotes al sistema, representando la estructura de vinculación de suministros con su stock inicial y fecha de caducidad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-17.png" alt="Esquema del formulario para el ingreso de nuevos lotes al sistema" height="400">
 </div>
 
-#### Restaurant Dashboard
+**Edit existing batch modal**
+
+**Descripción:** Esquema de la ventana de diálogo para la actualización de datos operativos en lotes activos, representando los campos de correcciones de stock y ajustes de expiración.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-18.png" alt="Esquema de la ventana de diálogo para la actualización de datos en lotes activos" height="400">
 </div>
 
-#### Planes de suscripción
+**Inter branch transfer sidebar**
+
+**Descripción:** Esquema del panel lateral para la gestión de logística interna, definiendo la disposición estructural de elementos para el traslado de stock entre sucursales con vista previa de criticidad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-19.png" alt="Esquema del panel lateral para la gestión de transferencia de stock entre sucursales" height="400">
 </div>
 
-#### Configuración y preferencias
+**Empty inventory state**
+
+**Descripción:** Esquema de la pantalla de estado vacío que define la disposición de elementos orientativos para iniciar el rastreo de telemetría mediante la creación del primer suministro.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-20.png" alt="Esquema de pantalla de estado vacío con guía para inicio de telemetría" height="400">
 </div>
 
-#### Perfil del negocio
+
+**Catálogo general de recetas**
+
+**Descripción:** Esquema del panel principal que representa la disposición estructural de la galería de platos con indicadores de fluctuación de costos, alertas de inventario bajo y estado de actividad.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-21.png" alt="Esquema del panel principal con galería de platos e indicadores de costos y alertas" height="400">
 </div>
 
-#### Perfil del usuario
+**Detalle de costo de receta**
+
+**Descripción:** Esquema del desglose técnico de ingredientes vinculados, representando la estructura de campos para peso exacto, costo unitario y costo total estimado por ración.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-22.png" alt="Esquema del desglose técnico de ingredientes y costos por ración de servicio" height="400">
 </div>
 
-#### Notificaciones
+**Modal de creación de nueva receta**
+
+**Descripción:** Esquema de la interfaz de construcción de recetas que define la disposición de zonas para carga de imágenes y ensamblado de ingredientes mediante un buscador dinámico de suministros.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-23.png" alt="Esquema de la interfaz de construcción de recetas con buscador dinámico de suministros" height="400">
 </div>
 
-#### Configuración de dispositivos IoT
+**Modal de edición de receta**
+
+**Descripción:** Esquema de la ventana de ajuste para recetas existentes, representando la estructura de campos para actualizar cantidades y recalcular el precio total estimado de producción.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-24.png" alt="Esquema de la ventana de ajuste para cantidades y recalculo de costos de producción" height="400">
 </div>
 
-#### Detalle de dispositivo IoT
+**Confirmación de eliminación de receta**
+
+**Descripción:** Esquema del diálogo de seguridad de alta criticidad que define la disposición de elementos para evitar el borrado accidental de fórmulas de producción y datos de costos históricos.
 
 <div align="center">
-  <img src="">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-25.png" alt="Esquema del diálogo de seguridad para confirmación de borrado de recetas" height="400">
 </div>
+
+**Resumen general de ventas**
+
+**Descripción:** Esquema del panel de control de ventas que representa la disposición estructural de métricas de ingresos mensuales, conteo de transacciones y estado operativo de las terminales activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-26.png" alt="Esquema del panel de control de ventas con métricas de ingresos y estado de terminales" height="400">
+</div>
+
+**Detalle de transaccion registrada**
+
+**Descripción:** Esquema del desglose de una transacción específica, representando la disposición de campos para artículos vendidos y el registro de deducción automática de insumos en las básculas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-27.png" alt="Esquema del desglose de transacción con registro de deducción automática de insumos" height="400">
+</div>
+
+**Terminal de punto de venta**
+
+**Descripción:** Esquema de la interfaz de usuario para la toma de pedidos, definiendo la disposición estructural del menú de platos y el ticket de orden con cálculo de impuestos en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-28.png" alt="Esquema de la terminal de punto de venta con menú y ticket de orden" height="400">
+</div>
+
+**Confirmacion de venta exitosa**
+
+**Descripción:** Esquema del mensaje de confirmación tras procesar una venta, representando la estructura del aviso de actualización automática de los componentes del inventario en el sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-29.png" alt="Esquema del mensaje de confirmación de venta y actualización automática de inventario" height="400">
+</div>
+
+**Estado de alerta por inventario critico**
+
+**Descripción:** Esquema del indicador visual en la terminal de ventas que define la disposición de elementos para resaltar artículos con stock insuficiente para cumplir con una ración completa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-30.png" alt="Esquema del indicador visual de artículos con stock insuficiente en la terminal de ventas" height="400">
+</div>
+
+**Bloqueo por inventario insuficiente**
+
+**Descripción:** Esquema de la alerta de sistema de alta prioridad que representa la disposición estructural del bloqueo de transacción por falta de insumos físicos detectada por los sensores.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-31.png" alt="Esquema de alerta de sistema que bloquea transacciones por falta de insumos físicos" height="400">
+</div>
+
+**General telemetry dashboard**
+
+**Descripción:** Esquema del panel de supervisión integral que define la disposición estructural de elementos para el estado de conexión de las básculas, métricas de red y el registro de discrepancias detectadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-32.png" alt="Esquema del panel de supervisión con métricas de red y registro de discrepancias de peso y temperatura" height="400">
+</div>
+
+
+**Catalogo de kits y combos**
+
+**Descripción:** Esquema del panel principal que representa la disposición estructural de combinaciones de productos para retail con indicadores de kits activos y alertas de stock bajo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-33.png" alt="Esquema del panel principal de combinaciones de productos para retail y alertas de stock" height="400">
+</div>
+
+**Detalle de kit artesanal**
+
+**Descripción:** Esquema de la vista detallada de un kit específico, representando la disposición de campos para demanda semanal, disponibilidad de venta y la lista de ingredientes incluidos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-34.png" alt="Esquema de la vista detallada de kit con demanda semanal e ingredientes incluidos" height="400">
+</div>
+
+**Modal de creacion de nuevo kit**
+
+**Descripción:** Esquema de la interfaz de configuración para nuevos paquetes de productos, definiendo la estructura de campos para establecer precios sugeridos basados en el costo de los componentes.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-35.png" alt="Esquema de la interfaz de configuración para nuevos paquetes de productos y precios sugeridos" height="400">
+</div>
+
+**Modal de edicion de kit**
+
+**Descripción:** Esquema de la ventana de ajuste para la configuración de componentes de un kit, representando su vinculación estructural al monitoreo activo de dispositivos de pesado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-36.png" alt="Esquema de la ventana de ajuste de componentes de kit vinculada a dispositivos de pesado" height="400">
+</div>
+
+**Confirmacion de eliminacion de kit**
+
+**Descripción:** Esquema del diálogo de advertencia para la eliminación de kits del catálogo, definiendo la disposición de elementos que especifican que los productos individuales permanecerán en el inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-37.png" alt="Esquema del diálogo de advertencia para la eliminación de kits del catálogo" height="400">
+</div>
+
+**Resumen de ventas retail**
+
+**Descripción:** Esquema del dashboard analítico que representa la disposición estructural de elementos para el total de ventas, tasa de errores de sincronización y el historial de transacciones procesadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-38.png" alt="Esquema del dashboard analítico de ventas con métricas y registro histórico de transacciones" height="400">
+</div>
+
+**Detalle de transaccion retail**
+
+**Descripción:** Esquema del desglose lateral de una venta específica, representando la estructura del panel que confirma la deducción automática de unidades desde las básculas asignadas a cada producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-39.png" alt="Esquema del desglose de venta retail con confirmación de deducción automática por sensores" height="400">
+</div>
+
+**Terminal de punto de venta retail**
+
+**Descripción:** Esquema de la interfaz de selección de kits y productos para el segmento retail, definiendo la disposición de elementos para la actualización dinámica del ticket de compra y subtotal.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-40.png" alt="Esquema de la interfaz de punto de venta para selección de productos y gestión de ticket" height="400">
+</div>
+
+**Confirmacion de venta retail exitosa**
+
+**Descripción:** Esquema de la notificación modal de éxito tras el registro de la venta, representando la estructura del aviso de descuento correcto de los componentes del inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-41.png" alt="Esquema de la notificación de registro de venta exitosa y descuento de inventario" height="400">
+</div>
+
+**Alerta de stock insuficiente en retail**
+
+**Descripción:** Esquema del indicador visual de advertencia en la terminal de venta, representando la disposición estructural de elementos que resaltan productos con disponibilidad nula según los sensores de peso.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-42.png" alt="Esquema del indicador visual de advertencia por stock agotado en terminal retail" height="400">
+</div>
+
+**Bloqueo por falta de componentes retail**
+
+**Descripción:** Esquema de la interfaz de error que define la disposición de elementos que impiden finalizar la transacción cuando el peso detectado no cumple con el mínimo requerido para el producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-43.png" alt="Esquema de bloqueo de transacción por falta de componentes físicos detectada" height="400">
+</div>
+
+**Conciliation tasks overview**
+
+**Descripción:** Esquema del panel principal de tareas pendientes que representa la disposición estructural de la lista de discrepancias activas detectadas por los sensores para iniciar investigaciones inmediatas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-44.png" alt="Esquema del panel de tareas pendientes con lista de discrepancias activas para investigación" height="400">
+</div>
+
+**Discrepancy technical detail**
+
+**Descripción:** Esquema de la vista profunda de una anomalía, representando la disposición estructural de la comparación entre registro digital y lectura física, con telemetría del dispositivo y gráficos temporales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-45.png" alt="Esquema de la vista detallada de anomalía con comparación de pesos y telemetría del dispositivo" height="400">
+</div>
+
+**Discrepancy resolution modal**
+
+**Descripción:** Esquema de la interfaz para justificar diferencias de stock, definiendo la disposición de campos para asignar causas como mermas o desperdicios y adjuntar evidencia para auditoría.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-46.png" alt="Esquema de la interfaz para justificación de diferencias de stock y asignación de causas" height="400">
+</div>
+
+**Scale recalibration modal**
+
+**Descripción:** Esquema del módulo de mantenimiento preventivo que representa la disposición estructural de opciones para forzar el reinicio de tara o programar visitas técnicas ante errores en los sensores físicos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-47.png" alt="Esquema del módulo de mantenimiento para recalibración de sensores y programación técnica" height="400">
+</div>
+
+**Resolution history logs**
+
+**Descripción:** Esquema del registro histórico de discrepancias resueltas, representando la disposición estructural de la analítica sobre motivos principales de desviación y el desempeño del inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-48.png" alt="Esquema del registro histórico de resoluciones con analítica de motivos de desviación" height="400">
+</div>
+
+**Directorio de dispositivos activos**
+
+**Descripción:** Esquema del panel central de administración de hardware que define la disposición estructural de elementos para el estado de red, salud de sensores y dirección MAC de las básculas en línea.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-49.png" alt="Esquema del panel central de administración de hardware y estado de salud de sensores" height="400">
+</div>
+
+**Modal de registro de dispositivo**
+
+**Descripción:** Esquema de la interfaz para el alta de nuevas unidades, representando la disposición de campos para la introducción de la dirección MAC física y la asignación de un alias identificador.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-50.png" alt="Esquema de la interfaz para el alta de nuevas unidades mediante dirección MAC y alias" height="400">
+</div>
+
+**Configuracion de dispositivo pendiente**
+
+**Descripción:** Esquema de la vista de espera para hardware recién registrado, representando la disposición estructural de alertas bloqueadas hasta que se asigne un lote de insumos específico.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-51.png" alt="Esquema de la vista de configuración bloqueada para dispositivos sin lote asignado" height="400">
+</div>
+
+**Modal de asignacion de lote**
+
+**Descripción:** Esquema del formulario de calibración inicial que representa la disposición de campos para definir el peso unitario y la tara al establecer el punto de referencia cero en la báscula.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-52.png" alt="Esquema del formulario de calibración inicial y establecimiento de punto cero en báscula" height="400">
+</div>
+
+**Modal de edicion de informacion del dispositivo**
+
+**Descripción:** Esquema de la ventana de actualización para modificar metadatos técnicos, representando la disposición estructural de campos para asegurar la correcta jerarquía en el mapa de calor del inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-53.png" alt="Esquema de la ventana de actualización de metadatos técnicos y alias de dispositivo" height="400">
+</div>
+
+**Modal de edicion de umbrales de alerta**
+
+**Descripción:** Esquema del panel de configuración de límites críticos que representa la disposición de campos para el control de stock y variables ambientales de temperatura y humedad permitidas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-54.png" alt="Esquema del panel de configuración de límites de stock y variables ambientales" height="400">
+</div>
+
+**Detalle de configuracion de dispositivo online**
+
+**Descripción:** Esquema de la vista integral de telemetría en tiempo real que define la disposición estructural de indicadores de fuerza de señal inalámbrica y estado operativo del hardware configurado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-55.png" alt="Esquema de la vista integral de telemetría y estado operativo de hardware en línea" height="400">
+</div>
+
+**Confirmacion de desvinculacion de dispositivo**
+
+**Descripción:** Esquema del diálogo de seguridad para la desconexión de hardware, representando la disposición de elementos de advertencia sobre el cese del monitoreo en tiempo real de los insumos asociados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-56.png" alt="Esquema del diálogo de seguridad para desvinculación de hardware y cese de monitoreo" height="400">
+</div>
+
+
+**Lista general de alertas y notificaciones**
+
+**Descripción:** Esquema del panel principal que representa la disposición estructural de avisos sobre desajustes de datos, fallos de conexión en terminales y transferencias de stock pendientes.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-57.png" alt="Esquema del panel principal de notificaciones del sistema con filtros por categoría de alerta" height="400">
+</div>
+
+**Confirmacion de transferencia de stock manual**
+
+**Descripción:** Esquema de la interfaz para validar extracciones físicas detectadas por las básculas, representando la disposición de campos para sincronizar la reducción de unidades con el inventario digital.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-58.png" alt="Esquema de la interfaz de validación para sincronización de extracciones físicas de stock" height="400">
+</div>
+
+**Alerta de discrepancia por desajuste de datos**
+
+**Descripción:** Esquema del modal de advertencia crítica que define la disposición de elementos para mostrar la brecha entre el registro digital y la lectura física de los sensores en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-59.png" alt="Esquema de la advertencia crítica de discrepancia entre registros digitales y lecturas de sensores" height="400">
+</div>
+
+**Notificacion de perdida de conexion en hardware**
+
+**Descripción:** Esquema de la alerta de tiempo de espera agotado en la comunicación con el hub de básculas, representando la disposición del último registro de telemetría capturado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-60.png" alt="Esquema de la notificación de fallo de comunicación con el hardware de pesado" height="400">
+</div>
+
+**Panel de incidentes criticos del sistema**
+
+**Descripción:** Esquema de la vista de alta urgencia que define la disposición estructural de agrupación de eventos de impacto sistémico como fallos en gateways o brechas de temperatura en almacenamiento frío.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-61.png" alt="Esquema del dashboard de incidentes críticos con tiempos de respuesta y registros de eventos" height="400">
+</div>
+
+**Detalle lateral de alerta por brecha de temperatura**
+
+**Descripción:** Esquema del desglose lateral de incidentes térmicos, representando la disposición estructural de elementos para identificar lotes perecederos en riesgo y el despacho inmediato de mantenimiento.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-62.png" alt="Esquema del panel lateral de gestión de incidentes térmicos con identificación de lotes en riesgo" height="400">
+</div>
+
+**Preferencias generales del sistema**
+
+**Descripción:** Esquema del panel de configuración regional que define la disposición estructural de campos para establecer la zona horaria, moneda y lenguaje predeterminado para la sincronización de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-63.png" alt="Esquema del panel de configuración regional y protocolos de comunicación del sistema" height="400">
+</div>
+
+**Informacion del perfil de usuario**
+
+**Descripción:** Esquema de la interfaz de gestión de credenciales personales y datos de contacto del administrador, representando la disposición de la visualización de sucursales asignadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-64.png" alt="Esquema de la interfaz de gestión de credenciales de usuario y sucursales asignadas" height="400">
+</div>
+
+**Detalles del perfil empresarial**
+
+**Descripción:** Esquema del formulario de registro corporativo que define la disposición de campos para gestionar la identidad de la organización, descripción del negocio y categorías operativas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-65.png" alt="Esquema del formulario de registro corporativo e identidad de la organización" height="400">
+</div>
+
+**Gestion de suscripcion y facturacion**
+
+**Descripción:** Esquema del módulo de control de pagos que representa la disposición estructural de campos para el plan activo, capacidad de nodos utilizados y el historial de facturación descargable.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-66.png" alt="Esquema del módulo de control de suscripción mensual y analítica de uso del sistema" height="400">
+</div>
+
+**Panel de administracion de sucursales**
+
+**Descripción:** Esquema del dashboard multisede que define la disposición estructural de elementos para supervisar el estado operativo, cantidad de dispositivos y alertas activas en cada centro logístico.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-67.png" alt="Esquema del dashboard multisede para supervisión de sucursales y dispositivos activos" height="400">
+</div>
+
+**Modal de creacion de sucursal**
+
+**Descripción:** Esquema del formulario para la expansión de la red de suministro que representa la disposición de campos para definir parámetros geográficos y estado inicial de la nueva sede.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-68.png" alt="Esquema del formulario para la creación y definición de parámetros de una nueva sucursal" height="400">
+</div>
+
+**Modal de edicion de sucursal**
+
+**Descripción:** Esquema de la interfaz de actualización de datos para instalaciones existentes, representando la disposición de campos para la gestión de imágenes de planta y estados operativos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-69.png" alt="Esquema de la interfaz de edición de datos de sucursal y gestión de estado operativo" height="400">
+</div>
+
+**Alerta de bloqueo por sucursal activa**
+
+**Descripción:** Esquema del mensaje preventivo que define la disposición de elementos que impiden la eliminación de una sucursal mientras esta se encuentre recibiendo telemetría en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-70.png" alt="Esquema del aviso preventivo de seguridad por sucursal activa con recepción de datos" height="400">
+</div>
+
+**Confirmacion de eliminacion permanente de sucursal**
+
+**Descripción:** Esquema del diálogo crítico de confirmación para el borrado definitivo de una sede, representando la disposición de elementos que advierten sobre la desvinculación total de dispositivos y datos históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-71.png" alt="Esquema del diálogo de confirmación crítica para eliminación permanente de sucursal" height="400">
+</div>
+
 
 ### Mobile Application
+
+
+**Inicio de Sesión**
+
+**Descripción:** Esquema estructural de la pantalla principal de inicio de sesión que define la disposición de campos para acceso estándar mediante credenciales o inicio de sesión único (SSO) corporativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-1.png" alt="Esquema estructural de la pantalla principal de inicio de sesión con campos para credenciales y acceso SSO corporativo." height="600">
+</div>
+
+**Error de Inicio de Sesión**
+
+**Descripción:** Esquema de la pantalla de autenticación que representa la disposición de elementos de alerta ante credenciales incorrectas, indicando al administrador que debe reintentar el acceso.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-2.png" alt="Esquema de pantalla de autenticación con disposición de alerta de error por credenciales incorrectas." height="600">
+</div>
+
+**Registro de Usuario**
+
+**Descripción:** Esquema estructural de la pantalla de registro de nuevos usuarios, definiendo la disposición de campos para la creación de credenciales mediante correo o proveedores de terceros.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-3.png" alt="Esquema de pantalla de registro de nuevos usuarios con campos para correo y proveedores de terceros." height="600">
+</div>
+
+**Recuperación de Contraseña**
+
+**Descripción:** Esquema de la interfaz para iniciar la recuperación de contraseña, representando la disposición del campo de correo electrónico para el envío del código de verificación.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-4.png" alt="Esquema de interfaz de recuperación de contraseña con campo para ingreso de correo electrónico." height="600">
+</div>
+
+**Verificación de Código**
+
+**Descripción:** Esquema de la pantalla de validación que define la disposición de campos segmentados para el ingreso del código numérico de seis dígitos requerido para continuar con la recuperación de credenciales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-5.png" alt="Esquema de pantalla de validación con campos segmentados para código numérico de seis dígitos." height="600">
+</div>
+
+**Nueva Contraseña**
+
+**Descripción:** Esquema del formulario para definir y confirmar una nueva contraseña, representando la disposición estructural de los campos que culminan el flujo de restablecimiento de acceso.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-6.png" alt="Esquema del formulario de creación de nueva contraseña con campos de confirmación para restablecer el acceso." height="600">
+</div>
+
+**Selección de Rol**
+
+**Descripción:** Esquema de la interfaz de configuración que define la disposición de opciones para que el usuario seleccione su entorno operativo y adapte las métricas del sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-7.png" alt="Esquema de pantalla de selección de entorno operativo entre administrador de restaurante y retail." height="600">
+</div>
+
+**Datos Personales**
+
+**Descripción:** Esquema del primer paso del proceso de configuración de cuenta, representando la disposición estructural de campos para el ingreso de datos personales y de contacto del perfil administrativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-8.png" alt="Esquema de formulario de datos personales y de contacto para la configuración del perfil administrativo." height="600">
+</div>
+
+**Detalles del Negocio**
+
+**Descripción:** Esquema del formulario para registrar la información operativa de la organización, definiendo la disposición de campos para rubro y ubicación que estructuran la red de monitoreo de stock.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-9.png" alt="Esquema de formulario de información operativa con campos para rubro y ubicación de la organización." height="600">
+</div>
+
+**Selección de Plan**
+
+**Descripción:** Esquema de la pantalla de selección de planes de servicio, representando la disposición estructural de los límites de básculas conectadas, soporte y características disponibles según el nivel.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-10.png" alt="Esquema de pantalla de selección de planes con disposición de características y límites por nivel de servicio." height="600">
+</div>
+
+**Detalles de Pago**
+
+**Descripción:** Esquema del formulario de pago para procesar la suscripción al sistema, definiendo la disposición de campos para datos de facturación y tarjeta de crédito.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-11.png" alt="Esquema del formulario de pago con campos para datos de facturación y tarjeta de crédito." height="600">
+</div>
+
+**Dashboard de Monitoreo General**
+
+**Descripción:** Esquema de la pantalla principal que define la disposición estructural de indicadores de estado de red de básculas, métricas ambientales en tiempo real y últimas discrepancias de inventario detectadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-12.png" alt="Esquema del dashboard principal con indicadores de estado de básculas, métricas ambientales y discrepancias de inventario." height="600">
+</div>
+
+**Estado de Inventario Vacío**
+
+**Descripción:** Esquema de la pantalla de bienvenida al módulo de inventarios que representa la disposición de elementos orientativos cuando no existen registros previos, guiando la creación del primer suministro.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-13.png" alt="Esquema de pantalla de estado vacío con disposición de elementos para crear el primer suministro del sistema." height="600">
+</div>
+
+**Panel de Inventario**
+
+**Descripción:** Esquema del panel principal de gestión de lotes que define la disposición estructural de métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-14.png" alt="Esquema del panel de gestión de lotes con métricas de stock, valorización y lista de suministros críticos." height="600">
+</div>
+
+**Agregar Nuevo Lote**
+
+**Descripción:** Esquema del formulario modal para el registro de un nuevo lote de suministros, representando la disposición de campos para cantidad inicial y fecha de vencimiento.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-15.png" alt="Esquema del formulario modal de registro de nuevo lote con campos para cantidad inicial y fecha de vencimiento." height="600">
+</div>
+
+**Detalle de Lote**
+
+**Descripción:** Esquema de la pantalla de detalle de un lote específico que define la disposición estructural de métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-16.png" alt="Esquema de pantalla de detalle de lote con métricas de telemetría, niveles de stock y estado ambiental." height="600">
+</div>
+
+**Editar Lote**
+
+**Descripción:** Esquema de la interfaz de edición de lotes que representa la disposición de campos para modificar parámetros de stock y fechas de expiración con el fin de corregir discrepancias manuales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-17.png" alt="Esquema de interfaz de edición de lote con campos para stock y fechas de expiración." height="600">
+</div>
+
+**Lista de Suministros Personalizados**
+
+**Descripción:** Esquema de la galería de suministros personalizados que define la disposición estructural para diferenciar entre productos perecederos y no perecederos con sus respectivos identificadores únicos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-18.png" alt="Esquema de galería de suministros personalizados con diferenciación entre perecederos y no perecederos." height="600">
+</div>
+
+**Crear Suministro Personalizado**
+
+**Descripción:** Esquema del formulario de configuración de nuevos tipos de suministros, representando la disposición de campos para unidades de medida, capacidades y políticas de rastreo de caducidad.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-19.png" alt="Esquema del formulario de creación de suministros con campos para unidades, capacidades y rastreo de caducidad." height="600">
+</div>
+
+**Editar Suministro Personalizado**
+
+**Descripción:** Esquema de la vista de actualización para suministros registrados, definiendo la disposición de campos para el ajuste de umbrales de capacidad y metadatos técnicos del producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-20.png" alt="Esquema de vista de edición de suministro con campos para umbrales de capacidad y metadatos técnicos." height="600">
+</div>
+
+**Transferencia de Stock entre Lotes**
+
+**Descripción:** Esquema de la interfaz para el traslado de mercancía entre zonas del establecimiento, representando la disposición estructural de campos para la actualización del libro mayor de existencias en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-21.png" alt="Esquema de interfaz de traslado de mercancía entre zonas con actualización de existencias en tiempo real." height="600">
+</div>
+
+**Directorio de Dispositivos**
+
+**Descripción:** Esquema del directorio principal de dispositivos que define la disposición estructural de tarjetas informativas con estado de básculas, alertas de inventario y condiciones ambientales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-22.png" alt="Esquema del directorio principal de dispositivos con tarjetas de estado de básculas y alertas." height="600">
+</div>
+
+**Registro de Dispositivo**
+
+**Descripción:** Esquema de la interfaz de registro para nuevos dispositivos, representando la disposición de campos para capturar el alias de la báscula y su dirección MAC única.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-23.png" alt="Esquema del formulario de registro de dispositivo con campos para alias y dirección MAC." height="600">
+</div>
+
+**Dispositivo sin Asignar**
+
+**Descripción:** Esquema de la vista detallada de una báscula recién registrada en estado de espera, definiendo la disposición de elementos que indican la necesidad de asignar un lote para iniciar el monitoreo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-24.png" alt="Esquema de vista de dispositivo sin lote asignado con indicadores de configuración bloqueada." height="600">
+</div>
+
+**Asignación de Lote a Dispositivo**
+
+**Descripción:** Esquema del modal de configuración de pesaje que representa la disposición de campos para seleccionar el producto y definir los parámetros de peso unitario y tara para la calibración del sensor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-25.png" alt="Esquema del modal de asignación de lote con campos para peso unitario, tara y calibración del sensor." height="600">
+</div>
+
+**Editar Información del Dispositivo**
+
+**Descripción:** Esquema de la ventana de edición para modificar la información de identificación del dispositivo, representando la disposición de campos para actualizar el alias y verificar la dirección MAC asignada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-26.png" alt="Esquema de ventana de edición de dispositivo con campos para alias y verificación de dirección MAC." height="600">
+</div>
+
+**Editar Umbrales de Alerta**
+
+**Descripción:** Esquema del panel de configuración de umbrales críticos que define la disposición de campos para control de inventario y límites ambientales de temperatura y humedad, con advertencia de impacto en reportes históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-27.png" alt="Esquema del panel de edición de umbrales de stock, temperatura y humedad con advertencia de cambios retroactivos." height="600">
+</div>
+
+**Confirmación de Desvinculación de Dispositivo**
+
+**Descripción:** Esquema de la pantalla de confirmación de seguridad para la desvinculación de dispositivos, representando la disposición de campos de validación para detener el rastreo y borrar datos de calibración.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-28.png" alt="Esquema de pantalla de confirmación para desvincular dispositivo con campo de validación de ID." height="600">
+</div>
+
+**Detalle de Dispositivo Activo**
+
+**Descripción:** Esquema de la vista de monitoreo activo de una báscula en funcionamiento, definiendo la disposición estructural de indicadores de señal, tiempo desde la última actualización y resumen de umbrales configurados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-29.png" alt="Esquema de vista de báscula activa con indicadores de señal, lote asignado y umbrales de control." height="600">
+</div>
+
+**Centro de Alertas y Notificaciones**
+
+**Descripción:** Esquema de la pantalla principal del centro de notificaciones que representa la disposición estructural de categorías de alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-30.png" alt="Esquema del centro de notificaciones con disposición de categorías de alertas de inventario y dispositivos." height="600">
+</div>
+
+**Confirmación de Transferencia de Stock**
+
+**Descripción:** Esquema del modal de confirmación para transferencias manuales de stock, representando la disposición de campos que detallan la diferencia de peso detectada por la báscula y la sincronización con el ERP.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-31.png" alt="Esquema del modal de confirmación de transferencia de stock con diferencia de peso y sincronización ERP." height="600">
+</div>
+
+**Detalle de Discrepancia de Datos**
+
+**Descripción:** Esquema de la interfaz de resolución para discrepancias críticas de datos, definiendo la disposición estructural de la comparación entre registros digitales y lecturas físicas de la báscula.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-32.png" alt="Esquema de interfaz de resolución de discrepancias con comparación de registros digitales y lecturas físicas." height="600">
+</div>
+
+**Diagnóstico de Hardware sin Conexión**
+
+**Descripción:** Esquema de la vista detallada de fallo de conexión de hardware, representando la disposición de elementos para mostrar la última telemetría registrada y los pasos de diagnóstico para recuperar la conectividad.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-33.png" alt="Esquema de vista de fallo de hardware con última telemetría registrada y pasos de diagnóstico." height="600">
+</div>
+
+**Configuración General del Sistema**
+
+**Descripción:** Esquema del panel de configuración regional y de comunicación que define la disposición de campos para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-34.png" alt="Esquema del panel de configuración regional con campos para zona horaria, moneda, idioma y notificaciones." height="600">
+</div>
+
+**Información Personal del Perfil**
+
+**Descripción:** Esquema de la interfaz de gestión de perfil de usuario que representa la disposición de campos para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-35.png" alt="Esquema de gestión de perfil con campos para información personal, fotografía y estado de seguridad." height="600">
+</div>
+
+**Información Empresarial del Perfil**
+
+**Descripción:** Esquema del formulario de información corporativa que define la disposición de campos para la actividad comercial, dirección física y categorías de productos gestionados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-36.png" alt="Esquema del formulario corporativo con campos para actividad comercial, dirección y categorías de productos." height="600">
+</div>
+
+**Gestión de Suscripción y Facturación**
+
+**Descripción:** Esquema del módulo de gestión de planes de suscripción que representa la disposición estructural de métricas de uso por dispositivos conectados e historial de facturación descargable.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-37.png" alt="Esquema del módulo de suscripción con métricas de uso por dispositivos e historial de facturación." height="600">
+</div>
+
+**Directorio de Sucursales**
+
+**Descripción:** Esquema del directorio centralizado de sucursales y centros logísticos que define la disposición estructural de indicadores de estado operativo, cantidad de personal y alertas activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-38.png" alt="Esquema del directorio de sucursales con indicadores de estado operativo, personal y alertas activas." height="600">
+</div>
+
+**Crear Nueva Sucursal**
+
+**Descripción:** Esquema del modal para la creación de nuevas sedes operativas, representando la disposición de campos para datos de contacto, ubicación geográfica y estado de visibilidad inicial.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-39.png" alt="Esquema del modal de creación de sucursal con campos para contacto, ubicación y visibilidad inicial." height="600">
+</div>
+
+**Editar Sucursal**
+
+**Descripción:** Esquema del formulario de edición para sucursales existentes que define la disposición de campos para actualizar información de contacto, imágenes de la instalación y estatus operativo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-40.png" alt="Esquema del formulario de edición de sucursal con campos para contacto, imágenes y estatus operativo." height="600">
+</div>
+
+**Advertencia de Eliminación de Sucursal Activa**
+
+**Descripción:** Esquema de la notificación de restricción de borrado para sucursales con telemetría activa, representando la disposición de elementos que exigen la desactivación previa de operaciones para mantener la integridad de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-41.png" alt="Esquema de notificación de restricción de borrado por telemetría activa con requisito de desactivación previa." height="600">
+</div>
+
+**Confirmación de Eliminación Permanente de Sucursal**
+
+**Descripción:** Esquema del modal de confirmación crítica para la eliminación permanente de una sucursal, definiendo la disposición de elementos de advertencia sobre pérdida de datos históricos y desvinculación de dispositivos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-42.png" alt="Esquema del modal de confirmación crítica para eliminación permanente de sucursal con advertencia de pérdida de datos." height="600">
+</div>
+
+
 
 ### 5.4.2. Applications Wireflow Diagrams
 
@@ -1118,235 +1877,591 @@ En esta sección se presentarán los mockups de las aplicaciones, los cuales fue
 
 ### Web Application
 
-En esta sección se presentarán los mockups de la aplicación web, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
+En esta sección se presentan los mockups de alta fidelidad de la aplicación web, los cuales representan el diseño visual definitivo y la interfaz de usuario de nuestra solución. Estos modelos integran la identidad corporativa de Restock y detallan la estética final de las funcionalidades principales, habiéndose desarrollado a partir de la validación estructural de los wireframes previos.
 
-#### Registro de cuenta
+**Vista inicial de registro**
 
-Esta es la pantalla de registro de cuenta, donde el usuario puede crear una nueva cuenta para acceder a la plataforma Restock. El formulario solicita información básica como nombre, correo electrónico y contraseña.
-
-
-<div align="center">
-  <img src="https://i.imgur.com/WogEZ03.png">
-</div>
-
-#### Registro de empresa
-
-Esta es la pantalla de registro de empresa, donde el usuario debe crear una cuenta de empresa para empezar a gestionar su inventario.
+**Descripción:** Interfaz de registro para nuevos usuarios que captura credenciales básicas bajo la identidad visual de la plataforma.
 
 <div align="center">
-  <img src="https://i.imgur.com/A2bjmuO.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-01.png" alt="Interfaz de registro para nuevos usuarios con campos de correo y contraseña" height="400">
 </div>
 
-#### Inicio de sesión
+**Estado de error en inicio de sesión**
 
-En esta pantalla de inicio de sesión, el usuario puede acceder a su cuenta de Restock ingresando su correo electrónico y contraseña registrados. También se ofrece la opción de recuperar la contraseña en caso de haberla olvidado.
+**Descripción:** Pantalla de autenticación que muestra la validación negativa del sistema ante el ingreso de credenciales incorrectas.
 
 <div align="center">
-  <img src="https://i.imgur.com/0vskI7b.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-02.1.png" alt="Validación negativa del sistema ante el ingreso de credenciales incorrectas" height="400">
 </div>
 
-#### Fallo de inicio de sesión
+**Vista estándar de inicio de sesión**
 
-Esta pantalla muestra el estado de error cuando el usuario ingresa credenciales incorrectas al intentar iniciar sesión. Se despliega un mensaje de advertencia indicando que el correo electrónico o la contraseña son inválidos, invitando al usuario a intentarlo nuevamente.
+**Descripción:** Formulario de acceso convencional que integra opciones para inicio de sesión empresarial (SSO) y recuperación de cuenta.
 
 <div align="center">
-  <img src="https://i.imgur.com/uIvivp4.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-02.png" alt="Formulario de acceso convencional con integración de SSO empresarial" height="400">
 </div>
 
-#### Lista de sucursales
+**Bienvenida de usuario recurrente**
 
-En esta pantalla se muestra el listado de todas las sucursales registradas bajo la cuenta de la empresa. El usuario puede visualizar información general de cada sucursal y acceder a su gestión individual, así como agregar nuevas sucursales desde esta vista.
-
+**Descripción:** Pantalla de acceso optimizada para usuarios con cuentas existentes, simplificando los pasos para ingresar al panel de control.
 
 <div align="center">
-  <img src="https://i.imgur.com/7SZem7C.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-03.png" alt="Pantalla de acceso optimizada para usuarios con cuentas existentes" height="400">
 </div>
 
-#### Crear una nueva sucursal
+**Solicitud de restablecimiento de contraseña**
 
-Esta pantalla presenta el formulario para registrar una nueva sucursal dentro de la plataforma. El usuario debe completar datos como el nombre de la sucursal, dirección y otros detalles relevantes para su correcta identificación y gestión.
-
+**Descripción:** Módulo de seguridad para la recuperación de acceso mediante el envío de un código de verificación al correo institucional.
 
 <div align="center">
-  <img src="https://i.imgur.com/R6rZej6.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-04.png" alt="Módulo de seguridad para la recuperación de acceso vía correo electrónico" height="400">
 </div>
 
-#### Recuperar contraseña
+**Verificación de código de seguridad**
 
-En esta pantalla el usuario puede solicitar la recuperación de su contraseña ingresando el correo electrónico asociado a su cuenta. La plataforma enviará un enlace o código para restablecer la contraseña de forma segura.
-
+**Descripción:** Interfaz de validación de identidad con campos segmentados para la introducción del código numérico de seis dígitos recibido.
 
 <div align="center">
-  <img src="https://i.imgur.com/ldrNJsk.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-05.png" alt="Interfaz de validación de identidad con campos para código numérico" height="400">
 </div>
 
-#### Pago de plan de suscripción 
+**Creación de nueva contraseña**
 
-Esta pantalla corresponde al proceso de pago del plan de suscripción seleccionado. El usuario puede ingresar los datos de su método de pago y confirmar la transacción para activar o renovar su plan dentro de la plataforma Restock.
-
+**Descripción:** Formulario final para el establecimiento de nuevas credenciales de acceso con validación doble de seguridad.
 
 <div align="center">
-  <img src="https://i.imgur.com/tbRwP8W.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-06.png" alt="Formulario final para el establecimiento de nuevas credenciales de acceso" height="400">
 </div>
 
-#### Inventario vacío
+**Selección de entorno operativo**
 
-Esta pantalla se muestra cuando el usuario aún no ha registrado ningún producto o lote en su inventario. Se presenta un mensaje informativo junto a una opción para comenzar a agregar elementos al inventario.
-
+**Descripción:** Pantalla de segmentación operativa donde el usuario elige el tipo de industria para personalizar los sensores de medición.
 
 <div align="center">
-  <img src="https://i.imgur.com/k6Kdmbj.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-07.png" alt="Pantalla de segmentación operativa según el tipo de industria" height="400">
 </div>
 
-#### Lotes registrados
+**Detalles de perfil personal**
 
-En esta pantalla se visualizan todos los lotes de productos que han sido registrados en el inventario de la sucursal. El usuario puede revisar detalles como cantidades disponibles y el estado de cada lote.
-
+**Descripción:** Recopilación de metadatos del administrador y datos de ubicación para la configuración regional de los dispositivos de pesado.
 
 <div align="center">
-  <img src="https://i.imgur.com/Vq8uGTA.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-08.png" alt="Recopilación de metadatos del administrador y datos de ubicación" height="400">
 </div>
 
-#### Registro de lote
+**Información de perfil empresarial**
 
-Esta pantalla presenta el formulario para registrar un nuevo lote de productos en el inventario. El usuario debe ingresar información como el producto asociado, cantidad y fecha de vencimiento, entre otros campos relevantes.
-
+**Descripción:** Registro detallado de la organización y categorías de inventario para el despliegue del sistema de monitoreo en tiempo real.
 
 <div align="center">
-  <img src="https://i.imgur.com/8QhpRcn.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-09.png" alt="Registro detallado de la organización y categorías de inventario" height="400">
 </div>
 
-#### Catálogo de suministros
+**Comparativa de planes de suscripción**
 
-En esta pantalla se muestra el catálogo completo de suministros disponibles en la plataforma. El usuario puede gestionar los distintos insumos registrados, así como acceder a las opciones de edición o eliminación de cada uno.
-
+**Descripción:** Visualización de los niveles de servicio y beneficios comerciales adaptados a la escala de la operación logística del cliente.
 
 <div align="center">
-  <img src="https://i.imgur.com/S7d8Jcx.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-10.png" alt="Visualización de los niveles de servicio y beneficios comerciales" height="400">
 </div>
 
-#### Registrar un nuevo suministro
+**Pasarela de pago y suscripción**
 
-Esta pantalla presenta el formulario para dar de alta un nuevo suministro en el sistema. El usuario debe completar campos como nombre del insumo, unidad de medida y descripción, entre otros datos necesarios para su correcta gestión.
-
+**Descripción:** Interfaz de checkout seguro que detalla el resumen de costos, impuestos aplicables y formulario de pago encriptado.
 
 <div align="center">
-  <img src="https://i.imgur.com/ci7VsN5.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-11.png" alt="Interfaz de checkout seguro con resumen de costos e impuestos" height="400">
 </div>
 
-#### Editar un suministro
+**Inventory batches overview**
 
-En esta pantalla el usuario puede modificar la información de un suministro previamente registrado. Se muestran los mismos campos del formulario de creación, precargados con los datos actuales del insumo, permitiendo actualizar la información de manera sencilla.
+**Descripción:** Vista principal de la tabla de lotes activos con indicadores de productos próximos a expirar y niveles de stock por categoría.
 
 <div align="center">
-  <img src="https://i.imgur.com/beQqlcQ.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-12.png" alt="Vista principal de la tabla de lotes activos e indicadores de expiración" height="400">
 </div>
 
+**Custom supplies catalog**
 
-#### Catálogo de combos 
-
-Esta pantalla muestra el listado de combos disponibles configurados en la plataforma. El usuario puede visualizar los combos existentes, acceder al detalle de cada uno y gestionar su composición según los suministros o productos que los integran.
+**Descripción:** Galería visual de la lista maestra de suministros de la organización, permitiendo la edición y auditoría de artículos perecederos.
 
 <div align="center">
-  <img src="https://i.imgur.com/jImC02b.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-13.png" alt="Galería visual de la lista maestra de suministros de la organización" height="400">
 </div>
 
-#### Detalle de combo
+**Create custom supply modal**
 
-En esta pantalla se presenta la información detallada de un combo específico, incluyendo los productos o suministros que lo componen, sus cantidades y el precio o condiciones asociadas. El usuario puede editar o eliminar el combo desde esta vista.
+**Descripción:** Formulario flotante para la creación de nuevos ítems, configurando unidades de medida, capacidades mínimas y alertas de perecederos.
 
 <div align="center">
-  <img src="https://i.imgur.com/bRfra7h.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-14.png" alt="Formulario flotante para la creación de nuevos suministros" height="400">
 </div>
 
-#### Cátalogo de recetas
+**Edit custom supply modal**
 
-Esta pantalla muestra el listado de recetas registradas en la plataforma, orientada principalmente al segmento de restaurantes. El usuario puede explorar las recetas existentes y acceder a su detalle o crear nuevas recetas vinculadas a los suministros disponibles.
+**Descripción:** Interfaz de edición de atributos para suministros existentes, incluyendo ajustes en la descripción técnica y umbrales de capacidad.
 
 <div align="center">
-  <img src="https://i.imgur.com/I96OyZ0.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-15.png" alt="Interfaz de edición de atributos para suministros existentes" height="400">
 </div>
 
-#### Detalle de receta
+**Batch details view**
 
-En esta pantalla se visualiza la información completa de una receta en particular, incluyendo los ingredientes necesarios y sus cantidades. Esta vista permite al usuario gestionar los insumos requeridos y mantener un control preciso del consumo de inventario.
+**Descripción:** Modal informativo que muestra el stock actual, fecha de expiración y unidad de medida de un lote específico seleccionado.
 
 <div align="center">
-  <img src="https://i.imgur.com/4oOxbng.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-16.png" alt="Modal informativo de stock y expiración de un lote específico" height="400">
 </div>
 
-#### Retail Dashboard
+**Add new batch modal**
 
-Esta pantalla corresponde al panel principal para negocios de tipo retail, donde el usuario puede visualizar métricas clave del inventario, alertas de stock bajo, movimientos recientes y un resumen general del estado de sus productos y sucursales.
+**Descripción:** Formulario para el ingreso de nuevos lotes al sistema, vinculando suministros existentes con su stock inicial y fecha de caducidad.
 
 <div align="center">
-  <img src="https://i.imgur.com/W4VMaSZ.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-17.png" alt="Formulario para el ingreso de nuevos lotes al sistema" height="400">
 </div>
 
-#### Restaurant Dashboard
+**Edit existing batch modal**
 
-Esta pantalla es el panel principal para negocios de tipo restaurante, mostrando indicadores relevantes como el consumo de insumos y discrepancias entre entra las cantidades del stock actual.
+**Descripción:** Ventana de diálogo para la actualización de datos operativos en lotes activos, como correcciones de stock o ajustes de expiración.
 
 <div align="center">
-  <img src="https://i.imgur.com/azgMSRd.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-18.png" alt="Ventana de diálogo para la actualización de datos en lotes activos" height="400">
 </div>
 
-#### Planes de suscripción
+**Inter branch transfer sidebar**
 
-En esta pantalla se presentan los distintos planes de suscripción disponibles en la plataforma Restock. El usuario puede comparar las características y beneficios de cada plan para seleccionar el que mejor se adapte a las necesidades de su negocio.
+**Descripción:** Panel lateral para la gestión de logística interna, permitiendo el traslado de stock entre sucursales con vista previa de criticidad.
 
 <div align="center">
-  <img src="https://i.imgur.com/BTcOQaV.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-19.png" alt="Panel lateral para la gestión de transferencia de stock entre sucursales" height="400">
 </div>
 
-#### Configuración y preferencias
+**Empty inventory state**
 
-Esta pantalla permite al usuario personalizar las preferencias generales de la plataforma, como notificaciones, idioma, zona horaria y otras opciones de configuración que afectan la experiencia de uso dentro de Restock.
+**Descripción:** Pantalla de estado vacío que orienta al usuario para iniciar el rastreo de telemetría mediante la creación de su primer suministro.
 
 <div align="center">
-  <img src="https://i.imgur.com/bcj4I7K.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-20.png" alt="Pantalla de estado vacío con guía para inicio de telemetría" height="400">
 </div>
 
-#### Perfil del negocio
 
-En esta pantalla el usuario puede visualizar y editar la información general de su negocio registrado en la plataforma, incluyendo nombre, dirección y datos de contacto.
+**Catálogo general de recetas**
+
+**Descripción:** Panel principal que muestra la galería de platos con indicadores de fluctuación de costos, alertas de inventario bajo y estado de actividad.
 
 <div align="center">
-  <img src="https://i.imgur.com/M0ntofi.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-21.png" alt="Panel principal con galería de platos e indicadores de costos y alertas" height="400">
 </div>
 
-#### Perfil del usuario
+**Detalle de costo de receta**
 
-Esta pantalla muestra la información personal del usuario principal de la cuenta, muestra como nombre, correo electrónico y opciones para actualizar sus datos.
+**Descripción:** Desglose técnico de ingredientes vinculados que muestra el peso exacto, costo unitario y costo total estimado por ración de servicio.
 
 <div align="center">
-  <img src="https://i.imgur.com/a60Y9eI.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-22.png" alt="Desglose técnico de ingredientes y costos por ración de servicio" height="400">
 </div>
 
-#### Notificaciones
+**Modal de creación de nueva receta**
 
-En esta pantalla el usuario puede revisar todas las notificaciones generadas por la plataforma, tales como alertas de stock bajo, productos próximos a vencer, actualizaciones del sistema y otros avisos relevantes para la gestión del inventario.
+**Descripción:** Interfaz de construcción de recetas que permite cargar imágenes y ensamblar ingredientes mediante un buscador dinámico de suministros.
 
 <div align="center">
-  <img src="https://i.imgur.com/vMzvB0c.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-23.png" alt="Interfaz de construcción de recetas con buscador dinámico de suministros" height="400">
 </div>
 
-#### Monitoreo de dispositivos IoT
+**Modal de edición de receta**
 
-Esta pantalla permite al usuario visualizar en tiempo real el estado de los dispositivos IoT conectados a la plataforma, mostrando métricas como niveles de stock detectados por sensores, estado de conexión de cada dispositivo y últimas lecturas registradas.
+**Descripción:** Ventana de ajuste para recetas existentes donde se pueden actualizar cantidades y recalcular el precio total estimado de producción.
 
 <div align="center">
-  <img src="https://i.imgur.com/d7p4XBH.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-24.png" alt="Ventana de ajuste para cantidades y recalculo de costos de producción" height="400">
 </div>
 
-#### Configuración de suministro a dispositivo IoT
+**Confirmación de eliminación de receta**
 
-En esta pantalla el usuario puede asociar y configurar los suministros que serán monitoreados por un dispositivo IoT específico. Se definen parámetros como umbrales mínimos de stock y el tipo de suministro vinculado al sensor correspondiente.
+**Descripción:** Diálogo de seguridad de alta criticidad para evitar el borrado accidental de fórmulas de producción y datos de costos históricos.
 
 <div align="center">
-  <img src="https://i.imgur.com/mlg3g3Z.png">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-25.png" alt="Diálogo de seguridad para confirmación de borrado de recetas" height="400">
 </div>
 
+**Resumen general de ventas**
+
+**Descripción:** Panel de control de ventas con métricas de ingresos mensuales, conteo de transacciones y estado operativo de las terminales activas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-26.png" alt="Panel de control de ventas con métricas de ingresos y estado de terminales" height="400">
+</div>
+
+**Detalle de transaccion registrada**
+
+**Descripción:** Desglose de una transacción específica que muestra los artículos vendidos y el registro de deducción automática de insumos en las básculas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-27.png" alt="Desglose de transacción con registro de deducción automática de insumos" height="400">
+</div>
+
+**Terminal de punto de venta**
+
+**Descripción:** Interfaz de usuario para la toma de pedidos que muestra el menú de platos y el ticket de orden con cálculo de impuestos en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-28.png" alt="Interfaz de terminal de punto de venta con menú y ticket de orden" height="400">
+</div>
+
+**Confirmacion de venta exitosa**
+
+**Descripción:** Mensaje de confirmación tras procesar una venta, notificando la actualización automática de los componentes del inventario en el sistema.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-29.png" alt="Mensaje de confirmación de venta y actualización automática de inventario" height="400">
+</div>
+
+**Estado de alerta por inventario critico**
+
+**Descripción:** Indicador visual en la terminal de ventas que resalta artículos con stock insuficiente para cumplir con una ración completa.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-30.png" alt="Indicador visual de artículos con stock insuficiente en la terminal de ventas" height="400">
+</div>
+
+**Bloqueo por inventario insuficiente**
+
+**Descripción:** Alerta de sistema de alta prioridad que bloquea la transacción debido a la falta de insumos físicos detectada por los sensores.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-31.png" alt="Alerta de sistema que bloquea transacciones por falta de insumos físicos" height="400">
+</div>
+
+**General telemetry dashboard**
+
+**Descripción:** Panel de supervisión integral que muestra el estado de conexión de las básculas, métricas de red y el registro de discrepancias detectadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-32.png" alt="Panel de supervisión con métricas de red y registro de discrepancias de peso y temperatura" height="400">
+</div>
+
+
+**Catalogo de kits y combos**
+
+**Descripción:** Panel principal que muestra las combinaciones de productos para retail con indicadores de kits activos y alertas de stock bajo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-33.png" alt="Panel principal de combinaciones de productos para retail y alertas de stock" height="400">
+</div>
+
+**Detalle de kit artesanal**
+
+**Descripción:** Vista detallada de un kit específico que muestra la demanda semanal, disponibilidad de venta y la lista de ingredientes incluidos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-34.png" alt="Vista detallada de kit con demanda semanal e ingredientes incluidos" height="400">
+</div>
+
+**Modal de creacion de nuevo kit**
+
+**Descripción:** Interfaz de configuración para nuevos paquetes de productos que permite establecer precios sugeridos basados en el costo de los componentes.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-35.png" alt="Interfaz de configuración para nuevos paquetes de productos y precios sugeridos" height="400">
+</div>
+
+**Modal de edicion de kit**
+
+**Descripción:** Ventana de ajuste para la configuración de componentes de un kit, vinculada directamente al monitoreo activo de dispositivos de pesado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-36.png" alt="Ventana de ajuste de componentes de kit vinculada a dispositivos de pesado" height="400">
+</div>
+
+**Confirmacion de eliminacion de kit**
+
+**Descripción:** Diálogo de advertencia para la eliminación de kits del catálogo, especificando que los productos individuales permanecerán en el inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-37.png" alt="Diálogo de advertencia para la eliminación de kits del catálogo" height="400">
+</div>
+
+**Resumen de ventas retail**
+
+**Descripción:** Dashboard analítico que muestra el total de ventas, tasa de errores de sincronización y el historial de transacciones procesadas por las terminales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-38.png" alt="Dashboard analítico de ventas con métricas y registro histórico de transacciones" height="400">
+</div>
+
+**Detalle de transaccion retail**
+
+**Descripción:** Desglose lateral de una venta específica que confirma la deducción automática de unidades desde las básculas asignadas a cada producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-39.png" alt="Desglose de venta retail con confirmación de deducción automática por sensores" height="400">
+</div>
+
+**Terminal de punto de venta retail**
+
+**Descripción:** Interfaz de selección de kits y productos para el segmento retail, con actualización dinámica del ticket de compra y subtotal.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-40.png" alt="Interfaz de punto de venta para selección de productos y gestión de ticket" height="400">
+</div>
+
+**Confirmacion de venta retail exitosa**
+
+**Descripción:** Notificación modal de éxito tras el registro de la venta, indicando que los componentes del inventario han sido descontados correctamente.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-41.png" alt="Notificación de registro de venta exitosa y descuento de inventario" height="400">
+</div>
+
+**Alerta de stock insuficiente en retail**
+
+**Descripción:** Indicador visual de advertencia en la terminal de venta que resalta productos con disponibilidad nula según los sensores de peso.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-42.png" alt="Indicador visual de advertencia por stock agotado en terminal retail" height="400">
+</div>
+
+**Bloqueo por falta de componentes retail**
+
+**Descripción:** Interfaz de error que impide finalizar la transacción cuando el peso detectado no cumple con el mínimo requerido para el producto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-43.png" alt="Interfaz de bloqueo de transacción por falta de componentes físicos detectada" height="400">
+</div>
+
+**Conciliation tasks overview**
+
+**Descripción:** Panel principal de tareas pendientes que lista las discrepancias activas detectadas por los sensores, permitiendo iniciar investigaciones inmediatas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-44.png" alt="Panel de tareas pendientes con lista de discrepancias activas para investigación" height="400">
+</div>
+
+**Discrepancy technical detail**
+
+**Descripción:** Vista profunda de una anomalía que compara el registro digital versus la lectura física, incluyendo telemetría de salud del dispositivo y gráficos temporales.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-45.png" alt="Vista detallada de anomalía con comparación de pesos y telemetría del dispositivo" height="400">
+</div>
+
+**Discrepancy resolution modal**
+
+**Descripción:** Interfaz para justificar diferencias de stock, permitiendo al usuario asignar causas como mermas o desperdicios y adjuntar evidencia para auditoría.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-46.png" alt="Interfaz para justificación de diferencias de stock y asignación de causas" height="400">
+</div>
+
+**Scale recalibration modal**
+
+**Descripción:** Módulo de mantenimiento preventivo para forzar el reinicio de tara o programar visitas técnicas cuando se sospecha de errores en los sensores físicos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-47.png" alt="Módulo de mantenimiento para recalibración de sensores y programación técnica" height="400">
+</div>
+
+**Resolution history logs**
+
+**Descripción:** Registro histórico de discrepancias resueltas con analítica sobre los motivos principales de desviación y el desempeño del inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-48.png" alt="Registro histórico de resoluciones con analítica de motivos de desviación" height="400">
+</div>
+
+**Directorio de dispositivos activos**
+
+**Descripción:** Panel central de administración de hardware que muestra el estado de red, salud de sensores y dirección MAC de las básculas en línea.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-49.png" alt="Panel central de administración de hardware y estado de salud de sensores" height="400">
+</div>
+
+**Modal de registro de dispositivo**
+
+**Descripción:** Interfaz para el alta de nuevas unidades mediante la introducción de la dirección MAC física y la asignación de un alias identificador.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-50.png" alt="Interfaz para el alta de nuevas unidades mediante dirección MAC y alias" height="400">
+</div>
+
+**Configuracion de dispositivo pendiente**
+
+**Descripción:** Vista de espera para hardware recién registrado donde las alertas permanecen bloqueadas hasta que se asigne un lote de insumos específico.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-51.png" alt="Vista de configuración bloqueada para dispositivos sin lote asignado" height="400">
+</div>
+
+**Modal de asignacion de lote**
+
+**Descripción:** Formulario de calibración inicial donde se define el peso unitario y la tara para establecer el punto de referencia cero en la báscula.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-52.png" alt="Formulario de calibración inicial y establecimiento de punto cero en báscula" height="400">
+</div>
+
+**Modal de edicion de informacion del dispositivo**
+
+**Descripción:** Ventana de actualización para modificar metadatos técnicos y asegurar la correcta jerarquía en el mapa de calor del inventario.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-53.png" alt="Ventana de actualización de metadatos técnicos y alias de dispositivo" height="400">
+</div>
+
+**Modal de edicion de umbrales de alerta**
+
+**Descripción:** Panel de configuración de límites críticos para el control de stock y variables ambientales de temperatura y humedad permitidas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-54.png" alt="Panel de configuración de límites de stock y variables ambientales" height="400">
+</div>
+
+**Detalle de configuracion de dispositivo online**
+
+**Descripción:** Vista integral de telemetría en tiempo real que muestra la fuerza de señal inalámbrica y el estado operativo del hardware configurado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-55.png" alt="Vista integral de telemetría y estado operativo de hardware en línea" height="400">
+</div>
+
+**Confirmacion de desvinculacion de dispositivo**
+
+**Descripción:** Diálogo de seguridad para la desconexión de hardware, advirtiendo sobre el cese del monitoreo en tiempo real de los insumos asociados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-56.png" alt="Diálogo de seguridad para desvinculación de hardware y cese de monitoreo" height="400">
+</div>
+
+
+**Lista general de alertas y notificaciones**
+
+**Descripción:** Panel principal que centraliza avisos sobre desajustes de datos, fallos de conexión en terminales y transferencias de stock pendientes.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-57.png" alt="Panel principal de notificaciones del sistema con filtros por categoría de alerta" height="400">
+</div>
+
+**Confirmacion de transferencia de stock manual**
+
+**Descripción:** Interfaz para validar extracciones físicas detectadas por las básculas, permitiendo sincronizar la reducción de unidades con el inventario digital.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-58.png" alt="Interfaz de validación para sincronización de extracciones físicas de stock" height="400">
+</div>
+
+**Alerta de discrepancia por desajuste de datos**
+
+**Descripción:** Modal de advertencia crítica que muestra la brecha entre el registro digital y la lectura física de los sensores en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-59.png" alt="Advertencia crítica de discrepancia entre registros digitales y lecturas de sensores" height="400">
+</div>
+
+**Notificacion de perdida de conexion en hardware**
+
+**Descripción:** Alerta de tiempo de espera agotado en la comunicación con el hub de básculas, indicando el último registro de telemetría capturado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-60.png" alt="Notificación de fallo de comunicación con el hardware de pesado" height="400">
+</div>
+
+**Panel de incidentes criticos del sistema**
+
+**Descripción:** Vista de alta urgencia que agrupa eventos de impacto sistémico como fallos en gateways o brechas de temperatura en almacenamiento frío.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-61.png" alt="Dashboard de incidentes críticos con tiempos de respuesta y registros de eventos" height="400">
+</div>
+
+**Detalle lateral de alerta por brecha de temperatura**
+
+**Descripción:** Desglose lateral de incidentes térmicos que identifica los lotes perecederos en riesgo y permite el despacho inmediato de mantenimiento.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-62.png" alt="Panel lateral de gestión de incidentes térmicos con identificación de lotes en riesgo" height="400">
+</div>
+
+**Preferencias generales del sistema**
+
+**Descripción:** Panel de configuración regional que permite establecer la zona horaria, moneda y lenguaje predeterminado para la sincronización de datos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-63.png" alt="Panel de configuración regional y protocolos de comunicación del sistema" height="400">
+</div>
+
+**Informacion del perfil de usuario**
+
+**Descripción:** Interfaz de gestión de credenciales personales y datos de contacto del administrador, con visualización de las sucursales asignadas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-64.png" alt="Interfaz de gestión de credenciales de usuario y sucursales asignadas" height="400">
+</div>
+
+**Detalles del perfil empresarial**
+
+**Descripción:** Formulario de registro corporativo para gestionar la identidad de la organización, descripción del negocio y categorías operativas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-65.png" alt="Formulario de registro corporativo e identidad de la organización" height="400">
+</div>
+
+**Gestion de suscripcion y facturacion**
+
+**Descripción:** Módulo de control de pagos que muestra el plan activo, capacidad de nodos utilizados y el historial de facturación descargable.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-66.png" alt="Módulo de control de suscripción mensual y analítica de uso del sistema" height="400">
+</div>
+
+**Panel de administracion de sucursales**
+
+**Descripción:** Dashboard multisede que permite supervisar el estado operativo, cantidad de dispositivos y alertas activas en cada centro logístico.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-67.png" alt="Dashboard multisede para supervisión de sucursales y dispositivos activos" height="400">
+</div>
+
+**Modal de creacion de sucursal**
+
+**Descripción:** Formulario para la expansión de la red de suministro que permite definir parámetros geográficos y estado inicial de la nueva sede.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-68.png" alt="Formulario para la creación y definición de parámetros de una nueva sucursal" height="400">
+</div>
+
+**Modal de edicion de sucursal**
+
+**Descripción:** Interfaz de actualización de datos para instalaciones existentes, permitiendo la gestión de imágenes de planta y estados operativos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-69.png" alt="Interfaz de edición de datos de sucursal y gestión de estado operativo" height="400">
+</div>
+
+**Alerta de bloqueo por sucursal activa**
+
+**Descripción:** Mensaje preventivo que impide la eliminación de una sucursal mientras esta se encuentre recibiendo telemetría en tiempo real.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-70.png" alt="Aviso preventivo de seguridad por sucursal activa con recepción de datos" height="400">
+</div>
+
+**Confirmacion de eliminacion permanente de sucursal**
+
+**Descripción:** Diálogo crítico de confirmación para el borrado definitivo de una sede, implicando la desvinculación total de dispositivos y datos históricos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-71.png" alt="Diálogo de confirmación crítica para eliminación permanente de sucursal" height="400">
+</div>
+
+
+### Mobile Application
+
+En esta sección se presentarán los mockups de la aplicación móvil, los cuales son bosquejos de media o alta fidelidad sobre las funcionalidades principales de nuestra solución. Para el diseño de los mockups, se partió de los wireframes realizados previamente.
 
 ### Mobile Application
 
@@ -1448,7 +2563,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/scale-monitoring-dashboard.png" alt="Pantalla principal que visualiza el estado de red de las básculas inteligentes, sus métricas ambientales en tiempo real y las últimas discrepancias de inventario detectadas por el sistema Restock." height="600">
 </div>
 
-**Empty Inventory State**
+**Estado de Inventario Vacío**
 
 **Descripción:** Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema.
 
@@ -1456,7 +2571,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/empty-inventory-state.png" alt="Interfaz de bienvenida al módulo de inventarios que se muestra cuando no existen registros previos, permitiendo la creación del primer suministro del sistema." height="600">
 </div>
 
-**Inventory Dashboard**
+**Panel de Inventario**
 
 **Descripción:** Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría.
 
@@ -1464,7 +2579,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/inventory-dashboard.png" alt="Panel principal de gestión de lotes con métricas de salud de stock, valorización total y lista de suministros críticos filtrables por categoría." height="600">
 </div>
 
-**Add New Batch**
+**Agregar Nuevo Lote**
 
 **Descripción:** Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto.
 
@@ -1472,7 +2587,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/add-new-batch.png" alt="Formulario modal para el registro de un nuevo lote de suministros, solicitando cantidad inicial y fecha de vencimiento para el seguimiento del producto." height="600">
 </div>
 
-**Batch Details View**
+**Detalle de Lote**
 
 **Descripción:** Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental.
 
@@ -1480,7 +2595,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/batch-details-view.png" alt="Pantalla de detalle de un lote específico que muestra métricas de telemetría en tiempo real, niveles de stock y estado de salud ambiental." height="600">
 </div>
 
-**Edit Batch Modal**
+**Editar Lote**
 
 **Descripción:** Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales.
 
@@ -1488,7 +2603,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/edit-batch-modal.png" alt="Interfaz de edición para modificar parámetros de stock y fechas de expiración de lotes existentes con el fin de corregir discrepancias manuales." height="600">
 </div>
 
-**Custom Supplies List**
+**Lista de Suministros Personalizados**
 
 **Descripción:** Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos.
 
@@ -1496,7 +2611,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/custom-supplies-list.png" alt="Galería de suministros personalizados configurados en el sistema, diferenciando entre productos perecederos y no perecederos con sus respectivos identificadores únicos." height="600">
 </div>
 
-**Create Custom Supply**
+**Crear Suministro Personalizado**
 
 **Descripción:** Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad.
 
@@ -1504,7 +2619,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/create-custom-supply.png" alt="Formulario de configuración de nuevos tipos de suministros, definiendo unidades de medida, capacidades máximas/mínimas y políticas de rastreo de caducidad." height="600">
 </div>
 
-**Edit Custom Supply**
+**Editar Suministro Personalizado**
 
 **Descripción:** Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto.
 
@@ -1512,7 +2627,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/edit-custom-supply.png" alt="Vista de actualización para suministros registrados, permitiendo el ajuste de umbrales de capacidad y metadatos técnicos del producto." height="600">
 </div>
 
-**Transfer Batch Stock**
+**Transferencia de Stock entre Lotes**
 
 **Descripción:** Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real.
 
@@ -1520,7 +2635,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/transfer-batch-stock.png" alt="Interfaz para el traslado de mercancía entre zonas del establecimiento, actualizando automáticamente el libro mayor de existencias en tiempo real." height="600">
 </div>
 
-**Device Directory**
+**Directorio de Dispositivos**
 
 **Descripción:** Directorio principal de dispositivos que muestra el estado general de las básculas, alertas de inventario y condiciones ambientales mediante tarjetas informativas y una lista detallada.
 
@@ -1528,7 +2643,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/device-directory-overview.png" alt="Directorio principal de dispositivos con resumen de estados y lista de básculas activas." height="600">
 </div>
 
-**Register Device Modal**
+**Registro de Dispositivo**
 
 **Descripción:** Interfaz de registro para nuevos dispositivos que permite capturar el alias de la báscula y su dirección MAC única para la integración en la red del establecimiento.
 
@@ -1536,7 +2651,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/register-device-modal.png" alt="Formulario de registro de dispositivo para ingresar alias y dirección MAC." height="600">
 </div>
 
-**Unassigned Device State**
+**Dispositivo sin Asignar**
 
 **Descripción:** Vista detallada de una báscula recién registrada en estado de espera, indicando que el hardware requiere la asignación de un lote de inventario para iniciar el monitoreo.
 
@@ -1544,7 +2659,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/unassigned-scale-details.png" alt="Vista de detalle de dispositivo sin lote asignado y configuración bloqueada." height="600">
 </div>
 
-**Batch Assignment Modal**
+**Asignación de Lote a Dispositivo**
 
 **Descripción:** Modal de configuración de pesaje donde se selecciona el producto (lote) y se definen los parámetros de peso unitario y tara para la calibración del sensor.
 
@@ -1552,7 +2667,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/assign-batch-modal.png" alt="Configuración de asignación de lote con campos para peso unitario, tara y puesta a cero." height="600">
 </div>
 
-**Edit Device Info**
+**Editar Información del Dispositivo**
 
 **Descripción:** Ventana de edición para modificar la información de identificación del dispositivo, permitiendo actualizar el alias y verificar la dirección MAC asignada.
 
@@ -1560,7 +2675,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/edit-scale-info-modal.png" alt="Interfaz de edición de información básica de la báscula y sincronización de red." height="600">
 </div>
 
-**Edit Thresholds Modal**
+**Editar Umbrales de Alerta**
 
 **Descripción:** Panel de configuración de umbrales críticos para el control de inventario y límites ambientales de temperatura y humedad, con advertencia de impacto en reportes históricos.
 
@@ -1568,7 +2683,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/edit-thresholds-modal.png" alt="Edición de umbrales de stock, temperatura y humedad con advertencia de cambios retroactivos." height="600">
 </div>
 
-**Unlink Device Confirmation**
+**Confirmación de Desvinculación de Dispositivo**
 
 **Descripción:** Pantalla de confirmación de seguridad para la desvinculación de dispositivos, requiriendo validación del ID para detener el rastreo de inventario y borrar datos de calibración.
 
@@ -1576,7 +2691,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/unlink-scale-confirmation.png" alt="Proceso de confirmación para desvincular un dispositivo de forma permanente." height="600">
 </div>
 
-**Active Device Details**
+**Detalle de Dispositivo Activo**
 
 **Descripción:** Vista de monitoreo activo de una báscula en funcionamiento, mostrando la fuerza de la señal, el tiempo desde la última actualización y el resumen de umbrales configurados.
 
@@ -1584,7 +2699,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/active-scale-configuration.png" alt="Detalle de báscula en línea con indicadores de señal, lote asignado y umbrales de control." height="600"> 
 </div>
 
-**alerts-notifications-main**
+**Centro de Alertas y Notificaciones**
 
 **Descripción:** Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa.
 
@@ -1592,7 +2707,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/alerts-notifications-main.png" alt="Pantalla principal del centro de notificaciones que categoriza alertas de inventario, estado de dispositivos y discrepancias de datos para la gestión operativa." height="600">
 </div>
 
-**confirm-stock-transfer-modal**
+**Confirmación de Transferencia de Stock**
 
 **Descripción:** Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP.
 
@@ -1600,7 +2715,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/confirm-stock-transfer-modal.png" alt="Modal de confirmación para transferencias manuales de stock, detallando la diferencia de peso detectada por la báscula y la sincronización con el ERP." height="600">
 </div>
 
-**data-mismatch-discrepancy-detail**
+**Detalle de Discrepancia de Datos**
 
 **Descripción:** Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor.
 
@@ -1608,7 +2723,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/data-mismatch-discrepancy-detail.png" alt="Interfaz de resolución para discrepancias críticas de datos, comparando registros digitales contra lecturas físicas de la báscula y estado del sensor." height="600">
 </div>
 
-**hardware-offline-diagnostic-detail**
+**Diagnóstico de Hardware sin Conexión**
 
 **Descripción:** Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo.
 
@@ -1616,7 +2731,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/hardware-offline-diagnostic-detail.png" alt="Vista detallada de fallo de conexión de hardware, mostrando última telemetría registrada y pasos de diagnóstico para recuperar la conectividad del dispositivo." height="600">
 </div>
 
-**settings-general-configuration**
+**Configuración General del Sistema**
 
 **Descripción:** Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas.
 
@@ -1624,7 +2739,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-general-configuration.png" alt="Panel de configuración regional y de comunicación para ajustar zona horaria, moneda, idioma y preferencias de notificaciones críticas." height="600">
 </div>
 
-**settings-profile-personal-details**
+**Información Personal del Perfil**
 
 **Descripción:** Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta.
 
@@ -1632,7 +2747,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-profile-personal-details.png" alt="Interfaz de gestión de perfil de usuario para actualizar información personal, fotografía y verificar el estado de seguridad de la cuenta." height="600">
 </div>
 
-**settings-profile-business-info**
+**Información Empresarial del Perfil**
 
 **Descripción:** Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados.
 
@@ -1640,7 +2755,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-profile-business-info.png" alt="Formulario de información corporativa que permite definir la actividad comercial, dirección física y categorías de productos gestionados." height="600">
 </div>
 
-**settings-subscription-billing**
+**Gestión de Suscripción y Facturación**
 
 **Descripción:** Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas.
 
@@ -1648,7 +2763,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-subscription-billing.png" alt="Gestión de planes de suscripción, métricas de uso del sistema por dispositivos conectados e historial de facturación con descarga de facturas." height="600">
 </div>
 
-**settings-branches-directory**
+**Directorio de Sucursales**
 
 **Descripción:** Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas.
 
@@ -1656,7 +2771,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-branches-directory.png" alt="Directorio centralizado de sucursales y centros logísticos con indicadores de estado operativo, cantidad de personal y alertas activas." height="600">
 </div>
 
-**settings-branches-create-modal**
+**Crear Nueva Sucursal**
 
 **Descripción:** Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial.
 
@@ -1664,7 +2779,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-branches-create-modal.png" alt="Modal para la creación de nuevas sedes operativas, solicitando datos de contacto, ubicación geográfica y estado de visibilidad inicial." height="600">
 </div>
 
-**settings-branches-edit-modal**
+**Editar Sucursal**
 
 **Descripción:** Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo.
 
@@ -1672,7 +2787,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-branches-edit-modal.png" alt="Formulario de edición para sucursales existentes que permite actualizar la información de contacto, imágenes de la instalación y estatus operativo." height="600">
 </div>
 
-**settings-branches-delete-active-warning**
+**Advertencia de Eliminación de Sucursal Activa**
 
 **Descripción:** Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos.
 
@@ -1680,7 +2795,7 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
   <img src="./assets/images/chapter5/mobile_mockups/settings-branches-delete-active-warning.png" alt="Notificación de restricción de borrado para sucursales con telemetría activa, exigiendo la desactivación previa de las operaciones para mantener la integridad de datos." height="600">
 </div>
 
-**settings-branches-delete-confirmation**
+**Confirmación de Eliminación Permanente de Sucursal**
 
 **Descripción:** Modal de confirmación crítica para la eliminación permanente de una sucursal, advirtiendo sobre la pérdida de datos históricos y desvinculación de dispositivos.
 
