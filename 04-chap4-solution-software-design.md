@@ -595,7 +595,7 @@ En esta sección se presenta una visión general de los principales usuarios, si
 
 Para Restock, el diagrama de panorama del sistema incluye los siguientes elementos principales:
 
-<img src="assets/images/chapter4/landscape-diagram.png" width="600px">
+<img src="https://i.imgur.com/wOaYnDs.png" width="600px">
 
 **Restaurant Administrator:** Usuario encargado de gestionar el inventario, recetas, ventas y operaciones dentro de un restaurante, interactuando directamente con la plataforma Restock para administrar sus procesos.
 
@@ -625,7 +625,7 @@ El diagrama de contexto en la arquitectura de software proporciona una visión g
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
 
-<img src="https://i.imgur.com/UWstUkL.png" alt="Diagrama de contexto de Restock">
+<img src="https://i.imgur.com/P35v9XT.png" alt="Diagrama de contexto de Restock">
 
 **Visitors:** Usuarios anónimos que navegan el contenido público de la plataforma, como información, planes y características, y pueden registrarse o acceder como administradores de restaurante o retail.
 
@@ -647,7 +647,7 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 El diagrama de contenedores de la arquitectura de software proporciona una visión de alto nivel de los principales contenedores del sistema, incluyendo aplicaciones, servicios, bases de datos y componentes IoT, como dispositivos embebidos y aplicaciones edge que interactúan con sensores físicos. Además, muestra cómo estos elementos se comunican entre sí para procesar y transmitir información. Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
-<img src="https://i.imgur.com/Mn9kfjy.png" alt="Diagrama de contenedores de Restock">
+<img src="https://i.imgur.com/P35v9XT.png" alt="Diagrama de contenedores de Restock">
 
 **Landing Page:** Sitio web estático desarrollado con HTML5, CSS y JavaScript que presenta información pública sobre la plataforma, como funcionalidades, planes y términos de servicio (ToS). Además, guía a los visitantes hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con el contenedor **Web Application** a través de redirecciones. A su vez, redigire a los visitantes de dispositivos móviles a la tienda de aplicaciones para descargar la aplicación móvil.
 
@@ -1219,7 +1219,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la gestión de acceso en pantallas de escritorio o laptops.
 
-<img src="assets/images/chapter4/bc-iam/frontend-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/8tKVYV8.png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
@@ -1270,7 +1270,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de gestión de identidad y acceso (IAM) de la aplicación móvil centraliza los procesos de autenticación y autorización para asegurar que solo los usuarios verificados, como los administradores de restaurantes y de comercios minoristas, puedan acceder a las funciones y datos de la aplicación.
 
-<img src="assets/images/chapter4/bc-iam/mobile-app-iam.png" alt="Web Identity and Access Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/qUANBdt.png" alt="Web Identity and Access Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Mobile Application para Identity and Access Management</em></p>
 
@@ -1331,7 +1331,7 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
 
 El componente de gestión de identidad y acceso (IAM) en el backend es el núcleo de seguridad del sistema. Se encarga de centralizar la autenticación y autorización de todos los usuarios, gestionar sus perfiles y asegurar que todas las interacciones entre los distintos microservicios y las aplicaciones cliente estén debidamente validadas mediante tokens de seguridad.
 
-<img src="assets/images/chapter4/bc-iam/backend-iam.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
+<img src="https://i.imgur.com/BbOzGKT.png" alt="Diagrama del Componente Backend Identity and Access Management" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Identity and Access Management</em></p>
 
@@ -2398,19 +2398,19 @@ En esta sección se presentan los diagramas de componentes del bounded context *
 
 Este diagrama representa la implementación del bounded context **Subscriptions and Payments** en la aplicación web. Se muestra cómo el componente web permite a los usuarios visualizar beneficios, seleccionar planes y gestionar la renovación o cancelación de suscripciones. Asimismo, se evidencia la interacción directa con el backend mediante solicitudes HTTP y la integración con **Stripe** para iniciar y redirigir el proceso de pago. Además, el componente utiliza funcionalidades compartidas a través del módulo **Shared** para la reutilización de utilidades comunes.
 
-<img src="https://i.ibb.co/HTVxgpJc/backend-Suscription.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.imgur.com/vBQdEb4.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Mobile Application Component Diagram
 
 Este diagrama muestra la implementación del bounded context **Subscriptions and Payments** en la aplicación móvil. El componente permite consultar el estado actual de la suscripción, así como realizar acciones de renovación o cancelación. Se observa la comunicación con el backend para la gestión del estado de la suscripción y la persistencia de la información en la base de datos. También se incluye la integración con **Stripe**, donde la aplicación inicia el proceso de pago y redirige al usuario para completarlo.
 
-<img src="https://i.ibb.co/TDYJ28dG/mobile-Suscription.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.imgur.com/yORVGhV.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Backend Application Component Diagram
 
 Este diagrama representa la lógica central del bounded context **Subscriptions and Payments** en el backend. Se muestra cómo este componente gestiona el ciclo de vida completo de las suscripciones (adquisición, renovación y cancelación), interactuando con el contexto de **Identity and Access Management** para validar la identidad del usuario y registrar cuentas. Asimismo, se integra con **Profile and Preferences** para asociar la suscripción con el perfil de negocio del usuario. El componente persiste información relevante en la base de datos y se integra con **Stripe** para la creación de sesiones de pago y el procesamiento de transacciones.
 
-<img src="https://i.ibb.co/NgLNRZxy/api-Suscription.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.imgur.com/cY2abRM.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
 
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -3120,7 +3120,7 @@ Esta sección presenta el diagrama de componentes del backend para el bounded co
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la visualización y edición de perfiles en pantallas de escritorio o laptops.
 
-<img src="https://i.imgur.com/wWNi05L.jpeg" alt="Web App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/O0wm8kM.png" alt="Web App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Web Application para Profiles and Preferences</em></p>
 
@@ -3171,7 +3171,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus perfiles de usuario y negocio, adaptando la experiencia de usuario (UX) para pantallas táctiles.
 
-<img src="https://i.imgur.com/wuXRrNn.jpeg" alt="Mobile App Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/MYKTuso.png" alt="Mobile App Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Mobile Application para Profiles and Preferences</em></p>
 
@@ -3222,7 +3222,7 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
 
-<img src="https://i.imgur.com/FSz2gnn.jpeg" alt="Cloud API Component Diagram - Profiles and Preferences">
+<img src="https://i.imgur.com/0nuvaFA.png" alt="Cloud API Component Diagram - Profiles and Preferences">
 
 <p><em>Tabla de Componentes de la Backend Application para Profiles and Preferences</em></p>
 
@@ -4126,7 +4126,7 @@ En esta sección se presentan los diagramas de componentes del bounded context A
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de inventarios, creación de sucursales y configuración de cabinas inteligentes en pantallas de escritorio o laptops.
 
-<img src="assets/images/chapter4/bc-resource/frontend-components.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/dlTD59E.png" alt="Web Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Asset and Resource Management</em></p>
 
@@ -4177,7 +4177,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar sus activos físicos e inventarios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles y habilitando el almacenamiento en caché local.
 
-<img src="assets/images/chapter4/bc-resource/mobile-components.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/5JjHGuY.png" alt="Mobile Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Mobile Application para Asset and Resource Management</em></p>
 
@@ -4233,7 +4233,7 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración crítica con la red de estaciones locales (Edge) para mantener actualizados los niveles de stock físico reportados por el hardware.
 
-<img src="assets/images/chapter4/bc-resource/backend-components.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/bQgTt0i.png" alt="Backend Asset and Resource Management Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Asset and Resource Management</em></p>
 
@@ -4869,7 +4869,7 @@ En esta sección se presentan los diagramas de componentes del bounded context S
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de los catálogos en pantallas de escritorio o laptops.
 
-<img src="assets/images/chapter4/bc-planning/frontend-components.png" alt="Web Service Design and Planning Component Diagram" width="100%">
+<img src="https://i.imgur.com/s9Aj0wH.png" alt="Web Service Design and Planning Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Web Application para Service Design and Planning</em></p>
 
@@ -4916,30 +4916,6 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </tbody>
 </table>
 
-##### Mobile Application Component Diagram
-
-El componente de la aplicación móvil provee acceso en dispositivos iOS y Android, permitiendo a los administradores gestionar la composición de sus servicios de manera remota y ágil, adaptando la experiencia de usuario (UX) para pantallas táctiles.
-
-<img src="assets/images/chapter4/bc-planning/mobile-components.png" alt="Mobile Service Design and Planning Component Diagram" width="100%">
-
-<p><em>Tabla de Componentes de la Mobile Application para Service Design and Planning</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileServiceDesign</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Provee las pantallas y lógica local móvil para gestionar recetas y kits desde dispositivos portátiles.</td>
-      <td style="padding: 10px; border: 1px solid;">Dart, Flutter</td>
-    </tr>
-  </tbody>
-</table>
 
 <br>
 
@@ -4971,7 +4947,7 @@ El componente de la aplicación móvil provee acceso en dispositivos iOS y Andro
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
 
-<img src="assets/images/chapter4/bc-planning/backend-components.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
+<img src="https://i.imgur.com/5nXSwzI.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
 
 <p><em>Tabla de Componentes de la Backend Application para Service Design and Planning</em></p>
 
@@ -5249,19 +5225,19 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 Este diagrama representa la implementación del bounded context Tracking en la aplicación web.
 
-<img src="assets/images/chapter4/bc-monitoring/monitoring_component_frontend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+<img src="https://i.imgur.com/s9Aj0wH.png" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
 
 ##### Mobile Application Component Diagram
 
 Este diagrama muestra la implementación del bounded context Tracking en la aplicación móvil.
 
-<img src="assets/images/chapter4/bc-monitoring/monitoring_component_mobile.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+<img src="https://i.imgur.com/PkiXsxK.png" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
 
 ##### Backend Application Component Diagram
 
 Este diagrama representa la lógica central del bounded context Tracking en el backend.
 
-<img src="assets/images/chapter4/bc-monitoring/monitoring_component_backend.jpeg" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
+<img src="https://i.imgur.com/S9GxlCk.png" alt="Domain Layer Class Diagram - Service Operation and Monitoring">
 
 #### 4.2.6.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -5773,7 +5749,7 @@ En esta sección se presentan los diagramas de componentes del bounded context d
 
 El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
 
-<img src="https://i.imgur.com/DmgkRpH.png" alt="Web Sales Order Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/IA3g7lo.png" alt="Web Sales Order Management Component Diagram" width="100%">
 
 ##### Mobile Application Component Diagram
 
@@ -5785,7 +5761,7 @@ El diagrama representa la implementación del bounded context de Sales Order Man
 
 El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
 
-<img src="https://i.imgur.com/pR0rPXd.png" alt="Backend Sales Order Management Component Diagram" width="100%">
+<img src="https://i.imgur.com/HWSxEVk.png" alt="Backend Sales Order Management Component Diagram" width="100%">
 
 #### 4.2.7.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -6591,7 +6567,7 @@ El diagrama evidencia que el componente Communications posee una responsabilidad
 
 El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
 
-<img src="https://imgur.com/U7rHdMJ.png" alt="mobile-communicaiton">
+<img src="https://i.imgur.com/BPFVjVP.png" alt="mobile-communicaiton">
 
 El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
 
@@ -6599,7 +6575,7 @@ El diagrama muestra que el componente Communications de la aplicación móvil re
 
 El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
 
-<img src="https://imgur.com/jvqpzjx.png" alt="api-communicaiton">
+<img src="https://i.imgur.com/UwEkZLk.png" alt="api-communicaiton">
 
 El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
 
@@ -6863,12 +6839,12 @@ La capa de infraestructura del Bounded Context de Analytics resuelve los detalle
 
 *Tabla de IntegrationEventConsumer en el Infrastructure Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | IntegrationEventConsumer |
-| **Categoría** | Message Broker Consumer |
+| Propiedad     | Valor                                                                                                                                                                                                                                                                                                    |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Nombre**    | IntegrationEventConsumer                                                                                                                                                                                                                                                                                 |
+| **Categoría** | Message Broker Consumer                                                                                                                                                                                                                                                                                  |
 | **Propósito** | Consumir eventos de integración emitidos por Asset and Resource Management (`StockLevelChangedEvent`, `SupplyRegisteredEvent`) y Communication (`NotificationGeneratedEvent`), transformándolos en comandos internos que disparan la actualización de los indicadores del dashboard dentro del contexto. |
-| **Interfaz** | IIntegrationEventConsumer |
+| **Interfaz**  | IIntegrationEventConsumer                                                                                                                                                                                                                                                                                |
 
 #### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -6886,7 +6862,7 @@ El diagrama evidencia que el componente Analytics posee una responsabilidad acot
 
 El componente Analytics dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar los indicadores del dashboard y los resúmenes de stock, permitiendo que los administradores consulten el estado operativo de su negocio desde sus dispositivos móviles.
 
-![mobile-analytics](https://imgur.com/VJjhLSh.png)
+![mobile-analytics](https://i.imgur.com/L6Su3aC.png)
 
 El diagrama muestra que el componente Analytics de la aplicación móvil replica estructuralmente el comportamiento del componente web, adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente garantiza una experiencia consistente independientemente del dispositivo utilizado.
 
@@ -6894,7 +6870,7 @@ El diagrama muestra que el componente Analytics de la aplicación móvil replica
 
 El componente Analytics dentro del Restock Cloud Server Side App concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
 
-![api-analytics](https://imgur.com/Pp1B3S3.png)
+![api-analytics](https://i.imgur.com/1Tfxf5R.png)
 
 El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communication, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
 
