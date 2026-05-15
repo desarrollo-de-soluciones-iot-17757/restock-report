@@ -371,36 +371,28 @@ Los Domain Message Flows modelan las interacciones entre los diferentes bounded 
 * **Access to platform:** En este flujo se muestra la interacción entre el bounded context IAM y el bounded context Profiles al momento en que un usuario se registra de forma omnicanal (Web o App) y se crea su perfil correspondiente.
 
   <img src="assets/images/chapter4/message_flows/access_to_platform.png" alt="Domain Message Flow - Access to platform" height="300px">
-
 * **Delete a recipe:** En este flujo se detalla la interacción iniciada por el Restaurant Manager al eliminar una receta. El bounded context Planning procesa el evento de confirmación y emite comandos hacia los contextos Communications (para el envío de notificaciones vía OneSignal) y Analytics, permitiendo que la aplicación actualice y muestre las alertas recientes.
 
   <img src="assets/images/chapter4/message_flows/delete_a_recipe.png" alt="Domain Message Flow - Delete a recipe" height="300px">
-
 * **Push Notification Dispatch:** En este escenario se detalla cómo el bounded context ARM delega el envío de alertas. Tras el evento de añadir un lote al inventario, se envía un comando al bounded context Communications, el cual utiliza la API de OneSignal para disparar el evento de notificación hacia los dispositivos web y móviles de los usuarios.
 
   <img src="assets/images/chapter4/message_flows/push_notification_dispatch.png" alt="Domain Message Flow - Push Notification Dispatch" height="300px">
-
 * **Record a batch in the inventory:** En este flujo, el Manager registra un lote desde la interfaz. El evento de creación es procesado por el bounded context ARM, el cual genera un comando hacia el bounded context Communications para que este emita el evento de notificación enviada y actualice el centro de alertas en la aplicación.
 
   <img src="assets/images/chapter4/message_flows/record_a_batch_in_the_inventory.png" alt="Domain Message Flow - Record a batch in the inventory" height="300px">
-
 * **Register a retail sale and update inventory:** En este flujo se observa la sincronización automática entre ventas y almacén. Al confirmarse una venta por el Retail Manager, el bounded context Sales emite un comando directo al bounded context ARM para ejecutar la sustracción del stock en el lote de insumos correspondiente.
 
   <img src="assets/images/chapter4/message_flows/register_a_retail_sale_and_update_inventory.png" alt="Domain Message Flow - Register a retail sale and update inventory" height="300px">
-
 * **Signup and create branch:** En este flujo omnicanal, el proceso inicia en el bounded context IAM con el guardado de datos del usuario. Posteriormente, el flujo pasa al bounded context Subscriptions para la selección y activación de un plan, lo que finalmente desencadena un comando hacia el bounded context ARM para registrar e inicializar la sucursal única del sistema.
 
   <img src="assets/images/chapter4/message_flows/signup_and_create_branch.png" alt="Domain Message Flow - Signup and create branch" height="300px">
-
 * **Subscribe to a plan:** En este flujo financiero, el usuario interactúa con la aplicación para elegir una suscripción. El bounded context Subscription orquesta el proceso emitiendo el comando de pago a la pasarela externa (Stripe), capturando el evento de éxito para finalmente activar el plan de forma global en la plataforma.
 
   <img src="assets/images/chapter4/message_flows/subscribe_to_a_plan.png" alt="Domain Message Flow - Subscribe to a plan" height="300px">
-
 * **Tracking and Anomaly Detection:** En este flujo crítico de telemetría, la aplicación embebida (báscula inteligente) detecta que un umbral ha sido superado y emite un evento al bounded context Tracking. Este interactúa con Notification para generar la alerta, fluyendo luego hacia Analytics para que las aplicaciones de usuario final consuman y muestren la alerta reciente en el dashboard.
 
   <img src="assets/images/chapter4/message_flows/tracking_and_anomaly_detection.png" alt="Domain Message Flow - Tracking and Anomaly Detection" height="300px">
 
-  
 #### 4.1.1.3 Bounded Context Canvases
 
 Un Bounded Context Canvas es una herramienta visual que ayuda a documentar lo necesario para un bounded context identificado. A continuación se describe el diseño de cada contexto, incluyendo la definición del contexto, su clasificación, las reglas de negocio, el lenguaje ubicuo utilizado para este context, y la comunicación de este contexto.
@@ -1206,7 +1198,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 El componente de la aplicación web cliente, desarrollado en Angular, se ejecuta en el navegador del usuario para proporcionar una experiencia de gestión de identidad fluida en dispositivos de escritorio. Este componente orquesta la comunicación con el backend mediante un Auth Service que consume los endpoints de autenticación a través de un balanceador NGINX, gestionando de forma segura el ciclo de vida de los tokens JWT en el lado del cliente para asegurar que cada petición de la interfaz esté debidamente autorizada.
 
-<img src="assets/images/chapter4/bc-iam/frontend-iam-component .png" alt="Web Identity and Access Management Component Diagram" width="100%">
+`<img src="assets/images/chapter4/bc-iam/frontend-iam-component .png" alt="Web Identity and Access Management Component Diagram" width="500px">`
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
@@ -1391,7 +1383,7 @@ El componente de gestión de identidad y acceso (IAM) en el backend es el núcle
 
 En esta sección se presenta el Diagrama de Clases UML detallado de la capa de dominio para el Bounded Context de **Identity and Access Management (IAM)**. Este diseño visual consolida la gestión de identidades y la administración de permisos, asegurando un control de acceso centralizado y escalable para todos los servicios que componen la plataforma Restock.
 
-El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíces de agregación (**User** y **Role**) centralizan la lógica de decisión. En lugar de ser estructuras pasivas de datos, estas entidades exponen métodos con lógica de negocio explícita —tales como `signUp()`, `signIn()`, `updateSubscription()` y `assignRole()`— que validan invariantes de seguridad y políticas de acceso antes de procesar cualquier cambio de estado. 
+El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíces de agregación (**User** y **Role**) centralizan la lógica de decisión. En lugar de ser estructuras pasivas de datos, estas entidades exponen métodos con lógica de negocio explícita —tales como `signUp()`, `signIn()`, `updateSubscription()` y `assignRole()`— que validan invariantes de seguridad y políticas de acceso antes de procesar cualquier cambio de estado.
 
 Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
 
@@ -4838,15 +4830,15 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
 
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios externos únicamente cuando dichas interacciones son necesarias para la gestión de recetas gastronómicas y la configuración de kits comerciales.
+En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde la perspectiva de la aplicación web y del backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, balanceadores de carga o servicios externos para la gestión de recetas gastronómicas y la configuración de kits comerciales.
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de los catálogos en pantallas de escritorio o laptops.
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta la interfaz gráfica (UI) para la manipulación de los catálogos.
 
-<img src="https://i.imgur.com/KdmrcXs.png" alt="Web Service Design and Planning Component Diagram" width="100%">
+<img src="./assets/images/chapter4/bc-planning/web-client-component-diagram.png" alt="Web Service Design and Planning Component Diagram" width="500px">
 
-<p><em>Tabla de Componentes de la Web Application para Service Design and Planning</em></p>
+<p><em>Componentes de la Web Application para Service Design and Planning</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4858,8 +4850,8 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webServiceDesign</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la configuración de recetas para restaurantes y ensamblaje de kits para tiendas retail. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Planning UI</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas para restaurantes y los kits para tiendas retail (Manages recipes for restaurants and kits for retail stores).</td>
       <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
     </tr>
   </tbody>
@@ -4867,7 +4859,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente webServiceDesign</em></p>
+<p><em>Tabla de Interacciones del Componente Planning UI</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4879,14 +4871,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
-      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar las formulaciones de recetas y kits en el servidor central.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP (JSON/HTTP)</td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas y kits enviando las peticiones a través del balanceador de carga (Manages recipes and kits).</td>
     </tr>
   </tbody>
 </table>
@@ -4895,9 +4882,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 ##### Backend Application Component Diagram
 
-El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
+El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos e internos para la validación de insumos y estructuración comercial.
 
-<img src="https://i.imgur.com/5nXSwzI.png" alt="Backend Service Design and Planning Component Diagram" width="100%">
+<img src="./assets/images/chapter4/bc-planning/cloud-rest-api-component.png" alt="Backend Service Design and Planning Component Diagram" width="500px">
 
 <p><em>Tabla de Componentes de la Backend Application para Service Design and Planning</em></p>
 
@@ -4911,8 +4898,8 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiServiceDesign</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail. Centraliza la lógica de validación de insumos y estructuración comercial.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Service Design and Planning</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail (Handles recipe management for restaurants and kit management for retail stores).</td>
       <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
     </tr>
   </tbody>
@@ -4920,7 +4907,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+<p><em>Tabla de Interacciones del Componente Service Design and Planning</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4932,29 +4919,34 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
-      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
-      <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la composición de los kits y las recetas diseñadas por los administradores.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>MongoDB Database</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Lectura / Escritura (Spring Data MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Lee y escribe las recetas y los kits (Reads and writes recipes and kits).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Actualiza el stock de los insumos asociados cuando una receta o kit es vendido, garantizando la consistencia del inventario.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Asset and Resource Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Resta el stock de los insumos asociados a la receta o kit (Subtracks supply stock asociated to recipe/kit).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la creación, edición o eliminación de elementos del catálogo.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Identity and Access Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (Internal)</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica si la petición entrante está autorizada (Checks if request is authorized).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integración Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para integrar la carga y recuperación de imágenes multimedia asociadas a los combos o platos mediante Cloudinary.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Subscriptions and Payments</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica el uso de recursos actuales del usuario (Checks user's current resource usage).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiSalesManagement</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante</td>
-      <td style="padding: 10px; border: 1px solid;">Recibe peticiones del módulo de ventas para contabilizar las cantidades vendidas de recetas o kits registrados a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Sube y recupera imágenes de perfil o de negocio asociadas (Uploads and retrieves profile or business images with.).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Sales Order Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra la venta de la receta o kit (Registers recipe/kit sale).</td>
     </tr>
   </tbody>
 </table>
@@ -4973,7 +4965,7 @@ El modelo destaca por ser un Modelo de Dominio Rico. Las entidades raíz (Recipe
 
 En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado para el Bounded Context de Service Design and Planning. Este diagrama detalla el esquema que permite la persistencia de las entidades core: las recetas de los restaurantes y los kits comerciales de las tiendas retail.
 
-<img src="assets/images/chapter4/bc-planning/Service-Design-and-Planning-DB-Schema.png" alt="Database Design Diagram - Service Design and Planning">
+<img src="assets/images/chapter4/bc-planning/Service-Design-and-Planning-DB-Schema.png" alt="Database Design Diagram - Service Design and Planning" width="500px">
 
 ### 4.2.6. Bounded Context: Tracking
 
