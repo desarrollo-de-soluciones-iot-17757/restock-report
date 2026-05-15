@@ -10,261 +10,526 @@
 
 ### 6.1.3. Source Code Style Guide & Conventions
 
-En esta sección se definen las convenciones de estilo de código que el equipo adoptará para el desarrollo de Restock. Estas convenciones tienen como objetivo mantener una base de código uniforme, legible, mantenible y alineada con estándares reconocidos de la industria para cada tecnología utilizada en la solución.
+En esta sección se describen las configuraciones y pasos necesarios para desplegar correctamente los distintos productos digitales que conforman la solución Restock, partiendo desde sus respectivos repositorios de código fuente. Asimismo, se especifican las tecnologías, plataformas y servicios utilizados para la publicación y ejecución de cada componente del sistema.
 
-Como regla general, todo el código fuente, identificadores, nombres de variables, funciones, clases, endpoints, ramas y commits deberá escribirse en inglés. Sin embargo, toda la documentación explicativa del proyecto se redactará en español.
+La solución Restock está compuesta por los siguientes productos digitales:
 
-#### Convenciones Generales
+- Landing Page.
+- Frontend Web Application.
+- Backend REST API.
+- Mobile Application.
+- Edge API.
+- Embedded Application.
 
-- **Idioma:** Todos los identificadores del código fuente deben escribirse en inglés.
-- **Claridad de nombres:** Los nombres deben ser descriptivos y representar correctamente el dominio de negocio de Restock.
-- **Indentación:** Cada tecnología seguirá su estándar oficial de indentación.
--- **Comentarios y documentación interna:** El equipo documentará clases, métodos, funciones y lógica relevante siguiendo las convenciones propias de cada lenguaje, evitando comentarios redundantes sobre código evidente.
-- **Formateo:** El código debe ser formateado antes de realizar commits al repositorio.
-- **Convención de commits:** El equipo utilizará Conventional Commits, empleando prefijos como `feat:`, `fix:`, `chore:`, `docs:`, `refactor:` y `test:`.
-- **Convención de ramas:** Las ramas seguirán una estructura basada en Gitflow, utilizando nombres como `feature/inventory-management`, `fix/auth-validation` o `chore/deployment-config`.
+##### 1. Landing Page – HTML, CSS y JavaScript
 
----
+##### Tecnologías Base
 
-#### Frontend - Landing Page (HTML, CSS y JavaScript)
+| Elemento    | Tecnología              |
+| ----------- | ----------------------- |
+| Lenguajes   | HTML5, CSS3, JavaScript |
+| Hosting     | Vercel                  |
+| Repositorio | GitHub                  |
 
-**Referencias adoptadas:**
+##### Configuración y Despliegue
 
-- W3Schools HTML Style Guide.
-- Google HTML/CSS Style Guide.
-- JavaScript Standard Style.
-
-**Convenciones generales:**
-
-- Extensiones utilizadas: `.html`, `.css`, `.js`.
-- Indentación de 2 espacios.
-- Uso de etiquetas HTML semánticas como `header`, `main`, `section`, `article`, `nav` y `footer`.
-- Las imágenes deben incluir atributos `alt` descriptivos.
-- Los estilos CSS deben organizarse por secciones o componentes.
-- JavaScript debe utilizarse únicamente para lógica de interacción y comportamiento dinámico.
+La Landing Page institucional de Restock se encuentra desarrollada utilizando HTML, CSS y JavaScript puro. El código fuente se almacena en un repositorio GitHub público, el cual se integra con Vercel para permitir el despliegue automático de la aplicación web.
 
-**Convenciones de nomenclatura:**
+Para permitir el despliegue correcto mediante Vercel, el archivo `index.html` debe ubicarse en la raíz del proyecto o dentro de la carpeta configurada como directorio principal del proyecto.
 
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| IDs HTML | camelCase | `mainContent` |
-| Clases CSS | kebab-case | `hero-section` |
-| Variables JavaScript | camelCase | `selectedPlan` |
-| Funciones JavaScript | camelCase | `handleNavigation()` |
-| Constantes | UPPER_SNAKE_CASE | `MAX_VISIBLE_ITEMS` |
-| Archivos | kebab-case | `landing-page.js` |
+##### Pasos de despliegue
 
----
-
-#### Convenciones de Documentación y Comentarios
+1. Clonar el repositorio del proyecto:
 
-Aunque los comentarios no deben reemplazar un código claro y descriptivo, el equipo utilizará comentarios y documentación interna cuando sea necesario explicar reglas de negocio, decisiones técnicas, contratos de métodos o comportamientos complejos. Para ello, se adoptarán convenciones específicas según el lenguaje utilizado.
+```bash
+git clone <repository-url>
+```
 
-| Tecnología | Convención adoptada | Uso principal |
-|---|---|---|
-| HTML | Comentarios HTML | Separar secciones relevantes del landing page |
-| CSS | Comentarios CSS | Agrupar estilos por sección o componente |
-| JavaScript | JSDoc | Documentar funciones, parámetros y retornos |
-| TypeScript | TSDoc / JSDoc | Documentar servicios, interfaces, métodos y componentes |
-| Java | Javadoc | Documentar clases, métodos públicos, DTOs y servicios |
-| Dart / Flutter | Dart Documentation Comments | Documentar widgets, BLoC, servicios y modelos |
-| Python | Docstring Conventions / PEP 257 | Documentar módulos, clases, funciones y servicios |
-| C++ | Doxygen | Documentar clases, funciones, estructuras y lógica de hardware |
-| Gherkin | Descripciones funcionales en `.feature` | Explicar el comportamiento esperado desde el negocio |
-
-#### Frontend Web Application (Angular y TypeScript)
-
-**Referencias adoptadas:**
-
-- Angular Coding Style Guide.
-- Google TypeScript Style Guide.
-
-**Convenciones generales:**
-
-- Extensiones utilizadas: `.ts`, `.html`, `.css`.
-- Indentación de 2 espacios.
-- Organización del proyecto basada en módulos y features.
-- Los componentes deben encargarse únicamente de la lógica de presentación.
-- Los servicios deben centralizar la comunicación con APIs y lógica reutilizable.
-- Uso obligatorio de tipado fuerte mediante interfaces y modelos.
-- Los imports deben organizarse desde dependencias externas hacia módulos internos.
-
-**Convenciones de nomenclatura:**
-
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Componentes | PascalCase + sufijo `Component` | `InventoryDashboardComponent` |
-| Servicios | PascalCase + sufijo `Service` | `InventoryService` |
-| Interfaces | PascalCase | `InventoryItem` |
-| Clases | PascalCase | `StockRecord` |
-| Variables | camelCase | `currentStock` |
-| Métodos | camelCase | `loadInventory()` |
-| Constantes | UPPER_SNAKE_CASE | `DEFAULT_PAGE_SIZE` |
-| Archivos | kebab-case | `inventory-dashboard.component.ts` |
-| Rutas | kebab-case | `/inventory-dashboard` |
-
----
-
-#### Mobile Application (Flutter y Dart)
-
-**Referencias adoptadas:**
-
-- Effective Dart Style.
-- Flutter Style Guide.
-- Convenciones de Clean Architecture para Flutter.
-
-**Convenciones generales:**
-
-- Extensión utilizada: `.dart`.
-- Indentación de 2 espacios.
-- Arquitectura organizada por features, separando capas `data`, `domain` y `presentation`.
-- Separación clara de eventos, estados y lógica en BLoC.
-- Los widgets deben ser reutilizables y cumplir una única responsabilidad.
-- Separación entre DTOs y modelos de dominio cuando exista transformación de datos.
-
-**Convenciones de nomenclatura:**
-
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Clases | PascalCase | `InventoryPage` |
-| Widgets | PascalCase | `StockCard` |
-| Variables | lowerCamelCase | `availableStock` |
-| Métodos | lowerCamelCase | `fetchSupplies()` |
-| Constantes | lowerCamelCase o UPPER_SNAKE_CASE | `defaultPadding` |
-| Archivos | snake_case | `inventory_page.dart` |
-| Carpetas | snake_case | `asset_management` |
-| Eventos BLoC | PascalCase + sufijo `Event` | `FetchInventoryEvent` |
-| Estados BLoC | PascalCase + sufijo `State` | `InventoryLoadedState` |
-
----
-
-#### Backend Application (Java y Spring Boot)
-
-**Referencias adoptadas:**
-
-- Google Java Style Guide.
-- Spring Boot Features and Best Practices.
-- Convenciones REST API.
+2. Acceder a la plataforma de Vercel.
 
-**Convenciones generales:**
-
-- Extensión utilizada: `.java`.
-- Indentación de 4 espacios.
-- Arquitectura basada en Domain-Driven Design y separación por capas.
-- Los controllers únicamente deben exponer endpoints REST.
-- La lógica de negocio debe implementarse en servicios o handlers.
-- Los repositories deben abstraer el acceso a persistencia.
-- Separación entre DTOs y entidades de dominio.
-- Validación de entradas mediante anotaciones y reglas de negocio explícitas.
-
-**Convenciones de nomenclatura:**
-
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Clases | PascalCase | `InventoryService` |
-| Controllers | PascalCase + sufijo `Controller` | `InventoryController` |
-| Services | PascalCase + sufijo `Service` | `StockMonitoringService` |
-| Repositories | PascalCase + sufijo `Repository` | `InventoryRepository` |
-| DTOs | PascalCase + sufijo `Request` / `Response` | `CreateSupplyRequest` |
-| Command Handlers | PascalCase + sufijo `CommandHandler` | `RegisterBatchCommandHandler` |
-| Query Handlers | PascalCase + sufijo `QueryHandler` | `GetInventoryByBranchQueryHandler` |
-| Variables | camelCase | `stockRecord` |
-| Métodos | camelCase | `registerBatch()` |
-| Constantes | UPPER_SNAKE_CASE | `MAX_LOGIN_ATTEMPTS` |
-| Packages | lowercase separados por punto | `com.restock.inventory.domain` |
-| Endpoints REST | kebab-case | `/api/v1/stock-records` |
+3. Iniciar sesión con la cuenta de GitHub.
 
----
+4. Seleccionar la opción `Add New Project`.
 
-#### Edge Application (Python y Flask)
+5. Importar el repositorio correspondiente al Landing Page de Restock.
 
-**Referencias adoptadas:**
+6. Configurar los siguientes valores:
 
-- PEP 8 Style Guide for Python Code.
-- Flask Best Practices.
+| Configuración    | Valor                   |
+| ---------------- | ----------------------- |
+| Framework Preset | `Other`                 |
+| Root Directory   | `/`                     |
+| Build Command    | No aplica / dejar vacío |
+| Output Directory | No aplica / dejar vacío |
+| Install Command  | No aplica / dejar vacío |
 
-**Convenciones generales:**
+7. Guardar la configuración e iniciar el despliegue.
 
-- Extensión utilizada: `.py`.
-- Indentación de 4 espacios.
-- Separación entre rutas, servicios, configuración y comunicación con dispositivos.
-- Uso de variables de entorno para datos sensibles.
-- Las excepciones deben retornar respuestas HTTP consistentes.
-- El procesamiento de telemetría debe mantenerse desacoplado de la lógica HTTP.
+Vercel generará automáticamente una URL pública con un formato similar al siguiente:
 
-**Convenciones de nomenclatura:**
+```text
+https://<project-name>.vercel.app/
+```
 
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Archivos | snake_case | `telemetry_service.py` |
-| Carpetas | snake_case | `device_config` |
-| Variables | snake_case | `current_weight` |
-| Funciones | snake_case | `process_telemetry()` |
-| Clases | PascalCase | `TelemetryService` |
-| Constantes | UPPER_SNAKE_CASE | `MAX_RETRY_ATTEMPTS` |
-| Endpoints | kebab-case | `/api/v1/device-health` |
+##### Actualizaciones
 
----
+Cada nuevo commit realizado sobre la rama configurada para producción, generalmente `main`, activará automáticamente un nuevo despliegue en Vercel. De esta manera, la versión publicada del Landing Page se mantiene actualizada sin necesidad de realizar un despliegue manual.
 
-#### Embedded Application (C++)
+##### 2. Frontend Web Application – Angular
 
-**Referencias adoptadas:**
+##### Tecnologías Base
 
-- Google C++ Style Guide.
-- Convenciones ESP32.
+| Elemento        | Tecnología |
+| --------------- | ----------- |
+| Framework       | Angular     |
+| Lenguaje        | TypeScript  |
+| Build Tool      | Angular CLI |
+| Hosting         | Vercel      |
+| Package Manager | npm         |
 
-**Convenciones generales:**
+##### Configuración y Despliegue
 
-- Extensiones utilizadas: `.cpp`, `.h`.
-- Indentación de 2 espacios.
-- Separación entre lectura de sensores, calibración y procesamiento de datos.
-- Uso de constantes para configuración de hardware y pines.
-- Los errores del dispositivo deben manejarse mediante estados claramente definidos.
+La aplicación web administrativa de Restock se desarrolla utilizando Angular y TypeScript. El proyecto frontend se despliega en Vercel, una plataforma de hosting orientada a aplicaciones web modernas que permite automatizar el proceso de publicación a partir del repositorio de GitHub.
 
-**Convenciones de nomenclatura:**
+##### Instalación de dependencias
 
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Clases | PascalCase | `WeightSensor` |
-| Structs | PascalCase | `TelemetryPayload` |
-| Variables | camelCase | `currentWeight` |
-| Funciones | camelCase | `readStableWeight()` |
-| Constantes | UPPER_SNAKE_CASE | `HX711_DATA_PIN` |
-| Header files | snake_case | `weight_sensor.h` |
-| Source files | snake_case | `weight_sensor.cpp` |
+```bash
+npm install
+```
 
----
+##### Ejecución local
 
-#### Testing Specifications (Gherkin)
+```bash
+ng serve
+```
 
-**Referencias adoptadas:**
+La aplicación estará disponible en:
 
-- Gherkin Conventions for Readable Specifications.
-- Buenas prácticas de Behavior-Driven Development (BDD).
+```text
+http://localhost:4200
+```
 
-**Convenciones generales:**
+##### Build de producción
 
-- Extensión utilizada: `.feature`.
-- Los archivos deben utilizar keywords en inglés.
-- Cada feature debe representar un comportamiento funcional específico.
-- Los escenarios deben enfocarse en una única funcionalidad observable.
-- Los steps deben describir comportamiento funcional y no detalles técnicos internos.
-- Uso de tags para clasificación funcional o técnica.
+```bash
+ng build --configuration production
+```
 
-**Convenciones de nomenclatura:**
+Los archivos generados se almacenan en:
 
-| Elemento | Convención | Ejemplo |
-|---|---|---|
-| Feature files | kebab-case | `inventory-management.feature` |
-| Títulos Feature | Descriptivo en inglés | `Feature: Manage inventory stock` |
-| Títulos Scenario | Descriptivo en inglés | `Scenario: Register a new supply batch` |
-| Tags | lowercase kebab-case | `@inventory`, `@critical-flow` |
-| Step definitions | camelCase o snake_case | `registerSupplyBatch()` |
+```text
+/dist/<project-name>/browser
+```
 
+##### Configuración de despliegue en Vercel
 
-Estas referencias permitirán mantener consistencia en el desarrollo colaborativo, facilitar la mantenibilidad del sistema y asegurar buenas prácticas de ingeniería de software durante todo el ciclo de vida del proyecto.
+Para desplegar la aplicación web en Vercel, se deben seguir los siguientes pasos:
 
-### 6.1.4. Software Deployment Configuration
+1. Acceder a Vercel.
+2. Seleccionar la opción `Add New Project`.
+3. Importar el repositorio GitHub correspondiente al frontend.
+4. Seleccionar Angular como framework.
+5. Configurar el comando de instalación:
+
+```bash
+npm install
+```
+
+6. Configurar el comando de build:
+
+```bash
+npm run build
+```
+
+7. Configurar el directorio de salida:
+
+```text
+dist/<project-name>/browser
+```
+
+8. Configurar variables de entorno.
+9. Ejecutar el despliegue.
+
+##### Variables de entorno
+
+La URL base del Backend REST API se configura como variable de entorno dentro de Vercel.
+
+| Variable         | Descripción                                           |
+| ---------------- | ------------------------------------------------------ |
+| `API_BASE_URL` | URL pública del Backend REST API desplegado en Render |
+
+##### Integración con Backend
+
+El frontend consume la API REST desplegada en Render mediante peticiones HTTP asincrónicas. En producción, la URL base del backend se obtiene desde las variables de entorno configuradas en Vercel.
+
+##### Actualizaciones
+
+Cada push realizado hacia la rama principal genera automáticamente una nueva versión desplegada en Vercel.
+
+##### 3. Backend REST API – Java Spring Boot
+
+##### Tecnologías Base
+
+| Elemento          | Tecnología       |
+| ----------------- | ----------------- |
+| Framework         | Spring Boot       |
+| Lenguaje          | Java 21           |
+| Build Tool        | Maven             |
+| Contenerización  | Docker            |
+| Hosting           | Render            |
+| Base de datos     | MongoDB Atlas     |
+| API Documentation | OpenAPI / Swagger |
+
+##### Configuración y Despliegue
+
+El backend de Restock expone una API RESTful encargada de la lógica de negocio, autenticación, gestión de inventario, telemetría IoT y comunicación con los demás componentes del sistema.
+
+##### Instalación y ejecución local
+
+```bash
+./mvnw spring-boot:run
+```
+
+##### Build del proyecto
+
+```bash
+./mvnw clean package
+```
+
+##### Dockerización
+
+El proyecto incluye un archivo `Dockerfile` para generar la imagen del backend.
+
+##### Construcción de imagen Docker
+
+```bash
+docker build -t restock-backend .
+```
+
+##### Ejecución del contenedor
+
+```bash
+docker run -p 8080:8080 restock-backend
+```
+
+##### Variables de entorno
+
+Las credenciales y configuraciones sensibles se administran mediante variables de entorno en Render.
+
+| Variable             | Descripción                   |
+| -------------------- | ------------------------------ |
+| `MONGODB_URI`      | URI de conexión MongoDB Atlas |
+| `JWT_SECRET`       | Clave secreta JWT              |
+| `SERVER_PORT`      | Puerto del servidor            |
+| `CLOUDINARY_URL`   | Configuración Cloudinary      |
+| `ONESIGNAL_APP_ID` | Configuración OneSignal       |
+
+##### Configuración de despliegue en Render
+
+1. Vincular el repositorio GitHub.
+2. Detectar automáticamente el `Dockerfile`.
+3. Configurar variables de entorno.
+4. Configurar puerto de ejecución.
+5. Ejecutar despliegue automático.
+
+##### Deploy automático
+
+Cada push realizado a la rama principal genera automáticamente un nuevo despliegue en Render.
+
+##### Exposición de servicios
+
+La API REST se expone públicamente mediante HTTPS y es consumida por:
+
+- Frontend Angular.
+- Mobile Application Flutter.
+- Edge Application.
+
+##### 4. Mobile Application – Flutter
+
+##### Tecnologías Base
+
+| Elemento        | Tecnología               |
+| --------------- | ------------------------- |
+| Framework       | Flutter                   |
+| Lenguaje        | Dart                      |
+| IDE recomendado | Android Studio            |
+| Build Tool      | Flutter SDK               |
+| Distribución   | Firebase App Distribution |
+
+##### Configuración y Despliegue
+
+La aplicación móvil de Restock está desarrollada utilizando Flutter y Dart. Para su distribución en entornos de prueba, se utiliza Firebase App Distribution, permitiendo compartir versiones APK con testers registrados antes de una publicación formal en una tienda de aplicaciones.
+
+##### Instalación de dependencias
+
+```bash
+flutter pub get
+```
+
+##### Ejecución local
+
+```bash
+flutter run
+```
+
+##### Build APK de producción
+
+```bash
+flutter build apk --release
+```
+
+El archivo generado se ubicará en:
+
+```text
+build/app/outputs/flutter-apk/app-release.apk
+```
+
+##### Configuración de Firebase App Distribution
+
+Para distribuir la aplicación móvil mediante Firebase App Distribution, se deben seguir los siguientes pasos:
+
+1. Crear o seleccionar un proyecto en Firebase Console.
+2. Registrar la aplicación Android dentro del proyecto Firebase.
+3. Descargar el archivo de configuración:
+
+```text
+google-services.json
+```
+
+4. Ubicar el archivo dentro del proyecto Flutter en:
+
+```text
+android/app/
+```
+
+5. Habilitar Firebase App Distribution.
+6. Registrar los correos de los testers autorizados.
+7. Subir el archivo APK generado desde Firebase Console o mediante Firebase CLI.
+
+##### Distribución mediante Firebase Console
+
+1. Ingresar a Firebase Console.
+2. Seleccionar el proyecto de Restock.
+3. Entrar a `App Distribution`.
+4. Seleccionar la aplicación Android.
+5. Subir el archivo:
+
+```text
+app-release.apk
+```
+
+6. Agregar testers o grupos de testers.
+7. Añadir notas de versión.
+8. Publicar la distribución.
+
+##### Distribución mediante Firebase CLI
+
+Para distribuir el APK mediante consola, se puede utilizar Firebase CLI:
+
+```bash
+firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+  --app <firebase-app-id> \
+  --groups "testers" \
+  --release-notes "Release version for testing"
+```
+
+##### Variables de entorno
+
+Las URLs del backend se configuran mediante archivos internos de configuración según el entorno de ejecución.
+
+| Variable         | Descripción                                           |
+| ---------------- | ------------------------------------------------------ |
+| `API_BASE_URL` | URL pública del Backend REST API desplegado en Render |
+
+##### Integración con Backend
+
+La aplicación Flutter consume la API REST desplegada en Render utilizando peticiones HTTP asincrónicas. Firebase App Distribution se utiliza únicamente como medio de distribución de versiones de prueba para los usuarios testers.
+
+##### Actualizaciones
+
+Cada nueva versión de prueba requiere generar un nuevo APK release y subirlo a Firebase App Distribution. Los testers registrados reciben una notificación para descargar e instalar la nueva versión.
+
+##### 5. Edge API – Python y Flask
+
+##### Tecnologías Base
+
+| Elemento                  | Tecnología  |
+| ------------------------- | ------------ |
+| Lenguaje                  | Python       |
+| Framework                 | Flask        |
+| Comunicación IoT         | MQTT         |
+| Runtime                   | Python 3.x   |
+| Dispositivo de despliegue | Raspberry Pi |
+| Tipo de despliegue        | On-premise   |
+
+##### Configuración y Despliegue
+
+La Edge API actúa como intermediario entre los dispositivos embebidos y la nube. Esta aplicación se despliega de forma local en una Raspberry Pi instalada dentro del establecimiento del cliente, permitiendo recibir telemetría desde los dispositivos IoT, procesar datos cercanos al origen y sincronizar información relevante con el Backend REST API desplegado en la nube.
+
+##### Preparación del entorno en Raspberry Pi
+
+Para ejecutar la Edge API en la Raspberry Pi, se requiere tener instalado Python 3.x y `pip`.
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip -y
+```
+
+##### Clonación del repositorio
+
+```bash
+git clone <edge-api-repository-url>
+cd <edge-api-project-folder>
+```
+
+##### Instalación de dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+##### Ejecución local en Raspberry Pi
+
+```bash
+python app.py
+```
+
+##### Variables de entorno
+
+| Variable           | Descripción                                           |
+| ------------------ | ------------------------------------------------------ |
+| `MQTT_BROKER`    | Dirección del broker MQTT local o remoto              |
+| `MQTT_PORT`      | Puerto de comunicación MQTT                           |
+| `API_BASE_URL`   | URL pública del Backend REST API desplegado en Render |
+| `DEVICE_SECRET`  | Token de autenticación para validar dispositivos      |
+| `EDGE_DEVICE_ID` | Identificador único de la Raspberry Pi o nodo edge    |
+
+##### Configuración como servicio local
+
+Para mantener la Edge API ejecutándose de forma continua en la Raspberry Pi, se puede configurar como servicio del sistema utilizando `systemd`.
+
+```bash
+sudo nano /etc/systemd/system/restock-edge-api.service
+```
+
+Luego, se habilita e inicia el servicio:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable restock-edge-api
+sudo systemctl start restock-edge-api
+```
+
+##### Verificación del servicio
+
+```bash
+sudo systemctl status restock-edge-api
+```
+
+##### Funcionalidades principales
+
+- Recepción de telemetría desde dispositivos IoT.
+- Comunicación con dispositivos embebidos mediante MQTT.
+- Procesamiento local de datos de peso.
+- Cálculo preliminar de stock físico.
+- Sincronización de datos con el Backend REST API.
+- Ejecución local dentro del establecimiento del cliente.
+
+##### Actualizaciones
+
+Para actualizar la Edge API en la Raspberry Pi, se debe obtener la última versión del repositorio y reiniciar el servicio.
+
+```bash
+git pull origin main
+pip install -r requirements.txt
+sudo systemctl restart restock-edge-api
+```
+
+##### 6. Embedded Application – ESP32 y C++
+
+##### Tecnologías Base
+
+| Elemento              | Tecnología         |
+| --------------------- | ------------------- |
+| Microcontrolador      | ESP32               |
+| Lenguaje              | C++                 |
+| Entorno de desarrollo | Cirkit Designer IDE |
+| Framework             | Arduino Framework   |
+| Sensores              | HX711 + Load Cells  |
+| Comunicación         | WiFi + MQTT         |
+
+##### Configuración y Carga del Firmware
+
+La Embedded Application corresponde al firmware ejecutado sobre el microcontrolador ESP32. Este componente es responsable de capturar lecturas físicas desde sensores IoT y transmitir la telemetría hacia la Edge API mediante MQTT.
+
+A diferencia de aplicaciones web o cloud, este componente no se despliega en servidores remotos, sino que el firmware se compila y carga directamente en el dispositivo ESP32 mediante conexión USB.
+
+##### Clonación del repositorio
+
+```bash
+git clone <embedded-repository-url>
+```
+
+##### Preparación del entorno
+
+Para preparar el entorno de desarrollo del firmware se deben realizar los siguientes pasos:
+
+1. Abrir el proyecto en Cirkit Designer IDE.
+2. Seleccionar la placa ESP32 correspondiente.
+3. Verificar las conexiones de sensores HX711 y Load Cells.
+4. Configurar parámetros WiFi y MQTT.
+5. Verificar las librerías necesarias.
+
+##### Librerías requeridas
+
+- HX711 Library.
+- WiFi Library.
+- PubSubClient.
+- Preferences Library.
+
+##### Configuración de comunicación
+
+Antes de cargar el firmware, se deben configurar los siguientes parámetros dentro del proyecto:
+
+| Parámetro        | Descripción                   |
+| ----------------- | ------------------------------ |
+| `WIFI_SSID`     | Nombre de la red WiFi          |
+| `WIFI_PASSWORD` | Contraseña de la red          |
+| `MQTT_BROKER`   | Dirección del broker MQTT     |
+| `MQTT_PORT`     | Puerto MQTT                    |
+| `DEVICE_ID`     | Identificador único del ESP32 |
+| `DEVICE_SECRET` | Token de autenticación        |
+
+##### Compilación del firmware
+
+El firmware se compila desde Cirkit Designer IDE utilizando Arduino Framework para ESP32.
+
+##### Carga del firmware
+
+1. Conectar el ESP32 mediante cable USB.
+2. Seleccionar el puerto serial correspondiente.
+3. Compilar el proyecto.
+4. Cargar el firmware al microcontrolador.
+5. Verificar la salida mediante el monitor serial.
+
+##### Verificación posterior
+
+Luego de cargar el firmware, se debe validar que:
+
+- El ESP32 se conecte correctamente a la red WiFi.
+- El dispositivo publique mensajes MQTT.
+- Las lecturas de peso sean recibidas por la Edge API.
+- El dispositivo mantenga comunicación estable con la infraestructura IoT.
+
+##### Actualizaciones
+
+Las actualizaciones del firmware requieren recompilar el proyecto y volver a cargar manualmente el firmware en el ESP32 desde Cirkit Designer IDE.
+
+##### 7. Software Deployment Diagram (C4 Model)
+
+El Deployment Diagram del modelo C4 representa la distribución física de los distintos contenedores de software de Restock, incluyendo clientes web y móviles, infraestructura cloud, broker MQTT, Edge Application y dispositivos IoT embebidos.
+
+<img src="assets/images/chapter6/deployment-configuration/deployment-diagram.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
 
 ## 6.2. Landing Page, Services & Applications Implementation
 
