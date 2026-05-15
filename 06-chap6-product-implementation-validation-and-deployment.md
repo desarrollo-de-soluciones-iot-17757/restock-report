@@ -75,9 +75,9 @@ Es la rama donde se consolida el progreso del desarrollo de funcionalidades.
 Es el conjunto de ramas que facilita el versionamiento y lanzamiento de nuevas versiones del producto.
 
 - Se usa SemVer 2.0.0 para el versionamiento de los lanzamientos de las aplicaciones (major.minor.patch).
-  - Major: se usa cuando una versión nueva e incompable con la anterior es lanzada.
-  - Minor: se usa cuando se lanza un conjunto de funcionalidades nuevas a la aplicación.
-  - Patch: se usa cuando un bug o error es resuelto.
+    - Major: se usa cuando una versión nueva e incompable con la anterior es lanzada.
+    - Minor: se usa cuando se lanza un conjunto de funcionalidades nuevas a la aplicación.
+    - Patch: se usa cuando un bug o error es resuelto.
 - Las ramas de tipo `release` deben nombrase de acuerdo a la versión de la aplicación (ej.: `release/1.0.0`).
 - Las ramas de tipo `release` deben ser creadas a partir de la rama `develop`.
 - No se deben realizar commits directamente a esta rama, para ello, se crea una rama de tipo `bugfix` y el cambio hecho también debe verse reflejado en `develop`.
@@ -120,18 +120,16 @@ A continuación, se explica el estándar definido para los commits dentro de la 
 </div>
 
 - La sección 'type' indica el tipo de commit que se usa para el mensaje. A continuación, se explican los tipos de commits que se usan para el desarrollo del proyecto:
-  - `feat`: Indica que se implementa una nueva funcionalidad dentro de alguna rama de tipo `feature/`.
-  - `fix`: Indica una corrección de errores de código o de bugs.
-  - `docs`: Indica cambios en la documentación (de las aplicaciones, no en la documentación general del proyecto, pues es considerada también un producto de software).
-  - `refactor`: Indica una reestructuración sin cambios en el contenido. Por ejemplo, cambios en el nombramiento de variables o funciones o un cambio para mejor legibilidad del código.
-  - `chore`: Indica actualizaciones de dependencias o tareas de mantenimiento. Por ejemplo, `chore: initial commit`.
-  - `test`: Indica la adición o modificación de pruebas.
+    - `feat`: Indica que se implementa una nueva funcionalidad dentro de alguna rama de tipo `feature/`.
+    - `fix`: Indica una corrección de errores de código o de bugs.
+    - `docs`: Indica cambios en la documentación (de las aplicaciones, no en la documentación general del proyecto, pues es considerada también un producto de software).
+    - `refactor`: Indica una reestructuración sin cambios en el contenido. Por ejemplo, cambios en el nombramiento de variables o funciones o un cambio para mejor legibilidad del código.
+    - `chore`: Indica actualizaciones de dependencias o tareas de mantenimiento. Por ejemplo, `chore: initial commit`.
+    - `test`: Indica la adición o modificación de pruebas.
 - También, se tiene la sección 'scope'. En ella, se debe indicar la sección de la aplicación que está recibiendo las modificaciones o adiciones.
 - A continuación, la sección 'description' indica un resumen de lo que se está agregando o modificando al repositorio de la aplicación. El mensaje de la descripción no puede ser extenso ni entrar en detalles y debe ser redactado en modo imperativo, en inglés, en minúsculas y siempre debe llevar un punto final.
 - Finalmente, la sección opcional 'body' incluye una descripción más detallada del cambio aplicado al proyecto. Para nuestro caso, esta sección no es obligatoria.
 - Un ejemplo aplicando las normas descritas previamente: `feat(sign-in): add user aggregate root class.`.
-
-### 6.1.3. Source Code Style Guide & Conventions
 
 ### 6.1.3. Source Code Style Guide & Conventions
 
@@ -788,7 +786,7 @@ A continuación, se presenta la tabla con las tareas necesarias para completar s
 
 En esta sección, se describen los principales avances de implementación realizados en este primer sprint. Se tienen como principales avances la implementación de la primera versión de la Landing Page y el Web Application.
 
-Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en la Landing Page, se implementó las secciones de beneficios, integrantes, FAQs, Planes de suscripción y la redirección hacia la aplicación web y las tiendas de descarga de la aplicación móvil. En la aplicación web, se implementó las pantallas de administración para restaurantes y retail de consumo masivo, gestión de sucursales, suministros, dispositivos y configuración de preferencias de usuario. 
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en la Landing Page, se implementó las secciones de beneficios, integrantes, FAQs, Planes de suscripción y la redirección hacia la aplicación web y las tiendas de descarga de la aplicación móvil. En la aplicación web, se implementó las pantallas de administración para restaurantes y retail de consumo masivo, gestión de sucursales, suministros, dispositivos y configuración de preferencias de usuario.
 
 A continuación, se muestra una tabla que contiene la información sobre los **commits** realizados que contienen las funcionalidades implementadas para completar el primer sprint.
 
@@ -909,7 +907,6 @@ Pie de página en fondo negro con el logo de Restock y enlaces organizados en tr
 
 <img src="https://i.imgur.com/GYMMtQU.png" alt="footer" style="width: 100%; height: auto;"/>
 
-
 #### Versión para dispositivos móviles
 
 Vista general de todas las secciones del sitio adaptadas para dispositivos móviles.
@@ -969,6 +966,8 @@ Sección de perfil personal dentro de la configuración de cuenta, con campos pa
 
 <img src="https://i.imgur.com/EXpBRWM.png" alt="sales" style="width: 100%; height: auto;"/>
 
+### 6.2.1.7. Software Deployment Evidence for Sprint Review.
+
 Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
 
 En el caso de la Landing Page, se confirmó su despliegue continuo en Vercel, plataforma elegida para hospedar el sitio institucional del proyecto. Esta publicación permitió validar que el repositorio se encontraba correctamente vinculado al entorno de producción y que cada actualización podía reflejarse de manera automática, asegurando así la difusión pública de la propuesta de valor de Restock.
@@ -985,9 +984,11 @@ De forma complementaria, la Web Application también fue desplegada en Vercel co
 
 En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto.
 
+### 6.2.1.8. Team Collaboration Insights during Sprint.
+
 ##### Landing Page
 
-Durante este primer sprint, se aplicaron prácticas de colaboración en el desarrollo de la Landing Page que facilitaron la entrega de un sitio web público que brinde información útil sobre la plataforma y genere confianza en los visitantes. 
+Durante este primer sprint, se aplicaron prácticas de colaboración en el desarrollo de la Landing Page que facilitaron la entrega de un sitio web público que brinde información útil sobre la plataforma y genere confianza en los visitantes.
 A continuación se detallan las prácticas aplicadas:
 
 - Las tareas se distribuyeron por secciones (Hero, Funcionalidades, Beneficios, CTA y Testimonios). Además, cada sección fue asignada a un responsable del equipo del dominio de Communications para acelerar la implementación.
