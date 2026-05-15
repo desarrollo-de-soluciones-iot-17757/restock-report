@@ -347,6 +347,222 @@
     <td> Julio Castro </th>
     <td> Se añadió la sección del Collaboration Insights. </th>
   </tr>
+  <tr>
+    <td> 1.93 </th>
+    <td> 26/04/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección del Collaboration Insights. </th>
+  </tr>
+  <tr>
+    <td> 2.01 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del General Style Guidelines </th>
+  </tr>
+  <tr>
+    <td> 2.02 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Web, Mobile and IoT Style Guidelines. </th>
+  </tr>
+  <tr>
+    <td> 2.03 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se corrigieron las historias de usuario. </th>
+  </tr>
+  <tr>
+    <td> 2.04 </th>
+    <td> 06/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se actualizó el Product Backlog con los cambios aplicados en las historias de usuario </th>
+  </tr>
+  <tr>
+    <td> 2.05 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Software Development Environment Configuration. </th>
+  </tr>
+  <tr>
+    <td> 2.06 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Source Code Management. </th>
+  </tr>
+  <tr>
+    <td> 2.07 </th>
+    <td> 06/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se actualizó el event storming agregando detalles de lectura de humedad y temperatura. </th>
+  </tr>
+  <tr>
+    <td> 2.08 </th>
+    <td> 06/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se corregió la sección de Candidate Context Discovery según los cambios efectuados en el event storming. </th>
+  </tr>
+  <tr>
+    <td> 2.09 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el Context Mapping agregando los contextos de Tracking, Device Management y Analytics. </th>
+  </tr>
+  <tr>
+    <td> 2.091 </th>
+    <td> 06/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se diseñaron nuevos Bounded Contexts Canvasses para los nuevos contextos agregados. </th>
+  </tr>
+  <tr>
+    <td> 2.10 </th>
+    <td> 07/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la descripción de los 12 pasos en la sección del IoT Device Design. </th>
+  </tr>
+  <tr>
+    <td> 2.11 </th>
+    <td> 09/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió la sección del Lean UX Assumptions. </th>
+  </tr>
+  <tr>
+    <td> 2.12 </th>
+    <td> 09/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió la sección del Lean UX Hypothesis Statements. </th>
+  </tr>
+  <tr>
+    <td> 2.13 </th>
+    <td> 10/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se corrigió el diagrama C4 de despliegue </th>
+  </tr>
+  <tr>
+    <td> 2.14 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Organization Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.15 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Labeling Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.16 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de SEO Tags and Meta Tags. </th>
+  </tr>
+  <tr>
+    <td> 2.17 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Searching Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.18 </th>
+    <td> 11/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección de Navigation Systems. </th>
+  </tr>
+  <tr>
+    <td> 2.20 </th>
+    <td> 11/05/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Web and Mobile Applications Wireframes </th>
+  </tr>
+  <tr>
+    <td> 2.21 </th>
+    <td> 11/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Wireflow Diagrams. </th>
+  </tr>
+  <tr>
+    <td> 2.22 </th>
+    <td> 11/05/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Web and Mobile Applications Mockups </th>
+  </tr>
+  <tr>
+    <td> 2.23 </th>
+    <td> 11/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección de Userflow Diagrams. </th>
+  </tr>
+  <tr>
+    <td> 2.24 </th>
+    <td> 11/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Web and Mobile Applications Prototypes. </th>
+  </tr>
+  <tr>
+    <td> 2.30 </th>
+    <td> 11/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Source Code Style Guide & Conventions. </th>
+  </tr>
+  <tr>
+    <td> 2.31 </th>
+    <td> 11/05/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadió la sección del Software Deployment Configuration. </th>
+  </tr>
+  <tr>
+    <td> 2.32 </th>
+    <td> 11/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección del Sprint Planning 1. </th>
+  </tr>
+  <tr>
+    <td> 2.33 </th>
+    <td> 11/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de la matriz de Aspect Leaders & Collaborators. </th>
+  </tr>
+  <tr>
+    <td> 2.34 </th>
+    <td> 12/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Sprint Backlog 1. </th>
+  </tr>
+  <tr>
+    <td> 2.41 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Development Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.42 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Execution Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.43 </th>
+    <td> 14/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección de Deployment Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.44 </th>
+    <td> 14/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de Team Collaboration Insights for Sprint 1 Review. </th>
+  </tr>
+  <tr>
+    <td> 2.50 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadieron conclusiones según el segundo avance del proyecto. </th>
+  </tr>
+  <tr>
+    <td> 2.51 </th>
+    <td> 14/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió nueva Bibliografía complementando lo progresado en el segundo avance. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
@@ -402,9 +618,9 @@ fix(chapter-02): correct user persona descriptions
 
 ## Tabla de contenidos
 
-- [Student Outcome](README.md#student-outcome)
-- [Capítulo I: Introducción](01-chap1-introduction.md)
+- [Student Outcome](00-cover.md#student-outcome)
 
+- [Capítulo I: Introducción](01-chap1-introduction.md#capítulo-i-introducción)
   - [1.1. Startup Profile](01-chap1-introduction.md#11-startup-profile)
     - [1.1.1. Descripción de la Startup](01-chap1-introduction.md#111-descripción-de-la-startup)
     - [1.1.2. Perfiles de integrantes del equipo](01-chap1-introduction.md#112-perfiles-de-integrantes-del-equipo)
@@ -416,8 +632,8 @@ fix(chapter-02): correct user persona descriptions
       - [1.2.2.3. Lean UX Hypothesis Statements](01-chap1-introduction.md#1223-lean-ux-hypothesis-statements)
       - [1.2.2.4. Lean UX Canvas](01-chap1-introduction.md#1224-lean-ux-canvas)
   - [1.3. Segmentos objetivo](01-chap1-introduction.md#13-segmentos-objetivo)
-- [Capítulo II: Requirements Elicitation &amp; Analysis](02-chap2-requirements-elicitation-and-analysis.md)
 
+- [Capítulo II: Requirements Elicitation & Analysis](02-chap2-requirements-elicitation-and-analysis.md#capítulo-ii-requirements-elicitation--analysis)
   - [2.1. Competidores](02-chap2-requirements-elicitation-and-analysis.md#21-competidores)
     - [2.1.1. Análisis competitivo](02-chap2-requirements-elicitation-and-analysis.md#211-análisis-competitivo)
     - [2.1.2. Estrategias y tácticas frente a competidores](02-chap2-requirements-elicitation-and-analysis.md#212-estrategias-y-tácticas-frente-a-competidores)
@@ -432,43 +648,210 @@ fix(chapter-02): correct user persona descriptions
     - [2.3.4. Empathy Mapping](02-chap2-requirements-elicitation-and-analysis.md#234-empathy-mapping)
   - [2.4. Big Picture EventStorming](02-chap2-requirements-elicitation-and-analysis.md#24-big-picture-eventstorming)
   - [2.5. Ubiquitous Language](02-chap2-requirements-elicitation-and-analysis.md#25-ubiquitous-language)
-- [Capítulo III: Requirements Specification](03-chap3-requirements-specification.md)
 
+- [Capítulo III: Requirements Specification](03-chap3-requirements-specification.md#capítulo-iii-requirements-specification)
   - [3.1. User Stories](03-chap3-requirements-specification.md#31-user-stories)
   - [3.2. Impact Mapping](03-chap3-requirements-specification.md#32-impact-mapping)
   - [3.3. Product Backlog](03-chap3-requirements-specification.md#33-product-backlog)
-- [Capítulo IV: Solution Software Design](04-chap4-solution-software-design.md)
 
+- [Capítulo IV: Solution Software Design](04-chap4-solution-software-design.md#capítulo-iv-solution-software-design)
   - [4.1. Strategic-Level Domain-Driven Design](04-chap4-solution-software-design.md#41-strategic-level-domain-driven-design)
-
     - [4.1.1. Design-Level EventStorming](04-chap4-solution-software-design.md#411-design-level-eventstorming)
       - [4.1.1.1. Candidate Context Discovery](04-chap4-solution-software-design.md#4111-candidate-context-discovery)
       - [4.1.1.2. Domain Message Flows Modeling](04-chap4-solution-software-design.md#4112-domain-message-flows-modeling)
       - [4.1.1.3. Bounded Context Canvases](04-chap4-solution-software-design.md#4113-bounded-context-canvases)
     - [4.1.2. Context Mapping](04-chap4-solution-software-design.md#412-context-mapping)
     - [4.1.3. Software Architecture](04-chap4-solution-software-design.md#413-software-architecture)
-      - [4.1.3.1. System Landscape Diagram](04-chap4-solution-software-design.md#4131-system-landscape-diagram)
-      - [4.1.3.2. Context Level Diagrams](04-chap4-solution-software-design.md#4132-context-level-diagrams)
-      - [4.1.3.3. Container Level Diagrams](04-chap4-solution-software-design.md#4133-container-level-diagrams)
-      - [4.1.3.4. Deployment Diagrams](04-chap4-solution-software-design.md#4134-deployment-diagrams)
+      - [4.1.3.1. Software Architecture System Landscape Diagram](04-chap4-solution-software-design.md#4131-software-architecture-system-landscape-diagram)
+      - [4.1.3.2. Software Architecture Context Level Diagrams](04-chap4-solution-software-design.md#4132-software-architecture-context-level-diagrams)
+      - [4.1.3.3. Software Architecture Container Level Diagrams](04-chap4-solution-software-design.md#4133-software-architecture-container-level-diagrams)
+      - [4.1.3.4. Software Architecture Deployment Diagrams](04-chap4-solution-software-design.md#4134-software-architecture-deployment-diagrams)
   - [4.2. Tactical-Level Domain-Driven Design](04-chap4-solution-software-design.md#42-tactical-level-domain-driven-design)
-- [Capítulo V: Solution UI/UX Design](05-chap5-solution-ui-ux-design.md)
+    - [4.2.1. Bounded Context: Identity and Access Management](04-chap4-solution-software-design.md#421-bounded-context-identity-and-access-management)
+      - [4.2.1.1. Domain Layer](04-chap4-solution-software-design.md#4211-domain-layer)
+      - [4.2.1.2. Interface Layer](04-chap4-solution-software-design.md#4212-interface-layer)
+      - [4.2.1.3. Application Layer](04-chap4-solution-software-design.md#4213-application-layer)
+      - [4.2.1.4. Infrastructure Layer](04-chap4-solution-software-design.md#4214-infrastructure-layer)
+      - [4.2.1.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4215-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.1.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4216-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.1.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42161-bounded-context-domain-layer-class-diagrams)
+      - [4.2.1.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42162-bounded-context-database-design-diagram)
 
+    - [4.2.2. Bounded Context: Subscriptions and Payments](04-chap4-solution-software-design.md#422-bounded-context-subscriptions-and-payments)
+      - [4.2.2.1. Domain Layer](04-chap4-solution-software-design.md#4221-domain-layer)
+      - [4.2.2.2. Interface Layer](04-chap4-solution-software-design.md#4222-interface-layer)
+      - [4.2.2.3. Application Layer](04-chap4-solution-software-design.md#4223-application-layer)
+      - [4.2.2.4. Infrastructure Layer](04-chap4-solution-software-design.md#4224-infrastructure-layer)
+      - [4.2.2.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4225-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.2.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4226-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.2.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42261-bounded-context-domain-layer-class-diagrams)
+      - [4.2.2.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42262-bounded-context-database-design-diagram)
+
+    - [4.2.3. Bounded Context: Profiles and Preferences](04-chap4-solution-software-design.md#423-bounded-context-profiles-and-preferences)
+      - [4.2.3.1. Domain Layer](04-chap4-solution-software-design.md#4231-domain-layer)
+      - [4.2.3.2. Interface Layer](04-chap4-solution-software-design.md#4232-interface-layer)
+      - [4.2.3.3. Application Layer](04-chap4-solution-software-design.md#4233-application-layer)
+      - [4.2.3.4. Infrastructure Layer](04-chap4-solution-software-design.md#4234-infrastructure-layer)
+      - [4.2.3.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4235-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.3.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4236-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.3.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42361-bounded-context-domain-layer-class-diagrams)
+      - [4.2.3.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42362-bounded-context-database-design-diagram)
+
+    - [4.2.4. Bounded Context: Asset and Resource Management](04-chap4-solution-software-design.md#424-bounded-context-asset-and-resource-management)
+      - [4.2.4.1. Domain Layer](04-chap4-solution-software-design.md#4241-domain-layer)
+      - [4.2.4.2. Interface Layer](04-chap4-solution-software-design.md#4242-interface-layer)
+      - [4.2.4.3. Application Layer](04-chap4-solution-software-design.md#4243-application-layer)
+      - [4.2.4.4. Infrastructure Layer](04-chap4-solution-software-design.md#4244-infrastructure-layer)
+      - [4.2.4.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4245-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.4.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4246-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.4.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42461-bounded-context-domain-layer-class-diagrams)
+      - [4.2.4.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42462-bounded-context-database-design-diagram)
+
+    - [4.2.5. Bounded Context: Service Design and Planning](04-chap4-solution-software-design.md#425-bounded-context-service-design-and-planning)
+      - [4.2.5.1. Domain Layer](04-chap4-solution-software-design.md#4251-domain-layer)
+      - [4.2.5.2. Interface Layer](04-chap4-solution-software-design.md#4252-interface-layer)
+      - [4.2.5.3. Application Layer](04-chap4-solution-software-design.md#4253-application-layer)
+      - [4.2.5.4. Infrastructure Layer](04-chap4-solution-software-design.md#4254-infrastructure-layer)
+      - [4.2.5.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4255-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.5.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4256-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.5.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42561-bounded-context-domain-layer-class-diagrams)
+      - [4.2.5.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42562-bounded-context-database-design-diagram)
+
+    - [4.2.6. Bounded Context: Tracking](04-chap4-solution-software-design.md#426-bounded-context-tracking)
+      - [4.2.6.1. Domain Layer](04-chap4-solution-software-design.md#4261-domain-layer)
+      - [4.2.6.2. Interface Layer](04-chap4-solution-software-design.md#4262-interface-layer)
+      - [4.2.6.3. Application Layer](04-chap4-solution-software-design.md#4263-application-layer)
+      - [4.2.6.4. Infrastructure Layer](04-chap4-solution-software-design.md#4264-infrastructure-layer)
+      - [4.2.6.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4265-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.6.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4266-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.6.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42661-bounded-context-domain-layer-class-diagrams)
+      - [4.2.6.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42662-bounded-context-database-design-diagram)
+
+    - [4.2.7. Bounded Context: Device Management](04-chap4-solution-software-design.md#427-bounded-context-device-management)
+      - [4.2.7.1. Domain Layer](04-chap4-solution-software-design.md#4271-domain-layer)
+      - [4.2.7.2. Interface Layer](04-chap4-solution-software-design.md#4272-interface-layer)
+      - [4.2.7.3. Application Layer](04-chap4-solution-software-design.md#4273-application-layer)
+      - [4.2.7.4. Infrastructure Layer](04-chap4-solution-software-design.md#4274-infrastructure-layer)
+      - [4.2.7.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4275-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.7.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4276-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.7.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42761-bounded-context-domain-layer-class-diagrams)
+      - [4.2.7.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42762-bounded-context-database-design-diagram)
+
+    - [4.2.8. Bounded Context: Sales Order Management](04-chap4-solution-software-design.md#428-bounded-context-sales-order-management)
+      - [4.2.8.1. Domain Layer](04-chap4-solution-software-design.md#4281-domain-layer)
+      - [4.2.8.2. Interface Layer](04-chap4-solution-software-design.md#4282-interface-layer)
+      - [4.2.8.3. Application Layer](04-chap4-solution-software-design.md#4283-application-layer)
+      - [4.2.8.4. Infrastructure Layer](04-chap4-solution-software-design.md#4284-infrastructure-layer)
+      - [4.2.8.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4285-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.8.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4286-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.8.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42861-bounded-context-domain-layer-class-diagrams)
+      - [4.2.8.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42862-bounded-context-database-design-diagram)
+
+    - [4.2.9. Bounded Context: Communication](04-chap4-solution-software-design.md#429-bounded-context-communication)
+      - [4.2.9.1. Domain Layer](04-chap4-solution-software-design.md#4291-domain-layer)
+      - [4.2.9.2. Interface Layer](04-chap4-solution-software-design.md#4292-interface-layer)
+      - [4.2.9.3. Application Layer](04-chap4-solution-software-design.md#4293-application-layer)
+      - [4.2.9.4. Infrastructure Layer](04-chap4-solution-software-design.md#4294-infrastructure-layer)
+      - [4.2.9.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#4295-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.9.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#4296-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.9.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#42961-bounded-context-domain-layer-class-diagrams)
+      - [4.2.9.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#42962-bounded-context-database-design-diagram)
+
+    - [4.2.10. Bounded Context: Analytics](04-chap4-solution-software-design.md#4210-bounded-context-analytics)
+      - [4.2.10.1. Domain Layer](04-chap4-solution-software-design.md#42101-domain-layer)
+      - [4.2.10.2. Interface Layer](04-chap4-solution-software-design.md#42102-interface-layer)
+      - [4.2.10.3. Application Layer](04-chap4-solution-software-design.md#42103-application-layer)
+      - [4.2.10.4. Infrastructure Layer](04-chap4-solution-software-design.md#42104-infrastructure-layer)
+      - [4.2.10.5. Bounded Context Software Architecture Component Level Diagrams](04-chap4-solution-software-design.md#42105-bounded-context-software-architecture-component-level-diagrams)
+      - [4.2.10.6. Bounded Context Software Architecture Code Level Diagrams](04-chap4-solution-software-design.md#42106-bounded-context-software-architecture-code-level-diagrams)
+      - [4.2.10.6.1. Bounded Context Domain Layer Class Diagrams](04-chap4-solution-software-design.md#421061-bounded-context-domain-layer-class-diagrams)
+      - [4.2.10.6.2. Bounded Context Database Design Diagram](04-chap4-solution-software-design.md#421062-bounded-context-database-design-diagram)
+
+- [Capítulo V: Solution UI/UX Design](05-chap5-solution-ui-ux-design.md#capítulo-v-solution-uiux-design)
   - [5.1. Style Guidelines](05-chap5-solution-ui-ux-design.md#51-style-guidelines)
+    - [5.1.1. General Style Guidelines](05-chap5-solution-ui-ux-design.md#511-general-style-guidelines)
+    - [5.1.2. Web, Mobile and IoT Style Guidelines](05-chap5-solution-ui-ux-design.md#512-web-mobile-and-iot-style-guidelines)
   - [5.2. Information Architecture](05-chap5-solution-ui-ux-design.md#52-information-architecture)
+    - [5.2.1. Organization Systems](05-chap5-solution-ui-ux-design.md#521-organization-systems)
+    - [5.2.2. Labeling Systems](05-chap5-solution-ui-ux-design.md#522-labeling-systems)
+    - [5.2.3. SEO Tags and Meta Tags](05-chap5-solution-ui-ux-design.md#523-seo-tags-and-meta-tags)
+    - [5.2.4. Searching Systems](05-chap5-solution-ui-ux-design.md#524-searching-systems)
+    - [5.2.5. Navigation Systems](05-chap5-solution-ui-ux-design.md#525-navigation-systems)
   - [5.3. Landing Page UI Design](05-chap5-solution-ui-ux-design.md#53-landing-page-ui-design)
+    - [5.3.1. Landing Page Wireframe](05-chap5-solution-ui-ux-design.md#531-landing-page-wireframe)
+    - [5.3.2. Landing Page Mock-up](05-chap5-solution-ui-ux-design.md#532-landing-page-mock-up)
   - [5.4. Applications UX/UI Design](05-chap5-solution-ui-ux-design.md#54-applications-uxui-design)
+    - [5.4.1. Applications Wireframes](05-chap5-solution-ui-ux-design.md#541-applications-wireframes)
+    - [5.4.2. Applications Wireflow Diagrams](05-chap5-solution-ui-ux-design.md#542-applications-wireflow-diagrams)
+    - [5.4.3. Applications Mock-ups](05-chap5-solution-ui-ux-design.md#543-applications-mock-ups)
+    - [5.4.4. Applications User Flow Diagrams](05-chap5-solution-ui-ux-design.md#544-applications-user-flow-diagrams)
   - [5.5. Applications Prototyping](05-chap5-solution-ui-ux-design.md#55-applications-prototyping)
   - [5.6. IoT Device Design](05-chap5-solution-ui-ux-design.md#56-iot-device-design)
-- [Capítulo VI: Product Implementation, Validation &amp; Deployment](06-chap6-product-implementation-validation-and-deployment.md)
 
+- [Capítulo VI: Product Implementation, Validation & Deployment](06-chap6-product-implementation-validation-and-deployment.md#capítulo-vi-product-implementation-validation--deployment)
   - [6.1. Software Configuration Management](06-chap6-product-implementation-validation-and-deployment.md#61-software-configuration-management)
-  - [6.2. Implementation (Sprints)](06-chap6-product-implementation-validation-and-deployment.md#62-implementation-sprints)
+    - [6.1.1. Software Development Environment Configuration](06-chap6-product-implementation-validation-and-deployment.md#611-software-development-environment-configuration)
+    - [6.1.2. Source Code Management](06-chap6-product-implementation-validation-and-deployment.md#612-source-code-management)
+    - [6.1.3. Source Code Style Guide & Conventions](06-chap6-product-implementation-validation-and-deployment.md#613-source-code-style-guide--conventions)
+    - [6.1.4. Software Deployment Configuration](06-chap6-product-implementation-validation-and-deployment.md#614-software-deployment-configuration)
+  - [6.2. Landing Page, Services & Applications Implementation](06-chap6-product-implementation-validation-and-deployment.md#62-landing-page-services--applications-implementation)
+    - [6.2.1. Sprint 1](06-chap6-product-implementation-validation-and-deployment.md#621-sprint-1)
+      - [6.2.1.1. Sprint Planning 1](06-chap6-product-implementation-validation-and-deployment.md#6211-sprint-planning-1)
+      - [6.2.1.2. Aspect Leaders and Collaborators](06-chap6-product-implementation-validation-and-deployment.md#6212-aspect-leaders-and-collaborators)
+      - [6.2.1.3. Sprint Backlog 1](06-chap6-product-implementation-validation-and-deployment.md#6213-sprint-backlog-1)
+      - [6.2.1.4. Development Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6214-development-evidence-for-sprint-review)
+      - [6.2.1.5. Testing Suite Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6215-testing-suite-evidence-for-sprint-review)
+      - [6.2.1.6. Execution Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6216-execution-evidence-for-sprint-review)
+      - [6.2.1.7. Services Documentation Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6217-services-documentation-evidence-for-sprint-review)
+      - [6.2.1.8. Software Deployment Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6218-software-deployment-evidence-for-sprint-review)
+      - [6.2.1.9. Team Collaboration Insights during Sprint](06-chap6-product-implementation-validation-and-deployment.md#6219-team-collaboration-insights-during-sprint)
+
+    - [6.2.2. Sprint 2](06-chap6-product-implementation-validation-and-deployment.md#622-sprint-2)
+      - [6.2.2.1. Sprint Planning 2](06-chap6-product-implementation-validation-and-deployment.md#6221-sprint-planning-2)
+      - [6.2.2.2. Aspect Leaders and Collaborators](06-chap6-product-implementation-validation-and-deployment.md#6222-aspect-leaders-and-collaborators)
+      - [6.2.2.3. Sprint Backlog 2](06-chap6-product-implementation-validation-and-deployment.md#6223-sprint-backlog-2)
+      - [6.2.2.4. Development Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6224-development-evidence-for-sprint-review)
+      - [6.2.2.5. Testing Suite Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6225-testing-suite-evidence-for-sprint-review)
+      - [6.2.2.6. Execution Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6226-execution-evidence-for-sprint-review)
+      - [6.2.2.7. Services Documentation Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6227-services-documentation-evidence-for-sprint-review)
+      - [6.2.2.8. Software Deployment Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6228-software-deployment-evidence-for-sprint-review)
+      - [6.2.2.9. Team Collaboration Insights during Sprint](06-chap6-product-implementation-validation-and-deployment.md#6229-team-collaboration-insights-during-sprint)
+
+    - [6.2.3. Sprint 3](06-chap6-product-implementation-validation-and-deployment.md#623-sprint-3)
+      - [6.2.3.1. Sprint Planning 3](06-chap6-product-implementation-validation-and-deployment.md#6231-sprint-planning-3)
+      - [6.2.3.2. Aspect Leaders and Collaborators](06-chap6-product-implementation-validation-and-deployment.md#6232-aspect-leaders-and-collaborators)
+      - [6.2.3.3. Sprint Backlog 3](06-chap6-product-implementation-validation-and-deployment.md#6233-sprint-backlog-3)
+      - [6.2.3.4. Development Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6234-development-evidence-for-sprint-review)
+      - [6.2.3.5. Testing Suite Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6235-testing-suite-evidence-for-sprint-review)
+      - [6.2.3.6. Execution Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6236-execution-evidence-for-sprint-review)
+      - [6.2.3.7. Services Documentation Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6237-services-documentation-evidence-for-sprint-review)
+      - [6.2.3.8. Software Deployment Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6238-software-deployment-evidence-for-sprint-review)
+      - [6.2.3.9. Team Collaboration Insights during Sprint](06-chap6-product-implementation-validation-and-deployment.md#6239-team-collaboration-insights-during-sprint)
+
+    - [6.2.4. Sprint 4](06-chap6-product-implementation-validation-and-deployment.md#624-sprint-4)
+      - [6.2.4.1. Sprint Planning 4](06-chap6-product-implementation-validation-and-deployment.md#6241-sprint-planning-4)
+      - [6.2.4.2. Aspect Leaders and Collaborators](06-chap6-product-implementation-validation-and-deployment.md#6242-aspect-leaders-and-collaborators)
+      - [6.2.4.3. Sprint Backlog 4](06-chap6-product-implementation-validation-and-deployment.md#6243-sprint-backlog-4)
+      - [6.2.4.4. Development Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6244-development-evidence-for-sprint-review)
+      - [6.2.4.5. Testing Suite Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6245-testing-suite-evidence-for-sprint-review)
+      - [6.2.4.6. Execution Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6246-execution-evidence-for-sprint-review)
+      - [6.2.4.7. Services Documentation Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6247-services-documentation-evidence-for-sprint-review)
+      - [6.2.4.8. Software Deployment Evidence for Sprint Review](06-chap6-product-implementation-validation-and-deployment.md#6248-software-deployment-evidence-for-sprint-review)
+      - [6.2.4.9. Team Collaboration Insights during Sprint](06-chap6-product-implementation-validation-and-deployment.md#6249-team-collaboration-insights-during-sprint)
+
   - [6.3. Validation Interviews](06-chap6-product-implementation-validation-and-deployment.md#63-validation-interviews)
+    - [6.3.1. Diseño de Entrevistas](06-chap6-product-implementation-validation-and-deployment.md#631-diseño-de-entrevistas)
+    - [6.3.2. Registro de Entrevistas](06-chap6-product-implementation-validation-and-deployment.md#632-registro-de-entrevistas)
+    - [6.3.3. Evaluaciones según heurísticas](06-chap6-product-implementation-validation-and-deployment.md#633-evaluaciones-según-heurísticas)
   - [6.4. Video About-the-Product](06-chap6-product-implementation-validation-and-deployment.md#64-video-about-the-product)
-- [Conclusiones](07-conclusions.md)
-- [Bibliografía](08-bibliography.md)
-- [Anexos](09-annexes.md)
+
+- [Conclusiones](07-conclusions.md#conclusiones)
+  - [Conclusiones y recomendaciones](07-conclusions.md#conclusiones-y-recomendaciones)
+  - [Video About-the-Team](07-conclusions.md#video-about-the-team)
+
+- [Bibliografía](08-bibliography.md#bibliografía)
+
+- [Anexos](09-annexes.md#anexos)
 
 # Student Outcome
 
