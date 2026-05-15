@@ -812,7 +812,6 @@ A continuación, se muestra una tabla que contiene la información sobre los **c
 | restock-web-application | feature/sales-management | 4df66f6fb80b50c629ad43a0c316dcbb5868ebad | feat(sales): add lazy loading for sales routes and update sales api service for retrieving sales by branch id. | 13/05/26    |
 | restock-web-application | feature/sign-up          | 623bdd8e147cd9f3d89af70ac425c5753b2eefbc | fix(sign-up): update endpoint name for sign up.                                                                | 14/05/26    |
 
-
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
@@ -991,6 +990,58 @@ Se adjuntan los enlaces para el vídeo de demostración de la aplicación web. E
 
 #### 6.2.1.9. Team Collaboration Insights during Sprint
 
+Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
+
+En el caso de la Landing Page, se confirmó su despliegue continuo en Vercel, plataforma elegida para hospedar el sitio institucional del proyecto. Esta publicación permitió validar que el repositorio se encontraba correctamente vinculado al entorno de producción y que cada actualización podía reflejarse de manera automática, asegurando así la difusión pública de la propuesta de valor de Restock.
+
+<p align="center">
+  <img src="https://i.ibb.co/dJQJhjjc/landingpage-vercel.png" alt="Despliegue de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+De forma complementaria, la Web Application también fue desplegada en Vercel como parte del flujo de integración continua definido para este sprint. Esta publicación permitió comprobar la disponibilidad del frontend administrativo y la correcta exposición de las funcionalidades implementadas durante la iteración, tales como la administración de perfiles, inventarios y otros módulos iniciales del sistema.
+
+<p align="center">
+  <img src="https://i.ibb.co/93bgYPbQ/webapp-vercel.png" alt="Despliegue de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto.
+
+##### Landing Page
+
+Durante este primer sprint, se aplicaron prácticas de colaboración en el desarrollo de la Landing Page que facilitaron la entrega de un sitio web público que brinde información útil sobre la plataforma y genere confianza en los visitantes. 
+A continuación se detallan las prácticas aplicadas:
+
+- Las tareas se distribuyeron por secciones (Hero, Funcionalidades, Beneficios, CTA y Testimonios). Además, cada sección fue asignada a un responsable del equipo del dominio de Communications para acelerar la implementación.
+- Se realizaron **commits frecuentes y atómicos** con mensajes descriptivos para facilitar revisiones y trazabilidad.
+- Las integraciones se realizaron mediante _pull requests_ hacia `develop` y se exigió una revisión mínima por otro miembro antes de combinar la funcionalidad agregada al conjunto completo del desarrollo del sprint.
+- Se emplearon revisiones visuales en distintos tamaños de pantalla y se ordenaron los assets en `src/public/assets/images`
+
+**Analíticos de colaboración — Landing Page**
+
+![Landing Collaboration](https://i.imgur.com/srh3aNe.png)
+
+- Total de commits (Landing Page): **19**
+- Total de autores contribuyentes: **2**
+- Total de _pull requests_ relacionadas: **14**
+- Observación: desarrollo centrado en presentar las secciones de información principal del sitio web estático.
+
+##### Aplicación Web
+
+Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versión de la aplicación web con vistas principales como inventarios, suministros, ventas, dispositivos, kits y recetas, entre otros.
+
+- Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
+- Uso de un Fake API en ausencia de un API para el consumo de datos fijos.
+- Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Web Application**
+
+![Web Collaboration](https://i.imgur.com/EhFqlov.png)
+
+- Total de commits (Web): **100**
+- Total de autores contribuyentes: **7**
+- Total de _pull requests_ relacionadas: **25**
+- Observación: desarrollo centrado en presentar la vista preliminar de las pantallas principales de la aplicación web.
 
 ### 6.2.2. Sprint 2
 
