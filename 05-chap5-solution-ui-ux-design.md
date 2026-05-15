@@ -1,4 +1,5 @@
 # Capítulo V: Solution UI/UX Design
+
 ## 5.1. Style Guidelines
 
 En esta sección se presentan las Style Guidelines, entendidas como un conjunto de principios y criterios que orientan la creación de productos digitales de manera coherente, funcional y visualmente consistente. Su propósito es asegurar que cada elemento de la interfaz mantenga uniformidad en la experiencia del usuario, facilitando la legibilidad, la accesibilidad y el reconocimiento de la identidad del producto. A través de estas pautas, se establecen reglas sobre tipografía, colores, espaciado, componentes e interacciones, promoviendo una comunicación clara y una experiencia ordenada, intuitiva y profesional.
@@ -23,13 +24,13 @@ Investigaciones recientes señalan que las interfaces que emplean paletas cromá
 
 El verde esmeralda (`#10B981`) y sus variantes constituyen el color principal del sistema. Esta elección responde a su asociación semántica con crecimiento, eficiencia y control, conceptos directamente alineados con la propuesta de valor de Restock como plataforma de gestión de inventarios. A nivel perceptivo, los tonos verdes de media saturación favorecen la concentración y reducen la fatiga visual en sesiones de uso prolongado, lo que resulta especialmente relevante para administradores que interactúan con dashboards y métricas durante largas jornadas operativas.
 
-| Nombre          | Hex       | Uso principal                                                              | Justificación                                                            |
-|-----------------|-----------|----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Verde Esmeralda | `#10B981` | Botones primarios, barras de navegación, estados activos, íconos de acción | Color de marca principal; contraste mínimo 4.5:1 sobre blanco |
-| Verde Profundo  | `#065F46` | Encabezados, textos sobre fondo claro, estados hover en elementos primarios | Mayor oscuridad para jerarquía tipográfica y contraste AAA               |
-| Verde Medio     | `#059669` | Confirmaciones, indicadores de éxito, badges de estado activo              | Variante funcional para señalización positiva del sistema                |
-| Verde Claro     | `#6EE7B7` | Fondos de sección destacada, chips informativos, estados seleccionados     | Variante de baja saturación para fondos y contenedores secundarios       |
-| Verde Menta     | `#D1FAE5` | Fondos sutiles, zonas de descanso visual, tarjetas informativas            | Proporciona respiro visual sin competir con elementos interactivos       |
+| Nombre          | Hex         | Uso principal                                                                 | Justificación                                                      |
+| --------------- | ----------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Verde Esmeralda | `#10B981` | Botones primarios, barras de navegación, estados activos, íconos de acción | Color de marca principal; contraste mínimo 4.5:1 sobre blanco      |
+| Verde Profundo  | `#065F46` | Encabezados, textos sobre fondo claro, estados hover en elementos primarios   | Mayor oscuridad para jerarquía tipográfica y contraste AAA        |
+| Verde Medio     | `#059669` | Confirmaciones, indicadores de éxito, badges de estado activo                | Variante funcional para señalización positiva del sistema         |
+| Verde Claro     | `#6EE7B7` | Fondos de sección destacada, chips informativos, estados seleccionados       | Variante de baja saturación para fondos y contenedores secundarios |
+| Verde Menta     | `#D1FAE5` | Fondos sutiles, zonas de descanso visual, tarjetas informativas               | Proporciona respiro visual sin competir con elementos interactivos  |
 
 - **Jerarquía visual:** El tono más oscuro ancla la estructura de navegación, mientras los tonos más claros señalizan niveles de interacción progresivos, reduciendo la carga cognitiva al distinguir zonas estáticas de dinámicas.
 - **Consistencia de marca:** Los tres verdes principales comparten la misma temperatura de color, evitando derivaciones que puedan confundir al usuario respecto a la identidad de la plataforma (Wheeler & Meyerson, 2024).
@@ -43,13 +44,13 @@ El verde esmeralda (`#10B981`) y sus variantes constituyen el color principal de
 
 El azul marino oscuro (`#111827`) actúa como color de soporte estructural del sistema. Su alta oscuridad y neutralidad cromática lo convierten en el soporte ideal para textos principales, fondos de paneles laterales y encabezados de sección, generando un contraste sólido con los elementos primarios verdes.
 
-| Nombre          | Hex       | Uso principal                                                       | Justificación                                                                |
-|-----------------|-----------|---------------------------------------------------------------------|------------------------------------------------------------------------------|
-| Azul Marino     | `#111827` | Textos principales, barras laterales, fondos de modo oscuro         | Contraste superior a 15:1 con blanco; cumple WCAG AAA para tipografía       |
-| Gris Medianoche | `#1F2937` | Paneles secundarios, encabezados de tabla, fondos de tarjeta oscura | Variante ligeramente más clara para crear profundidad en capas               |
-| Gris Acero      | `#374151` | Labels de formularios, bordes de componentes, íconos inactivos      | Tono intermedio que establece límites sin saturar visualmente                |
-| Gris Suave      | `#6B7280` | Textos de ayuda contextual, placeholders, metadatos                 | Legibilidad confortable para información de menor jerarquía                  |
-| Gris Perla      | `#9CA3AF` | Texto desactivado, elementos inactivos                              | Señaliza estados no interactivos manteniendo contraste mínimo 3:1            |
+| Nombre          | Hex         | Uso principal                                                       | Justificación                                                         |
+| --------------- | ----------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Azul Marino     | `#111827` | Textos principales, barras laterales, fondos de modo oscuro         | Contraste superior a 15:1 con blanco; cumple WCAG AAA para tipografía |
+| Gris Medianoche | `#1F2937` | Paneles secundarios, encabezados de tabla, fondos de tarjeta oscura | Variante ligeramente más clara para crear profundidad en capas        |
+| Gris Acero      | `#374151` | Labels de formularios, bordes de componentes, íconos inactivos     | Tono intermedio que establece límites sin saturar visualmente         |
+| Gris Suave      | `#6B7280` | Textos de ayuda contextual, placeholders, metadatos                 | Legibilidad confortable para información de menor jerarquía          |
+| Gris Perla      | `#9CA3AF` | Texto desactivado, elementos inactivos                              | Señaliza estados no interactivos manteniendo contraste mínimo 3:1    |
 
 - **Jerarquía visual:** Los tonos secundarios crean la estructura invisible de la interfaz, diferenciando zonas de navegación, contenido y datos sin competir con los elementos primarios.
 - **Consistencia:** Todos los tonos comparten la misma temperatura de color fría, garantizando transiciones fluidas entre secciones de la plataforma.
@@ -63,12 +64,12 @@ El azul marino oscuro (`#111827`) actúa como color de soporte estructural del s
 
 El rojo coral intenso (`#DC2626`) se reserva para comunicar urgencia, errores críticos y alertas de alta prioridad. Su uso estratégico garantiza que el usuario identifique de inmediato situaciones que requieren intervención, como quiebres de stock, discrepancias críticas de inventario o fallas en dispositivos IoT. Este color no debe emplearse de manera decorativa ni en elementos de navegación habitual, ya que su impacto semántico perdería efectividad.
 
-| Nombre      | Hex       | Uso principal                                                  | Justificación                                                                    |
-|-------------|-----------|----------------------------------------------------------------|----------------------------------------------------------------------------------|
-| Rojo Alerta | `#DC2626` | Alertas críticas, botones de cancelación, indicadores de error | Semántica de peligro universalmente reconocida; contraste AAA con blanco         |
-| Rojo Oscuro | `#991B1B` | Estados hover en alertas, bordes de campos con error           | Variante oscura para estados activos en contextos de alerta                      |
-| Rojo Claro  | `#FCA5A5` | Fondos de mensajes de error, chips de alerta                   | Variante suave para contenedores de advertencia sin saturar la vista             |
-| Rojo Mínimo | `#FEE2E2` | Fondos de sección con notificación crítica                     | Fondo de alerta de muy baja saturación para no distraer del contenido principal  |
+| Nombre       | Hex         | Uso principal                                                    | Justificación                                                                   |
+| ------------ | ----------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Rojo Alerta  | `#DC2626` | Alertas críticas, botones de cancelación, indicadores de error | Semántica de peligro universalmente reconocida; contraste AAA con blanco        |
+| Rojo Oscuro  | `#991B1B` | Estados hover en alertas, bordes de campos con error             | Variante oscura para estados activos en contextos de alerta                      |
+| Rojo Claro   | `#FCA5A5` | Fondos de mensajes de error, chips de alerta                     | Variante suave para contenedores de advertencia sin saturar la vista             |
+| Rojo Mínimo | `#FEE2E2` | Fondos de sección con notificación crítica                    | Fondo de alerta de muy baja saturación para no distraer del contenido principal |
 
 - **Jerarquía visual:** El uso restringido del rojo garantiza que su aparición en pantalla sea siempre significativa, evitando la normalización que reduciría su efectividad como señal de alerta.
 - **Consistencia:** Los cuatro tonos comparten la misma temperatura cálida, manteniendo una señalización coherente en todos los estados de error y alerta del sistema.
@@ -82,11 +83,11 @@ El rojo coral intenso (`#DC2626`) se reserva para comunicar urgencia, errores cr
 
 El blanco grisáceo (`#F4F7F6`) y su familia de neutros constituyen el lienzo sobre el cual se despliegan todos los elementos de la interfaz. Su función es proporcionar descanso visual, mejorar el contraste con los colores funcionales y mantener una sensación de orden y limpieza en las vistas de gestión de inventario.
 
-| Nombre          | Hex       | Uso principal                                               | Justificación                                               |
-|-----------------|-----------|-------------------------------------------------------------|-------------------------------------------------------------|
+| Nombre           | Hex         | Uso principal                                                 | Justificación                                                 |
+| ---------------- | ----------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
 | Blanco Grisáceo | `#F4F7F6` | Fondo general de la aplicación, fondos de página            | Lienzo principal; reduce el contraste agresivo del blanco puro |
-| Blanco Puro     | `#FFFFFF` | Tarjetas, modales, paneles flotantes                        | Máximo contraste para contenedores de información crítica   |
-| Gris Borde      | `#E5E7EB` | Líneas divisorias, bordes de inputs, separadores de sección | Define límites de componentes sin generar ruido visual      |
+| Blanco Puro      | `#FFFFFF` | Tarjetas, modales, paneles flotantes                          | Máximo contraste para contenedores de información crítica   |
+| Gris Borde       | `#E5E7EB` | Líneas divisorias, bordes de inputs, separadores de sección | Define límites de componentes sin generar ruido visual        |
 
 - **Jerarquía visual:** La escala neutral define los niveles de importancia del contenido sin recurrir a color saturado, permitiendo que el sistema de color semántico (primario, terciario) conserve su impacto.
 - **Consistencia:** Todos los tonos neutros comparten la misma temperatura ligeramente fría, armonizando con el secundario y generando una interfaz visualmente cohesiva.
@@ -108,11 +109,11 @@ Las fuentes sans-serif presentan una geometría que se rasteriza de forma eficie
 
 *Escala tipográfica y usos de la familia Inter en la interfaz de Restock*
 
-| Rol      | Familia | Peso           | Tamaño   | Altura de línea | Uso principal                                                                        |
-|----------|---------|----------------|----------|-----------------|--------------------------------------------------------------------------------------|
-| Headline | Inter   | 500 (Medium)   | 28–36 px | 1.25×           | Títulos de sección, encabezados de página y elementos de alto impacto visual         |
-| Body     | Inter   | 400 (Regular)  | 14–16 px | 1.5×            | Cuerpo de texto, descripciones, datos de inventario y contenido informativo general  |
-| Label    | Inter   | 400–500        | 12–13 px | 1.4×            | Etiquetas de componentes, metadatos, campos de formulario y elementos secundarios    |
+| Rol      | Familia | Peso          | Tamaño   | Altura de línea | Uso principal                                                                       |
+| -------- | ------- | ------------- | --------- | ---------------- | ----------------------------------------------------------------------------------- |
+| Headline | Inter   | 500 (Medium)  | 28–36 px | 1.25×           | Títulos de sección, encabezados de página y elementos de alto impacto visual     |
+| Body     | Inter   | 400 (Regular) | 14–16 px | 1.5×            | Cuerpo de texto, descripciones, datos de inventario y contenido informativo general |
+| Label    | Inter   | 400–500      | 12–13 px | 1.4×            | Etiquetas de componentes, metadatos, campos de formulario y elementos secundarios   |
 
 La elección de Inter responde a cuatro criterios técnicos fundamentales:
 
@@ -147,34 +148,34 @@ Este enfoque ofrece ventajas técnicas y de usabilidad concretas: garantiza cons
 
 *Escala de espaciado del sistema de diseño de Restock*
 
-| Token     | Valor | Uso principal                                                                        |
-|-----------|-------|--------------------------------------------------------------------------------------|
-| spacing-1 | 4 px  | Separación mínima entre íconos y etiquetas, espaciado interno de badges y chips      |
-| spacing-2 | 8 px  | Separación entre elementos funcionalmente relacionados, padding de botones pequeños  |
+| Token     | Valor | Uso principal                                                                         |
+| --------- | ----- | ------------------------------------------------------------------------------------- |
+| spacing-1 | 4 px  | Separación mínima entre íconos y etiquetas, espaciado interno de badges y chips    |
+| spacing-2 | 8 px  | Separación entre elementos funcionalmente relacionados, padding de botones pequeños |
 | spacing-3 | 12 px | Padding vertical de inputs, separación entre campos de formulario                    |
-| spacing-4 | 16 px | Padding interno de tarjetas, separación estándar entre componentes de lista          |
+| spacing-4 | 16 px | Padding interno de tarjetas, separación estándar entre componentes de lista         |
 | spacing-6 | 24 px | Separación entre secciones dentro de una vista, márgenes de paneles                 |
-| spacing-8 | 32 px | Separación entre bloques de contenido independientes, márgenes de página             |
+| spacing-8 | 32 px | Separación entre bloques de contenido independientes, márgenes de página           |
 
 *Directrices de espaciado para elementos de texto en Restock*
 
 | Elemento    | Tamaño   | Altura de línea | Margen inferior |
-|-------------|----------|-----------------|-----------------|
-| Headline H1 | 36 px    | 44 px (1.22×)   | 32 px           |
-| Headline H2 | 28 px    | 36 px (1.28×)   | 24 px           |
-| Body        | 16 px    | 24 px (1.5×)    | 16 px           |
-| Body small  | 14 px    | 20 px (1.43×)   | 12 px           |
+| ----------- | --------- | ---------------- | --------------- |
+| Headline H1 | 36 px     | 44 px (1.22×)   | 32 px           |
+| Headline H2 | 28 px     | 36 px (1.28×)   | 24 px           |
+| Body        | 16 px     | 24 px (1.5×)    | 16 px           |
+| Body small  | 14 px     | 20 px (1.43×)   | 12 px           |
 | Label       | 12–13 px | 18 px (1.4×)    | 8 px            |
 
 *Directrices de padding y margen para los componentes principales de Restock*
 
-| Componente               | Padding interno                        | Margen externo | Gutter |
-|--------------------------|----------------------------------------|----------------|--------|
-| Botón primario           | 10 px (vertical) × 20 px (horizontal) | 8 px           | —      |
-| Input / Campo de formulario | 10 px (vertical) × 14 px (horizontal) | 12 px        | —      |
-| Tarjeta (Card)           | 16 px                                  | 16 px          | 16 px  |
-| Navbar / Sidebar         | 20 px                                  | —              | —      |
-| Grid de contenido        | —                                      | —              | 16 px  |
+| Componente                  | Padding interno                        | Margen externo | Gutter |
+| --------------------------- | -------------------------------------- | -------------- | ------ |
+| Botón primario             | 10 px (vertical) × 20 px (horizontal) | 8 px           | —     |
+| Input / Campo de formulario | 10 px (vertical) × 14 px (horizontal) | 12 px          | —     |
+| Tarjeta (Card)              | 16 px                                  | 16 px          | 16 px  |
+| Navbar / Sidebar            | 20 px                                  | —             | —     |
+| Grid de contenido           | —                                     | —             | 16 px  |
 
 **Principios de agrupamiento y alineación:**
 
@@ -200,12 +201,12 @@ El tono de Restock se define en las siguientes dimensiones:
 
 *Dimensiones del tono de comunicación de Restock*
 
-| Dimensión               | Posición                              | Justificación                                                                                                                                                  |
-|-------------------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Divertido / Serio       | Inclinado hacia serio                 | La plataforma gestiona operaciones críticas de negocio. La comunicación prioriza claridad y precisión sobre el humor, sin resultar fría ni distante            |
-| Formal / Casual         | Punto intermedio, levemente casual    | Se evita el lenguaje corporativo excesivo. Las instrucciones son directas y comprensibles para administradores de distintos niveles de experiencia tecnológica |
-| Respetuoso / Irreverente| Marcadamente respetuoso               | El lenguaje mantiene en todo momento un tono empático y profesional, reconociendo la exigencia del contexto operativo del usuario                             |
-| Entusiasta / Sereno     | Levemente entusiasta                  | La plataforma motiva la acción sin generar ansiedad. Los mensajes de alerta son informativos, no alarmistas; las confirmaciones son afirmativas sin exagerar  |
+| Dimensión               | Posición                          | Justificación                                                                                                                                                  |
+| ------------------------ | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Divertido / Serio        | Inclinado hacia serio              | La plataforma gestiona operaciones críticas de negocio. La comunicación prioriza claridad y precisión sobre el humor, sin resultar fría ni distante         |
+| Formal / Casual          | Punto intermedio, levemente casual | Se evita el lenguaje corporativo excesivo. Las instrucciones son directas y comprensibles para administradores de distintos niveles de experiencia tecnológica |
+| Respetuoso / Irreverente | Marcadamente respetuoso            | El lenguaje mantiene en todo momento un tono empático y profesional, reconociendo la exigencia del contexto operativo del usuario                              |
+| Entusiasta / Sereno      | Levemente entusiasta               | La plataforma motiva la acción sin generar ansiedad. Los mensajes de alerta son informativos, no alarmistas; las confirmaciones son afirmativas sin exagerar   |
 
 **Principios de comunicación aplicados:**
 
@@ -216,13 +217,13 @@ El tono de Restock se define en las siguientes dimensiones:
 
 *Patrones de tono aplicados según el contexto de interacción en Restock*
 
-| Contexto                      | Tono                            | Ejemplo                                                                                                          |
-|-------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------|
-| Confirmación de acción        | Afirmativo y directo             | "Lote registrado correctamente."                                                                                 |
-| Alerta de stock bajo          | Claro y orientado a la acción    | "El insumo Harina de trigo ha alcanzado su nivel mínimo. Se recomienda reponer el stock."                       |
-| Error del sistema             | Sobrio y tranquilizador          | "No fue posible completar la operación. Verifique su conexión e intente nuevamente."                            |
-| Mensaje de bienvenida         | Cercano y profesional            | "Bienvenido a Restock. Comience registrando su primera sucursal."                                               |
-| Notificación de discrepancia  | Informativo y preciso            | "Se detectó una diferencia entre el stock físico y el registrado en Aceite de oliva. Revise la conciliación."  |
+| Contexto                      | Tono                           | Ejemplo                                                                                                          |
+| ----------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Confirmación de acción      | Afirmativo y directo           | "Lote registrado correctamente."                                                                                 |
+| Alerta de stock bajo          | Claro y orientado a la acción | "El insumo Harina de trigo ha alcanzado su nivel mínimo. Se recomienda reponer el stock."                       |
+| Error del sistema             | Sobrio y tranquilizador        | "No fue posible completar la operación. Verifique su conexión e intente nuevamente."                           |
+| Mensaje de bienvenida         | Cercano y profesional          | "Bienvenido a Restock. Comience registrando su primera sucursal."                                                |
+| Notificación de discrepancia | Informativo y preciso          | "Se detectó una diferencia entre el stock físico y el registrado en Aceite de oliva. Revise la conciliación." |
 
 **Vocabulario preferido:**
 
@@ -247,9 +248,7 @@ La cuadrícula de Restock Web se basa en una estructura modular que organiza el 
 La estructura de columnas se adapta según el dispositivo:
 
 - En **escritorio** (pantallas amplias): se emplea una distribución multicolumna que permite mostrar el dashboard, el sidebar de navegación y los paneles de datos de inventario de forma simultánea. El sidebar ocupa una fracción del ancho total y el contenido principal ocupa el resto, separados por un gutter de 24 px. Los márgenes laterales del contenedor son de 32 px.
-
 - En **tableta** (pantallas medianas): el sidebar de navegación se colapsa o reduce, y el contenido principal se reorganiza en menos columnas. Los márgenes laterales se reducen a 24 px y el gutter entre columnas a 16 px.
-
 - En **móvil** (pantallas pequeñas): el contenido adopta una disposición de columna única. El sidebar se convierte en un menú desplegable, las tarjetas de inventario se apilan verticalmente y los márgenes laterales se reducen a 16 px.
 
 El espaciado interno de los componentes sigue la escala establecida: los botones primarios emplean 10 px de padding vertical y 20 px horizontal; los inputs usan 10 px vertical y 14 px horizontal; las tarjetas tienen 16 px de padding interno y 16 px de margen externo entre ellas. La separación entre secciones independientes del dashboard es de 24 px, y entre bloques de contenido mayor de 32 px.
@@ -261,11 +260,8 @@ La plataforma web de Restock adopta una estrategia de diseño responsivo que gar
 **Comportamiento de los componentes clave según el dispositivo:**
 
 - Las **tablas de inventario**, componente central de la plataforma, adaptan su presentación según el ancho disponible. En escritorio muestran todas las columnas (nombre del insumo, stock físico, stock registrado, umbral, estado y acciones). En tableta se priorizan las columnas de mayor relevancia operativa y se habilita scroll horizontal para las restantes. En móvil se presenta una vista de tarjeta por insumo en lugar de tabla, conservando los datos esenciales.
-
 - El **dashboard** con métricas de stock y ventas emplea una distribución de widgets en cuadrícula en escritorio. En tableta los widgets se reorganizan en dos columnas. En móvil se apilan en una sola columna con scroll vertical, manteniendo los indicadores de alerta crítica visibles en la parte superior de la vista.
-
 - El **sidebar de navegación** permanece visible y expandido en escritorio. En tableta se colapsa a un sidebar de íconos sin etiquetas de texto. En móvil se convierte en un menú desplegable accesible desde un botón de navegación en el encabezado, empleando íconos Tabler Icons en variante outline de 24 px.
-
 - Los **formularios** de registro de insumos, sucursales y configuración de balanzas adaptan sus campos al ancho disponible. En escritorio los campos se disponen en dos columnas. En tableta y móvil adoptan disposición de columna única con campos a ancho completo. Los labels emplean la fuente Inter 400 Regular en 12–13 px (color `#374151`, Gris Acero), y los inputs aplican el padding definido en la escala de espaciado.
 
 ##### 5.1.2.1.3. Tipografía en la interfaz web
@@ -273,11 +269,8 @@ La plataforma web de Restock adopta una estrategia de diseño responsivo que gar
 La plataforma web aplica la familia **Inter** en todos sus niveles tipográficos, conforme a la decisión establecida en las General Style Guidelines. La jerarquía tipográfica en la interfaz web se implementa de la siguiente manera:
 
 - Los **encabezados de sección y títulos de página** (Headline) emplean Inter Medium 500 en tamaños entre 28 y 36 px, con altura de línea de 1.25×. Se aplican en tonos del color secundario (`#111827` Azul Marino o `#065F46` Verde Profundo) para establecer jerarquía visual sobre el fondo neutro (`#F4F7F6`).
-
 - El **cuerpo de texto** de descripciones, datos de inventario y contenido informativo emplea Inter Regular 400 en 14–16 px con altura de línea de 1.5×. El color principal para cuerpo de texto es `#111827` sobre fondos claros, garantizando un contraste superior a 15:1 conforme a WCAG AAA.
-
 - Las **etiquetas de componentes**, metadatos de tabla, placeholders de inputs y textos secundarios emplean Inter Regular 400 o Medium 500 en 12–13 px con altura de línea de 1.4×. Los placeholders y textos de ayuda contextual usan `#6B7280` (Gris Suave); los textos desactivados usan `#9CA3AF` (Gris Perla).
-
 - Los **valores numéricos** de stock, cantidades, precios y métricas del dashboard emplean Inter Medium 500 en tamaños de 16–28 px según su nivel de jerarquía, asegurando la distinción inmediata de cifras críticas como niveles de stock bajo o discrepancias detectadas.
 
 ##### 5.1.2.1.4. Accesibilidad en la interfaz web
@@ -285,9 +278,7 @@ La plataforma web aplica la familia **Inter** en todos sus niveles tipográficos
 La plataforma web de Restock aplica los estándares WCAG 2.1 de nivel AA/AAA, validados para toda la paleta cromática del sistema. Los criterios de accesibilidad aplicados son:
 
 - En cuanto al **contraste cromático**, todos los textos de cuerpo sobre fondos claros superan el ratio de 4.5:1. Los encabezados grandes superan el ratio de 3:1. Los íconos funcionales y bordes de componentes cumplen el ratio mínimo de 3:1 sobre el fondo.
-
 - Para la **navegación con teclado**, todos los elementos interactivos de la interfaz botones de acción, inputs, selectores de sucursal, controles del dashboard— son accesibles mediante la tecla Tab en un orden lógico que sigue el flujo de lectura de la pantalla. Los elementos decorativos quedan excluidos del tabulado. El indicador de foco visible emplea el color primario Verde Esmeralda (`#10B981`) con borde de 3 px para garantizar su visibilidad.
-
 - El **etiquetado semántico** de los componentes sigue las convenciones ARIA: los íconos Tabler Icons que comunican información de estado llevan `aria-label` descriptivo; las tablas de inventario emplean encabezados con `role="columnheader"`; las alertas de stock crítico emplean `role="alert"` para anunciarse automáticamente a lectores de pantalla; los modales de confirmación emplean `role="dialog"` con `aria-labelledby` y `aria-modal="true"`.
 
 ##### 5.1.2.1.5. Patrón Z en la interfaz web
@@ -296,13 +287,13 @@ El patrón Z es un principio de diseño visual que describe la trayectoria natur
 
 En Restock Web, el patrón Z se aplica de la siguiente manera:
 
-| Zona | Posición | Contenido asignado | Justificación |
-|------|----------|--------------------|---------------|
-| Punto 1 | Superior izquierda | Logo de Restock y nombre de la sucursal activa | Ancla la identidad de marca y el contexto operativo del usuario |
-| Punto 2 | Superior derecha | Ícono de notificaciones, perfil de usuario y acceso rápido a alertas | Concentra los controles de mayor frecuencia de uso en sesión activa |
-| Diagonal | Centro | Contenido principal del dashboard: métricas de stock, widgets de alertas y gráficos de rotación | La zona de mayor densidad informativa aprovecha el tránsito visual natural entre los dos puntos superiores e inferiores |
-| Punto 3 | Inferior izquierda | Sidebar de navegación con accesos a módulos: Inventario, Sucursales, Dispositivos, Ventas | Organiza la navegación secundaria en la zona de llegada natural del primer movimiento diagonal |
-| Punto 4 | Inferior derecha | Botón de acción primaria (registro de lote, nueva venta) o resumen de estado del sistema | Ubica la acción principal en el punto de conclusión del recorrido visual |
+| Zona     | Posición          | Contenido asignado                                                                                 | Justificación                                                                                                           |
+| -------- | ------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Punto 1  | Superior izquierda | Logo de Restock y nombre de la sucursal activa                                                     | Ancla la identidad de marca y el contexto operativo del usuario                                                          |
+| Punto 2  | Superior derecha   | Ícono de notificaciones, perfil de usuario y acceso rápido a alertas                             | Concentra los controles de mayor frecuencia de uso en sesión activa                                                     |
+| Diagonal | Centro             | Contenido principal del dashboard: métricas de stock, widgets de alertas y gráficos de rotación | La zona de mayor densidad informativa aprovecha el tránsito visual natural entre los dos puntos superiores e inferiores |
+| Punto 3  | Inferior izquierda | Sidebar de navegación con accesos a módulos: Inventario, Sucursales, Dispositivos, Ventas        | Organiza la navegación secundaria en la zona de llegada natural del primer movimiento diagonal                          |
+| Punto 4  | Inferior derecha   | Botón de acción primaria (registro de lote, nueva venta) o resumen de estado del sistema         | Ubica la acción principal en el punto de conclusión del recorrido visual                                               |
 
 **Principios de aplicación del patrón Z en Restock Web:**
 
@@ -319,7 +310,8 @@ La aplicación móvil de Restock está desarrollada con Dart y Flutter, orientad
 
 La aplicación móvil aplica la misma paleta definida en las General Style Guidelines de Restock, garantizando coherencia visual entre la plataforma web y la aplicación móvil. El color primario Verde Esmeralda (`#10B981`) se emplea en los elementos de navegación activos, botones principales y badges de estado normal. El color terciario Rojo Alerta (`#DC2626`) identifica alertas críticas, errores y acciones destructivas. Los fondos de pantalla emplean el Blanco Grisáceo (`#F4F7F6`) y el Blanco Puro (`#FFFFFF`) para los paneles flotantes y tarjetas de datos.
 
-La tipografía **Inter** se integra como fuente personalizada en el bundle de la aplicación Flutter, aplicando los mismos pesos y tamaños definidos en las General Style Guidelines: 
+La tipografía **Inter** se integra como fuente personalizada en el bundle de la aplicación Flutter, aplicando los mismos pesos y tamaños definidos en las General Style Guidelines:
+
 - Inter Medium 500 para títulos de pantalla y etiquetas denavegación activa, Inter Regular 400 para cuerpos de texto y datos de inventario.
 - El escalado de tipografía respeta la configuración de accesibilidad del sistema operativo del usuario, permitiendo que la fuente escale con Dynamic Type en iOS o con el ajuste de tamaño de fuente en Android sin romper el layout.
 
@@ -340,13 +332,9 @@ El **encabezado de pantalla** presenta el título de la sección en Inter Medium
 Las interacciones táctiles de la aplicación móvil de Restock responden a las acciones operativas más frecuentes de los administradores de inventario:
 
 - El **tap** activa la selección de un insumo, la apertura del detalle de un lote o la confirmación de una acción. La respuesta visual se produce mediante un efecto de tinta en el color primario con opacidad reducida, confirmando al usuario que la pulsación fue registrada.
-
 - El **deslizamiento vertical** en listas de inventario y tablas de stock activa la actualización de datos con la acción pull-to-refresh, mostrando un indicador de carga en Verde Esmeralda (`#10B981`) mientras el sistema consulta el estado actualizado del inventario desde el servidor.
-
 - El **deslizamiento horizontal** sobre una tarjeta de insumo o un ítem de la lista de alertas revela opciones contextuales de acción rápida como editar, desactivar o marcar como revisado, reduciendo la cantidad de pasos necesarios para ejecutar operaciones frecuentes.
-
 - La **pulsación prolongada** sobre un insumo o una sucursal en modo listado activa un menú contextual con opciones adicionales. Este gesto se emplea de forma selectiva para acciones que requieren confirmación explícita, como la transferencia de lotes entre sucursales o la desactivación de un dispositivo IoT.
-
 - Las transiciones entre pantallas emplean deslizamiento horizontal consistente con las convenciones nativas del sistema operativo, completándose en tiempos que garantizan fluidez sin generar sensación de lentitud.
 
 ##### 5.1.2.2.4. Componentes visuales en móvil
@@ -376,12 +364,14 @@ Cada mensaje ocupa las dos líneas disponibles de forma complementaria: la líne
 El display contempla únicamente dos vistas en rotación: la vista de stock del insumo asignado y la vista de condiciones ambientales capturadas por el sensor DHT22. La rotación entre ambas vistas es periódica y automática, controlada por el firmware del ESP32.
 
 Cuando el dispositivo opera con un insumo asignado y peso estable, el display muestra:
+
 ```
 [Nombre del insumo]
 Stock: [XX.X] [unidad]
 ```
 
 Por ejemplo:
+
 ```
 Harina de trigo
 
@@ -389,15 +379,19 @@ Stock: 4.2 kg
 ```
 
 La vista de condiciones ambientales se presenta durante un intervalo breve antes de volver a la vista de stock principal:
+
 ```
 Temp: [XX.X] C
 Hum:  [XX.X] %
 ```
+
 Cuando el dispositivo está operativo pero no tiene un insumo asignado desde la plataforma, el display muestra:
+
 ```
 Restock Balanza
 Sin asignar
 ```
+
 El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
 ##### 5.1.2.3.2. Estándares generales de interacción con la interfaz física
@@ -441,6 +435,7 @@ Este diagrama representa la jerarquía informativa orientada al usuario externo.
 Este esquema detalla la arquitectura interna del software de gestión. La organización jerárquica parte de un Dashboard central (Overview) que ramifica el acceso hacia los módulos operativos clave como el inventario, las recetas (Recipes), los kits, y la gestión de dispositivos IoT.
 
 Casos de aplicación:
+
 - Dashboards donde los indicadores de stock crítico, discrepancias y alertas aparecen en la parte superior o en paneles destacados.
 - Vistas de inventario en las que los colores, badges y tipografías jerarquizan el estado de cada insumo.
 - Páginas de resumen donde los totales y los mensajes de alerta se distinguen claramente del resto del contenido.
@@ -450,6 +445,7 @@ Casos de aplicación:
 El sistema también aplica una organización secuencial en procesos operativos que requieren una progresión lógica y una guía paso a paso. Esto es especialmente relevante en flujos de configuración y en tareas donde el orden de las acciones impacta directamente en la precisión del sistema.
 
 Casos de aplicación:
+
 - Vinculación de insumos específicos a sensores de peso, donde el usuario primero selecciona el insumo, luego ajusta el sensor y finalmente confirma la asignación.
 - Configuración de umbrales de alerta, que sigue pasos de definición de stock mínimo, stock máximo y reglas de notificación.
 - Onboarding de nuevos dispositivos IoT y de nuevas sucursales, donde el proceso se descompone en etapas claras de verificación, configuración y validación.
@@ -465,6 +461,7 @@ Para gestionar el volumen de información y facilitar el acceso rápido a los da
 - Organización por audiencia: separa las vistas y funciones según los dos perfiles reales del sistema: administradores de restaurantes y usuarios de retail.
 
 Esta categorización por audiencias permite que cada perfil vea información relevante para su rol:
+
 - Administradores de restaurante: vista de recetas, costos, mermas y reabastecimiento.
 - Retail: vista de kits y paquetes de insumos, enfocada en pedidos y gestión de surtido.
 
@@ -473,6 +470,7 @@ De esta manera, el sistema organiza la información por su contenido y por el co
 #### Segmentación por roles y audiencias
 
 Además de los criterios anteriores, Restock distingue claramente entre los dos perfiles disponibles en la plataforma. La segmentación por audiencias refuerza que:
+
 - los administradores visualizan herramientas de gestión de mermas, control de stock y análisis de ventas;
 - los usuarios de retail tienen acceso a vistas centradas en kits de productos, paquetes y opciones de surtido.
 
@@ -485,21 +483,24 @@ En esta sección se presenta el sistema de etiquetado (labeling system) para la 
 Se ha priorizado la claridad semántica y la coherencia con el lenguaje visual del producto, especialmente con el tono de comunicación cercano y profesional.
 
 #### A. Landing Page
+
 El etiquetado en el sitio público utiliza un lenguaje persuasivo, directo y coherente con la propuesta de valor de Restock.
 
 - **Secciones de Navegación:**
+
   - **Inicio:** Sección de bienvenida con la propuesta de valor principal.
   - **Beneficios:** Ventajas segmentadas para restaurantes y tiendas retail.
   - **Testimonios:** Validación social mediante comentarios de usuarios reales.
   - **Preguntas Frecuentes:** Resolución de dudas comunes de forma clara.
-
 - **Botones de llamada a la acción (CTA):**
+
   - **"Prueba Gratis":** Invita al usuario a iniciar una prueba sin costo inicial.
   - **"Contáctanos":** Facilita el contacto rápido con el equipo de ventas.
   - **"Iniciar Sesión":** Acceso a la plataforma para usuarios registrados.
   - **"Solicitar Demo":** Alternativa para usuarios que prefieren ver la plataforma antes de probarla.
 
 #### B. Aplicación Web
+
 El etiquetado se adapta según el perfil del usuario para optimizar su flujo de trabajo específico:
 
 - **Administradores de Restaurantes:**
@@ -515,6 +516,7 @@ El etiquetado se adapta según el perfil del usuario para optimizar su flujo de 
 *Nota de consistencia:* El resto de etiquetas (**Overview, Inventario, Ventas, Alertas y Dispositivos**) se mantiene idéntico entre los perfiles para asegurar la estandarización operativa del sistema.
 
 #### C. Aplicación Móvil
+
 Diseñada para la supervisión rápida en movimiento, la app móvil usa etiquetas claras y orientadas a la acción:
 
 - **Overview:** Resumen ejecutivo de las balanzas activas y el estado general del local.
@@ -524,17 +526,19 @@ Diseñada para la supervisión rápida en movimiento, la app móvil usa etiqueta
 - **Settings:** Configuración de preferencias de usuario y parámetros de la cuenta.
 
 #### D. Etiquetas en Formularios y Botones Operativos
+
 Se definen etiquetas estándar para campos de entrada y acciones frecuentes, con la intención de reducir la carga cognitiva en todas las plataformas.
 
 - **Campos de Formulario:**
+
   - **"Nombre del Insumo":** Identificador del producto vinculado al sensor.
   - **"Umbral Mínimo (kg)":** Límite para disparar alertas automáticas de reabastecimiento.
   - **"Correo Electrónico":** Entrada para credenciales o contacto.
   - **"Contraseña":** Campo seguro para acceso de usuario.
   - **"Nombre del negocio":** Nombre del restaurante o tienda retail.
   - **"Mensaje":** Texto libre para descripciones o solicitudes.
-
 - **Botones de Acción:**
+
   - **"Guardar Cambios":** Confirma la edición de configuraciones o perfiles.
   - **"Vincular Dispositivo":** Inicia la sincronización de un nuevo sensor IoT.
   - **"Registrar Salida":** Acción manual para descontar stock fuera del flujo de venta automática.
@@ -544,46 +548,45 @@ Se definen etiquetas estándar para campos de entrada y acciones frecuentes, con
 
 ### 5.2.3. SEO Tags and Meta Tags
 
-### 5.2.3. SEO Tags and Meta Tags
-
 Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los motores de búsqueda y facilitar que dueños de restaurantes y administradores de retail encuentren una solución automatizada a sus problemas de inventario, se ha definido la siguiente estrategia de etiquetado HTML.
 
 **Landing Page**
 
 - **Title:**
-    `<title>Restock | Gestión de Inventario Inteligente con Sensores IoT</title>`
-    - **Propósito:** Incluye el nombre de la marca y las palabras clave de mayor volumen de búsqueda como "gestión de inventario" e "IoT", posicionando el diferencial tecnológico de inmediato.
+  `<title>Restock | Gestión de Inventario Inteligente con Sensores IoT</title>`
 
+  - **Propósito:** Incluye el nombre de la marca y las palabras clave de mayor volumen de búsqueda como "gestión de inventario" e "IoT", posicionando el diferencial tecnológico de inmediato.
 - **Meta Description:**
-    `<meta name="description" content="Restock automatiza el control de tus insumos mediante sensores de peso IoT. Evita mermas, recibe alertas de stock bajo en tiempo real y optimiza tus recetas. La solución definitiva para restaurantes y retail inteligente.">`
-    - **Propósito:** Explica el funcionamiento (sensores de peso) y los beneficios (evitar mermas, alertas en tiempo real), incitando al clic mediante una propuesta de valor clara.
+  `<meta name="description" content="Restock automatiza el control de tus insumos mediante sensores de peso IoT. Evita mermas, recibe alertas de stock bajo en tiempo real y optimiza tus recetas. La solución definitiva para restaurantes y retail inteligente.">`
 
+  - **Propósito:** Explica el funcionamiento (sensores de peso) y los beneficios (evitar mermas, alertas en tiempo real), incitando al clic mediante una propuesta de valor clara.
 - **Meta Keywords:**
-    `<meta name="keywords" content="Restock, inventario IoT, control de insumos, sensores de peso, gestión de mermas, stock restaurantes, automatización de inventario, retail inteligente, pesaje digital">`
-    - **Propósito:** Agrupa términos técnicos y de negocio que los clientes potenciales utilizan para buscar soluciones de modernización de almacenes.
+  `<meta name="keywords" content="Restock, inventario IoT, control de insumos, sensores de peso, gestión de mermas, stock restaurantes, automatización de inventario, retail inteligente, pesaje digital">`
 
+  - **Propósito:** Agrupa términos técnicos y de negocio que los clientes potenciales utilizan para buscar soluciones de modernización de almacenes.
 - **Meta Author:**
-    `<meta name="author" content="Equipo Restock – Innovación en IoT y Experiencia de Usuario">`
+  `<meta name="author" content="Equipo Restock – Innovación en IoT y Experiencia de Usuario">`
 
 ---
 
 **Web Application – Dashboard Principal**
 
 - **Title:**
-    `<title>Dashboard Operativo – Restock | Monitoreo de Insumos en Tiempo Real</title>`
-    - **Propósito:** Enfocado en la utilidad de la herramienta. El uso de "Monitoreo en Tiempo Real" refuerza que la aplicación web es una consola de control activa.
+  `<title>Dashboard Operativo – Restock | Monitoreo de Insumos en Tiempo Real</title>`
 
+  - **Propósito:** Enfocado en la utilidad de la herramienta. El uso de "Monitoreo en Tiempo Real" refuerza que la aplicación web es una consola de control activa.
 - **Meta Description:**
-    `<meta name="description" content="Accede a tu panel de control de Restock. Visualiza el peso exacto de tus insumos, gestiona alertas críticas de stock y monitorea la salud de tus dispositivos IoT desde cualquier lugar.">`
-    - **Propósito:** Resume las funciones principales del dashboard (visualizar peso, alertas, salud de dispositivos) para usuarios que ya conocen la plataforma o buscan herramientas de monitoreo.
+  `<meta name="description" content="Accede a tu panel de control de Restock. Visualiza el peso exacto de tus insumos, gestiona alertas críticas de stock y monitorea la salud de tus dispositivos IoT desde cualquier lugar.">`
 
+  - **Propósito:** Resume las funciones principales del dashboard (visualizar peso, alertas, salud de dispositivos) para usuarios que ya conocen la plataforma o buscan herramientas de monitoreo.
 - **Meta Keywords:**
-    `<meta name="keywords" content="panel de control IoT, telemetría de sensores, monitoreo de stock, gestión de recetas, dashboard administrativo, alertas de peso, control de dispositivos IoT">`
-    - **Propósito:** Palabras clave específicas para el entorno de trabajo (telemetría, dashboard, dispositivos) que ayudan a la indexación de la herramienta interna.
+  `<meta name="keywords" content="panel de control IoT, telemetría de sensores, monitoreo de stock, gestión de recetas, dashboard administrativo, alertas de peso, control de dispositivos IoT">`
 
+  - **Propósito:** Palabras clave específicas para el entorno de trabajo (telemetría, dashboard, dispositivos) que ayudan a la indexación de la herramienta interna.
 - **Meta Author:**
-    `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
-    - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
+  `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
+
+  - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
 
 ### 5.2.4. Searching Systems
 
@@ -605,24 +608,24 @@ Estas ayudas siguen el tono de comunicación definido en Restock: claro, directo
 
 #### 5.2.4.2. Opciones de búsqueda por aplicación
 
-| Plataforma | Tipo de búsqueda | Alcance |
-|------------|------------------|---------|
-| Landing Page | Navegación por secciones (anclas y menú) | Permite ubicar contenido informativo (beneficios, funcionalidades, planes, FAQ) sin un motor de búsqueda dedicado |
-| Aplicación web | Búsqueda textual por módulo + filtros básicos | Permite localizar registros en tablas/listas de trabajo según las tareas de administración |
-| Aplicación móvil | Búsqueda textual por pantalla + filtros simplificados | Permite consultar los mismos datos clave de la web con interacción táctil |
-| Dispositivo IoT | No aplica búsqueda textual | El dispositivo muestra estado operativo y lectura actual en el display, sin flujo de búsqueda manual |
+| Plataforma         | Tipo de búsqueda                                      | Alcance                                                                                                            |
+| ------------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Landing Page       | Navegación por secciones (anclas y menú)             | Permite ubicar contenido informativo (beneficios, funcionalidades, planes, FAQ) sin un motor de búsqueda dedicado |
+| Aplicación web    | Búsqueda textual por módulo + filtros básicos       | Permite localizar registros en tablas/listas de trabajo según las tareas de administración                       |
+| Aplicación móvil | Búsqueda textual por pantalla + filtros simplificados | Permite consultar los mismos datos clave de la web con interacción táctil                                        |
+| Dispositivo IoT    | No aplica búsqueda textual                            | El dispositivo muestra estado operativo y lectura actual en el display, sin flujo de búsqueda manual              |
 
 #### 5.2.4.3. Filtros definidos por módulo (alineados a User Stories)
 
-| Módulo | Búsqueda textual | Filtros disponibles |
-|--------|------------------|---------------------|
-| Suministros / Inventario (US-14, US-15, US-19) | Nombre de insumo o producto | Estado (activo/inactivo), categoría, sucursal |
-| Lotes (Task/User Flow 6) | Código o nombre de lote/insumo | Sucursal, estado del lote, rango de vencimiento |
-| Discrepancias (Task/User Flow 7) | Insumo o identificador de discrepancia | Estado (pendiente/resuelta), criticidad, rango de fecha |
-| Dispositivos (Task/User Flow 8) | Alias o identificador del dispositivo | Estado (online/offline), sucursal |
-| Recetas (Task/User Flow 4) | Nombre de receta | Categoría de receta, estado (activa/inactiva) |
-| Kits/Combos (Task/User Flow 5) | Nombre de kit/combo | Estado (activo/inactivo), disponibilidad |
-| Sucursales (Task/User Flow 9) | Nombre de sucursal o ubicación | Estado (activa/inactiva), ciudad |
+| Módulo                                        | Búsqueda textual                      | Filtros disponibles                                     |
+| ---------------------------------------------- | -------------------------------------- | ------------------------------------------------------- |
+| Suministros / Inventario (US-14, US-15, US-19) | Nombre de insumo o producto            | Estado (activo/inactivo), categoría, sucursal          |
+| Lotes (Task/User Flow 6)                       | Código o nombre de lote/insumo        | Sucursal, estado del lote, rango de vencimiento         |
+| Discrepancias (Task/User Flow 7)               | Insumo o identificador de discrepancia | Estado (pendiente/resuelta), criticidad, rango de fecha |
+| Dispositivos (Task/User Flow 8)                | Alias o identificador del dispositivo  | Estado (online/offline), sucursal                       |
+| Recetas (Task/User Flow 4)                     | Nombre de receta                       | Categoría de receta, estado (activa/inactiva)          |
+| Kits/Combos (Task/User Flow 5)                 | Nombre de kit/combo                    | Estado (activo/inactivo), disponibilidad                |
+| Sucursales (Task/User Flow 9)                  | Nombre de sucursal o ubicación        | Estado (activa/inactiva), ciudad                        |
 
 #### 5.2.4.4. Visualización de resultados después de la búsqueda
 
@@ -668,7 +671,6 @@ Ejemplos de recorridos de usuario:
 - **Operario móvil → Barra inferior → Inventario → Seleccionar tarjeta → Swipe para acción rápida → Confirmación.**
 
 Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso —desde el primer contacto en el Landing Page hasta las tareas operativas diarias— reduciendo esfuerzo y mejorando la satisfacción y eficacia en la gestión del inventario.
-
 
 ## 5.3. Landing Page UI Design
 
@@ -1022,7 +1024,6 @@ En esta sección se presentan los wireframes de la aplicación, los cuales consi
   <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-20.png" alt="Esquema de pantalla de estado vacío con guía para inicio de telemetría" height="400">
 </div>
 
-
 **Catálogo general de recetas**
 
 **Descripción:** Esquema del panel principal que representa la disposición estructural de la galería de platos con indicadores de fluctuación de costos, alertas de inventario bajo y estado de actividad.
@@ -1118,7 +1119,6 @@ En esta sección se presentan los wireframes de la aplicación, los cuales consi
 <div align="center">
   <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-32.png" alt="Esquema del panel de supervisión con métricas de red y registro de discrepancias de peso y temperatura" height="400">
 </div>
-
 
 **Catalogo de kits y combos**
 
@@ -1312,7 +1312,6 @@ En esta sección se presentan los wireframes de la aplicación, los cuales consi
   <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-56.png" alt="Esquema del diálogo de seguridad para desvinculación de hardware y cese de monitoreo" height="400">
 </div>
 
-
 **Lista general de alertas y notificaciones**
 
 **Descripción:** Esquema del panel principal que representa la disposición estructural de avisos sobre desajustes de datos, fallos de conexión en terminales y transferencias de stock pendientes.
@@ -1432,7 +1431,6 @@ En esta sección se presentan los wireframes de la aplicación, los cuales consi
 <div align="center">
   <img src="./assets/images/chapter5/web_wireframes/5.4.1-Web-Wireframe-71.png" alt="Esquema del diálogo de confirmación crítica para eliminación permanente de sucursal" height="400">
 </div>
-
 
 ### Mobile Application
 
@@ -1774,8 +1772,6 @@ En esta sección se presentan los esquemas de media fidelidad diseñados especí
   <img src="./assets/images/chapter5/mobile_wireframes/5.4.1-Mobile-Wireframe-42.png" alt="Esquema del modal de confirmación crítica para eliminación permanente de sucursal con advertencia de pérdida de datos." height="600">
 </div>
 
-
-
 ### 5.4.2. Applications Wireflow Diagrams
 
 Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wireframes realizados cuya finalidad es contar las metas del usuario (User Goal) con la aplicación y cómo las consiguen.
@@ -1798,7 +1794,6 @@ Un wireflow o flujo de pantalla es un diagrama donde se reúnen distintos wirefr
 7. El Visitante completa los datos del negocio
 8. El Visitante elige un plan de suscripción y paga
 9. Va a la sección de Inicio
-
 
 **- User Goal 1**: Como visitante, quiero registrarme en la plataforma y activar mi suscripción para comenzar a gestionar mi inventario.
 
@@ -1861,7 +1856,7 @@ El usuario registrado accede a la web app y puede iniciar sesión directamente c
 5. El administrador selecciona el suministro creado
 6. El administrador visualiza los detalles de ese suministro creado
 
-**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario. 
+**- User Goal 3**: Como administrador, quiero registrar y gestionar los insumos de mi catálogo para mantener información actualizada y confiable que me permita tomar decisiones operativas sobre el inventario.
 
 <p align="center">
   <img src="https://i.imgur.com/64Bmz5l.png"
@@ -1942,7 +1937,6 @@ El administrador retail accede a la sección de kits y selecciona la opción de 
 6. El administrador ingresa el lote y la sucursal de origen y de destino
 7. El lote se elimina de la sucursal de origen y pasa a visualizarse en la sucursal de destino
 
-
 **- User Goal 6**: Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
 
 <p align="center">
@@ -1956,7 +1950,6 @@ El administrador retail accede a la sección de kits y selecciona la opción de 
 </p>
 
 El administrador entra a la sección de inventario e ingresa un nuevo lote completando su formulario de creación; luego selecciona el lote que desea transferir e indica las sucursales de origen y destino para mover el stock. El flujo permite mantener el inventario actualizado en tiempo real y optimizar la distribución de recursos entre las distintas sucursales.
-
 
 **- Task Flow 7**: Conciliación de discrepancias de inventario
 
@@ -1980,7 +1973,6 @@ El administrador entra a la sección de inventario e ingresa un nuevo lote compl
 </p>
 
 El administrador accede a la sección de discrepancias de inventario y selecciona una discrepancia específica para ver su detalle, donde puede revisar las diferencias entre el stock físico y el digital junto a su historial. Desde esa vista, elige la opción de resolver la discrepancia, completa el formulario de justificación con los datos correspondientes y confirma la acción para registrar la corrección.
-
 
 **- Task Flow 8**: Gestión de dispositivos
 
@@ -2013,7 +2005,6 @@ El administrador accede a la sección de discrepancias de inventario y seleccion
 
 El administrador ingresa a la sección de dispositivos y registra un nuevo inventario inteligente completando su formulario; una vez creado, accede al detalle del dispositivo para asignarle un insumo del catálogo. Luego completa el formulario de asignación y configura los límites de peso, temperatura y humedad que activarán alertas automáticas, permitiendo así automatizar el seguimiento del stock en tiempo real.
 
-
 **- Task Flow 9**:
 
 <p align="center">
@@ -2042,7 +2033,6 @@ El administrador ingresa a la sección de dispositivos y registra un nuevo inven
 </p>
 
 El administrador accede a la configuración de cuenta y navega a la sección de sucursales, donde puede ver las ubicaciones ya registradas. Desde allí selecciona la opción de agregar una nueva sucursal, completa el formulario con nombre, teléfono, dirección y demás datos de la ubicación, y al guardar la nueva sucursal queda visible en el listado para organizar las operaciones por local.
-
 
 ### 5.4.2. Applications Mock-ups
 
@@ -2220,7 +2210,6 @@ En esta sección se presentan los mockups de alta fidelidad de la aplicación we
   <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-20.png" alt="Pantalla de estado vacío con guía para inicio de telemetría" height="400">
 </div>
 
-
 **Catálogo general de recetas**
 
 **Descripción:** Panel principal que muestra la galería de platos con indicadores de fluctuación de costos, alertas de inventario bajo y estado de actividad.
@@ -2316,7 +2305,6 @@ En esta sección se presentan los mockups de alta fidelidad de la aplicación we
 <div align="center">
   <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-32.png" alt="Panel de supervisión con métricas de red y registro de discrepancias de peso y temperatura" height="400">
 </div>
-
 
 **Catalogo de kits y combos**
 
@@ -2510,7 +2498,6 @@ En esta sección se presentan los mockups de alta fidelidad de la aplicación we
   <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-56.png" alt="Diálogo de seguridad para desvinculación de hardware y cese de monitoreo" height="400">
 </div>
 
-
 **Lista general de alertas y notificaciones**
 
 **Descripción:** Panel principal que centraliza avisos sobre desajustes de datos, fallos de conexión en terminales y transferencias de stock pendientes.
@@ -2630,7 +2617,6 @@ En esta sección se presentan los mockups de alta fidelidad de la aplicación we
 <div align="center">
   <img src="./assets/images/chapter5/web_mockups/5.4.2-Web-Mockup-71.png" alt="Diálogo de confirmación crítica para eliminación permanente de sucursal" height="400">
 </div>
-
 
 ### Mobile Application
 
@@ -2986,21 +2972,17 @@ En esta sección se presentarán los mockups de la aplicación móvil, los cuale
 
 El visitante accede a la pantalla de Login y hace clic en "Sign up". Es redirigido a la pantalla Register donde ingresa su email, contraseña y confirma la contraseña. Hace clic en "Create Account" y avanza a "How will you use Restock?" donde selecciona su rol (Restaurant Administrator o Retail Administrator). Hace clic en "Continue" y completa el formulario "Create your Account" con nombre, apellido, teléfono, ubicación y avatar. Hace clic en "Next: Business Details" y completa el "Registration - Business Profile" con nombre comercial, descripción, categorías y dirección. Hace clic en "Create Account" y es redirigido a "Subscription Plans" donde selecciona el plan Premium. Hace clic en "Select Plan" y es redirigido al "Payment Gateway" donde ingresa sus datos de tarjeta. El pago es procesado exitosamente y el usuario accede al Dashboard.
 
-
 ![User Flow 1 - Happy Path Web](https://imgur.com/qCOMFK3.png)
 
 ![User Flow 1 - Happy Path Mobile](https://imgur.com/32OLoEy.png)
-
 
 ##### Unhappy Path
 
 El visitante intenta registrarse con un correo ya existente o deja campos obligatorios vacíos. El sistema muestra mensajes de error en los campos correspondientes y bloquea el avance hasta que los datos sean corregidos. Si en el Payment Gateway los datos de tarjeta son inválidos, el sistema muestra un aviso de fallo en la transacción y bloquea el pago hasta que el usuario corrija la información.
 
-
 ![User Flow 1 - Unhappy Path Web](https://imgur.com/w0ilFpl.png)
 
 ![User Flow 1 - Unhappy Path Mobile](https://imgur.com/unYReLb.png)
-
 
 #### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
 
@@ -3014,7 +2996,6 @@ El usuario accede a la pantalla Login, ingresa su email y contraseña correctos 
 
 ![User Flow 2 - Happy Path Mobile](https://imgur.com/qHmQ3YJ.png)
 
-
 ##### Unhappy Path
 
 El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el mensaje "Incorrect credentials. Please try again." El usuario hace clic en "Forgot your password?" y es redirigido a Reset Password donde ingresa su email y hace clic en "Send recovery code". Recibe un código de 6 dígitos en su correo, lo ingresa en la pantalla de verificación y establece una nueva contraseña válida para recuperar el acceso.
@@ -3022,8 +3003,6 @@ El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el
 ![User Flow 2 - Unhappy Path Web](https://imgur.com/lsTwfc3.png)
 
 ![User Flow 2 - Unhappy Path Mobile](https://imgur.com/oRD1Bbc.png)
-
-
 
 #### User Flow 3: Gestión de Insumos / Custom Supplies
 
@@ -3033,11 +3012,9 @@ El usuario ingresa credenciales incorrectas y el sistema muestra el Login con el
 
 El administrador navega desde el Dashboard al módulo Inventory y accede a la sección Custom Supplies. Visualiza el catálogo con los insumos existentes. Hace clic en "+ Add Supply", se abre el modal "Create Custom Supply" donde selecciona la categoría, ingresa el nombre del insumo, la unidad de medida, capacidad mínima, máxima y marca si es perecible. Guarda los cambios y el nuevo insumo aparece en el catálogo. Para editar, hace clic en "Edit" sobre un insumo existente, se abre el modal "Edit Custom Supply" con los datos precargados, realiza los cambios y hace clic en "Update Supply".
 
-
 ![User Flow 3 - Happy Path Web](https://imgur.com/b5BxBnj.png)
 
 ![User Flow 3 - Happy Path Mobile](https://imgur.com/QtC4zEP.png)
-
 
 ##### Unhappy Path
 
@@ -3047,11 +3024,9 @@ El administrador deja campos obligatorios vacíos o ingresa valores inválidos e
 
 ![User Flow 3 - Unhappy Path Mobile](https://imgur.com/4KDJ6CR.png)
 
-
 #### User Flow 4: Gestión de Recetas
 
 **User Goal:** Como administrador de restaurante, quiero crear y gestionar recetas vinculando insumos del inventario para controlar el consumo por plato y calcular el costo estimado de preparación.
-
 
 ##### Happy Path
 
@@ -3059,15 +3034,11 @@ El administrador accede al módulo Recipes desde el sidebar. Visualiza el Recipe
 
 ![User Flow 4 - Happy Path Web](https://imgur.com/H2U0c80.png)
 
-
 ##### Unhappy Path
 
 El administrador intenta guardar una receta sin ingredientes o con cantidades inválidas. El sistema bloquea el guardado y muestra el mensaje de error correspondiente. Si decide eliminar una receta, aparece el modal "Delete Recipe?" con advertencia de que la acción es permanente. Si confirma haciendo clic en "Yes, delete recipe", la receta es eliminada del catálogo.
 
-
 ![User Flow 4 - Unhappy Path Web](https://imgur.com/Wnwo46O.png)
-
-
 
 #### User Flow 5: Gestión de Kits / Combos
 
@@ -3077,64 +3048,47 @@ El administrador intenta guardar una receta sin ingredientes o con cantidades in
 
 El administrador retail accede al módulo Kits desde el sidebar. Visualiza el Kits & Combos Catalog con los combos existentes. Hace clic en "+ Create Kit", se abre el modal "Create New Kit" donde sube una imagen, ingresa el nombre del kit, selecciona los productos desde el inventario con sus cantidades y hace clic en "Add Kit". El kit aparece en el catálogo. Al acceder al detalle del kit visualiza la disponibilidad operativa calculada según el stock de los componentes. Para editar, hace clic en "Edit Kit", modifica los componentes y hace clic en "Update Kit". Desde el módulo Sales, el administrador agrega el kit al Order Ticket, hace clic en "Log Sale & Update Stock" y el sistema registra la venta mostrando el modal "Sale Registered Successfully".
 
-
 ![User Flow 5 - Happy Path Web](https://imgur.com/aLFOxY2.png)
-
-
 
 ##### Unhappy Path
 
 El administrador intenta registrar una venta con un kit cuyos componentes no tienen stock físico suficiente. El sistema muestra el modal "Action Blocked: Insufficient Physical Inventory" indicando el componente faltante con el stock disponible vs el requerido. El administrador debe hacer clic en "Go to Restock from Stock" para ir al inventario y reponer el componente antes de poder completar la venta.
 
-
 ![User Flow 5 - Unhappy Path Web](https://imgur.com/31DxN7R.png)
-
 
 #### User Flow 6: Gestión de Lotes (Batches) y Transferencia de Stock
 
 **User Goal:** Como administrador, quiero registrar lotes de insumos y transferir stock entre sucursales para optimizar la distribución de recursos y garantizar que el inventario esté siempre actualizado.
 
-
 ##### Happy Path
 
 El administrador accede al módulo Inventory y visualiza la vista de Batches con la lista de lotes activos, stock total, fechas de vencimiento y alertas. Hace clic en "+ Add Batch", se abre el modal "Add New Batch" donde selecciona el insumo, ingresa el stock inicial y la fecha de vencimiento y hace clic en "Add Batch". Para ver el detalle de un lote hace clic sobre él y se abre el modal "Batch Detail". Para editar hace clic en "Update Batch", modifica los campos en el modal "Edit Batch" y confirma los cambios. Para transferir stock hace clic en "Transfer Batch Stock", se abre el drawer "Stock Transfer" donde selecciona la sucursal origen, destino, el lote y la cantidad, y confirma la transferencia actualizando el stock de ambas sucursales.
 
-
 ![User Flow 6 - Happy Path Web](https://imgur.com/neT8TRY.png)
 
-
 ![User Flow 6 - Happy Path Mobile](https://imgur.com/MXuIxpP.png)
-
 
 ##### Unhappy Path
 
 Si el administrador accede al inventario por primera vez sin insumos registrados, el sistema muestra la pantalla "Empty Inventory" con el mensaje "Your inventory is empty" y la opción de agregar el primer insumo haciendo clic en "+ Add First Supply". Si en el drawer de transferencia ingresa una cantidad mayor al stock disponible del lote, el sistema muestra el indicador en rojo y bloquea la confirmación hasta que se corrija la cantidad.
 
-
 ![User Flow 6 - Unhappy Path Web](https://imgur.com/lb9bjQ8.png)
 
-
 ![User Flow 6 - Unhappy Path Mobile](https://imgur.com/BztsoNr.png)
-
-
 
 #### User Flow 7: Conciliación de Discrepancias de Inventario
 
 **User Goal:** Como administrador del negocio, quiero revisar, justificar y resolver las discrepancias detectadas entre el stock físico y el stock digital, para mantener la trazabilidad del inventario y tomar acciones correctivas documentadas.
 
-
 ##### Happy Path
 
 El administrador accede al módulo Inventory y selecciona la sección "Conciliation Tasks". Visualiza la lista de discrepancias activas con su nivel de criticidad. Hace clic en una discrepancia activa para acceder al "Discrepancy Detail" donde visualiza el stock digital, la lectura del smart scale y la gráfica de peso vs tiempo. Selecciona la causa de la discrepancia desde el dropdown, ingresa la justificación y hace clic en "Confirm & Apply Action". El sistema actualiza el inventario digital, cierra la tarea y registra el evento en el "Resolution History".
 
-
 ![User Flow 7 - Happy Path Web](https://imgur.com/Tp0Slyz.png)
-
 
 ##### Unhappy Path
 
 El administrador detecta que el smart scale reporta lecturas inconsistentes y hace clic en "Recalibrate Scale". Se abre el modal "Recalibrate Scale" con las opciones "Force Reset (Stay Calibrated)" o "Schedule On-site Visit Maintenance". Si el dispositivo no responde al reset, el sistema bloquea la confirmación y muestra error de conectividad. El administrador puede registrar la discrepancia como "Unresolved" con comentario o programar visita técnica mediante "Recalibrate & Create Discrepancy".
-
 
 ![User Flow 7 - Unhappy Path Web](https://imgur.com/e0L6mW6.png)
 
@@ -3142,33 +3096,25 @@ El administrador detecta que el smart scale reporta lecturas inconsistentes y ha
 
 **User Goal:** Como administrador, quiero registrar y configurar los dispositivos de monitoreo de inventario en mis sucursales, para automatizar el seguimiento de stock y recibir alertas oportunas según los umbrales definidos.
 
-
 ##### Happy Path
 
 El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
 
-
 ![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
 
-
 ![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
-
-
 
 ##### Unhappy Path — Desvinculación de dispositivo activo
 
 El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
 
-
 ![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
 
 ![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
 
-
 #### User Flow 9: Gestión de Sucursales
 
 **User Goal:** Como administrador, quiero gestionar las sucursales de mi negocio, para organizar mis operaciones por sede y mantener actualizada la información de cada ubicación.
-
 
 ##### Happy Path
 
@@ -3178,29 +3124,24 @@ El administrador accede a Settings, Branch Management desde el sidebar. Visualiz
 
 ![User Flow 9 - Happy Path Mobile](https://imgur.com/YRUpB5y.png)
 
-
 ##### Unhappy Path
 
 El administrador intenta guardar una nueva sucursal dejando campos obligatorios vacíos o con datos inválidos. El sistema bloquea el guardado en el drawer "Create New Branch" y muestra mensajes de error en los campos correspondientes hasta que la información sea corregida y completada.
-
 
 ![User Flow 9 - Unhappy Path Web](https://imgur.com/DHtm8WS.png)
 
 ![User Flow 9 - Unhappy Path Mobile](https://imgur.com/7Ge84z7.png)
 
-
 ## 5.5. Applications Prototyping
 
 En esta sección, se evidencian pruebas de uso del prototipo de la aplicación web y móvil. Además, se adjunta un video donde se usa el prototipo y las interacciones con el prototipo se basan en los User Flows descritos previamente.
 
-#### Prototipo de la aplicación web 
+#### Prototipo de la aplicación web
 
 <p align="center">
   <img src="https://i.imgur.com/6o0juzg.png">
 
-
 Video demostrativo de la aplicación web: https://acortar.link/tcLixm
-
 
 #### Prototipo de la aplicación móvil
 
@@ -3423,7 +3364,7 @@ En el quinto paso, empezamos a definir quienes serán los usuarios finales que u
 #### Paso 6: Definición de requisitos para la capa de servicios de aplicación
 
 Ya habiendo definido los servicios en el anterior paso y la información necesaria para cumplir con estos servicios, en este paso se definen los requisitos para dichos servicios.
-Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados. 
+Estos requisitos incluyen un resumen de la interfaz o interfaces que se requieren para dicho servicio. Además, se determina la complejidad de los algoritmos asociados con los servicios identificados.
 
 <table>
   <tr>
@@ -3755,7 +3696,7 @@ Luego, se analiza el esfuerzo computacional de los algoritmos elegidos. Es por e
 
 - El uso de memoria es Bajo en los nodos periféricos porque se manejan tipos de datos primitivos (float, int) y buffers de muestreo pequeños, lo que optimiza los 520 KB de RAM del ESP32.
 
-#### Paso 12: Definición de la interfaz de usuario gráfica 
+#### Paso 12: Definición de la interfaz de usuario gráfica
 
 En esta etapa final se definen los elementos visuales basándose en los servicios de información integrada y comandos operativos requeridos por el usuario final. A continuación, se detalla el módulo y su responsabilidad en el sistema:
 
