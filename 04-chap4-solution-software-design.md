@@ -11,43 +11,53 @@ En esta sección se presenta el Design-Level Event Storming, técnica utilizada 
 A partir del Big Picture EventStorming, el equipo identificó los siguientes pain points distribuidos en los distintos flujos del negocio. Estos puntos de fricción representan situaciones sin resolver en la operación actual y constituyeron el punto de partida para el diseño detallado del sistema:
 
 **Flujo de cierre de caja:**
+
 - **"What happens if the count was not done correctly?"**: Existía ambigüedad sobre qué ocurre cuando el conteo físico de caja presenta errores. Este pain point evidenció la necesidad de modelar un flujo de corrección que contemple la detección de diferencias, su resolución y el registro de justificaciones.
 - **"What do I do with the missing money?"**: No estaba definido el proceso a seguir cuando se detecta una diferencia de caja no resuelta. Este punto señaló la necesidad de un flujo de escalamiento hacia el manager y generación de reportes de cierre.
 
 **Flujo de gestión de inventario en restaurante:**
+
 - **"How do I reduce the wastage?"**: La operación manual de inventario no disponía de mecanismos para controlar el desperdicio de insumos. Este painpoint motivó el diseño de alertas de stock y seguimiento de mermas en el sistema.
 - **"What happens if no provider has the supply needed?"**: El flujo de reabastecimiento no contemplaba el escenario en que ningún proveedor disponga del insumo requerido, dejando al negocio sin alternativa. Este punto evidenció la necesidad de gestionar proveedores alternativos o generar alertas críticas.
 - **"What happens if the order is rejected?"**: No estaba modelado qué ocurre cuando el proveedor rechaza la orden de compra, interrumpiendo el flujo de reabastecimiento.
 
 **Flujo de gestión de inventario en tienda retail:**
+
 - **"What happens if no provider has the supply needed?"**: Pain point análogo al del sector restaurante, evidenciando la misma brecha en ambos segmentos objetivo.
 - **"What happens if the order is rejected?"**: Igualmente presente en el sector retail, señalando la ausencia de un flujo de contingencia ante rechazos de proveedores.
 - **"What happens with the expired products?"**: El proceso de ajuste de stock por diferencias detectadas no contemplaba el tratamiento específico de productos vencidos, generando una brecha en el control de inventario.
 
 **Flujo de organización de góndolas:**
+
 - **"What happens with the products in the back of the gondola?"**: El flujo de reposición en góndola no definía qué hacer con los productos ubicados en la parte trasera, una práctica crítica para el control de vencimientos mediante rotación FIFO.
 
 **Flujo de preparación de platos:**
+
 - **"How much time does the order take to reach the kitchen?"**: No estaba definido el tiempo máximo aceptable ni el mecanismo de seguimiento del estado del pedido entre sala y cocina.
 - **"What happens if we prepared the wrong dish?"**: El flujo de preparación no contemplaba el manejo de errores en la elaboración del plato ni la reposición de insumos afectados.
 
 **Flujo de atención al cliente en restaurante:**
+
 - **"How much time does the order take to reach the kitchen?"**: Pain point recurrente también presente en el flujo de atención al cliente, reforzando la necesidad de visibilidad del estado del pedido.
 - **"What happens if the calculations are wrong?"**: El cálculo del precio de la orden podía presentar errores sin un mecanismo de corrección definido antes del cobro.
 - **"What happens if the system goes down?"**: La dependencia del POS para procesar pagos dejaba al negocio sin alternativa ante una caída del sistema.
 
 **Flujo de atención al cliente en tienda retail:**
+
 - **"What happens if the customer needs a product that I don't have?"**: El flujo de atención no contemplaba cómo gestionar la demanda de productos agotados o no disponibles en tienda.
 - **"What happens if the system goes down?"**: Análogo al restaurante, la dependencia del POS presentaba el mismo riesgo operativo.
 
 **Flujo de ideación y registro de ofertas:**
+
 - **"What happens if the offer doesn't work?"**: No estaba definido el proceso de evaluación y retiro de una oferta que no genera el impacto esperado en ventas.
 
 **Flujo de creación y prueba de recetas:**
+
 - **"What happens if I don't calculate the correct price?"**: El cálculo del costo teórico de una receta podía presentar errores sin un mecanismo de validación definido antes de su aprobación.
 - **"How do I know the new recipe will work?"**: No estaba definido el criterio de aceptación de una receta nueva, dejando la decisión sin un proceso estructurado de prueba y validación.
 
 **Flujo de cierre de día en restaurante y retail:**
+
 - **"What if the place gets robbed?"**: Presente en ambos sectores, este pain point señalaba la ausencia de un protocolo de seguridad ante incidentes físicos al cierre del establecimiento.
 
 Estos pain points del Big Picture evidenciaron las principales brechas operativas de los negocios objetivo y orientaron las decisiones de diseño del sistema. Aquellos directamente relacionados con la gestión de inventarios, el control de stock, la detección de discrepancias y la trazabilidad de insumos fueron priorizados en el Design-Level EventStorming, ya que constituyen el núcleo de valor de la solución Restock. Los pain points relacionados con operaciones fuera del alcance del sistema (seguridad física, atención al cliente presencial, elaboración de platos) fueron registrados como contexto del problema pero no forman parte del diseño técnico de la plataforma.
@@ -132,15 +142,10 @@ El tercer paso incorporó la identificación de los pain points dentro de los fl
 Se identificaron seis pain points distribuidos en los bounded contexts con mayor ambigüedad de diseño. Cada uno fue resuelto en el transcurso del Design-Level EventStorming tal como se describe al inicio de esta sección:
 
 - **"How do I access the services?"** en IAM. Resuelto mediante el modelado del flujo Sign up con sus cuatro eventos (`User entered personal data`, `User entered their password`, `User Role was chosen`, `User data was saved`) y la política automática `Create profile automatically`.
-
 - **"What information does a recipe require?"** en Design and Planning. Resuelto estableciendo los eventos de registro: `Recipe register initialized`, `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`.
-
 - **"What information does a Kit require?"** en Design and Planning. Resuelto estableciendo los eventos: `Kit register initialized`, `Kit description entered`, `Supplies selected`, `Quantity of supplies established`, `Recipe image uploaded`, `Kit saved into the catalog`.
-
 - **"How do I record a sale?"** en Sales Management. Resuelto mediante el flujo de eventos: `Sale initialized`, `Branch selected`, `Recipes selected`, `Additional supplies were registered`, `Calculate total price`, `Sale confirmed`; con dos políticas automáticas que calculan el total y descuentan el stock.
-
 - **"How do you register a branch?"** en Asset and Resource Management. Resuelto con los eventos: `Branch register was initialized`, `Branch data entered` (agrupando nombre, ubicación e imagen de la sucursal) y `Branch registered`; más la restricción `Cannot delete branch with stock available`.
-
 - **"How do you register a custom supply?"** en Asset and Resource Management. Resuelto consolidando el flujo de registro en tres eventos de dominio significativos: `Custom Supply register initialized`, `Custom Supply data entered` (agrupando nombre, categoría, precio unitario, unidad de medida e imagen) y `Custom Supply created`. Se descartó el modelado evento a evento de cada campo de formulario, dado que ninguno de ellos genera reacciones de dominio ni dispara políticas o comandos de forma independiente.
 
 #### Paso 4: Pivotal Points
@@ -184,19 +189,12 @@ El quinto paso consistió en identificar los comandos del sistema. Un comando re
 El equipo incorporó los comandos en cada línea de tiempo de la siguiente manera:
 
 - En **IAM** se definieron: Sign up, Sign in y Register new user for account.
-
 - En **Profiles and Preferences** se definieron: Change Password, Update personal data, Register new business, Request information about supplies, Request last supplies registered y Request recent alerts.
-
 - En **Subscriptions and Payments** se definieron: Select subscription plan, Update plan limits, Configure plan limits, Register payment, Create account y Associate to account.
-
 - En **Asset and Resource Management** se definieron: Create branch, Edit branch, Delete branch, Register Custom Supply, Edit Custom Supply, Delete Custom Supply, Add supply batch stock, Subtrack supply batch stock y Transfer supply batch stock.
-
 - En **Design and Planning** se definieron: Register recipe, Edit recipe, Delete recipe, Register Kit, Edit Kit y Delete kit.
-
 - En **Sales Management** se definieron: Register sale y Show sales.
-
 - En **Device Management** se definieron: Register new device, Configure a device y Deactivate device.
-
 - En **Tracking** se definieron: Evaluate device state, Register state, Evaluate stock, Perform stock adjustment, Register threshold, Edit threshold y Verify threshold.
 
 #### Paso 6: Policies and Actors
@@ -215,17 +213,11 @@ El equipo identificó como actores principales al **Retail Manager** y al **Rest
 Las políticas identificadas por bounded context son las siguientes:
 
 - En **IAM:** Create profile automatically, disparada tras User data was saved, y Access the dashboard when logging in, disparada tras Worker data was saved.
-
 - En **Subscriptions and Payments:** Generate a payment order in Stripe with details, disparada tras Payment details entered; Configures the plan limits for the account, disparada tras New plan chosen; Creates a new account for the business, disparada tras Account created; y Sends the payment summary to the user, disparada tras Summary generated.
-
 - En **Profiles and Preferences** y **Design and Planning:** Upload the photo to the API and get the link, disparada cada vez que se carga o actualiza una imagen de perfil, negocio, receta o kit a través de Cloudinary API.
-
 - En **Sales Management:** Sum all the prices of the recipes and additional supplies, disparada tras Additional supplies were registered para calcular el total; y Subtract automatically the stock of the sold supplies, disparada tras Sale confirmed para actualizar el inventario.
-
 - En **Asset and Resource Management:** Gets the info and sends a message, disparada tras Batch stock added to the inventory; y Verifies the current stock of the warehouse and subtracts it, disparada durante la transferencia de stock entre sucursales.
-
 - En **Device Management:** Gets info of the change and sends a notification, disparada tras Configuration confirmed; y Creates or edits a threshold record for alert handling, disparada tras configuraciones de umbrales en el dispositivo.
-
 - En **Tracking:** Divide the weight received to calculate the physical stock, disparada al procesar los datos de telemetría para estimar el stock físico.
 
 #### 4.1.1.1 Candidate Context Discovery
@@ -247,15 +239,10 @@ El séptimo paso consistió en identificar los modelos de lectura del sistema. L
 El equipo incorporó los read models en los siguientes bounded contexts:
 
 - En **IAM:** Sign-up Form, consultada por el Visitant antes de registrarse; y Sign-in Form, consultada por el User antes de autenticarse.
-
 - En **Profiles and Preferences:** Profile settings, consultada al cambiar contraseña o actualizar datos personales; Business Profile, consultada al registrar o actualizar la información del negocio; y Workers Management, consultada al registrar un nuevo usuario para la cuenta.
-
 - En **Subscriptions and Payments:** Subscription plans, consultada por el User antes de seleccionar o actualizar un plan de suscripción.
-
 - En **Design and Planning:** Recipe Catalog, consultada por el Restaurant Manager al registrar, editar o eliminar una receta; y Kit Catalog, consultada por el Retail Manager al registrar, editar o eliminar un kit.
-
 - En **Sales Management:** Sales Management, consultada al registrar una venta o filtrar el historial de ventas.
-
 - En **Asset and Resource Management:** Branch Management, consultada al crear, editar o eliminar sucursales; Custom Supply Management, consultada al registrar, editar o eliminar insumos personalizados; Inventory Management, consultada al añadir o transferir stock; y Batch Management, consultada al registrar un lote.
 
 En **Device Management:** Device Management, consultada al registrar, configurar o desactivar un dispositivo.
@@ -275,9 +262,7 @@ El octavo paso consistió en incorporar al modelo los sistemas externos. Los sis
 El equipo identificó tres sistemas externos:
 
 - **Cloudinary API** presente en Profiles and Preferences (carga de imágenes de perfil y negocio), Asset and Resource Management (carga de imágenes de sucursales e insumos) y Design and Planning (carga de imágenes de recetas y kits). Es activada mediante la política Upload the photo to the API and get the link.
-
 - **Stripe** presente en Subscriptions and Payments, encargado de procesar los pagos de suscripción. Aparece en el flujo entre Payment details entered y Pay subscription plan, activado mediante la política Generate a payment order in Stripe with details.
-
 - **OneSignal API** presente en Communications, responsable de enviar notificaciones push a los usuarios. Es activado mediante la política Gets the info and sends a message, disparada tras el evento Notification sent to the center.
 
 #### Paso 9: Add Aggregates
@@ -301,33 +286,21 @@ El noveno paso consistió en identificar los agregados del dominio y agrupar en 
 El equipo identificó los agregados en cada bounded context de la siguiente manera:
 
 - En **IAM** se identificó el agregado **User**, que centraliza los flujos de Sign up, Sign in y Register new user for account, garantizando que la identidad y el acceso de cada actor estén correctamente gestionados.
-
 - En **Subscriptions and Payments** se identificaron tres agregados: **Subscription**, que agrupa los eventos de selección de plan y procesamiento mediante Stripe; **Plan**, que gestiona la detección y configuración de límites del plan contratado; y **Payment**, que agrupa el registro del pago, la recepción del monto y la generación del resumen de facturación.
-
 - En **Profiles and Preferences** se identificaron dos agregados: **Profile**, que centraliza la creación de perfil, el cambio de contraseña, la actualización de datos personales y la carga de imágenes mediante Cloudinary API; y **Business**, que gestiona el registro y actualización de la información comercial del negocio.
-
 - En **Asset and Resource Management** se identificaron cuatro agregados: **Branch**, que gestiona el ciclo de vida completo de las sucursales incluyendo la restricción de eliminación cuando existe stock disponible e integración con Cloudinary API, exponiendo los eventos `Branch location was selected`, `Branch image was loaded`, `Branch registered`, `Branch edited` y `Branch deleted`; **Custom Supply**, que gestiona el catálogo de insumos personalizados consolidando su creación en el evento `Custom Supply created` y exponiendo adicionalmente `Custom Supply edited` y `Custom Supply deleted`; **Inventory**, que centraliza las operaciones de adición y transferencia de stock entre sucursales; y **Batch**, que gestiona los lotes de inventario, incluyendo su creación, transferencia y descuento de stock.
-
 - En **Design and Planning** se identificaron dos agregados: **Recipe**, que centraliza el registro y edición de recetas exponiendo los eventos `Recipe information entered`, `Supplies selected`, `The quantity of supplies was established`, `Recipe image uploaded`, `Recipe saved`, `Recipe edited` y `Recipe deleted`; y **Kit**, que gestiona la composición de kits comerciales para el sector retail exponiendo los eventos `Kit description entered`, `Supplies selected`, `Quantity of supplies established`, `Recipe image uploaded`, `Kit saved into the catalog`, `Kit edited` y `Kit deleted`.
-
 - En **Sales Management** se identificó el agregado **Sales Order**, que centraliza el registro de ventas, el cálculo automático del precio total y el filtrado del historial de ventas.
-
 - En **Communications** se identificó el agregado **Notification**, que gestiona la generación de notificaciones ante eventos del sistema y su despacho mediante OneSignal API.
-
 - En **Device Management** se identificó el agregado **Device**, que centraliza el registro, configuración y desactivación de dispositivos IoT, incluyendo la asignación de sucursal, insumo de seguimiento, umbrales de peso, humedad y temperatura, y programación de encendido y apagado.
 
 En **Tracking** se identificaron seis agregados:
 
 - **Device Health Record** gestiona el monitoreo de la salud operativa del dispositivo a partir de métricas de voltaje, uso de CPU, uso de memoria y temperatura del dispositivo, con dos posibles resultados: `Data analyzed` o `Anomaly detected`.
-
 - **Box State Record** centraliza el flujo completo de telemetría física del dispositivo, incorporando explícitamente las tres variables ambientales monitoreadas: peso, temperatura y humedad. El flujo es: `Weight registered` → `Temperature registered` → `Humidity registered` → `Values checked` → `Divide the weight received to calculate the physical stock` → `Approximated supply data processed` → `Physical stock estimated`, con dos derivaciones posibles: `Processed data stored` o `Data anomaly detected`. La inclusión de temperatura y humedad como variables de primer nivel responde al requisito de monitorear no solo la cantidad del insumo sino también sus condiciones de conservación.
-
 - **Stock Comparison** gestiona la comparación entre el stock físico estimado por el dispositivo y el stock digital registrado en el sistema, incorporando el evento de lectura `Stock record consulted` previo a la evaluación y derivando en `Discrepancy detected` o `Stock verified`.
-
 - **Power Schedule** gestiona la programación de encendido y apagado del dispositivo, con el flujo: `Device selected` → `Power off schedule set` → `Power on schedule set` → `Configuration stored`, y la ejecución automática: `Schedules detected` → `Schedule time reached` → `Turn on/off action evaluated` → `Device turned on` / `Device turned off`.
-
 - **Conciliation Task** gestiona el proceso de ajuste de stock cuando se detecta una discrepancia: `Physical and digital stock received` → `Stock difference received` → `Stock adjusted` → `Real stock stored`.
-
 - **Box Threshold** centraliza la configuración y verificación de umbrales de alerta por dispositivo. Al registrar un umbral se capturan los límites mínimos y máximos de las tres variables monitoreadas — **peso**, **temperatura** y **humedad** — junto al nombre del insumo asociado. Al verificar un umbral, el sistema evalúa si los valores actuales de cualquiera de estas tres variables superan los límites configurados, generando la política `Generates an alert of surpassed threshold` cuando corresponde.
 
 A partir del modelo de Event Storming, se llevó a cabo una sesión de Candidate Context Discovery para identificar los bounded contexts de la solución. Se utilizó principalmente la técnica look-for-pivotal-events durante la sesión.
@@ -4901,7 +4874,6 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </tbody>
 </table>
 
-
 <br>
 
 ##### Backend Application Component Diagram
@@ -4996,37 +4968,37 @@ Está compuesta por Aggregates, Value Objects, Domain Events y abstracciones de 
 
 #### Aggregates & Entities
 
-| Nombre de Clase    | Categoría      | Propósito y Reglas de Negocio                                                                                                                                                                      |
-|--------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombre de Clase    | Categoría     | Propósito y Reglas de Negocio                                                                                                                                                                      |
+| ------------------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | TelemetryReading   | Aggregate Root | Representa una lectura recibida desde un dispositivo IoT. Encapsula datos como peso bruto, peso estable y cantidad estimada. Permite calcular estimaciones físicas y detectar variaciones de peso. |
-| StockRecord        | Aggregate Root | Representa el registro consolidado del stock físico estimado. Calcula diferencias entre cantidades previas y nuevas, identifica anomalías y actualiza la estimación física del inventario.         |
-| SupplyThreshold    | Aggregate Root | Representa los umbrales configurados para un insumo en una sucursal. Valida si el stock actual está en estado normal, advertencia o crítico.                                                       |
-| DeviceHealthReport | Aggregate Root | Representa el estado operativo de un dispositivo IoT. Registra problemas como batería baja, señal débil, retraso de telemetría o mal funcionamiento.                                               |
-| ReconciliationTask | Aggregate Root | Representa una tarea generada cuando existe una discrepancia entre el stock físico estimado y el stock digital. Permite gestionar su estado hasta su resolución.                                   |
+| StockRecord        | Aggregate Root | Representa el registro consolidado del stock físico estimado. Calcula diferencias entre cantidades previas y nuevas, identifica anomalías y actualiza la estimación física del inventario.      |
+| SupplyThreshold    | Aggregate Root | Representa los umbrales configurados para un insumo en una sucursal. Valida si el stock actual está en estado normal, advertencia o crítico.                                                      |
+| DeviceHealthReport | Aggregate Root | Representa el estado operativo de un dispositivo IoT. Registra problemas como batería baja, señal débil, retraso de telemetría o mal funcionamiento.                                            |
+| ReconciliationTask | Aggregate Root | Representa una tarea generada cuando existe una discrepancia entre el stock físico estimado y el stock digital. Permite gestionar su estado hasta su resolución.                                  |
 
 #### Value Objects
 
-| Nombre de Clase                                         | Categoría    | Propósito y Reglas de Negocio                                                                                       |
-|---------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| StockRecordId                                           | Value Object | Identificador único del registro de stock físico.                                                                   |
-| TelemetryReadingId                                      | Value Object | Identificador único de una lectura de telemetría.                                                                   |
-| SupplyThresholdId                                       | Value Object | Identificador único de la configuración de umbral de un insumo.                                                     |
-| DeviceHealthReportId                                    | Value Object | Identificador único de un reporte de salud del dispositivo.                                                         |
-| ReconciliationTaskId                                    | Value Object | Identificador único de una tarea de conciliación.                                                                   |
-| StockQuantity                                           | Value Object | Encapsula cantidades de stock y operaciones de comparación o resta, evitando cantidades inconsistentes.             |
+| Nombre de Clase                                         | Categoría   | Propósito y Reglas de Negocio                                                                                      |
+| ------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------- |
+| StockRecordId                                           | Value Object | Identificador único del registro de stock físico.                                                                 |
+| TelemetryReadingId                                      | Value Object | Identificador único de una lectura de telemetría.                                                                 |
+| SupplyThresholdId                                       | Value Object | Identificador único de la configuración de umbral de un insumo.                                                   |
+| DeviceHealthReportId                                    | Value Object | Identificador único de un reporte de salud del dispositivo.                                                        |
+| ReconciliationTaskId                                    | Value Object | Identificador único de una tarea de conciliación.                                                                 |
+| StockQuantity                                           | Value Object | Encapsula cantidades de stock y operaciones de comparación o resta, evitando cantidades inconsistentes.            |
 | Weight                                                  | Value Object | Representa valores de peso capturados por dispositivos IoT, permitiendo calcular diferencias y validar estabilidad. |
-| Percentage                                              | Value Object | Representa valores porcentuales como batería o intensidad de señal del dispositivo.                                 |
-| BusinessId, BranchId, DeviceId, CustomSupplyId, BatchId | Value Object | Identificadores fuertemente tipados para evitar confusión entre entidades de distintos contextos.                   |
+| Percentage                                              | Value Object | Representa valores porcentuales como batería o intensidad de señal del dispositivo.                               |
+| BusinessId, BranchId, DeviceId, CustomSupplyId, BatchId | Value Object | Identificadores fuertemente tipados para evitar confusión entre entidades de distintos contextos.                  |
 
 #### Domain Events
 
-| Nombre de Evento               | Categoría    | Propósito                                                                                               |
-|--------------------------------|--------------|---------------------------------------------------------------------------------------------------------|
+| Nombre de Evento               | Categoría   | Propósito                                                                                               |
+| ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------- |
 | TelemetryReceivedEvent         | Domain Event | Se emite cuando el sistema recibe una lectura válida desde un dispositivo IoT.                          |
-| PhysicalStockEstimatedEvent    | Domain Event | Se emite cuando se calcula una nueva estimación de stock físico.                                        |
+| PhysicalStockEstimatedEvent    | Domain Event | Se emite cuando se calcula una nueva estimación de stock físico.                                       |
 | StockAnomalyDetectedEvent      | Domain Event | Se emite cuando se detecta una diferencia relevante entre el stock físico estimado y el stock esperado. |
 | LowStockDetectedEvent          | Domain Event | Se emite cuando el stock físico estimado cae por debajo del umbral configurado.                         |
-| DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                              |
+| DeviceMalfunctionDetectedEvent | Domain Event | Se emite cuando se identifica un problema operativo en un dispositivo IoT.                               |
 | ReconciliationCompletedEvent   | Domain Event | Se emite cuando una tarea de conciliación es completada.                                                |
 
 ### 4.2.6.2. Interface Layer
@@ -5035,75 +5007,75 @@ En la capa de interfaz del Bounded Context de **Tracking** se exponen los endpoi
 
 #### TelemetryController
 
-| Propiedad | Valor                                                                                             |
-|-----------|---------------------------------------------------------------------------------------------------|
-| Nombre    | TelemetryController                                                                               |
-| Categoría | Controller                                                                                        |
+| Propiedad  | Valor                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| Nombre     | TelemetryController                                                                                |
+| Categoría | Controller                                                                                         |
 | Propósito | Exponer endpoints para recibir y consultar lecturas de telemetría generadas por dispositivos IoT. |
-| Ruta      | /api/v1/monitoring/telemetry                                                                      |
+| Ruta       | /api/v1/monitoring/telemetry                                                                       |
 
 | Nombre            | Ruta                               | Acción                                                   | Handle                            |
-|-------------------|------------------------------------|----------------------------------------------------------|-----------------------------------|
+| ----------------- | ---------------------------------- | --------------------------------------------------------- | --------------------------------- |
 | RegisterReading   | /readings (POST)                   | Registra una nueva lectura de telemetría.                | RegisterTelemetryReadingCommand   |
-| GetByDevice       | /devices/{deviceId}/readings (GET) | Consulta lecturas asociadas a un dispositivo.            | GetTelemetryReadingsByDeviceQuery |
+| GetByDevice       | /devices/{deviceId}/readings (GET) | Consulta lecturas asociadas a un dispositivo.             | GetTelemetryReadingsByDeviceQuery |
 | GetLatestByDevice | /devices/{deviceId}/latest (GET)   | Obtiene la última lectura registrada por un dispositivo. | GetLatestTelemetryByDeviceQuery   |
 
 #### StockMonitoringController
 
-| Propiedad | Valor                                                                           |
-|-----------|---------------------------------------------------------------------------------|
-| Nombre    | StockMonitoringController                                                       |
-| Categoría | Controller                                                                      |
+| Propiedad  | Valor                                                                             |
+| ---------- | --------------------------------------------------------------------------------- |
+| Nombre     | StockMonitoringController                                                         |
+| Categoría | Controller                                                                        |
 | Propósito | Consultar el stock físico estimado y sus variaciones detectadas por telemetría. |
-| Ruta      | /api/v1/monitoring/stock-records                                                |
+| Ruta       | /api/v1/monitoring/stock-records                                                  |
 
-| Nombre                    | Ruta                                                        | Acción                                                         | Handle                            |
-|---------------------------|-------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------|
-| GetStockRecordsByBranch   | /branches/{branchId} (GET)                                  | Consulta registros de stock físico por sucursal.               | GetStockRecordsByBranchQuery      |
+| Nombre                    | Ruta                                                        | Acción                                                           | Handle                            |
+| ------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------- | --------------------------------- |
+| GetStockRecordsByBranch   | /branches/{branchId} (GET)                                  | Consulta registros de stock físico por sucursal.                 | GetStockRecordsByBranchQuery      |
 | GetLatestStockBySupply    | /branches/{branchId}/supplies/{customSupplyId}/latest (GET) | Obtiene la última estimación de stock físico de un insumo.     | GetLatestStockRecordBySupplyQuery |
 | RecomputePhysicalEstimate | /{stockRecordId}/recompute (POST)                           | Recalcula la estimación física a partir de una lectura válida. | RecomputePhysicalStockCommand     |
 
 #### SupplyThresholdController
 
-| Propiedad | Valor                                                                       |
-|-----------|-----------------------------------------------------------------------------|
-| Nombre    | SupplyThresholdController                                                   |
-| Categoría | Controller                                                                  |
+| Propiedad  | Valor                                                                        |
+| ---------- | ---------------------------------------------------------------------------- |
+| Nombre     | SupplyThresholdController                                                    |
+| Categoría | Controller                                                                   |
 | Propósito | Gestionar los umbrales mínimos y de advertencia para el monitoreo de stock. |
-| Ruta      | /api/v1/monitoring/supply-thresholds                                        |
+| Ruta       | /api/v1/monitoring/supply-thresholds                                         |
 
-| Nombre            | Ruta                                                 | Acción                                            | Handle                          |
-|-------------------|------------------------------------------------------|---------------------------------------------------|---------------------------------|
+| Nombre            | Ruta                                                 | Acción                                           | Handle                          |
+| ----------------- | ---------------------------------------------------- | ------------------------------------------------- | ------------------------------- |
 | RegisterThreshold | / (POST)                                             | Registra umbrales para un insumo en una sucursal. | RegisterSupplyThresholdCommand  |
-| UpdateThreshold   | /{thresholdId} (PUT)                                 | Actualiza los valores mínimo y de advertencia.    | UpdateSupplyThresholdCommand    |
+| UpdateThreshold   | /{thresholdId} (PUT)                                 | Actualiza los valores mínimo y de advertencia.   | UpdateSupplyThresholdCommand    |
 | GetBySupply       | /branches/{branchId}/supplies/{customSupplyId} (GET) | Consulta el umbral configurado para un insumo.    | GetSupplyThresholdBySupplyQuery |
 
 #### DeviceHealthController
 
-| Propiedad | Valor                                                                    |
-|-----------|--------------------------------------------------------------------------|
-| Nombre    | DeviceHealthController                                                   |
+| Propiedad  | Valor                                                                    |
+| ---------- | ------------------------------------------------------------------------ |
+| Nombre     | DeviceHealthController                                                   |
 | Categoría | Controller                                                               |
 | Propósito | Consultar y administrar reportes de salud operativa de dispositivos IoT. |
-| Ruta      | /api/v1/monitoring/device-health                                         |
+| Ruta       | /api/v1/monitoring/device-health                                         |
 
-| Nombre               | Ruta                                | Acción                                      | Handle                                |
-|----------------------|-------------------------------------|---------------------------------------------|---------------------------------------|
+| Nombre               | Ruta                                | Acción                                     | Handle                                |
+| -------------------- | ----------------------------------- | ------------------------------------------- | ------------------------------------- |
 | GetReportsByDevice   | /devices/{deviceId}/reports (GET)   | Consulta reportes de salud por dispositivo. | GetDeviceHealthReportsByDeviceQuery   |
-| GetUnresolvedReports | /reports/unresolved (GET)           | Lista reportes pendientes de atención.      | GetUnresolvedDeviceHealthReportsQuery |
+| GetUnresolvedReports | /reports/unresolved (GET)           | Lista reportes pendientes de atención.     | GetUnresolvedDeviceHealthReportsQuery |
 | ResolveReport        | /reports/{reportId}/resolve (PATCH) | Marca un reporte como resuelto.             | ResolveDeviceHealthReportCommand      |
 
 #### ReconciliationTaskController
 
-| Propiedad | Valor                                                                                      |
-|-----------|--------------------------------------------------------------------------------------------|
-| Nombre    | ReconciliationTaskController                                                               |
-| Categoría | Controller                                                                                 |
+| Propiedad  | Valor                                                                                        |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| Nombre     | ReconciliationTaskController                                                                 |
+| Categoría | Controller                                                                                   |
 | Propósito | Gestionar tareas de conciliación generadas por discrepancias entre stock físico y digital. |
-| Ruta      | /api/v1/monitoring/reconciliation-tasks                                                    |
+| Ruta       | /api/v1/monitoring/reconciliation-tasks                                                      |
 
 | Nombre             | Ruta                               | Acción                                                   | Handle                             |
-|--------------------|------------------------------------|----------------------------------------------------------|------------------------------------|
+| ------------------ | ---------------------------------- | --------------------------------------------------------- | ---------------------------------- |
 | GetPendingByBranch | /branches/{branchId}/pending (GET) | Consulta tareas de conciliación pendientes por sucursal. | GetPendingReconciliationTasksQuery |
 | CompleteTask       | /{taskId}/complete (PATCH)         | Marca una tarea de conciliación como completada.         | CompleteReconciliationTaskCommand  |
 | CancelTask         | /{taskId}/cancel (PATCH)           | Cancela una tarea de conciliación.                       | CancelReconciliationTaskCommand    |
@@ -5114,39 +5086,39 @@ La capa de aplicación del Bounded Context de **Tracking** coordina los flujos d
 
 #### Command Handlers
 
-| Nombre                                   | Categoría       | Propósito                                                                                | Comando                           |
-|------------------------------------------|-----------------|------------------------------------------------------------------------------------------|-----------------------------------|
+| Nombre                                   | Categoría      | Propósito                                                                                | Comando                           |
+| ---------------------------------------- | --------------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
 | RegisterTelemetryReadingCommandHandler   | Command Handler | Orquesta el registro de una lectura de telemetría recibida desde un dispositivo IoT.     | RegisterTelemetryReadingCommand   |
 | RecomputePhysicalStockCommandHandler     | Command Handler | Recalcula la cantidad física estimada de un insumo a partir del peso estable registrado. | RecomputePhysicalStockCommand     |
 | RegisterSupplyThresholdCommandHandler    | Command Handler | Registra los umbrales mínimo y de advertencia para un insumo en una sucursal.            | RegisterSupplyThresholdCommand    |
 | UpdateSupplyThresholdCommandHandler      | Command Handler | Actualiza la configuración de umbrales de monitoreo.                                     | UpdateSupplyThresholdCommand      |
-| ResolveDeviceHealthReportCommandHandler  | Command Handler | Marca un reporte de salud de dispositivo como resuelto.                                  | ResolveDeviceHealthReportCommand  |
+| ResolveDeviceHealthReportCommandHandler  | Command Handler | Marca un reporte de salud de dispositivo como resuelto.                                   | ResolveDeviceHealthReportCommand  |
 | CompleteReconciliationTaskCommandHandler | Command Handler | Completa una tarea de conciliación luego de corregir o validar la diferencia de stock.   | CompleteReconciliationTaskCommand |
-| CancelReconciliationTaskCommandHandler   | Command Handler | Cancela una tarea de conciliación cuando ya no requiere atención.                        | CancelReconciliationTaskCommand   |
+| CancelReconciliationTaskCommandHandler   | Command Handler | Cancela una tarea de conciliación cuando ya no requiere atención.                       | CancelReconciliationTaskCommand   |
 
 #### Query Handlers
 
-| Nombre                                       | Categoría     | Propósito                                                          | Query                                 |
-|----------------------------------------------|---------------|--------------------------------------------------------------------|---------------------------------------|
-| GetTelemetryReadingsByDeviceQueryHandler     | Query Handler | Consulta las lecturas registradas por un dispositivo específico.   | GetTelemetryReadingsByDeviceQuery     |
-| GetLatestTelemetryByDeviceQueryHandler       | Query Handler | Obtiene la lectura más reciente generada por un dispositivo IoT.   | GetLatestTelemetryByDeviceQuery       |
-| GetStockRecordsByBranchQueryHandler          | Query Handler | Lista los registros de stock físico estimado por sucursal.         | GetStockRecordsByBranchQuery          |
+| Nombre                                       | Categoría    | Propósito                                                            | Query                                 |
+| -------------------------------------------- | ------------- | --------------------------------------------------------------------- | ------------------------------------- |
+| GetTelemetryReadingsByDeviceQueryHandler     | Query Handler | Consulta las lecturas registradas por un dispositivo específico.     | GetTelemetryReadingsByDeviceQuery     |
+| GetLatestTelemetryByDeviceQueryHandler       | Query Handler | Obtiene la lectura más reciente generada por un dispositivo IoT.     | GetLatestTelemetryByDeviceQuery       |
+| GetStockRecordsByBranchQueryHandler          | Query Handler | Lista los registros de stock físico estimado por sucursal.           | GetStockRecordsByBranchQuery          |
 | GetLatestStockRecordBySupplyQueryHandler     | Query Handler | Consulta la última estimación física de un insumo en una sucursal. | GetLatestStockRecordBySupplyQuery     |
-| GetSupplyThresholdBySupplyQueryHandler       | Query Handler | Obtiene los umbrales configurados para un insumo específico.       | GetSupplyThresholdBySupplyQuery       |
-| GetDeviceHealthReportsByDeviceQueryHandler   | Query Handler | Consulta el historial de reportes de salud de un dispositivo.      | GetDeviceHealthReportsByDeviceQuery   |
-| GetUnresolvedDeviceHealthReportsQueryHandler | Query Handler | Lista los reportes de salud pendientes de resolución.              | GetUnresolvedDeviceHealthReportsQuery |
-| GetPendingReconciliationTasksQueryHandler    | Query Handler | Consulta tareas de conciliación pendientes por sucursal.           | GetPendingReconciliationTasksQuery    |
+| GetSupplyThresholdBySupplyQueryHandler       | Query Handler | Obtiene los umbrales configurados para un insumo específico.         | GetSupplyThresholdBySupplyQuery       |
+| GetDeviceHealthReportsByDeviceQueryHandler   | Query Handler | Consulta el historial de reportes de salud de un dispositivo.         | GetDeviceHealthReportsByDeviceQuery   |
+| GetUnresolvedDeviceHealthReportsQueryHandler | Query Handler | Lista los reportes de salud pendientes de resolución.                | GetUnresolvedDeviceHealthReportsQuery |
+| GetPendingReconciliationTasksQueryHandler    | Query Handler | Consulta tareas de conciliación pendientes por sucursal.             | GetPendingReconciliationTasksQuery    |
 
 #### Event Handlers
 
-| Nombre                                | Categoría     | Propósito                                                                                          | Evento                         |
-|---------------------------------------|---------------|----------------------------------------------------------------------------------------------------|--------------------------------|
-| TelemetryReceivedEventHandler         | Event Handler | Procesa una lectura de telemetría recibida y genera una estimación de stock físico.                | TelemetryReceivedEvent         |
+| Nombre                                | Categoría    | Propósito                                                                                          | Evento                         |
+| ------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
+| TelemetryReceivedEventHandler         | Event Handler | Procesa una lectura de telemetría recibida y genera una estimación de stock físico.              | TelemetryReceivedEvent         |
 | PhysicalStockEstimatedEventHandler    | Event Handler | Registra el nuevo estado físico del stock y valida si existe una diferencia significativa.         | PhysicalStockEstimatedEvent    |
 | StockAnomalyDetectedEventHandler      | Event Handler | Genera una tarea de conciliación cuando se detecta una discrepancia de stock.                      | StockAnomalyDetectedEvent      |
-| LowStockDetectedEventHandler          | Event Handler | Gestiona la alerta de bajo stock cuando el stock estimado cae por debajo del umbral.               | LowStockDetectedEvent          |
+| LowStockDetectedEventHandler          | Event Handler | Gestiona la alerta de bajo stock cuando el stock estimado cae por debajo del umbral.                | LowStockDetectedEvent          |
 | DeviceMalfunctionDetectedEventHandler | Event Handler | Registra un reporte de salud del dispositivo cuando se detecta una falla o comportamiento anómalo. | DeviceMalfunctionDetectedEvent |
-| ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                         | ReconciliationCompletedEvent   |
+| ReconciliationCompletedEventHandler   | Event Handler | Actualiza el estado operativo luego de resolver una discrepancia de stock.                          | ReconciliationCompletedEvent   |
 
 ### 4.2.6.4. Infrastructure Layer
 
@@ -5154,33 +5126,33 @@ La capa de infraestructura del Bounded Context de **Service Operation and Monito
 
 #### Repositories
 
-| Nombre                       | Categoría   | Propósito                                                                                | Interfaz                      |
-|------------------------------|-------------|------------------------------------------------------------------------------------------|-------------------------------|
+| Nombre                       | Categoría  | Propósito                                                                                | Interfaz                      |
+| ---------------------------- | ----------- | ----------------------------------------------------------------------------------------- | ----------------------------- |
 | TelemetryReadingRepository   | Repositorio | Persiste y consulta lecturas de telemetría recibidas desde dispositivos IoT.             | ITelemetryReadingRepository   |
 | StockRecordRepository        | Repositorio | Persiste y consulta registros de stock físico estimado.                                  | IStockRecordRepository        |
 | SupplyThresholdRepository    | Repositorio | Gestiona la persistencia de los umbrales mínimos y de advertencia por insumo y sucursal. | ISupplyThresholdRepository    |
-| DeviceHealthReportRepository | Repositorio | Persiste reportes de salud operativa de dispositivos.                                    | IDeviceHealthReportRepository |
+| DeviceHealthReportRepository | Repositorio | Persiste reportes de salud operativa de dispositivos.                                     | IDeviceHealthReportRepository |
 | ReconciliationTaskRepository | Repositorio | Almacena y consulta tareas de conciliación generadas por discrepancias de stock.         | IReconciliationTaskRepository |
 
 #### Persistence and External Services
 
-| Nombre                           | Categoría                | Propósito                                                                                                                                                                               |
-|----------------------------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Nombre                           | Categoría               | Propósito                                                                                                                                                                               |
+| -------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | MonitoringDbContext              | ORM Context              | Configura el mapeo entre las entidades del bounded context y las tablas de base de datos relacionadas con telemetría, stock records, thresholds, health reports y reconciliation tasks. |
 | TelemetryConsumer                | Message Consumer         | Recibe mensajes de telemetría publicados por dispositivos IoT o gateways externos.                                                                                                      |
 | DomainEventPublisher             | Message Broker Adapter   | Publica eventos de dominio relevantes hacia otros bounded contexts, como alertas de bajo stock o anomalías detectadas.                                                                  |
-| DeviceGatewayAdapter             | External Service Adapter | Adapta la comunicación con gateways o servicios externos que envían datos de sensores.                                                                                                  |
+| DeviceGatewayAdapter             | External Service Adapter | Adapta la comunicación con gateways o servicios externos que envían datos de sensores.                                                                                                 |
 | NotificationIntegrationPublisher | Integration Publisher    | Envía eventos de alerta hacia el contexto encargado de notificaciones o dashboards operativos.                                                                                          |
 
 #### Database Tables
 
 | Tabla                 | Propósito                                                                                  |
-|-----------------------|--------------------------------------------------------------------------------------------|
+| --------------------- | ------------------------------------------------------------------------------------------- |
 | telemetry_readings    | Almacena lecturas de peso, cantidad estimada y fecha de recepción de los dispositivos IoT. |
-| stock_records         | Almacena el histórico de estimaciones físicas de stock y diferencias detectadas.           |
+| stock_records         | Almacena el histórico de estimaciones físicas de stock y diferencias detectadas.          |
 | supply_thresholds     | Guarda los umbrales mínimos y de advertencia configurados por insumo y sucursal.           |
-| device_health_reports | Registra eventos de salud operativa de los dispositivos, como batería, señal y fallas.     |
-| reconciliation_tasks  | Almacena tareas de conciliación generadas por diferencias entre stock físico y digital.    |
+| device_health_reports | Registra eventos de salud operativa de los dispositivos, como batería, señal y fallas.    |
+| reconciliation_tasks  | Almacena tareas de conciliación generadas por diferencias entre stock físico y digital.   |
 
 #### 4.2.6.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -5431,7 +5403,7 @@ En la capa de interfaz del Bounded Context de Sales Management se exponen los en
       <td style="padding: 10px; border: 1px solid;">/branches/{branchId}/sales/{saleId} (GET)</td>
       <td style="padding: 10px; border: 1px solid;">Retorna todas las órdenes de venta asociadas a una sucursal específica.</td>
       <td style="padding: 10px; border: 1px solid;">GetSalesByBranchIdQuery</td>
-    </tr>    
+    </tr>  
     <tr>
       <td style="padding: 10px; border: 1px solid;">Edit</td>
       <td style="padding: 10px; border: 1px solid;">/{saleId}/status (PATCH)</td>
@@ -5708,10 +5680,9 @@ En esta sección se presentan los diagramas de componentes del bounded context d
 
 ##### Web Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Se comunica vía Kong Gateway para poder comunicarse con el Backend. 
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Se comunica vía Kong Gateway para poder comunicarse con el Backend.
 
 <img src="https://i.imgur.com/IA3g7lo.png" alt="Web Sales Order Management Component Diagram" width="100%">
-
 
 ##### Backend Application Component Diagram
 
@@ -6543,7 +6514,7 @@ El diagrama de clases de la capa de dominio del Bounded Context de Communication
 
 <img src="https://imgur.com/WB0oHIf.png" alt="class-diagram-communication">
 
-El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como `send()`, `markAsRead()` y `markAsFailed()`, en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, BusinessId, BranchId, UserId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent, LowStockDetectedEvent, SaleCompletedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos `generateStockAlert`, `generateDeviceAlert`, `generateLowStockAlert` y `generateSaleNotification` para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.  
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como `send()`, `markAsRead()` y `markAsFailed()`, en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, BusinessId, BranchId, UserId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent, LowStockDetectedEvent, SaleCompletedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos `generateStockAlert`, `generateDeviceAlert`, `generateLowStockAlert` y `generateSaleNotification` para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.
 
 ##### 4.2.8.6.2. Bounded Context Database Design Diagram
 
@@ -6563,83 +6534,83 @@ El dominio se mantiene independiente de frameworks, controladores, servicios ext
 
 #### Aggregates & Entities
 
-| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
-|---|---|---|
-| `Device` | Aggregate Root | Representa un dispositivo IoT registrado en Restock. Controla su ciclo de vida administrativo, incluyendo registro, asignación a sucursal, asociación con un insumo personalizado, configuración de peso, calibración y desactivación. Garantiza que un dispositivo no pueda quedar activo si no cuenta con negocio, sucursal, insumo asignado, especificaciones técnicas y parámetros de medición válidos. |
-| `DeviceSpecification` | Entity / Embedded Document | Representa las especificaciones técnicas básicas del dispositivo, como fabricante, modelo y versión de firmware. Permite describir las características del hardware sin mezclar estos datos con la configuración operativa del inventario. |
-| `DeviceMeasurementConfiguration` | Value Object | Agrupa los parámetros de medición del dispositivo, como peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado. Estos valores permiten que otros bounded contexts interpreten correctamente las lecturas físicas del dispositivo. |
+| Nombre de Clase                    | Categoría                 | Propósito y Reglas de Negocio                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Device`                         | Aggregate Root             | Representa un dispositivo IoT registrado en Restock. Controla su ciclo de vida administrativo, incluyendo registro, asignación a sucursal, asociación con un insumo personalizado, configuración de peso, calibración y desactivación. Garantiza que un dispositivo no pueda quedar activo si no cuenta con negocio, sucursal, insumo asignado, especificaciones técnicas y parámetros de medición válidos. |
+| `DeviceSpecification`            | Entity / Embedded Document | Representa las especificaciones técnicas básicas del dispositivo, como fabricante, modelo y versión de firmware. Permite describir las características del hardware sin mezclar estos datos con la configuración operativa del inventario.                                                                                                                                                                      |
+| `DeviceMeasurementConfiguration` | Value Object               | Agrupa los parámetros de medición del dispositivo, como peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado. Estos valores permiten que otros bounded contexts interpreten correctamente las lecturas físicas del dispositivo.                                                                                                                                           |
 
 #### Value Objects
 
-| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
-|---|---|---|
-| `DeviceId` | Value Object | Identificador único del dispositivo dentro del bounded context. |
-| `BusinessId` | Value Object | Identificador externo del negocio propietario del dispositivo. |
-| `BranchId` | Value Object | Identificador externo de la sucursal a la que se asigna el dispositivo. |
-| `CustomSupplyId` | Value Object | Identificador externo del insumo personalizado asignado al dispositivo. |
-| `SupplyThresholdId` | Value Object | Identificador externo del umbral gestionado por Tracking / Service Operation and Monitoring. |
-| `MacAddress` | Value Object | Dirección MAC del dispositivo. Debe ser única y cumplir un formato válido. |
-| `DeviceDescription` | Value Object | Descripción administrativa del dispositivo para facilitar su identificación. |
-| `UnitWeight` | Value Object | Peso unitario del insumo medido por el dispositivo. Debe ser mayor a cero. |
-| `TareWeight` | Value Object | Peso base o tara del contenedor/plataforma. Debe ser mayor o igual a cero. |
-| `CalibrationDate` | Value Object | Fecha en la que el dispositivo fue calibrado. |
-| `WeightUnit` | Value Object | Unidad de peso configurada para el dispositivo, compuesta por nombre y abreviatura. |
+| Nombre de Clase            | Categoría   | Propósito y Reglas de Negocio                                                                                                           |
+| -------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `DeviceId`               | Value Object | Identificador único del dispositivo dentro del bounded context.                                                                         |
+| `BusinessId`             | Value Object | Identificador externo del negocio propietario del dispositivo.                                                                           |
+| `BranchId`               | Value Object | Identificador externo de la sucursal a la que se asigna el dispositivo.                                                                  |
+| `CustomSupplyId`         | Value Object | Identificador externo del insumo personalizado asignado al dispositivo.                                                                  |
+| `SupplyThresholdId`      | Value Object | Identificador externo del umbral gestionado por Tracking / Service Operation and Monitoring.                                             |
+| `MacAddress`             | Value Object | Dirección MAC del dispositivo. Debe ser única y cumplir un formato válido.                                                            |
+| `DeviceDescription`      | Value Object | Descripción administrativa del dispositivo para facilitar su identificación.                                                           |
+| `UnitWeight`             | Value Object | Peso unitario del insumo medido por el dispositivo. Debe ser mayor a cero.                                                               |
+| `TareWeight`             | Value Object | Peso base o tara del contenedor/plataforma. Debe ser mayor o igual a cero.                                                               |
+| `CalibrationDate`        | Value Object | Fecha en la que el dispositivo fue calibrado.                                                                                            |
+| `WeightUnit`             | Value Object | Unidad de peso configurada para el dispositivo, compuesta por nombre y abreviatura.                                                      |
 | `JustifiedWithdrawStock` | Value Object | Cantidad retirada físicamente del dispositivo pero justificada por operación del negocio, por ejemplo productos movidos a exhibición. |
-| `DeviceStatus` | Enum | Define el estado administrativo del dispositivo: `REGISTERED`, `ASSIGNED`, `CONFIGURED`, `ACTIVE`, `INACTIVE`, `DEACTIVATED`. |
+| `DeviceStatus`           | Enum         | Define el estado administrativo del dispositivo:`REGISTERED`, `ASSIGNED`, `CONFIGURED`, `ACTIVE`, `INACTIVE`, `DEACTIVATED`. |
 
 #### Repository Interfaces
 
-| Nombre de Interfaz | Categoría | Propósito |
-|---|---|---|
-| `DeviceRepository` | Repository Interface | Contrato para registrar, actualizar, consultar y desactivar dispositivos IoT. |
+| Nombre de Interfaz                | Categoría           | Propósito                                                                      |
+| --------------------------------- | -------------------- | ------------------------------------------------------------------------------- |
+| `DeviceRepository`              | Repository Interface | Contrato para registrar, actualizar, consultar y desactivar dispositivos IoT.   |
 | `DeviceSpecificationRepository` | Repository Interface | Contrato para registrar y consultar especificaciones técnicas de dispositivos. |
 
 #### Commands
 
-| Nombre del Command | Propósito |
-|---|---|
-| `RegisterDeviceCommand` | Encapsula la intención de registrar un nuevo dispositivo IoT en el sistema. |
-| `RegisterDeviceSpecificationCommand` | Registra las especificaciones técnicas del dispositivo, como fabricante, modelo y versión de firmware. |
-| `AssignDeviceToBranchCommand` | Asigna un dispositivo a una sucursal específica del negocio. |
-| `AssignCustomSupplyToDeviceCommand` | Asocia un insumo personalizado al dispositivo para que sus mediciones correspondan a un producto específico. |
-| `LinkSupplyThresholdToDeviceCommand` | Asocia al dispositivo un umbral de monitoreo gestionado por Tracking. |
-| `ConfigureDeviceMeasurementCommand` | Configura peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado. |
-| `UpdateDeviceMeasurementConfigurationCommand` | Actualiza los parámetros de medición del dispositivo. |
-| `UpdateJustifiedWithdrawStockCommand` | Actualiza la cantidad retirada justificadamente del dispositivo. |
-| `ConfirmDeviceConfigurationCommand` | Confirma que el dispositivo cuenta con los datos administrativos mínimos para operar. |
-| `DeactivateDeviceCommand` | Desactiva administrativamente un dispositivo y evita que siga siendo considerado activo para nuevos procesos. |
-| `ClearDeviceAssignmentCommand` | Limpia la asignación actual del dispositivo cuando se retira de una sucursal o insumo. |
+| Nombre del Command                              | Propósito                                                                                                    |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `RegisterDeviceCommand`                       | Encapsula la intención de registrar un nuevo dispositivo IoT en el sistema.                                  |
+| `RegisterDeviceSpecificationCommand`          | Registra las especificaciones técnicas del dispositivo, como fabricante, modelo y versión de firmware.      |
+| `AssignDeviceToBranchCommand`                 | Asigna un dispositivo a una sucursal específica del negocio.                                                 |
+| `AssignCustomSupplyToDeviceCommand`           | Asocia un insumo personalizado al dispositivo para que sus mediciones correspondan a un producto específico. |
+| `LinkSupplyThresholdToDeviceCommand`          | Asocia al dispositivo un umbral de monitoreo gestionado por Tracking.                                         |
+| `ConfigureDeviceMeasurementCommand`           | Configura peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado.       |
+| `UpdateDeviceMeasurementConfigurationCommand` | Actualiza los parámetros de medición del dispositivo.                                                       |
+| `UpdateJustifiedWithdrawStockCommand`         | Actualiza la cantidad retirada justificadamente del dispositivo.                                              |
+| `ConfirmDeviceConfigurationCommand`           | Confirma que el dispositivo cuenta con los datos administrativos mínimos para operar.                        |
+| `DeactivateDeviceCommand`                     | Desactiva administrativamente un dispositivo y evita que siga siendo considerado activo para nuevos procesos. |
+| `ClearDeviceAssignmentCommand`                | Limpia la asignación actual del dispositivo cuando se retira de una sucursal o insumo.                       |
 
 #### Queries
 
-| Nombre del Query | Propósito |
-|---|---|
-| `GetDeviceByIdQuery` | Obtiene el detalle de un dispositivo registrado. |
-| `GetDevicesByBusinessQuery` | Lista los dispositivos pertenecientes a un negocio. |
-| `GetDevicesByBranchQuery` | Lista los dispositivos asignados a una sucursal específica. |
-| `GetDevicesByCustomSupplyQuery` | Lista los dispositivos asociados a un insumo personalizado. |
-| `GetDevicesByStatusQuery` | Lista dispositivos según su estado administrativo. |
-| `GetDeviceSpecificationQuery` | Obtiene las especificaciones técnicas de un dispositivo. |
-| `GetAvailableDevicesQuery` | Obtiene dispositivos registrados que aún no han sido asignados o configurados completamente. |
+| Nombre del Query                  | Propósito                                                                                    |
+| --------------------------------- | --------------------------------------------------------------------------------------------- |
+| `GetDeviceByIdQuery`            | Obtiene el detalle de un dispositivo registrado.                                              |
+| `GetDevicesByBusinessQuery`     | Lista los dispositivos pertenecientes a un negocio.                                           |
+| `GetDevicesByBranchQuery`       | Lista los dispositivos asignados a una sucursal específica.                                  |
+| `GetDevicesByCustomSupplyQuery` | Lista los dispositivos asociados a un insumo personalizado.                                   |
+| `GetDevicesByStatusQuery`       | Lista dispositivos según su estado administrativo.                                           |
+| `GetDeviceSpecificationQuery`   | Obtiene las especificaciones técnicas de un dispositivo.                                     |
+| `GetAvailableDevicesQuery`      | Obtiene dispositivos registrados que aún no han sido asignados o configurados completamente. |
 
 #### Domain Events
 
-| Nombre del Evento | Propósito |
-|---|---|
-| `DeviceRegisteredEvent` | Se emite cuando un nuevo dispositivo IoT es registrado en el sistema. |
-| `DeviceSpecificationRegisteredEvent` | Se emite cuando las especificaciones técnicas del dispositivo son registradas. |
-| `DeviceAssignedToBranchEvent` | Se emite cuando un dispositivo es asignado a una sucursal. |
-| `CustomSupplyAssignedToDeviceEvent` | Se emite cuando un insumo personalizado queda asociado al dispositivo. |
-| `SupplyThresholdLinkedToDeviceEvent` | Se emite cuando el dispositivo queda vinculado a un umbral gestionado por Tracking. |
+| Nombre del Evento                              | Propósito                                                                                        |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `DeviceRegisteredEvent`                      | Se emite cuando un nuevo dispositivo IoT es registrado en el sistema.                             |
+| `DeviceSpecificationRegisteredEvent`         | Se emite cuando las especificaciones técnicas del dispositivo son registradas.                   |
+| `DeviceAssignedToBranchEvent`                | Se emite cuando un dispositivo es asignado a una sucursal.                                        |
+| `CustomSupplyAssignedToDeviceEvent`          | Se emite cuando un insumo personalizado queda asociado al dispositivo.                            |
+| `SupplyThresholdLinkedToDeviceEvent`         | Se emite cuando el dispositivo queda vinculado a un umbral gestionado por Tracking.               |
 | `DeviceMeasurementConfigurationUpdatedEvent` | Se emite cuando se actualizan parámetros de medición como peso unitario, tara o unidad de peso. |
-| `JustifiedWithdrawStockUpdatedEvent` | Se emite cuando se actualiza el stock retirado justificadamente. |
-| `DeviceConfigurationConfirmedEvent` | Se emite cuando la configuración administrativa del dispositivo queda confirmada. |
-| `DeviceAssignmentClearedEvent` | Se emite cuando se elimina la asignación vigente del dispositivo. |
-| `DeviceDeactivatedEvent` | Se emite cuando un dispositivo queda desactivado administrativamente. |
+| `JustifiedWithdrawStockUpdatedEvent`         | Se emite cuando se actualiza el stock retirado justificadamente.                                  |
+| `DeviceConfigurationConfirmedEvent`          | Se emite cuando la configuración administrativa del dispositivo queda confirmada.                |
+| `DeviceAssignmentClearedEvent`               | Se emite cuando se elimina la asignación vigente del dispositivo.                                |
+| `DeviceDeactivatedEvent`                     | Se emite cuando un dispositivo queda desactivado administrativamente.                             |
 
 ---
 
-### 4.2.9.2. Interfaces Layer
+### 4.2.9.2. Interface Layer
 
 La capa de interfaz del Bounded Context **Device Management** expone endpoints RESTful que permiten a los administradores registrar, consultar, asignar, configurar y desactivar dispositivos IoT.
 
@@ -6647,77 +6618,76 @@ Esta capa recibe solicitudes desde la Web Application y la Mobile Application, t
 
 #### DeviceController
 
-Tabla de `DeviceController` en el Interface Layer
+ `DeviceController` en el Interface Layer:
 
-| Propiedad | Valor |
-|---|---|
-| Nombre | `DeviceController` |
-| Categoría | Controller |
+| Propiedad  | Valor                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| Nombre     | `DeviceController`                                                                                         |
+| Categoría | Controller                                                                                                   |
 | Propósito | Exponer endpoints para el registro, consulta, actualización de estado y desactivación de dispositivos IoT. |
-| Ruta | `/api/v1/devices` |
+| Ruta       | `/api/v1/devices`                                                                                          |
 
-Tabla de métodos de `DeviceController` en el Interface Layer
+Métodos de `DeviceController` en el Interface Layer:
 
-| Nombre | Ruta | Acción | Handle |
-|---|---|---|---|
-| `Register` | `/` `POST` | Registra un nuevo dispositivo IoT. | `RegisterDeviceCommand` |
-| `GetById` | `/{deviceId}` `GET` | Obtiene el detalle de un dispositivo. | `GetDeviceByIdQuery` |
-| `GetByBusiness` | `/businesses/{businessId}` `GET` | Lista dispositivos por negocio. | `GetDevicesByBusinessQuery` |
-| `GetByBranch` | `/branches/{branchId}` `GET` | Lista dispositivos por sucursal. | `GetDevicesByBranchQuery` |
-| `GetByStatus` | `/status/{status}` `GET` | Lista dispositivos según estado. | `GetDevicesByStatusQuery` |
-| `GetAvailable` | `/available` `GET` | Lista dispositivos disponibles para asignación. | `GetAvailableDevicesQuery` |
-| `Deactivate` | `/{deviceId}/deactivate` `PATCH` | Desactiva administrativamente un dispositivo. | `DeactivateDeviceCommand` |
+| Nombre            | Ruta                                 | Acción                                          | Handle                        |
+| ----------------- | ------------------------------------ | ------------------------------------------------ | ----------------------------- |
+| `Register`      | `/` `POST`                       | Registra un nuevo dispositivo IoT.               | `RegisterDeviceCommand`     |
+| `GetById`       | `/{deviceId}` `GET`              | Obtiene el detalle de un dispositivo.            | `GetDeviceByIdQuery`        |
+| `GetByBusiness` | `/businesses/{businessId}` `GET` | Lista dispositivos por negocio.                  | `GetDevicesByBusinessQuery` |
+| `GetByBranch`   | `/branches/{branchId}` `GET`     | Lista dispositivos por sucursal.                 | `GetDevicesByBranchQuery`   |
+| `GetByStatus`   | `/status/{status}` `GET`         | Lista dispositivos según estado.                | `GetDevicesByStatusQuery`   |
+| `GetAvailable`  | `/available` `GET`               | Lista dispositivos disponibles para asignación. | `GetAvailableDevicesQuery`  |
+| `Deactivate`    | `/{deviceId}/deactivate` `PATCH` | Desactiva administrativamente un dispositivo.    | `DeactivateDeviceCommand`   |
 
 #### DeviceSpecificationsController
 
-Tabla de `DeviceSpecificationsController` en el Interface Layer
+ `DeviceSpecificationsController` en el Interface Layer:
 
-| Propiedad | Valor |
-|---|---|
-| Nombre | `DeviceSpecificationsController` |
-| Categoría | Controller |
+| Propiedad  | Valor                                                                      |
+| ---------- | -------------------------------------------------------------------------- |
+| Nombre     | `DeviceSpecificationsController`                                         |
+| Categoría | Controller                                                                 |
 | Propósito | Gestionar las especificaciones técnicas básicas de los dispositivos IoT. |
-| Ruta | `/api/v1/device-specifications` |
+| Ruta       | `/api/v1/device-specifications`                                          |
 
-Tabla de métodos de `DeviceSpecificationsController` en el Interface Layer
+Métodos de `DeviceSpecificationsController` en el Interface Layer:
 
-| Nombre | Ruta | Acción | Handle |
-|---|---|---|---|
-| `RegisterSpecification` | `/` `POST` | Registra una especificación técnica de dispositivo. | `RegisterDeviceSpecificationCommand` |
-| `GetSpecificationById` | `/{specificationId}` `GET` | Consulta una especificación técnica. | `GetDeviceSpecificationQuery` |
-| `UpdateSpecification` | `/{specificationId}` `PUT` | Actualiza fabricante, modelo o versión de firmware. | `UpdateDeviceSpecificationCommand` |
+| Nombre                    | Ruta                           | Acción                                               | Handle                                 |
+| ------------------------- | ------------------------------ | ----------------------------------------------------- | -------------------------------------- |
+| `RegisterSpecification` | `/` `POST`                 | Registra una especificación técnica de dispositivo. | `RegisterDeviceSpecificationCommand` |
+| `GetSpecificationById`  | `/{specificationId}` `GET` | Consulta una especificación técnica.                | `GetDeviceSpecificationQuery`        |
+| `UpdateSpecification`   | `/{specificationId}` `PUT` | Actualiza fabricante, modelo o versión de firmware.  | `UpdateDeviceSpecificationCommand`   |
 
 #### DeviceConfigurationController
 
 Tabla de `DeviceConfigurationController` en el Interface Layer
 
-| Propiedad | Valor |
-|---|---|
-| Nombre | `DeviceConfigurationController` |
-| Categoría | Controller |
+| Propiedad  | Valor                                                                                                     |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| Nombre     | `DeviceConfigurationController`                                                                         |
+| Categoría | Controller                                                                                                |
 | Propósito | Exponer endpoints para configurar asignación, insumo, umbral y parámetros de medición del dispositivo. |
-| Ruta | `/api/v1/devices/{deviceId}/configuration` |
+| Ruta       | `/api/v1/devices/{deviceId}/configuration`                                                              |
 
 Tabla de métodos de `DeviceConfigurationController` en el Interface Layer
 
-| Nombre | Ruta | Acción | Handle |
-|---|---|---|---|
-| `AssignToBranch` | `/branch` `PUT` | Asigna el dispositivo a una sucursal. | `AssignDeviceToBranchCommand` |
-| `AssignCustomSupply` | `/custom-supply` `PUT` | Asocia un custom supply al dispositivo. | `AssignCustomSupplyToDeviceCommand` |
-| `LinkSupplyThreshold` | `/supply-threshold` `PUT` | Asocia un umbral de Tracking al dispositivo. | `LinkSupplyThresholdToDeviceCommand` |
-| `ConfigureMeasurement` | `/measurement` `PUT` | Configura peso unitario, tara, unidad y fecha de calibración. | `ConfigureDeviceMeasurementCommand` |
-| `UpdateJustifiedWithdrawStock` | `/justified-withdraw-stock` `PATCH` | Actualiza el stock retirado justificadamente. | `UpdateJustifiedWithdrawStockCommand` |
-| `ConfirmConfiguration` | `/confirm` `PATCH` | Confirma que la configuración del dispositivo está completa. | `ConfirmDeviceConfigurationCommand` |
-| `ClearAssignment` | `/assignment` `DELETE` | Limpia la asignación actual del dispositivo. | `ClearDeviceAssignmentCommand` |
+| Nombre                           | Ruta                                    | Acción                                                        | Handle                                  |
+| -------------------------------- | --------------------------------------- | -------------------------------------------------------------- | --------------------------------------- |
+| `AssignToBranch`               | `/branch` `PUT`                     | Asigna el dispositivo a una sucursal.                          | `AssignDeviceToBranchCommand`         |
+| `AssignCustomSupply`           | `/custom-supply` `PUT`              | Asocia un custom supply al dispositivo.                        | `AssignCustomSupplyToDeviceCommand`   |
+| `LinkSupplyThreshold`          | `/supply-threshold` `PUT`           | Asocia un umbral de Tracking al dispositivo.                   | `LinkSupplyThresholdToDeviceCommand`  |
+| `ConfigureMeasurement`         | `/measurement` `PUT`                | Configura peso unitario, tara, unidad y fecha de calibración. | `ConfigureDeviceMeasurementCommand`   |
+| `UpdateJustifiedWithdrawStock` | `/justified-withdraw-stock` `PATCH` | Actualiza el stock retirado justificadamente.                  | `UpdateJustifiedWithdrawStockCommand` |
+| `ConfirmConfiguration`         | `/confirm` `PATCH`                  | Confirma que la configuración del dispositivo está completa. | `ConfirmDeviceConfigurationCommand`   |
+| `ClearAssignment`              | `/assignment` `DELETE`              | Limpia la asignación actual del dispositivo.                  | `ClearDeviceAssignmentCommand`        |
 
 #### Anti-Corruption Layer Interfaces
 
-| Nombre | Propósito |
-|---|---|
+| Nombre                            | Propósito                                                                                                                                                                             |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AssetAndResourceContextFacade` | Permite validar que la sucursal y el custom supply existan y pertenezcan al negocio correspondiente, sin acoplar Device Management al modelo interno de Asset and Resource Management. |
-| `TrackingContextFacade` | Permite validar o vincular el `supplyThresholdId` gestionado por Tracking / Service Operation and Monitoring. |
-| `CommunicationContextFacade` | Permite solicitar notificaciones cuando un dispositivo es configurado, reasignado o desactivado. |
-
+| `TrackingContextFacade`         | Permite validar o vincular el `supplyThresholdId` gestionado por Tracking / Service Operation and Monitoring.                                                                        |
+| `CommunicationContextFacade`    | Permite solicitar notificaciones cuando un dispositivo es configurado, reasignado o desactivado.                                                                                       |
 
 ### 4.2.9.3. Application Layer
 
@@ -6727,52 +6697,51 @@ Su función es orquestar el dominio, validar referencias externas mediante ACL, 
 
 #### Command Handlers
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| `RegisterDeviceCommandHandler` | Command Handler | Procesa el registro de un nuevo dispositivo IoT. Valida que la dirección MAC no esté duplicada antes de crear el agregado `Device`. |
-| `RegisterDeviceSpecificationCommandHandler` | Command Handler | Registra las especificaciones técnicas del dispositivo, incluyendo fabricante, modelo y versión de firmware. |
-| `AssignDeviceToBranchCommandHandler` | Command Handler | Valida mediante ACL que la sucursal exista y asigna el dispositivo a dicha sucursal. |
-| `AssignCustomSupplyToDeviceCommandHandler` | Command Handler | Valida mediante ACL que el custom supply exista y lo asocia al dispositivo. |
-| `LinkSupplyThresholdToDeviceCommandHandler` | Command Handler | Vincula el dispositivo con un threshold previamente gestionado por Tracking. |
-| `ConfigureDeviceMeasurementCommandHandler` | Command Handler | Configura peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado. |
-| `UpdateDeviceMeasurementConfigurationCommandHandler` | Command Handler | Actualiza la configuración de medición del dispositivo cuando se recalibra o cambia el producto asociado. |
-| `UpdateJustifiedWithdrawStockCommandHandler` | Command Handler | Actualiza la cantidad de stock retirada físicamente del dispositivo pero justificada por operación del negocio. |
-| `ConfirmDeviceConfigurationCommandHandler` | Command Handler | Verifica que el dispositivo tenga negocio, sucursal, custom supply, especificaciones, unidad de peso y parámetros de medición antes de marcarlo como configurado. |
-| `DeactivateDeviceCommandHandler` | Command Handler | Cambia el estado del dispositivo a `DEACTIVATED` y publica un evento para que otros bounded contexts dejen de considerarlo operativo. |
-| `ClearDeviceAssignmentCommandHandler` | Command Handler | Elimina la asignación actual de sucursal, custom supply y threshold del dispositivo. |
+| Nombre de Clase                                        | Categoría      | Propósito                                                                                                                                                          |
+| ------------------------------------------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RegisterDeviceCommandHandler`                       | Command Handler | Procesa el registro de un nuevo dispositivo IoT. Valida que la dirección MAC no esté duplicada antes de crear el agregado `Device`.                             |
+| `RegisterDeviceSpecificationCommandHandler`          | Command Handler | Registra las especificaciones técnicas del dispositivo, incluyendo fabricante, modelo y versión de firmware.                                                      |
+| `AssignDeviceToBranchCommandHandler`                 | Command Handler | Valida mediante ACL que la sucursal exista y asigna el dispositivo a dicha sucursal.                                                                                |
+| `AssignCustomSupplyToDeviceCommandHandler`           | Command Handler | Valida mediante ACL que el custom supply exista y lo asocia al dispositivo.                                                                                         |
+| `LinkSupplyThresholdToDeviceCommandHandler`          | Command Handler | Vincula el dispositivo con un threshold previamente gestionado por Tracking.                                                                                        |
+| `ConfigureDeviceMeasurementCommandHandler`           | Command Handler | Configura peso unitario, peso tara, fecha de calibración, unidad de peso y stock retirado justificado.                                                             |
+| `UpdateDeviceMeasurementConfigurationCommandHandler` | Command Handler | Actualiza la configuración de medición del dispositivo cuando se recalibra o cambia el producto asociado.                                                         |
+| `UpdateJustifiedWithdrawStockCommandHandler`         | Command Handler | Actualiza la cantidad de stock retirada físicamente del dispositivo pero justificada por operación del negocio.                                                   |
+| `ConfirmDeviceConfigurationCommandHandler`           | Command Handler | Verifica que el dispositivo tenga negocio, sucursal, custom supply, especificaciones, unidad de peso y parámetros de medición antes de marcarlo como configurado. |
+| `DeactivateDeviceCommandHandler`                     | Command Handler | Cambia el estado del dispositivo a `DEACTIVATED` y publica un evento para que otros bounded contexts dejen de considerarlo operativo.                             |
+| `ClearDeviceAssignmentCommandHandler`                | Command Handler | Elimina la asignación actual de sucursal, custom supply y threshold del dispositivo.                                                                               |
 
 #### Query Handlers
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| `GetDeviceByIdQueryHandler` | Query Handler | Obtiene la información detallada de un dispositivo registrado. |
-| `GetDevicesByBusinessQueryHandler` | Query Handler | Lista los dispositivos asociados a un negocio. |
-| `GetDevicesByBranchQueryHandler` | Query Handler | Lista los dispositivos asignados a una sucursal. |
-| `GetDevicesByCustomSupplyQueryHandler` | Query Handler | Lista los dispositivos asociados a un custom supply. |
-| `GetDevicesByStatusQueryHandler` | Query Handler | Lista dispositivos por estado administrativo. |
-| `GetAvailableDevicesQueryHandler` | Query Handler | Lista dispositivos registrados que aún no tienen asignación completa. |
-| `GetDeviceSpecificationQueryHandler` | Query Handler | Obtiene las especificaciones técnicas de un dispositivo. |
+| Nombre de Clase                          | Categoría    | Propósito                                                              |
+| ---------------------------------------- | ------------- | ----------------------------------------------------------------------- |
+| `GetDeviceByIdQueryHandler`            | Query Handler | Obtiene la información detallada de un dispositivo registrado.         |
+| `GetDevicesByBusinessQueryHandler`     | Query Handler | Lista los dispositivos asociados a un negocio.                          |
+| `GetDevicesByBranchQueryHandler`       | Query Handler | Lista los dispositivos asignados a una sucursal.                        |
+| `GetDevicesByCustomSupplyQueryHandler` | Query Handler | Lista los dispositivos asociados a un custom supply.                    |
+| `GetDevicesByStatusQueryHandler`       | Query Handler | Lista dispositivos por estado administrativo.                           |
+| `GetAvailableDevicesQueryHandler`      | Query Handler | Lista dispositivos registrados que aún no tienen asignación completa. |
+| `GetDeviceSpecificationQueryHandler`   | Query Handler | Obtiene las especificaciones técnicas de un dispositivo.               |
 
 #### Event Handlers
 
-| Nombre de Clase | Categoría | Evento que Maneja | Propósito |
-|---|---|---|---|
-| `DeviceRegisteredEventHandler` | Event Handler | `DeviceRegisteredEvent` | Registra la disponibilidad inicial del dispositivo para ser configurado. |
-| `DeviceAssignedToBranchEventHandler` | Event Handler | `DeviceAssignedToBranchEvent` | Notifica que el dispositivo fue asignado a una sucursal. |
-| `CustomSupplyAssignedToDeviceEventHandler` | Event Handler | `CustomSupplyAssignedToDeviceEvent` | Notifica que el dispositivo ya mide un custom supply específico. |
-| `SupplyThresholdLinkedToDeviceEventHandler` | Event Handler | `SupplyThresholdLinkedToDeviceEvent` | Informa a Tracking que el dispositivo tiene un threshold asociado para monitoreo. |
-| `DeviceMeasurementConfigurationUpdatedEventHandler` | Event Handler | `DeviceMeasurementConfigurationUpdatedEvent` | Publica los nuevos parámetros de medición para que Tracking pueda interpretar las lecturas. |
-| `DeviceConfigurationConfirmedEventHandler` | Event Handler | `DeviceConfigurationConfirmedEvent` | Solicita una notificación de configuración exitosa y deja el dispositivo listo para operación. |
-| `DeviceDeactivatedEventHandler` | Event Handler | `DeviceDeactivatedEvent` | Notifica a Tracking que el dispositivo ya no debe considerarse activo para nuevas lecturas. |
+| Nombre de Clase                                       | Categoría    | Evento que Maneja                              | Propósito                                                                                        |
+| ----------------------------------------------------- | ------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `DeviceRegisteredEventHandler`                      | Event Handler | `DeviceRegisteredEvent`                      | Registra la disponibilidad inicial del dispositivo para ser configurado.                          |
+| `DeviceAssignedToBranchEventHandler`                | Event Handler | `DeviceAssignedToBranchEvent`                | Notifica que el dispositivo fue asignado a una sucursal.                                          |
+| `CustomSupplyAssignedToDeviceEventHandler`          | Event Handler | `CustomSupplyAssignedToDeviceEvent`          | Notifica que el dispositivo ya mide un custom supply específico.                                 |
+| `SupplyThresholdLinkedToDeviceEventHandler`         | Event Handler | `SupplyThresholdLinkedToDeviceEvent`         | Informa a Tracking que el dispositivo tiene un threshold asociado para monitoreo.                 |
+| `DeviceMeasurementConfigurationUpdatedEventHandler` | Event Handler | `DeviceMeasurementConfigurationUpdatedEvent` | Publica los nuevos parámetros de medición para que Tracking pueda interpretar las lecturas.     |
+| `DeviceConfigurationConfirmedEventHandler`          | Event Handler | `DeviceConfigurationConfirmedEvent`          | Solicita una notificación de configuración exitosa y deja el dispositivo listo para operación. |
+| `DeviceDeactivatedEventHandler`                     | Event Handler | `DeviceDeactivatedEvent`                     | Notifica a Tracking que el dispositivo ya no debe considerarse activo para nuevas lecturas.       |
 
 #### Anti-Corruption Layer Implementation
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| `AssetAndResourceContextFacadeImpl` | ACL Implementation | Implementa la validación de sucursales y custom supplies consultando Asset and Resource Management. |
-| `TrackingContextFacadeImpl` | ACL Implementation | Implementa la comunicación con Tracking para validar thresholds y publicar cambios de configuración del dispositivo. |
-| `CommunicationContextFacadeImpl` | ACL Implementation | Implementa la solicitud de notificaciones relacionadas con cambios relevantes del dispositivo. |
-
+| Nombre de Clase                       | Categoría         | Propósito                                                                                                             |
+| ------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `AssetAndResourceContextFacadeImpl` | ACL Implementation | Implementa la validación de sucursales y custom supplies consultando Asset and Resource Management.                   |
+| `TrackingContextFacadeImpl`         | ACL Implementation | Implementa la comunicación con Tracking para validar thresholds y publicar cambios de configuración del dispositivo. |
+| `CommunicationContextFacadeImpl`    | ACL Implementation | Implementa la solicitud de notificaciones relacionadas con cambios relevantes del dispositivo.                         |
 
 ### 4.2.9.4. Infrastructure Layer
 
@@ -6782,43 +6751,40 @@ En esta capa se implementan los repositorios definidos en Domain Layer. Asimismo
 
 #### Repositories
 
-| Nombre de Clase | Interfaz que Implementa | Propósito |
-|---|---|---|
-| `DeviceRepositoryImpl` | `DeviceRepository` | Implementa la persistencia del agregado `Device` en la tabla o colección `devices`. |
+| Nombre de Clase                       | Interfaz que Implementa           | Propósito                                                                                  |
+| ------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------- |
+| `DeviceRepositoryImpl`              | `DeviceRepository`              | Implementa la persistencia del agregado `Device` en la tabla o colección `devices`.    |
 | `DeviceSpecificationRepositoryImpl` | `DeviceSpecificationRepository` | Implementa la persistencia de las especificaciones técnicas en `devices_specifications`. |
 
 #### Persistence and External Services
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| `DeviceManagementDbContext` | Persistence Configuration | Configura el mapeo de los objetos `devices` y `devices_specifications`. |
-| `AssetAndResourceRestClient` | External Client | Cliente HTTP para validar negocio, sucursal y custom supply. |
-| `TrackingRestClient` | External Client | Cliente HTTP para validar o consultar el `supplyThresholdId` gestionado por Tracking. |
-| `DomainEventPublisher` | Messaging Adapter | Publica eventos de dominio e integración relacionados con cambios administrativos del dispositivo. |
-| `IntegrationEventConsumer` | Messaging Adapter | Consume eventos externos relevantes, por ejemplo eliminación de una sucursal o cambio de estado de un custom supply. |
-| `DeviceConfigurationPublisher` | Messaging Adapter | Publica la configuración administrativa del dispositivo para que Tracking pueda utilizarla en sus procesos técnicos. |
+| Nombre de Clase                  | Categoría                | Propósito                                                                                                             |
+| -------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `DeviceManagementDbContext`    | Persistence Configuration | Configura el mapeo de los objetos `devices` y `devices_specifications`.                                            |
+| `AssetAndResourceRestClient`   | External Client           | Cliente HTTP para validar negocio, sucursal y custom supply.                                                           |
+| `TrackingRestClient`           | External Client           | Cliente HTTP para validar o consultar el `supplyThresholdId` gestionado por Tracking.                                |
+| `DomainEventPublisher`         | Messaging Adapter         | Publica eventos de dominio e integración relacionados con cambios administrativos del dispositivo.                    |
+| `IntegrationEventConsumer`     | Messaging Adapter         | Consume eventos externos relevantes, por ejemplo eliminación de una sucursal o cambio de estado de un custom supply.  |
+| `DeviceConfigurationPublisher` | Messaging Adapter         | Publica la configuración administrativa del dispositivo para que Tracking pueda utilizarla en sus procesos técnicos. |
 
 #### Database Tables
 
-| Tabla / Colección | Propósito |
-|---|---|
-| `devices` | Almacena los dispositivos registrados, su asignación administrativa, configuración de medición, estado y referencias externas. |
-| `devices_specifications` | Almacena las especificaciones técnicas básicas del dispositivo: fabricante, modelo y versión de firmware. |
+| Tabla / Colección         | Propósito                                                                                                                        |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `devices`                | Almacena los dispositivos registrados, su asignación administrativa, configuración de medición, estado y referencias externas. |
+| `devices_specifications` | Almacena las especificaciones técnicas básicas del dispositivo: fabricante, modelo y versión de firmware.                      |
 
 #### Objetos excluidos de este bounded context
 
-| Objeto | Bounded Context responsable | Justificación |
-|---|---|---|
-| `telemetry_readings` | Tracking / Service Operation and Monitoring | Las lecturas de sensores pertenecen al monitoreo operativo, no a la configuración administrativa. |
-| `stock_records` | Tracking / Service Operation and Monitoring | Los registros de stock físico estimado son resultado del procesamiento de telemetría. |
-| `supply_thresholds` | Tracking / Service Operation and Monitoring | Los umbrales de alerta se gestionan donde se evalúa el stock físico y las alertas de monitoreo. |
-| `reconciliation_tasks` | Tracking / Service Operation and Monitoring | Las tareas de conciliación surgen por discrepancias entre stock físico y stock registrado. |
-| `device_health_reports` | Tracking / Service Operation and Monitoring | Los reportes de salud corresponden al comportamiento técnico del dispositivo en operación. |
-
----
+| Objeto                    | Bounded Context responsable                 | Justificación                                                                                     |
+| ------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `telemetry_readings`    | Tracking / Service Operation and Monitoring | Las lecturas de sensores pertenecen al monitoreo operativo, no a la configuración administrativa. |
+| `stock_records`         | Tracking / Service Operation and Monitoring | Los registros de stock físico estimado son resultado del procesamiento de telemetría.            |
+| `supply_thresholds`     | Tracking / Service Operation and Monitoring | Los umbrales de alerta se gestionan donde se evalúa el stock físico y las alertas de monitoreo.  |
+| `reconciliation_tasks`  | Tracking / Service Operation and Monitoring | Las tareas de conciliación surgen por discrepancias entre stock físico y stock registrado.       |
+| `device_health_reports` | Tracking / Service Operation and Monitoring | Los reportes de salud corresponden al comportamiento técnico del dispositivo en operación.       |
 
 ### 4.2.9.5. Bounded Context Software Architecture Component Level Diagrams
-
 
 En esta sección, el equipo presenta los diagramas de componentes del Bounded Context **Device Management** siguiendo el modelo C4. Estos diagramas muestran la descomposición de los contenedores que participan en la gestión de dispositivos IoT, considerando la Web Application, Mobile Application, Backend Application y la interacción con el ecosistema IoT.
 
@@ -6826,28 +6792,21 @@ En esta sección, el equipo presenta los diagramas de componentes del Bounded Co
 
 La Web Application permite a los administradores registrar dispositivos, revisar su estado, asignarlos a sucursales, asociarlos a insumos personalizados, configurar límites operativos y confirmar la configuración final.
 
+<img src="./assets/images/chapter4/bc-device/component-diagram-web-app.png" alt="Component diagrama of BD Device" width="600px">
 
 #### Mobile Application Component Diagram
 
 La Mobile Application permite que un administrador o encargado operativo realice tareas de consulta y configuración rápida del dispositivo desde el local físico.
 
+<img src="./assets/images/chapter4/bc-device/component-diagram-mobile.png" alt="Component diagrama of BD Device" width="600px">
 
 #### Backend Application Component Diagram
 
-El Backend Application contiene la lógica principal del bounded context. Expone controladores REST, ejecuta command handlers y query handlers, aplica reglas de dominio, persiste información en MongoDB y publica eventos hacia Monitoring y Communication.
+El Backend Application contiene la lógica principal del bounded context. Expone controladores REST, ejecuta command handlers y query handlers, aplica reglas de dominio, persiste información en MongoDB y publica eventos hacia Assets and Resource Management.
 
+<img src="./assets/images/chapter4/bc-device/component-diagram-backend-1.png" alt="Component diagrama of BD Device" width="600px">
 
-#### Embedded / IoT Device Component Diagram
-
-Aunque el procesamiento de telemetría pertenece a Monitoring, Device Management participa en el aprovisionamiento inicial del dispositivo al entregar credenciales y configuración.
-
-
-![web-devices](https://i.imgur.com/Mdvk6w5.png)
-
-
-![web-devices](https://i.imgur.com/jlr7D1x.png)
-
-![web-devices](https://i.imgur.com/wrG0za7.png)
+<img src="./assets/images/chapter4/bc-device/component-diagram-backend-2.png" alt="Component diagrama of BD Device" width="600px">
 
 #### 4.2.9.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -6859,6 +6818,7 @@ En esta sección, el equipo presenta el diagrama de clases UML correspondiente a
 
 El modelo evidencia que Device es el Aggregate Root principal. Este agregado contiene las reglas relacionadas con registro, asignación, configuración de medición, confirmación y desactivación. La clase DeviceSpecification representa los datos técnicos básicos del hardware, mientras que DeviceMeasurementConfiguration encapsula los valores necesarios para interpretar mediciones de peso.
 
+<img src="./assets/images/chapter4/bc-device/class-diagram-device.png" alt="Component diagrama of BC Device" width="600px">
 
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
@@ -6866,14 +6826,13 @@ En esta sección, el equipo presenta el Database Diagram correspondiente al Boun
 
 La tabla o colección devices almacena la información administrativa del dispositivo, su asignación actual y los parámetros necesarios para su configuración. La tabla o colección devices_specifications almacena los datos técnicos básicos del hardware.
 
-Los campos business_id, branch_id, assigned_custom_supply_id y supply_threshold_id son referencias externas. Esto significa que Device Management no administra directamente negocios, sucursales, insumos personalizados ni thresholds. Estos elementos pertenecen a otros bounded contexts y se validan mediante ACL.
-
-
+Los campos business_id, branch_id, assigned_batch_id y supply_threshold_id son referencias externas. Esto significa que Device Management no administra directamente negocios, sucursales, insumos personalizados ni thresholds. Estos elementos pertenecen a otros bounded contexts y se validan mediante ACL.
 
 De esta forma, el diseño de base de datos mantiene una separación clara de responsabilidades. Device Management administra la configuración base del dispositivo, mientras que el bounded context Tracking utiliza dicha configuración para procesar lecturas, calcular stock físico, evaluar thresholds, detectar anomalías y generar tareas de conciliación.
 
-## 4.2.10. Bounded Context: Analytics
+<img src="./assets/images/chapter4/bc-device/bd-diagram-device.png" alt="Component diagrama of BD Device" width="600px">
 
+## 4.2.10. Bounded Context: Analytics
 
 #### 4.2.10.1. Domain Layer
 
@@ -6885,8 +6844,8 @@ Estas clases representan los pilares transaccionales del sistema. El Aggregate R
 
 *Tabla de Aggregates en el Domain Layer*
 
-| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
-|---|---|---|
+| Nombre de Clase  | Categoría     | Propósito y Reglas de Negocio                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Metric** | Aggregate Root | Representa el estado consolidado del dashboard para una cuenta de negocio en un momento dado. Agrupa los indicadores operativos clave: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. Controla su ciclo de vida: construcción, actualización ante eventos de inventario o alerta, y consulta por parte de los administradores. Garantiza que los indicadores presentados correspondan siempre a la sucursal o cuenta activa del usuario autenticado. |
 
 #### Value Objects
@@ -6895,12 +6854,12 @@ Estas clases modelan conceptos propios del dominio y permiten evitar el uso indi
 
 *Tabla de Value Objects en el Domain Layer*
 
-| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
-|---|---|---|
-| **StockIndicator** | Value Object | Encapsula la información de un insumo en estado crítico: identificador del insumo, nombre, cantidad actual, umbral mínimo y sucursal de origen. Permite clasificar el insumo como zero_stock o low_stock según la comparación entre la cantidad actual y el umbral configurado. |
-| **RecentSupplyEntry** | Value Object | Encapsula los datos de un insumo registrado recientemente en el sistema: identificador, nombre, categoría, fecha de registro y sucursal de origen. Permite presentar al administrador los últimos insumos incorporados al inventario sin exponer el modelo completo del insumo. |
-| **RecentAlertEntry** | Value Object | Encapsula los datos de una alerta reciente generada por el sistema: identificador, tipo de alerta, mensaje, prioridad, sucursal de origen y timestamp. Permite al dashboard presentar las últimas alertas sin depender directamente del modelo interno del Bounded Context Communication. |
-| **DashboardSummaryId, BusinessId, BranchId** | Value Object | Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos de identificación del negocio y la sucursal activa del usuario autenticado. |
+| Nombre de Clase                                    | Categoría   | Propósito y Reglas de Negocio                                                                                                                                                                                                                                                             |
+| -------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **StockIndicator**                           | Value Object | Encapsula la información de un insumo en estado crítico: identificador del insumo, nombre, cantidad actual, umbral mínimo y sucursal de origen. Permite clasificar el insumo como zero_stock o low_stock según la comparación entre la cantidad actual y el umbral configurado.       |
+| **RecentSupplyEntry**                        | Value Object | Encapsula los datos de un insumo registrado recientemente en el sistema: identificador, nombre, categoría, fecha de registro y sucursal de origen. Permite presentar al administrador los últimos insumos incorporados al inventario sin exponer el modelo completo del insumo.          |
+| **RecentAlertEntry**                         | Value Object | Encapsula los datos de una alerta reciente generada por el sistema: identificador, tipo de alerta, mensaje, prioridad, sucursal de origen y timestamp. Permite al dashboard presentar las últimas alertas sin depender directamente del modelo interno del Bounded Context Communication. |
+| **DashboardSummaryId, BusinessId, BranchId** | Value Object | Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos de identificación del negocio y la sucursal activa del usuario autenticado.                      |
 
 #### Commands
 
@@ -6908,9 +6867,9 @@ Los commands representan intenciones de cambio de estado dentro del dominio. Son
 
 *Tabla de Commands en el Domain Layer*
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| **RefreshDashboardSummaryCommand** | Command | Encapsula los datos necesarios para reconstruir el resumen del dashboard de una cuenta: businessId, branchId opcional y timestamp de actualización. Es invocado por los Event Handlers cuando llegan eventos de inventario o alerta desde Asset and Resource Management, Tracking o Communication. |
+| Nombre de Clase                          | Categoría | Propósito                                                                                                                                                                                                                                                                                          |
+| ---------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **RefreshDashboardSummaryCommand** | Command    | Encapsula los datos necesarios para reconstruir el resumen del dashboard de una cuenta: businessId, branchId opcional y timestamp de actualización. Es invocado por los Event Handlers cuando llegan eventos de inventario o alerta desde Asset and Resource Management, Tracking o Communication. |
 
 #### Queries
 
@@ -6918,13 +6877,13 @@ Las queries representan intenciones de consulta de información sin modificar el
 
 *Tabla de Queries en el Domain Layer*
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| **GetDashboardSummaryQuery** | Query | Encapsula los criterios de consulta para recuperar el resumen del dashboard de una cuenta autenticada: businessId y branchId opcional. Retorna los indicadores de stock cero, bajo stock, últimos insumos registrados y alertas recientes. |
-| **GetZeroStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos con stock igual a cero para una cuenta y sucursal determinadas. |
-| **GetLowStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos cuya cantidad actual se encuentra por debajo del umbral mínimo configurado, ordenados por nivel de criticidad. |
-| **GetRecentSuppliesQuery** | Query | Encapsula los criterios para recuperar los últimos insumos registrados en el inventario de una cuenta, con soporte de filtro por sucursal y límite de resultados. |
-| **GetRecentAlertsQuery** | Query | Encapsula los criterios para recuperar las últimas alertas generadas por el sistema para una cuenta, con soporte de filtro por tipo de alerta y sucursal de origen. |
+| Nombre de Clase                     | Categoría | Propósito                                                                                                                                                                                                                                  |
+| ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GetDashboardSummaryQuery**  | Query      | Encapsula los criterios de consulta para recuperar el resumen del dashboard de una cuenta autenticada: businessId y branchId opcional. Retorna los indicadores de stock cero, bajo stock, últimos insumos registrados y alertas recientes. |
+| **GetZeroStockSuppliesQuery** | Query      | Encapsula los criterios para recuperar el listado de insumos con stock igual a cero para una cuenta y sucursal determinadas.                                                                                                                |
+| **GetLowStockSuppliesQuery**  | Query      | Encapsula los criterios para recuperar el listado de insumos cuya cantidad actual se encuentra por debajo del umbral mínimo configurado, ordenados por nivel de criticidad.                                                                |
+| **GetRecentSuppliesQuery**    | Query      | Encapsula los criterios para recuperar los últimos insumos registrados en el inventario de una cuenta, con soporte de filtro por sucursal y límite de resultados.                                                                         |
+| **GetRecentAlertsQuery**      | Query      | Encapsula los criterios para recuperar las últimas alertas generadas por el sistema para una cuenta, con soporte de filtro por tipo de alerta y sucursal de origen.                                                                        |
 
 #### Domain Events
 
@@ -6932,12 +6891,12 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
 
 *Tabla de Domain Events en el Domain Layer*
 
-| Nombre de Clase | Categoría | Propósito |
-|---|---|---|
-| **DashboardSummaryRefreshedEvent** | Domain Event | Emitido por el aggregate Metric al completar su actualización exitosamente. Permite que otros componentes del contexto reaccionen para invalidar cachés o notificar a clientes conectados mediante WebSocket. |
-| **StockLevelChangedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica un cambio en el nivel de stock de un insumo. Dispara la actualización de los indicadores de stock cero y bajo stock en el dashboard. |
-| **SupplyRegisteredEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica el registro de un nuevo insumo en el catálogo. Dispara la actualización del indicador de últimos insumos registrados en el dashboard. |
-| **NotificationGeneratedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Communication que notifica la generación de una nueva alerta. Dispara la actualización del indicador de alertas recientes en el dashboard. |
+| Nombre de Clase                          | Categoría              | Propósito                                                                                                                                                                                                                                 |
+| ---------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **DashboardSummaryRefreshedEvent** | Domain Event            | Emitido por el aggregate Metric al completar su actualización exitosamente. Permite que otros componentes del contexto reaccionen para invalidar cachés o notificar a clientes conectados mediante WebSocket.                            |
+| **StockLevelChangedEvent**         | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica un cambio en el nivel de stock de un insumo. Dispara la actualización de los indicadores de stock cero y bajo stock en el dashboard.    |
+| **SupplyRegisteredEvent**          | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica el registro de un nuevo insumo en el catálogo. Dispara la actualización del indicador de últimos insumos registrados en el dashboard. |
+| **NotificationGeneratedEvent**     | Domain Event (entrante) | Evento de integración proveniente del bounded context Communication que notifica la generación de una nueva alerta. Dispara la actualización del indicador de alertas recientes en el dashboard.                                        |
 
 #### 4.2.10.2. Interface Layer
 
@@ -6947,22 +6906,22 @@ La capa de interfaz del Bounded Context de Analytics expone los endpoints RESTfu
 
 *Tabla de AnalyticsController en el Interface Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | AnalyticsController |
-| **Categoría** | Controller |
+| Propiedad            | Valor                                                                                                                                                                                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | AnalyticsController                                                                                                                                                                                    |
+| **Categoría** | Controller                                                                                                                                                                                             |
 | **Propósito** | Exponer endpoints para consultar el resumen del dashboard, los insumos con stock cero, los insumos con bajo stock, los últimos insumos registrados y las alertas recientes de una cuenta autenticada. |
-| **Ruta** | /api/v1/analytics |
+| **Ruta**       | /api/v1/analytics                                                                                                                                                                                      |
 
 *Tabla de métodos de AnalyticsController en el Interface Layer*
 
-| Nombre | Ruta | Acción | Handle (Command/Query) |
-|---|---|---|---|
-| GetDashboardSummary | /dashboard (GET) | Retorna el resumen consolidado del dashboard con todos los indicadores operativos para la cuenta autenticada. | GetDashboardSummaryQuery |
-| GetZeroStockSupplies | /supplies/zero-stock (GET) | Retorna el listado de insumos con stock igual a cero para la cuenta y sucursal activa. | GetZeroStockSuppliesQuery |
-| GetLowStockSupplies | /supplies/low-stock (GET) | Retorna el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad. | GetLowStockSuppliesQuery |
-| GetRecentSupplies | /supplies/recent (GET) | Retorna los últimos insumos registrados en el inventario de la cuenta autenticada. | GetRecentSuppliesQuery |
-| GetRecentAlerts | /alerts/recent (GET) | Retorna las últimas alertas generadas por el sistema para la cuenta autenticada. | GetRecentAlertsQuery |
+| Nombre               | Ruta                       | Acción                                                                                                       | Handle (Command/Query)    |
+| -------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| GetDashboardSummary  | /dashboard (GET)           | Retorna el resumen consolidado del dashboard con todos los indicadores operativos para la cuenta autenticada. | GetDashboardSummaryQuery  |
+| GetZeroStockSupplies | /supplies/zero-stock (GET) | Retorna el listado de insumos con stock igual a cero para la cuenta y sucursal activa.                        | GetZeroStockSuppliesQuery |
+| GetLowStockSupplies  | /supplies/low-stock (GET)  | Retorna el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad.     | GetLowStockSuppliesQuery  |
+| GetRecentSupplies    | /supplies/recent (GET)     | Retorna los últimos insumos registrados en el inventario de la cuenta autenticada.                           | GetRecentSuppliesQuery    |
+| GetRecentAlerts      | /alerts/recent (GET)       | Retorna las últimas alertas generadas por el sistema para la cuenta autenticada.                             | GetRecentAlertsQuery      |
 
 #### 4.2.10.3. Application Layer
 
@@ -6972,100 +6931,100 @@ La capa de aplicación del Bounded Context de Analytics orquesta los casos de us
 
 *Tabla de RefreshDashboardSummaryCommandHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | RefreshDashboardSummaryCommandHandler |
-| **Categoría** | Command Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                                                                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | RefreshDashboardSummaryCommandHandler                                                                                                                                                                                                                                                                  |
+| **Categoría** | Command Handler                                                                                                                                                                                                                                                                                        |
 | **Propósito** | Orquestar la reconstrucción del resumen del dashboard consultando los datos actualizados de inventario desde Asset and Resource Management y las alertas recientes desde Communication, persistiendo el resultado en la caché Redis e invalidando los datos anteriores para garantizar consistencia. |
-| **Comando** | RefreshDashboardSummaryCommand |
+| **Comando**    | RefreshDashboardSummaryCommand                                                                                                                                                                                                                                                                         |
 
 #### GetDashboardSummaryQueryHandler
 
 *Tabla de GetDashboardSummaryQueryHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | GetDashboardSummaryQueryHandler |
-| **Categoría** | Query Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | GetDashboardSummaryQueryHandler                                                                                                                                                                                                                              |
+| **Categoría** | Query Handler                                                                                                                                                                                                                                                |
 | **Propósito** | Consultar el resumen consolidado del dashboard desde la caché Redis para la cuenta autenticada. Si los datos no están disponibles en caché, delega la reconstrucción al RefreshDashboardSummaryCommandHandler antes de retornar la respuesta al cliente. |
-| **Query** | GetDashboardSummaryQuery |
+| **Query**      | GetDashboardSummaryQuery                                                                                                                                                                                                                                     |
 
 #### GetZeroStockSuppliesQueryHandler
 
 *Tabla de GetZeroStockSuppliesQueryHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | GetZeroStockSuppliesQueryHandler |
-| **Categoría** | Query Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                  |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | GetZeroStockSuppliesQueryHandler                                                                                                                                                                                       |
+| **Categoría** | Query Handler                                                                                                                                                                                                          |
 | **Propósito** | Consultar el listado de insumos con stock igual a cero para la cuenta y sucursal activa, recuperando los datos desde la caché Redis o delegando la consulta al repositorio de inventario si la caché está expirada. |
-| **Query** | GetZeroStockSuppliesQuery |
+| **Query**      | GetZeroStockSuppliesQuery                                                                                                                                                                                              |
 
 #### GetLowStockSuppliesQueryHandler
 
 *Tabla de GetLowStockSuppliesQueryHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | GetLowStockSuppliesQueryHandler |
-| **Categoría** | Query Handler |
+| Propiedad            | Valor                                                                                                                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | GetLowStockSuppliesQueryHandler                                                                                                                                                                  |
+| **Categoría** | Query Handler                                                                                                                                                                                    |
 | **Propósito** | Consultar el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad, desde la caché Redis o delegando al repositorio de inventario cuando sea necesario. |
-| **Query** | GetLowStockSuppliesQuery |
+| **Query**      | GetLowStockSuppliesQuery                                                                                                                                                                         |
 
 #### GetRecentSuppliesQueryHandler
 
 *Tabla de GetRecentSuppliesQueryHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | GetRecentSuppliesQueryHandler |
-| **Categoría** | Query Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | GetRecentSuppliesQueryHandler                                                                                                                                                                                                                  |
+| **Categoría** | Query Handler                                                                                                                                                                                                                                  |
 | **Propósito** | Consultar los últimos insumos registrados en el inventario de la cuenta autenticada, con soporte de filtro por sucursal y límite de resultados, recuperando los datos desde la caché Redis o delegando al repositorio cuando sea necesario. |
-| **Query** | GetRecentSuppliesQuery |
+| **Query**      | GetRecentSuppliesQuery                                                                                                                                                                                                                         |
 
 #### GetRecentAlertsQueryHandler
 
 *Tabla de GetRecentAlertsQueryHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | GetRecentAlertsQueryHandler |
-| **Categoría** | Query Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | GetRecentAlertsQueryHandler                                                                                                                                                                                                                      |
+| **Categoría** | Query Handler                                                                                                                                                                                                                                    |
 | **Propósito** | Consultar las últimas alertas generadas por el sistema para la cuenta autenticada, con soporte de filtro por tipo de alerta y sucursal, recuperando los datos desde la caché Redis o delegando al repositorio de alertas cuando sea necesario. |
-| **Query** | GetRecentAlertsQuery |
+| **Query**      | GetRecentAlertsQuery                                                                                                                                                                                                                             |
 
 #### StockLevelChangedEventHandler
 
 *Tabla de StockLevelChangedEventHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | StockLevelChangedEventHandler |
-| **Categoría** | Event Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Nombre**     | StockLevelChangedEventHandler                                                                                                                                                                                                        |
+| **Categoría** | Event Handler                                                                                                                                                                                                                        |
 | **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando cambia el nivel de stock de un insumo, invocando el RefreshDashboardSummaryCommand para actualizar los indicadores de stock cero y bajo stock en el dashboard. |
-| **Evento** | StockLevelChangedEvent |
+| **Evento**     | StockLevelChangedEvent                                                                                                                                                                                                               |
 
 #### SupplyRegisteredEventHandler
 
 *Tabla de SupplyRegisteredEventHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | SupplyRegisteredEventHandler |
-| **Categoría** | Event Handler |
+| Propiedad            | Valor                                                                                                                                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | SupplyRegisteredEventHandler                                                                                                                                                                                                                 |
+| **Categoría** | Event Handler                                                                                                                                                                                                                                |
 | **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando se registra un nuevo insumo en el catálogo, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de últimos insumos registrados en el dashboard. |
-| **Evento** | SupplyRegisteredEvent |
+| **Evento**     | SupplyRegisteredEvent                                                                                                                                                                                                                        |
 
 #### NotificationGeneratedEventHandler
 
 *Tabla de NotificationGeneratedEventHandler en el Application Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | NotificationGeneratedEventHandler |
-| **Categoría** | Event Handler |
+| Propiedad            | Valor                                                                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | NotificationGeneratedEventHandler                                                                                                                                                                              |
+| **Categoría** | Event Handler                                                                                                                                                                                                  |
 | **Propósito** | Reaccionar al evento emitido por Communication cuando se genera una nueva alerta en el sistema, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de alertas recientes en el dashboard. |
-| **Evento** | NotificationGeneratedEvent |
+| **Evento**     | NotificationGeneratedEvent                                                                                                                                                                                     |
 
 #### 4.2.10.4. Infrastructure Layer
 
@@ -7075,34 +7034,34 @@ La capa de infraestructura del Bounded Context de Analytics resuelve los detalle
 
 *Tabla de AnalyticsCacheRepository en el Infrastructure Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | AnalyticsCacheRepository |
-| **Categoría** | Cache Repository |
+| Propiedad            | Valor                                                                                                                                                                                                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | AnalyticsCacheRepository                                                                                                                                                                                                                                                                       |
+| **Categoría** | Cache Repository                                                                                                                                                                                                                                                                               |
 | **Propósito** | Persistir y recuperar los resúmenes del dashboard, los indicadores de stock crítico, los últimos insumos registrados y las alertas recientes desde la caché Redis, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados en el dashboard. |
-| **Interfaz** | IAnalyticsCacheRepository |
+| **Interfaz**   | IAnalyticsCacheRepository                                                                                                                                                                                                                                                                      |
 
 #### AnalyticsReadRepository
 
 *Tabla de AnalyticsReadRepository en el Infrastructure Layer*
 
-| Propiedad | Valor |
-|---|---|
-| **Nombre** | AnalyticsReadRepository |
-| **Categoría** | Read Repository |
+| Propiedad            | Valor                                                                                                                                                                                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | AnalyticsReadRepository                                                                                                                                                                                          |
+| **Categoría** | Read Repository                                                                                                                                                                                                  |
 | **Propósito** | Ejecutar consultas de solo lectura sobre la colección `notifications` de MongoDB de Communication para construir el indicador de alertas recientes cuando los datos no están disponibles en la caché Redis. |
-| **Interfaz** | IAnalyticsReadRepository |
+| **Interfaz**   | IAnalyticsReadRepository                                                                                                                                                                                         |
 
 #### IntegrationEventConsumer
 
 *Tabla de IntegrationEventConsumer en el Infrastructure Layer*
 
-| Propiedad     | Valor                                                                                                                                                                                                                                                                                                    |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Nombre**    | IntegrationEventConsumer                                                                                                                                                                                                                                                                                 |
-| **Categoría** | Message Broker Consumer                                                                                                                                                                                                                                                                                  |
+| Propiedad            | Valor                                                                                                                                                                                                                                                                                                             |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**     | IntegrationEventConsumer                                                                                                                                                                                                                                                                                          |
+| **Categoría** | Message Broker Consumer                                                                                                                                                                                                                                                                                           |
 | **Propósito** | Consumir eventos de integración emitidos por Asset and Resource Management (`StockLevelChangedEvent`, `SupplyRegisteredEvent`) y Communication (`NotificationGeneratedEvent`), transformándolos en comandos internos que disparan la actualización de los indicadores del dashboard dentro del contexto. |
-| **Interfaz**  | IIntegrationEventConsumer                                                                                                                                                                                                                                                                                |
+| **Interfaz**   | IIntegrationEventConsumer                                                                                                                                                                                                                                                                                         |
 
 #### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
 
