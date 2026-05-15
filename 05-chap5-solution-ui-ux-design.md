@@ -718,7 +718,7 @@ El visitante intenta registrarse con un correo ya existente o deja campos obliga
 
 #### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
 
-**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Intiva.
+**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Restock.
 
 ##### Happy Path
 
@@ -862,10 +862,10 @@ El administrador detecta que el smart scale reporta lecturas inconsistentes y ha
 El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
 
 
-![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
+![User Flow 8 - Happy Path Web](https://imgur.com/s3dduK2.png)
 
 
-![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
+![User Flow 8 - Happy Path Mobile](https://imgur.com/HnuzQIq.png)
 
 
 
@@ -874,9 +874,9 @@ El administrador accede al módulo Devices desde el sidebar. Visualiza el Device
 El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
 
 
-![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
+![User Flow 8 - Unhappy Path A Web](https://imgur.com/bDtH7cv.png)
 
-![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
+![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/MKnfwGa.png)
 
 
 #### User Flow 9: Gestión de Sucursales
