@@ -671,12 +671,184 @@ Con estas decisiones de navegación, Restock orienta a los usuarios paso a paso 
 
 
 ## 5.3. Landing Page UI Design
+
+En esta sección se detalla el diseño de la interfaz de usuario para la Landing Page del proyecto Restock. El objetivo de este diseño es establecer una primera interacción efectiva con los potenciales clientes, comunicando de manera clara la propuesta de valor de la plataforma y facilitando la conversión mediante una arquitectura orientada al usuario.
+
 ### 5.3.1. Landing Page Wireframe
+
+Se presentan los esquemas de baja fidelidad que definen la estructura base de la Landing Page. Estos wireframes se centran en la disposición de los bloques de contenido, la jerarquía de la información y la ubicación de los llamados a la acción (CTA), asegurando que la navegación sea intuitiva antes de integrar elementos estéticos definitivos.
+
+**Sección Principal**
+
+**Descripción:** Disposición estructural inicial con menú de navegación superior, área central para propuesta de valor y esquema de previsualización del dashboard.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Hero - 01.png" alt="Disposición estructural inicial con menú de navegación superior, área central para propuesta de valor y esquema de previsualización del dashboard." height="400">
+</div>
+
+**Sobre Nosotros**
+
+**Descripción:** Layout de tres columnas diseñado para presentar los pilares del servicio, utilizando contenedores para íconos representativos y bloques de texto jerarquizados.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - About Us - 02.png" alt="Layout de tres columnas diseñado para presentar los pilares del servicio, utilizando contenedores para íconos representativos y bloques de texto jerarquizados." height="400">
+</div>
+
+**Conoce al Equipo**
+
+**Descripción:** Estructura de contenido dividida en un contenedor multimedia superior y una grilla inferior de avatares circulares para presentar a los miembros del proyecto.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Meet the Team - 03.png" alt="Estructura de contenido dividida en un contenedor multimedia superior y una grilla inferior de avatares circulares para presentar a los miembros del proyecto." height="400">
+</div>
+
+**Visión General de la Plataforma**
+
+**Descripción:** Arquitectura de información asimétrica con contenedor gráfico principal, lista de características y una cuadrícula inferior para detallar funciones de las básculas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Platform Overview - 04.png" alt="Arquitectura de información asimétrica con contenedor gráfico principal, lista de características y una cuadrícula inferior para detallar funciones de las básculas." height="400">
+</div>
+
+**Beneficios del Sistema**
+
+**Descripción:** Grilla estructurada de múltiples tarjetas para enumerar las ventajas operativas, manteniendo un esquema de título, espacio para ícono y descripción breve.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Benefits - 05.png" alt="Grilla estructurada de múltiples tarjetas para enumerar las ventajas operativas, manteniendo un esquema de título, espacio para ícono y descripción breve." height="400">
+</div>
+
+**Testimonios y Preguntas Frecuentes**
+
+**Descripción:** Disposición mixta que incluye tarjetas de reseñas de clientes en la sección superior y un componente de tipo acordeón para organizar consultas técnicas comunes.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Testimonials And Common Questions - 06.png" alt="Disposición mixta que incluye tarjetas de reseñas de clientes en la sección superior y un componente de tipo acordeón para organizar consultas técnicas comunes." height="400">
+</div>
+
+**Cómo Funciona**
+
+**Descripción:** Esquema de flujo funcional que ilustra la implementación del monitoreo de inventario mediante una línea de tiempo secuencial y gráfica de plataforma superior.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - How Works - 07.png" alt="Esquema de flujo funcional que ilustra la implementación del monitoreo de inventario mediante una línea de tiempo secuencial y gráfica de plataforma superior." height="400">
+</div>
+
+**Planes de Suscripción**
+
+**Descripción:** Estructura comparativa de tres columnas para los modelos de precios, destacando visualmente la opción central mediante variaciones de tamaño en el contenedor.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Plans - 08.png" alt="Estructura comparativa de tres columnas para los modelos de precios, destacando visualmente la opción central mediante variaciones de tamaño en el contenedor." height="400">
+</div>
+
+**Llamado a la Acción**
+
+**Descripción:** Sección orientada a la conversión con disposición minimalista, priorizando elementos interactivos centrales (botones) y espacios reservados para logotipos corporativos.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - CTA - 09.png" alt="Sección orientada a la conversión con disposición minimalista, priorizando elementos interactivos centrales (botones) y espacios reservados para logotipos corporativos." height="400">
+</div>
+
+**Aplicación Móvil y Pie de Página**
+
+**Descripción:** Esquema promocional de la versión móvil acompañado de un wireframe de dispositivo, finalizando con un layout de cuatro columnas para la navegación de pie de página.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_wireframes/Landing Page Wireframe - Mobile App and Footer - 10.png" alt="Esquema promocional de la versión móvil acompañado de un wireframe de dispositivo, finalizando con un layout de cuatro columnas para la navegación de pie de página." height="400">
+</div>
+
 ### 5.3.2. Landing Page Mock-up
+
+Esta sección muestra el diseño de alta fidelidad de la Landing Page, donde se aplica la identidad visual de Restock. En este nivel de diseño se integran la paleta de colores corporativa, la tipografía final y los recursos gráficos detallados, proporcionando la representación visual exacta de la interfaz tal como será percibida por el usuario final.
+
+**Sección Principal**
+
+**Descripción:** Interfaz de alta fidelidad con la paleta de colores corporativa (negro y verde neón), destacando la propuesta de valor y una previsualización realista del dashboard.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Hero - 01.png" alt="Interfaz de alta fidelidad con la paleta de colores corporativa (negro y verde neón), destacando la propuesta de valor y una previsualización realista del dashboard." height="400">
+</div>
+
+**Sobre Nosotros**
+
+**Descripción:** Diseño final de tres columnas con tipografía corporativa y bordes estilizados en verde, presentando la misión, visión y propuesta de valor de la plataforma.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - About Us - 02.png" alt="Diseño final de tres columnas con tipografía corporativa y bordes estilizados en verde, presentando la misión, visión y propuesta de valor de la plataforma." height="400">
+</div>
+
+**Conoce al Equipo**
+
+**Descripción:** Sección renderizada con fotografías reales del equipo de desarrollo, empleando avatares circulares con acentos visuales y jerarquía tipográfica clara para los roles y un video del equipo.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Meet the Team - 03.png" alt="Sección renderizada con fotografías reales del equipo de desarrollo, empleando avatares circulares con acentos visuales y jerarquía tipográfica clara para los roles." height="400">
+</div>
+
+**Visión General de la Plataforma**
+
+**Descripción:** Composición visual que integra capturas reales de la interfaz del sistema junto con tarjetas descriptivas de los sensores, aplicando iconografía personalizada.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Platform Overview - 04.png" alt="Composición visual que integra capturas reales de la interfaz del sistema junto con tarjetas descriptivas de los sensores, aplicando iconografía personalizada." height="400">
+</div>
+
+**Beneficios del Sistema**
+
+**Descripción:** Grilla de tarjetas en modo oscuro con iconografía minimalista en verde corporativo, detallando ventajas específicas para restaurantes y tiendas minoristas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Benefits - 05.png" alt="Grilla de tarjetas en modo oscuro con iconografía minimalista en verde corporativo, detallando ventajas específicas para restaurantes y tiendas minoristas." height="400">
+</div>
+
+**Testimonios y Preguntas Frecuentes**
+
+**Descripción:** Interfaz pulida con reseñas de usuarios destacadas mediante sombras suaves y un componente de acordeón interactivo para resolver consultas operativas.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Testimonials And Common Questions - 06.png" alt="Interfaz pulida con reseñas de usuarios destacadas mediante sombras suaves y un componente de acordeón interactivo para resolver consultas operativas." height="400">
+</div>
+
+**Cómo Funciona**
+
+**Descripción:** Línea de tiempo visual interactiva con efecto de resplandor neón, mostrando los tres pasos fundamentales para implementar el sistema mediante gráficos de alta calidad y un video tutorial.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - How Works - 07.png" alt="Línea de tiempo visual interactiva con efecto de resplandor neón, mostrando los tres pasos fundamentales para implementar el sistema mediante gráficos de alta calidad." height="400">
+</div>
+
+**Planes de Suscripción**
+
+**Descripción:** Tablas de precios de alta fidelidad que utilizan jerarquía visual y acentos de color para resaltar el plan Premium, integrando botones de acción claros.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Plans - 08.png" alt="Tablas de precios de alta fidelidad que utilizan jerarquía visual y acentos de color para resaltar el plan Premium, integrando botones de acción claros." height="400">
+</div>
+
+**Llamado a la Acción**
+
+**Descripción:** Diseño minimalista de cierre orientado a la conversión, empleando el contraste del fondo oscuro con botones brillantes en verde para incentivar el registro.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - CTA - 09.png" alt="Diseño minimalista de cierre orientado a la conversión, empleando el contraste del fondo oscuro con botones brillantes en verde para incentivar el registro." height="400">
+</div>
+
+**Aplicación Móvil y Pie de Página**
+
+**Descripción:** Presentación visual de la interfaz móvil en perspectiva isométrica, acompañada de insignias de tiendas de aplicaciones y un pie de página corporativo estructurado.
+
+<div align="center">
+  <img src="./assets/images/chapter5/lp_mockups/Landing Page Mockup - Mobile App and Footer - 10.png" alt="Presentación visual de la interfaz móvil en perspectiva isométrica, acompañada de insignias de tiendas de aplicaciones y un pie de página corporativo estructurado." height="400">
+</div>
+
 ## 5.4. Applications UX/UI Design
+
+Esta sección detalla el diseño de las interfaces operativas de la plataforma Restock, abarcando tanto la aplicación web de gestión como la aplicación móvil de monitoreo. El diseño UX/UI se ha centrado en la eficiencia operativa, buscando que el flujo de información entre las básculas inteligentes y el usuario final sea directo, minimizando errores en la interpretación de datos de inventario.
+
 ### 5.4.1. Applications Wireframes
 
-En esta sección se presentarán los wireframes de las aplicaciones, los cuales fueron diseñas en Figma.
+Se presentan los esquemas estructurales de las aplicaciones, los cuales definen la lógica de navegación y la distribución de los componentes funcionales. Estos wireframes de media fidelidad sirven para validar la usabilidad del sistema, permitiendo organizar los módulos de visualización de peso, alertas de temperatura y gestión de reportes de manera coherente, antes de proceder con la implementación de estilos visuales.
 
 ### Web Application
 
@@ -1264,6 +1436,7 @@ En esta sección se presentan los wireframes de la aplicación, los cuales consi
 
 ### Mobile Application
 
+En esta sección se presentan los esquemas de media fidelidad diseñados específicamente para dispositivos móviles. El enfoque principal de estos wireframes es la optimización de la experiencia de usuario (UX) en pantallas reducidas, priorizando la visualización rápida de alertas de stock y el estado de las básculas inteligentes. La arquitectura de información aquí expuesta busca minimizar la carga cognitiva del personal operativo, permitiendo una gestión de inventario eficiente y ágil mediante una navegación simplificada.
 
 **Inicio de Sesión**
 
