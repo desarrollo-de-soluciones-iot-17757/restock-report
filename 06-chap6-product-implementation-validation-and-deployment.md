@@ -611,6 +611,54 @@ Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficie
 
 #### 6.2.1.3. Sprint Backlog 1
 
+Como se mencionó previamente en el planeamiento del Sprint 1, el objetivo del mismo es desarrollar y desplegar una primera versión funcional de la Landing Page y la aplicación web frontend. Esto conlleva implementar las funcionalidades clave que permitan a los visitantes conocer el valor de negocio de la plataforma, así como a los administradores de restaurantes y tiendas retail gestionar su perfil, autenticarse, controlar el stock en inventarios, administrar dispositivos IoT y registrar sus ventas desde la interfaz web.
+Luego de definir el objetivo del sprint, se identificaron las historias de usuario correspondientes. A continuación, se dividió cada historia de usuario en tareas relacionadas a la implementación y cumplimiento de dicha historia. Para ello, se utilizó la aplicación Jira, que nos ayuda a gestionar el progreso del sprint.
+
+Proyecto en Jira: [https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9](https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9)
+
+<p align="center">
+  <img src="https://imgur.com/H36C6RG.png" 
+  alt="sprint_backlog_1"/>
+</p>
+
+A continuación, se presenta la tabla con las tareas necesarias para completar satisfactoriamente este primer sprint. Además, se asignó un miembro del equipo a cada tarea a desarrollar y el estado de cada tarea.
+
+| Sprint 1 | Sprint Backlog 1 | | | | | | |
+|----------|-----------------|----------------|-------|-------------|-------------------|-------------|--------|
+| **User Story** | **Título** | **Work Item/Task** | **Título** | **Descripción** | **Estimation (SP)** | **Assigned to** | **Status** |
+| UTI-439 | US-11: Gestión de perfil | UTI-592 | Desarrollar la visualización de la información del perfil | Como usuario de la plataforma, quiero gestionar la información de mi perfil, para asegurar que mi información sea la correcta. | 0.5 | José Jahaziel Guerra Perez | Done |
+| | | UTI-593 | Implementar la edición de datos básicos | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-595 | Configurar preferencias del sistema | | | Matias D. | Done |
+| UTI-429 | US-01: Conocer el valor de negocio de la plataforma | UTI-526 | Desarrollar la sección de beneficios | Como visitante del sitio web estático, quiero determinar el valor de negocio, para tomar la decisión de convertirme en usuario de la plataforma. | 0.4 | Julio Castro Alejos | Done |
+| | | UTI-527 | Crear y estructurar la sección de preguntas frecuentes | | | Matias D. | Done |
+| | | UTI-542 | Implementar Media Queries en el CSS | | | Matias D. | Done |
+| | | UTI-545 | Implementar etiquetas ARIA  | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-548 | Permitir el cambio dinámico de idioma | | | Julio Castro Alejos | Done |
+| UTI-430 | US-02: Aumento de confianza sobre la plataforma | UTI-528 | Implementar la sección de testimonios | Como visitante, quiero conocer sobre el producto y quienes fueron los creadores, para aumentar la confianza sobre el uso de la plataforma. | 0.5 | Matias D. | Done |
+| | | UTI-529 | Crear la sección de términos y condiciones | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-538 | Crear la sección de políticas de privacidad | | | Julio Castro Alejos | Done |
+| | | UTI-543 | Implementar Media Queries en el CSS | | | Matias D. | Done |
+| | | UTI-546 | Implementar etiquetas ARIA (Accesibilidad) | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-549 | Permitir el cambio dinámico de idioma | | | Julio Castro Alejos | Done |
+| UTI-431 | US-03: Acceso a las aplicaciones | UTI-531 | Implementar el flujo de redirección a la app móvil | Como visitante, quiero acceder o descargar la aplicación, para empezar a usarla en mis operaciones de negocio. | 0.4 | Julio Castro Alejos | Done |
+| | | UTI-532 | Implementar el flujo de acceso a la plataforma web | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-533 | Diseñar la interfaz de selección entre plataformas | | | Matias D. | Done |
+| | | UTI-544 | Implementar Media Queries en el CSS | | | Matias D. | Done |
+| | | UTI-547 | Implementar etiquetas ARIA (Accesibilidad) | | | Gabriela Nicole Shapiama Rivera | Done |
+| UTI-432 | US-04: Registro de usuario | UTI-534 | Desarrollar lógica de creación de cuenta | Como visitante, quiero registrarme como administrador de una tienda retail, para acceder a las funcionalidades de la aplicación. | 0.5 | Matias D. | Done |
+| | | UTI-535 | Integrar verificación de seguridad de contraseña | | | Antonio Navarro | Done |
+| | | UTI-536 | Redirigir al usuario tras registro exitoso | | | Matias D. | Done |
+| | | UTI-537 | Desarrollar un registro del negocio del usuario | | | Antonio Navarro | Done |
+| UTI-445 | US-17: Control y ajuste de stock en lotes | UTI-554 | Implementar la funcionalidad de registro de ingreso de mercadería | Como administrador del negocio, quiero registrar los movimientos de entrada y salida de suministros, así como definir sus niveles de reserva, para garantizar que el inventario esté siempre actualizado. | 0.3 | Julio Castro Alejos | Done |
+| | | UTI-556 | Implementar validaciones para el registro de movimientos | | | Julio Castro Alejos | Done |
+| | | UTI-557 | Registrar historial de movimientos y ajustes de stock | | | Gabriela Nicole Shapiama Rivera | In-Progress |
+| UTI-460 | US-32: Gestionar y consultar las ventas del negocio | UTI-578 | Implementar la funcionalidad de registro de ventas | Como administrador del negocio, quiero registrar y consultar las ventas de productos o combos, para mantener actualizado el inventario y hacer seguimiento al desempeño comercial. | 0.5 | Nicolás Juárez | Done |
+| | | UTI-579 | Implementar la funcionalidad de consulta de ventas | | | Farid Coronel | To-Review |
+| | | UTI-580 | Visualizar el detalle de una venta | | | José Jahaziel Guerra Perez | Done |
+| UTI-449 | US-21: Administrar dispositivos y sus parámetros de abastecimiento | UTI-562 | Implementar la configuración y almacenamiento de parámetros de abastecimiento | Como administrador, quiero administrar los dispositivos y sus límites de reposición, para organizar el stock en tienda y evitar discrepancias de inventario. | 0.5 | Farid Coronel | Done |
+| | | UTI-564 | Diseñar la interfaz de administración de dispositivos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
+| | | UTI-565 | Desarrollar la edición de dispositivos | | | Nicolás Juárez | Done |
+
 #### 6.2.1.4. Development Evidence for Sprint Review
 
 En esta sección, se describen los principales avances de implementación realizados en este primer sprint. Se tienen como principales avances la implementación de la primera versión de la Landing Page y el Web Application.
