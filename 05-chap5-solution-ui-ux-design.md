@@ -610,19 +610,19 @@ Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los mo
 **Mobile Application – Vista de Monitoreo**
 
 - **Title:**
-    `<title>Restock Mobile | Estado de Inventario y Alertas en tu Bolsillo</title>`
-    - **Propósito:** Resalta la portabilidad y la inmediatez. El uso de "en tu bolsillo" refuerza la naturaleza móvil de la herramienta frente a la versión de escritorio.
+  `<title>Restock Mobile | Estado de Inventario y Alertas en tu Bolsillo</title>`
 
+  - **Propósito:** Resalta la portabilidad y la inmediatez. El uso de "en tu bolsillo" refuerza la naturaleza móvil de la herramienta frente a la versión de escritorio.
 - **Meta Description:**
-    `<meta name="description" content="Lleva el control de tu almacén a donde vayas. Revisa niveles de stock mediante sensores IoT, recibe notificaciones push de suministros críticos y verifica el estado de tus dispositivos en tiempo real desde tu smartphone.">`
-    - **Propósito:** Se enfoca en las capacidades exclusivas del móvil, como las "notificaciones push" y la movilidad, factores clave para un administrador que no siempre está frente a una PC.
+  `<meta name="description" content="Lleva el control de tu almacén a donde vayas. Revisa niveles de stock mediante sensores IoT, recibe notificaciones push de suministros críticos y verifica el estado de tus dispositivos en tiempo real desde tu smartphone.">`
 
+  - **Propósito:** Se enfoca en las capacidades exclusivas del móvil, como las "notificaciones push" y la movilidad, factores clave para un administrador que no siempre está frente a una PC.
 - **Meta Keywords:**
-    `<meta name="keywords" content="app de inventario, monitoreo móvil IoT, notificaciones de stock, control de suministros smartphone, gestión de almacén remota, alertas push Restock">`
-    - **Propósito:** Atrae a usuarios que buscan soluciones de gestión remota y aplicaciones móviles para control de stock.
+  `<meta name="keywords" content="app de inventario, monitoreo móvil IoT, notificaciones de stock, control de suministros smartphone, gestión de almacén remota, alertas push Restock">`
 
+  - **Propósito:** Atrae a usuarios que buscan soluciones de gestión remota y aplicaciones móviles para control de stock.
 - **Meta Author:**
-    `<meta name="author" content="Equipo de Desarrollo Mobile – Restock, 2026">`
+  `<meta name="author" content="Equipo de Desarrollo Mobile – Restock, 2026">`
 
 ### 5.2.4. Searching Systems
 
@@ -697,7 +697,6 @@ Principios y técnicas clave:
 - **Estructura de anclas y scroll lineal:** el contenido se organiza en secciones con anclas (beneficios, funcionalidades, precios, testimonios) para permitir navegación rápida y enlaces profundos desde menús y emails.
 - **Onboarding guiado y checklist:** al registrarse, un asistente guía los pasos esenciales (crear cuenta, añadir sucursal, registrar balanza, asignar insumo) con tooltips y checklist para lograr "primer valor" cuanto antes.
 - **Observabilidad y optimización:** eventos de navegación y conversiones se miden (KPIs) para reordenar y optimizar las rutas críticas.
-
 
 En el caso de la aplicación web, la navegación global se apoya en una estructura persistente de módulos, mientras que la navegación local se concentra en tabs, cards y accesos directos para reducir la profundidad de clics. En la aplicación móvil, la navegación global prioriza la barra inferior y la navegación local se resuelve con tarjetas, listas y acciones por gesto. En ambos casos, los botones de retorno y cierre se reservan para flujos de detalle, edición y confirmación, reforzando la orientación del usuario sin duplicar controles innecesarios.
 
@@ -3137,17 +3136,13 @@ El administrador detecta que el smart scale reporta lecturas inconsistentes y ha
 
 El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
 
-
 ![User Flow 8 - Happy Path Web](https://imgur.com/s3dduK2.png)
 
-
 ![User Flow 8 - Happy Path Mobile](https://imgur.com/HnuzQIq.png)
-
 
 ##### Unhappy Path — Desvinculación de dispositivo activo
 
 El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
-
 
 ![User Flow 8 - Unhappy Path A Web](https://imgur.com/bDtH7cv.png)
 
@@ -3523,7 +3518,7 @@ Para los servicios definidos en el Paso 5, se opta por un monolito desarrollado 
   <tr>
     <td> <strong> Cloud  → Aplicación </strong> </td>
     <td> Comunicación via API/HTTPS </td>
-    <td> 200 ms </td>
+    <td> 600 ms </td>
     <td> El usuario consulta el estado vía API HTTPS o recibe la alerta de inventario crítico. </td>
   </tr>
   <tr>
@@ -3780,7 +3775,6 @@ En esta etapa final se definen los elementos visuales basándose en los servicio
   </tr>
   </tr>
 </table>
-
 
 ### Diseño físico y de circuito del dispositivo IoT
 
