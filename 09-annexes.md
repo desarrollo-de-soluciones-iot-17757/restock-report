@@ -10,9 +10,11 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 **Exposición del TB1**
 
-[PONER ENLACE AQUI]
+[https://acortar.link/TMugw3](https://acortar.link/TMugw3)
 
-<div style="page-break-after: always;"></div>
+<img src="https://i.imgur.com/PMbMHTj.png" alt="Fragmento de la exposición del TB1."/>
+
+<div class="page"></div>
 
 ## Anexo B. Video de las entrevistas
 
@@ -20,10 +22,14 @@ Se realizaron entrevistas a cada segmento objetivo con la meta de poder entender
 
 [https://bit.ly/41kf54H](https://bit.ly/41kf54H)
 
-<div style="page-break-after: always;"></div>
+<img src="https://i.imgur.com/NLt3uiN.png" alt="Fragmento de las entrevistas realizadas a personas de los segmentos objetivo identificados."/>
+
+<div class="page"></div>
 
 ## Anexo C. Acceso al workspace en Miro
 
 El equipo trabajo las principales secciones de diseño y arquitectura en un workspace en Miro.
 
 [https://acortar.link/nORWrR](https://acortar.link/nORWrR)
+
+<img src="https://i.imgur.com/C7wUUvC.png" alt="Imagen del workspace en Miro."/>
