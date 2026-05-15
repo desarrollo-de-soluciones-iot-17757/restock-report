@@ -8,31 +8,30 @@ En esta sección el equipo desarrolla y explica la justificación de las herrami
 
 A continuación, se define la configuración decidida por el equipo para las diversas áreas que conforman al entorno de desarrollo del producto. Entre los aspectos, se define como se maneja el proyecto, los requisitos, el diseño del producto, el ciclo de vida de desarrollo de software, las pruebas, el despliegue y la documentación.
 
-
-| Actividad               | Herramienta / Guía                                     | Propósito                                                                          | Tipo de acceso / Ruta                                                                                                            |
-| ----------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Project Management      | Jira                                                   | Seguimiento de backlog, tareas, sprints y desempeño de los integrantes del grupo.  | [https://www.atlassian.com/es/software/jira](https://www.atlassian.com/es/software/jira)                                                                                               |
-| Requirements Management | Gherkin Conventions                                    | Escritura legible de requisitos con formato Given/When/Then.                       | [https://cucumber.io/docs/gherkin/](https://cucumber.io/docs/gherkin/)                                                                   |
-| Product Design          | Structurizr C4                                         | Diseño de la arquitectura del sistema completo y sus aplicaciones.                 | [https://playground.structurizr.com/](https://playground.structurizr.com/)                                                           |
-| Product Design          | PlantUML                                               | Diseño de la arquitectura de bajo nivel incluyendo diagramas de clase.             | [https://plantuml.com/](https://plantuml.com/)                                                           |
-| Product Design          | Figma                                                  | Prototipos de las aplicaciones web, móvil y el sitio web estático.                 | [https://figma.com](https://figma.com)                                                                                            |
-| Product Design          | Wokwi                                                  | Diseño de prototipo del dispositivo IoT.                                           | [https://wokwi.com/](https://wokwi.com/)                                                                                            |
-| Software Development    | HTML5, CSS y JavaScript / WebStorm                     | Desarrollo del sitio web estático.                                                 | [https://www.jetbrains.com/es-es/webstorm/](https://www.jetbrains.com/es-es/webstorm/)                        |
-| Software Development    | Flutter y Dart / Android Studio                        | Desarrollo de la aplicación móvil.                                                 | [https://developer.android.com/studio?hl=es-419](https://developer.android.com/studio?hl=es-419)                                                               |
-| Software Development    | TypeScript y Angular / WebStorm                        | Desarrollo de la aplicación web.                                                   | [https://www.jetbrains.com/es-es/webstorm/](https://www.jetbrains.com/es-es/webstorm/)                                                         |
-| Software Development    | Java y Spring Boot / IntelliJ IDEA                     | Desarrollo del REST API y lógica de negocio.                                       | [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)                                                         |
-| Software Development    | Python y Flask / PyCharm                               | Desarrollo de la capa Edge para el entorno IoT.                                    | [https://www.jetbrains.com/es-es/pycharm/download/](https://www.jetbrains.com/es-es/pycharm/download/)                                    
-| Software Development    | C++ / Arduino IDE                                      | Desarrollo de la aplicación embebida para dispositivos IoT.                        | [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)                                                         ||
-| Software Development    | MongoDB / MongoDB Compass                              | Uso local de la base de datos para pruebas en entornos de desarrollo.              | [https://www.mongodb.com/products/tools/compass](https://www.mongodb.com/products/tools/compass)                                                         ||
-| Software Development    | Git + GitHub                                           | Gestión colaborativa del código fuente.                                            | [https://github.com](https://github.com)                                                                                          |
-| Software Testing        | jUnit, Mockito                                         | Pruebas unitarias y de integración para el REST API.                               | [https://junit.org/](https://junit.org/) / [https://site.mockito.org/](https://site.mockito.org/)           |
-| Software Testing        | pytest                                                 | Pruebas unitarias para el Edge API.                                                | [https://docs.pytest.org/](https://docs.pytest.org/)   |
-| Software Deployment     | Vercel                                                 | Despliegue continuo del sitio web estático.                                        | [https://vercel.com/](https://vercel.com/)                                                |
-| Software Deployment     | Vercel                                                 | Despliegue continuo de la aplicación web.                                          | [https://vercel.com/](https://vercel.com/)                                                |
-| Software Deployment     | Firebase App Distribution                              | Despliegue continuo de la aplicación móvil.                                        | [https://firebase.google.com/docs/app-distribution](https://firebase.google.com/docs/app-distribution)                                                |
-| Software Deployment     | Azure Websites                                         | Despliegue continuo del REST API en nube.                                          | [https://azure.microsoft.com/es-es/products/app-service/web](https://azure.microsoft.com/es-es/products/app-service/web)                                                |
-| Software Deployment     | MongoDB Atlas Cloud                                    | Despliegue de la base de datos noSQL en la nube.                                   | [https://www.mongodb.com/es/products/platform/atlas-database](https://www.mongodb.com/es/products/platform/atlas-database)                                                |
-| Software Documentation  | Swagger                                                | Documentación de APIs, funcionalidades y criterios técnicos.                       | [https://swagger.io/](https://swagger.io/)                                                                                        |
+| Actividad               | Herramienta / Guía                | Propósito                                                                         | Tipo de acceso / Ruta                                                                                                   |
+| ----------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Project Management      | Jira                               | Seguimiento de backlog, tareas, sprints y desempeño de los integrantes del grupo. | [https://www.atlassian.com/es/software/jira](https://www.atlassian.com/es/software/jira)                                   |
+| Requirements Management | Gherkin Conventions                | Escritura legible de requisitos con formato Given/When/Then.                       | [https://cucumber.io/docs/gherkin/](https://cucumber.io/docs/gherkin/)                                                     |
+| Product Design          | Structurizr C4                     | Diseño de la arquitectura del sistema completo y sus aplicaciones.                | [https://playground.structurizr.com/](https://playground.structurizr.com/)                                                 |
+| Product Design          | PlantUML                           | Diseño de la arquitectura de bajo nivel incluyendo diagramas de clase.            | [https://plantuml.com/](https://plantuml.com/)                                                                             |
+| Product Design          | Figma                              | Prototipos de las aplicaciones web, móvil y el sitio web estático.               | [https://figma.com](https://figma.com)                                                                                     |
+| Product Design          | Wokwi                              | Diseño de prototipo del dispositivo IoT.                                          | [https://wokwi.com/](https://wokwi.com/)                                                                                   |
+| Software Development    | HTML5, CSS y JavaScript / WebStorm | Desarrollo del sitio web estático.                                                | [https://www.jetbrains.com/es-es/webstorm/](https://www.jetbrains.com/es-es/webstorm/)                                     |
+| Software Development    | Flutter y Dart / Android Studio    | Desarrollo de la aplicación móvil.                                               | [https://developer.android.com/studio?hl=es-419](https://developer.android.com/studio?hl=es-419)                           |
+| Software Development    | TypeScript y Angular / WebStorm    | Desarrollo de la aplicación web.                                                  | [https://www.jetbrains.com/es-es/webstorm/](https://www.jetbrains.com/es-es/webstorm/)                                     |
+| Software Development    | Java y Spring Boot / IntelliJ IDEA | Desarrollo del REST API y lógica de negocio.                                      | [https://www.jetbrains.com/idea/](https://www.jetbrains.com/idea/)                                                         |
+| Software Development    | Python y Flask / PyCharm           | Desarrollo de la capa Edge para el entorno IoT.                                    | [https://www.jetbrains.com/es-es/pycharm/download/](https://www.jetbrains.com/es-es/pycharm/download/)                     |
+| Software Development    | C++ / Arduino IDE                  | Desarrollo de la aplicación embebida para dispositivos IoT.                       | [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)                                                   |
+| Software Development    | MongoDB / MongoDB Compass          | Uso local de la base de datos para pruebas en entornos de desarrollo.              | [https://www.mongodb.com/products/tools/compass](https://www.mongodb.com/products/tools/compass)                           |
+| Software Development    | Git + GitHub                       | Gestión colaborativa del código fuente.                                          | [https://github.com](https://github.com)                                                                                   |
+| Software Testing        | jUnit, Mockito                     | Pruebas unitarias y de integración para el REST API.                              | [https://junit.org/](https://junit.org/) / [https://site.mockito.org/](https://site.mockito.org/)                             |
+| Software Testing        | pytest                             | Pruebas unitarias para el Edge API.                                                | [https://docs.pytest.org/](https://docs.pytest.org/)                                                                       |
+| Software Deployment     | Vercel                             | Despliegue continuo del sitio web estático.                                       | [https://vercel.com/](https://vercel.com/)                                                                                 |
+| Software Deployment     | Vercel                             | Despliegue continuo de la aplicación web.                                         | [https://vercel.com/](https://vercel.com/)                                                                                 |
+| Software Deployment     | Firebase App Distribution          | Despliegue continuo de la aplicación móvil.                                      | [https://firebase.google.com/docs/app-distribution](https://firebase.google.com/docs/app-distribution)                     |
+| Software Deployment     | Azure Websites                     | Despliegue continuo del REST API en nube.                                          | [https://azure.microsoft.com/es-es/products/app-service/web](https://azure.microsoft.com/es-es/products/app-service/web)   |
+| Software Deployment     | MongoDB Atlas Cloud                | Despliegue de la base de datos noSQL en la nube.                                   | [https://www.mongodb.com/es/products/platform/atlas-database](https://www.mongodb.com/es/products/platform/atlas-database) |
+| Software Documentation  | Swagger                            | Documentación de APIs, funcionalidades y criterios técnicos.                     | [https://swagger.io/](https://swagger.io/)                                                                                 |
 
 ### 6.1.2. Source Code Management
 
@@ -42,14 +41,14 @@ Además, se usa Git Flow como flujo de trabajo para el control de versiones y la
 
 #### Repositorios de productos de software
 
-| Producto de software | URL del repositorio en Github                                                | 
-|----------------------|------------------------------------------------------------------------------| 
-| Landing Page         | https://github.com/desarrollo-de-soluciones-iot-17757/restock-landing-page   | 
+| Producto de software | URL del repositorio en Github                                                 |
+| -------------------- | ----------------------------------------------------------------------------- |
+| Landing Page         | https://github.com/desarrollo-de-soluciones-iot-17757/restock-landing-page    |
 | Web Application      | https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-application |
 | Mobile Application   | https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-application |
-| REST Services API    | No se incluye para este entregable.                                          |
-| Edge Services API    | No se incluye para este entregable.                                          |
-| Embedded Application | No se incluye para este entregable.                                          |
+| REST Services API    | No se incluye para este entregable.                                           |
+| Edge Services API    | No se incluye para este entregable.                                           |
+| Embedded Application | No se incluye para este entregable.                                           |
 
 #### Uso de GitFlow
 
@@ -75,9 +74,9 @@ Es la rama donde se consolida el progreso del desarrollo de funcionalidades.
 Es el conjunto de ramas que facilita el versionamiento y lanzamiento de nuevas versiones del producto.
 
 - Se usa SemVer 2.0.0 para el versionamiento de los lanzamientos de las aplicaciones (major.minor.patch).
-    - Major: se usa cuando una versión nueva e incompable con la anterior es lanzada.
-    - Minor: se usa cuando se lanza un conjunto de funcionalidades nuevas a la aplicación.
-    - Patch: se usa cuando un bug o error es resuelto.
+  - Major: se usa cuando una versión nueva e incompable con la anterior es lanzada.
+  - Minor: se usa cuando se lanza un conjunto de funcionalidades nuevas a la aplicación.
+  - Patch: se usa cuando un bug o error es resuelto.
 - Las ramas de tipo `release` deben nombrase de acuerdo a la versión de la aplicación (ej.: `release/1.0.0`).
 - Las ramas de tipo `release` deben ser creadas a partir de la rama `develop`.
 - No se deben realizar commits directamente a esta rama, para ello, se crea una rama de tipo `bugfix` y el cambio hecho también debe verse reflejado en `develop`.
@@ -120,12 +119,12 @@ A continuación, se explica el estándar definido para los commits dentro de la 
 </div>
 
 - La sección 'type' indica el tipo de commit que se usa para el mensaje. A continuación, se explican los tipos de commits que se usan para el desarrollo del proyecto:
-    - `feat`: Indica que se implementa una nueva funcionalidad dentro de alguna rama de tipo `feature/`.
-    - `fix`: Indica una corrección de errores de código o de bugs.
-    - `docs`: Indica cambios en la documentación (de las aplicaciones, no en la documentación general del proyecto, pues es considerada también un producto de software).
-    - `refactor`: Indica una reestructuración sin cambios en el contenido. Por ejemplo, cambios en el nombramiento de variables o funciones o un cambio para mejor legibilidad del código.
-    - `chore`: Indica actualizaciones de dependencias o tareas de mantenimiento. Por ejemplo, `chore: initial commit`.
-    - `test`: Indica la adición o modificación de pruebas.
+  - `feat`: Indica que se implementa una nueva funcionalidad dentro de alguna rama de tipo `feature/`.
+  - `fix`: Indica una corrección de errores de código o de bugs.
+  - `docs`: Indica cambios en la documentación (de las aplicaciones, no en la documentación general del proyecto, pues es considerada también un producto de software).
+  - `refactor`: Indica una reestructuración sin cambios en el contenido. Por ejemplo, cambios en el nombramiento de variables o funciones o un cambio para mejor legibilidad del código.
+  - `chore`: Indica actualizaciones de dependencias o tareas de mantenimiento. Por ejemplo, `chore: initial commit`.
+  - `test`: Indica la adición o modificación de pruebas.
 - También, se tiene la sección 'scope'. En ella, se debe indicar la sección de la aplicación que está recibiendo las modificaciones o adiciones.
 - A continuación, la sección 'description' indica un resumen de lo que se está agregando o modificando al repositorio de la aplicación. El mensaje de la descripción no puede ser extenso ni entrar en detalles y debe ser redactado en modo imperativo, en inglés, en minúsculas y siempre debe llevar un punto final.
 - Finalmente, la sección opcional 'body' incluye una descripción más detallada del cambio aplicado al proyecto. Para nuestro caso, esta sección no es obligatoria.
@@ -148,7 +147,7 @@ La solución Restock está compuesta por los siguientes productos digitales:
 
 ##### Tecnologías Base
 
-| Elemento    | Tecnología              |
+| Elemento    | Tecnología             |
 | ----------- | ----------------------- |
 | Lenguajes   | HTML5, CSS3, JavaScript |
 | Hosting     | Vercel                  |
@@ -169,19 +168,15 @@ git clone <repository-url>
 ```
 
 2. Acceder a la plataforma de Vercel.
-
 3. Iniciar sesión con la cuenta de GitHub.
-
 4. Seleccionar la opción `Add New Project`.
-
 5. Importar el repositorio correspondiente al Landing Page de Restock.
-
 6. Configurar los siguientes valores:
 
-| Configuración    | Valor                   |
-| ---------------- | ----------------------- |
-| Framework Preset | `Other`                 |
-| Root Directory   | `/`                     |
+| Configuración   | Valor                    |
+| ---------------- | ------------------------ |
+| Framework Preset | `Other`                |
+| Root Directory   | `/`                    |
 | Build Command    | No aplica / dejar vacío |
 | Output Directory | No aplica / dejar vacío |
 | Install Command  | No aplica / dejar vacío |
@@ -737,7 +732,7 @@ Con el objetivo de asegurar una comunicación clara y un flujo de trabajo eficie
 Como se mencionó previamente en el planeamiento del Sprint 1, el objetivo del mismo es desarrollar y desplegar una primera versión funcional de la Landing Page y la aplicación web frontend. Esto conlleva implementar las funcionalidades clave que permitan a los visitantes conocer el valor de negocio de la plataforma, así como a los administradores de restaurantes y tiendas retail gestionar su perfil, autenticarse, controlar el stock en inventarios, administrar dispositivos IoT y registrar sus ventas desde la interfaz web.
 Luego de definir el objetivo del sprint, se identificaron las historias de usuario correspondientes. A continuación, se dividió cada historia de usuario en tareas relacionadas a la implementación y cumplimiento de dicha historia. Para ello, se utilizó la aplicación Jira, que nos ayuda a gestionar el progreso del sprint.
 
-Proyecto en Jira: [https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9](https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9)
+Proyecto en Jira: [https://shorturl.at/JPiiX](https://shorturl.at/JPiiX)
 
 <p align="center">
   <img src="https://imgur.com/zkiQqoL.png" 
@@ -746,40 +741,40 @@ Proyecto en Jira: [https://ui-topic.atlassian.net/jira/software/projects/UTI/boa
 
 A continuación, se presenta la tabla con las tareas necesarias para completar satisfactoriamente este primer sprint. Además, se asignó un miembro del equipo a cada tarea a desarrollar y el estado de cada tarea.
 
-| Sprint 1 | Sprint Backlog 1 | | | | | | |
-|----------|-----------------|----------------|-------|-------------|-------------------|-------------|--------|
-| **User Story** | **Título** | **Work Item/Task** | **Título** | **Descripción** | **Estimation (SP)** | **Assigned to** | **Status** |
-| UTI-439 | US-11: Gestión de perfil | UTI-592 | Desarrollar la visualización de la información del perfil | Como usuario de la plataforma, quiero gestionar la información de mi perfil, para asegurar que mi información sea la correcta. | 0.5 | José Jahaziel Guerra Perez | Done |
-| | | UTI-593 | Implementar la edición de datos básicos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
-| | | UTI-595 | Configurar preferencias del sistema | | | Matias D. | Done |
-| UTI-429 | US-01: Conocer el valor de negocio de la plataforma | UTI-526 | Desarrollar la sección de beneficios | Como visitante del sitio web estático, quiero determinar el valor de negocio, para tomar la decisión de convertirme en usuario de la plataforma. | 0.4 | Julio Castro Alejos | Done |
-| | | UTI-527 | Crear y estructurar la sección de preguntas frecuentes | | | Matias D. | Done |
-| | | UTI-542 | Implementar Media Queries en el CSS | | | Matias D. | Done |
-| | | UTI-545 | Implementar etiquetas ARIA | | | Gabriela Nicole Shapiama Rivera | Done |
-| | | UTI-548 | Permitir el cambio dinámico de idioma | | | Julio Castro Alejos | Done |
-| UTI-430 | US-02: Aumento de confianza sobre la plataforma | UTI-528 | Implementar la sección de testimonios | Como visitante, quiero conocer sobre el producto y quienes fueron los creadores, para aumentar la confianza sobre el uso de la plataforma. | 0.3 | Matias D. | Done |
-| | | UTI-529 | Crear la sección de términos y condiciones | | | Gabriela Nicole Shapiama Rivera | Done |
-| | | UTI-538 | Crear la sección de políticas de privacidad | | | Julio Castro Alejos | Done |
-| | | UTI-543 | Implementar Media Queries en el CSS | | | Matias D. | Done |
-| | | UTI-546 | Implementar etiquetas ARIA (Accesibilidad) | | | Gabriela Nicole Shapiama Rivera | Done |
-| | | UTI-549 | Permitir el cambio dinámico de idioma | | | Julio Castro Alejos | Done |
-| UTI-431 | US-03: Acceso a las aplicaciones | UTI-531 | Implementar el flujo de redirección a la app móvil | Como visitante, quiero acceder o descargar la aplicación, para empezar a usarla en mis operaciones de negocio. | 0.4 | Julio Castro Alejos | Done |
-| | | UTI-532 | Implementar el flujo de acceso a la plataforma web | | | Gabriela Nicole Shapiama Rivera | Done |
-| | | UTI-533 | Diseñar la interfaz de selección entre plataformas | | | Matias D. | Done |
-| | | UTI-544 | Implementar Media Queries en el CSS | | | Matias D. | Done |
-| | | UTI-547 | Implementar etiquetas ARIA (Accesibilidad) | | | Gabriela Nicole Shapiama Rivera | Done |
-| UTI-432 | US-04: Registro de usuario | UTI-534 | Desarrollar lógica de creación de cuenta | Como visitante, quiero registrarme como administrador de una tienda retail, para acceder a las funcionalidades de la aplicación. | 0.5 | Matias D. | Done |
-| | | UTI-535 | Integrar verificación de seguridad de contraseña | | | Antonio Navarro | In-Progress |
-| | | UTI-536 | Redirigir al usuario tras registro exitoso | | | Matias D. | Done |
-| | | UTI-537 | Desarrollar un registro del negocio del usuario | | | Antonio Navarro | In-Progress |
-| UTI-445 | US-17: Control y ajuste de stock en lotes | UTI-554 | Implementar la funcionalidad de registro de ingreso de mercadería | Como administrador del negocio, quiero registrar los movimientos de entrada y salida de suministros, así como definir sus niveles de reserva, para garantizar que el inventario esté siempre actualizado. | 0.3 | Julio Castro Alejos | In-Progress |
-| | | UTI-556 | Implementar validaciones para el registro de movimientos | | | Julio Castro Alejos | In-Progress |
-| | | UTI-557 | Registrar historial de movimientos y ajustes de stock | | | Gabriela Nicole Shapiama Rivera | In-Progress |
-| UTI-460 | US-32: Gestionar y consultar las ventas del negocio | UTI-578 | Implementar la funcionalidad de registro de ventas | Como administrador del negocio, quiero registrar y consultar las ventas de productos o combos, para mantener actualizado el inventario y hacer seguimiento al desempeño comercial. | 0.5 | Nicolás Juárez | In-Progress |
-| | | UTI-579 | Implementar la funcionalidad de consulta de ventas | | | Farid Coronel | Done |
-| | | UTI-580 | Visualizar el detalle de una venta | | | José Jahaziel Guerra Perez | Done |
-| UTI-466 | US-38: Gestión de dispositivos en sucursales | UTI-581 | Desarrollar la visualización del listado de dispositivos | Como administrador, quiero gestionar dispositivos smart-inventory para el monitoreo de stock, temperatura y humedad en mis sucursales, para mantener el control y configuración de los dispositivos que supervisan mis productos o insumos. | 0.4 | Nicolás Juárez | In-Progress |
-| | | UTI-582 | Implementar el registro de nuevos dispositivos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
+| Sprint 1             | Sprint Backlog 1                                    |                          |                                                                    |                                                                                                                                                                                                                                              |                           |                                 |                  |
+| -------------------- | --------------------------------------------------- | ------------------------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------- | ---------------- |
+| **User Story** | **Título**                                   | **Work Item/Task** | **Título**                                                  | **Descripción**                                                                                                                                                                                                                       | **Estimation (SP)** | **Assigned to**           | **Status** |
+| UTI-439              | US-11: Gestión de perfil                           | UTI-592                  | Desarrollar la visualización de la información del perfil        | Como usuario de la plataforma, quiero gestionar la información de mi perfil, para asegurar que mi información sea la correcta.                                                                                                             | 0.5                       | José Jahaziel Guerra Perez     | Done             |
+|                      |                                                     | UTI-593                  | Implementar la edición de datos básicos                          |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | In-Progress      |
+|                      |                                                     | UTI-595                  | Configurar preferencias del sistema                                |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+| UTI-429              | US-01: Conocer el valor de negocio de la plataforma | UTI-526                  | Desarrollar la sección de beneficios                              | Como visitante del sitio web estático, quiero determinar el valor de negocio, para tomar la decisión de convertirme en usuario de la plataforma.                                                                                           | 0.4                       | Julio Castro Alejos             | Done             |
+|                      |                                                     | UTI-527                  | Crear y estructurar la sección de preguntas frecuentes            |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-542                  | Implementar Media Queries en el CSS                                |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-545                  | Implementar etiquetas ARIA                                         |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | Done             |
+|                      |                                                     | UTI-548                  | Permitir el cambio dinámico de idioma                             |                                                                                                                                                                                                                                              |                           | Julio Castro Alejos             | Done             |
+| UTI-430              | US-02: Aumento de confianza sobre la plataforma     | UTI-528                  | Implementar la sección de testimonios                             | Como visitante, quiero conocer sobre el producto y quienes fueron los creadores, para aumentar la confianza sobre el uso de la plataforma.                                                                                                   | 0.3                       | Matias D.                       | Done             |
+|                      |                                                     | UTI-529                  | Crear la sección de términos y condiciones                       |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | Done             |
+|                      |                                                     | UTI-538                  | Crear la sección de políticas de privacidad                      |                                                                                                                                                                                                                                              |                           | Julio Castro Alejos             | Done             |
+|                      |                                                     | UTI-543                  | Implementar Media Queries en el CSS                                |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-546                  | Implementar etiquetas ARIA (Accesibilidad)                         |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | Done             |
+|                      |                                                     | UTI-549                  | Permitir el cambio dinámico de idioma                             |                                                                                                                                                                                                                                              |                           | Julio Castro Alejos             | Done             |
+| UTI-431              | US-03: Acceso a las aplicaciones                    | UTI-531                  | Implementar el flujo de redirección a la app móvil               | Como visitante, quiero acceder o descargar la aplicación, para empezar a usarla en mis operaciones de negocio.                                                                                                                              | 0.4                       | Julio Castro Alejos             | Done             |
+|                      |                                                     | UTI-532                  | Implementar el flujo de acceso a la plataforma web                 |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | Done             |
+|                      |                                                     | UTI-533                  | Diseñar la interfaz de selección entre plataformas               |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-544                  | Implementar Media Queries en el CSS                                |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-547                  | Implementar etiquetas ARIA (Accesibilidad)                         |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | Done             |
+| UTI-432              | US-04: Registro de usuario                          | UTI-534                  | Desarrollar lógica de creación de cuenta                         | Como visitante, quiero registrarme como administrador de una tienda retail, para acceder a las funcionalidades de la aplicación.                                                                                                            | 0.5                       | Matias D.                       | Done             |
+|                      |                                                     | UTI-535                  | Integrar verificación de seguridad de contraseña                 |                                                                                                                                                                                                                                              |                           | Antonio Navarro                 | In-Progress      |
+|                      |                                                     | UTI-536                  | Redirigir al usuario tras registro exitoso                         |                                                                                                                                                                                                                                              |                           | Matias D.                       | Done             |
+|                      |                                                     | UTI-537                  | Desarrollar un registro del negocio del usuario                    |                                                                                                                                                                                                                                              |                           | Antonio Navarro                 | In-Progress      |
+| UTI-445              | US-17: Control y ajuste de stock en lotes           | UTI-554                  | Implementar la funcionalidad de registro de ingreso de mercadería | Como administrador del negocio, quiero registrar los movimientos de entrada y salida de suministros, así como definir sus niveles de reserva, para garantizar que el inventario esté siempre actualizado.                                  | 0.3                       | Julio Castro Alejos             | In-Progress      |
+|                      |                                                     | UTI-556                  | Implementar validaciones para el registro de movimientos           |                                                                                                                                                                                                                                              |                           | Julio Castro Alejos             | In-Progress      |
+|                      |                                                     | UTI-557                  | Registrar historial de movimientos y ajustes de stock              |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | In-Progress      |
+| UTI-460              | US-32: Gestionar y consultar las ventas del negocio | UTI-578                  | Implementar la funcionalidad de registro de ventas                 | Como administrador del negocio, quiero registrar y consultar las ventas de productos o combos, para mantener actualizado el inventario y hacer seguimiento al desempeño comercial.                                                          | 0.5                       | Nicolás Juárez                | In-Progress      |
+|                      |                                                     | UTI-579                  | Implementar la funcionalidad de consulta de ventas                 |                                                                                                                                                                                                                                              |                           | Farid Coronel                   | Done             |
+|                      |                                                     | UTI-580                  | Visualizar el detalle de una venta                                 |                                                                                                                                                                                                                                              |                           | José Jahaziel Guerra Perez     | Done             |
+| UTI-466              | US-38: Gestión de dispositivos en sucursales       | UTI-581                  | Desarrollar la visualización del listado de dispositivos          | Como administrador, quiero gestionar dispositivos smart-inventory para el monitoreo de stock, temperatura y humedad en mis sucursales, para mantener el control y configuración de los dispositivos que supervisan mis productos o insumos. | 0.4                       | Nicolás Juárez                | In-Progress      |
+|                      |                                                     | UTI-582                  | Implementar el registro de nuevos dispositivos                     |                                                                                                                                                                                                                                              |                           | Gabriela Nicole Shapiama Rivera | In-Progress      |
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 
@@ -789,9 +784,8 @@ Cada miembro del equipo avanzó progresivamente en las diferentes áreas del pro
 
 A continuación, se muestra una tabla que contiene la información sobre los **commits** realizados que contienen las funcionalidades implementadas para completar el primer sprint.
 
-
 | Repository              | Branch                     | Commit Id                                | Commit Message                                                                                                 | Commited On |
-|-------------------------|----------------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|
+| ----------------------- | -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
 | restock-landing-page    | master                     | c4d1d91309ecd68035221e82ba0ebf5596db282d | chore: initial commit.                                                                                         | 08/05/26    |
 | restock-web-application | main                       | 1ac30de5797ce40dffb7fe42b2703f093d088613 | chore: initial commit.                                                                                         | 08/05/26    |
 | restock-landing-page    | feature/hero               | 137c93e1068496a6063d32bac6a2dee75e235eec | feat(hero): add hero section.                                                                                  | 12/05/26    |
@@ -813,8 +807,11 @@ A continuación, se muestra una tabla que contiene la información sobre los **c
 | restock-web-application | feature/device-list-screen | 16bac5bc14c4592400aad0fb0a416774a6ee5134 | feat(devices-list): add assembler for converting device registration commands, requests and responses.         | 14/05/26    |
 | restock-web-application | feature/device-list-screen | 3e7289921180b15fd30d00c13cb164ca823fcb61 | feat(devices): implement device management dashboard UI matching design.                                       | 14/05/26    |
 
-
 #### 6.2.1.5. Testing Suite Evidence for Sprint Review
+
+Para este Sprint, la Testing Suite automatizada no aplica, debido a que el avance se enfocó en la implementación de funcionalidades de frontend para la Web Application. 
+
+No se implementaron ni modificaron Web Services backend durante este Sprint, por lo que las pruebas automatizadas orientadas a servicios no corresponden al alcance del incremento actual.
 
 #### 6.2.1.6. Execution Evidence for Sprint Review
 
@@ -923,6 +920,7 @@ Vista general de todas las secciones del sitio adaptadas para dispositivos móvi
 En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 1 para la aplicación web. El esfuerzo de desarrollo se centró en habilitar la navegación principal y la interacción gráfica con las entidades operativas del sistema, brindando soporte visual a los modelos de negocio.
 
 El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
 * **Panel de administración:** Gestión centralizada orientada a los segmentos de restaurantes y retail de consumo masivo.
 * **Assets & Resources:** Vistas operativas para el registro, control y gestión de sucursales y suministros.
 * **Device Management:** Pantallas destinadas a la administración, asignación y revisión de estado de los dispositivos IoT en la red.
@@ -1075,7 +1073,6 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
 #### 6.2.2.8. Software Deployment Evidence for Sprint Review
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
-
 
 ### 6.2.3. Sprint 3
 
