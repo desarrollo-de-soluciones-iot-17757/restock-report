@@ -908,81 +908,21 @@ Vista general de todas las secciones del sitio adaptadas para dispositivos móvi
 
 ## **Aplicación Web**
 
-Se adjuntan los enlaces para el vídeo de demostración de la aplicación web. El vídeo muestra el funcionamiento de las pantallas implementadas, incluyendo administración para restaurantes y retail de consumo masivo, gestión de sucursales, suministros, dispositivos y configuración de preferencias del usuario.
-- Vídeo de ejecución: [Restock Web Application - Sprint 1]()
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 1 para la aplicación web. El esfuerzo de desarrollo se centró en habilitar la navegación principal y la interacción gráfica con las entidades operativas del sistema, brindando soporte visual a los modelos de negocio.
 
-#### Inicio de sesión
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+* **Panel de administración:** Gestión centralizada orientada a los segmentos de restaurantes y retail de consumo masivo.
+* **Assets & Resources:** Vistas operativas para el registro, control y gestión de sucursales y suministros.
+* **Device Management:** Pantallas destinadas a la administración, asignación y revisión de estado de los dispositivos IoT en la red.
+* **Profiles:** Interfaz para la configuración de preferencias y gestión de la cuenta del usuario.
 
-<img src="" alt="sign-in" style="width: 100%; height: auto;"/>
+<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://shortlink.uk/1pF66](https://shortlink.uk/1pF66)
 
-#### Registro de usuario
+**Duración del vídeo:** [06:57]
 
-<img src="https://i.imgur.com/nTioVNT.png" alt="sign-up" style="width: 100%; height: auto;"/>
-
-<img src="https://i.imgur.com/9qIy3a3.png" alt="role-selection" style="width: 100%; height: auto;"/>
-
-#### Gestión de sucursales
-
-<img src="" alt="branches" style="width: 100%; height: auto;"/>
-
-<img src="" alt="branches" style="width: 100%; height: auto;"/>
-
-<img src="" alt="branches" style="width: 100%; height: auto;"/>
-
-
-#### Gestión de suministros
-
-<img src="" alt="supplies" style="width: 100%; height: auto;"/>
-
-<img src="" alt="supplies" style="width: 100%; height: auto;"/>
-
-<img src="" alt="supplies" style="width: 100%; height: auto;"/>
-
-<img src="" alt="supplies" style="width: 100%; height: auto;"/>
-
-#### Gestión de inventario
-
-<img src="https://i.imgur.com/1zlXafL.png" alt="batches" style="width: 100%; height: auto;"/>
-
-<img src="" alt="inventory" style="width: 100%; height: auto;"/>
-
-<img src="" alt="inventory" style="width: 100%; height: auto;"/>
-
-<img src="" alt="inventory" style="width: 100%; height: auto;"/>
-
-#### Ventas de una sucursal
-
-<img src="https://i.imgur.com/1qO4O2Q.png" alt="sales" style="width: 100%; height: auto;"/>
-
-<img src="https://i.imgur.com/RiLXMTZ.png" alt="sales" style="width: 100%; height: auto;"/>
-
-#### Gestión de dispositivos
-
-<img src="" alt="devices" style="width: 100%; height: auto;"/>
-
-<img src="" alt="devices" style="width: 100%; height: auto;"/>
-
-<img src="" alt="devices" style="width: 100%; height: auto;"/>
-
-<img src="" alt="devices" style="width: 100%; height: auto;"/>
-
-
-#### Recetas y Kits
-
-<img src="" alt="recipes" style="width: 100%; height: auto;"/>
-
-<img src="" alt="recipes" style="width: 100%; height: auto;"/>
-
-<img src="" alt="kits" style="width: 100%; height: auto;"/>
-
-<img src="" alt="kits" style="width: 100%; height: auto;"/>
-
-
-##### Preferencias de usuario
-
-
-<img src="" alt="user-preferences" style="width: 100%; height: auto;"/>
 
 #### 6.2.1.7. Services Documentation Evidence for Sprint Review
 
