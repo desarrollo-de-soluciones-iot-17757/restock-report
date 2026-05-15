@@ -5723,14 +5723,14 @@ En esta sección se presentan los diagramas de componentes del bounded context d
 
 ##### Web Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Extiende utilidades base del componente Shared y se comunica vía JSON/HTTPS con el Restock Cloud Server Side App para registrar y recuperar órdenes de venta del negocio.
+El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación web, se implementa como un componente Angular/TypeScript dentro del Restock Platform Web Client App, encargado de gestionar y mostrar las órdenes de venta de cada sucursal. Se comunica vía Kong Gateway para poder comunicarse con el Backend. 
 
 <img src="https://i.imgur.com/IA3g7lo.png" alt="Web Sales Order Management Component Diagram" width="100%">
 
 
 ##### Backend Application Component Diagram
 
-El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App,  actúa como el núcleo del procesamiento: recibe solicitudes de la web y la app móvil, valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
+El diagrama representa la implementación del bounded context de Sales Order Management, se implementa como un componente Java/Spring Boot dentro del Restock Cloud Server Side App, actúa como el núcleo del procesamiento: recibe solicitudes del Kong Gateway y valida tokens JWT con Identity and Access Management, persiste las ventas en la Restock Database, actualiza el stock en Asset and Resource Management, descuenta cantidades en Service Design and Planning, y dispara notificaciones a través del componente Communications.
 
 <img src="https://i.imgur.com/HWSxEVk.png" alt="Backend Sales Order Management Component Diagram" width="100%">
 
