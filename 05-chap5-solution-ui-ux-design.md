@@ -479,6 +479,69 @@ Además de los criterios anteriores, Restock distingue claramente entre los dos 
 Con este enfoque, cada perfil obtiene una experiencia personalizada según su rol, reduciendo la complejidad y mejorando la eficacia en la toma de decisiones.
 
 ### 5.2.2. Labeling Systems
+
+En esta sección se presenta el sistema de etiquetado (labeling system) para la plataforma de Restock. Este sistema prioriza la claridad y la sencillez visual. Usamos términos familiares para que el sistema sea fácil de usar, manteniendo siempre la estética definida en nuestros estándares de diseño.
+
+Se ha priorizado la claridad semántica y la coherencia con el lenguaje visual del producto, especialmente con el tono de comunicación cercano y profesional.
+
+#### A. Landing Page
+El etiquetado en el sitio público utiliza un lenguaje persuasivo, directo y coherente con la propuesta de valor de Restock.
+
+- **Secciones de Navegación:**
+  - **Inicio:** Sección de bienvenida con la propuesta de valor principal.
+  - **Beneficios:** Ventajas segmentadas para restaurantes y tiendas retail.
+  - **Testimonios:** Validación social mediante comentarios de usuarios reales.
+  - **Preguntas Frecuentes:** Resolución de dudas comunes de forma clara.
+
+- **Botones de llamada a la acción (CTA):**
+  - **"Prueba Gratis":** Invita al usuario a iniciar una prueba sin costo inicial.
+  - **"Contáctanos":** Facilita el contacto rápido con el equipo de ventas.
+  - **"Iniciar Sesión":** Acceso a la plataforma para usuarios registrados.
+  - **"Solicitar Demo":** Alternativa para usuarios que prefieren ver la plataforma antes de probarla.
+
+#### B. Aplicación Web
+El etiquetado se adapta según el perfil del usuario para optimizar su flujo de trabajo específico:
+
+- **Administradores de Restaurantes:**
+  - **Overview:** Monitoreo de métricas críticas y comparación de inventario real vs. esperado.
+  - **Inventario:** Gestión de lotes, control de mermas y conciliación de discrepancias.
+  - **Recetas:** Registro de platos vinculados a insumos para optimizar compras y consumo.
+  - **Ventas:** Control de transacciones, historial de tickets y rendimiento mensual.
+  - **Alertas:** Notificaciones sobre stock bajo, fallos de conexión o movimientos manuales.
+  - **Dispositivos:** Gestión de salud y estado de conexión de las balanzas IoT.
+- **Administradores del Sector Retail:**
+  - **Kits:** Esta etiqueta reemplaza a "Recetas" en este perfil, consistiendo en un catálogo de productos combinados para la gestión de ofertas comerciales.
+
+*Nota de consistencia:* El resto de etiquetas (**Overview, Inventario, Ventas, Alertas y Dispositivos**) se mantiene idéntico entre los perfiles para asegurar la estandarización operativa del sistema.
+
+#### C. Aplicación Móvil
+Diseñada para la supervisión rápida en movimiento, la app móvil usa etiquetas claras y orientadas a la acción:
+
+- **Overview:** Resumen ejecutivo de las balanzas activas y el estado general del local.
+- **Inventory:** Consulta rápida de niveles de stock y estados actuales de los insumos.
+- **Alertas:** Centro de notificaciones críticas que requieren atención inmediata.
+- **Device:** Monitoreo del estado de conexión y batería de los sensores IoT.
+- **Settings:** Configuración de preferencias de usuario y parámetros de la cuenta.
+
+#### D. Etiquetas en Formularios y Botones Operativos
+Se definen etiquetas estándar para campos de entrada y acciones frecuentes, con la intención de reducir la carga cognitiva en todas las plataformas.
+
+- **Campos de Formulario:**
+  - **"Nombre del Insumo":** Identificador del producto vinculado al sensor.
+  - **"Umbral Mínimo (kg)":** Límite para disparar alertas automáticas de reabastecimiento.
+  - **"Correo Electrónico":** Entrada para credenciales o contacto.
+  - **"Contraseña":** Campo seguro para acceso de usuario.
+  - **"Nombre del negocio":** Nombre del restaurante o tienda retail.
+  - **"Mensaje":** Texto libre para descripciones o solicitudes.
+
+- **Botones de Acción:**
+  - **"Guardar Cambios":** Confirma la edición de configuraciones o perfiles.
+  - **"Vincular Dispositivo":** Inicia la sincronización de un nuevo sensor IoT.
+  - **"Registrar Salida":** Acción manual para descontar stock fuera del flujo de venta automática.
+  - **"Enviar consulta":** Envía un formulario de contacto o solicitud.
+  - **"Solicitar demo":** Pide una demostración personalizada del sistema.
+  - **"Suscribirme":** Registra el correo para recibir actualizaciones.
+
 ### 5.2.3. SEO Tags and Meta Tags
 ### 5.2.4. Searching Systems
 ### 5.2.5. Navigation Systems
