@@ -159,7 +159,7 @@ En esta sección se presenta una visión general de los principales usuarios, si
 
 Para Restock, el diagrama de panorama del sistema incluye los siguientes elementos principales:
 
-<img src="assets/images/chapter4/landscape-diagram.png" width="600px">
+<img src="https://i.imgur.com/AA0vP21.png" alt="System Landscape Diagram para identificar participantes y aplicaciones internas, usuarios objetivo y sistemas externos." width="600px">
 
 **Restaurant Administrator:** Usuario encargado de gestionar el inventario, recetas, ventas y operaciones dentro de un restaurante, interactuando directamente con la plataforma Restock para administrar sus procesos.
 
