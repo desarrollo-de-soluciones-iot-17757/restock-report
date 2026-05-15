@@ -740,7 +740,7 @@ Luego de definir el objetivo del sprint, se identificaron las historias de usuar
 Proyecto en Jira: [https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9](https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35?atlOrigin=eyJpIjoiYjQ3ZDVjYWM4ZTdlNDY1MjgwNzhkYzhiOTY2NDE0NGEiLCJwIjoiaiJ9)
 
 <p align="center">
-  <img src="https://imgur.com/H36C6RG.png" 
+  <img src="https://imgur.com/zkiQqoL.png" 
   alt="sprint_backlog_1"/>
 </p>
 
@@ -750,14 +750,14 @@ A continuación, se presenta la tabla con las tareas necesarias para completar s
 |----------|-----------------|----------------|-------|-------------|-------------------|-------------|--------|
 | **User Story** | **Título** | **Work Item/Task** | **Título** | **Descripción** | **Estimation (SP)** | **Assigned to** | **Status** |
 | UTI-439 | US-11: Gestión de perfil | UTI-592 | Desarrollar la visualización de la información del perfil | Como usuario de la plataforma, quiero gestionar la información de mi perfil, para asegurar que mi información sea la correcta. | 0.5 | José Jahaziel Guerra Perez | Done |
-| | | UTI-593 | Implementar la edición de datos básicos | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-593 | Implementar la edición de datos básicos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
 | | | UTI-595 | Configurar preferencias del sistema | | | Matias D. | Done |
 | UTI-429 | US-01: Conocer el valor de negocio de la plataforma | UTI-526 | Desarrollar la sección de beneficios | Como visitante del sitio web estático, quiero determinar el valor de negocio, para tomar la decisión de convertirme en usuario de la plataforma. | 0.4 | Julio Castro Alejos | Done |
 | | | UTI-527 | Crear y estructurar la sección de preguntas frecuentes | | | Matias D. | Done |
 | | | UTI-542 | Implementar Media Queries en el CSS | | | Matias D. | Done |
-| | | UTI-545 | Implementar etiquetas ARIA  | | | Gabriela Nicole Shapiama Rivera | Done |
+| | | UTI-545 | Implementar etiquetas ARIA | | | Gabriela Nicole Shapiama Rivera | Done |
 | | | UTI-548 | Permitir el cambio dinámico de idioma | | | Julio Castro Alejos | Done |
-| UTI-430 | US-02: Aumento de confianza sobre la plataforma | UTI-528 | Implementar la sección de testimonios | Como visitante, quiero conocer sobre el producto y quienes fueron los creadores, para aumentar la confianza sobre el uso de la plataforma. | 0.5 | Matias D. | Done |
+| UTI-430 | US-02: Aumento de confianza sobre la plataforma | UTI-528 | Implementar la sección de testimonios | Como visitante, quiero conocer sobre el producto y quienes fueron los creadores, para aumentar la confianza sobre el uso de la plataforma. | 0.3 | Matias D. | Done |
 | | | UTI-529 | Crear la sección de términos y condiciones | | | Gabriela Nicole Shapiama Rivera | Done |
 | | | UTI-538 | Crear la sección de políticas de privacidad | | | Julio Castro Alejos | Done |
 | | | UTI-543 | Implementar Media Queries en el CSS | | | Matias D. | Done |
@@ -769,18 +769,17 @@ A continuación, se presenta la tabla con las tareas necesarias para completar s
 | | | UTI-544 | Implementar Media Queries en el CSS | | | Matias D. | Done |
 | | | UTI-547 | Implementar etiquetas ARIA (Accesibilidad) | | | Gabriela Nicole Shapiama Rivera | Done |
 | UTI-432 | US-04: Registro de usuario | UTI-534 | Desarrollar lógica de creación de cuenta | Como visitante, quiero registrarme como administrador de una tienda retail, para acceder a las funcionalidades de la aplicación. | 0.5 | Matias D. | Done |
-| | | UTI-535 | Integrar verificación de seguridad de contraseña | | | Antonio Navarro | Done |
+| | | UTI-535 | Integrar verificación de seguridad de contraseña | | | Antonio Navarro | In-Progress |
 | | | UTI-536 | Redirigir al usuario tras registro exitoso | | | Matias D. | Done |
-| | | UTI-537 | Desarrollar un registro del negocio del usuario | | | Antonio Navarro | Done |
-| UTI-445 | US-17: Control y ajuste de stock en lotes | UTI-554 | Implementar la funcionalidad de registro de ingreso de mercadería | Como administrador del negocio, quiero registrar los movimientos de entrada y salida de suministros, así como definir sus niveles de reserva, para garantizar que el inventario esté siempre actualizado. | 0.3 | Julio Castro Alejos | Done |
-| | | UTI-556 | Implementar validaciones para el registro de movimientos | | | Julio Castro Alejos | Done |
+| | | UTI-537 | Desarrollar un registro del negocio del usuario | | | Antonio Navarro | In-Progress |
+| UTI-445 | US-17: Control y ajuste de stock en lotes | UTI-554 | Implementar la funcionalidad de registro de ingreso de mercadería | Como administrador del negocio, quiero registrar los movimientos de entrada y salida de suministros, así como definir sus niveles de reserva, para garantizar que el inventario esté siempre actualizado. | 0.3 | Julio Castro Alejos | In-Progress |
+| | | UTI-556 | Implementar validaciones para el registro de movimientos | | | Julio Castro Alejos | In-Progress |
 | | | UTI-557 | Registrar historial de movimientos y ajustes de stock | | | Gabriela Nicole Shapiama Rivera | In-Progress |
-| UTI-460 | US-32: Gestionar y consultar las ventas del negocio | UTI-578 | Implementar la funcionalidad de registro de ventas | Como administrador del negocio, quiero registrar y consultar las ventas de productos o combos, para mantener actualizado el inventario y hacer seguimiento al desempeño comercial. | 0.5 | Nicolás Juárez | Done |
-| | | UTI-579 | Implementar la funcionalidad de consulta de ventas | | | Farid Coronel | To-Review |
+| UTI-460 | US-32: Gestionar y consultar las ventas del negocio | UTI-578 | Implementar la funcionalidad de registro de ventas | Como administrador del negocio, quiero registrar y consultar las ventas de productos o combos, para mantener actualizado el inventario y hacer seguimiento al desempeño comercial. | 0.5 | Nicolás Juárez | In-Progress |
+| | | UTI-579 | Implementar la funcionalidad de consulta de ventas | | | Farid Coronel | Done |
 | | | UTI-580 | Visualizar el detalle de una venta | | | José Jahaziel Guerra Perez | Done |
-| UTI-449 | US-21: Administrar dispositivos y sus parámetros de abastecimiento | UTI-562 | Implementar la configuración y almacenamiento de parámetros de abastecimiento | Como administrador, quiero administrar los dispositivos y sus límites de reposición, para organizar el stock en tienda y evitar discrepancias de inventario. | 0.5 | Farid Coronel | Done |
-| | | UTI-564 | Diseñar la interfaz de administración de dispositivos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
-| | | UTI-565 | Desarrollar la edición de dispositivos | | | Nicolás Juárez | Done |
+| UTI-466 | US-38: Gestión de dispositivos en sucursales | UTI-581 | Desarrollar la visualización del listado de dispositivos | Como administrador, quiero gestionar dispositivos smart-inventory para el monitoreo de stock, temperatura y humedad en mis sucursales, para mantener el control y configuración de los dispositivos que supervisan mis productos o insumos. | 0.4 | Nicolás Juárez | In-Progress |
+| | | UTI-582 | Implementar el registro de nuevos dispositivos | | | Gabriela Nicole Shapiama Rivera | In-Progress |
 
 #### 6.2.1.4. Development Evidence for Sprint Review
 
