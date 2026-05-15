@@ -2396,19 +2396,19 @@ En esta sección se presentan los diagramas de componentes del bounded context *
 
 ##### Web Application Component Diagram
 
-Este diagrama representa la implementación del bounded context **Subscriptions and Payments** en la aplicación web. Se muestra cómo el componente web permite a los usuarios visualizar beneficios, seleccionar planes y gestionar la renovación o cancelación de suscripciones. Asimismo, se evidencia la interacción directa con el backend mediante solicitudes HTTP y la integración con **Stripe** para iniciar y redirigir el proceso de pago. Además, el componente utiliza funcionalidades compartidas a través del módulo **Shared** para la reutilización de utilidades comunes.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios consultar los planes de suscripción y ejecutar acciones como elegir, renovar o cancelar una suscripción. Las solicitudes del cliente se envían hacia **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Cuando el flujo de pago lo requiere, el componente también redirige al usuario hacia **Stripe** para completar el checkout externo.
 
 <img src="https://i.imgur.com/vBQdEb4.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Mobile Application Component Diagram
 
-Este diagrama muestra la implementación del bounded context **Subscriptions and Payments** en la aplicación móvil. El componente permite consultar el estado actual de la suscripción, así como realizar acciones de renovación o cancelación. Se observa la comunicación con el backend para la gestión del estado de la suscripción y la persistencia de la información en la base de datos. También se incluye la integración con **Stripe**, donde la aplicación inicia el proceso de pago y redirige al usuario para completarlo.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación móvil, desarrollado en Dart y Flutter, cuya función es permitir a los usuarios visualizar los beneficios de la suscripción, elegir un plan y renovar su suscripción. El componente envía las solicitudes al **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Además, cuando el flujo de pago lo requiere, la aplicación redirige al usuario hacia **Stripe** para completar el checkout externo.
 
 <img src="https://i.imgur.com/yORVGhV.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Backend Application Component Diagram
 
-Este diagrama representa la lógica central del bounded context **Subscriptions and Payments** en el backend. Se muestra cómo este componente gestiona el ciclo de vida completo de las suscripciones (adquisición, renovación y cancelación), interactuando con el contexto de **Identity and Access Management** para validar la identidad del usuario y registrar cuentas. Asimismo, se integra con **Profile and Preferences** para asociar la suscripción con el perfil de negocio del usuario. El componente persiste información relevante en la base de datos y se integra con **Stripe** para la creación de sesiones de pago y el procesamiento de transacciones.
+Este diagrama muestra la organización del backend como un conjunto de bounded contexts conectados entre sí, donde **Subscriptions and Payments** es el componente encargado de la selección de planes, el ciclo de vida de la suscripción, el inicio de pagos y la renovación de servicios. En la imagen también se observa su relación con otros contextos internos como **Identity and Access Management**, **Design and Planning** y **Asset and Resource Management**, El componente persiste su información en **MongoDB Database** y se integra con **Stripe** para procesar los pagos y suscripciones.
 
 <img src="https://i.imgur.com/cY2abRM.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
 
