@@ -8,7 +8,7 @@
 
 ### 6.1.3. Source Code Style Guide & Conventions
 
-### 6.1.4. Software Deployment Configuration
+### 6.1.3. Source Code Style Guide & Conventions
 
 En esta sección se describen las configuraciones y pasos necesarios para desplegar correctamente los distintos productos digitales que conforman la solución Restock, partiendo desde sus respectivos repositorios de código fuente. Asimismo, se especifican las tecnologías, plataformas y servicios utilizados para la publicación y ejecución de cada componente del sistema.
 
@@ -25,17 +25,17 @@ La solución Restock está compuesta por los siguientes productos digitales:
 
 ##### Tecnologías Base
 
-| Elemento    | Tecnología             |
+| Elemento    | Tecnología              |
 | ----------- | ----------------------- |
 | Lenguajes   | HTML5, CSS3, JavaScript |
-| Hosting     | GitHub Pages            |
+| Hosting     | Vercel                  |
 | Repositorio | GitHub                  |
 
 ##### Configuración y Despliegue
 
-La Landing Page institucional de Restock se encuentra desarrollada utilizando HTML, CSS y JavaScript puro. El código fuente se almacena en un repositorio GitHub público.
+La Landing Page institucional de Restock se encuentra desarrollada utilizando HTML, CSS y JavaScript puro. El código fuente se almacena en un repositorio GitHub público, el cual se integra con Vercel para permitir el despliegue automático de la aplicación web.
 
-Para permitir el despliegue correcto mediante GitHub Pages, el archivo `index.html` debe ubicarse en la raíz del proyecto.
+Para permitir el despliegue correcto mediante Vercel, el archivo `index.html` debe ubicarse en la raíz del proyecto o dentro de la carpeta configurada como directorio principal del proyecto.
 
 ##### Pasos de despliegue
 
@@ -45,39 +45,35 @@ Para permitir el despliegue correcto mediante GitHub Pages, el archivo `index.ht
 git clone <repository-url>
 ```
 
-2. Acceder al repositorio en GitHub.
-3. Ingresar a `Settings`.
-4. Seleccionar la opción `Pages`.
-5. Configurar los siguientes valores:
+2. Acceder a la plataforma de Vercel.
 
-| Configuración | Valor        |
-| -------------- | ------------ |
-| Branch         | `main`     |
-| Folder         | `/ (root)` |
+3. Iniciar sesión con la cuenta de GitHub.
 
-6. Guardar los cambios.
+4. Seleccionar la opción `Add New Project`.
 
-GitHub Pages generará automáticamente una URL pública con el siguiente formato:
+5. Importar el repositorio correspondiente al Landing Page de Restock.
+
+6. Configurar los siguientes valores:
+
+| Configuración    | Valor                   |
+| ---------------- | ----------------------- |
+| Framework Preset | `Other`                 |
+| Root Directory   | `/`                     |
+| Build Command    | No aplica / dejar vacío |
+| Output Directory | No aplica / dejar vacío |
+| Install Command  | No aplica / dejar vacío |
+
+7. Guardar la configuración e iniciar el despliegue.
+
+Vercel generará automáticamente una URL pública con un formato similar al siguiente:
 
 ```text
-https://<github-user>.github.io/<repository-name>/
+https://<project-name>.vercel.app/
 ```
 
 ##### Actualizaciones
 
-Cada nuevo commit realizado sobre la rama `main` actualizará automáticamente la versión publicada del Landing Page.
-
-##### 2. Frontend Web Application – Angular
-
-##### Tecnologías Base
-
-| Elemento        | Tecnología  |
-| --------------- | ------------ |
-| Framework       | Angular      |
-| Lenguaje        | TypeScript   |
-| Build Tool      | Angular CLI  |
-| Hosting         | GitHub Pages |
-| Package Manager | npm          |
+Cada nuevo commit realizado sobre la rama configurada para producción, generalmente `main`, activará automáticamente un nuevo despliegue en Vercel. De esta manera, la versión publicada del Landing Page se mantiene actualizada sin necesidad de realizar un despliegue manual.
 
 ##### 2. Frontend Web Application – Angular
 
