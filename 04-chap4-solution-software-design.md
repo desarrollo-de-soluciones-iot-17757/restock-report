@@ -5800,13 +5800,13 @@ En esta sección, el equipo presenta el Diagrama de Base de Datos diseñado bajo
 
 <img src="https://i.imgur.com/ML80lw0.png" alt="Data Base Class Diagram - Sales Management" width="800px">
 
-### 4.2.8. Bounded Context: Communication
+## 4.2.8. Bounded Context: Communication
 
 #### 4.2.8.1. Domain Layer
 
-La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Service Operation and Monitoring y Sales Order Management para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+La capa de dominio del Bounded Context de Communication encapsula las reglas de negocio relacionadas con la generación, clasificación y envío de notificaciones dentro de la plataforma. Este contexto actúa como receptor de eventos críticos provenientes de otros bounded contexts como Tracking, Asset and Resource Management y Sales Order Management, así como de eventos físicos generados por los dispositivos IoT a través de la Edge Application, para transformarlos en notificaciones dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que cada evento relevante del sistema derive en una notificación correctamente tipificada, priorizada y enviada al destinatario correcto a través de OneSignal API. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
 
-##### Aggregates & Entities
+#### Aggregates & Entities
 
 Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
 
@@ -5823,13 +5823,13 @@ Estas clases representan los pilares transaccionales del sistema. El Aggregate R
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Notification</strong></td>
       <td style="padding: 10px; border: 1px solid;">Aggregate Root</td>
-      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, la cuenta del destinatario, la sucursal de origen y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
+      <td style="padding: 10px; border: 1px solid;">Representa una notificación generada por el sistema ante un evento crítico, como bajo stock, exceso de inventario, discrepancia detectada o falla de dispositivo. Controla su ciclo de vida: creación, envío y lectura. Incluye el contenido del mensaje, el tipo de evento que la originó, la prioridad asignada, el usuario destinatario (<code>userId</code>), la cuenta del negocio (<code>businessId</code>), la sucursal de origen (<code>branchId</code>) y el estado de lectura. Garantiza que una notificación no pueda marcarse como leída sin haber sido previamente enviada.</td>
     </tr>
   </tbody>
 </table>
 <br>
 
-##### Value Objects
+#### Value Objects
 
 Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
 
@@ -5861,12 +5861,12 @@ Estas clases modelan conceptos propios del dominio y permiten evitar el uso indi
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>SituationData</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador de la cuenta (<code>accountId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el contexto informativo recibido desde otros bounded contexts al generar una notificación: identificador del recurso afectado, identificador de la sucursal de origen (<code>branchId</code>), identificador del negocio (<code>businessId</code>), identificador del usuario destinatario (<code>userId</code>), tipo de evento y timestamp. Permite que la notificación sea trazable hasta su origen.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, AccountId, BranchId</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>NotificationId, BusinessId, BranchId, UserId</strong></td>
       <td style="padding: 10px; border: 1px solid;">Value Object</td>
-      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>notificationId</code>, <code>accountId</code> y <code>branchId</code> de la colección.</td>
+      <td style="padding: 10px; border: 1px solid;">Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos <code>_id</code>, <code>business_id</code>, <code>branch_id</code> y <code>user_id</code> de la colección <code>notifications</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -5889,17 +5889,17 @@ Los commands representan intenciones de cambio de estado dentro del dominio. Son
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GenerateNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: accountId, branchId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los datos necesarios para crear una nueva notificación: businessId, branchId, userId, tipo, prioridad y datos de situación. Es invocado por el ACL cuando llega un evento externo desde Asset and Resource Management, Tracking, Sales Order Management o la Edge Application.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>MarkNotificationAsReadCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para marcar una notificación como leída dentro del aggregate.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el userId para marcar una notificación como leída dentro del aggregate.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>DispatchNotificationCommand</strong></td>
       <td style="padding: 10px; border: 1px solid;">Command</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el accountId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de la notificación y el userId para iniciar su despacho hacia el canal push externo a través de la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
@@ -5922,12 +5922,12 @@ Las queries representan intenciones de consulta de información sin modificar el
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GetRecentNotificationsQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de una cuenta, con soporte de filtros por branchId, tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula los criterios de consulta para recuperar las últimas notificaciones de un usuario autenticado, con soporte de filtros por branchId, tipo y prioridad.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>GetNotificationByIdQuery</strong></td>
       <td style="padding: 10px; border: 1px solid;">Query</td>
-      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el accountId para recuperar su detalle completo desde la capa de infraestructura.</td>
+      <td style="padding: 10px; border: 1px solid;">Encapsula el identificador de una notificación y el userId para recuperar su detalle completo desde la capa de infraestructura.</td>
     </tr>
   </tbody>
 </table>
@@ -5950,7 +5950,7 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>NotificationGeneratedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event</td>
-      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío.</td>
+      <td style="padding: 10px; border: 1px solid;">Emitido por el aggregate Notification al ser creado exitosamente. Permite que otros componentes del contexto, como el DispatchNotificationCommandHandler, reaccionen automáticamente para iniciar el envío. También es consumido por Analytics para actualizar el dashboard con las alertas recientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>NotificationSentEvent</strong></td>
@@ -5960,12 +5960,22 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>StockAnomalyDetectedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
-      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Tracking o de la Edge Application que notifica una discrepancia de stock. Dispara la creación de una notificación dentro de este contexto a través del ACL.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>DeviceFailureDetectedEvent</strong></td>
       <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
-      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Service Operation and Monitoring que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Tracking o de la Edge Application que notifica una falla o anomalía técnica en un dispositivo IoT. Dispara la creación de una notificación de tipo DEVICE_FAILURE con prioridad HIGH a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>LowStockDetectedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Asset and Resource Management que notifica que un insumo ha alcanzado su umbral mínimo de stock. Dispara la creación de una notificación de tipo LOW_STOCK a través del ACL.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>SaleCompletedEvent</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Domain Event (entrante)</td>
+      <td style="padding: 10px; border: 1px solid;">Evento de integración proveniente del bounded context Sales Order Management que notifica el registro exitoso de una venta. Dispara la creación de una notificación informativa dentro del contexto a través del ACL.</td>
     </tr>
   </tbody>
 </table>
@@ -5973,9 +5983,9 @@ Los domain events representan hechos relevantes que ocurrieron dentro del domini
 
 #### 4.2.8.2. Interface Layer
 
-La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts generen notificaciones sin acoplarse al modelo interno de este contexto.
+La capa de interfaz del Bounded Context de Communication expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar el historial de notificaciones y gestionar su estado de lectura. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries o comandos y delega su ejecución a la capa de aplicación. Adicionalmente, aloja la implementación del ACL (NotificationContextFacade), que actúa como punto de entrada para que otros bounded contexts —Asset and Resource Management, Tracking, Sales Order Management y la Edge Application— generen notificaciones sin acoplarse al modelo interno de este contexto.
 
-##### NotificationController
+#### NotificationController
 
 <p><em>Tabla de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
@@ -5996,7 +6006,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de una cuenta, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
+      <td style="padding: 10px; border: 1px solid;">Exponer endpoints para consultar el historial de notificaciones de un usuario autenticado, filtrarlas por tipo o prioridad y gestionar su estado de lectura.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Ruta</strong></td>
@@ -6005,6 +6015,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
   </tbody>
 </table>
 <br>
+
 <p><em>Tabla de métodos de NotificationController en el Interface Layer</em></p>
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -6019,7 +6030,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     <tr>
       <td style="padding: 10px; border: 1px solid;">GetRecent</td>
       <td style="padding: 10px; border: 1px solid;">/ (GET)</td>
-      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones de la cuenta en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Lista las últimas notificaciones del usuario autenticado en orden cronológico, con soporte de filtros por tipo y prioridad.</td>
       <td style="padding: 10px; border: 1px solid;">GetRecentNotificationsQuery</td>
     </tr>
     <tr>
@@ -6036,6 +6047,7 @@ La capa de interfaz del Bounded Context de Communication expone los endpoints RE
     </tr>
   </tbody>
 </table>
+<br>
 
 #### ACL (Anti-Corruption Layer)
 
@@ -6054,14 +6066,15 @@ La interfaz del ACL se expone desde la capa de interfaz del Bounded Context de C
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>INotificationContextFacade</strong></td>
       <td style="padding: 10px; border: 1px solid;">ACL Interface</td>
-      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code> y <code>generateDeviceAlert</code> para que otros bounded contexts puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
+      <td style="padding: 10px; border: 1px solid;">Contrato que expone los métodos <code>generateStockAlert</code>, <code>generateDeviceAlert</code>, <code>generateLowStockAlert</code> y <code>generateSaleNotification</code> para que otros bounded contexts —Asset and Resource Management, Tracking, Sales Order Management y la Edge Application— puedan solicitar la generación de notificaciones sin conocer los detalles internos del dominio de Communication. Su implementación reside en la capa de aplicación.</td>
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.3. Application Layer
 
-La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de otros bounded contexts, crear notificaciones correctamente tipificadas y priorizadas y delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura.
+La capa de aplicación del Bounded Context de Communication orquesta los casos de uso relacionados con la generación, filtrado y despacho de notificaciones. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. También aloja la implementación del ACL (NotificationContextFacade), que implementa la interfaz INotificationContextFacade definida en la Interface Layer. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application, crear notificaciones correctamente tipificadas y priorizadas, delegar el envío de mensajes push al servicio externo de OneSignal a través de la capa de infraestructura y notificar al bounded context Analytics cuando una nueva alerta es generada para mantener el dashboard actualizado.
 
 #### NotificationContextFacade
 
@@ -6078,24 +6091,13 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
       <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
       <td style="padding: 10px; border: 1px solid;">NotificationContextFacade</td>
     </tr>
-  </tbody>
-</table>
-
-<br>
-
-<p><em>Tabla de Interacciones del Componente webProfile</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
       <td style="padding: 10px; border: 1px solid;">ACL Implementation</td>
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Implementa la interfaz <code>INotificationContextFacade</code> traduciendo las solicitudes externas provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application en comandos internos (<code>GenerateNotificationCommand</code>) que disparan la creación y despacho de notificaciones dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6126,7 +6128,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code> y desencadenar su despacho a través de OneSignal.</td>
+      <td style="padding: 10px; border: 1px solid;">Orquestar la creación de una nueva notificación a partir de la información de situación recibida, clasificarla por tipo y prioridad, persistirla en la colección <code>notifications</code>, desencadenar su despacho a través de OneSignal y emitir el evento <code>NotificationGeneratedEvent</code> para que Analytics actualice el dashboard.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Comando</strong></td>
@@ -6219,7 +6221,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones de la cuenta autenticada filtrando por <code>accountId</code> y <code>branchId</code>, incluyendo tipo, prioridad, sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
+      <td style="padding: 10px; border: 1px solid;">Consultar las últimas notificaciones del usuario autenticado filtrando por <code>userId</code>, con soporte adicional de filtros por <code>branchId</code>, tipo y prioridad, incluyendo sucursal de origen, hora exacta del evento y estado de lectura, para ser mostradas en el centro de notificaciones.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
@@ -6250,7 +6252,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y accountId, exponiendo todos los campos de la colección al cliente solicitante.</td>
+      <td style="padding: 10px; border: 1px solid;">Obtener el detalle completo de una notificación específica por su identificador y userId, exponiendo todos los campos de la colección al cliente solicitante.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Query</strong></td>
@@ -6281,7 +6283,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Service Operation and Monitoring cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Tracking o la Edge Application cuando se detecta una anomalía de stock, invocando el ACL para crear la notificación correspondiente con el tipo y prioridad adecuados e iniciando su despacho al administrador afectado.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -6312,11 +6314,73 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Service Operation and Monitoring, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento de falla o anomalía técnica de un dispositivo IoT emitido por Tracking o la Edge Application, invocando el ACL para generar una notificación de tipo DEVICE_FAILURE con prioridad HIGH y despachándola al administrador de la cuenta afectada.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
       <td style="padding: 10px; border: 1px solid;">DeviceFailureDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### LowStockDetectedEventHandler
+
+<p><em>Tabla de LowStockDetectedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">LowStockDetectedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Asset and Resource Management cuando un insumo alcanza su umbral mínimo de stock, invocando el ACL para crear una notificación de tipo LOW_STOCK con la prioridad correspondiente e iniciando su despacho al administrador afectado.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">LowStockDetectedEvent</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+#### SaleCompletedEventHandler
+
+<p><em>Tabla de SaleCompletedEventHandler en el Application Layer</em></p>
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Propiedad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Nombre</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SaleCompletedEventHandler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Categoría</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Event Handler</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar al evento emitido por Sales Order Management al registrar una venta completada, invocando el ACL para generar una notificación informativa y despachándola al administrador de la cuenta correspondiente.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
+      <td style="padding: 10px; border: 1px solid;">SaleCompletedEvent</td>
     </tr>
   </tbody>
 </table>
@@ -6343,7 +6407,7 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code> y actualizando el campo <code>sentAt</code> al confirmar el envío.</td>
+      <td style="padding: 10px; border: 1px solid;">Reaccionar a la creación exitosa de una notificación dentro del propio contexto para iniciar automáticamente el proceso de despacho, invocando el <code>DispatchNotificationCommand</code>, actualizando el campo <code>sentAt</code> al confirmar el envío y notificando a Analytics mediante el evento para actualizar el dashboard con las alertas recientes.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Evento</strong></td>
@@ -6351,10 +6415,11 @@ La capa de aplicación del Bounded Context de Communication orquesta los casos d
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.4. Infrastructure Layer
 
-La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Service Operation and Monitoring y Sales Order Management. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
+La capa de infraestructura del Bounded Context de Communication resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de notificaciones, se integra OneSignal como proveedor externo de despacho de mensajes push, se configura el contexto de base de datos MongoDB y se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Asset and Resource Management, Tracking, Sales Order Management y la Edge Application, así como para publicar eventos de dominio hacia Analytics. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia, integración con servicios externos, consumo de eventos de integración y publicación de eventos de dominio generados por este bounded context.
 
 #### NotificationRepository
 
@@ -6377,7 +6442,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>accountId</code>, <code>branchId</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sentAt</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por cuenta, así como filtros por tipo y prioridad.</td>
+      <td style="padding: 10px; border: 1px solid;">Persistir y consultar notificaciones sobre la colección <code>notifications</code> de MongoDB, incluyendo los campos <code>business_id</code>, <code>branch_id</code>, <code>user_id</code>, <code>type</code>, <code>title</code>, <code>message</code>, <code>priority</code>, <code>sent_at</code> y <code>read</code>. Soporta consulta cronológica del historial de mensajes por <code>user_id</code>, así como filtros por tipo y prioridad.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6408,7 +6473,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema.</td>
+      <td style="padding: 10px; border: 1px solid;">Punto central de configuración de mapeo ORM para el aggregate <code>Notification</code> hacia la colección <code>notifications</code> de la base de datos MongoDB del sistema, incluyendo el mapeo de los campos <code>business_id</code>, <code>branch_id</code> y <code>user_id</code> como referencias externas.</td>
     </tr>
   </tbody>
 </table>
@@ -6435,7 +6500,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sentAt</code>.</td>
+      <td style="padding: 10px; border: 1px solid;">Integrar la API de OneSignal para construir y enviar notificaciones push a los dispositivos de los usuarios registrados. Traduce el modelo interno de notificación al formato esperado por OneSignal, retorna la referencia externa del mensaje despachado y provee el timestamp que se almacena en el campo <code>sent_at</code>.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6466,7 +6531,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Service Operation and Monitoring (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>) y por Sales Order Management, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
+      <td style="padding: 10px; border: 1px solid;">Consumir eventos de integración emitidos por Asset and Resource Management (<code>LowStockDetectedEvent</code>), Tracking (<code>StockAnomalyDetectedEvent</code>, <code>DeviceFailureDetectedEvent</code>), Sales Order Management (<code>SaleCompletedEvent</code>) y la Edge Application, transformándolos en comandos internos que disparan la generación de notificaciones dentro del contexto.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6497,7 +6562,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Propósito</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> o <code>NotificationSentEvent</code>, para que otros contextos interesados puedan reaccionar de forma desacoplada si fuese necesario.</td>
+      <td style="padding: 10px; border: 1px solid;">Publicar eventos de dominio generados por este bounded context, como <code>NotificationGeneratedEvent</code> y <code>NotificationSentEvent</code>, hacia Analytics para que actualice el dashboard con las alertas recientes, y hacia otros contextos interesados que puedan reaccionar de forma desacoplada.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Interfaz</strong></td>
@@ -6505,6 +6570,7 @@ La capa de infraestructura del Bounded Context de Communication resuelve los det
     </tr>
   </tbody>
 </table>
+<br>
 
 #### 4.2.8.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -6514,7 +6580,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context C
 
 El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
 
-<img src="https://imgur.com/gkH6zra.png" alt="web-communication">
+<img src="https://imgur.com/PxlAde4.png" alt="web-communicaiton">
 
 El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
 
@@ -6522,7 +6588,7 @@ El diagrama evidencia que el componente Communications posee una responsabilidad
 
 El componente Communications dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar el historial de alertas y notificaciones, permitiendo que los administradores consulten en tiempo real el estado de sus alertas desde sus dispositivos móviles.
 
-<img src="https://imgur.com/sgZ2O8M.png" alt="mobile-communication">
+<img src="https://imgur.com/U7rHdMJ.png" alt="mobile-communicaiton">
 
 El diagrama muestra que el componente Communications de la aplicación móvil replica estructuralmente el comportamiento del componente web, pero adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente refleja una decisión de diseño deliberada: ambos canales exponen la misma funcionalidad de consulta al usuario, independientemente del dispositivo utilizado, garantizando una experiencia consistente. Cabe destacar que el componente móvil tampoco interactúa directamente con OneSignal, dado que la recepción de notificaciones push en el dispositivo se gestiona a nivel del sistema operativo móvil mediante el SDK de OneSignal, sin requerir lógica adicional en la capa de componentes de la aplicación.
 
@@ -6530,30 +6596,27 @@ El diagrama muestra que el componente Communications de la aplicación móvil re
 
 El componente Communications dentro del Restock Cloud Server Side App concentra toda la lógica de generación, clasificación y despacho de alertas y notificaciones del sistema. Este componente actúa como receptor de eventos críticos provenientes de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, persiste las alertas en la base de datos MongoDB y delega el envío de notificaciones push al servicio externo OneSignal API.
 
-<img src="https://imgur.com/P0X1a9t.png" alt="api-communication">
+<img src="https://imgur.com/jvqpzjx.png" alt="api-communicaiton">
 
 El diagrama es el más representativo del Bounded Context Communication, ya que concentra la totalidad de la lógica de negocio relacionada con la generación, clasificación y despacho de alertas y notificaciones. El componente Communications funciona como nodo central de un conjunto de interacciones entrantes y salientes claramente diferenciadas. Por el lado de las entradas, recibe eventos críticos desde tres orígenes distintos: el componente Asset and Resource Management le notifica eventos de stock crítico como bajo stock, sobrestock o discrepancias detectadas; el componente Sales Order Management le comunica el registro de nuevas órdenes de venta; y la Edge Application le envía alertas físicas de stock generadas por los dispositivos IoT instalados en las sucursales. Por el lado de las salidas, el componente valida la identidad del usuario a través de Identity and Access Management mediante JWT, persiste las alertas generadas en la base de datos MongoDB y delega el envío de notificaciones push a OneSignal API. Este diseño garantiza que Communications sea el único punto de salida hacia OneSignal dentro del sistema, centralizando el control de notificaciones y manteniendo un acoplamiento mínimo con los demás bounded contexts, los cuales únicamente publican eventos sin conocer los detalles del canal de entrega final.
 
 #### 4.2.8.6. Bounded Context Software Architecture Code Level Diagrams
 
-Esta sección presenta el diagrama de componentes del backend para el bounded context Service Operation and Monitoring. Se ilustra su interacción con los bounded contexts directamente relacionados dentro de la arquitectura del sistema.
-
 ##### 4.2.8.6.1. Bounded Context Domain Layer Class Diagrams
 
 El diagrama de clases de la capa de dominio del Bounded Context de Communication modela las responsabilidades estructurales del sistema de notificaciones. Su diseño refleja cómo el dominio encapsula el ciclo de vida de una notificación, desde su generación ante un evento crítico externo hasta su despacho al destinatario correcto, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates y value objects que definen la estructura y las reglas del dominio, y services, que contiene los commands, queries, domain events y la interfaz del ACL que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
 
-<img src="https://i.imgur.com/4zZQIyx.jpeg" alt="class-diagram-communication">
+<img src="https://imgur.com/WB0oHIf.png" alt="class-diagram-communication">
 
-El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como send(), markAsRead() y markAsFailed(), en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, AccountId, BranchId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. Cabe destacar que el Domain Layer no expone interfaces de repositorio ni entidades adicionales, ya que NotificationRecipient fue eliminado al no ser necesario en el modelo actual, y la abstracción de persistencia corresponde a la capa de infraestructura, manteniendo así la pureza del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos generateStockAlert y generateDeviceAlert para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.
+El diagrama de clases del Bounded Context de Communication se centra en un único Aggregate Root, Notification, que actúa como la unidad principal de consistencia. Toda la lógica del ciclo de vida de una notificación —generación, envío y marcado como leída— se gestiona únicamente a través de sus métodos de dominio, evitando cambios de estado fuera del aggregate. El modelo representa un dominio con comportamiento, donde Notification encapsula reglas de negocio mediante operaciones como `send()`, `markAsRead()` y `markAsFailed()`, en lugar de ser una simple estructura de datos. La consistencia se refuerza con el uso de Value Objects (NotificationId, BusinessId, BranchId, UserId y SituationData) y enumeraciones (NotificationType, NotificationPriority, NotificationStatus), todos agrupados dentro del paquete valueobjects bajo model, que definen un lenguaje ubicuo claro y restringen los valores válidos del dominio. El paquete services agrupa los commands (GenerateNotificationCommand, MarkNotificationAsReadCommand, DispatchNotificationCommand), las queries (GetRecentNotificationsQuery, GetNotificationByIdQuery), los domain events (NotificationGeneratedEvent, NotificationSentEvent, StockAnomalyDetectedEvent, DeviceFailureDetectedEvent, LowStockDetectedEvent, SaleCompletedEvent) y la interfaz del ACL (INotificationContextFacade), que expone los métodos `generateStockAlert`, `generateDeviceAlert`, `generateLowStockAlert` y `generateSaleNotification` para que otros bounded contexts soliciten la generación de notificaciones sin acoplarse al modelo interno. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como LocalDateTime, int y boolean, manteniendo una implementación coherente con la tecnología del proyecto.  
 
 ##### 4.2.8.6.2. Bounded Context Database Design Diagram
 
-El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones y sus destinatarios. Este esquema organiza la colección principal, sus atributos y las relaciones entre documentos, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
+El diagrama de diseño de base de datos del Bounded Context Communication muestra la estructura física que soporta el almacenamiento de notificaciones. Este esquema organiza la colección principal, sus atributos y las referencias externas hacia otros bounded contexts, asegurando la persistencia coherente de la información del dominio sobre la base de datos MongoDB del sistema.
 
 <img src="https://imgur.com/WjWyVzo.png" alt="database-communication">
 
-El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (business_id), la sucursal asociada (branch_id), el usuario destinatario (user_id), el tipo de evento que la originó (type), el título y cuerpo del mensaje (title, message), la prioridad asignada (priority), la fecha y hora de envío (sent_at) y el estado de lectura (read).
-A diferencia de un modelo relacional con tablas separadas para alertas y notificaciones, este diseño en MongoDB consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por user_id, business_id o type. El campo read permite gestionar el estado de lectura directamente sobre el documento sin requerir una entidad adicional, mientras que sent_at registra el momento exacto en que la notificación fue despachada a través de OneSignal. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones de alertas separadas.
+El diagrama evidencia una estructura centrada en la colección notifications, que actúa como entidad principal del bounded context. Esta colección almacena directamente toda la información relevante de cada notificación generada por el sistema: el negocio de origen (`business_id` como FK), la sucursal asociada (`branch_id` como FK), el usuario destinatario (`user_id` como FK), el tipo de evento que la originó (`type`), el título y cuerpo del mensaje (`title`, `message`), la prioridad asignada (`priority`), la fecha y hora de envío (`sent_at`) y el estado de lectura (`read`). Los campos `business_id`, `branch_id` y `user_id` actúan como referencias externas hacia los bounded contexts de Profiles and Preferences e Identity and Access Management, respectivamente, sin establecer joins físicos dado el modelo documental de MongoDB. A diferencia de un modelo relacional con tablas separadas, este diseño consolida en un único documento toda la información necesaria para representar el ciclo de vida de una notificación, eliminando joins y favoreciendo consultas eficientes por `user_id`, `business_id` o `type`. En conjunto, este diseño refleja una persistencia alineada con el Aggregate Root del dominio, donde Notification concentra toda la responsabilidad del contexto sin dependencias hacia colecciones adicionales.
 
 ### 4.2.9. Bounded Context: Device Management
 
@@ -6573,9 +6636,284 @@ A diferencia de un modelo relacional con tablas separadas para alertas y notific
 
 ##### 4.2.9.6.2. Bounded Context Database Design Diagram
 
-### 4.2.10. Bounded Context: Analytics
+## 4.2.10. Bounded Context: Analytics
 
-#### 4.2.10.1. Bounded Context Software Architecture Component Level Diagrams
+#### 4.2.10.1. Domain Layer
+
+La capa de dominio del Bounded Context de Analytics encapsula las reglas de negocio relacionadas con la construcción, consulta y presentación de indicadores operativos del inventario. Este contexto actúa como agregador de información proveniente de otros bounded contexts como Tracking, Asset and Resource Management y Communication, para transformarla en métricas accionables dirigidas a los actores correspondientes (Retail Manager, Restaurant Manager). La responsabilidad principal de este contexto es garantizar que el dashboard refleje en todo momento el estado real del negocio: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. La capa de dominio no depende de frameworks, mecanismos de persistencia ni servicios externos.
+
+#### Aggregates & Entities
+
+Estas clases representan los pilares transaccionales del sistema. El Aggregate Root garantiza la consistencia de los datos dentro de su límite de transacción.
+
+*Tabla de Aggregates en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **Metric** | Aggregate Root | Representa el estado consolidado del dashboard para una cuenta de negocio en un momento dado. Agrupa los indicadores operativos clave: insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes. Controla su ciclo de vida: construcción, actualización ante eventos de inventario o alerta, y consulta por parte de los administradores. Garantiza que los indicadores presentados correspondan siempre a la sucursal o cuenta activa del usuario autenticado. |
+
+#### Value Objects
+
+Estas clases modelan conceptos propios del dominio y permiten evitar el uso indiscriminado de tipos primitivos. Son inmutables y aseguran que la información crítica del dominio sea válida desde su creación.
+
+*Tabla de Value Objects en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito y Reglas de Negocio |
+|---|---|---|
+| **StockIndicator** | Value Object | Encapsula la información de un insumo en estado crítico: identificador del insumo, nombre, cantidad actual, umbral mínimo y sucursal de origen. Permite clasificar el insumo como zero_stock o low_stock según la comparación entre la cantidad actual y el umbral configurado. |
+| **RecentSupplyEntry** | Value Object | Encapsula los datos de un insumo registrado recientemente en el sistema: identificador, nombre, categoría, fecha de registro y sucursal de origen. Permite presentar al administrador los últimos insumos incorporados al inventario sin exponer el modelo completo del insumo. |
+| **RecentAlertEntry** | Value Object | Encapsula los datos de una alerta reciente generada por el sistema: identificador, tipo de alerta, mensaje, prioridad, sucursal de origen y timestamp. Permite al dashboard presentar las últimas alertas sin depender directamente del modelo interno del Bounded Context Communication. |
+| **DashboardSummaryId, BusinessId, BranchId** | Value Object | Identificadores fuertemente tipados para prevenir confusiones entre entidades del mismo bounded context o referencias externas provenientes de otros contextos, alineados con los campos de identificación del negocio y la sucursal activa del usuario autenticado. |
+
+#### Commands
+
+Los commands representan intenciones de cambio de estado dentro del dominio. Son objetos inmutables que encapsulan los datos necesarios para ejecutar una operación.
+
+*Tabla de Commands en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **RefreshDashboardSummaryCommand** | Command | Encapsula los datos necesarios para reconstruir el resumen del dashboard de una cuenta: businessId, branchId opcional y timestamp de actualización. Es invocado por los Event Handlers cuando llegan eventos de inventario o alerta desde Asset and Resource Management, Tracking o Communication. |
+
+#### Queries
+
+Las queries representan intenciones de consulta de información sin modificar el estado del dominio.
+
+*Tabla de Queries en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **GetDashboardSummaryQuery** | Query | Encapsula los criterios de consulta para recuperar el resumen del dashboard de una cuenta autenticada: businessId y branchId opcional. Retorna los indicadores de stock cero, bajo stock, últimos insumos registrados y alertas recientes. |
+| **GetZeroStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos con stock igual a cero para una cuenta y sucursal determinadas. |
+| **GetLowStockSuppliesQuery** | Query | Encapsula los criterios para recuperar el listado de insumos cuya cantidad actual se encuentra por debajo del umbral mínimo configurado, ordenados por nivel de criticidad. |
+| **GetRecentSuppliesQuery** | Query | Encapsula los criterios para recuperar los últimos insumos registrados en el inventario de una cuenta, con soporte de filtro por sucursal y límite de resultados. |
+| **GetRecentAlertsQuery** | Query | Encapsula los criterios para recuperar las últimas alertas generadas por el sistema para una cuenta, con soporte de filtro por tipo de alerta y sucursal de origen. |
+
+#### Domain Events
+
+Los domain events representan hechos relevantes que ocurrieron dentro del dominio y permiten la comunicación desacoplada entre bounded contexts.
+
+*Tabla de Domain Events en el Domain Layer*
+
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| **DashboardSummaryRefreshedEvent** | Domain Event | Emitido por el aggregate Metric al completar su actualización exitosamente. Permite que otros componentes del contexto reaccionen para invalidar cachés o notificar a clientes conectados mediante WebSocket. |
+| **StockLevelChangedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica un cambio en el nivel de stock de un insumo. Dispara la actualización de los indicadores de stock cero y bajo stock en el dashboard. |
+| **SupplyRegisteredEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Asset and Resource Management que notifica el registro de un nuevo insumo en el catálogo. Dispara la actualización del indicador de últimos insumos registrados en el dashboard. |
+| **NotificationGeneratedEvent** | Domain Event (entrante) | Evento de integración proveniente del bounded context Communication que notifica la generación de una nueva alerta. Dispara la actualización del indicador de alertas recientes en el dashboard. |
+
+#### 4.2.10.2. Interface Layer
+
+La capa de interfaz del Bounded Context de Analytics expone los endpoints RESTful necesarios para que los actores del sistema puedan consultar los indicadores del dashboard desde la aplicación web y móvil. Esta capa recibe solicitudes desde la Web App o la Mobile App, las transforma en queries y delega su ejecución a la capa de aplicación. Los datos consultados se sirven desde la caché Redis cuando están disponibles, garantizando tiempos de respuesta bajos para las vistas de mayor frecuencia de acceso.
+
+#### AnalyticsController
+
+*Tabla de AnalyticsController en el Interface Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsController |
+| **Categoría** | Controller |
+| **Propósito** | Exponer endpoints para consultar el resumen del dashboard, los insumos con stock cero, los insumos con bajo stock, los últimos insumos registrados y las alertas recientes de una cuenta autenticada. |
+| **Ruta** | /api/v1/analytics |
+
+*Tabla de métodos de AnalyticsController en el Interface Layer*
+
+| Nombre | Ruta | Acción | Handle (Command/Query) |
+|---|---|---|---|
+| GetDashboardSummary | /dashboard (GET) | Retorna el resumen consolidado del dashboard con todos los indicadores operativos para la cuenta autenticada. | GetDashboardSummaryQuery |
+| GetZeroStockSupplies | /supplies/zero-stock (GET) | Retorna el listado de insumos con stock igual a cero para la cuenta y sucursal activa. | GetZeroStockSuppliesQuery |
+| GetLowStockSupplies | /supplies/low-stock (GET) | Retorna el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad. | GetLowStockSuppliesQuery |
+| GetRecentSupplies | /supplies/recent (GET) | Retorna los últimos insumos registrados en el inventario de la cuenta autenticada. | GetRecentSuppliesQuery |
+| GetRecentAlerts | /alerts/recent (GET) | Retorna las últimas alertas generadas por el sistema para la cuenta autenticada. | GetRecentAlertsQuery |
+
+#### 4.2.10.3. Application Layer
+
+La capa de aplicación del Bounded Context de Analytics orquesta los casos de uso relacionados con la construcción y consulta de indicadores del dashboard. En esta capa residen los Command Handlers, Query Handlers y Event Handlers que coordinan el flujo entre la capa de interfaz, el dominio y la infraestructura. Esta capa no contiene reglas puras de dominio. Su responsabilidad es reaccionar a eventos externos provenientes de Asset and Resource Management, Tracking y Communication, reconstruir los indicadores del dashboard, almacenarlos en la caché Redis para optimizar las consultas frecuentes y exponerlos a los clientes a través de la capa de interfaz.
+
+#### RefreshDashboardSummaryCommandHandler
+
+*Tabla de RefreshDashboardSummaryCommandHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | RefreshDashboardSummaryCommandHandler |
+| **Categoría** | Command Handler |
+| **Propósito** | Orquestar la reconstrucción del resumen del dashboard consultando los datos actualizados de inventario desde Asset and Resource Management y las alertas recientes desde Communication, persistiendo el resultado en la caché Redis e invalidando los datos anteriores para garantizar consistencia. |
+| **Comando** | RefreshDashboardSummaryCommand |
+
+#### GetDashboardSummaryQueryHandler
+
+*Tabla de GetDashboardSummaryQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetDashboardSummaryQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el resumen consolidado del dashboard desde la caché Redis para la cuenta autenticada. Si los datos no están disponibles en caché, delega la reconstrucción al RefreshDashboardSummaryCommandHandler antes de retornar la respuesta al cliente. |
+| **Query** | GetDashboardSummaryQuery |
+
+#### GetZeroStockSuppliesQueryHandler
+
+*Tabla de GetZeroStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetZeroStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock igual a cero para la cuenta y sucursal activa, recuperando los datos desde la caché Redis o delegando la consulta al repositorio de inventario si la caché está expirada. |
+| **Query** | GetZeroStockSuppliesQuery |
+
+#### GetLowStockSuppliesQueryHandler
+
+*Tabla de GetLowStockSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetLowStockSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar el listado de insumos con stock por debajo del umbral mínimo, ordenados por nivel de criticidad, desde la caché Redis o delegando al repositorio de inventario cuando sea necesario. |
+| **Query** | GetLowStockSuppliesQuery |
+
+#### GetRecentSuppliesQueryHandler
+
+*Tabla de GetRecentSuppliesQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentSuppliesQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar los últimos insumos registrados en el inventario de la cuenta autenticada, con soporte de filtro por sucursal y límite de resultados, recuperando los datos desde la caché Redis o delegando al repositorio cuando sea necesario. |
+| **Query** | GetRecentSuppliesQuery |
+
+#### GetRecentAlertsQueryHandler
+
+*Tabla de GetRecentAlertsQueryHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | GetRecentAlertsQueryHandler |
+| **Categoría** | Query Handler |
+| **Propósito** | Consultar las últimas alertas generadas por el sistema para la cuenta autenticada, con soporte de filtro por tipo de alerta y sucursal, recuperando los datos desde la caché Redis o delegando al repositorio de alertas cuando sea necesario. |
+| **Query** | GetRecentAlertsQuery |
+
+#### StockLevelChangedEventHandler
+
+*Tabla de StockLevelChangedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | StockLevelChangedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando cambia el nivel de stock de un insumo, invocando el RefreshDashboardSummaryCommand para actualizar los indicadores de stock cero y bajo stock en el dashboard. |
+| **Evento** | StockLevelChangedEvent |
+
+#### SupplyRegisteredEventHandler
+
+*Tabla de SupplyRegisteredEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | SupplyRegisteredEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Asset and Resource Management cuando se registra un nuevo insumo en el catálogo, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de últimos insumos registrados en el dashboard. |
+| **Evento** | SupplyRegisteredEvent |
+
+#### NotificationGeneratedEventHandler
+
+*Tabla de NotificationGeneratedEventHandler en el Application Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | NotificationGeneratedEventHandler |
+| **Categoría** | Event Handler |
+| **Propósito** | Reaccionar al evento emitido por Communication cuando se genera una nueva alerta en el sistema, invocando el RefreshDashboardSummaryCommand para actualizar el indicador de alertas recientes en el dashboard. |
+| **Evento** | NotificationGeneratedEvent |
+
+#### 4.2.10.4. Infrastructure Layer
+
+La capa de infraestructura del Bounded Context de Analytics resuelve los detalles técnicos necesarios para materializar las abstracciones definidas en el dominio. En esta capa se implementa el repositorio de resúmenes del dashboard, se configura la integración con la caché Redis para optimizar las consultas frecuentes, se gestiona la comunicación mediante Message Brokers para consumir eventos provenientes de Asset and Resource Management, Tracking y Communication, y se configuran las consultas de lectura sobre MongoDB para los indicadores que no están en caché. Esta capa no contiene reglas de negocio puras. Su responsabilidad es resolver persistencia en caché, consultas de lectura sobre las colecciones de otros bounded contexts y consumo de eventos de integración.
+
+#### AnalyticsCacheRepository
+
+*Tabla de AnalyticsCacheRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsCacheRepository |
+| **Categoría** | Cache Repository |
+| **Propósito** | Persistir y recuperar los resúmenes del dashboard, los indicadores de stock crítico, los últimos insumos registrados y las alertas recientes desde la caché Redis, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados en el dashboard. |
+| **Interfaz** | IAnalyticsCacheRepository |
+
+#### AnalyticsReadRepository
+
+*Tabla de AnalyticsReadRepository en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | AnalyticsReadRepository |
+| **Categoría** | Read Repository |
+| **Propósito** | Ejecutar consultas de solo lectura sobre la colección `notifications` de MongoDB de Communication para construir el indicador de alertas recientes cuando los datos no están disponibles en la caché Redis. |
+| **Interfaz** | IAnalyticsReadRepository |
+
+#### IntegrationEventConsumer
+
+*Tabla de IntegrationEventConsumer en el Infrastructure Layer*
+
+| Propiedad | Valor |
+|---|---|
+| **Nombre** | IntegrationEventConsumer |
+| **Categoría** | Message Broker Consumer |
+| **Propósito** | Consumir eventos de integración emitidos por Asset and Resource Management (`StockLevelChangedEvent`, `SupplyRegisteredEvent`) y Communication (`NotificationGeneratedEvent`), transformándolos en comandos internos que disparan la actualización de los indicadores del dashboard dentro del contexto. |
+| **Interfaz** | IIntegrationEventConsumer |
+
+#### 4.2.10.5. Bounded Context Software Architecture Component Level Diagrams
+
+En esta sección se presentan los diagramas de componentes del Bounded Context Analytics, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios únicamente cuando dichas interacciones son necesarias para la construcción y presentación de los indicadores del dashboard.
+
+##### Web Application Component Diagram
+
+El componente Analytics dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
+
+![web-analytics](https://imgur.com/b7pXs3Y.png)
+
+El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
+
+##### Mobile Application Component Diagram
+
+El componente Analytics dentro de la Restock Mobile Application replica el comportamiento del componente web, adaptado al contexto de la aplicación móvil desarrollada en Dart y Flutter. Al igual que en la versión web, extiende las utilidades base del componente Shared y realiza solicitudes al backend para recuperar los indicadores del dashboard y los resúmenes de stock, permitiendo que los administradores consulten el estado operativo de su negocio desde sus dispositivos móviles.
+
+![mobile-analytics](https://imgur.com/VJjhLSh.png)
+
+El diagrama muestra que el componente Analytics de la aplicación móvil replica estructuralmente el comportamiento del componente web, adaptado al contexto de Flutter y Dart. Esta simetría entre ambas implementaciones cliente garantiza una experiencia consistente independientemente del dispositivo utilizado.
+
+##### Backend Application Component Diagram
+
+El componente Analytics dentro del Restock Cloud Server Side App concentra toda la lógica de construcción, actualización y consulta de los indicadores del dashboard. Este componente actúa como agregador de información proveniente de otros bounded contexts, valida la identidad del usuario mediante JWT a través del componente Identity and Access Management, consulta los datos desde la caché Redis o desde MongoDB cuando la caché está expirada, y retorna los indicadores consolidados al cliente solicitante.
+
+![api-analytics](https://imgur.com/Pp1B3S3.png)
+
+El diagrama es el más representativo del Bounded Context Analytics, ya que concentra la lógica de agregación de indicadores operativos. El componente Analytics funciona como nodo central de consulta: recibe eventos de cambio de stock e inventario desde Asset and Resource Management y Tracking, recibe eventos de nuevas alertas desde Communication, reconstruye los indicadores del dashboard y los almacena en Redis. Ante las consultas de los clientes web y móvil, sirve los datos desde la caché cuando están disponibles, garantizando tiempos de respuesta bajos. Valida la identidad del usuario a través de Identity and Access Management mediante JWT antes de retornar cualquier dato operativo.
+
+#### 4.2.10.6. Bounded Context Software Architecture Code Level Diagrams
+
+##### 4.2.10.6.1. Bounded Context Domain Layer Class Diagrams
+
+El diagrama de clases de la capa de dominio del Bounded Context de Analytics modela las responsabilidades estructurales del sistema de indicadores operativos del inventario. Su diseño refleja cómo el dominio encapsula el ciclo de vida de un resumen del dashboard, desde su construcción ante un evento de inventario o alerta externo hasta su consulta por parte de los administradores, sin depender de ningún framework, mecanismo de persistencia ni servicio externo. El modelo se organiza en dos paquetes principales: model, que agrupa los aggregates, value objects y domain events que definen la estructura y las reglas del dominio, y services, que contiene los commands y queries que permiten la comunicación desacoplada tanto hacia el interior del contexto como hacia otros bounded contexts.
+
+![class-diagram-analytics](assets/images/chapter4/class-diagram.svg)
+
+El diagrama de clases del Bounded Context de Analytics se centra en un único Aggregate Root, Metric, que actúa como la unidad principal de consistencia del dashboard. Toda la lógica de actualización de indicadores se gestiona únicamente a través de su método `refresh()`, evitando cambios de estado fuera del aggregate. El modelo representa un dominio orientado a la agregación de datos, donde Metric consolida cuatro colecciones de Value Objects: `zeroStockSupplies` y `lowStockSupplies`, ambas compuestas por instancias de StockIndicator que encapsulan el estado crítico de cada insumo y exponen los métodos `isZeroStock()` e `isLowStock()` para clasificar automáticamente el nivel de criticidad; `recentSupplies`, compuesta por instancias de RecentSupplyEntry que representan los últimos insumos incorporados al catálogo; y `recentAlerts`, compuesta por instancias de RecentAlertEntry que presentan las últimas alertas generadas por el sistema sin depender del modelo interno del Bounded Context Communication. La consistencia se refuerza además con el uso de identificadores fuertemente tipados como DashboardSummaryId, BusinessId y BranchId, agrupados dentro del paquete valueobjects bajo model. El enum StockStatus, que restringe los valores válidos del estado de stock a `ZERO_STOCK`, `LOW_STOCK` y `NORMAL`, se define en el Bounded Context Shared dado que es utilizado tanto por Analytics como por Asset and Resource Management. El paquete services agrupa el command RefreshDashboardSummaryCommand, invocado por los event handlers ante eventos entrantes de inventario o alerta, y las queries GetDashboardSummaryQuery, GetZeroStockSuppliesQuery, GetLowStockSuppliesQuery, GetRecentSuppliesQuery y GetRecentAlertsQuery, que permiten consultar los indicadores del dashboard sin modificar el estado del dominio. Los domain events del paquete events incluyen DashboardSummaryRefreshedEvent, emitido por el aggregate al completar su actualización, y los eventos entrantes StockLevelChangedEvent, SupplyRegisteredEvent y NotificationGeneratedEvent, que actúan como disparadores del proceso de refresh. Todos los tipos utilizados corresponden a tipos nativos de Java Spring Boot, como `LocalDateTime`, `Double`, `int` y `boolean`, manteniendo una implementación coherente con la tecnología del proyecto.
+
+##### 4.2.10.6.2. Bounded Context Database Design Diagram
+
+El diagrama de diseño de base de datos del Bounded Context Analytics muestra la estructura de almacenamiento que soporta los indicadores del dashboard. Analytics no posee colecciones transaccionales propias en MongoDB: opera como un contexto de solo lectura que consolida información proveniente de Asset and Resource Management y Communication, y persiste los resultados procesados en la caché Redis para optimizar las consultas frecuentes del dashboard.
+
+![database-analytics-1](https://imgur.com/c7DmnS9.png)
+
+El diagrama evidencia que Analytics no gestiona colecciones propias en MongoDB. Su modelo de persistencia se basa en dos mecanismos complementarios: consultas de solo lectura sobre la colección `notifications` de Communication para construir el indicador de alertas recientes; y almacenamiento en Redis de los resúmenes consolidados del dashboard, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados.
+
+La única estructura de persistencia propia del contexto es la entrada **`dashboard_snapshot`** en Redis, que almacena el estado más reciente del resumen del dashboard por cuenta y sucursal activa. Cada entrada agrupa los cuatro indicadores operativos —insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes— como un documento serializado con TTL configurable. Este diseño refleja una decisión arquitectónica deliberada: Analytics es un contexto de agregación y presentación, no de escritura, lo que elimina la necesidad de colecciones transaccionales propias y reduce la duplicación de datos en el sistema.
 
 ### 4.2.11. Bounded Context: Shared Kernel
 
