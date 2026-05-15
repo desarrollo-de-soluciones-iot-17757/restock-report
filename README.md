@@ -172,6 +172,8 @@ Para insertar imágenes en el informe, se deben usar rutas relativas:
 | u202314101 | Navarro Chinga, Antonio Jhair      |
 | u202319448 | Shapiama Rivera, Gabriela Nicole   |
 
+---
+
 Restock nace frente a un problema real: negocios que aún pierden tiempo, dinero y oportunidades por no contar con una visión precisa de su inventario. Este informe documenta el proceso de análisis, diseño y validación de una solución IoT orientada a transformar esa realidad, conectando sensores, software y decisiones operativas en un mismo ecosistema.
 
 Más que un repositorio de documentación, este proyecto representa la evolución de una idea hacia una propuesta tecnológica con propósito: ayudar a restaurantes y negocios retail a reducir errores, anticipar quiebres de stock y gestionar sus recursos con mayor inteligencia, trazabilidad y confianza.
