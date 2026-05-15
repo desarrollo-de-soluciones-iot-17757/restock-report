@@ -4848,11 +4848,11 @@ La capa de infraestructura de Service Design and Planning materializa los reposi
 
 #### 4.2.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde tres perspectivas: aplicación web, aplicación móvil y backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos o servicios externos únicamente cuando dichas interacciones son necesarias para la gestión de recetas gastronómicas y la configuración de kits comerciales.
+En esta sección se presentan los diagramas de componentes del bounded context Service Design and Planning, mostrando su comportamiento y responsabilidades desde la perspectiva de la aplicación web y del backend. Cada diagrama refleja cómo este bounded context interactúa con otros contextos, el API Gateway o servicios externos para la gestión de recetas gastronómicas y la configuración de kits comerciales.
 
 ##### Web Application Component Diagram
 
-El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta las interfaces gráficas (UI) para la manipulación de los catálogos en pantallas de escritorio o laptops.
+El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta la interfaz gráfica (UI) para la manipulación de los catálogos.
 
 <img src="https://i.imgur.com/KdmrcXs.png" alt="Web Service Design and Planning Component Diagram" width="100%">
 
@@ -4868,8 +4868,8 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webServiceDesign</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Provee la interfaz de usuario para la configuración de recetas para restaurantes y ensamblaje de kits para tiendas retail. Capta las interacciones del administrador para enviarlas al servidor.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Planning UI</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas para restaurantes y los kits para tiendas retail (Manages recipes for restaurants and kits for retail stores).</td>
       <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
     </tr>
   </tbody>
@@ -4877,7 +4877,7 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente webServiceDesign</em></p>
+<p><em>Tabla de Interacciones del Componente Planning UI</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4889,14 +4889,9 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
-      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza peticiones JSON/HTTPS para recuperar y actualizar las formulaciones de recetas y kits en el servidor central.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>webShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende componentes base de UI, utilidades de red y configuraciones de endpoints compartidas por la aplicación Angular.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Kong Gateway</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Petición HTTP (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Gestiona las recetas y kits enviando las peticiones a través del API Gateway (Manages recipes and kits).</td>
     </tr>
   </tbody>
 </table>
@@ -4922,7 +4917,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiServiceDesign</strong></td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Service Design and Planning</strong></td>
       <td style="padding: 10px; border: 1px solid;">Maneja la gestión de recetas para restaurantes y la gestión de kits para tiendas retail. Centraliza la lógica de validación de insumos y estructuración comercial.</td>
       <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
     </tr>
@@ -4931,7 +4926,7 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente apiServiceDesign</em></p>
+<p><em>Tabla de Interacciones del Componente Service Design and Planning</em></p>
 
 <table style="width:100%; border-collapse: collapse; border: 1px solid;">
   <thead>
@@ -4943,29 +4938,34 @@ El componente principal del lado del servidor maneja la lógica de negocio centr
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>databaseNoSql</strong> (MongoDB)</td>
-      <td style="padding: 10px; border: 1px solid;">Escritura / Lectura</td>
-      <td style="padding: 10px; border: 1px solid;">Almacena de forma persistente la composición de los kits y las recetas diseñadas por los administradores.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>MongoDB Database</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Lectura / Escritura (Spring Data MongoDB)</td>
+      <td style="padding: 10px; border: 1px solid;">Lee y almacena de forma persistente las recetas y los kits (Reads and writes recipes and kits).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiAssetAndResource</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Actualiza el stock de los insumos asociados cuando una receta o kit es vendido, garantizando la consistencia del inventario.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Asset and Resource Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Resta el stock de los insumos asociados a la receta o kit en el sistema (Subtracts supply stock associated to recipe/kit).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiIam</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Dependencia Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Valida los tokens JWT para autorizar la creación, edición o eliminación de elementos del catálogo.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Identity and Access Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (Internal)</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica si la petición entrante está autorizada (Checks if request is authorized).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Integración Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para integrar la carga y recuperación de imágenes multimedia asociadas a los combos o platos mediante Cloudinary.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Subscriptions and Payments</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Dependencia Interna (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica el uso de recursos actuales del usuario para mantener la coherencia del sistema (Checks user's current resource usage).</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>apiSalesManagement</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante</td>
-      <td style="padding: 10px; border: 1px solid;">Recibe peticiones del módulo de ventas para contabilizar las cantidades vendidas de recetas o kits registrados a través del ACL.</td>
+      <td style="padding: 10px; border: 1px solid;"><strong>Cloudinary API</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Integración Externa (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Sube y recupera imágenes de negocio o perfil asociadas al catálogo (Uploads and retrieves profile or business images).</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Sales Order Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (ACL)</td>
+      <td style="padding: 10px; border: 1px solid;">Registra la venta de la receta o kit (Registers recipe/kit sale).</td>
     </tr>
   </tbody>
 </table>
