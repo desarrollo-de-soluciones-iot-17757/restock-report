@@ -595,7 +595,7 @@ En esta sección se presenta una visión general de los principales usuarios, si
 
 Para Restock, el diagrama de panorama del sistema incluye los siguientes elementos principales:
 
-<img src="https://i.imgur.com/wOaYnDs.png" width="600px">
+<img src="" alt="Landscape diagram of the system">
 
 **Restaurant Administrator:** Usuario encargado de gestionar el inventario, recetas, ventas y operaciones dentro de un restaurante, interactuando directamente con la plataforma Restock para administrar sus procesos.
 
@@ -625,7 +625,7 @@ El diagrama de contexto en la arquitectura de software proporciona una visión g
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
 
-<img src="https://i.imgur.com/P35v9XT.png" alt="Diagrama de contexto de Restock">
+<img src="https://i.imgur.com/b0d1409.png" alt="Diagrama de contexto de Restock">
 
 **Visitors:** Usuarios anónimos que navegan el contenido público de la plataforma, como información, planes y características, y pueden registrarse o acceder como administradores de restaurante o retail.
 
@@ -681,7 +681,7 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 A continuación, se muestra el diagrama de despliegue, el cual estructura la distribución física de los componentes del sistema en los distintos entornos de ejecución, incluyendo la infraestructura en la nube, los dispositivos del usuario, los nodos de cómputo en el edge y el hardware embebido.
 
-<img src="https://i.imgur.com/uaNmqy7.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
+<img src="https://i.imgur.com/wOaYnDs.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
 
 El diagrama de despliegue muestra la distribución física de los componentes de la plataforma Restock en los distintos entornos de ejecución, incluyendo infraestructura en la nube, dispositivos del usuario, nodos de cómputo en el edge y hardware embebido.
 
@@ -4919,30 +4919,6 @@ El componente de la aplicación web cliente se ejecuta en el navegador del usuar
 
 <br>
 
-<p><em>Tabla de Interacciones del Componente mobileServiceDesign</em></p>
-
-<table style="width:100%; border-collapse: collapse; border: 1px solid;">
-  <thead>
-    <tr>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
-      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
-      <td style="padding: 10px; border: 1px solid;">Petición HTTP / REST</td>
-      <td style="padding: 10px; border: 1px solid;">Realiza llamadas JSON/HTTPS al backend para recuperar y actualizar el catálogo de recetas y kits desde la red móvil o Wi-Fi.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Utiliza widgets de Flutter reutilizables y utilidades de consumo de endpoints compartidas por el resto de la aplicación móvil.</td>
-    </tr>
-  </tbody>
-</table>
-
 ##### Backend Application Component Diagram
 
 El componente principal del lado del servidor maneja la lógica de negocio central, la persistencia en base de datos y la integración con servicios externos para la validación de insumos y estructuración comercial.
@@ -5751,11 +5727,6 @@ El diagrama representa la implementación del bounded context de Sales Order Man
 
 <img src="https://i.imgur.com/IA3g7lo.png" alt="Web Sales Order Management Component Diagram" width="100%">
 
-##### Mobile Application Component Diagram
-
-El diagrama representa la implementación del bounded context de Sales Order Management en la aplicación móvil, se implementa como un componente Dart/Flutter dentro del Restock Mobile Application, cumple la misma responsabilidad de gestión de órdenes de sucursal, reutilizando widgets o clases del componente Shared y conectándose igualmente al backend principal mediante JSON/HTTPS para el registro y consulta de ventas.
-
-<img src="https://i.imgur.com/FKwWjcM.png" alt="Mobile Sales Order Management Component Diagram" width="100%">
 
 ##### Backend Application Component Diagram
 
@@ -6559,7 +6530,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context C
 
 El componente Communications dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten el historial de alertas y notificaciones desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar las alertas generadas por el sistema.
 
-<img src="https://imgur.com/PxlAde4.png" alt="web-communicaiton">
+<img src="https://i.imgur.com/5UCD4CE.png" alt="web-communicaiton">
 
 El diagrama evidencia que el componente Communications posee una responsabilidad acotada y bien definida dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar las alertas generadas por el sistema, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no genera alertas, no las clasifica ni las envía; únicamente las consume y las presenta al usuario, mientras la lógica de negocio permanece en el backend.
 
@@ -6854,7 +6825,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context A
 
 El componente Analytics dentro de la Restock Platform Web Client App actúa como punto de entrada para que los administradores de restaurante y retail consulten los indicadores operativos del inventario desde el navegador. Este componente extiende las utilidades base del componente Shared para la gestión de endpoints y realiza solicitudes REST al backend para recuperar los datos del dashboard, los insumos con stock crítico, los últimos insumos registrados y las alertas recientes.
 
-![web-analytics](https://imgur.com/b7pXs3Y.png)
+![web-analytics](https://i.imgur.com/qf1Sm43.png)
 
 El diagrama evidencia que el componente Analytics posee una responsabilidad acotada dentro de la capa cliente web. Su única interacción externa consiste en realizar solicitudes REST hacia el Restock Cloud Server Side App mediante JSON/HTTPS para recuperar los indicadores operativos, extendiendo las utilidades base del componente Shared para la configuración de cabeceras HTTP y endpoints. Este diseño refleja el principio de responsabilidad única aplicado al frontend: el componente web no construye indicadores ni accede directamente a las fuentes de datos; únicamente consume los datos ya procesados por el backend y los presenta al usuario.
 
