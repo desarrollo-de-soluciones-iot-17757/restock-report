@@ -1289,11 +1289,6 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
       <td style="padding: 10px; border: 1px solid;">Realiza peticiones HTTPS seguras para autenticar las credenciales de los usuarios de la aplicación móvil contra el servidor principal.</td>
     </tr>
     <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende la funcionalidad de utilidades base de API y endpoints compartidas por otros módulos de la aplicación móvil.</td>
-    </tr>
-    <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator</strong> (Usuario)</td>
       <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario (HTTPS)</td>
       <td style="padding: 10px; border: 1px solid;">Provee los mecanismos para que los administradores de restaurantes se autentiquen para gestionar inventario, recetas y ventas.</td>
@@ -1387,7 +1382,7 @@ El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíce
 
 Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
+<img src="assets/images/chapter4/bc-iam/iam-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
