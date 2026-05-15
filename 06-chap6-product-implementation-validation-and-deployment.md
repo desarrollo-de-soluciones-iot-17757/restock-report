@@ -907,7 +907,6 @@ Pie de página en fondo negro con el logo de Restock y enlaces organizados en tr
 
 <img src="https://i.imgur.com/GYMMtQU.png" alt="footer" style="width: 100%; height: auto;"/>
 
-
 #### Versión para dispositivos móviles
 
 Vista general de todas las secciones del sitio adaptadas para dispositivos móviles.
@@ -967,7 +966,7 @@ Sección de perfil personal dentro de la configuración de cuenta, con campos pa
 
 <img src="https://i.imgur.com/EXpBRWM.png" alt="sales" style="width: 100%; height: auto;"/>
 
-6.2.1.7. Software Deployment Evidence for Sprint Review.
+### 6.2.1.7. Software Deployment Evidence for Sprint Review.
 
 Durante el Sprint 1, el equipo ejecutó las primeras actividades de despliegue asociadas a los productos digitales definidos en el alcance del proyecto. En esta fase se prepararon y verificaron los entornos de publicación necesarios para la Landing Page y la Web Application, con el fin de garantizar que ambas soluciones pudieran estar disponibles en línea y sincronizadas con los cambios realizados en sus respectivos repositorios.
 
@@ -985,7 +984,7 @@ De forma complementaria, la Web Application también fue desplegada en Vercel co
 
 En conjunto, estas evidencias demuestran que el equipo no solo desarrolló la primera versión funcional de los productos del sprint, sino que también aseguró su publicación en un entorno real de despliegue. Esto permitió validar la integración entre el desarrollo local y la puesta en línea de las soluciones consideradas dentro del alcance del proyecto.
 
-6.2.1.8. Team Collaboration Insights during Sprint.
+### 6.2.1.8. Team Collaboration Insights during Sprint.
 
 ##### Landing Page
 
