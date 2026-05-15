@@ -543,6 +543,48 @@ Se definen etiquetas estándar para campos de entrada y acciones frecuentes, con
   - **"Suscribirme":** Registra el correo para recibir actualizaciones.
 
 ### 5.2.3. SEO Tags and Meta Tags
+
+### 5.2.3. SEO Tags and Meta Tags
+
+Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los motores de búsqueda y facilitar que dueños de restaurantes y administradores de retail encuentren una solución automatizada a sus problemas de inventario, se ha definido la siguiente estrategia de etiquetado HTML.
+
+**Landing Page**
+
+- **Title:**
+    `<title>Restock | Gestión de Inventario Inteligente con Sensores IoT</title>`
+    - **Propósito:** Incluye el nombre de la marca y las palabras clave de mayor volumen de búsqueda como "gestión de inventario" e "IoT", posicionando el diferencial tecnológico de inmediato.
+
+- **Meta Description:**
+    `<meta name="description" content="Restock automatiza el control de tus insumos mediante sensores de peso IoT. Evita mermas, recibe alertas de stock bajo en tiempo real y optimiza tus recetas. La solución definitiva para restaurantes y retail inteligente.">`
+    - **Propósito:** Explica el funcionamiento (sensores de peso) y los beneficios (evitar mermas, alertas en tiempo real), incitando al clic mediante una propuesta de valor clara.
+
+- **Meta Keywords:**
+    `<meta name="keywords" content="Restock, inventario IoT, control de insumos, sensores de peso, gestión de mermas, stock restaurantes, automatización de inventario, retail inteligente, pesaje digital">`
+    - **Propósito:** Agrupa términos técnicos y de negocio que los clientes potenciales utilizan para buscar soluciones de modernización de almacenes.
+
+- **Meta Author:**
+    `<meta name="author" content="Equipo Restock – Innovación en IoT y Experiencia de Usuario">`
+
+---
+
+**Web Application – Dashboard Principal**
+
+- **Title:**
+    `<title>Dashboard Operativo – Restock | Monitoreo de Insumos en Tiempo Real</title>`
+    - **Propósito:** Enfocado en la utilidad de la herramienta. El uso de "Monitoreo en Tiempo Real" refuerza que la aplicación web es una consola de control activa.
+
+- **Meta Description:**
+    `<meta name="description" content="Accede a tu panel de control de Restock. Visualiza el peso exacto de tus insumos, gestiona alertas críticas de stock y monitorea la salud de tus dispositivos IoT desde cualquier lugar.">`
+    - **Propósito:** Resume las funciones principales del dashboard (visualizar peso, alertas, salud de dispositivos) para usuarios que ya conocen la plataforma o buscan herramientas de monitoreo.
+
+- **Meta Keywords:**
+    `<meta name="keywords" content="panel de control IoT, telemetría de sensores, monitoreo de stock, gestión de recetas, dashboard administrativo, alertas de peso, control de dispositivos IoT">`
+    - **Propósito:** Palabras clave específicas para el entorno de trabajo (telemetría, dashboard, dispositivos) que ayudan a la indexación de la herramienta interna.
+
+- **Meta Author:**
+    `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
+    - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
+
 ### 5.2.4. Searching Systems
 
 En Restock, los sistemas de búsqueda se definen de acuerdo con las funcionalidades establecidas en las User Stories del Capítulo 3, especialmente en los flujos de gestión de suministros, recetas, kits, lotes, discrepancias, dispositivos y sucursales. Por ello, la propuesta se centra en mecanismos de búsqueda simples y filtros operativos concretos, evitando funcionalidades avanzadas no contempladas en el alcance del producto.
