@@ -34,63 +34,88 @@ A continuación, se muestran las capturas de pantalla y enlaces de acceso a cada
 ## **Landing Page**
 
 Se adjuntan los enlaces para acceder al sitio web estático desplegado y al vídeo de demostración. El vídeo muestra el funcionamiento de cada sección del sitio web y su visualización en un navegador web.
-- Vídeo de ejecución: [Restock Landing Page - Sprint 1]()
+- Vídeo de ejecución: https://acortar.link/IoO3Qp
 
 #### Sección Hero
 
+Sección principal del sitio web de Restock. Presenta el título "Smart Inventory for Restaurants & Retail" junto a dos botones de acción.
 
 <img src="https://i.imgur.com/eRR8EeY.png" alt="hero-web" style="width: 100%; height: auto;"/>
 
-
 #### Acerca de Restock
 
-<img src="" alt="about-restock-web" style="width: 100%; height: auto;"/>
+Sección informativa sobre la startup UI-Topic. Incluye tres tarjetas con íconos que describen cómo ayudan, su propuesta de valor y su misión y visión, enfocadas en el manejo inteligente de inventarios.
 
-
+<img src="https://i.imgur.com/Ppt4KhG.png" alt="about-restock-web" style="width: 100%; height: auto;"/>
 
 #### Conoce al equipo
 
-<img src="" alt="meet-the-team" style="width: 100%; height: auto;"/>
+Sección que presenta al equipo detrás de Restock con fotos circulares de cada miembro. Se muestran siete integrantes con sus nombres y roles dentro del desarrollo.
 
+<img src="https://i.imgur.com/F0CgaNR.png" alt="meet-the-team" style="width: 100%; height: auto;"/>
+
+#### Dispositivo IoT
+
+Sección que presenta a detalle el dispositivo IoT, destaca tres beneficios clave mediante tarjetas: precisión de la balanza inteligente, protección de cadena de frío y control de calidad ambiental.
+
+<img src="https://i.imgur.com/XJkcsdU.png" alt="meet-the-team" style="width: 100%; height: auto;"/>
 
 #### Beneficios
 
-<img src="" alt="benefits" style="width: 100%; height: auto;"/>
+Sección que divide los beneficios en dos categorías: restaurantes y tiendas retail. Cada categoría tiene cinco funcionalidades representadas con íconos y descripciones cortas sobre control de stock e inventario.
+
+<img src="https://i.imgur.com/1oQ54mQ.png" alt="benefits" style="width: 100%; height: auto;"/>
 
 #### Testimonios
+
+Sección de testimonios que muestra tres reseñas con calificación de estrellas de clientes reales.
 
 <img src="https://i.imgur.com/8L2iZDb.png" alt="testimonials" style="width: 100%; height: auto;"/>
 
 #### Preguntas frecuentes (FAQ)
 
-<img src="" alt="faq" style="width: 100%; height: auto;"/>
+Sección de preguntas frecuentes que presenta cinco preguntas en acordeón sobre el funcionamiento de los dispositivos, compatibilidad, sensores y conectividad.
+
+<img src="https://i.imgur.com/cAq8JLb.png" alt="faq" style="width: 100%; height: auto;"/>
 
 #### ¿Como funciona?
 
-<img src="" alt="how-it-works" style="width: 100%; height: auto;"/>
+Sección que explica en tres pasos cómo funciona Restock: instalar el dispositivo, conectarlo y asignar inventario, y monitorear el stock en tiempo real desde el dashboard.
+
+<img src="https://i.imgur.com/arKRiI2.png" alt="how-it-works" style="width: 100%; height: auto;"/>
 
 #### Planes de suscripción
 
-<img src="" alt="plan-and-subscriptions" style="width: 100%; height: auto;"/>
+Sección de planes de suscripción con tres opciones: Basic (S/ 59.99/mes), Premium (S/ 49.99/mes, el más popular) y Pro (S/ 39.99/mes). Cada plan lista sus características principales con un botón para seleccionarlo.
+
+<img src="https://i.imgur.com/dNmTDhu.png" alt="plan-and-subscriptions" style="width: 100%; height: auto;"/>
 
 #### Usa la aplicación web
+
+Sección de llamada a la acción que incluye dos botones (Get Started y Watch Demo).
 
 <img src="https://i.imgur.com/pRBTjs8.png" alt="go-to-app-web" style="width: 100%; height: auto;"/>
 
 #### Descarga la aplicación
 
+Sección que promociona la app móvil de Restock. Muestra botones de descarga para Google Play y App Store junto a una vista previa del móvil con la pantalla de batches.
+
 <img src="https://i.imgur.com/NLvtb3J.png" alt="download app" style="width: 100%; height: auto;"/>
 
 #### Footer
 
-<img src="" alt="footer" style="width: 100%; height: auto;"/>
+Pie de página en fondo negro con el logo de Restock y enlaces organizados en tres columnas: Producto (documentación y tutoriales), Compañía (about, políticas, LinkedIn) y Soporte (centro de ayuda, FAQ, contacto).
+
+<img src="https://i.imgur.com/GYMMtQU.png" alt="footer" style="width: 100%; height: auto;"/>
 
 
 #### Versión para dispositivos móviles
 
-<img src="" alt="mobile-version" style="width: 100%; height: auto;"/>
+Vista general de todas las secciones del sitio adaptadas para dispositivos móviles.
 
-<img src="" alt="mobile-version" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/GCQq8zK.png" alt="mobile-version" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/YSNc4IB.png" alt="mobile-version" style="width: 100%; height: auto;"/>
 
 ## **Aplicación Web**
 
