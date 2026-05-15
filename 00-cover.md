@@ -521,6 +521,48 @@
     <td> Antonio Navarro </th>
     <td> Se añadió la sección de la matriz de Aspect Leaders & Collaborators. </th>
   </tr>
+  <tr>
+    <td> 2.34 </th>
+    <td> 12/05/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección del Sprint Backlog 1. </th>
+  </tr>
+  <tr>
+    <td> 2.41 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Development Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.42 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Execution Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.43 </th>
+    <td> 14/05/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se añadió la sección de Deployment Evidence for Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 2.44 </th>
+    <td> 14/05/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de Team Collaboration Insights for Sprint 1 Review. </th>
+  </tr>
+  <tr>
+    <td> 2.50 </th>
+    <td> 14/05/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadieron conclusiones según el segundo avance del proyecto. </th>
+  </tr>
+  <tr>
+    <td> 2.51 </th>
+    <td> 14/05/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió nueva Bibliografía complementando lo progresado en el segundo avance. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
