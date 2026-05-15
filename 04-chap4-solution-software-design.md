@@ -6863,16 +6863,4 @@ El diagrama de diseño de base de datos del Bounded Context Analytics muestra la
 
 El diagrama evidencia que Analytics no gestiona colecciones propias en MongoDB. Su modelo de persistencia se basa en dos mecanismos complementarios: consultas de solo lectura sobre la colección `notifications` de Communication para construir el indicador de alertas recientes; y almacenamiento en Redis de los resúmenes consolidados del dashboard, aplicando políticas de expiración configurables para garantizar la frescura de los datos presentados.
 
-La única estructura de persistencia propia del contexto es la entrada **`dashboard_snapshot`** en Redis, que almacena el estado más reciente del resumen del dashboard por cuenta y sucursal activa. Cada entrada agrupa los cuatro indicadores operativos —insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes— como un documento serializado con TTL configurable. Este diseño refleja una decisión arquitectónica deliberada: Analytics es un contexto de agregación y presentación, no de escritura, lo que elimina la necesidad de colecciones transaccionales propias y reduce la duplicación de datos en el sistema.
-
-### 4.2.11. Bounded Context: Shared Kernel
-
-#### 4.2.11.1. Domain Layer
-
-#### 4.2.11.2. Infrastructure Layer
-
-#### 4.2.11.3. Bounded Context Software Architecture Component Level Diagrams
-
-#### 4.2.11.4. Bounded Context Software Architecture Code Level Diagrams
-
-##### 4.2.11.4.1. Bounded Context Domain Layer Class Diagrams
+La única estructura de persistencia propia del contexto es la entrada **`dashboard_snapshot`** en Redis, que almacena el estado más reciente del resumen del dashboard por cuenta y sucursal activa. Cada entrada agrupa los cuatro indicadores operativos —insumos con stock cero, insumos con bajo stock, últimos insumos registrados y alertas recientes— como un documento serializado con TTL configurable. Este diseño refleja una decisión arquitectónica deliberada: Analytics es un contexto de agregación y presentación, no de escritura, lo que elimina la necesidad de colecciones transaccionales propias y reduce la duplicación de datos en el sistema
