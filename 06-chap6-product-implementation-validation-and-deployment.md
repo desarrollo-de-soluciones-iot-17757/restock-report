@@ -1325,6 +1325,470 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
 
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
 
+Durante el Sprint 2, el equipo implementó y documentó mediante OpenAPI (Swagger) el conjunto completo de endpoints REST que conforman el backend de Restock. Los logros más destacados en materia de documentación de Web Services fueron: la cobertura total de los bounded contexts **IAM**, **Profiles**, **Resources**, **Planning**, **Devices**, **Communications**, **Tracking** y **Analytics**; la especificación de parámetros, cuerpos de solicitud y respuestas de ejemplo para cada operación; y el despliegue de la documentación interactiva en el entorno de producción en Azure, accesible en `https://restock-api-17757.azurewebsites.net/swagger-ui/index.html`.
+
+A continuación se presenta la tabla resumen de los endpoints documentados en este Sprint, agrupados por bounded context:
+
+| Bounded Context | Recurso | Verbo HTTP | URL | Enlace a documentación |
+|---|---|---|---|---|
+| IAM | Sign In | POST | `/api/v1/auth/sign-in` | [Swagger – auth](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Authentication) |
+| IAM | Sign Up | POST | `/api/v1/auth/sign-up` | [Swagger – auth](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Authentication) |
+| Profiles | Listar perfiles | GET | `/api/v1/profiles` | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles) |
+| Profiles | Crear perfil | POST | `/api/v1/profiles` | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles) |
+| Profiles | Obtener perfil | GET | `/api/v1/profiles/{profileId}` | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles) |
+| Profiles | Actualizar perfil | PATCH | `/api/v1/profiles/{profileId}` | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles) |
+| Profiles | Eliminar perfil | DELETE | `/api/v1/profiles/{profileId}` | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles) |
+| Profiles | Listar negocios | GET | `/api/v1/businesses` | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses) |
+| Profiles | Crear negocio | POST | `/api/v1/businesses` | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses) |
+| Profiles | Obtener negocio | GET | `/api/v1/businesses/{businessId}` | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses) |
+| Profiles | Actualizar negocio | PATCH | `/api/v1/businesses/{businessId}` | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses) |
+| Profiles | Eliminar negocio | DELETE | `/api/v1/businesses/{businessId}` | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses) |
+| Resources | Listar sucursales | GET | `/api/v1/branches` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Crear sucursal | POST | `/api/v1/branches` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Obtener sucursal | GET | `/api/v1/branches/{branchId}` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Actualizar sucursal | PATCH | `/api/v1/branches/{branchId}` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Eliminar sucursal | DELETE | `/api/v1/branches/{branchId}` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Actualizar estado sucursal | PATCH | `/api/v1/branches/{branchId}/status` | [Swagger – branches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Branches) |
+| Resources | Listar insumos personalizados | GET | `/api/v1/custom-supplies` | [Swagger – custom-supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Custom-Supplies) |
+| Resources | Crear insumo personalizado | POST | `/api/v1/custom-supplies` | [Swagger – custom-supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Custom-Supplies) |
+| Resources | Obtener insumo personalizado | GET | `/api/v1/custom-supplies/{customSupplyId}` | [Swagger – custom-supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Custom-Supplies) |
+| Resources | Actualizar insumo personalizado | PATCH | `/api/v1/custom-supplies/{customSupplyId}` | [Swagger – custom-supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Custom-Supplies) |
+| Resources | Eliminar insumo personalizado | DELETE | `/api/v1/custom-supplies/{customSupplyId}` | [Swagger – custom-supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Custom-Supplies) |
+| Resources | Listar insumos catálogo | GET | `/api/v1/supplies` | [Swagger – supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Supplies) |
+| Resources | Listar categorías | GET | `/api/v1/supplies/categories` | [Swagger – supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Supplies) |
+| Resources | Obtener insumo catálogo | GET | `/api/v1/supplies/{id}` | [Swagger – supplies](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Supplies) |
+| Resources | Listar lotes | GET | `/api/v1/batches` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Resources | Crear lote | POST | `/api/v1/batches` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Resources | Obtener lote | GET | `/api/v1/batches/{batchId}` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Resources | Actualizar lote | PATCH | `/api/v1/batches/{batchId}` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Resources | Eliminar lote | DELETE | `/api/v1/batches/{batchId}` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Resources | Transferir stock | POST | `/api/v1/batches/{batchId}/transfer` | [Swagger – batches](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Batches) |
+| Planning | Crear producto | POST | `/api/v1/products` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Actualizar producto | PUT | `/api/v1/products/{productId}` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Eliminar producto | DELETE | `/api/v1/products/{productId}` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Obtener producto | GET | `/api/v1/products/{productId}` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Listar productos por cuenta | GET | `/api/v1/products` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Disponibilidad de productos | GET | `/api/v1/products/availability` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Agregar ingrediente | POST | `/api/v1/products/{productId}/ingredients` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Planning | Quitar ingrediente | DELETE | `/api/v1/products/{productId}/ingredients/{customSupplyId}` | [Swagger – products](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Products) |
+| Devices | Listar dispositivos | GET | `/api/v1/devices` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Obtener dispositivo | GET | `/api/v1/devices/{deviceId}` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Registrar dispositivo | POST | `/api/v1/devices` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Especificaciones | PUT | `/api/v1/devices/{deviceId}/specifications` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Asignar sucursal | PUT | `/api/v1/devices/{deviceId}/configuration/branch` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Asignar lote | PUT | `/api/v1/devices/{deviceId}/configuration/batch` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Asignar umbral | PUT | `/api/v1/devices/{deviceId}/configuration/threshold` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Configurar medición | PUT | `/api/v1/devices/{deviceId}/configuration/measurement` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Actualizar estado | PATCH | `/api/v1/devices/{deviceId}/status` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Stock retirado | PATCH | `/api/v1/devices/{deviceId}/withdrawn-stock` | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices) |
+| Devices | Listar umbrales | GET | `/api/v1/device-thresholds` | [Swagger – thresholds](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Device-Thresholds) |
+| Devices | Obtener umbral | GET | `/api/v1/device-thresholds/{thresholdId}` | [Swagger – thresholds](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Device-Thresholds) |
+| Devices | Crear umbral | POST | `/api/v1/device-thresholds` | [Swagger – thresholds](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Device-Thresholds) |
+| Communications | Listar notificaciones | GET | `/api/v1/notifications` | [Swagger – notifications](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Notifications) |
+| Communications | Obtener notificación | GET | `/api/v1/notifications/{notificationId}` | [Swagger – notifications](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Notifications) |
+| Communications | Suscripción push | POST | `/api/v1/push-subscriptions` | [Swagger – notifications](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Notifications) |
+| Tracking | Recibir telemetría | POST | `/api/v1/telemetries` | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking) |
+| Tracking | Listar tareas de conciliación | GET | `/api/v1/conciliation-tasks` | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking) |
+| Tracking | Obtener tarea de conciliación | GET | `/api/v1/conciliation-tasks/{conciliationTaskId}` | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking) |
+| Tracking | Resolver tarea | POST | `/api/v1/conciliation-tasks/{conciliationTaskId}/resolve` | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking) |
+| Analytics | Productos críticos | GET | `/api/v1/accounts/{accountId}/critical-products` | [Swagger – analytics](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Analytics) |
+| Analytics | Discrepancias de stock | GET | `/api/v1/custom-supplies/{id}/stock-discrepancies` | [Swagger – analytics](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Analytics) |
+| Analytics | Ventas recientes | GET | `/api/v1/accounts/{accountId}/recent-sales` | [Swagger – analytics](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Analytics) |
+
+---
+
+A continuación se detalla cada acción implementada con su sintaxis de llamada, parámetros y response de ejemplo.
+
+---
+
+##### IAM — Autenticación
+
+**POST `/api/v1/auth/sign-in`**
+
+Permite a un usuario registrado iniciar sesión en la plataforma. Retorna un token JWT junto con los datos de identificación de la cuenta.
+
+| Campo | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `email` | string | body (JSON) | Sí | Correo electrónico del usuario |
+| `password` | string | body (JSON) | Sí | Contraseña del usuario |
+
+_Request body:_
+```json
+{
+  "email": "juan@gmail.com",
+  "password": "password123"
+}
+```
+
+_Response (200 OK):_
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "email": "juan@gmail.com",
+  "role": "RETAIL",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "accountId": "456e7890-e89b-12d3-a456-426614174000"
+}
+```
+
+El campo `token` debe incluirse como `Bearer` en el header `Authorization` de todas las solicitudes autenticadas. El campo `accountId` identifica la cuenta empresarial del usuario.
+
+---
+
+**POST `/api/v1/auth/sign-up`**
+
+Registra un nuevo usuario en la plataforma. El campo `role` determina el tipo de acceso (`RETAIL` para minoristas, `SUPPLIER` para proveedores).
+
+| Campo | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `email` | string | body (JSON) | Sí | Correo electrónico del nuevo usuario |
+| `password` | string | body (JSON) | Sí | Contraseña |
+| `role` | string | body (JSON) | Sí | Rol del usuario: `RETAIL` o `SUPPLIER` |
+
+_Request body:_
+```json
+{
+  "email": "juan@gmail.com",
+  "password": "password123",
+  "role": "RETAIL"
+}
+```
+
+_Response (201 Created):_
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "email": "juan@gmail.com",
+  "role": "RETAIL",
+  "accountId": "456e7890-e89b-12d3-a456-426614174000"
+}
+```
+
+---
+
+##### Profiles — Perfil de usuario
+
+**GET `/api/v1/profiles`**
+
+Retorna la lista de perfiles de usuario. Puede filtrarse opcionalmente por `userId`.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `userId` | UUID | query | No | Filtra el resultado al perfil del usuario indicado |
+
+_Response (200 OK):_
+```json
+[
+  {
+    "id": "abc123",
+    "userId": "user-456",
+    "name": "Juan",
+    "lastName": "Pérez",
+    "phoneNumber": "+51987654321",
+    "avatarUrl": "https://res.cloudinary.com/.../avatar.jpg",
+    "avatarPublicId": "restock/avatars/abc123",
+    "gender": "MALE",
+    "birthDate": "1995-03-15"
+  }
+]
+```
+
+---
+
+**POST `/api/v1/profiles`**
+
+Crea un nuevo perfil de usuario. Acepta `multipart/form-data` para permitir la carga de una imagen de avatar.
+
+| Campo | Tipo | Requerido | Descripción |
+|---|---|---|---|
+| `userId` | UUID | Sí | ID del usuario al que pertenece el perfil |
+| `name` | string | Sí | Nombre del usuario |
+| `lastName` | string | No | Apellido |
+| `phoneNumber` | string | No | Número de teléfono |
+| `gender` | string | No | Género: `MALE`, `FEMALE`, u otro valor del enum |
+| `birthDate` | date | No | Fecha de nacimiento (formato `YYYY-MM-DD`) |
+| `image` | file | No | Imagen de avatar (PNG/JPG) |
+
+---
+
+**GET `/api/v1/profiles/{profileId}`**
+
+Obtiene el perfil de un usuario por su identificador único.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `profileId` | UUID | path | Sí | Identificador del perfil |
+
+_Response (200 OK):_
+```json
+{
+  "id": "abc123",
+  "userId": "user-456",
+  "name": "Juan",
+  "lastName": "Pérez",
+  "phoneNumber": "+51987654321",
+  "avatarUrl": "https://res.cloudinary.com/.../avatar.jpg",
+  "avatarPublicId": "restock/avatars/abc123",
+  "gender": "MALE",
+  "birthDate": "1995-03-15"
+}
+```
+
+---
+
+**PATCH `/api/v1/profiles/{profileId}`**
+
+Actualiza parcialmente los datos del perfil indicado. Acepta `multipart/form-data` (campos opcionales + imagen).
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `profileId` | UUID | path | Sí | Identificador del perfil a actualizar |
+
+---
+
+**DELETE `/api/v1/profiles/{profileId}`**
+
+Elimina el perfil de usuario indicado.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `profileId` | UUID | path | Sí | Identificador del perfil a eliminar |
+
+_Response (204 No Content)_
+
+---
+
+##### Profiles — Business (negocio)
+
+**GET `/api/v1/businesses/{businessId}`**
+
+Obtiene los datos del negocio registrado, incluyendo RUC, nombre comercial, dirección principal e imagen del logo.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `businessId` | UUID | path | Sí | Identificador del negocio |
+
+_Response (200 OK):_
+```json
+{
+  "id": "biz-789",
+  "userId": "user-456",
+  "ruc": "20601234567",
+  "pictureUrl": "https://res.cloudinary.com/.../logo.jpg",
+  "picturePublicId": "restock/businesses/biz-789",
+  "companyName": "Distribuidora Norte S.A.C.",
+  "mainLocation": "Av. La Marina 1234, Lima"
+}
+```
+
+Los endpoints de listado (`GET /api/v1/businesses`), creación (`POST`), actualización (`PATCH`) y eliminación (`DELETE`) siguen la misma estructura de parámetros que los endpoints de perfiles de usuario descritos anteriormente.
+
+---
+
+##### Resources — Sucursales (Branches)
+
+**GET `/api/v1/branches`**
+
+Lista todas las sucursales. Puede filtrarse por cuenta.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `accountId` | UUID | query | No | Filtra las sucursales de la cuenta indicada |
+
+---
+
+**POST `/api/v1/branches`**
+
+Crea una nueva sucursal. El `accountId` se pasa como query parameter; el cuerpo va en `multipart/form-data`.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `accountId` | UUID | query | Sí | Cuenta a la que pertenece la sucursal |
+
+---
+
+**PATCH `/api/v1/branches/{branchId}/status`**
+
+Actualiza únicamente el estado operativo de una sucursal (activa/inactiva).
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `branchId` | UUID | path | Sí | Identificador de la sucursal |
+| `status` | string | body (JSON) | Sí | Nuevo estado de la sucursal |
+
+---
+
+##### Resources — Insumos (Custom Supplies y Supplies)
+
+**GET `/api/v1/custom-supplies`**
+
+Lista los insumos personalizados creados por una cuenta. Admite filtro por `accountId`.
+
+**GET `/api/v1/supplies`** y **GET `/api/v1/supplies/categories`**
+
+Listan los insumos del catálogo global de la plataforma y sus categorías disponibles. No requieren autenticación de cuenta específica.
+
+---
+
+##### Resources — Lotes (Batches)
+
+**GET `/api/v1/batches`**
+
+Lista lotes de insumos. Admite combinación de filtros para acotar resultados.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `accountId` | UUID | query | No | Filtra por cuenta |
+| `branchId` | UUID | query | No | Filtra por sucursal |
+| `customSupplyId` | UUID | query | No | Filtra por insumo personalizado |
+
+---
+
+**POST `/api/v1/batches/{batchId}/transfer`**
+
+Transfiere stock de un lote hacia otra sucursal o dispositivo.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `batchId` | UUID | path | Sí | Lote origen de la transferencia |
+| body | JSON | body | Sí | Cantidad y destino de la transferencia |
+
+---
+
+##### Planning — Productos
+
+**GET `/api/v1/products/availability`**
+
+Calcula la disponibilidad de producción de todos los productos de una cuenta en función del stock actual de insumos.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `accountId` | UUID | query | Sí | Cuenta propietaria de los productos |
+| `branchId` | UUID | query | No | Restringe el cálculo a una sucursal específica |
+
+---
+
+**POST `/api/v1/products/{productId}/ingredients`** y **DELETE `/api/v1/products/{productId}/ingredients/{customSupplyId}`**
+
+Permiten gestionar los ingredientes (insumos personalizados) que componen un producto para efectos del cálculo de disponibilidad.
+
+---
+
+##### Devices — Dispositivos y Umbrales
+
+**POST `/api/v1/devices`**
+
+Registra un nuevo dispositivo IoT en la plataforma.
+
+| Campo | Tipo | Requerido | Descripción |
+|---|---|---|---|
+| `accountId` | UUID | Sí | Cuenta a la que pertenece el dispositivo |
+| `serialNumber` | string | Sí | Número de serie del hardware |
+| `model` | string | No | Modelo del dispositivo |
+
+Los endpoints de configuración (`PUT .../configuration/branch`, `.../configuration/batch`, `.../configuration/threshold`, `.../configuration/measurement`) permiten asignar progresivamente el contexto operativo de un dispositivo una vez registrado.
+
+**PATCH `/api/v1/devices/{deviceId}/withdrawn-stock`**
+
+Notifica al sistema que se retiró stock físico del contenedor monitoreado por el dispositivo, actualizando el registro de inventario.
+
+---
+
+##### Communications — Notificaciones
+
+**GET `/api/v1/notifications`**
+
+Lista todas las notificaciones de un usuario receptor.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `recipientUserId` | UUID | query | Sí | Identificador del usuario destinatario |
+
+---
+
+**POST `/api/v1/push-subscriptions`**
+
+Registra el endpoint de suscripción Web Push del navegador del usuario para habilitar notificaciones en tiempo real.
+
+---
+
+##### Tracking — Telemetría y Conciliación
+
+**POST `/api/v1/telemetries`**
+
+Recibe mediciones de peso (u otra magnitud) enviadas por el firmware del dispositivo IoT.
+
+| Campo | Tipo | Requerido | Descripción |
+|---|---|---|---|
+| `deviceId` | UUID | Sí | Dispositivo que originó la medición |
+| `value` | number | Sí | Valor medido |
+| `timestamp` | ISO 8601 | Sí | Fecha y hora de la medición |
+
+---
+
+**POST `/api/v1/conciliation-tasks/{conciliationTaskId}/resolve`**
+
+Resuelve una tarea de conciliación generada automáticamente cuando el sistema detecta una discrepancia entre el stock esperado y el medido por el dispositivo.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `conciliationTaskId` | UUID | path | Sí | Tarea a resolver |
+| `resolution` | string | body (JSON) | Sí | Tipo de resolución aplicada |
+
+---
+
+##### Analytics — Análisis
+
+**GET `/api/v1/accounts/{accountId}/critical-products`**
+
+Retorna los productos cuya disponibilidad de producción está por debajo del umbral configurado, priorizados por criticidad.
+
+**GET `/api/v1/custom-supplies/{id}/stock-discrepancies`**
+
+Retorna el historial de discrepancias de stock detectadas para un insumo específico, útil para auditoría e identificación de mermas.
+
+**GET `/api/v1/accounts/{accountId}/recent-sales`**
+
+Retorna el resumen de ventas recientes de la cuenta, con soporte de filtros por rango de fechas.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción |
+|---|---|---|---|---|
+| `startDate` | date | query | No | Inicio del rango (ISO 8601) |
+| `endDate` | date | query | No | Fin del rango (ISO 8601) |
+
+---
+
+A continuación se presentan capturas de la interacción con la documentación desplegada en Swagger UI:
+
+![Swagger UI – Vista general de endpoints](https://i.ibb.co/8DKX7ySg/Captura-de-pantalla-2026-06-19-a-la-s-10-56-42-p-m.png)
+
+![Swagger UI – POST /api/v1/auth/sign-in](https://i.ibb.co/cKKyYj4Y/Captura-de-pantalla-2026-06-19-a-la-s-10-57-10-p-m.png)
+
+![Swagger UI – GET /api/v1/profiles/{profileId}](https://i.ibb.co/mCgwhd51/Captura-de-pantalla-2026-06-19-a-la-s-10-57-36-p-m.png)
+
+![Swagger UI – GET /api/v1/batches con filtros](https://i.ibb.co/QvDG632X/Captura-de-pantalla-2026-06-19-a-la-s-10-58-01-p-m.png)
+
+![Swagger UI – POST /api/v1/telemetries](https://i.ibb.co/Y7fdVdrn/Captura-de-pantalla-2026-06-19-a-la-s-10-58-27-p-m.png)
+
+**Repositorio de Web Services:** [https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-services](https://github.com/desarrollo-de-soluciones-iot-17757/restock-web-services)
+
+**Commits relacionados con la documentación de este Sprint:**
+
+| SHA | Descripción |
+|---|---|
+| `9fd1ea8` | feat(business): implement crud operations for business profiles and add rest controller |
+| `e0d59e2` | feat(profiles): add commands and resources for business and user profile creation, deletion, and retrieval |
+| `8648543` | feat(profiles): implement crud operations for user profiles and enhance profile management features |
+| `6134ae5` | feat(profiles): add commands and resources for updating business and user profiles |
+| `f02e19d` | feat(device-registration): enhance device event publishing and update device configuration handling |
+| `0092e95` | feat(device-registration): add device calibration and registration events with token generation |
+| `93c5030` | feat(stock-event-alerts): add fields to register the custom supply name for sending the email |
+| `68d76f1` | feat(notification-by-source): add logic for generating notifications by source type |
+| `a480a03` | feat(analytics): implement complete analytics bounded context |
+| `1f8c4ea` | fix(analytics): change endpoint routes and align under system analytics tag |
+| `2b38185` | feat(planning): add missing files for products availability calculation |
+| `f0856fc` | feat(tracking): add conciliation tasks controller |
+
 #### 6.2.2.8. Software Deployment Evidence for Sprint Review
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
@@ -1356,5 +1820,144 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
 ### 6.3.2. Registro de Entrevistas
 
 ### 6.3.3. Evaluaciones según heurísticas
+
+**UX Heuristics & Principles Evaluation**
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| **CARRERA** | Ingeniería de Software |
+| **CURSO** | Desarrollo de Soluciones IoT |
+| **SECCIÓN** | 17757 |
+| **PROFESORES** | Todos |
+| **AUDITOR** | UI-Topic |
+| **CLIENTE(S)** | [Nombres de los participantes de la sesión de evaluación] |
+
+---
+
+**SITE o APP A EVALUAR:** Restock — Aplicación Web (`https://restock-app.web.app`)
+
+---
+
+**TAREAS A EVALUAR:**
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
+
+1. Registro e inicio de sesión de un usuario nuevo
+2. Configuración del perfil de usuario y datos del negocio
+3. Registro y configuración de un dispositivo IoT
+4. Gestión de inventario: creación y edición de lotes de insumos
+5. Revisión de alertas y notificaciones de stock bajo
+6. Consulta del panel de analíticas y productos críticos
+7. Gestión de sucursales (alta, baja y actualización de estado)
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Transferencia de stock entre sucursales
+2. Gestión avanzada de recetas/ingredientes de productos
+3. Configuración de suscripción a notificaciones push
+4. Resolución de tareas de conciliación de stock
+
+---
+
+**ESCALA DE SEVERIDAD:**
+
+Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
+| 2 | Problema menor: puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debería asignar una prioridad baja resolverlo de cara al siguiente release. |
+| 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlos. Es importante que sean corregidos y se les debe asignar una prioridad alta. |
+| 4 | Problema muy grave: un error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento. |
+
+---
+
+**TABLA RESUMEN:**
+
+| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
+|---|---|---|---|
+| 1 | [Descripción breve del problema 1] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 2 | [Descripción breve del problema 2] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 3 | [Descripción breve del problema 3] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 4 | [Descripción breve del problema 4] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 5 | [Descripción breve del problema 5] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+
+---
+
+**DESCRIPCIÓN DE PROBLEMAS:**
+
+**PROBLEMA #1:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema encontrado durante la sesión. Explicar en qué contexto ocurre, qué acción realiza el usuario, y por qué constituye un problema de usabilidad. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Descripción de la solución propuesta para corregir el problema identificado.]
+
+---
+
+**PROBLEMA #2:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #3:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #4:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #5:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
 
 ## 6.4. Video About-the-Product
