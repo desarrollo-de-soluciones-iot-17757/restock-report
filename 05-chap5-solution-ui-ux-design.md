@@ -394,7 +394,24 @@ Sin asignar
 
 El display permanece activo de forma continua mientras el dispositivo esté encendido, ya que el sistema opera sin restricciones de horario.
 
-##### 5.1.2.3.2. Estándares generales de interacción con la interfaz física
+##### 5.1.2.3.2. Sistema de señalización LED
+
+El LED de señalización incluido en el kit básico de componentes actúa como canal de retroalimentación visual instantánea, complementando la información del display LCD con un indicador de estado perceptible desde mayor distancia y sin necesidad de leer texto.
+
+La codificación semántica del LED replica la lógica cromática de la paleta de Restock: el verde corresponde al color primario de la plataforma, asociado a operación correcta; el rojo corresponde al color terciario, reservado para situaciones que requieren atención inmediata.
+
+**Patrones de señalización por estado:**
+
+| Estado del sistema                           | Color | Comportamiento        |
+| -------------------------------------------- | ----- | --------------------- |
+| Insumo asignado — stock con valor detectado | Verde | Encendido continuo    |
+| Insumo asignado — sin peso detectado        | Rojo  | Parpadeo lento (1 Hz) |
+| Dispositivo sin insumo asignado              | —    | LED apagado           |
+| Inicialización del sistema (boot)           | Verde | 3 destellos cortos    |
+
+La distinción entre LED encendido en verde de forma continua y parpadeo en rojo permite que el operario identifique desde distancia si el dispositivo está registrando peso correctamente o si el contenedor está vacío o sin lectura válida, sin necesidad de acercarse al display.
+
+##### 5.1.2.3.3. Estándares generales de interacción con la interfaz física
 
 El diseño de la interfaz física del dispositivo IoT de Restock responde a los mismos valores de claridad y empatía con el usuario operativo que definen el tono de comunicación de la plataforma.
 
@@ -587,6 +604,25 @@ Con el objetivo de mejorar la posicionamiento orgánico de **Restock** en los mo
   `<meta name="author" content="Equipo de Desarrollo Restock, 2026">`
 
   - **Propósito:** Refuerza la vigencia tecnológica del sistema al incluir el año actual de implementación.
+
+---
+
+**Mobile Application – Vista de Monitoreo**
+
+- **Title:**
+  `<title>Restock Mobile | Estado de Inventario y Alertas en tu Bolsillo</title>`
+
+  - **Propósito:** Resalta la portabilidad y la inmediatez. El uso de "en tu bolsillo" refuerza la naturaleza móvil de la herramienta frente a la versión de escritorio.
+- **Meta Description:**
+  `<meta name="description" content="Lleva el control de tu almacén a donde vayas. Revisa niveles de stock mediante sensores IoT, recibe notificaciones push de suministros críticos y verifica el estado de tus dispositivos en tiempo real desde tu smartphone.">`
+
+  - **Propósito:** Se enfoca en las capacidades exclusivas del móvil, como las "notificaciones push" y la movilidad, factores clave para un administrador que no siempre está frente a una PC.
+- **Meta Keywords:**
+  `<meta name="keywords" content="app de inventario, monitoreo móvil IoT, notificaciones de stock, control de suministros smartphone, gestión de almacén remota, alertas push Restock">`
+
+  - **Propósito:** Atrae a usuarios que buscan soluciones de gestión remota y aplicaciones móviles para control de stock.
+- **Meta Author:**
+  `<meta name="author" content="Equipo de Desarrollo Mobile – Restock, 2026">`
 
 ### 5.2.4. Searching Systems
 
@@ -2986,7 +3022,7 @@ El visitante intenta registrarse con un correo ya existente o deja campos obliga
 
 #### User Flow 2: Inicio de Sesión y Recuperación de Contraseña
 
-**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Intiva.
+**User Goal:** Como usuario registrado, quiero iniciar sesión con mis credenciales o recuperar mi contraseña en caso de olvidarla, para acceder de forma segura a mi cuenta en Restock.
 
 ##### Happy Path
 
@@ -3100,17 +3136,17 @@ El administrador detecta que el smart scale reporta lecturas inconsistentes y ha
 
 El administrador accede al módulo Devices desde el sidebar. Visualiza el Device Management con el listado de balanzas registradas y su estado (Online / Offline / Critical). Hace clic en "+ Register Device", ingresa la MAC address y el alias en el modal y confirma. El dispositivo aparece en el directorio. Accede al detalle del dispositivo en Scale Configuration, hace clic en "Assign a Start Setup" y completa el modal "Assign Batch to Scale" ingresando el batch, alert weight y unit weight. Guarda la asignación y el dispositivo queda operativo. Desde el Device Detail puede configurar los umbrales haciendo clic en "Edit Alert Thresholds", ingresa los valores de stock, temperatura y humedad y guarda con "Save Thresholds".
 
-![User Flow 8 - Happy Path Web](https://imgur.com/paG0E4U.png)
+![User Flow 8 - Happy Path Web](https://imgur.com/s3dduK2.png)
 
-![User Flow 8 - Happy Path Mobile](https://imgur.com/t3EEdgr.png)
+![User Flow 8 - Happy Path Mobile](https://imgur.com/HnuzQIq.png)
 
 ##### Unhappy Path — Desvinculación de dispositivo activo
 
 El administrador decide desvincular un dispositivo activo haciendo clic en "Unlink Scale". El sistema muestra el modal de confirmación advirtiendo que se detendrá el monitoreo del dispositivo. Si cancela, el dispositivo permanece activo. Si confirma, el dispositivo queda desvinculado y sus datos dejan de actualizarse en el sistema.
 
-![User Flow 8 - Unhappy Path A Web](https://imgur.com/HnfS0zq.png)
+![User Flow 8 - Unhappy Path A Web](https://imgur.com/bDtH7cv.png)
 
-![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/6oiqopw.png)
+![User Flow 8 - Unhappy Path A Mobile](https://imgur.com/MKnfwGa.png)
 
 #### User Flow 9: Gestión de Sucursales
 
@@ -3482,7 +3518,7 @@ Para los servicios definidos en el Paso 5, se opta por un monolito desarrollado 
   <tr>
     <td> <strong> Cloud  → Aplicación </strong> </td>
     <td> Comunicación via API/HTTPS </td>
-    <td> 200 ms </td>
+    <td> 600 ms </td>
     <td> El usuario consulta el estado vía API HTTPS o recibe la alerta de inventario crítico. </td>
   </tr>
   <tr>
@@ -3710,7 +3746,7 @@ En esta etapa final se definen los elementos visuales basándose en los servicio
   <tr>
     <td> <strong> Monitoreo de Salud del Dispositivo </strong> </td>
     <td> Web / Mobile / LCD local </td>
-    <td> Indicadores de conectividad, batería y alertas de falla técnica. </td>
+    <td> Indicadores de conectividad y alertas de falla técnica. </td>
     <td> Permite visualizar el autodiagnóstico y reconocer automáticamente fallas del hardware. </td>
   </tr>
   <tr>
@@ -3744,12 +3780,66 @@ En esta etapa final se definen los elementos visuales basándose en los servicio
 
 Por otro lado, se realiza una propuesta de diseño físico y del circuito del dispositivo IoT, el cual ayuda a tener una idea de los componentes a usar y cómo se conectan con el ESP32 central del dispositivo.
 
-### Flujos de interacción del dispositivo IoT
+**Diseño del circuito:**
 
-Finalmente, se diseñan diagramas que explican los flujos de interacción para el dispositivo IoT, los cuales incluyen la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
+El diseño de circuito incluye la lectura de datos de peso, temperatura y humedad de los sensores y la exhibición de los datos procesados en el display LCD.
 
 En la siguiente imagen elaborada en Cirkit Deisgner, se muestra el prototipo físico del dispositivo IoT, el cual incluye la ubicación de los sensores, el display LCD y el microcontrolador ESP32. Además, se muestran las conexiones eléctricas entre los componentes para una mejor visualización del diseño del circuito.
 
 <div align="center">
-  <img src="https://i.ibb.co/pB2Gny8J/image.png" alt="Prototipo físico del dispositivo IoT"/>
+  <img src="https://i.ibb.co/pB2Gny8J/image.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Diseño físico:**
+
+El diseño físico del dispositivo IoT de Restock se plantea como una plataforma de pesaje de perfil bajo, pensada para colocarse en la base de estantes de almacenes, restaurantes o tiendas retail. Su forma rectangular y compacta permite ubicar productos, cajas o bandejas sobre la superficie sin elevar demasiado la carga ni interferir con el uso cotidiano del estante.
+
+El dispositivo integra una pantalla LCD 16x2 en la parte superior para mostrar una métrica local a la vez, como peso, temperatura o humedad. Además, considera cuatro celdas de carga distribuidas en las esquinas para mejorar la estabilidad de la medición, un módulo HX711 para la conversión de señal, un ESP32 como nodo principal de captura y transmisión, y un sensor DHT22 para el monitoreo ambiental del producto almacenado. La entrada de alimentación de 5V DC se ubica en un lateral para facilitar la conexión sin afectar la plataforma de pesaje.
+
+La siguiente propuesta muestra el diseño físico externo del dispositivo, incluyendo la vista superior, frontal y lateral. En ella se evidencia el perfil bajo del prototipo, la ubicación de la pantalla LCD, la entrada de alimentación de 5V DC y las dimensiones aproximadas consideradas para su uso en la base de estantes.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/diseno_fisico.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+La vista explosionada permite observar la distribución interna de los principales componentes electrónicos del dispositivo. Se identifican las celdas de carga ubicadas en las esquinas, el módulo HX711, el ESP32, el sensor DHT22, la pantalla LCD 16x2 y la base inferior que protege el circuito interno del prototipo.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/diseno_fisico_expandido.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+### Flujos de interacción del dispositivo IoT
+
+Los flujos de interacción del dispositivo IoT representan la forma en que el usuario, el hardware y el sistema Restock se relacionan durante la operación diaria. Estos flujos permiten evidenciar que el diseño físico no solo responde a una distribución de componentes, sino también a decisiones de uso, instalación, monitoreo y mantenimiento.
+
+**Flujo 1: Instalación y encendido del dispositivo IoT**
+
+Este flujo describe la secuencia inicial de puesta en funcionamiento del dispositivo IoT dentro del entorno de uso. Se muestra cómo el operador instala el dispositivo en la base del estante, conecta la alimentación eléctrica y permite que el sistema inicie, verifique sus componentes y establezca comunicación con la capa Edge y la nube.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo1.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Flujo 2: Monitoreo normal de inventario**
+
+Este flujo representa el funcionamiento habitual del dispositivo durante la operación diaria del sistema. A través de este proceso, el dispositivo captura el peso del producto colocado sobre la plataforma, procesa la lectura localmente y la transmite hacia la capa Edge y el backend para mantener actualizado el inventario físico en tiempo casi real.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo2.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+F**lujo 3: Monitoreo ambiental del producto**
+
+Este flujo muestra cómo el dispositivo supervisa las condiciones ambientales del entorno donde se encuentra almacenado el producto. En particular, se describe la captura de temperatura y humedad, su procesamiento en el nodo IoT y su evaluación posterior en la capa Edge, con el fin de registrar el estado ambiental o detectar posibles condiciones fuera del rango esperado.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo3.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
+</div>
+
+**Flujo 4: Alerta por stock crítico o condición ambiental**
+
+Este flujo presenta el comportamiento del sistema ante la detección de una situación crítica relacionada con el inventario o el ambiente. A partir de la lectura enviada por el dispositivo, la capa Edge analiza la información y, si identifica una anomalía, el backend genera una alerta para que el administrador tome una acción correctiva oportuna.
+
+<div align="center">
+  <img src="assets/images/chapter5/iot_design/flujo4.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
 </div>

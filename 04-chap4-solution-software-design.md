@@ -1198,7 +1198,7 @@ En esta sección se presentan los diagramas de componentes del Bounded Context d
 
 El componente de la aplicación web cliente, desarrollado en Angular, se ejecuta en el navegador del usuario para proporcionar una experiencia de gestión de identidad fluida en dispositivos de escritorio. Este componente orquesta la comunicación con el backend mediante un Auth Service que consume los endpoints de autenticación a través de un balanceador NGINX, gestionando de forma segura el ciclo de vida de los tokens JWT en el lado del cliente para asegurar que cada petición de la interfaz esté debidamente autorizada.
 
-`<img src="assets/images/chapter4/bc-iam/frontend-iam-component .png" alt="Web Identity and Access Management Component Diagram" width="500px">`
+<img src="assets/images/chapter4/bc-iam/frontend-iam-component.png" alt="Web Identity and Access Management Component Diagram" width="500px">
 
 <p><em>Tabla de Componentes de la Web Application para Identity and Access Management (IAM)</em></p>
 
@@ -1287,11 +1287,6 @@ El componente de gestión de identidad y acceso (IAM) de la aplicación móvil c
       <td style="padding: 10px; border: 1px solid;"><strong>backendApplication</strong> (API)</td>
       <td style="padding: 10px; border: 1px solid;">Llamada de Servicio (JSON/HTTPS)</td>
       <td style="padding: 10px; border: 1px solid;">Realiza peticiones HTTPS seguras para autenticar las credenciales de los usuarios de la aplicación móvil contra el servidor principal.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border: 1px solid;"><strong>mobileShared</strong></td>
-      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
-      <td style="padding: 10px; border: 1px solid;">Extiende la funcionalidad de utilidades base de API y endpoints compartidas por otros módulos de la aplicación móvil.</td>
     </tr>
     <tr>
       <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator</strong> (Usuario)</td>
@@ -1387,7 +1382,7 @@ El modelo se caracteriza por ser un **Modelo de Dominio Rico**, donde las raíce
 
 Asimismo, se destaca el uso de **Value Objects** (`Username`, `Password`, `EmailAddress`) para garantizar el tipado estricto y la integridad de las credenciales desde su instanciación. El diagrama evidencia también la encapsulación mediante modificadores de acceso restrictivos, protegiendo el estado interno del modelo según los principios de Clean Architecture.
 
-<img src="assets/images/chapter4/bc-iam/identity-and-access-management-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
+<img src="assets/images/chapter4/bc-iam/iam-class-diagram.png" alt="Class Diagram - Identity and Access Management" border="0">
 
 ##### 4.2.1.6.2. Bounded Context Database Design Diagram
 
@@ -2377,21 +2372,21 @@ En esta sección se presentan los diagramas de componentes del bounded context *
 
 ##### Web Application Component Diagram
 
-Este diagrama muestra el componente **Subscriptions UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios consultar los planes de suscripción y ejecutar acciones como elegir, renovar o cancelar una suscripción. Las solicitudes del cliente se envían hacia **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Cuando el flujo de pago lo requiere, el componente también redirige al usuario hacia **Stripe** para completar el checkout externo.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación web, desarrollado en TypeScript y Angular, cuya función es permitir a los usuarios consultar los planes de suscripción y ejecutar acciones como elegir, renovar o cancelar una suscripción. El componente envía las solicitudes al **NGNIX Load Balancer**, que actúa como punto de entrada seguro hacia el backend gateway. Cuando el flujo de pago lo requiere, el componente también redirige al usuario hacia **Stripe** para completar el checkout externo.
 
-<img src="https://i.imgur.com/vBQdEb4.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.ibb.co/XrrMNzVL/Captura-de-pantalla-2026-05-15-a-la-s-10-17-06-a-m.png" alt="Web Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Mobile Application Component Diagram
 
-Este diagrama muestra el componente **Subscriptions UI** de la aplicación móvil, desarrollado en Dart y Flutter, cuya función es permitir a los usuarios visualizar los beneficios de la suscripción, elegir un plan y renovar su suscripción. El componente envía las solicitudes al **Kong Gateway**, que actúa como punto de entrada seguro aplicando validación de tokens, rate limiting y enrutamiento hacia los contextos internos autorizados. Además, cuando el flujo de pago lo requiere, la aplicación redirige al usuario hacia **Stripe** para completar el checkout externo.
+Este diagrama muestra el componente **Subscriptions UI** de la aplicación móvil, desarrollado en Dart y Flutter, cuya función es permitir a los usuarios visualizar los beneficios de la suscripción, elegir un plan y renovar su suscripción. El componente envía las solicitudes al **NGNIX Load Balancer**, que actúa como punto de entrada seguro hacia el backend gateway. Además, cuando el flujo de pago lo requiere, la aplicación redirige al usuario hacia **Stripe** para completar el checkout externo.
 
-<img src="https://i.imgur.com/yORVGhV.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.ibb.co/DgDMKKkY/Captura-de-pantalla-2026-05-15-a-la-s-10-15-37-a-m.png" alt="Mobile Subscriptions and Payments Component Diagram" width="100%">
 
 ##### Backend Application Component Diagram
 
 Este diagrama muestra la organización del backend como un conjunto de bounded contexts conectados entre sí, donde **Subscriptions and Payments** es el componente encargado de la selección de planes, el ciclo de vida de la suscripción, el inicio de pagos y la renovación de servicios. En la imagen también se observa su relación con otros contextos internos como **Identity and Access Management**, **Design and Planning** y **Asset and Resource Management**, El componente persiste su información en **MongoDB Database** y se integra con **Stripe** para procesar los pagos y suscripciones.
 
-<img src="https://i.imgur.com/cY2abRM.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
+<img src="https://i.ibb.co/NdHwHngT/Captura-de-pantalla-2026-05-15-a-la-s-10-18-15-a-m.png" alt="Backend Subscriptions and Payments Component Diagram" width="100%">
 
 #### 4.2.2.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -4836,7 +4831,7 @@ En esta sección se presentan los diagramas de componentes del bounded context S
 
 El componente de la aplicación web cliente se ejecuta en el navegador del usuario y presenta la interfaz gráfica (UI) para la manipulación de los catálogos.
 
-<img src="./assets/images/chapter4/bc-planning/web-client-component-diagram.png" alt="Web Service Design and Planning Component Diagram" width="500px">
+<img src="https://i.imgur.com/MQnUeCA.png" alt="Web Service Design and Planning Component Diagram" width="500px">
 
 <p><em>Componentes de la Web Application para Service Design and Planning</em></p>
 
@@ -6930,11 +6925,12 @@ Tabla de métodos de `DeviceConfigurationController` en el Interface Layer
 
 #### Anti-Corruption Layer Interfaces
 
-| Nombre                            | Propósito                                                                                                                                                                             |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AssetAndResourceContextFacade` | Permite validar que la sucursal y el custom supply existan y pertenezcan al negocio correspondiente, sin acoplar Device Management al modelo interno de Asset and Resource Management. |
-| `TrackingContextFacade`         | Permite validar o vincular el `supplyThresholdId` gestionado por Tracking / Service Operation and Monitoring.                                                                        |
-| `CommunicationContextFacade`    | Permite solicitar notificaciones cuando un dispositivo es configurado, reasignado o desactivado.                                                                                       |
+| Nombre | Propósito |
+|---|---|
+| `AssetAndResourceContextFacade` | Permite validar que el negocio, la sucursal y el custom supply existan y pertenezcan a la cuenta correspondiente antes de ser asignados a un dispositivo IoT. |
+| `TrackingContextFacade` | Permite validar o vincular el `supplyThresholdId` gestionado por Tracking, además de comunicar cambios de configuración que Tracking necesita para interpretar lecturas físicas. |
+| `IamContextFacade` | Permite validar el usuario autenticado, su cuenta y los permisos necesarios para registrar, configurar o desactivar dispositivos. |
+| `DeviceConfigurationMessagePublisher` | Permite publicar comandos o mensajes de configuración hacia el MQTT Broker cuando se actualizan parámetros que deben ser recibidos por el ecosistema IoT. |
 
 ### 4.2.9.3. Application Layer
 
@@ -6984,11 +6980,12 @@ Su función es orquestar el dominio, validar referencias externas mediante ACL, 
 
 #### Anti-Corruption Layer Implementation
 
-| Nombre de Clase                       | Categoría         | Propósito                                                                                                             |
-| ------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `AssetAndResourceContextFacadeImpl` | ACL Implementation | Implementa la validación de sucursales y custom supplies consultando Asset and Resource Management.                   |
-| `TrackingContextFacadeImpl`         | ACL Implementation | Implementa la comunicación con Tracking para validar thresholds y publicar cambios de configuración del dispositivo. |
-| `CommunicationContextFacadeImpl`    | ACL Implementation | Implementa la solicitud de notificaciones relacionadas con cambios relevantes del dispositivo.                         |
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| `AssetAndResourceContextFacadeImpl` | ACL Implementation | Implementa la validación de negocios, sucursales y custom supplies consultando Asset and Resource Management. |
+| `TrackingContextFacadeImpl` | ACL Implementation | Implementa la comunicación con Tracking para validar thresholds y sincronizar cambios de configuración del dispositivo. |
+| `IamContextFacadeImpl` | ACL Implementation | Implementa la validación de usuarios, cuentas y permisos mediante Identity and Access Management. |
+| `MqttDeviceConfigurationPublisher` | Messaging Adapter | Publica mensajes de configuración del dispositivo hacia el MQTT Broker, como cambios de asignación, thresholds o schedule. |
 
 ### 4.2.9.4. Infrastructure Layer
 
@@ -7005,14 +7002,15 @@ En esta capa se implementan los repositorios definidos en Domain Layer. Asimismo
 
 #### Persistence and External Services
 
-| Nombre de Clase                  | Categoría                | Propósito                                                                                                             |
-| -------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `DeviceManagementDbContext`    | Persistence Configuration | Configura el mapeo de los objetos `devices` y `devices_specifications`.                                            |
-| `AssetAndResourceRestClient`   | External Client           | Cliente HTTP para validar negocio, sucursal y custom supply.                                                           |
-| `TrackingRestClient`           | External Client           | Cliente HTTP para validar o consultar el `supplyThresholdId` gestionado por Tracking.                                |
-| `DomainEventPublisher`         | Messaging Adapter         | Publica eventos de dominio e integración relacionados con cambios administrativos del dispositivo.                    |
-| `IntegrationEventConsumer`     | Messaging Adapter         | Consume eventos externos relevantes, por ejemplo eliminación de una sucursal o cambio de estado de un custom supply.  |
-| `DeviceConfigurationPublisher` | Messaging Adapter         | Publica la configuración administrativa del dispositivo para que Tracking pueda utilizarla en sus procesos técnicos. |
+| Nombre de Clase | Categoría | Propósito |
+|---|---|---|
+| `DeviceManagementDbContext` | Persistence Configuration | Configura el mapeo de los objetos `devices` y `devices_specifications`. |
+| `AssetAndResourceRestClient` | External Client | Cliente HTTP para validar negocio, sucursal y custom supply. |
+| `TrackingRestClient` | External Client | Cliente HTTP para validar o consultar el `supplyThresholdId` gestionado por Tracking. |
+| `IamRestClient` | External Client | Cliente HTTP para validar permisos de usuario y contexto de cuenta cuando se gestionan dispositivos. |
+| `DomainEventPublisher` | Messaging Adapter | Publica eventos de dominio e integración relacionados con cambios administrativos del dispositivo. |
+| `IntegrationEventConsumer` | Messaging Adapter | Consume eventos externos relevantes, por ejemplo eliminación de una sucursal o cambio de estado de un custom supply. |
+| `MqttDeviceConfigurationPublisher` | Messaging Adapter | Publica la configuración administrativa del dispositivo hacia el MQTT Broker para que el ecosistema IoT pueda aplicar cambios operativos. |
 
 #### Database Tables
 
@@ -7035,25 +7033,153 @@ En esta capa se implementan los repositorios definidos en Domain Layer. Asimismo
 
 En esta sección, el equipo presenta los diagramas de componentes del Bounded Context **Device Management** siguiendo el modelo C4. Estos diagramas muestran la descomposición de los contenedores que participan en la gestión de dispositivos IoT, considerando la Web Application, Mobile Application, Backend Application y la interacción con el ecosistema IoT.
 
+### 4.2.9.5. Bounded Context Software Architecture Component Level Diagrams
+
+El Bounded Context **Device Management** se encarga de registrar, asignar, configurar y desactivar dispositivos IoT. Su responsabilidad principal no es procesar telemetría ni calcular stock físico, sino administrar la configuración base del dispositivo para que otros contextos, como **Tracking**, puedan utilizar dicha información en procesos técnicos de monitoreo.
+
 #### Web Application Component Diagram
 
-La Web Application permite a los administradores registrar dispositivos, revisar su estado, asignarlos a sucursales, asociarlos a insumos personalizados, configurar límites operativos y confirmar la configuración final.
+El componente de **Device Management** en la Web Application permite a los administradores registrar, asignar, configurar y desactivar dispositivos IoT desde el dashboard web. Este componente funciona como la interfaz principal para operaciones administrativas más completas, como la asociación del dispositivo a una sucursal, la asignación de un insumo personalizado, la definición de parámetros de medición y la revisión del estado de configuración.
 
-<img src="./assets/images/chapter4/bc-device/component-diagram-web-app.png" alt="Component diagrama of BD Device" width="600px">
+La comunicación se realiza mediante solicitudes HTTPS hacia el **NGINX Load Balancer**, el cual redirige las peticiones hacia una instancia saludable del backend. De esta forma, la aplicación web no se comunica directamente con la base de datos ni con otros bounded contexts, sino que delega dichas operaciones al backend de Device Management.
 
-#### Mobile Application Component Diagram
+<img src="./assets/images/chapter4/bc-device/component-diagram-web-app.png" alt="Web Application Component Diagram for Device Management" width="100%">
 
-La Mobile Application permite que un administrador o encargado operativo realice tareas de consulta y configuración rápida del dispositivo desde el local físico.
+<p><em>Tabla de Componentes de la Web Application para Device Management</em></p>
 
-<img src="./assets/images/chapter4/bc-device/component-diagram-mobile.png" alt="Component diagrama of BD Device" width="600px">
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Devices UI</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Permite a los administradores registrar, asignar, configurar y desactivar dispositivos IoT desde la aplicación web. Centraliza las vistas y formularios necesarios para gestionar la configuración administrativa del dispositivo.</td>
+      <td style="padding: 10px; border: 1px solid;">TypeScript, Angular</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente Devices UI</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>NGINX Load Balancer</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud de Servicio (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Envía solicitudes para registrar dispositivos, asignarlos a sucursales, asociarlos a insumos, configurar parámetros de medición y desactivarlos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiDeviceManagement</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Consumo de API mediante NGINX</td>
+      <td style="padding: 10px; border: 1px solid;">Consume los endpoints del bounded context Device Management a través del balanceador, evitando comunicación directa con la lógica del backend.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Identity and Access Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Validación de acceso</td>
+      <td style="padding: 10px; border: 1px solid;">Las operaciones realizadas desde la interfaz requieren un token JWT válido para garantizar que solo usuarios autorizados puedan gestionar dispositivos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restaurant Administrator / Retail Administrator</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Interfaz de Usuario</td>
+      <td style="padding: 10px; border: 1px solid;">Provee las pantallas para que los administradores gestionen los dispositivos asociados a su negocio y sucursales.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### Backend Application Component Diagram
 
-El Backend Application contiene la lógica principal del bounded context. Expone controladores REST, ejecuta command handlers y query handlers, aplica reglas de dominio, persiste información en MongoDB y publica eventos hacia Assets and Resource Management.
+El componente **apiDeviceManagement** en el Backend Application concentra la lógica principal del bounded context. Este componente expone endpoints REST para el registro, consulta, asignación, configuración y desactivación de dispositivos IoT. Además, valida las reglas del dominio, persiste la información administrativa en MongoDB y coordina integraciones con otros bounded contexts mediante ACL.
 
-<img src="./assets/images/chapter4/bc-device/component-diagram-backend-1.png" alt="Component diagrama of BD Device" width="600px">
+El backend de Device Management no procesa lecturas de sensores ni calcula stock físico. En su lugar, administra la configuración base del dispositivo y publica información relevante para que otros contextos, especialmente **Tracking**, puedan utilizarla en procesos de monitoreo, evaluación de umbrales y conciliación.![Backend Application Component Diagram for Device Management Details](./assets/images/chapter4/bc-device/component-diagram-backend-2.png)
 
-<img src="./assets/images/chapter4/bc-device/component-diagram-backend-2.png" alt="Component diagrama of BD Device" width="600px">
+<p><em>Tabla de Componentes de la Backend Application para Device Management</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Componente</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Responsabilidad</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tecnología</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiDeviceManagement</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Centraliza la lógica de registro, asignación, configuración y desactivación administrativa de dispositivos IoT. Gestiona la persistencia de dispositivos, especificaciones técnicas, parámetros de medición y referencias externas como sucursal, custom supply y threshold.</td>
+      <td style="padding: 10px; border: 1px solid;">Java, Spring Boot</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<p><em>Tabla de Interacciones del Componente apiDeviceManagement</em></p>
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Interactúa con</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Tipo de Relación</th>
+      <th style="padding: 10px; border: 1px solid; text-align: left;">Descripción de la Interacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Platform Web Client App</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe solicitudes para registrar, asignar, configurar y desactivar dispositivos IoT desde la aplicación web.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Restock Mobile Application</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Solicitud Entrante (JSON/HTTPS)</td>
+      <td style="padding: 10px; border: 1px solid;">Recibe solicitudes móviles para consultar dispositivos registrados y su información administrativa.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Identity and Access Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Validación de Seguridad</td>
+      <td style="padding: 10px; border: 1px solid;">Verifica tokens JWT y permisos de usuario antes de permitir operaciones de gestión sobre dispositivos IoT.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Asset and Resource Management</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL / Dependencia Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida que el negocio, la sucursal y el custom supply existan y pertenezcan al usuario o cuenta correspondiente antes de asignarlos a un dispositivo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>Tracking</strong></td>
+      <td style="padding: 10px; border: 1px solid;">ACL / Integración Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Valida o vincula el threshold asociado al dispositivo y publica cambios de configuración necesarios para que Tracking interprete correctamente las lecturas del dispositivo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>MQTT Broker</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Publicación de Configuración</td>
+      <td style="padding: 10px; border: 1px solid;">Publica comandos o mensajes de configuración relacionados con thresholds, asignación, cambios de schedule y parámetros del dispositivo para que el ecosistema IoT pueda recibirlos.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>MongoDB Database</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Persistencia (Lectura/Escritura)</td>
+      <td style="padding: 10px; border: 1px solid;">Almacena y recupera dispositivos, especificaciones técnicas, asignaciones administrativas y parámetros de configuración asociados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid;"><strong>apiShared</strong></td>
+      <td style="padding: 10px; border: 1px solid;">Uso de Librería Interna</td>
+      <td style="padding: 10px; border: 1px solid;">Utiliza utilidades compartidas para manejo de errores, autenticación, validaciones comunes, DTOs y respuestas estándar.</td>
+    </tr>
+  </tbody>
+</table>
 
 #### 4.2.9.6. Bounded Context Software Architecture Code Level Diagrams
 
