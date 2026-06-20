@@ -1817,6 +1817,45 @@ A continuación se presentan capturas de la interacción con la documentación d
 
 ### 6.3.1. Diseño de Entrevistas
 
+Para garantizar que la solución cumpla con las necesidades reales de los usuarios finales, se diseñó un proceso de entrevistas de validación centrado en los dos segmentos objetivo de Restock: **administradores de restaurantes** y **administradores de tiendas retail**. Cada sesión de validación incluye la interacción con el Landing Page y la aplicación móvil (versión Android, desplegada y funcional), siguiendo user flows específicos que cubren las funcionalidades core implementadas en el incremento actual.
+
+**Objetivo General**
+
+Validar la usabilidad, comprensión y utilidad de las funcionalidades del sistema a través de sesiones controladas de interacción, aplicando principios de evaluación heurística y recogiendo observaciones cualitativas que retroalimenten futuras iteraciones del producto.
+
+A continuación, se detallan los elementos a validar, los user flows del aplicativo móvil y las actividades a realizar durante cada sesión, organizados por segmento objetivo.
+
+| Segmento | Elementos a validar | Mobile User Flow | Actividades durante la sesión |
+|---|---|---|---|
+| **Segmento 1: Administradores de Restaurantes** | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard). | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de insumos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un insumo; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app. |
+| **Segmento 2: Administradores de Tiendas Retail** | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de productos/insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard). | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de productos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un producto; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app. |
+
+**Métricas a registrar por sesión**
+
+Durante cada entrevista, el equipo a cargo registrará:
+
+- Nivel de comprensión del producto (autoevaluación del usuario).
+- Comentarios cualitativos de usabilidad y experiencia.
+- Satisfacción con cada flujo (escala del 1 al 5).
+- Puntos de confusión, errores y reacciones espontáneas observadas.
+
+**Flujos a Validar (resumen por User Goal)**
+
+| User Goal | Descripción del Flujo                                                                             | Objetivo de Validación                                                      |
+|-----------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| UG 1      | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación.      | Validar claridad del mensaje y de la propuesta de valor.                    |
+| UG 2      | El usuario se registra e inicia sesión con sus datos.                                             | Validar claridad del formulario de registro y facilidad de login.           |
+| UG 3      | El usuario crea, edita y desactiva una sucursal de su negocio.                                    | Validar la gestión del ciclo de vida de sucursales.                         |
+| UG 4      | El usuario registra, edita y filtra insumos/productos del inventario.                             | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5      | El usuario accede al inventario y consulta el stock por sucursal.                                 | Validar la claridad y organización de la información de inventario.         |
+| UG 6      | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos.             |
+| UG 7      | El usuario transfiere stock entre dos sucursales.                                                 | Validar la funcionalidad de transferencia de inventario.                    |
+| UG 8      | El usuario revisa el centro de notificaciones y alertas.                                          | Validar la utilidad y claridad de las notificaciones.                       |
+| UG 9      | El usuario visualiza el dashboard de datos del negocio.                                           | Validar la comprensión de los indicadores presentados.                      |
+| UG 10     | El usuario cambia el idioma de la interfaz.                                                       | Validar la accesibilidad y el soporte multi-idioma.                         |
+
+
+
 ### 6.3.2. Registro de Entrevistas
 
 ### 6.3.3. Evaluaciones según heurísticas
@@ -1875,13 +1914,13 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 **TABLA RESUMEN:**
 
-| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
-|---|---|---|---|
-| 1 | [Descripción breve del problema 1] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 2 | [Descripción breve del problema 2] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 3 | [Descripción breve del problema 3] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 4 | [Descripción breve del problema 4] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 5 | [Descripción breve del problema 5] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| # | Problema                           | Escala de severidad | Heurística/Principio violada(o)                                                 |
+|---|------------------------------------|---------------------|---------------------------------------------------------------------------------|
+| 1 | [Descripción breve del problema 1] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 2 | [Descripción breve del problema 2] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 3 | [Descripción breve del problema 3] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 4 | [Descripción breve del problema 4] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 5 | [Descripción breve del problema 5] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
 
 ---
 
