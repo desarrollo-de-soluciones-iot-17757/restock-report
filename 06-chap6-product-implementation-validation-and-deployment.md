@@ -1700,9 +1700,9 @@ Notifica al sistema que se retiró stock físico del contenedor monitoreado por 
 
 Lista todas las notificaciones de un usuario receptor.
 
-| Parámetro | Tipo | Ubicación | Requerido | Descripción |
-|---|---|---|---|---|
-| `recipientUserId` | UUID | query | Sí | Identificador del usuario destinatario |
+| Parámetro         | Tipo | Ubicación | Requerido | Descripción                            |
+|-------------------|------|-----------|-----------|----------------------------------------|
+| `recipientUserId` | UUID | query     | Sí        | Identificador del usuario destinatario |
 
 ---
 
@@ -1817,7 +1817,9 @@ A continuación se presentan capturas de la interacción con la documentación d
 
 ### 6.3.1. Diseño de Entrevistas
 
-Para garantizar que la solución cumpla con las necesidades reales de los usuarios finales, se diseñó un proceso de entrevistas de validación centrado en los dos segmentos objetivo de Restock: **administradores de restaurantes** y **administradores de tiendas retail**. Cada sesión de validación incluye la interacción con el Landing Page y la aplicación móvil (versión Android, desplegada y funcional), siguiendo user flows específicos que cubren las funcionalidades core implementadas en el incremento actual.
+### 6.3.1. Diseño de Entrevistas
+
+Para garantizar que la solución cumpla con las necesidades reales de los usuarios finales, se diseñó un proceso de entrevistas de validación centrado en los dos segmentos objetivo de Restock: **administradores de restaurantes** y **administradores de tiendas retail**. Cada sesión de validación incluye la interacción con el **Landing Page, la aplicación web y la aplicación móvil** (versión Android, desplegada y funcional), siguiendo user flows específicos que cubren las funcionalidades core implementadas en el incremento actual. La aplicación web complementa la validación al ofrecer las mismas capacidades de gestión desde el panel administrativo de escritorio, mientras que los flujos principales de cada sesión se demuestran sobre la aplicación móvil.
 
 **Objetivo General**
 
@@ -1825,9 +1827,9 @@ Validar la usabilidad, comprensión y utilidad de las funcionalidades del sistem
 
 A continuación, se detallan los elementos a validar, los user flows del aplicativo móvil y las actividades a realizar durante cada sesión, organizados por segmento objetivo.
 
-| Segmento | Elementos a validar | Mobile User Flow | Actividades durante la sesión |
-|---|---|---|---|
-| **Segmento 1: Administradores de Restaurantes** | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard). | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de insumos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un insumo; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app. |
+| Segmento                                          | Elementos a validar                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Mobile User Flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Actividades durante la sesión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Segmento 1: Administradores de Restaurantes**   | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard).           | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de insumos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz.   | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un insumo; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app.   |
 | **Segmento 2: Administradores de Tiendas Retail** | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de productos/insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard). | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de productos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un producto; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app. |
 
 **Métricas a registrar por sesión**
@@ -1855,8 +1857,140 @@ Durante cada entrevista, el equipo a cargo registrará:
 | UG 10     | El usuario cambia el idioma de la interfaz.                                                       | Validar la accesibilidad y el soporte multi-idioma.                         |
 
 
-
 ### 6.3.2. Registro de Entrevistas
+
+A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de restaurantes, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de restaurante.
+
+Entrevista 01 –
+
+Datos del entrevistado:
+
+Nombre completo:
+Edad:
+Distrito: 
+Segmento: Dueño o administrador de restaurante
+Fecha de entrevista: 20 de junio de 2026
+Duración:
+Registro audiovisual:
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_1"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
+
+Entrevista 02 –
+
+Datos del entrevistado:
+
+Nombre completo:
+Edad:
+Distrito: 
+Segmento: Dueño o administrador de restaurante
+Fecha de entrevista: 20 de junio de 2026
+Duración:
+Registro audiovisual:
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_2"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
+Entrevista 03 –
+
+Datos del entrevistado:
+
+Nombre completo:
+Edad:
+Distrito: 
+Segmento: Dueño o administrador de restaurante
+Fecha de entrevista: 20 de junio de 2026
+Duración:
+Registro audiovisual:
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_3"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
+A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de sector retail de consumo masivo, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de tienda retail.
+
+Entrevista 01 – 
+
+Datos del entrevistado:
+
+Nombre completo: 
+Edad: 
+Distrito: Villa María del Triunfo, Lima
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+Fecha de entrevista: 20 de junio de 2026
+Duración: 
+Registro audiovisual: 
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_1"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
+
+Entrevista 02 –
+
+Datos del entrevistado:
+
+Nombre completo:
+Edad:
+Distrito: Villa María del Triunfo, Lima
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+Fecha de entrevista: 20 de junio de 2026
+Duración:
+Registro audiovisual:
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_2"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
+Entrevista 03 –
+
+Datos del entrevistado:
+
+Nombre completo:
+Edad:
+Distrito: José Gálvez, Lima
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+Fecha de entrevista: 20 de junio de 2026
+Duración:
+Registro audiovisual:
+Captura de entrevista:
+
+<p align="center">
+  <img src="" 
+  alt="validation_interview_3"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+
 
 ### 6.3.3. Evaluaciones según heurísticas
 
