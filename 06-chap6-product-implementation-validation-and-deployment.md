@@ -1821,4 +1821,143 @@ A continuación se presentan capturas de la interacción con la documentación d
 
 ### 6.3.3. Evaluaciones según heurísticas
 
+**UX Heuristics & Principles Evaluation**
+**Usability – Inclusive Design – Information Architecture**
+
+| | |
+|---|---|
+| **CARRERA** | Ingeniería de Software |
+| **CURSO** | Desarrollo de Soluciones IoT |
+| **SECCIÓN** | 17757 |
+| **PROFESORES** | Todos |
+| **AUDITOR** | UI-Topic |
+| **CLIENTE(S)** | [Nombres de los participantes de la sesión de evaluación] |
+
+---
+
+**SITE o APP A EVALUAR:** Restock — Aplicación Web (`https://restock-app.web.app`)
+
+---
+
+**TAREAS A EVALUAR:**
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
+
+1. Registro e inicio de sesión de un usuario nuevo
+2. Configuración del perfil de usuario y datos del negocio
+3. Registro y configuración de un dispositivo IoT
+4. Gestión de inventario: creación y edición de lotes de insumos
+5. Revisión de alertas y notificaciones de stock bajo
+6. Consulta del panel de analíticas y productos críticos
+7. Gestión de sucursales (alta, baja y actualización de estado)
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Transferencia de stock entre sucursales
+2. Gestión avanzada de recetas/ingredientes de productos
+3. Configuración de suscripción a notificaciones push
+4. Resolución de tareas de conciliación de stock
+
+---
+
+**ESCALA DE SEVERIDAD:**
+
+Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
+| 2 | Problema menor: puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debería asignar una prioridad baja resolverlo de cara al siguiente release. |
+| 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlos. Es importante que sean corregidos y se les debe asignar una prioridad alta. |
+| 4 | Problema muy grave: un error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento. |
+
+---
+
+**TABLA RESUMEN:**
+
+| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
+|---|---|---|---|
+| 1 | [Descripción breve del problema 1] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 2 | [Descripción breve del problema 2] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 3 | [Descripción breve del problema 3] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 4 | [Descripción breve del problema 4] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| 5 | [Descripción breve del problema 5] | [1-4] | [Usability / Inclusive Design / Information Architecture: principio específico] |
+
+---
+
+**DESCRIPCIÓN DE PROBLEMAS:**
+
+**PROBLEMA #1:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema encontrado durante la sesión. Explicar en qué contexto ocurre, qué acción realiza el usuario, y por qué constituye un problema de usabilidad. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Descripción de la solución propuesta para corregir el problema identificado.]
+
+---
+
+**PROBLEMA #2:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #3:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #4:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
+---
+
+**PROBLEMA #5:** [Título descriptivo del problema]
+
+Severidad: [1-4]
+Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+Problema:
+
+[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+
+Recomendación:
+
+[Solución propuesta.]
+
 ## 6.4. Video About-the-Product
