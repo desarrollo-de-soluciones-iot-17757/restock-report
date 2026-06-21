@@ -1362,7 +1362,7 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
   </tr>
   <tr>
     <td>Sprint 2 Velocity</td>
-    <td><em>[POR CONFIRMAR]</em> [POR COMPLETAR]</td>
+    <td><em>101</em></td>
   </tr>
   <tr>
     <td>Sum of Story Points</td>
