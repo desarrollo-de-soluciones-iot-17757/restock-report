@@ -1803,7 +1803,7 @@ El sprint 2 se incluyó el desarrollo de la primera versión del Edge service qu
 
 ##### **Analíticos de colaboración — Edge service**
 
-![Web Collaboration](https://imgur.com/pQpbBkJ.png)
+![Edge Collaboration](https://imgur.com/pQpbBkJ.png)
 
 - Total de commits (Edge): **54**
 - Total de autores contribuyentes: **4**
@@ -1820,7 +1820,7 @@ Por otro lado, el sprint 2 también incluyó el desarrollo de la primera versió
 
 ##### **Analíticos de colaboración — Mobile application**
 
-![Web Collaboration](https://imgur.com/AV2CyUh.png)
+![Mobile Collaboration](https://imgur.com/AV2CyUh.png)
 
 - Total de commits (Mobile): **22**
 - Total de autores contribuyentes: **2**
@@ -1847,7 +1847,7 @@ Tambien para el sprint 2 se incluyó el desarrollo de la segunda versión del we
 
 ##### Web application
 
-Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión del web service con nuevas pantallas para tracking, el manejo de discrepancias, entre otros.
+El siguiente del sprint 2 también incluyó el desarrollo de la primera versión del web service con nuevas pantallas para tracking, el manejo de discrepancias, entre otros.
 
 - Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
 - Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
@@ -1856,11 +1856,27 @@ Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión d
 
 ##### **Analíticos de colaboración — Web application**
 
-![Web Collaboration](https://imgur.com/aUhqYhP.png)
+![Embedded Collaboration](https://imgur.com/aUhqYhP.png)
 
 - Total de commits (web): **125**
 - Total de autores contribuyentes: **6**
 - Total de _pull requests_ relacionadas: **40**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
+##### Embedded application
+
+Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión del embedded application con nuevas pantallas para tracking, el manejo de discrepancias, entre otros.
+
+- Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Web application**
+
+![Web Collaboration](https://imgur.com/7YtMXxi.png)
+
+- Total de commits (embedded): **21**
+- Total de autores contribuyentes: **2**
+- Total de _pull requests_ relacionadas: **8**
 - Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
 
 ### 6.2.3. Sprint 3
