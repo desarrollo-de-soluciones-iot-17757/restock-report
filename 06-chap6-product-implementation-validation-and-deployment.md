@@ -1319,6 +1319,39 @@ Por otro lado, el sprint 1 también incluyó el desarrollo de la primera versió
 
 #### 6.2.2.4. Development Evidence for Sprint Review
 
+En esta sección, se describen los principales avances de implementación realizados en este segundo sprint. Se tienen como principales avances la implementación de la primera versión del Web service y la segunda version del Web application, primera version de Mobile application, segunda version de la landing page, primera version del Edge y Embedded.
+
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource.
+
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el primer sprint.
+
+| Repository | Branch | Commit Id | Commit Message | Commited On |
+|---|---|---|---|---|
+| restock-edge-service | feature/route | e304c4f077c1c3f3f614476eab1d17b5cbd54e22 | fix: delete usage of str convertor in route. | 19/06/26 |
+| restock-edge-service | feature/threshold | c9933edff05abbd40fb47f2cd9b65a65a00e7bcd | feat(threshold): add temperature and humidity anomaly threshold to repositories to rest service | 19/06/26 |
+| restock-edge-service | feature/threshold | 6f082d0d7ab6d4bdb48f5c5e9f1e67c4ad16465e | refactor(threshold): add temperature and humidity anomaly threshold to environment record | 19/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | 58db61765308762ee052c09f0489b0540fc92a27 | feat(calculate-physical-stock): add repository method to find recent stock values calculated. | 19/06/26 |
+| restock-edge-service | feature/tracking | 56c7e8e5e797d0bb183194875c36815c9309d854 | feat(tracking): add mqtt client configuration. | 19/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | b0e7334f2dd73d0bd8a5b2ebcabb828d78734c31 | feat(calculate-physical-stock): add application method to calibrate the weight of a custom supply. | 19/06/26 |
+| restock-mobile-application | feature/deployment-configuration | 48e74146007662d0f9bf509977a0141454ee6daa | feat(deployment-configuration): update environment configuration and enhance api base url handling. | 19/06/26 |
+| restock-mobile-application | feature/analytics | 3b17b65229bc7eb171ea95ea6be525087ead2352 | feat(analytics): add dashboard screen and related components for analytics overview. | 19/06/26 |
+| restock-mobile-application | feature/analytics | 824519ca2bc3fa8e5a06e8ba75f37d0a18d4a1ec | feat(analytics): add models and constants for stock discrepancies, recent sales, and critical products. | 19/06/26 |
+| restock-mobile-application | feature/sign-in | 7285dc441121893855e5621584eee27b040e5ce6 | feat(sign-in): redesign sign-in form with improved ui and input field enhancements. | 19/06/26 |
+| restock-mobile-application | feature/devices | c5ac6b0573a78d2e4b35e9731c02fbb40ab5d9ea | feat(devices): add weight calibration functionality and improve device status handling. | 19/06/26 |
+| restock-mobile-application | feature/transfer-batches | 3b8b7cdb57252431c0c843989f60b0aec74bcc7a | refactor(transfer-batches): clean up code formatting and improve readability in batch transfer logic. | 19/06/26 |
+| restock-web-services | feature/tracking | f0856fc348c33879c391a193ac5dff49abab7efb | feat(tracking): add conciliation tasks controller | 19/06/26 |
+| restock-web-services | feature/devices | ba34e6ead88f1d77d1252b63b4fe6ccdd183ebe1 | feat(devices): change put to patch for device specifications and configurations | 19/06/26 |
+| restock-web-services | feature/resource | e61f3f7bb9c64e377ada049d241a2365f4d475b0 | feat(resource): add resource stock snapshot for acl | 19/06/26 |
+| restock-web-services | feature/tracking | 7b1da8c5dc8957a8f6879c1c9eaf4415a24bba20 | feat(tracking): add conciliation task resources | 19/06/26 |
+| restock-web-services | feature/profiles | 6134ae53bf3ddc5b4d8695abca33d4114de95426 | feat(profiles): add commands and resources for updating business and user profiles | 19/06/26 |
+| restock-web-services | feature/business | 9fd1ea8623d28b5f37fb957936072b034093de11 | feat(business): implement crud operations for business profiles and add rest controller | 19/06/26 |
+| restock-web-application | feature/deployment | d062d329527a3b4d9af28170e3ef595216156c5f | feat(deployment): update base url for production environment. | 19/06/26 |
+| restock-web-application | feature/branches | ebb5022d23331a09e05889073ef88b2b66436c30 | feat(branches): implement branch management methods and update resource store structure | 19/06/26 |
+| restock-web-application | feature/profile | fe41e974c0f469f43caa61221d5854edab300c39 | feat: enhance profile and business management with image upload functionality | 19/06/26 |
+| restock-web-application | feature/registration | 7edb0e7f18d4a14b9fbcbd6a8e302d81698bb4a1 | feat(registration): implement registration branch setup component with form handling | 19/06/26 |
+| restock-web-application | feature/iam | 086c27e2e6877e37739c7adfdb15aaa4e6050f16 | feat(iam): add pendingAccountId signal and enhance sign-up flow | 19/06/26 |
+| restock-web-application | feature/analytics | 2c0aa097e24489e410693a19900d9d95305403d0 | feat(analytics): improve dashboard ui and add date filter for recent sales. | 19/06/26 |
+
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
