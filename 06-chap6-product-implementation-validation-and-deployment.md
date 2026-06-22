@@ -1684,7 +1684,7 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 
 En esta sección, se describen los principales avances de implementación realizados en este segundo sprint. Se tienen como principales avances la implementación de la primera versión del Web service y la segunda version del Web application, primera version de Mobile application, segunda version de la landing page, primera version del Edge y Embedded.
 
-Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource.
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Analytics, Communications, IAM y Resource.
 
 A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el primer sprint.
 
@@ -2323,7 +2323,7 @@ Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión d
 - Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
 - Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
 
-##### **Analíticos de colaboración — Web application**
+##### **Analíticos de colaboración — Embedded application**
 
 ![Web Collaboration](https://imgur.com/7YtMXxi.png)
 
