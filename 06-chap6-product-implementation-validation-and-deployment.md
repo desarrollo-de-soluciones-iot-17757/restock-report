@@ -2624,6 +2624,82 @@ A continuación se presentan capturas de la interacción con la documentación d
 
 #### 6.2.2.8. Software Deployment Evidence for Sprint Review
 
+Durante este Sprint, el equipo ejecutó las actividades de despliegue correspondientes a los dos servicios backend del sistema Restock: la API principal (restock-web-services) y el servicio edge para dispositivos IoT (edge-restock). Ambos despliegues se realizaron sobre infraestructura de Microsoft Azure, con integración continua configurada mediante GitHub Actions, lo que permitió automatizar la publicación de cada cambio fusionado a la rama principal.
+
+##### Despliegue del Backend Principal (restock-web-services)
+
+El backend principal fue desplegado en Azure App Service bajo el plan `plan-restock-17757`, utilizando un contenedor Linux con modelo de publicación basado en Docker. El servicio quedó accesible públicamente a través del dominio `restock-api-17757.azurewebsites.net`.
+
+Los pasos seguidos para este despliegue fueron los siguientes:
+
+1. Se creó el Plan de App Service `plan-restock-17757` en la región Brazil South, bajo el tier Basic B1 con sistema operativo Linux.
+2. Se configuró la aplicación web `restock-api-17757` con modelo de publicación por contenedor, utilizando la imagen base `nginx:latest` como punto de partida.
+3. Se registraron las variables de entorno necesarias para la ejecución del servicio, incluyendo MONGODB_URI, AUTHORIZATION_JWT_SECRET, AUTHORIZATION_JWT_EXPIRA..., CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, CLOUDINARY_CLOUD_NAME, FIREBASE_CREDENTIALS_BASE64, FIREBASE_PROJECT_ID, INTEGRATIONS_FCM_ENABLED, RESEND_API_KEY, SPRING_PROFILES_ACTIVE, entre otras, configuradas directamente desde la sección de Variables de entorno del App Service.
+4. Se configuró el workflow de GitHub Actions (`deploy-azure.yml`) con el pipeline CD - Deploy Backend to Azure, el cual construye la imagen Docker, la publica en el GitHub Container Registry (ghcr.io) y despliega automáticamente al App Service al detectar cambios en la rama main.
+5. Se verificó la ejecución exitosa de los 10 workflow runs registrados en GitHub Actions, todos con estado completado satisfactoriamente.
+6. Se validó la disponibilidad pública del Swagger UI en [https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/), confirmando la exposición correcta de los endpoints documentados bajo OpenAPI 3.1.
+
+Las siguientes capturas evidencian el proceso de despliegue ejecutado:
+
+<p align="center">
+  <img src="https://i.ibb.co/HL1dMvs0/1-creacion-plan-app-service.png" alt="Plan de App Service plan-restock-17757" style="width:100%; max-width:900px; height:auto;">
+</p>
+La imagen anterior muestra el Plan de App Service `plan-restock-17757` en estado Listo, configurado en Brazil South con tier B1 y sistema operativo Linux.
+
+<p align="center">
+  <img src="https://i.ibb.co/TqnR6PyQ/2-creacion-inicial-app-service.png" alt="Creación inicial de la App Service restock-api-17757" style="width:100%; max-width:900px; height:auto;">
+</p>
+La captura evidencia la aplicación web `restock-api-17757` en estado En ejecución, con su dominio predeterminado asignado y el plan de hosting vinculado correctamente.
+
+<p align="center">
+  <img src="https://i.ibb.co/p6dDTTxV/3-enviroment-variables.png" alt="Variables de entorno configuradas en App Service" style="width:100%; max-width:900px; height:auto;">
+</p>
+Se muestra la configuración de las variables de entorno registradas en el App Service, necesarias para la conexión con MongoDB, autenticación JWT, servicios de notificaciones y almacenamiento en nube.
+
+<p align="center">
+  <img src="https://i.ibb.co/60JSgp3d/4-cd-configuration.png" alt="Configuración del workflow de CD en GitHub Actions" style="width:100%; max-width:900px; height:auto;">
+</p>
+La imagen muestra el archivo `deploy-azure.yml` con el pipeline de entrega continua configurado para construir y publicar la imagen Docker automáticamente al fusionar cambios en main.
+
+<p align="center">
+  <img src="https://i.ibb.co/fYDhCY9T/5-github-actions.png" alt="Ejecuciones del workflow en GitHub Actions" style="width:100%; max-width:900px; height:auto;">
+</p>
+Se evidencian los 10 workflow runs completados exitosamente en el repositorio `restock-web-services`, correspondientes a los distintos merges realizados durante el sprint.
+
+<p align="center">
+  <img src="https://i.ibb.co/0jmJDhQN/6-swagger.png" alt="Swagger UI del backend desplegado" style="width:100%; max-width:900px; height:auto;">
+</p>
+La captura confirma la disponibilidad del Swagger UI de la Restock API en producción, con los módulos Custom Supplies, Device Thresholds y demás bounded contexts correctamente expuestos y documentados bajo OAS 3.1.
+
+##### Despliegue del Edge Service (edge-restock)
+
+El servicio edge, responsable del registro y autenticación de dispositivos IoT, fue desplegado como Azure Container App bajo el entorno `env-restock-17757`, en la región Canada Central. Este servicio expone endpoints REST consumidos directamente por los dispositivos físicos del sistema.
+
+Los pasos seguidos para este despliegue fueron los siguientes:
+
+1. Se creó la Container App `edge-restock-17757` dentro del grupo de recursos `rg-restock-17757`, configurada con perfil de carga de trabajo Consumption y modo de revisión Simple.
+2. Se vinculó la aplicación al entorno de Container Apps `env-restock-17757` con Log Analytics asociado.
+3. Se habilitó el acceso de entrada (ingress) para exponer el servicio públicamente, generando la URL `https://edge-restock-17757.calmflower-393d6737.canadacentral.azurecontainerapps.io`.
+4. Se verificó el estado de aprovisionamiento como "Se realizó correctamente" con la revisión activa `edge-restock-17757--0000002`.
+5. Se validó el endpoint `POST /api/v1/auth/sign-up` mediante Postman, registrando un dispositivo con `device_id: AA:BB:CC:DD:EE:01` y obteniendo respuesta 201 Created con el cuerpo de confirmación.
+
+Las siguientes capturas evidencian el despliegue y validación del edge service:
+
+<p align="center">
+  <img src="https://i.ibb.co/VWT9MZRQ/1-azure-container-apps.png" alt="Azure Container App edge-restock-17757" style="width:100%; max-width:900px; height:auto;">
+</p>
+La imagen muestra la Container App `edge-restock-17757` en estado En ejecución dentro del portal de Azure, con el aprovisionamiento completado correctamente y la URL pública generada.
+
+<p align="center">
+  <img src="https://i.ibb.co/p69LbzF8/2-postman-headers.png" alt="Headers de la petición en Postman" style="width:100%; max-width:900px; height:auto;">
+</p>
+Se muestra la configuración de headers utilizada en Postman para realizar la petición POST al endpoint de registro de dispositivos, apuntando a la URL pública del edge service en Azure Container Apps.
+
+<p align="center">
+  <img src="https://i.ibb.co/bgh3Tv68/3-postman-exito.png" alt="Respuesta exitosa 201 Created en Postman" style="width:100%; max-width:900px; height:auto;">
+</p>
+La captura evidencia la respuesta 201 Created obtenida al registrar el dispositivo `AA:BB:CC:DD:EE:01`, confirmando que el edge service se encuentra operativo y respondiendo correctamente desde el entorno de producción en Azure.
+
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
 ##### Edge service
