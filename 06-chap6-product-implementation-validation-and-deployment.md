@@ -1430,7 +1430,7 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 
 **Evidencias de la demostración:**
 
-**Vídeo de navegación (Product Navigation):** [https://acortar.link/IoO3Qp](https://acortar.link/IoO3Qp)
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/hoPJql](https://acortar.link/hoPJql)
 
 #### Sección About-the-product
 
