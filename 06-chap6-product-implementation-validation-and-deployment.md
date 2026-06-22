@@ -1934,7 +1934,7 @@ Fecha de entrevista: 20 de junio de 2026
 
 Duración: 9 minutos y 11 segundos
 
-Registro audiovisual:
+Registro audiovisual: https://acortar.link/F9EHY7
 
 Captura de entrevista:
 
