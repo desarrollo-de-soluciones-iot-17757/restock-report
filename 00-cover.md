@@ -35,10 +35,6 @@
 ### Período 202610
 </div>
 
-### Abril 2026
-
-</div>
-
 &nbsp;
 
 <div class="page"></div>
