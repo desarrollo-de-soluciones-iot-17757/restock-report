@@ -1994,21 +1994,25 @@ Resumen descriptivo de la entrevista:
 
 ### 6.3.3. Evaluaciones según heurísticas
 
+Evaluaciones según heurísticas
+
+Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
+
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
 
 | | |
 |---|---|
 | **CARRERA** | Ingeniería de Software |
-| **CURSO** | Desarrollo de Soluciones IoT |
+| **CURSO** | Desarrollo de Soluciones IoT (1ASI0572) |
 | **SECCIÓN** | 17757 |
 | **PROFESORES** | Todos |
 | **AUDITOR** | UI-Topic |
-| **CLIENTE(S)** | [Nombres de los participantes de la sesión de evaluación] |
+| **CLIENTE(S)** | _[Nombres de los participantes de la sesión de evaluación — POR COMPLETAR]_ |
 
 ---
 
-**SITE o APP A EVALUAR:** Restock — Aplicación Web (`https://restock-app.web.app`)
+**SITE o APP A EVALUAR:** Restock — Landing Page, Aplicación Web y Aplicación Móvil
 
 ---
 
@@ -2016,20 +2020,20 @@ Resumen descriptivo de la entrevista:
 
 El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
 
-1. Registro e inicio de sesión de un usuario nuevo
-2. Configuración del perfil de usuario y datos del negocio
-3. Registro y configuración de un dispositivo IoT
-4. Gestión de inventario: creación y edición de lotes de insumos
-5. Revisión de alertas y notificaciones de stock bajo
-6. Consulta del panel de analíticas y productos críticos
-7. Gestión de sucursales (alta, baja y actualización de estado)
+1. Registro e inicio de sesión de un usuario nuevo.
+2. Configuración del perfil de usuario y datos del negocio.
+3. Registro y configuración de un dispositivo IoT.
+4. Gestión de inventario: creación y edición de insumos y lotes.
+5. Revisión de alertas y notificaciones de stock bajo / eventos críticos.
+6. Consulta del panel de analíticas y productos críticos.
+7. Gestión de sucursales (alta, baja y actualización de estado).
+8. Transferencia de stock entre sucursales.
 
 No están incluidas en esta versión de la evaluación las siguientes tareas:
 
-1. Transferencia de stock entre sucursales
-2. Gestión avanzada de recetas/ingredientes de productos
-3. Configuración de suscripción a notificaciones push
-4. Resolución de tareas de conciliación de stock
+1. Gestión avanzada de recetas/ingredientes de productos.
+2. Configuración de suscripción a notificaciones push.
+3. Resolución de tareas de conciliación de stock.
 
 ---
 
@@ -2038,7 +2042,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 | Nivel | Descripción |
-|---|---|
+|:---:|---|
 | 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
 | 2 | Problema menor: puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debería asignar una prioridad baja resolverlo de cara al siguiente release. |
 | 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlos. Es importante que sean corregidos y se les debe asignar una prioridad alta. |
@@ -2048,89 +2052,112 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 **TABLA RESUMEN:**
 
-| # | Problema                           | Escala de severidad | Heurística/Principio violada(o)                                                 |
-|---|------------------------------------|---------------------|---------------------------------------------------------------------------------|
-| 1 | [Descripción breve del problema 1] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 2 | [Descripción breve del problema 2] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 3 | [Descripción breve del problema 3] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 4 | [Descripción breve del problema 4] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 5 | [Descripción breve del problema 5] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| # | Problema | Escala de severidad | Heurística/Principio violada(o) |
+|::|---|:---:|---|
+| 1 | Jerarquía de precios confusa en la selección de plan. | 3 | Information Architecture: Is it understandable? |
+| 2 | Las acciones de cada fila permanecen ocultas hasta el hover en la lista de inventario. | 2 | Usability: Reconocer en lugar de recordar |
+| 3 | Campo de confirmación ambiguo al desvincular una balanza. | 2 | Usability: Prevención de errores |
+| 4 | Botón de acción primaria activo sin validación de campos obligatorios en el modal "Transfer Batch Stock" | 2 | Usability: Prevención de errores |
+| 5 | Baja prominencia del botón de acción primaria en el modal de eliminación de sucursal. | 2 | Inclusive Design: Contraste suficiente |
 
 ---
 
 **DESCRIPCIÓN DE PROBLEMAS:**
 
-**PROBLEMA #1:** [Título descriptivo del problema]
+> _Los siguientes hallazgos provienen de la inspección heurística de la aplicación web desplegada. Deben corroborarse y/o ampliarse con las observaciones recogidas en las entrevistas de validación; cada problema incluye el espacio para la captura que lo ilustra._
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+
+**PROBLEMA #1:** Jerarquía de precios confusa en la selección de plan
+
+Severidad: 3
+Heurística violada: Information Architecture — Is it understandable? (y Usability — Coincidencia con el mundo real)
 
 Problema:
 
-[Descripción detallada del problema encontrado durante la sesión. Explicar en qué contexto ocurre, qué acción realiza el usuario, y por qué constituye un problema de usabilidad. Incluir captura de pantalla ilustrando el problema.]
+En la pantalla "Choose your Restock Plan", el plan **Basic** (con menos funcionalidades: hasta 10 balanzas) cuesta **S/ 59.99**, mientras que el plan **Pro** (con más funcionalidades: SLA empresarial e integraciones) cuesta **S/ 39.99**. Un precio mayor para el plan con menos beneficios resulta contraintuitivo. La causa —que cada precio corresponde a un ciclo de facturación distinto (mensual, semestral y anual)— se indica en texto pequeño ("Billed every 6 months", "Billed annually") sin suficiente prominencia, por lo que el usuario puede interpretar erróneamente la relación precio-valor.
+
+<p align="center">
+  <img src="https://i.imgur.com/cW6kH62.png" alt="heuristic-2"/>
+</p>
 
 Recomendación:
 
-[Descripción de la solución propuesta para corregir el problema identificado.]
+Destacar visualmente el ciclo de facturación de cada plan (por ejemplo, mostrando el precio total y su equivalente mensual) o unificar la comparación a un mismo período. Ordenar los planes de forma coherente con el precio mostrado.
 
 ---
 
-**PROBLEMA #2:** [Título descriptivo del problema]
+**PROBLEMA #2:** Las acciones de cada fila permanecen ocultas hasta el hover
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Usability — Reconocer en lugar de recordar (y visibilidad del estado del sistema)
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En la tabla de inventario (Batches), los íconos de acción (editar/eliminar) de la columna "Actions" solo se muestran en la fila sobre la que se posa el cursor; en las demás filas la columna aparece vacía. Un usuario nuevo no percibe que cada insumo puede editarse o eliminarse directamente desde la lista, reduciendo la descubribilidad de la funcionalidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/fqJvtzV.png" alt="heuristic-3"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Mostrar las acciones de forma persistente en todas las filas (o un indicador de "más opciones" siempre visible), de modo que la funcionalidad sea descubrible sin depender del hover.
 
 ---
 
-**PROBLEMA #3:** [Título descriptivo del problema]
+**PROBLEMA #3:** Campo de confirmación ambiguo al desvincular una balanza
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Usability — Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Unlink Supply Keeper" se solicita "Write the scale name to confirm", pero en ninguna parte del modal se muestra el nombre de la balanza ("scale name"). El único identificador visible es el "DEVICE ID" (6a387300b02a9a2b8a429204), un valor alfanumérico extenso que no corresponde al dato solicitado en el campo de confirmación. Esto impide que el usuario sepa qué texto debe escribir para habilitar la acción destructiva, bloqueando potencialmente la operación o llevando a intentos de prueba y error.
+
+<p align="center">
+  <img src="https://i.imgur.com/FLyFe2G.png" alt="heuristic-4"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Mostrar explícitamente dentro del modal el nombre exacto de la balanza que debe ingresarse (por ejemplo, junto al "DEVICE ID" o en el mensaje de advertencia), y resaltar ese valor para que coincida sin ambigüedad con lo solicitado en el campo "Write the scale name to confirm".
 
 ---
 
-**PROBLEMA #4:** [Título descriptivo del problema]
+**PROBLEMA #4:** Botón de acción primaria activo sin validación de campos obligatorios en el modal "Transfer Batch Stock"
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Transfer Batch Stock", el botón "Confirm Transfer" se muestra con el mismo estilo activo (verde sólido, alto contraste) independientemente de si los campos obligatorios — "Destination Zone", "Batch to Transfer" y "Quantity" — han sido completados. En la captura, tanto "Select a branch" como "Select a batch" permanecen sin seleccionar y el campo "Quantity" muestra "0.0" con la misma tipografía oscura y peso que un valor real ingresado por el usuario (no como un placeholder gris diferenciado), lo que genera ambigüedad sobre si ya existe una cantidad válida cargada. El sistema no comunica visualmente que el formulario está incompleto, permitiendo que el usuario intente confirmar una transferencia inválida o de cantidad cero. (Incluir captura del modal Transfer Batch Stock.)
+
+<p align="center">
+  <img src="https://i.imgur.com/MXGdRQS.png" alt="heuristic-5"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Deshabilitar visualmente el botón "Confirm Transfer" (color atenuado, cursor not-allowed) hasta que todos los campos obligatorios estén completos y la cantidad sea mayor a cero. Además, diferenciar claramente el estado vacío del campo "Quantity" usando un placeholder real (por ejemplo, "Enter quantity" en gris claro) en vez de un valor numérico "0.0" con apariencia de dato ya ingresado, evitando confusión entre placeholder y valor real.
 
 ---
 
-**PROBLEMA #5:** [Título descriptivo del problema]
+**PROBLEMA #5:** Baja prominencia y jerarquía insuficiente entre acciones en el modal de desactivación de sucursal
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Visibilidad del estado del sistema / Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Deactivate branch?", los botones "Cancel" y "Deactivate" se presentan como texto plano, sin contenedor ni relleno, del mismo tamaño y peso tipográfico, diferenciados únicamente por el color del texto. Esto reduce la prominencia de ambas acciones, ya que ninguna comunica claramente que es interactiva, y al estar ubicadas una junto a la otra con estilos casi idénticos, aumenta el riesgo de que el usuario active por error la acción destructiva ("Deactivate") en lugar de cancelar.
+
+<p align="center">
+  <img src="https://i.imgur.com/4RvKfCt.png" alt="heuristic-6"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Convertir ambos botones en componentes con contenedor sólido (relleno o outline) en lugar de texto plano, asignar a la acción destructiva un fondo de alto contraste que la identifique inequívocamente como irreversible, y mantener el botón "Cancel" con un estilo secundario que refuerce que es la opción segura por defecto, separando ambas acciones lo suficiente para evitar errores de tap.
 
 ## 6.4. Video About-the-Product
