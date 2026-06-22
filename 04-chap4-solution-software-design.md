@@ -604,7 +604,7 @@ El diagrama de contexto en la arquitectura de software proporciona una visión g
 
 Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas externos y dispositivos IoT:
 
-<img src="https://i.imgur.com/b0d1409.png" alt="Diagrama de contexto de Restock">
+<img src="https://i.imgur.com/el6jYhf.png" alt="Diagrama de contexto de Restock">
 
 **Visitors:** Usuarios anónimos que navegan el contenido público de la plataforma, como información, planes y características, y pueden registrarse o acceder como administradores de restaurante o retail.
 
@@ -618,15 +618,17 @@ Para Restock, el diagrama de contexto incluye los siguientes actores, sistemas e
 
 **Cloudinary API:** Servicio externo encargado del almacenamiento, gestión y entrega de imágenes y contenido multimedia utilizado en la plataforma.
 
-**OneSignal API:** Servicio externo utilizado para el envío de notificaciones y alertas en tiempo real a los usuarios de la plataforma.
+**Resend API:** Servicio externo utilizado para el envío de notificaciones y alertas en tiempo real a los usuarios de la plataforma.
 
-**Restock Smart Inventory Device:** Dispositivo IoT que captura datos de peso, temperatura y humedad desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
+**Firebase Cloud Messaging:** Servicio externo utilizado para generar notificaciones push en los smartphones de los usuarios.
+
+**Restock Supply Keeper Hardware:** Dispositivo IoT que captura datos de peso, temperatura y humedad desde el entorno físico mediante sensores y los transmite al sistema para su procesamiento y uso en el control de inventarios.
 
 #### 4.1.3.3. Software Architecture Container Level Diagrams
 
 El diagrama de contenedores de la arquitectura de software proporciona una visión de alto nivel de los principales contenedores del sistema, incluyendo aplicaciones, servicios, bases de datos y componentes IoT, como dispositivos embebidos y aplicaciones edge que interactúan con sensores físicos. Además, muestra cómo estos elementos se comunican entre sí para procesar y transmitir información. Para Restock, el diagrama de contenedores incluye los siguientes contenedores principales:
 
-<img src="https://i.imgur.com/P35v9XT.png" alt="Diagrama de contenedores de Restock">
+<img src="https://i.imgur.com/nM83liX.jpeg" alt="Diagrama de contenedores de Restock">
 
 **Landing Page:** Sitio web estático desarrollado con HTML5, CSS y JavaScript que presenta información pública sobre la plataforma, como funcionalidades, planes y términos de servicio (ToS). Además, guía a los visitantes hacia la aplicación web mediante elementos de navegación y llamados a la acción, interactuando con el contenedor **Web Application** a través de redirecciones. A su vez, redigire a los visitantes de dispositivos móviles a la tienda de aplicaciones para descargar la aplicación móvil.
 
@@ -652,7 +654,7 @@ El diagrama de contenedores de la arquitectura de software proporciona una visi�
 
 **Edge Local Database:** Base de datos local basada en SQLite que almacena configuración del dispositivo, datos recientes de sensores y eventos pendientes de sincronización para garantizar el funcionamiento offline y la integridad de los datos, interactuando con la Restock Local Station Edge Application.
 
-**MQTT Broker:** Es el servidor que funciona como puente de comunicación entre la nube (Cloud REST API) y el edge gateway (Edge Application). Además, recibe los datos procesados del edge gateway y los enruta hacia el API Gateway para que puedan ser verificados y comparados. También, se encarga de recibir comandos por parte del API en nube para entregarlos al gateway adecuado.
+**MQTT Broker:** Es el servidor que funciona como puente de comunicación entre el edge gateway (Edge Application) y el Embedded Application (IoT Devices). Además, recibe la información cruda leída por los sensores para notificar al edge gateway para que procese la información.
 
 **Embedded Application:** Software embebido desarrollado en C++ que controla el dispositivo físico de medición, captura datos de peso, temperatura y humedad desde los sensores y recibe los datos procesados del gateway para mostrarlos de forma constante en el Display LCD que posee el dispositivo IoT.
 
