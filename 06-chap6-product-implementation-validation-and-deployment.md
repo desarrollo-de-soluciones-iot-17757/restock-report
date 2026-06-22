@@ -2267,7 +2267,7 @@ El sprint 2 se incluyó el desarrollo de la primera versión del Edge service qu
 
 Por otro lado, el sprint 2 también incluyó el desarrollo de la primera versión de la aplicación móvil con vistas principales como inventarios, suministros, ventas, dispositivos, kits y recetas, entre otros.
 
-- Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
+- Ramas `feature/*` por pantalla (resource, devices, branches) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
 - Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
 - Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
 
