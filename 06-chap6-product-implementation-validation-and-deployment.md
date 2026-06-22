@@ -1871,7 +1871,7 @@ Distrito: Chorrillos
 Segmento: Dueño o administrador de restaurante
 Fecha de entrevista: 20 de junio de 2026
 Duración: 6 minutos y 10 segundos
-Registro audiovisual:
+Registro audiovisual: https://acortar.link/AVJ9RS
 Captura de entrevista:
 
 <p align="center">
@@ -1893,7 +1893,7 @@ Distrito: Chorrillos
 Segmento: Dueño o administrador de restaurante
 Fecha de entrevista: 20 de junio de 2026
 Duración: 6 minutos y 45 segundos
-Registro audiovisual: 
+Registro audiovisual: https://acortar.link/4mGKph
 Captura de entrevista:
 
 <p align="center">
@@ -1914,7 +1914,7 @@ Distrito:
 Segmento: Dueño o administrador de restaurante
 Fecha de entrevista: 20 de junio de 2026
 Duración:
-Registro audiovisual:
+Registro audiovisual: https://acortar.link/F9EHY7
 Captura de entrevista:
 
 <p align="center">
@@ -1977,7 +1977,7 @@ Captura de entrevista:
 
 Resumen descriptivo de la entrevista:
 
-Durante la sesión, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la facilidad de uso de las funcionalidades y la percepción de valor de la plataforma dentro del segmento de dueños y administradores de tiendas retail de consumo masivo.
+Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la facilidad de uso de las funcionalidades y la percepción de valor de la plataforma dentro del segmento de dueños y administradores de tiendas retail de consumo masivo.
 
 En la evaluación de la landing page, Mónica Jaramillo mostró una percepción muy positiva respecto al diseño y la presentación general del producto. Destacó la combinación de colores, la organización de la información y la claridad con la que se comunican los beneficios de la plataforma. Asimismo, comentó que las secciones de testimonios y características le permitieron comprender rápidamente la propuesta de valor de Restock. También manifestó agrado por los elementos visuales e ilustraciones presentes en la página, considerando que contribuyen a una experiencia más atractiva y amigable para el usuario. Durante esta evaluación no identificó inconvenientes ni dificultades de navegación.
 
@@ -2004,6 +2004,8 @@ Captura de entrevista:
 </p>
 
 Resumen descriptivo de la entrevista:
+
+Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
 
 En la evaluación de la landing page, Erick Coronel mostró una percepción muy positiva respecto al contenido y diseño presentado. Destacó especialmente las secciones de beneficios, ya que le permitieron comprender rápidamente cómo la plataforma puede contribuir a mejorar la gestión de su negocio. Asimismo, valoró los testimonios mostrados, considerándolos útiles para generar confianza en la solución. También mencionó que la sección de preguntas frecuentes le resultó particularmente atractiva, debido a que suele revisar este tipo de información antes de adquirir un producto o servicio, ya que le permite resolver dudas comunes y comprender mejor la propuesta de valor ofrecida.
 
