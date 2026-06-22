@@ -1513,14 +1513,14 @@ En la presente sección se detalla la evidencia de ejecución alcanzada durante 
 
 El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
 
-* **Assets & Resources:** Vistas operativas para el registro, control y gestión de sucursales y suministros.
+* **Resources:** Vistas operativas para el registro, control y gestión de sucursales, suministros e inventarios.
 * **Device Management:** Pantallas destinadas a la gestión, registro y configuración de dispositivos en el sistema.
-* **Configuración de Sucursales:** Interfaz para la creación y selección de sucursales en el sistema.
+* **Analytics:** Interfaz para la visualización de métricas clave del sistema, como alertas de stock, alertas ambientales y dispositivos offline.
 
-<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+<img src="https://i.imgur.com/v99slpI.png" alt="Evidencia de Ejecución - Mobile App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
-**Vídeo de navegación (Product Navigation):** [https://shortlink.uk/1pF66](https://shortlink.uk/1pF66)
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/J1NiTf](https://acortar.link/J1NiTf)
 
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
 
