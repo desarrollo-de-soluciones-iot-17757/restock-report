@@ -6,13 +6,21 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 **Exposición del AV1**
 
-[https://acortar.link/PPqh22](https://acortar.link/PPqh22)
+**Enlace para acceder al vídeo:** [https://acortar.link/PPqh22](https://acortar.link/PPqh22)
+
+<img src="https://i.imgur.com/qVcpH0f.png" alt="Fragmento de la exposición del AV1."/>
 
 **Exposición del TB1**
 
-[https://acortar.link/TMugw3](https://acortar.link/TMugw3)
+**Enlace para acceder al vídeo:** [https://acortar.link/TMugw3](https://acortar.link/TMugw3)
 
 <img src="https://i.imgur.com/PMbMHTj.png" alt="Fragmento de la exposición del TB1."/>
+
+**Exposición del AV2**
+
+**Enlace para acceder al vídeo:** [https://acortar.link/n61KsD](https://acortar.link/n61KsD)
+
+<img src="https://i.imgur.com/2vPi4fN.png" alt="Fragmento de la exposición del AV2."/>
 
 <div class="page"></div>
 
@@ -20,7 +28,7 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 Se realizaron entrevistas a cada segmento objetivo con la meta de poder entender su situación y analizar qué podría ayudarlos con su problema.
 
-[https://bit.ly/41kf54H](https://bit.ly/41kf54H)
+**Enlace para acceder a los vídeos:** [https://bit.ly/41kf54H](https://bit.ly/41kf54H)
 
 <img src="https://i.imgur.com/NLt3uiN.png" alt="Fragmento de las entrevistas realizadas a personas de los segmentos objetivo identificados."/>
 
@@ -30,6 +38,16 @@ Se realizaron entrevistas a cada segmento objetivo con la meta de poder entender
 
 El equipo trabajó las principales secciones de diseño y arquitectura en un workspace en Miro.
 
-[https://acortar.link/nORWrR](https://acortar.link/nORWrR)
+**Enlace para acceder al workspace:** [https://acortar.link/nORWrR](https://acortar.link/nORWrR)
 
 <img src="https://i.imgur.com/C7wUUvC.png" alt="Imagen del workspace en Miro."/>
+
+<div class="page"></div>
+
+## Anexo D. Vídeo de las entrevistas de validación
+
+Se realizaron entrevistas de validación a cada segmento objetivo con el objetivo de probar las funcionalidades implementadas y saber si el producto cumple con las necesidades de los usuarios.
+
+**Enlace para acceder a los vídeos:** [https://acortar.link/XSgoqW](https://acortar.link/XSgoqW)
+
+<img src="https://i.imgur.com/7QPOCz1.png" alt="Fragmento de las entrevistas de validación realizadas a los segmentos objetivo."/>
