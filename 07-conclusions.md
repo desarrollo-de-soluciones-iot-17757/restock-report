@@ -19,3 +19,10 @@
 * **Continuar iterando sobre la experiencia de usuario**: Conforme se incorporen nuevas funcionalidades, será importante mantener ciclos continuos de evaluación de la experiencia de usuario mediante pruebas de usabilidad y sesiones de retroalimentación con administradores y colaboradores de negocios reales. El objetivo debe ser conservar interfaces intuitivas y minimizar la curva de aprendizaje para facilitar la adopción tecnológica. 
 
 ## Video About-the-Team
+
+El vídeo acerca del equipo refleja el aporte y colaboración de cada integrante del equipo para lograr los objetivos en común de Restock. 
+Además, se hace mención de la forma de colaboración para los entregables y sobre el control de los avances de cada integrante.
+
+**Enlace al video:** [https://acortar.link/G5Dlxq](https://acortar.link/G5Dlxq)
+
+<img src="https://i.imgur.com/giOQoXl.png" alt="imagen de la reunion para grabar el video sobre el equipo" style="width: 100%; height: auto;"/>
