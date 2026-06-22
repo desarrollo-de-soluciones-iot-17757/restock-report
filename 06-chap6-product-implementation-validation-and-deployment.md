@@ -2812,25 +2812,292 @@ Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión d
 
 ### 6.3.1. Diseño de Entrevistas
 
+### 6.3.1. Diseño de Entrevistas
+
+Para garantizar que la solución cumpla con las necesidades reales de los usuarios finales, se diseñó un proceso de entrevistas de validación centrado en los dos segmentos objetivo de Restock: **administradores de restaurantes** y **administradores de tiendas retail**. Cada sesión de validación incluye la interacción con el **Landing Page, la aplicación web y la aplicación móvil** (versión Android, desplegada y funcional), siguiendo user flows específicos que cubren las funcionalidades core implementadas en el incremento actual. La aplicación web complementa la validación al ofrecer las mismas capacidades de gestión desde el panel administrativo de escritorio, mientras que los flujos principales de cada sesión se demuestran sobre la aplicación móvil.
+
+**Objetivo General**
+
+Validar la usabilidad, comprensión y utilidad de las funcionalidades del sistema a través de sesiones controladas de interacción, aplicando principios de evaluación heurística y recogiendo observaciones cualitativas que retroalimenten futuras iteraciones del producto.
+
+A continuación, se detallan los elementos a validar, los user flows del aplicativo móvil y las actividades a realizar durante cada sesión, organizados por segmento objetivo.
+
+| Segmento                                                | Elementos a validar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Mobile User Flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Actividades durante la sesión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Segmento 1: Administradores de Restaurantes**   | • Claridad del valor ofrecido en el Landing Page.`<br>`• Registro e inicio de sesión.`<br>`• Gestión de sucursales del negocio.`<br>`• Registro y gestión de insumos.`<br>`• Visualización y control de inventario.`<br>`• Registro y configuración de dispositivos (balanzas).`<br>`• Configuración de límites de stock (mín./máx.).`<br>`• Transferencia de inventario entre sucursales.`<br>`• Panel de alertas y notificaciones.`<br>`• Visualización de datos (dashboard).           | • Registro / inicio de sesión.`<br>`• Gestión de sucursales (crear, editar, desactivar).`<br>`• Registro y edición de insumos; filtrado por categoría.`<br>`• Visualización de inventario por sucursal.`<br>`• Registro de un dispositivo y asignación de lote.`<br>`• Configuración de umbrales de stock del dispositivo.`<br>`• Transferencia de stock entre sucursales.`<br>`• Revisión del centro de notificaciones.`<br>`• Visualización del dashboard de datos.`<br>`• Cambio de idioma de la interfaz.   | • Navegar el Landing Page y explicar lo que entienden del producto.`<br>`• Registrarse e iniciar sesión.`<br>`• Registrar y editar un insumo; aplicar un filtro por categoría.`<br>`• Acceder al inventario y describir lo que entienden.`<br>`• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.`<br>`• Simular una transferencia de inventario entre dos sucursales.`<br>`• Revisar las notificaciones y describir su utilidad.`<br>`• Explorar el dashboard de datos.`<br>`• Cambiar el idioma de la app.   |
+| **Segmento 2: Administradores de Tiendas Retail** | • Claridad del valor ofrecido en el Landing Page.`<br>`• Registro e inicio de sesión.`<br>`• Gestión de sucursales del negocio.`<br>`• Registro y gestión de productos/insumos.`<br>`• Visualización y control de inventario.`<br>`• Registro y configuración de dispositivos (balanzas).`<br>`• Configuración de límites de stock (mín./máx.).`<br>`• Transferencia de inventario entre sucursales.`<br>`• Panel de alertas y notificaciones.`<br>`• Visualización de datos (dashboard). | • Registro / inicio de sesión.`<br>`• Gestión de sucursales (crear, editar, desactivar).`<br>`• Registro y edición de productos; filtrado por categoría.`<br>`• Visualización de inventario por sucursal.`<br>`• Registro de un dispositivo y asignación de lote.`<br>`• Configuración de umbrales de stock del dispositivo.`<br>`• Transferencia de stock entre sucursales.`<br>`• Revisión del centro de notificaciones.`<br>`• Visualización del dashboard de datos.`<br>`• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.`<br>`• Registrarse e iniciar sesión.`<br>`• Registrar y editar un producto; aplicar un filtro por categoría.`<br>`• Acceder al inventario y describir lo que entienden.`<br>`• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.`<br>`• Simular una transferencia de inventario entre dos sucursales.`<br>`• Revisar las notificaciones y describir su utilidad.`<br>`• Explorar el dashboard de datos.`<br>`• Cambiar el idioma de la app. |
+
+**Métricas a registrar por sesión**
+
+Durante cada entrevista, el equipo a cargo registrará:
+
+- Nivel de comprensión del producto (autoevaluación del usuario).
+- Comentarios cualitativos de usabilidad y experiencia.
+- Satisfacción con cada flujo (escala del 1 al 5).
+- Puntos de confusión, errores y reacciones espontáneas observadas.
+
+**Flujos a Validar (resumen por User Goal)**
+
+| User Goal | Descripción del Flujo                                                                             | Objetivo de Validación                                                       |
+| --------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| UG 1      | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación.      | Validar claridad del mensaje y de la propuesta de valor.                      |
+| UG 2      | El usuario se registra e inicia sesión con sus datos.                                             | Validar claridad del formulario de registro y facilidad de login.             |
+| UG 3      | El usuario crea, edita y desactiva una sucursal de su negocio.                                     | Validar la gestión del ciclo de vida de sucursales.                          |
+| UG 4      | El usuario registra, edita y filtra insumos/productos del inventario.                              | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5      | El usuario accede al inventario y consulta el stock por sucursal.                                  | Validar la claridad y organización de la información de inventario.         |
+| UG 6      | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos.              |
+| UG 7      | El usuario transfiere stock entre dos sucursales.                                                  | Validar la funcionalidad de transferencia de inventario.                      |
+| UG 8      | El usuario revisa el centro de notificaciones y alertas.                                           | Validar la utilidad y claridad de las notificaciones.                         |
+| UG 9      | El usuario visualiza el dashboard de datos del negocio.                                            | Validar la comprensión de los indicadores presentados.                       |
+| UG 10     | El usuario cambia el idioma de la interfaz.                                                        | Validar la accesibilidad y el soporte multi-idioma.                           |
+
 ### 6.3.2. Registro de Entrevistas
 
+A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de restaurantes, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de restaurante.
+
+### Segmento Administradores de restaurantes
+
+### Entrevista 01 – Huiza Adriana
+
+Datos del entrevistado:
+
+Nombre completo: Huiza Adriana
+
+Edad: 32 años
+
+Distrito: Chorrillos
+
+Segmento: Dueño o administrador de restaurante
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 6 minutos y 10 segundos (0:05 min - 6:15 min)
+
+Registro audiovisual: https://acortar.link/AVJ9RS
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.imgur.com/USeukEB.png" 
+  alt="validation_interview_1"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Adriana Huiza para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
+
+En la evaluación de la landing page, la entrevistada mostró una percepción positiva respecto a la forma en que se comunica el propósito de Restock. Consideró que la información presentada permite comprender que la plataforma busca optimizar el control de inventarios mediante herramientas digitales y dispositivos de monitoreo. Asimismo, destacó que la propuesta resulta útil para restaurantes que necesitan reducir errores manuales, conocer mejor el estado de sus insumos y tomar decisiones oportunas sobre reposición.
+
+Respecto a la aplicación web, Adriana valoró que el sistema permita centralizar procesos relacionados con la gestión del negocio, como el registro de información, la administración de lotes, el control de stock y la visualización de dispositivos. La entrevistada percibió como relevante que la plataforma permita registrar insumos y consultar información operativa desde un panel organizado, ya que esto puede facilitar la supervisión diaria del inventario. Además, consideró importante que los flujos sean claros para que un administrador pueda utilizarlos sin requerir conocimientos técnicos avanzados.
+
+La respuesta hacia la aplicación móvil también fue favorable. Adriana destacó que contar con una versión móvil puede ser útil para revisar información del negocio fuera de una computadora, especialmente cuando el administrador necesita supervisar el estado del inventario, revisar discrepancias o consultar información general de manera rápida. Desde su perspectiva, la movilidad de la solución aporta valor porque permite mantener control sobre la operación incluso cuando no se está físicamente en el área administrativa.
+
+Finalmente, la entrevista permitió validar que Restock es percibida como una solución útil para restaurantes que buscan mejorar la precisión del inventario y reducir la dependencia de registros manuales. Se confirmó que funcionalidades como el monitoreo de insumos, la gestión de lotes, la visualización de dispositivos y el acceso móvil representan elementos importantes para fortalecer la gestión operativa. Como oportunidad de mejora, se identifica la necesidad de mantener indicadores visuales claros que permitan interpretar rápidamente el estado del stock y las posibles discrepancias detectadas por el sistema.
+
+### Entrevista 02 – Angelina Medina
+
+Datos del entrevistado:
+
+Nombre completo: Angelina Medina
+
+Edad: 25 años
+
+Distrito: Chorrillos
+
+Segmento: Dueño o administrador de restaurante
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 6 minutos y 47 segundos(6:16 min - 13:03 min)
+
+Registro audiovisual: https://acortar.link/4mGKph
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.imgur.com/HnRzJHH.png" 
+  alt="validation_interview_2"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Angelina Medina para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. La entrevista tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
+
+En la evaluación de la landing page, la entrevistada pudo identificar que Restock está orientada a resolver problemas relacionados con el control de inventarios, el monitoreo de insumos y la reducción de errores en la gestión manual. Angelina consideró que la explicación general de la plataforma ayuda a comprender el valor del sistema, especialmente porque presenta una solución que combina software con dispositivos de monitoreo para obtener información más confiable sobre el estado de los productos almacenados.
+
+Respecto a la aplicación web, Angelina valoró positivamente la posibilidad de gestionar información del negocio desde un entorno centralizado. Durante la revisión de los flujos, se resaltó la utilidad de contar con secciones para configuración del negocio, gestión de lotes, visualización de suministros y administración de dispositivos. La entrevistada consideró que estas funcionalidades pueden ayudar a mantener una mejor organización del inventario, especialmente en restaurantes donde el control de insumos es constante y puede volverse complejo si se realiza de forma manual.
+
+La aplicación móvil fue percibida como un complemento importante para la solución. Angelina destacó que una versión móvil facilita la supervisión rápida del negocio, permitiendo revisar información general, indicadores de stock y posibles discrepancias sin depender únicamente de una computadora. Esta característica fue considerada valiosa para administradores que necesitan mantenerse informados sobre el estado del inventario mientras realizan otras actividades operativas dentro o fuera del local.
+
+Finalmente, la entrevista permitió validar que Restock responde a necesidades reales del segmento restaurantes, principalmente en relación con la visibilidad del inventario, la actualización de información y la detección oportuna de problemas de stock. Se confirmó que la combinación de aplicación web, aplicación móvil y dispositivos de monitoreo puede aportar valor al reducir el trabajo manual y mejorar la toma de decisiones. Como oportunidad de mejora, se identificó la importancia de reforzar los indicadores visuales dentro del dashboard y las vistas de inventario, para que el usuario pueda interpretar rápidamente si un insumo se encuentra en estado normal, crítico o con discrepancias.
+
+### Entrevista 03 – Melany Espinoza
+
+Datos del entrevistado:
+
+Nombre completo: Melany Espinoza
+
+Edad: 25 años
+
+Distrito: Chorrillos
+
+Segmento: Dueño o administrador de restaurante
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 9 minutos y 11 segundos (13:04 min - 22:15 min)
+
+Registro audiovisual: https://acortar.link/F9EHY7
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.ibb.co/sv99Xj8M/imagen-2026-06-21-212348019.png" 
+  alt="validation_interview_3"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Melany Espinoza para evaluar su percepción sobre la plataforma, la cual está enfocada en el segmento de administradoras de restaurantes. La entrevista, dirigida por Antonio Navarro, tuvo como objetivo validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso del sistema.
+
+En la evaluación de la landing page, la entrevistada mostró una percepción muy positiva respecto al diseño, calificándolo como limpio, completo y organizado. Destacó que la información sobre los beneficios, el uso de dispositivos adicionales (balanza para control de stock, humedad y temperatura) y la sección de preguntas frecuentes comunican claramente la propuesta de valor y generan confianza. Consideró que la estructura facilita el entendimiento inicial de la plataforma para cualquier usuario.
+
+Respecto a la aplicación web, Melany valoró la naturaleza intuitiva y dinámica de los flujos de creación de usuarios y gestión de inventarios. Resaltó positivamente la flexibilidad para configurar monedas (soles, dólares, euros) y la capacidad de gestionar configuraciones regionales. No obstante, en el flujo de Kits and Recipes, sugirió incorporar indicadores más visuales sobre la rentabilidad y los platos más vendidos para mejorar la toma de decisiones. Asimismo, recomendó estandarizar las recetas base entre las distintas sucursales (branches) para garantizar la calidad y un control de costos consistente.
+
+La respuesta hacia la aplicación móvil fue muy favorable. La entrevistada destacó que contar con una versión móvil es una gran idea, ya que le permite supervisar las operaciones, revisar el inventario y el consumo fuera de la oficina, facilitando una gestión más rápida. Como punto de mejora, propuso incluir indicadores más visuales en el apartado de overview para identificar rápidamente el estado de las discrepancias en los lotes.
+
+Finalmente, La entrevista permitió validar que Restock es percibida como una solución completa y altamente funcional para las necesidades administrativas. Se confirmó que la automatización de procesos mediante dispositivos de hardware y la portabilidad de la aplicación móvil son puntos de gran valor estratégico. La incorporación de reportes de rentabilidad y la estandarización entre sucursales se identificaron como las oportunidades principales para fortalecer el sistema y optimizar la toma de decisiones del usuario final.
+
+A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de sector retail de consumo masivo, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de tienda retail.
+
+### Segmento Administradores de tiendas retail
+
+### Entrevista 01 – Brayner Coronel
+
+Datos del entrevistado:
+
+Nombre completo: Brayner Coronel
+
+Edad: 29 años
+
+Distrito: Villa María del Triunfo, Lima
+
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 9 minutos y 04 segundos (22:16 min - 31:20 min)
+
+Registro audiovisual: https://acortar.link/P51YEX
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.imgur.com/r8YQkZL.png" 
+  alt="validation_interview_1"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
+
+En la evaluación de la landing page, Brayner Coronel mostró una percepción positiva respecto al diseño visual, destacando la combinación de colores, la tipografía y la organización de la información. Asimismo, consideró que las secciones de beneficios, testimonios y presentación de funcionalidades transmiten de manera clara la propuesta de valor de Restock. Sin embargo, identificó una dificultad en la sección de selección de planes, ya que la estructura de precios le generó confusión al percibir que un plan con menos funcionalidades presentaba un costo superior al de otro con mayores beneficios. Esta situación afectó la comprensión inicial de la oferta comercial y dio origen al hallazgo heurístico relacionado con la jerarquía de precios.
+
+Respecto a la aplicación web, el entrevistado destacó positivamente la consistencia visual con la landing page, valorando que los colores, estilos y componentes mantengan una misma identidad a lo largo de la experiencia. También señaló que los módulos de analíticas y gestión de perfiles resultan útiles y fáciles de comprender. Durante la navegación identificó un problema de usabilidad en el módulo de gestión de lotes (Batches), donde las acciones disponibles para cada registro permanecían ocultas hasta posicionar el cursor sobre una fila específica. Según comentó, esta implementación dificulta que usuarios nuevos descubran rápidamente las opciones de edición y eliminación disponibles.
+
+Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
+
+### Entrevista 02 – Monica Jaramillo
+
+Datos del entrevistado:
+
+Nombre completo: Monica Jaramillo
+
+Edad: 52 años
+
+Distrito: José Gálvez, Lima
+
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 3 minutos y 46 segundos (31:21 min - 35:07 min)
+
+Registro audiovisual: https://acortar.link/bhXlMy
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.imgur.com/zQn8jeH.png" 
+  alt="validation_interview_2"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la facilidad de uso de las funcionalidades y la percepción de valor de la plataforma dentro del segmento de dueños y administradores de tiendas retail de consumo masivo.
+
+En la evaluación de la landing page, Mónica Jaramillo mostró una percepción muy positiva respecto al diseño y la presentación general del producto. Destacó la combinación de colores, la organización de la información y la claridad con la que se comunican los beneficios de la plataforma. Asimismo, comentó que las secciones de testimonios y características le permitieron comprender rápidamente la propuesta de valor de Restock. También manifestó agrado por los elementos visuales e ilustraciones presentes en la página, considerando que contribuyen a una experiencia más atractiva y amigable para el usuario. Durante esta evaluación no identificó inconvenientes ni dificultades de navegación.
+
+Respecto a la aplicación web, la entrevistada valoró positivamente la consistencia visual con la landing page y la organización de los diferentes módulos. Sin embargo, al interactuar con la gestión de lotes (Batches), encontró la misma dificultad observada en otras entrevistas, relacionada con la visibilidad de las acciones disponibles para cada registro. Indicó que inicialmente no logró identificar cómo editar o eliminar elementos de la lista debido a que estas opciones solo aparecen al posicionar el cursor sobre una fila específica, lo que afecta la facilidad de descubrimiento de dichas funcionalidades.
+
+Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. La entrevistada señaló que utiliza con frecuencia dispositivos móviles para gestionar actividades de su negocio, por lo que valoró especialmente la facilidad de uso de la aplicación. Destacó que la navegación resulta intuitiva y que las interacciones táctiles permiten acceder rápidamente a funcionalidades adicionales. En particular, le agradó la posibilidad de mantener presionados determinados elementos para desplegar nuevas opciones y acciones contextuales, ya que considera que este comportamiento agiliza las tareas diarias sin sobrecargar la interfaz con botones adicionales.
+
+### Entrevista 03 – Erick Coronel
+
+Datos del entrevistado:
+
+Nombre completo: Erick Coronel
+
+Edad: 52 años
+
+Distrito: Villa María del Triunfo, Lima
+
+Segmento: Dueño o administrador de tienda retail de consumo masivo
+
+Fecha de entrevista: 20 de junio de 2026
+
+Duración: 9 minutos y 50 segundos (35:08 min - 44:58 min)
+
+Registro audiovisual: https://acortar.link/pPsfaS
+
+Captura de entrevista:
+
+<p align="center">
+  <img src="https://i.imgur.com/u5bPyes.png" 
+  alt="validation_interview_3"/>
+</p>
+
+Resumen descriptivo de la entrevista:
+
+Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
+
+En la evaluación de la landing page, Erick Coronel mostró una percepción muy positiva respecto al contenido y diseño presentado. Destacó especialmente las secciones de beneficios, ya que le permitieron comprender rápidamente cómo la plataforma puede contribuir a mejorar la gestión de su negocio. Asimismo, valoró los testimonios mostrados, considerándolos útiles para generar confianza en la solución. También mencionó que la sección de preguntas frecuentes le resultó particularmente atractiva, debido a que suele revisar este tipo de información antes de adquirir un producto o servicio, ya que le permite resolver dudas comunes y comprender mejor la propuesta de valor ofrecida.
+
+Respecto a la aplicación web, el entrevistado destacó la consistencia visual de la plataforma y la calidad de su diseño. Comentó que los colores utilizados resultan agradables y transmiten una identidad profesional y moderna. Asimismo, valoró positivamente la organización de las tablas utilizadas para la gestión de lotes y el formato de las tarjetas empleadas para visualizar información de productos, indicando que ambos elementos facilitan la lectura y comprensión de los datos. En general, consideró que la navegación es clara y que las funcionalidades presentadas responden adecuadamente a las necesidades de gestión de una tienda retail.
+
+Finalmente, se evaluó la aplicación móvil de Restock. Durante esta prueba, el entrevistado identificó una oportunidad de mejora relacionada con la funcionalidad de transferencia de lotes entre sucursales. Específicamente, observó que el botón principal para confirmar la transferencia permanecía visualmente activo incluso cuando los campos obligatorios del formulario no habían sido completados, lo que generó incertidumbre respecto al estado de validación del proceso. Esta situación dio origen al hallazgo heurístico relacionado con la prevención de errores. No obstante, fuera de este aspecto, manifestó una percepción positiva de la aplicación, destacando especialmente los módulos de analíticas y notificaciones, así como la facilidad de navegación entre las diferentes secciones.
+
 ### 6.3.3. Evaluaciones según heurísticas
+
+Evaluaciones según heurísticas
+
+Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
 
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
 
-|                      |                                                             |
-| -------------------- | ----------------------------------------------------------- |
-| **CARRERA**    | Ingeniería de Software                                     |
-| **CURSO**      | Desarrollo de Soluciones IoT                                |
-| **SECCIÓN**   | 17757                                                       |
-| **PROFESORES** | Todos                                                       |
-| **AUDITOR**    | UI-Topic                                                    |
-| **CLIENTE(S)** | [Nombres de los participantes de la sesión de evaluación] |
+|                      |                                                                                                   |
+| -------------------- |---------------------------------------------------------------------------------------------------|
+| **CARRERA**    | Ingeniería de Software                                                                            |
+| **CURSO**      | Desarrollo de Soluciones IoT                                                                      |
+| **SECCIÓN**   | 17757                                                                                             |
+| **PROFESORES** | Todos                                                                                             |
+| **AUDITOR**    | UI-Topic                                                                                          |
+| **CLIENTE(S)** | Huiza Adriana, Angelina Medina, Melany Espinoza, Brayner Coronel, Monica Jaramillo, Erick Coronel |
 
 ---
 
-**SITE o APP A EVALUAR:** Restock — Aplicación Web (`https://restock-app.web.app`)
+**SITE o APP A EVALUAR:** Restock — Landing Page, Aplicación Web y Aplicación Móvil
 
 ---
 
@@ -2838,20 +3105,20 @@ Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión d
 
 El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
 
-1. Registro e inicio de sesión de un usuario nuevo
-2. Configuración del perfil de usuario y datos del negocio
-3. Registro y configuración de un dispositivo IoT
-4. Gestión de inventario: creación y edición de lotes de insumos
-5. Revisión de alertas y notificaciones de stock bajo
-6. Consulta del panel de analíticas y productos críticos
-7. Gestión de sucursales (alta, baja y actualización de estado)
+1. Registro e inicio de sesión de un usuario nuevo.
+2. Configuración del perfil de usuario y datos del negocio.
+3. Registro y configuración de un dispositivo IoT.
+4. Gestión de inventario: creación y edición de insumos y lotes.
+5. Revisión de alertas y notificaciones de stock bajo / eventos críticos.
+6. Consulta del panel de analíticas y productos críticos.
+7. Gestión de sucursales (alta, baja y actualización de estado).
+8. Transferencia de stock entre sucursales.
 
 No están incluidas en esta versión de la evaluación las siguientes tareas:
 
-1. Transferencia de stock entre sucursales
-2. Gestión avanzada de recetas/ingredientes de productos
-3. Configuración de suscripción a notificaciones push
-4. Resolución de tareas de conciliación de stock
+1. Gestión avanzada de recetas/ingredientes de productos.
+2. Configuración de suscripción a notificaciones push.
+3. Resolución de tareas de conciliación de stock.
 
 ---
 
@@ -2882,78 +3149,100 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 **DESCRIPCIÓN DE PROBLEMAS:**
 
-**PROBLEMA #1:** [Título descriptivo del problema]
+> _Los siguientes hallazgos provienen de la inspección heurística de la aplicación web desplegada. Deben corroborarse y/o ampliarse con las observaciones recogidas en las entrevistas de validación; cada problema incluye el espacio para la captura que lo ilustra._
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+**PROBLEMA #1:** Jerarquía de precios confusa en la selección de plan
+
+Severidad: 3
+Heurística violada: Information Architecture — Is it understandable? (y Usability — Coincidencia con el mundo real)
 
 Problema:
 
-[Descripción detallada del problema encontrado durante la sesión. Explicar en qué contexto ocurre, qué acción realiza el usuario, y por qué constituye un problema de usabilidad. Incluir captura de pantalla ilustrando el problema.]
+En la pantalla "Choose your Restock Plan", el plan **Basic** (con menos funcionalidades: hasta 10 balanzas) cuesta **S/ 59.99**, mientras que el plan **Pro** (con más funcionalidades: SLA empresarial e integraciones) cuesta **S/ 39.99**. Un precio mayor para el plan con menos beneficios resulta contraintuitivo. La causa —que cada precio corresponde a un ciclo de facturación distinto (mensual, semestral y anual)— se indica en texto pequeño ("Billed every 6 months", "Billed annually") sin suficiente prominencia, por lo que el usuario puede interpretar erróneamente la relación precio-valor.
+
+<p align="center">
+  <img src="https://i.imgur.com/cW6kH62.png" alt="heuristic-2"/>
+</p>
 
 Recomendación:
 
-[Descripción de la solución propuesta para corregir el problema identificado.]
+Destacar visualmente el ciclo de facturación de cada plan (por ejemplo, mostrando el precio total y su equivalente mensual) o unificar la comparación a un mismo período. Ordenar los planes de forma coherente con el precio mostrado.
 
 ---
 
-**PROBLEMA #2:** [Título descriptivo del problema]
+**PROBLEMA #2:** Las acciones de cada fila permanecen ocultas hasta el hover
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Usability — Reconocer en lugar de recordar (y visibilidad del estado del sistema)
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En la tabla de inventario (Batches), los íconos de acción (editar/eliminar) de la columna "Actions" solo se muestran en la fila sobre la que se posa el cursor; en las demás filas la columna aparece vacía. Un usuario nuevo no percibe que cada insumo puede editarse o eliminarse directamente desde la lista, reduciendo la descubribilidad de la funcionalidad.
+
+<p align="center">
+  <img src="https://i.imgur.com/fqJvtzV.png" alt="heuristic-3"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Mostrar las acciones de forma persistente en todas las filas (o un indicador de "más opciones" siempre visible), de modo que la funcionalidad sea descubrible sin depender del hover.
 
 ---
 
-**PROBLEMA #3:** [Título descriptivo del problema]
+**PROBLEMA #3:** Campo de confirmación ambiguo al desvincular una balanza
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Usability — Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Unlink Supply Keeper" se solicita "Write the scale name to confirm", pero en ninguna parte del modal se muestra el nombre de la balanza ("scale name"). El único identificador visible es el "DEVICE ID" (6a387300b02a9a2b8a429204), un valor alfanumérico extenso que no corresponde al dato solicitado en el campo de confirmación. Esto impide que el usuario sepa qué texto debe escribir para habilitar la acción destructiva, bloqueando potencialmente la operación o llevando a intentos de prueba y error.
+
+<p align="center">
+  <img src="https://i.imgur.com/FLyFe2G.png" alt="heuristic-4"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Mostrar explícitamente dentro del modal el nombre exacto de la balanza que debe ingresarse (por ejemplo, junto al "DEVICE ID" o en el mensaje de advertencia), y resaltar ese valor para que coincida sin ambigüedad con lo solicitado en el campo "Write the scale name to confirm".
 
 ---
 
-**PROBLEMA #4:** [Título descriptivo del problema]
+**PROBLEMA #4:** Botón de acción primaria activo sin validación de campos obligatorios en el modal "Transfer Batch Stock"
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Transfer Batch Stock", el botón "Confirm Transfer" se muestra con el mismo estilo activo (verde sólido, alto contraste) independientemente de si los campos obligatorios — "Destination Zone", "Batch to Transfer" y "Quantity" — han sido completados. En la captura, tanto "Select a branch" como "Select a batch" permanecen sin seleccionar y el campo "Quantity" muestra "0.0" con la misma tipografía oscura y peso que un valor real ingresado por el usuario (no como un placeholder gris diferenciado), lo que genera ambigüedad sobre si ya existe una cantidad válida cargada. El sistema no comunica visualmente que el formulario está incompleto, permitiendo que el usuario intente confirmar una transferencia inválida o de cantidad cero.
+
+<p align="center">
+  <img src="https://i.imgur.com/MXGdRQS.png" alt="heuristic-5"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Deshabilitar visualmente el botón "Confirm Transfer" (color atenuado, cursor not-allowed) hasta que todos los campos obligatorios estén completos y la cantidad sea mayor a cero. Además, diferenciar claramente el estado vacío del campo "Quantity" usando un placeholder real (por ejemplo, "Enter quantity" en gris claro) en vez de un valor numérico "0.0" con apariencia de dato ya ingresado, evitando confusión entre placeholder y valor real.
 
 ---
 
-**PROBLEMA #5:** [Título descriptivo del problema]
+**PROBLEMA #5:** Baja prominencia y jerarquía insuficiente entre acciones en el modal de desactivación de sucursal
 
-Severidad: [1-4]
-Heurística violada: [Usability / Inclusive Design / Information Architecture] — [Principio específico]
+Severidad: 2
+Heurística violada: Visibilidad del estado del sistema / Prevención de errores
 
 Problema:
 
-[Descripción detallada del problema. Incluir captura de pantalla ilustrando el problema.]
+En el modal "Deactivate branch?", los botones "Cancel" y "Deactivate" se presentan como texto plano, sin contenedor ni relleno, del mismo tamaño y peso tipográfico, diferenciados únicamente por el color del texto. Esto reduce la prominencia de ambas acciones, ya que ninguna comunica claramente que es interactiva, y al estar ubicadas una junto a la otra con estilos casi idénticos, aumenta el riesgo de que el usuario active por error la acción destructiva ("Deactivate") en lugar de cancelar.
+
+<p align="center">
+  <img src="https://i.imgur.com/4RvKfCt.png" alt="heuristic-6"/>
+</p>
 
 Recomendación:
 
-[Solución propuesta.]
+Convertir ambos botones en componentes con contenedor sólido (relleno o outline) en lugar de texto plano, asignar a la acción destructiva un fondo de alto contraste que la identifique inequívocamente como irreversible, y mantener el botón "Cancel" con un estilo secundario que refuerce que es la opción segura por defecto, separando ambas acciones lo suficiente para evitar errores de tap.
 
 ## 6.4. Video About-the-Product
 
