@@ -1,47 +1,39 @@
 <div id="cover-page" align="center">
-
 <img src="https://i.imgur.com/uoAo2Eb.png" alt="Logo UPC" style="width: 200px; height: auto;" />
-
 &nbsp;
 
 # UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
-
-## Ingeniería de Software
-
-### Ciclo: 202610
-
-### 1ASI0572 | Desarrollo de Soluciones IoT
-
-### NRC: 17757
-
-### Docente: Angel Augusto Velasquez Nuñez
-
+## Carrera de Ingeniería de Software
+### 1ASI0572 <br>
+### Desarrollo de Soluciones IoT
+### NRC <br>
+### 17757
 &nbsp;
-&nbsp;
-
 ## Informe de Trabajo Final
+### Docente <br>
+### Angel Augusto Velasquez Nuñez
+### Equipo<br>
+### UI-Topic
+### Proyect<br> 
+### Restock
+&nbsp;
 
-### Startup: UI-Topic
+### Integrantes
 
-### Producto: Restock
+| Código | Apellidos y Nombres |
+|---|---|
+| u202021885 | Castro Alejos, Julio Daniel |
+| u202312508 | Coronel Espinoza, Farid Sebastian |
+| u202311938 | Diaz Quispe, Matias Sebastian |
+| u202319831 | Guerra Perez, José Jahaziel |
+| u202317483 | Juarez Leon, Nicolas Emilio Walter |
+| u202314101 | Navarro Chinga, Antonio Jhair |
+| u202319448 | Shapiama Rivera, Gabriela Nicole |
 
 &nbsp;
 
-### u202021885 - Castro Alejos, Julio Daniel
-
-### u202312508 - Coronel Espinoza, Farid Sebastian
-
-### u202311938 - Diaz Quispe, Matias Sebastian
-
-### u202319831 - Guerra Perez, José Jahaziel
-
-### u202317483 - Juarez Leon, Nicolas Emilio Walter
-
-### u202314101 - Navarro Chinga, Antonio Jhair
-
-### u202319448 - Shapiama Rivera, Gabriela Nicole
-
-&nbsp;
+### Período 202610
+</div>
 
 ### Abril 2026
 
