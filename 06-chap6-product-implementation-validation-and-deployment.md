@@ -2706,7 +2706,7 @@ Captura de entrevista:
 Resumen descriptivo de la entrevista:
 
 
-### Entrevista 03 –
+### Entrevista 03 – Melany Espinoza
 
 Datos del entrevistado:
 
@@ -2861,14 +2861,14 @@ Esta sección contiene el proceso de evaluación de las sesiones de validación 
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
 
-|                      |                                                             |
-| -------------------- | ----------------------------------------------------------- |
-| **CARRERA**    | Ingeniería de Software                                     |
-| **CURSO**      | Desarrollo de Soluciones IoT                                |
-| **SECCIÓN**   | 17757                                                       |
-| **PROFESORES** | Todos                                                       |
-| **AUDITOR**    | UI-Topic                                                    |
-| **CLIENTE(S)** | [Nombres de los participantes de la sesión de evaluación] |
+|                      |                                                                                                   |
+| -------------------- |---------------------------------------------------------------------------------------------------|
+| **CARRERA**    | Ingeniería de Software                                                                            |
+| **CURSO**      | Desarrollo de Soluciones IoT                                                                      |
+| **SECCIÓN**   | 17757                                                                                             |
+| **PROFESORES** | Todos                                                                                             |
+| **AUDITOR**    | UI-Topic                                                                                          |
+| **CLIENTE(S)** | Huiza Adriana, Angelina Medina, Melany Espinoza, Brayner Coronel, Monica Jaramillo, Erick Coronel |
 
 ---
 
