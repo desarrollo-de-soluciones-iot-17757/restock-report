@@ -1457,7 +1457,7 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 <img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
-**Vídeo de navegación (Product Navigation):** [https://shortlink.uk/1pF66](https://shortlink.uk/1pF66)
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/CmlyKz](https://acortar.link/CmlyKz)
 
 #### Gestión de inventario
 
@@ -1521,6 +1521,28 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 
 **Evidencias de la demostración:**
 **Vídeo de navegación (Product Navigation):** [https://acortar.link/J1NiTf](https://acortar.link/J1NiTf)
+
+#### Gestión de inventario
+
+Vista del módulo de inventario donde se visualizan y registran nuevos custom supplies al sistema con el que se pueden registrar, posteriormente, lotes y crear sucursales.
+
+<img src="https://i.imgur.com/VhQhh4y.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/vyuenpc.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/aywgsCn.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+#### Métricas del sistema
+
+Vista de métricas del sistema donde se visualizan las alertas de stock o ventas recientes.
+
+<img src="https://i.imgur.com/LQFusxa.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+#### Gestión de dispositivos
+
+Panel de gestión de dispositivos con cuatro métricas clave: escalas activas, alertas de stock, alertas ambientales y dispositivos offline.
+
+<img src="https://i.imgur.com/Nfq9TgC.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
 
 #### 6.2.2.7. Services Documentation Evidence for Sprint Review
 
