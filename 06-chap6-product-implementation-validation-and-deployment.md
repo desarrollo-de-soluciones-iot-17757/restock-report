@@ -1793,6 +1793,92 @@ A continuación se presentan capturas de la interacción con la documentación d
 
 #### 6.2.2.9. Team Collaboration Insights during Sprint
 
+##### Edge service
+
+El sprint 2 se incluyó el desarrollo de la primera versión del Edge service que actúa como capa intermedia entre los dispositivos IoT de Restock y la plataforma en la nube.
+
+- Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
+- Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Edge service**
+
+![Edge Collaboration](https://imgur.com/pQpbBkJ.png)
+
+- Total de commits (Edge): **54**
+- Total de autores contribuyentes: **4**
+- Total de _pull requests_ relacionadas: **14**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
+##### Mobile application
+
+Por otro lado, el sprint 2 también incluyó el desarrollo de la primera versión de la aplicación móvil con vistas principales como inventarios, suministros, ventas, dispositivos, kits y recetas, entre otros.
+
+- Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
+- Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Mobile application**
+
+![Mobile Collaboration](https://imgur.com/AV2CyUh.png)
+
+- Total de commits (Mobile): **22**
+- Total de autores contribuyentes: **2**
+- Total de _pull requests_ relacionadas: **10**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
+##### Web services
+
+Tambien para el sprint 2 se incluyó el desarrollo de la segunda versión del web service con nuevas implementaciones para tracking, el manejo de discrepancias, entre otros.
+
+- Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
+- Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
+- Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Web services**
+
+![Web Collaboration](https://imgur.com/JChRNwQ.png)
+
+- Total de commits (Services): **288**
+- Total de autores contribuyentes: **7**
+- Total de _pull requests_ relacionadas: **70**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
+##### Web application
+
+El siguiente del sprint 2 también incluyó el desarrollo de la primera versión del web service con nuevas pantallas para tracking, el manejo de discrepancias, entre otros.
+
+- Ramas `feature/*` por pantalla (resource, recipes, sales) para aislar cambios y facilitar el trabajo paralelo entre el equipo de desarrollo.
+- Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
+- Uso de Domain-Driven Design para la organización de lógica y vistas en contextos delimitados según su reponsabilidad.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Web application**
+
+![Embedded Collaboration](https://imgur.com/aUhqYhP.png)
+
+- Total de commits (web): **125**
+- Total de autores contribuyentes: **6**
+- Total de _pull requests_ relacionadas: **40**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
+##### Embedded application
+
+Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión del embedded application con nuevas pantallas para tracking, el manejo de discrepancias, entre otros.
+
+- Manejo de respuestas de error (400 Bad Request, 401 Unauthorized) para payloads inválidos, campos faltantes o credenciales incorrectas.
+- Commits regulares con mensajes que enlazaban a tareas de la planificación del sprint.
+
+##### **Analíticos de colaboración — Web application**
+
+![Web Collaboration](https://imgur.com/7YtMXxi.png)
+
+- Total de commits (embedded): **21**
+- Total de autores contribuyentes: **2**
+- Total de _pull requests_ relacionadas: **8**
+- Observación: sin cambios adicionales en archivos respecto a la última comparación registrada en el repositorio.
+
 ### 6.2.3. Sprint 3
 
 #### 6.2.3.1. Sprint Planning 3
