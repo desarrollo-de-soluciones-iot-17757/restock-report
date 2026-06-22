@@ -1682,6 +1682,96 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 
 #### 6.2.2.4. Development Evidence for Sprint Review
 
+En esta sección, se describen los principales avances de implementación realizados en este segundo sprint. Se tienen como principales avances la implementación de la primera versión del Web service y la segunda version del Web application, primera version de Mobile application, segunda version de la landing page, primera version del Edge y Embedded.
+
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource.
+
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el primer sprint.
+
+| Repository | Branch | Commit Id | Commit Message | Committed On |
+|---|---|---|---|---|
+| restock-edge-service | feature/route | e304c4f077c1c3f3f614476eab1d17b5cbd54e22 | fix: delete usage of str convertor in route. | 19/06/26 |
+| restock-edge-service | feature/threshold | c9933edff05abbd40fb47f2cd9b65a65a00e7bcd | feat(threshold): add temperature and humidity anomaly threshold to repositories to rest service | 19/06/26 |
+| restock-edge-service | feature/threshold | 6f082d0d7ab6d4bdb48f5c5e9f1e67c4ad16465e | refactor(threshold): add temperature and humidity anomaly threshold to environment record | 19/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | 58db61765308762ee052c09f0489b0540fc92a27 | feat(calculate-physical-stock): add repository method to find recent stock values calculated. | 19/06/26 |
+| restock-edge-service | feature/tracking | 56c7e8e5e797d0bb183194875c36815c9309d854 | feat(tracking): add mqtt client configuration. | 19/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | b0e7334f2dd73d0bd8a5b2ebcabb828d78734c31 | feat(calculate-physical-stock): add application method to calibrate the weight of a custom supply. | 19/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | cebf8b54cdc573347c5bd0101b98d38e51aaddcd | feat(calculate-physical-stock): add application service for weight record. | 07/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | 106190e58419411cc36fe2543c0510b7ad43134c | feat(calculate-physical-stock): add mqtt interface for handling weight record telemetry messages. | 07/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | c48e3ba8b7fdc9d8a67716add0e51c55339edf69 | feat(calculate-physical-stock): add custom supply weight field in device thresholds. | 07/06/26 |
+| restock-edge-service | feature/devices | 4a5cc8949a20cbeee88057c71e9bfb31176b23cb | feat(devices): update device registration logic to use device token and remove custom supply weight. | 07/06/26 |
+| restock-edge-service | feature/devices | c44b17080ba7634d8b9de3d5c7a2e2a3bf327f8c | feat(devices): update device registration endpoint to /api/v1/auth/sign-up. | 07/06/26 |
+| restock-edge-service | feature/devices | 577ee956013c6192b4ad585c4687356e5b6b789a | feat(devices): update device and device threshold models to use device token and remove custom supply weight. | 07/06/26 |
+| restock-edge-service | feature/devices | 570578d1e80c5b0c99b8f9475b1e0ad24bbbd2db | feat(devices): refactor device model and registration logic to use mac address and update status handling. | 07/06/26 |
+| restock-edge-service | feature/tracking | d8c01c7c37bd84c3e3ef844e698b536aa4076263 | feat: implement repository persistence and domain services for tracking telemetry data | 07/06/26 |
+| restock-edge-service | feature/tracking | 44a6964864502a16581d582004a7b02f658eb421 | feat: implement tracking bounded context with domain entities, services, and REST API endpoints | 07/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | 5404c5ed6f753b650c5d0b9f1dd815c21285ac6a | feat(calculate-physical-stock): add method to calibrate the weight of a custom supply. | 07/06/26 |
+| restock-edge-service | feature/calculate-physical-stock | 1e14520a5546c100d38d591e664c52b9d05668f9 | fix: update orm model to use a lambda for generating created at field. | 07/06/26 |
+| restock-mobile-application | feature/deployment-configuration | 48e74146007662d0f9bf509977a0141454ee6daa | feat(deployment-configuration): update environment configuration and enhance api base url handling. | 19/06/26 |
+| restock-mobile-application | feature/analytics | 3b17b65229bc7eb171ea95ea6be525087ead2352 | feat(analytics): add dashboard screen and related components for analytics overview. | 19/06/26 |
+| restock-mobile-application | feature/analytics | 824519ca2bc3fa8e5a06e8ba75f37d0a18d4a1ec | feat(analytics): add models and constants for stock discrepancies, recent sales, and critical products. | 19/06/26 |
+| restock-mobile-application | feature/sign-in | 7285dc441121893855e5621584eee27b040e5ce6 | feat(sign-in): redesign sign-in form with improved ui and input field enhancements. | 19/06/26 |
+| restock-mobile-application | feature/devices | c5ac6b0573a78d2e4b35e9731c02fbb40ab5d9ea | feat(devices): add weight calibration functionality and improve device status handling. | 19/06/26 |
+| restock-mobile-application | feature/transfer-batches | 3b8b7cdb57252431c0c843989f60b0aec74bcc7a | refactor(transfer-batches): clean up code formatting and improve readability in batch transfer logic. | 19/06/26 |
+| restock-mobile-application | feature/batch-management | e5ec0acf62a6d79e1459c7a9de450a22ecbb474f | refactor(batch-management): remove unused editing notice from custom supply form. | 07/06/26 |
+| restock-mobile-application | feature/batch-management | 4018f7b6fd30570f6b9effbe7c959f7abf49ce4d | refactor(batch-management): simplify stock value display in custom supply content. | 07/06/26 |
+| restock-mobile-application | feature/batch-management | 84257c8a639898dc9c94b15e4c4bd5b267f23aac | refactor(batch-management): register batch facade service and batch list bloc in service locator. | 07/06/26 |
+| restock-mobile-application | feature/batch-management | 285dd883f1b709bfb5777048600e352e8751400d | feat(batch-management): add update batch functionality with command and ui components. | 07/06/26 |
+| restock-mobile-application | feature/batch-management | 3bc921ca32a6d60883a13a7439aa86ec8f0c011d | refactor(batch-management): add batch detail screen and related components for displaying batch information. | 07/06/26 |
+| restock-mobile-application | feature/batch-management | 06fce333775ced497412052423fe3e8659eccd7d | feat(batch-management): implement register batch functionality with bloc pattern and ui components. | 07/06/26 |
+| restock-mobile-application | feature/branch-selection | 117a732850ca3d57942cdbbdf58d7dbfeb9393e1 | feat(branch-selection): enhance branch selection with active branch picker and validation for stock range. | 07/06/26 |
+| restock-mobile-application | feature/active-branch | 83e3ebe6a3e39ea9324593ae79bd8c57e8cfe30b | feat(active-branch): add active branch card widget and branch management methods. | 07/06/26 |
+| restock-mobile-application | feature/app-bar | fabe55b3bad32d76fe060e5541c07bd288c96069 | refactor(app-bar): remove redundant 'main branch' text from app bar. | 07/06/26 |
+| restock-mobile-application | feature/branch-status | effa4280055a7b5236bee404331554c315dea972 | feat(branch-status): add branches status summary widget and integrate into settings scaffold. | 07/06/26 |
+| restock-web-services | feature/tracking | f0856fc348c33879c391a193ac5dff49abab7efb | feat(tracking): add conciliation tasks controller | 19/06/26 |
+| restock-web-services | feature/devices | ba34e6ead88f1d77d1252b63b4fe6ccdd183ebe1 | feat(devices): change put to patch for device specifications and configurations | 19/06/26 |
+| restock-web-services | feature/resource | e61f3f7bb9c64e377ada049d241a2365f4d475b0 | feat(resource): add resource stock snapshot for acl | 19/06/26 |
+| restock-web-services | feature/tracking | 7b1da8c5dc8957a8f6879c1c9eaf4415a24bba20 | feat(tracking): add conciliation task resources | 19/06/26 |
+| restock-web-services | feature/profiles | 6134ae53bf3ddc5b4d8695abca33d4114de95426 | feat(profiles): add commands and resources for updating business and user profiles | 19/06/26 |
+| restock-web-services | feature/business | 9fd1ea8623d28b5f37fb957936072b034093de11 | feat(business): implement crud operations for business profiles and add rest controller | 19/06/26 |
+| restock-web-services | feature/device-registration | f02e19d831f636d9a916dbdd47ee660438fe7629 | feat(device-registration): enhance device event publishing and update device configuration handling. | 07/06/26 |
+| restock-web-services | feature/push-subscription | 711f3348e8ea548e3f6234c3b3cbab551f7ab429 | feat(push-subscription): enhance push subscription handling with duplicate deactivation and update converters. | 07/06/26 |
+| restock-web-services | feature/register-device-for-edge-service | ffd3d0b76c1a6cc57191ecdf3bed49d45f390e63 | feat(register-device-for-edge-service): rename net weight to unit stock weight and update validation logic. | 07/06/26 |
+| restock-web-services | feature/edge-service | 809bfd65103d5893cf68d7dd853cf2f59f4efc35 | feat(edge-service): enhance device registration with configuration and calibration methods. | 07/06/26 |
+| restock-web-services | feature/device-registration | 0092e95f66cacca782c48ffa923c5ceaeedf1b92 | feat(device-registration): add device calibration and registration events with token generation. | 07/06/26 |
+| restock-web-services | feature/resources | a82470f4f2cca3d991f6d6acef15df6912e0c69c | feat(resources): implement resolveAvailableBatchId in ResourcesContextFacadeImpl | 07/06/26 |
+| restock-web-services | feature/sales-order | dd3f34e70d9a3256e582826bd00efe5adb8a2c6e | feat(sales-order): implement infrastructure persistence layer for salesorder | 07/06/26 |
+| restock-web-services | feature/sales-order | ef66c6bc2711e63651625e6ab1e25e595aee053a | feat(sales-order): implement application layer services and ACL for sales orders | 07/06/26 |
+| restock-web-services | feature/sales-order | 6311c8a57a5c366105b8c54cb971c15986eb6d0a | feat(sales-order): implement domain layer for sales orders | 07/06/26 |
+| restock-web-application | feature/deployment | d062d329527a3b4d9af28170e3ef595216156c5f | feat(deployment): update base url for production environment. | 19/06/26 |
+| restock-web-application | feature/branches | ebb5022d23331a09e05889073ef88b2b66436c30 | feat(branches): implement branch management methods and update resource store structure | 19/06/26 |
+| restock-web-application | feature/profile | fe41e974c0f469f43caa61221d5854edab300c39 | feat: enhance profile and business management with image upload functionality | 19/06/26 |
+| restock-web-application | feature/registration | 7edb0e7f18d4a14b9fbcbd6a8e302d81698bb4a1 | feat(registration): implement registration branch setup component with form handling | 19/06/26 |
+| restock-web-application | feature/iam | 086c27e2e6877e37739c7adfdb15aaa4e6050f16 | feat(iam): add pendingAccountId signal and enhance sign-up flow | 19/06/26 |
+| restock-web-application | feature/analytics | 2c0aa097e24489e410693a19900d9d95305403d0 | feat(analytics): improve dashboard ui and add date filter for recent sales. | 19/06/26 |
+| restock-web-application | feature/devices | 2253972a12d4aa7970aabcf5f38b1ea967137153 | feat(devices): add proxy configuration and update routing for device onboarding. feat: implement device onboarding view with forms for batch assignment, hardware specifications, branch assignment, and alert thresholds | 07/06/26 |
+| restock-web-application | feature/resources | 387d0005a9f1433c45a91340ce7b4ec6085b49ae | fix(resources): remove unnecessary close buttons | 07/06/26 |
+| restock-web-application | feature/resources | 06eca98b67c42ca162630550cd932bf6c68ce9ee | feat(resources): add branch id filter to batches section. | 07/06/26 |
+| restock-web-application | feature/profiles | a2b1e5bea5ba006499a546809c81d4c1ad08527a | feat(profiles): add current branch id to profile for transfer | 07/06/26 |
+| restock-web-application | feature/resources | a61ad55a23ccc0a13e52400eb605cf1419f5c557 | fix(resources): redirect to overview of custom supply after creation | 07/06/26 |
+| restock-web-application | feature/kits | ffb16bf51da86c4fccf8e785e06866c67b3a93b5 | feat(kits): enhance create-kit functionality with sku input and improve kit detail view | 07/06/26 |
+| restock-web-application | feature/kits | 76391465462ad67c829e6297d2aa029db653845a | refactor(kits): remove unused infrastructure and routing files | 07/06/26 |
+| restock-web-application | feature/kits | a29d395c9344516c872408eec0342848cebc155e | feat(kits): update kit-card component to handle image errors | 07/06/26 |
+| restock-web-application | feature/kits | 220d3bd7d198caea885574b146e2fa1419623a2c | feat(kits): add add-kit-item and remove-kit-item api endpoints and assemblers | 07/06/26 |
+| restock-web-application | feature/resources | 47159a1c84f747604a67306941816c724eb707d3 | refactor(resources): update custom supply response | 07/06/26 |
+| restock-embedded-application | feature/read-key-metrics | a39e9d1881a1c707f2bf703b47331467af6bcbe8 | feat(telemetry): implement device health metrics and threshold alerts | 07/06/26 |
+| restock-embedded-application | feature/calculate-env-averages | 9cdb0d1d83c1d7aba5fca1c79fca6089cecb4c94 | refactor(device): migrate embedded app to modest iot arduino workflow | 07/06/26 |
+| restock-embedded-application | feature/calculate-env-averages | 89cd8491c27556d34f7c923e3fb15493d29e9161 | feat(sensors): add environment sensor initial reading. | 07/06/26 |
+| restock-embedded-application | feature/calculate-env-averages | d5adbf30fef129bb5a11cf1730b1e45e54f558ce | build(deps): add dht and LCD i2c libraries. | 07/06/26 |
+| restock-embedded-application | feature/read-key-metrics | 53d049d0b419774d5fc1ac8b485ef1e260ed9a94 | feat(sketch): add environment telemetry reading | 07/06/26 |
+| restock-embedded-application | feature/environment-sensor | 183b29d4af674d38fb9e963b5fdcbdc228e396ad | feat(device): add environment telemetry reading | 07/06/26 |
+| restock-embedded-application | feature/environment-sensor | 67555501a98662de0982ca9b282e434985752e00 | feat(connectivity): add restock configuration variables | 07/06/26 |
+| restock-embedded-application | feature/calculate-env-averages | 408fe8ee51f3af745d1f3a05a50d100ea8be3584 | feat(connectivity): add telemetry client for edge connection. | 07/06/26 |
+| restock-embedded-application | feature/environment-sensor | 311db103b21e636cb9a4660631ead9c42b21bf58 | feat(sensors): add weight sensor base class. | 07/06/26 |
+| restock-embedded-application | feature/read-key-metrics | d4279ee5909c16784c5a79cc276367eb6810f196 | feat(sensors): add environment sensor class. | 07/06/26 |
+| restock-embedded-application | feature/environment-sensor | 8e15eaba5a776dee722f1edab4df5161e126f72 | feat(actuators): add display class. | 07/06/26 |
+| restock-embedded-application | feature/read-key-metrics | 709ca9ced05cfff4714a76624977c32eb3a9120c | feat(design): add environment sensor and display connections. | 07/06/26 |
+| restock-embedded-application | feature/initial-setup | 066621f76fd09e490942f2ce6634761bcce83eab | feat(extensions): add extensions to gitignore. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | 232f14460b85328fa63e7c1fd85efecc6a818ed5 | refactor(lib): revome lib folder. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | a56d83befec938b0e146b7b6c2fdb0b76ae0a23f | refactor(include): change header files to src folder. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | 1f3ef825b940bb278589bf36762b0e58435e0533 | refactor(main): change main file to sketch file. | 07/06/26 |
+| restock-embedded-application | feature/initial-setup | e0fe17da582498f9c9ea5947f3a1828aeb9e03a0 | feat(setup): add modestiot framework initial setup. | 07/06/26 |
+
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
 #### 6.2.2.6. Execution Evidence for Sprint Review
