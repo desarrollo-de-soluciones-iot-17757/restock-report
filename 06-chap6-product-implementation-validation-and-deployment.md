@@ -1866,12 +1866,19 @@ Entrevista 01 – Huiza Adriana
 Datos del entrevistado:
 
 Nombre completo: Huiza Adriana
+
 Edad: 32 años
+
 Distrito: Chorrillos
+
 Segmento: Dueño o administrador de restaurante
+
 Fecha de entrevista: 20 de junio de 2026
+
 Duración: 6 minutos y 10 segundos
+
 Registro audiovisual: https://acortar.link/AVJ9RS
+
 Captura de entrevista:
 
 <p align="center">
@@ -1888,12 +1895,19 @@ Entrevista 02 – Angelina Medina
 Datos del entrevistado:
 
 Nombre completo: Angelina Medina
+
 Edad: 25 años
+
 Distrito: Chorrillos
+
 Segmento: Dueño o administrador de restaurante
+
 Fecha de entrevista: 20 de junio de 2026
+
 Duración: 6 minutos y 45 segundos
+
 Registro audiovisual: https://acortar.link/4mGKph
+
 Captura de entrevista:
 
 <p align="center">
@@ -1909,12 +1923,19 @@ Entrevista 03 –
 Datos del entrevistado:
 
 Nombre completo:
+
 Edad:
-Distrito: 
+
+Distrito:
+
 Segmento: Dueño o administrador de restaurante
+
 Fecha de entrevista: 20 de junio de 2026
+
 Duración:
+
 Registro audiovisual: https://acortar.link/F9EHY7
+
 Captura de entrevista:
 
 <p align="center">
@@ -1932,12 +1953,19 @@ Entrevista 01 – Brayner Coronel
 Datos del entrevistado:
 
 Nombre completo: Brayner Coronel
+
 Edad: 29 años
+
 Distrito: Villa María del Triunfo, Lima
+
 Segmento: Dueño o administrador de tienda retail de consumo masivo
+
 Fecha de entrevista: 20 de junio de 2026
-Duración: 
-Registro audiovisual: 
+
+Duración: 6 minutos y 20 segundos
+
+Registro audiovisual: https://acortar.link/P51YEX
+
 Captura de entrevista:
 
 <p align="center">
@@ -1956,18 +1984,24 @@ Respecto a la aplicación web, el entrevistado destacó positivamente la consist
 Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
 
 
-
 Entrevista 02 – Monica Jaramillo
 
 Datos del entrevistado:
 
 Nombre completo: Monica Jaramillo
+
 Edad: 52 años
+
 Distrito: José Gálvez, Lima
+
 Segmento: Dueño o administrador de tienda retail de consumo masivo
+
 Fecha de entrevista: 20 de junio de 2026
+
 Duración: 4 minutos y 30 segundos
-Registro audiovisual:
+
+Registro audiovisual: https://acortar.link/bhXlMy
+
 Captura de entrevista:
 
 <p align="center">
@@ -1990,12 +2024,19 @@ Entrevista 03 – Erick Coronel
 Datos del entrevistado:
 
 Nombre completo: Erick Coronel
+
 Edad: 52 años
+
 Distrito: Villa María del Triunfo, Lima
+
 Segmento: Dueño o administrador de tienda retail de consumo masivo
+
 Fecha de entrevista: 20 de junio de 2026
+
 Duración: 6 minutos y 30 segundos
-Registro audiovisual:
+
+Registro audiovisual: https://acortar.link/pPsfaS
+
 Captura de entrevista:
 
 <p align="center">
@@ -2152,7 +2193,7 @@ Heurística violada: Prevención de errores
 
 Problema:
 
-En el modal "Transfer Batch Stock", el botón "Confirm Transfer" se muestra con el mismo estilo activo (verde sólido, alto contraste) independientemente de si los campos obligatorios — "Destination Zone", "Batch to Transfer" y "Quantity" — han sido completados. En la captura, tanto "Select a branch" como "Select a batch" permanecen sin seleccionar y el campo "Quantity" muestra "0.0" con la misma tipografía oscura y peso que un valor real ingresado por el usuario (no como un placeholder gris diferenciado), lo que genera ambigüedad sobre si ya existe una cantidad válida cargada. El sistema no comunica visualmente que el formulario está incompleto, permitiendo que el usuario intente confirmar una transferencia inválida o de cantidad cero. (Incluir captura del modal Transfer Batch Stock.)
+En el modal "Transfer Batch Stock", el botón "Confirm Transfer" se muestra con el mismo estilo activo (verde sólido, alto contraste) independientemente de si los campos obligatorios — "Destination Zone", "Batch to Transfer" y "Quantity" — han sido completados. En la captura, tanto "Select a branch" como "Select a batch" permanecen sin seleccionar y el campo "Quantity" muestra "0.0" con la misma tipografía oscura y peso que un valor real ingresado por el usuario (no como un placeholder gris diferenciado), lo que genera ambigüedad sobre si ya existe una cantidad válida cargada. El sistema no comunica visualmente que el formulario está incompleto, permitiendo que el usuario intente confirmar una transferencia inválida o de cantidad cero.
 
 <p align="center">
   <img src="https://i.imgur.com/MXGdRQS.png" alt="heuristic-5"/>
