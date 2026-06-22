@@ -565,6 +565,66 @@
     <td> Antonio Navarro </th>
     <td> Se añadió nueva Bibliografía complementando lo progresado en el segundo avance. </th>
   </tr>
+  <tr>
+    <td> 2.52 </th>
+    <td> 20/06/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección del Sprint Planning 2. </th>
+  </tr>
+  <tr>
+    <td> 2.53 </th>
+    <td> 20/06/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de la matriz de Aspect Leaders & Collaborators del sprint 2. </th>
+  </tr>
+  <tr>
+    <td> 2.54 </th>
+    <td> 20/06/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección del Sprint Backlog 2. </th>
+  </tr>
+  <tr>
+    <td> 2.55 </th>
+    <td> 20/06/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de Development Evidence for Sprint 2. </th>
+  </tr>
+  <tr>
+    <td> 2.60 </th>
+    <td> 20/06/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Execution Evidence for Sprint 2. </th>
+  </tr>
+  <tr>
+    <td> 2.61 </th>
+    <td> 21/06/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección de Deployment Evidence for Sprint 2. </th>
+  </tr>
+  <tr>
+    <td> 2.70 </th>
+    <td> 21/06/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la sección de Team Collaboration Insights for Sprint 2 Review. </th>
+  </tr>
+  <tr>
+    <td> 2.80 </th>
+    <td> 21/06/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se añadieron evidencia de test del backend. </th>
+  </tr>
+  <tr>
+    <td> 2.90 </th>
+    <td> 21/06/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió la sección de validation interviews. </th>
+  </tr>
+  <tr>
+    <td> 3.00 </th>
+    <td> 21/06/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió video about the product. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
