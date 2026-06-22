@@ -1436,7 +1436,7 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 
 Esta es una sección informativa que incluye un vídeo subido a Youtube sobre el funcionamiento de la aplicación mediante una vista previa de las funcionalidades principales de Restock.
 
-<img src="" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/9CzTkk4.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
 
 #### Sección About-the-team
 
