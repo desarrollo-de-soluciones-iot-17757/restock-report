@@ -699,6 +699,33 @@ fix(chapter-02): correct user persona descriptions
 ![Contributors AV1](./assets/images/project-insights/contributors-tb1.png)
 *Figura: Contribuciones por integrante durante el TB1*
 
+---
+
+## AV2 – Sprint Review – Semana 12
+
+Durante esta fase, el equipo se enfocó en la mejora de artefactos previos y en la estructuración e implementación de la primera fase de desarrollo de la solución IoT. Los entregables abarcaron:
+
+- **Monitoreo y configuración de dispositivos**: implementación de la detección de variaciones de peso y ambientales, registro de logs y monitoreo, revisión de la consola en tiempo real, lectura de métricas clave y gestión de asignación/desvinculación de productos en dispositivos.
+- **Alertas y notificaciones**: desarrollo del centro de notificaciones y generación automática de alertas por exceso y bajo stock.
+- **Manejo de discrepancias y conciliación de inventario**: gestión y generación automática de tareas de conciliación entre el stock físico y el registrado.
+- **Control de stock en inventario**: implementación de la consulta de stock por suministro y la transferencia de lotes hacia sucursales.
+- **Visualización de datos y gestión de ventas**: análisis de las últimas ventas del negocio, junto con la gestión y consulta de ventas desde la aplicación.
+- **Combos de productos retail**: configuración de kits para el sector retail y validación de la disponibilidad operativa de dichos kits en tienda.
+- **Gestión de autenticación y comunicación de valor**: implementación de la autenticación de usuarios y mejoras orientadas a aumentar la confianza sobre la plataforma.
+
+Al igual que en el avance anterior, cada nueva sección y actualización fue trabajada en ramas `feature/<sección>` (por ejemplo, `feature/chapter-05-ui-ux`, `feature/chapter-06-sprint1`) o ramas `fix/<sección>` para las correcciones de entregas pasadas. Los commits siguieron la convención establecida, reflejando las tareas de diseño, documentación y despliegue asignadas en el tablero Scrum:
+
+```text
+feat(chapter-01): add startup profile and problem statement
+chore(annexes): add supplementary files and bibliography
+fix(chapter-02): correct user persona descriptions
+```
+
+**Analíticos de colaboración – GitHub Insights:**
+
+![Contributors AV2](https://imgur.com/ldn5iz2.png)
+
+*Figura: Contribuciones por integrante durante el AV2*
 # Contenido
 
 ## Tabla de contenidos
