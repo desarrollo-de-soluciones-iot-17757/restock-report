@@ -1401,6 +1401,13 @@ A continuación, se muestra una tabla que contiene la información sobre los com
 | restock-embedded-application | feature/calculate-env-averages | 408fe8ee51f3af745d1f3a05a50d100ea8be3584 | feat(connectivity): add telemetry client for edge connection. | 07/06/26 |
 | restock-embedded-application | feature/environment-sensor | 311db103b21e636cb9a4660631ead9c42b21bf58 | feat(sensors): add weight sensor base class. | 07/06/26 |
 | restock-embedded-application | feature/read-key-metrics | d4279ee5909c16784c5a79cc276367eb6810f196 | feat(sensors): add environment sensor class. | 07/06/26 |
+| restock-embedded-application | feature/environment-sensor | 8e15eaba5a776dee722f1edab4df5161e126f72 | feat(actuators): add display class. | 07/06/26 |
+| restock-embedded-application | feature/read-key-metrics | 709ca9ced05cfff4714a76624977c32eb3a9120c | feat(design): add environment sensor and display connections. | 07/06/26 |
+| restock-embedded-application | feature/initial-setup | 066621f76fd09e490942f2ce6634761bcce83eab | feat(extensions): add extensions to gitignore. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | 232f14460b85328fa63e7c1fd85efecc6a818ed5 | refactor(lib): revome lib folder. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | a56d83befec938b0e146b7b6c2fdb0b76ae0a23f | refactor(include): change header files to src folder. | 07/06/26 |
+| restock-embedded-application | refactor/migrate-to-arduino-cli | 1f3ef825b940bb278589bf36762b0e58435e0533 | refactor(main): change main file to sketch file. | 07/06/26 |
+| restock-embedded-application | feature/initial-setup | e0fe17da582498f9c9ea5947f3a1828aeb9e03a0 | feat(setup): add modestiot framework initial setup. | 07/06/26 |
 
 #### 6.2.2.5. Testing Suite Evidence for Sprint Review
 
