@@ -2746,10 +2746,10 @@ Validar la usabilidad, comprensión y utilidad de las funcionalidades del sistem
 
 A continuación, se detallan los elementos a validar, los user flows del aplicativo móvil y las actividades a realizar durante cada sesión, organizados por segmento objetivo.
 
-| Segmento                                          | Elementos a validar                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Mobile User Flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Actividades durante la sesión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Segmento 1: Administradores de Restaurantes**   | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard).           | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de insumos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz.   | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un insumo; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app.   |
-| **Segmento 2: Administradores de Tiendas Retail** | • Claridad del valor ofrecido en el Landing Page.<br>• Registro e inicio de sesión.<br>• Gestión de sucursales del negocio.<br>• Registro y gestión de productos/insumos.<br>• Visualización y control de inventario.<br>• Registro y configuración de dispositivos (balanzas).<br>• Configuración de límites de stock (mín./máx.).<br>• Transferencia de inventario entre sucursales.<br>• Panel de alertas y notificaciones.<br>• Visualización de datos (dashboard). | • Registro / inicio de sesión.<br>• Gestión de sucursales (crear, editar, desactivar).<br>• Registro y edición de productos; filtrado por categoría.<br>• Visualización de inventario por sucursal.<br>• Registro de un dispositivo y asignación de lote.<br>• Configuración de umbrales de stock del dispositivo.<br>• Transferencia de stock entre sucursales.<br>• Revisión del centro de notificaciones.<br>• Visualización del dashboard de datos.<br>• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.<br>• Registrarse e iniciar sesión.<br>• Registrar y editar un producto; aplicar un filtro por categoría.<br>• Acceder al inventario y describir lo que entienden.<br>• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.<br>• Simular una transferencia de inventario entre dos sucursales.<br>• Revisar las notificaciones y describir su utilidad.<br>• Explorar el dashboard de datos.<br>• Cambiar el idioma de la app. |
+| Segmento                                                | Elementos a validar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Mobile User Flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Actividades durante la sesión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Segmento 1: Administradores de Restaurantes**   | • Claridad del valor ofrecido en el Landing Page.`<br>`• Registro e inicio de sesión.`<br>`• Gestión de sucursales del negocio.`<br>`• Registro y gestión de insumos.`<br>`• Visualización y control de inventario.`<br>`• Registro y configuración de dispositivos (balanzas).`<br>`• Configuración de límites de stock (mín./máx.).`<br>`• Transferencia de inventario entre sucursales.`<br>`• Panel de alertas y notificaciones.`<br>`• Visualización de datos (dashboard).           | • Registro / inicio de sesión.`<br>`• Gestión de sucursales (crear, editar, desactivar).`<br>`• Registro y edición de insumos; filtrado por categoría.`<br>`• Visualización de inventario por sucursal.`<br>`• Registro de un dispositivo y asignación de lote.`<br>`• Configuración de umbrales de stock del dispositivo.`<br>`• Transferencia de stock entre sucursales.`<br>`• Revisión del centro de notificaciones.`<br>`• Visualización del dashboard de datos.`<br>`• Cambio de idioma de la interfaz.   | • Navegar el Landing Page y explicar lo que entienden del producto.`<br>`• Registrarse e iniciar sesión.`<br>`• Registrar y editar un insumo; aplicar un filtro por categoría.`<br>`• Acceder al inventario y describir lo que entienden.`<br>`• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.`<br>`• Simular una transferencia de inventario entre dos sucursales.`<br>`• Revisar las notificaciones y describir su utilidad.`<br>`• Explorar el dashboard de datos.`<br>`• Cambiar el idioma de la app.   |
+| **Segmento 2: Administradores de Tiendas Retail** | • Claridad del valor ofrecido en el Landing Page.`<br>`• Registro e inicio de sesión.`<br>`• Gestión de sucursales del negocio.`<br>`• Registro y gestión de productos/insumos.`<br>`• Visualización y control de inventario.`<br>`• Registro y configuración de dispositivos (balanzas).`<br>`• Configuración de límites de stock (mín./máx.).`<br>`• Transferencia de inventario entre sucursales.`<br>`• Panel de alertas y notificaciones.`<br>`• Visualización de datos (dashboard). | • Registro / inicio de sesión.`<br>`• Gestión de sucursales (crear, editar, desactivar).`<br>`• Registro y edición de productos; filtrado por categoría.`<br>`• Visualización de inventario por sucursal.`<br>`• Registro de un dispositivo y asignación de lote.`<br>`• Configuración de umbrales de stock del dispositivo.`<br>`• Transferencia de stock entre sucursales.`<br>`• Revisión del centro de notificaciones.`<br>`• Visualización del dashboard de datos.`<br>`• Cambio de idioma de la interfaz. | • Navegar el Landing Page y explicar lo que entienden del producto.`<br>`• Registrarse e iniciar sesión.`<br>`• Registrar y editar un producto; aplicar un filtro por categoría.`<br>`• Acceder al inventario y describir lo que entienden.`<br>`• Registrar un dispositivo, asignarle un lote y configurar sus límites de stock.`<br>`• Simular una transferencia de inventario entre dos sucursales.`<br>`• Revisar las notificaciones y describir su utilidad.`<br>`• Explorar el dashboard de datos.`<br>`• Cambiar el idioma de la app. |
 
 **Métricas a registrar por sesión**
 
@@ -2762,23 +2762,24 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 **Flujos a Validar (resumen por User Goal)**
 
-| User Goal | Descripción del Flujo                                                                             | Objetivo de Validación                                                      |
-|-----------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| UG 1      | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación.      | Validar claridad del mensaje y de la propuesta de valor.                    |
-| UG 2      | El usuario se registra e inicia sesión con sus datos.                                             | Validar claridad del formulario de registro y facilidad de login.           |
-| UG 3      | El usuario crea, edita y desactiva una sucursal de su negocio.                                    | Validar la gestión del ciclo de vida de sucursales.                         |
-| UG 4      | El usuario registra, edita y filtra insumos/productos del inventario.                             | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
-| UG 5      | El usuario accede al inventario y consulta el stock por sucursal.                                 | Validar la claridad y organización de la información de inventario.         |
-| UG 6      | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos.             |
-| UG 7      | El usuario transfiere stock entre dos sucursales.                                                 | Validar la funcionalidad de transferencia de inventario.                    |
-| UG 8      | El usuario revisa el centro de notificaciones y alertas.                                          | Validar la utilidad y claridad de las notificaciones.                       |
-| UG 9      | El usuario visualiza el dashboard de datos del negocio.                                           | Validar la comprensión de los indicadores presentados.                      |
-| UG 10     | El usuario cambia el idioma de la interfaz.                                                       | Validar la accesibilidad y el soporte multi-idioma.                         |
-
+| User Goal | Descripción del Flujo                                                                             | Objetivo de Validación                                                       |
+| --------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| UG 1      | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación.      | Validar claridad del mensaje y de la propuesta de valor.                      |
+| UG 2      | El usuario se registra e inicia sesión con sus datos.                                             | Validar claridad del formulario de registro y facilidad de login.             |
+| UG 3      | El usuario crea, edita y desactiva una sucursal de su negocio.                                     | Validar la gestión del ciclo de vida de sucursales.                          |
+| UG 4      | El usuario registra, edita y filtra insumos/productos del inventario.                              | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5      | El usuario accede al inventario y consulta el stock por sucursal.                                  | Validar la claridad y organización de la información de inventario.         |
+| UG 6      | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos.              |
+| UG 7      | El usuario transfiere stock entre dos sucursales.                                                  | Validar la funcionalidad de transferencia de inventario.                      |
+| UG 8      | El usuario revisa el centro de notificaciones y alertas.                                           | Validar la utilidad y claridad de las notificaciones.                         |
+| UG 9      | El usuario visualiza el dashboard de datos del negocio.                                            | Validar la comprensión de los indicadores presentados.                       |
+| UG 10     | El usuario cambia el idioma de la interfaz.                                                        | Validar la accesibilidad y el soporte multi-idioma.                           |
 
 ### 6.3.2. Registro de Entrevistas
 
 A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de restaurantes, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de restaurante.
+
+### Segmento Administradores de restaurantes
 
 ### Entrevista 01 – Huiza Adriana
 
@@ -2794,7 +2795,7 @@ Segmento: Dueño o administrador de restaurante
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 6 minutos y 10 segundos
+Duración: 6 minutos y 10 segundos (0:05 min - 6:15 min)
 
 Registro audiovisual: https://acortar.link/AVJ9RS
 
@@ -2807,7 +2808,15 @@ Captura de entrevista:
 
 Resumen descriptivo de la entrevista:
 
+Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Adriana Huiza para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
 
+En la evaluación de la landing page, la entrevistada mostró una percepción positiva respecto a la forma en que se comunica el propósito de Restock. Consideró que la información presentada permite comprender que la plataforma busca optimizar el control de inventarios mediante herramientas digitales y dispositivos de monitoreo. Asimismo, destacó que la propuesta resulta útil para restaurantes que necesitan reducir errores manuales, conocer mejor el estado de sus insumos y tomar decisiones oportunas sobre reposición.
+
+Respecto a la aplicación web, Adriana valoró que el sistema permita centralizar procesos relacionados con la gestión del negocio, como el registro de información, la administración de lotes, el control de stock y la visualización de dispositivos. La entrevistada percibió como relevante que la plataforma permita registrar insumos y consultar información operativa desde un panel organizado, ya que esto puede facilitar la supervisión diaria del inventario. Además, consideró importante que los flujos sean claros para que un administrador pueda utilizarlos sin requerir conocimientos técnicos avanzados.
+
+La respuesta hacia la aplicación móvil también fue favorable. Adriana destacó que contar con una versión móvil puede ser útil para revisar información del negocio fuera de una computadora, especialmente cuando el administrador necesita supervisar el estado del inventario, revisar discrepancias o consultar información general de manera rápida. Desde su perspectiva, la movilidad de la solución aporta valor porque permite mantener control sobre la operación incluso cuando no se está físicamente en el área administrativa.
+
+Finalmente, la entrevista permitió validar que Restock es percibida como una solución útil para restaurantes que buscan mejorar la precisión del inventario y reducir la dependencia de registros manuales. Se confirmó que funcionalidades como el monitoreo de insumos, la gestión de lotes, la visualización de dispositivos y el acceso móvil representan elementos importantes para fortalecer la gestión operativa. Como oportunidad de mejora, se identifica la necesidad de mantener indicadores visuales claros que permitan interpretar rápidamente el estado del stock y las posibles discrepancias detectadas por el sistema.
 
 ### Entrevista 02 – Angelina Medina
 
@@ -2823,7 +2832,7 @@ Segmento: Dueño o administrador de restaurante
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 6 minutos y 45 segundos
+Duración: 6 minutos y 47 segundos(6:16 min - 13:03 min)
 
 Registro audiovisual: https://acortar.link/4mGKph
 
@@ -2836,8 +2845,17 @@ Captura de entrevista:
 
 Resumen descriptivo de la entrevista:
 
+Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Angelina Medina para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. La entrevista tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
 
-### Entrevista 03 –
+En la evaluación de la landing page, la entrevistada pudo identificar que Restock está orientada a resolver problemas relacionados con el control de inventarios, el monitoreo de insumos y la reducción de errores en la gestión manual. Angelina consideró que la explicación general de la plataforma ayuda a comprender el valor del sistema, especialmente porque presenta una solución que combina software con dispositivos de monitoreo para obtener información más confiable sobre el estado de los productos almacenados.
+
+Respecto a la aplicación web, Angelina valoró positivamente la posibilidad de gestionar información del negocio desde un entorno centralizado. Durante la revisión de los flujos, se resaltó la utilidad de contar con secciones para configuración del negocio, gestión de lotes, visualización de suministros y administración de dispositivos. La entrevistada consideró que estas funcionalidades pueden ayudar a mantener una mejor organización del inventario, especialmente en restaurantes donde el control de insumos es constante y puede volverse complejo si se realiza de forma manual.
+
+La aplicación móvil fue percibida como un complemento importante para la solución. Angelina destacó que una versión móvil facilita la supervisión rápida del negocio, permitiendo revisar información general, indicadores de stock y posibles discrepancias sin depender únicamente de una computadora. Esta característica fue considerada valiosa para administradores que necesitan mantenerse informados sobre el estado del inventario mientras realizan otras actividades operativas dentro o fuera del local.
+
+Finalmente, la entrevista permitió validar que Restock responde a necesidades reales del segmento restaurantes, principalmente en relación con la visibilidad del inventario, la actualización de información y la detección oportuna de problemas de stock. Se confirmó que la combinación de aplicación web, aplicación móvil y dispositivos de monitoreo puede aportar valor al reducir el trabajo manual y mejorar la toma de decisiones. Como oportunidad de mejora, se identificó la importancia de reforzar los indicadores visuales dentro del dashboard y las vistas de inventario, para que el usuario pueda interpretar rápidamente si un insumo se encuentra en estado normal, crítico o con discrepancias.
+
+### Entrevista 03 – Melany Espinoza
 
 Datos del entrevistado:
 
@@ -2851,7 +2869,7 @@ Segmento: Dueño o administrador de restaurante
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 9 minutos y 11 segundos
+Duración: 9 minutos y 11 segundos (13:04 min - 22:15 min)
 
 Registro audiovisual: https://acortar.link/F9EHY7
 
@@ -2874,8 +2892,9 @@ La respuesta hacia la aplicación móvil fue muy favorable. La entrevistada dest
 
 Finalmente, La entrevista permitió validar que Restock es percibida como una solución completa y altamente funcional para las necesidades administrativas. Se confirmó que la automatización de procesos mediante dispositivos de hardware y la portabilidad de la aplicación móvil son puntos de gran valor estratégico. La incorporación de reportes de rentabilidad y la estandarización entre sucursales se identificaron como las oportunidades principales para fortalecer el sistema y optimizar la toma de decisiones del usuario final.
 
-
 A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de sector retail de consumo masivo, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de tienda retail.
+
+### Segmento Administradores de tiendas retail
 
 ### Entrevista 01 – Brayner Coronel
 
@@ -2891,7 +2910,7 @@ Segmento: Dueño o administrador de tienda retail de consumo masivo
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 6 minutos y 20 segundos
+Duración: 9 minutos y 04 segundos (22:16 min - 31:20 min)
 
 Registro audiovisual: https://acortar.link/P51YEX
 
@@ -2912,7 +2931,6 @@ Respecto a la aplicación web, el entrevistado destacó positivamente la consist
 
 Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
 
-
 ### Entrevista 02 – Monica Jaramillo
 
 Datos del entrevistado:
@@ -2927,7 +2945,7 @@ Segmento: Dueño o administrador de tienda retail de consumo masivo
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 4 minutos y 30 segundos
+Duración: 3 minutos y 46 segundos (31:21 min - 35:07 min)
 
 Registro audiovisual: https://acortar.link/bhXlMy
 
@@ -2962,7 +2980,7 @@ Segmento: Dueño o administrador de tienda retail de consumo masivo
 
 Fecha de entrevista: 20 de junio de 2026
 
-Duración: 6 minutos y 30 segundos
+Duración: 9 minutos y 50 segundos (35:08 min - 44:58 min)
 
 Registro audiovisual: https://acortar.link/pPsfaS
 
@@ -3056,7 +3074,6 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 **DESCRIPCIÓN DE PROBLEMAS:**
 
 > _Los siguientes hallazgos provienen de la inspección heurística de la aplicación web desplegada. Deben corroborarse y/o ampliarse con las observaciones recogidas en las entrevistas de validación; cada problema incluye el espacio para la captura que lo ilustra._
-
 
 **PROBLEMA #1:** Jerarquía de precios confusa en la selección de plan
 
