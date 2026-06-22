@@ -1865,17 +1865,17 @@ Entrevista 01 –
 
 Datos del entrevistado:
 
-Nombre completo:
-Edad:
-Distrito: 
+Nombre completo: Huiza Adriana
+Edad: 32 años
+Distrito: Chorrillos
 Segmento: Dueño o administrador de restaurante
 Fecha de entrevista: 20 de junio de 2026
-Duración:
+Duración: 6 minutos y 10 segundos
 Registro audiovisual:
 Captura de entrevista:
 
 <p align="center">
-  <img src="" 
+  <img src="https://i.imgur.com/USeukEB.png" 
   alt="validation_interview_1"/>
 </p>
 
@@ -1887,17 +1887,17 @@ Entrevista 02 –
 
 Datos del entrevistado:
 
-Nombre completo:
-Edad:
-Distrito: 
+Nombre completo: Angelina Medina
+Edad: 25 años
+Distrito: Chorrillos
 Segmento: Dueño o administrador de restaurante
 Fecha de entrevista: 20 de junio de 2026
-Duración:
-Registro audiovisual:
+Duración: 6 minutos y 45 segundos
+Registro audiovisual: 
 Captura de entrevista:
 
 <p align="center">
-  <img src="" 
+  <img src="https://i.imgur.com/HnRzJHH.png" 
   alt="validation_interview_2"/>
 </p>
 
@@ -1931,8 +1931,8 @@ Entrevista 01 –
 
 Datos del entrevistado:
 
-Nombre completo: 
-Edad: 
+Nombre completo: Brayner Coronel
+Edad: 29 años
 Distrito: Villa María del Triunfo, Lima
 Segmento: Dueño o administrador de tienda retail de consumo masivo
 Fecha de entrevista: 20 de junio de 2026
@@ -1941,7 +1941,7 @@ Registro audiovisual:
 Captura de entrevista:
 
 <p align="center">
-  <img src="" 
+  <img src="https://i.imgur.com/r8YQkZL.png" 
   alt="validation_interview_1"/>
 </p>
 
@@ -1953,17 +1953,17 @@ Entrevista 02 –
 
 Datos del entrevistado:
 
-Nombre completo:
-Edad:
-Distrito: Villa María del Triunfo, Lima
+Nombre completo: Monica Jaramillo
+Edad: 52 años
+Distrito: José Gálvez, Lima
 Segmento: Dueño o administrador de tienda retail de consumo masivo
 Fecha de entrevista: 20 de junio de 2026
-Duración:
+Duración: 4 minutos y 30 segundos
 Registro audiovisual:
 Captura de entrevista:
 
 <p align="center">
-  <img src="" 
+  <img src="https://i.imgur.com/zQn8jeH.png" 
   alt="validation_interview_2"/>
 </p>
 
@@ -1974,17 +1974,17 @@ Entrevista 03 –
 
 Datos del entrevistado:
 
-Nombre completo:
-Edad:
-Distrito: José Gálvez, Lima
+Nombre completo: Erick Coronel
+Edad: 52 años
+Distrito: Villa María del Triunfo, Lima
 Segmento: Dueño o administrador de tienda retail de consumo masivo
 Fecha de entrevista: 20 de junio de 2026
-Duración:
+Duración: 6 minutos y 30 segundos
 Registro audiovisual:
 Captura de entrevista:
 
 <p align="center">
-  <img src="" 
+  <img src="https://i.imgur.com/u5bPyes.png" 
   alt="validation_interview_3"/>
 </p>
 
