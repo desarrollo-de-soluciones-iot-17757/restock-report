@@ -1861,7 +1861,7 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de restaurantes, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de restaurante.
 
-Entrevista 01 – Huiza Adriana
+### Entrevista 01 – Huiza Adriana
 
 Datos del entrevistado:
 
@@ -1890,7 +1890,7 @@ Resumen descriptivo de la entrevista:
 
 
 
-Entrevista 02 – Angelina Medina
+### Entrevista 02 – Angelina Medina
 
 Datos del entrevistado:
 
@@ -1918,7 +1918,7 @@ Captura de entrevista:
 Resumen descriptivo de la entrevista:
 
 
-Entrevista 03 –
+### Entrevista 03 –
 
 Datos del entrevistado:
 
@@ -1948,7 +1948,7 @@ Resumen descriptivo de la entrevista:
 
 A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de sector retail de consumo masivo, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de tienda retail.
 
-Entrevista 01 – Brayner Coronel
+### Entrevista 01 – Brayner Coronel
 
 Datos del entrevistado:
 
@@ -1984,7 +1984,7 @@ Respecto a la aplicación web, el entrevistado destacó positivamente la consist
 Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
 
 
-Entrevista 02 – Monica Jaramillo
+### Entrevista 02 – Monica Jaramillo
 
 Datos del entrevistado:
 
@@ -2019,7 +2019,7 @@ Respecto a la aplicación web, la entrevistada valoró positivamente la consiste
 
 Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. La entrevistada señaló que utiliza con frecuencia dispositivos móviles para gestionar actividades de su negocio, por lo que valoró especialmente la facilidad de uso de la aplicación. Destacó que la navegación resulta intuitiva y que las interacciones táctiles permiten acceder rápidamente a funcionalidades adicionales. En particular, le agradó la posibilidad de mantener presionados determinados elementos para desplegar nuevas opciones y acciones contextuales, ya que considera que este comportamiento agiliza las tareas diarias sin sobrecargar la interfaz con botones adicionales.
 
-Entrevista 03 – Erick Coronel
+### Entrevista 03 – Erick Coronel
 
 Datos del entrevistado:
 
