@@ -675,7 +675,7 @@ fix(chapter-02): correct user persona descriptions
 
 **Analíticos de colaboración – GitHub Insights:**
 
-![Contributors AV2](.png)
+![Contributors AV2](https://imgur.com/ldn5iz2.png)
 
 *Figura: Contribuciones por integrante durante el AV2*
 # Contenido
