@@ -2792,9 +2792,90 @@ Por ultimo, el sprint 2 también incluyó el desarrollo de la primera versión d
 
 #### 6.2.3.1. Sprint Planning 3
 
+<table>
+  <tr>
+    <td>Sprint #</td>
+    <td>Sprint 3</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Sprint Planning Background</strong></td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td><em>2026-06-22</em></td>
+  </tr>
+  <tr>
+    <td>Time</td>
+    <td><em>08:00 AM (GMT-5)</em></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>Modalidad remota mediante la plataforma Discord</td>
+  </tr>
+  <tr>
+    <td>Prepared By</td>
+    <td>Shapiama Rivera, Gabriela Nicole</td>
+  </tr>
+  <tr>
+    <td>Attendees (to planning meeting)</td>
+    <td>Diaz Quispe, Sebastian Matias / Coronel Espinoza, Farid Sebastian / Castro Alejos, Julio Daniel / Guerra Perez, José Jahaziel / Shapiama Rivera, Gabriela Nicole / Juarez Leon, Nicolas Emilio / Navarro Chinga, Antonio Jhair</td>
+  </tr>
+  <tr>
+    <td>Sprint 2 Review Summary</td>
+    <td><em>Durante el Sprint 2 se logró implementar y desplegar una versión funcional de la aplicación web, backend, aplicación móvil, servicio Edge y embebido. Se completaron las principales funcionalidades orientadas a la gestión operativa del inventario, incluyendo el centro de notificaciones, la gestión de recetas y kits, las métricas sobre suministros y alertas, y la visualización de datos procesados de temperatura, humedad y stock físico tanto en la aplicación web como en la móvil. Asimismo, se implementó la lectura, procesamiento y validación de datos provenientes de los dispositivos IoT, y se avanzó en las funcionalidades de gestión de inventarios, ventas, dispositivos y comparación de stock físico y digital. Adicionalmente, se incorporó contenido audiovisual introductorio en la landing page para reforzar la presentación de la plataforma y del equipo de desarrollo.</em></td>
+  </tr>
+  <tr>
+    <td>Sprint 2 Retrospective Summary</td>
+    <td><em>A lo largo del Sprint 2, el equipo sostuvo una comunicación fluida a través de reuniones remotas y herramientas de colaboración, lo que facilitó la coordinación del desarrollo entre la landing page, la aplicación web, el backend, el servicio Edge y el embebido. Como fortaleza, se resaltó la adopción de buenas prácticas de desarrollo, tales como el trabajo por ramas, la revisión de código mediante pull requests y la integración colaborativa de los avances entre los miembros. Entre los puntos de mejora, se detectó que ciertas historias de usuario demandaron más esfuerzo del estimado inicialmente, dejando algunas tareas inconclusas al cierre del sprint, y que las dependencias técnicas entre funcionalidades no siempre fueron identificadas con anticipación. De cara al Sprint 3, el equipo se comprometió a afinar la estimación de tareas, analizar las dependencias antes de iniciar el desarrollo y mantener un seguimiento más frecuente del avance en Jira para detectar bloqueos de forma oportuna.</em></td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Sprint Goal & User Stories</strong></td>
+  </tr>
+  <tr>
+    <td>Sprint 3 Goal</td>
+    <td>
+<strong>Nos enfocamos en</strong> implementar la autenticación de dispositivos IoT mediante MQTT para establecer la comunicación entre el dispositivo embebido y el servicio Edge, permitiendo la recepción de telemetría de peso, temperatura y humedad; así como, definir e implementar la comunicación entre el servicio Edge y el backend para el procesamiento de los datos de peso y entorno; también, incorporar la gestión de perfiles tanto a nivel de cuenta personal como de negocio, el módulo de suscripciones para la habilitación de planes de acceso a la plataforma, y la mejora del video about the product y about the team; además de concluir con el despliegue de la versión final de la aplicación web, backend, móvil, Edge y embebido.<br><br>
+<strong>Creemos que</strong> esto proporciona una integración completa del ecosistema IoT con la plataforma, permitiendo que los datos físicos del inventario fluyan de forma segura y confiable desde los dispositivos hasta el backend; mayor personalización de la experiencia para los administradores de restaurantes y tiendas retail mediante la gestión de sus perfiles personales y de negocio; un modelo de negocio sostenible a través del módulo de suscripciones; mayor confianza en los visitantes de la landing page mediante contenido audiovisual mejorado; y una versión final desplegada de todos los productos que conforman Restock.<br><br>
+<strong>Esto se confirmará cuando</strong> los administradores de restaurantes y tiendas retail visualicen en tiempo real el peso, temperatura y humedad de sus suministros directamente desde la plataforma; puedan personalizar su perfil personal y el de su negocio sin complicaciones; además de acceder a la plataforma mediante un plan de suscripción; y cuando nuevos visitantes de la landing page comprendan el propósito del producto y aumenten su confianza al conocer al equipo detrás de Restock.
+    </td>
+  </tr>
+  <tr>
+    <td>Sprint 3 Velocity</td>
+    <td><em>99</em></td>
+  </tr>
+  <tr>
+    <td>Sum of Story Points</td>
+    <td><em>99</em></td>
+  </tr>
+</table>
+
 #### 6.2.3.2. Aspect Leaders and Collaborators
 
+| Team Member (Last Name, First Name) | GitHub Username    | ARM | Devices Management | Tracking | Profiles | Subscriptions | Communications | Monitoring |
+|-------------------------------------|--------------------|-----|--------------------|----------|----------|---------------|----------------|------------|
+| Navarro Chinga, Antonio Jhair       | AntonioNavarro24   |     | C                  |          |          |               | L              |            |
+| Guerra Perez, José Jahaziel         | jahazielgg         |     | L                  |          | C        |               |                |            |
+| Juarez Leon, Nicolas Emilio         | JuarezLn10         | C   |                    | C        |          |               |                | L          |
+| Diaz Quispe, Matias Sebastian       | equinox-1092       |     |                    |          | L        |               | C              |            |
+| Castro Alejos, Julio Daniel         | JulioXC4           |     | C                  | C        |          | L             |                |            |
+| Shapiama Rivera, Gabriela Nicole    | GabrielaShapiama28 | C   |                    | L        |          |               |                | C          |
+| Coronel Espinoza, Farid Sebastian   | Far14z             | L   |                    |          |          | C             |                |            |
+
 #### 6.2.3.3. Sprint Backlog 3
+
+Sprint Backlog 2
+
+Como se definió en el planeamiento del Sprint 3, el objetivo de la iteración fue implementar la autenticación de dispositivos IoT mediante MQTT, establecer la comunicación entre el dispositivo embebido y el servicio Edge, definir e implementar la comunicación entre el servicio Edge y el backend, incorporar la gestión de perfiles, el módulo de suscripciones y mejorar el contenido audiovisual de la landing page. A continuación, se presenta un resumen del Sprint Backlog 3:
+
+Luego de definir el objetivo del sprint, se identificaron las historias de usuario, historias técnicas y maker stories correspondientes, y se dividió cada una en sub tareas necesarias para su implementación y cumplimiento. Para la gestión y el seguimiento del progreso se utilizó la aplicación Jira.
+
+Proyecto en Jira: [https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35/backlog](https://ui-topic.atlassian.net/jira/software/projects/UTI/boards/35/backlog)
+
+<p align="center">
+  <img src="https://i.imgur.com/s7iNRtj.png" alt="sprint_backlog_3"/>
+</p>
+
+A continuación, se presenta la tabla con las historias y sus tareas necesarias para completar este segundo sprint. Además, se indica el responsable y el estado de cada tarea.
 
 #### 6.2.3.4. Development Evidence for Sprint Review
 
