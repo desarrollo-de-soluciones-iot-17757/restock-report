@@ -24,112 +24,77 @@ Aspiramos a ser una referencia en soluciones inteligentes para la gestión de in
 
 <br>
 
-**Julio Castro Alejos (u202021885)**
-
-<div id="member-julio" align="center"> 
-  <img src="https://i.ibb.co/TxBt9xhF/julio.png" alt="Julio Castro Alejos" style="width: 150px; margin-right: 20px; border-radius: 10%;"> 
-  <div style="flex: 1;"> 
-  <p> 
-    Soy estudiante de Ingeniería de Software, actualmente cursando el séptimo ciclo de la carrera. Me interesa comprender el desarrollo de software de forma integral, desde la concepción de una idea hasta su implementación y uso por parte de los usuarios. <br>
-    Tengo experiencia en desarrollo full stack, incluyendo backend, diseño de   APIs, bases de datos y construcción de aplicaciones web. Me enfoco en   entender cómo las decisiones técnicas influyen en la escalabilidad,   mantenibilidad y desempeño de los sistemas. <br>
-    Asimismo, tengo interés en áreas como arquitectura de software, cloud   computing y prácticas de DevOps, buscando siempre construir soluciones  eficientes y bien estructuradas. Además, me interesa el uso de inteligencia  artificial dentro del desarrollo de software, especialmente en cómo  integrarla de manera efectiva para potenciar productos digitales. <br>
-    Dentro del equipo, destaco por mi enfoque práctico y mi capacidad para  aterrizar ideas en soluciones concretas, siempre priorizando que el  software genere valor real para los usuarios y el negocio.
-  </p>
-  </div> 
-</div>
-
-**Farid Sebastian Coronel Espinoza (u202312508)**
-
-<div id="member-coronel" align="center">
-  <img src="https://i.imgur.com/r8dJGKL.png" alt="Farid Coronel Espinoza" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-  <p> 
-    Soy estudiante de Ingeniería de Software y me formó de manera autodidacta. Cuento con sólidos conocimientos en desarrollo backend y mobile, aplicando buenas prácticas como Clean Architecture, Domain-Driven Design (DDD) y patrones de diseño. Tengo experiencia construyendo APIs REST, integrando servicios externos y trabajando con bases de datos relacionales y no relacionales.
-    Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.  
-  </p>
-  </div> 
-</div>
-
-<br>
-
-**Matias Sebastian Diaz Quispe (u202311938)**
-
-<div id="member-matias" align="center">
-  <img src="https://i.imgur.com/oL0tuRG.jpeg" alt="Matias Diaz Quispe" style="width: 150px; margin-right: 20px; border-radius: 10%;"> 
-  <div style="flex: 1;">
-  <p> 
-    Soy estudiante de la carrera de Ingeniería de Software, actualmente cursando el 7mo ciclo. Cuento con conocimientos sólidos en desarrollo backend y móvil. Además, me adapto con facilidad y tengo una fuerte ética de trabajo.
-    Por otro lado, poseo conocimientos en Git, TypeScript, React.js, HTML y Tailwind, así como en programación orientada a objetos. También tengo manejo básico de frameworks como Vue y Next.js.
-    Contribuyo al equipo aportando soluciones prácticas y orientadas a resultados, buscando siempre optimizar procesos y mejorar la experiencia del usuario final.
-  </p>
-  </div> 
-</div>
-
-<br>
-
-**Nicolas Emilio Walter Juarez Leon (u202317483)**
-
-<div id="member-nicolas" align="center">
-  <img src="https://i.imgur.com/hpDR64l.png" alt="Imagen Nicolas Juarez" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-  <p> 
-    Soy estudiante de la carrera de Ingeniería de Software cursando actualmente el 7mo ciclo y soy apasionado por aprender y reforzar mis conocimientos en diseño y desarrollo de software.
+<table>
+  <tr>
+    <th>Integrante</th>
+    <th>Foto</th>
+    <th>Descripcion</th>
+  </tr>
+  <tr>
+    <td>Julio Castro Alejos (u202021885)</td>
+    <td> <img src="https://i.ibb.co/TxBt9xhF/julio.png" alt="Julio Castro Alejos" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de Ingeniería de Software, actualmente cursando el séptimo ciclo de la carrera. Me interesa comprender el desarrollo de software de forma integral, desde la concepción de una idea hasta su implementación y uso por parte de los usuarios. <br> 
+Tengo experiencia en desarrollo full stack, incluyendo backend, diseño de APIs, bases de datos y construcción de aplicaciones web. Me enfoco en entender cómo las decisiones técnicas influyen en la escalabilidad, mantenibilidad y desempeño de los sistemas. <br>
+Asimismo, tengo interés en áreas como arquitectura de software, cloud computing y prácticas de DevOps, buscando siempre construir soluciones  eficientes y bien estructuradas. Además, me interesa el uso de inteligencia  artificial dentro del desarrollo de software, especialmente en cómo integrarla de manera efectiva para potenciar productos digitales. Dentro del equipo, destaco por mi enfoque práctico y mi capacidad para  aterrizar ideas en soluciones concretas, siempre priorizando que el software genere valor real para los usuarios y el negocio.
+    </td>
+  </tr>
+  <tr>
+    <td>Farid Sebastian Coronel Espinoza (u202312508)</td>
+    <td> <img src="https://i.imgur.com/r8dJGKL.png" alt="Farid Coronel Espinoza" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de Ingeniería de Software y me formó de manera autodidacta. Cuento con sólidos conocimientos en desarrollo backend y mobile, aplicando buenas prácticas como Clean Architecture, Domain-Driven Design (DDD) y patrones de diseño. Tengo experiencia construyendo APIs REST, integrando servicios externos y trabajando con bases de datos relacionales y no relacionales. Aporto al equipo una visión orientada a la mejora continua, con capacidad para proponer soluciones que optimicen procesos y generen valor de negocio. Me enfoco en entender las necesidades del usuario y traducirlas en soluciones técnicas eficientes.  
+    </td>
+  </tr>
+  <tr>
+    <td>Matias Sebastian Diaz Quispe (u202311938)</td>
+    <td> <img src="https://i.imgur.com/oL0tuRG.jpeg" alt="Matias Diaz Quispe" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de la carrera de Ingeniería de Software, actualmente cursando el 7mo ciclo. Cuento con conocimientos sólidos en desarrollo backend y móvil. Además, me adapto con facilidad y tengo una fuerte ética de trabajo.
+  Por otro lado, poseo conocimientos en Git, TypeScript, React.js, HTML y Tailwind, así como en programación orientada a objetos. También tengo manejo básico de frameworks como Vue y Next.js.
+  Contribuyo al equipo aportando soluciones prácticas y orientadas a resultados, buscando siempre optimizar procesos y mejorar la experiencia del usuario final.
+    </td>
+  </tr>
+  <tr>
+    <td>Nicolas Emilio Walter Juarez Leon (u202317483)</td>
+    <td> <img src="https://i.imgur.com/hpDR64l.png" alt="Imagen Nicolas Juarez" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de la carrera de Ingeniería de Software cursando actualmente el 7mo ciclo y soy apasionado por aprender y reforzar mis conocimientos en diseño y desarrollo de software.
     Además, me interesa el trabajo en equipo, la colaboración y la aplicación de conocimientos en entornos de desarrollo.
     Por otro lado, cuento cono conocimientos en diseño de arquitectura, Git, así como tecnologías en desarrollo backend y móvil.
     Finalmente, en mi futuro profesional busco centrarme sólidamente en el desarrollo móvil y el desarrollo backend complementado con tecnologías Cloud, arquitecturas escalables y mantenibles.
-  </p>
-  </div> 
-</div>
-
-<br>
-
-
-**José Jahaziel Guerra Perez (u202319831)**
-
-<div id="member-jahaziel" align="center">
-  <img src="https://i.ibb.co/LssNdfh/IMG-8966.jpg" alt="Imagen Jahaziel Guerra" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-  <p> 
-    Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
+    </td>
+  </tr>
+  <tr>
+    <td>José Jahaziel Guerra Perez (u202319831)</td>
+    <td> <img src="https://i.ibb.co/LssNdfh/IMG-8966.jpg" alt="Imagen Jahaziel Guerra" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me apasiona el aprendizaje continuo, la planificación detallada y la búsqueda de soluciones eficientes a problemas reales. <br>
   Mi enfoque profesional está orientado al desarrollo backend, con especial interés en la construcción de sistemas distribuidos, escalables y resilientes, aplicando arquitecturas basadas en microservicios, mensajería asincrónica y herramientas de CI/CD modernas. <br>
   Actualmente me interesa cómo los modelos de lenguaje (LLM) pueden actuar como agentes autónomos dentro de una arquitectura empresarial, integrándose con servicios como Apache Kafka, Spring Boot y sistemas de orquestación para tomar decisiones, responder eventos o ejecutar tareas de forma inteligente. <br>
   Mi objetivo a futuro es convertirme en un Full Stack Developer con visión sistémica, capaz de diseñar soluciones innovadoras que no solo funcionen, sino que mejoren activamente el ecosistema donde se   implementan, aprovechando tecnologías emergentes como inteligencia artificial, automatización y cloud computing. 
-  </p>
-  </div> 
-</div>
-
-<br>
-
-**Antonio Jhair Navarro Chinga (u20234101)**
-
-<div id="member-gabriela" align="center">
-  <img src="https://i.ibb.co/gnxh3x8/Antonio.jpg" alt="Imagen Antonio Navarro" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-<p>
-  Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me interesa entender cómo se construyen soluciones tecnológicas que realmente funcionen en contextos reales, considerando tanto la lógica del sistema como la experiencia de quienes lo utilizan.<br>
-  Cuento con conocimientos en desarrollo full stack y de aplicaciones móviles, trabajando en la construcción de aplicaciones web, APIs y manejo de bases de datos. Además, tengo experiencia utilizando tecnologías como Angular y aplicando conceptos de arquitectura para estructurar mejor las soluciones. <br>
- Por otro lado, me interesa la automatización de procesos mediante agentes, explorando cómo pueden integrarse en aplicaciones para ejecutar tareas y mejorar la eficiencia. <br>
-  Me considero una persona responsable, organizada y con facilidad para adaptarme, buscando siempre aportar soluciones prácticas y seguir aprendiendo en cada proyecto en el que participo.
-</p>
-  </div> 
-</div>
-
-<br>
-
-**Gabriela Nicole Shapiama Rivera (u202319448)**
-
-<div id="member-gabriela" align="center">
-  <img src="https://i.ibb.co/Y7svVgXm/gaby.jpg" alt="Imagen Gabriela Shapiama" style="width: 150px; margin-right: 20px; border-radius: 10%;">
-  <div style="flex: 1;">
-<p>
-  Soy estudiante de séptimo ciclo de Ingeniería de Software, con un fuerte interés por la lógica, el razonamiento y el desarrollo de soluciones tecnológicas con impacto real.<br>
+    </td>
+  </tr>
+  <tr>
+    <td>Antonio Jhair Navarro Chinga (u20234101)</td>
+    <td> <img src="https://i.ibb.co/gnxh3x8/Antonio.jpg" alt="Imagen Antonio Navarro" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de Ingeniería de Software, actualmente en el séptimo ciclo de la carrera. Me interesa entender cómo se construyen soluciones tecnológicas que realmente funcionen en contextos reales, considerando tanto la lógica del sistema como la experiencia de quienes lo utilizan<br>
+Cuento con conocimientos en desarrollo full stack y de aplicaciones móviles, trabajando en la construcción de aplicaciones web, APIs y manejo de bases de datos. Además, tengo experiencia utilizando tecnologías como Angular y aplicando conceptos de arquitectura para estructurar mejor las soluciones. <br>
+Por otro lado, me interesa la automatización de procesos mediante agentes, explorando cómo pueden integrarse en aplicaciones para ejecutar tareas y mejorar la eficiencia. <br>
+Me considero una persona responsable, organizada y con facilidad para adaptarme, buscando siempre aportar soluciones prácticas y seguir aprendiendo en cada proyecto en el que participo.
+    </td>
+  </tr>
+  <tr>
+    <td>Gabriela Nicole Shapiama Rivera (u202319448)</td>
+    <td> <img src="https://i.ibb.co/Y7svVgXm/gaby.jpg" alt="Imagen Gabriela Shapiama" style="width: 750px; margin-right: 20px; border-radius: 10%;"> </td>
+    <td>
+      Soy estudiante de séptimo ciclo de Ingeniería de Software, con un fuerte interés por la lógica, el razonamiento y el desarrollo de soluciones tecnológicas con impacto real.<br>
   Me motiva desarrollar soluciones eficientes, escalables y bien estructuradas, por lo que he adquirido conocimientos en desarrollo full-stack para aplicaciones web y móviles. Cuento con experiencia en visión por computadora aplicada al reconocimiento de señas, así como en herramientas de procesamiento y análisis de datos como Databricks. Manejo herramientas de control de versiones como Git y plataformas colaborativas como GitHub, aplicando buenas prácticas como Gitflow y Conventional Commits. También, tengo conocimientos en Azure, GCP y Docker, lo que complementa mi interés por prácticas relacionadas con DevOps y despliegue de aplicaciones.<br>
   Del mismo modo, vengo fortaleciendo mis conocimientos en diseño y arquitectura de proyectos de software, junto con habilidades de liderazgo asertivo. Estoy comprometida con seguir aprendiendo y aportar valor a cada equipo en el que participo.
-</p>
-  </div> 
-</div>
-
-<br>
+    </td>
+  </tr>
+</table>
 
 ## 1.2 Solution Profile
 
