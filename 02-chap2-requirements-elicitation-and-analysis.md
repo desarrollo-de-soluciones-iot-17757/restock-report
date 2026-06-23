@@ -583,57 +583,34 @@ Para este primer paso, el equipo se reunió e inició una lluvia de ideas con el
 
 Luego de identificar a los eventos significativos del negocio, se formaron líneas de tiempo con cada uno de ellos para formar una secuencia coherente y capaz de explicarse por sí misma al momento de la lectura. Además, como resultado de la formación de líneas de tiempo, se identificaron flujos referentes a recepción de clientes, preparación de comandas, revisión de inventarios, reposición de productos, cierre de caja, definición de recetas y creación de ofertas. Al tener las líneas de tiempo formadas, se identificaron a los actores que interactúan en el negocio y que son responsables de los eventos de dominio. Para ello, se identificó a gerentes, almaceneros, proveedores, cocineros, cajeros, meseros, sistema POS y clientes. Luego, a cada evento de dominio, se le asignó el actor que ejecuta un flujo de acciones. Finalmente, se analizaron las líneas de tiempo formadas en búsqueda de puntos de dolor que afecten a los actores del negocio. De esta forma, se puede encontrar zonas a aprovechar para oportunidades de solución. Para ello, el equipo centró sus ideas en pensar cómo cada actor identificado para los eventos y analizar qué es aquello que los fastidia o causa frustración. Como resultado de este proceso, se identificaron varios puntos de dolor que servirán como base para el diseño del software solución.
 
-
 ## 2.5. Ubiquitous Language
 
-| **Term (EN)** | **Definición (ES)** |
-|---|---|
-| **Branch** *(Sucursal)* | Sede física del restaurante o tienda donde operan los dispositivos, cabinas y procesos de inventario. |
-| **Cabin** *(Cabina)* | Estructura física de almacenamiento donde se coloca un insumo o producto y cuya base contiene el dispositivo de pesaje. |
-| **Device** *(Dispositivo / Balanza)* | Balanza IoT ubicada en la base de cada cabina, encargada de medir el peso del stock en tiempo real. |
-| **Sensor** *(Sensor)* | Componente del dispositivo que capta datos físicos, principalmente peso, para ser enviados al sistema. |
-| **Supply item** *(Insumo)* | Ingrediente, alimento o material consumible cuyo stock debe ser controlado. |
-| **Product** *(Producto)* | Elemento registrado en inventario; puede ser consumible o no consumible. |
-| **Supply name** *(Nombre del insumo)* | Nombre con el que se identifica un insumo dentro del sistema. |
-| **Stock level** *(Nivel de stock)* | Cantidad disponible de un producto o insumo en el sistema. |
-| **Physical stock** *(Stock físico)* | Cantidad real del insumo calculada a partir del peso medido por el dispositivo. |
-| **Digital stock** *(Stock digital / registrado)* | Cantidad almacenada en el sistema según registros, movimientos y operaciones previas. |
-| **Stock record** *(Registro de stock)* | Entidad central que consolida telemetría, cálculos y estado actual del stock. |
-| **Stock estimation** *(Estimación de stock)* | Cálculo realizado por el sistema para inferir la cantidad disponible a partir del peso recibido. |
-| **Recomputed physical estimate** *(Reestimación física)* | Recalculo del stock físico cuando llegan nuevos datos o se detectan inconsistencias. |
-| **Stable weight** *(Peso estable)* | Medición considerada confiable porque el valor del peso dejó de fluctuar. |
-| **Supply weight** *(Peso del insumo)* | Peso total detectado del insumo contenido en una cabina. |
-| **Unit weight** *(Peso unitario)* | Peso de referencia de una unidad del insumo, usado para estimar cuántas unidades hay disponibles. |
-| **Telemetry** *(Telemetría)* | Datos transmitidos por el dispositivo, como peso y otros valores operativos. |
-| **Temperature** *(Temperatura)* | Valor en °C medido por el sensor ambiental integrado (DHT22); aporta contexto a las lecturas de stock y a la conservación de insumos. |
-| **Humidity** *(Humedad relativa)* | Porcentaje de humedad relativa medido por el DHT22; usado para alertas de conservación y diagnóstico del entorno. |
-| **Environmental conditions** *(Condiciones ambientales)* | Conjunto {temperature, humidity, timestamp} enviado con la telemetría del dispositivo; usado para contextualizar y analizar lecturas. |
-| **DHT22** *(Sensor DHT22)* | Sensor integrado que mide temperatura y humedad; su salud influye en la validez de la telemetría y en la detección de anomalías ambientales. |
-| **Analytics** *(Analítica)* | Procesamiento e interpretación de datos de telemetría e inventario para generar decisiones o alertas. |
-| **Status check** *(Verificación de estado)* | Evaluación del estado actual del stock o del dispositivo luego de recibir datos. |
-| **Stock anomaly** *(Anomalía de stock)* | Comportamiento irregular del stock detectado por el sistema, como variaciones inesperadas o inconsistentes. |
-| **Stock discrepancy** *(Discrepancia de stock)* | Diferencia entre el stock físico estimado por el dispositivo y el stock digital almacenado en el sistema. |
-| **Stock matched** *(Stock coincidente)* | Estado en el que el stock físico y el digital coinciden dentro del margen aceptado. |
-| **Conciliation task** *(Tarea de conciliación)* | Proceso iniciado para revisar y corregir una discrepancia de inventario. |
-| **Perform stock comparison** *(Realizar comparación de stock)* | Acción de comparar el stock físico medido contra el stock digital almacenado. |
-| **Physical count** *(Conteo físico)* | Verificación manual del inventario real por parte de un usuario. |
-| **Adjust stock** *(Ajustar stock)* | Acción manual o asistida para corregir el stock digital del sistema. |
-| **Supply threshold** *(Umbral de abastecimiento)* | Límite configurado para determinar cuándo el stock está en una zona crítica, normal o excedida. |
-| **Threshold** *(Umbral)* | Valor de referencia mínimo y/o máximo usado para evaluar el stock de un insumo. |
-| **Maximum and minimum weight** *(Peso máximo y mínimo)* | Valores límite usados para definir el rango permitido o esperado para un insumo en una cabina. |
-| **Pre-alert** *(Prealerta)* | Notificación preventiva generada antes de llegar a un estado crítico o cuando el umbral es superado. |
-| **Replenishment** *(Reposición)* | Proceso de reabastecimiento del stock después de una solicitud o alerta. |
-| **Anomaly report** *(Reporte de anomalía)* | Registro formal generado cuando se detecta una anomalía relacionada con inventario o telemetría. |
-| **Malfunction report** *(Reporte de falla)* | Registro formal generado cuando el dispositivo presenta una avería o comportamiento incorrecto. |
-| **Device health** *(Salud del dispositivo / estado del dispositivo)* | Estado operativo general del dispositivo IoT. |
-| **Malfunction** *(Falla)* | Problema técnico en el dispositivo, sensor o comunicación que impide una lectura confiable. |
-| **Situation data** *(Datos de situación)* | Información contextual recibida por el módulo de salud del dispositivo para generar reportes o alertas. |
-| **Reports data** *(Datos de reportes)* | Información ya procesada y lista para ser mostrada o filtrada en el módulo de reportes. |
-| **Ticket** *(Ticket / incidencia)* | Caso de seguimiento abierto para resolver una anomalía o falla detectada en el dispositivo. |
-| **Inventory manager** *(Administrador de inventario)* | Usuario responsable del control de stock, revisión de discrepancias y decisiones de reposición. |
-| **Retail manager** *(Administrador retail)* | Usuario encargado de supervisar inventario y reportes en una tienda del contexto retail. |
-| **Restaurant manager** *(Administrador de restaurante)* | Usuario encargado de supervisar inventario y reportes en una sucursal del contexto gastronómico. |
-| **Supplier** *(Proveedor)* | Entidad externa que abastece insumos al negocio. |
-| **Supply history** *(Historial de insumos)* | Registro de movimientos de entrada, salida, consumo y reposición de cada insumo. |
-| **Menu dependency** *(Dependencia de menú)* | Relación entre un plato y los insumos necesarios para prepararlo. |
-| **POS terminal** *(Terminal POS)* | Sistema de punto de venta que puede integrarse con inventario para reflejar consumo automáticamente. |
+| **Term (EN)**                                             | **Definición (ES)**                                                                                                                    |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Branch** *(Sucursal)*                                   | Local físico del negocio donde se gestionan insumos, productos, ventas e inventario.                                                   |
+| **Manager** *(Administrador)*                             | Usuario responsable de supervisar la operación de una sucursal, revisar el inventario y tomar decisiones de reposición o ajuste.       |
+| **Restaurant manager** *(Administrador de restaurante)*   | Administrador encargado de supervisar la operación, inventario, recetas y ventas de una sucursal gastronómica.                         |
+| **Retail manager** *(Administrador retail)*               | Administrador encargado de supervisar la operación, inventario, kits y ventas de una tienda retail.                                    |
+| **Storage cabin** *(Cabina de almacenamiento)*            | Espacio físico donde se coloca un insumo para controlar su disponibilidad dentro de una sucursal.                                      |
+| **Supplies Keeper** *(Supplies Keeper)*                   | Equipo usado por el negocio para controlar la disponibilidad de insumos dentro de una cabina de almacenamiento.                        |
+| **Custom supply** *(Insumo personalizado)*                | Insumo definido por el negocio según sus propias necesidades operativas. Puede formar parte de una receta o de un kit.                 |
+| **Supplier** *(Proveedor)*                                | Persona o empresa externa que abastece insumos al negocio.                                                                             |
+| **Stock** *(Stock)*                                       | Cantidad disponible de un insumo en una sucursal.                                                                                      |
+| **Stock threshold** *(Umbral de stock)*                   | Límite definido por el negocio para saber cuándo un insumo está en nivel bajo, normal o excedido.                                      |
+| **Stock discrepancy** *(Diferencia de stock)*             | Diferencia entre la cantidad real de un insumo y la cantidad registrada en el sistema.                                                 |
+| **Stock adjustment** *(Ajuste de stock)*                  | Corrección realizada cuando el administrador confirma que el stock registrado no coincide con el stock real.                           |
+| **Physical count** *(Conteo físico)*                      | Revisión manual del inventario realizada por el administrador para confirmar la cantidad real de insumos.                              |
+| **Inventory conciliation** *(Conciliación de inventario)* | Proceso mediante el cual el administrador revisa y corrige diferencias entre el stock real y el stock registrado.                      |
+| **Replenishment** *(Reposición)*                          | Acción de reabastecer un insumo cuando su stock es insuficiente para la operación del negocio.                                         |
+| **Pre-alert** *(Prealerta)*                               | Aviso preventivo que informa al administrador que un insumo está cerca de requerir reposición o revisión.                              |
+| **Incident** *(Incidencia)*                               | Caso de seguimiento abierto cuando existe una diferencia de stock, una falla operativa o una situación que requiere atención.          |
+| **Operational failure** *(Falla operativa)*               | Problema que afecta el control normal del inventario o impide conocer correctamente la disponibilidad de un insumo.                    |
+| **Recipe** *(Receta)*                                     | Conjunto de insumos personalizados necesarios para preparar un producto gastronómico.                                                  |
+| **Kit** *(Kit)*                                           | Conjunto de insumos personalizados agrupados para venderse, prepararse o gestionarse como una unidad.                                  |
+| **Sale** *(Venta)*                                        | Registro de una receta o kit vendido por el negocio.                                                                                   |
+| **Recipe sale** *(Venta de receta)*                       | Venta de una receta que reduce el stock de los insumos personalizados que la componen.                                                 |
+| **Kit sale** *(Venta de kit)*                             | Venta de un kit que reduce el stock de los insumos personalizados incluidos en él.                                                     |
+| **Supply history** *(Historial de insumos)*               | Registro de movimientos de un insumo, como ingresos, consumos, reposiciones, ajustes y ventas asociadas.                               |
+| **Inventory report** *(Reporte de inventario)*            | Resumen que permite al administrador revisar el estado del stock, las reposiciones, las diferencias y las incidencias de una sucursal. |
+| **Point of sale** *(Punto de venta)*                      | Canal donde se registran las ventas del negocio y desde donde puede reflejarse el consumo de recetas o kits.                           |
+
