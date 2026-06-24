@@ -18,7 +18,7 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 **Exposición del AV2**
 
-**Enlace para acceder al vídeo:** [https://acortar.link/n61KsD](https://acortar.link/n61KsD)
+**Enlace para acceder al video:** [https://acortar.link/n61KsD](https://acortar.link/n61KsD)
 
 <img src="https://i.imgur.com/2vPi4fN.png" alt="Fragmento de la exposición del AV2."/>
 
