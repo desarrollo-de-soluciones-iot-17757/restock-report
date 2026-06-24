@@ -40,15 +40,23 @@ jobs:
       - name: Clean document text (Regex/Sed)
         run: sed -i 's/\.md://g' full_document.md
 
-      - name: Generate PDF
+      - name: Generate Main PDF
         run: npx md-to-pdf full_document.md --config-file md-to-pdf.config.json
 
-      - name: Rename PDF to final filename
+      - name: Rename Main PDF to final filename
         run: mv full_document.pdf documentacion-final.pdf
 
-      - name: Upload PDF Artifact
+      - name: Generate Changelog PDF
+        run: npx md-to-pdf changelog.md --config-file md-to-pdf.config.json
+
+      - name: Rename Changelog PDF to final filename
+        run: mv changelog.pdf registro-de-cambios.pdf
+
+      - name: Upload PDF Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: documentacion-final
-          path: documentacion-final.pdf
+          path: |
+            documentacion-final.pdf
+            registro-de-cambios.pdf
           retention-days: 14
