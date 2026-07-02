@@ -1685,7 +1685,7 @@ En esta sección, se describen los principales avances de implementación realiz
 
 Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Analytics, Communications, IAM y Resource.
 
-A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el primer sprint.
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el segundo sprint.
 
 | Repository                   | Branch                                   | Commit Id                                | Commit Message                                                                                                                                                                                                            | Committed On |
 | ---------------------------- | ---------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
@@ -2980,6 +2980,18 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 |            |                                                                 | UTI-853          | Implementar la visualización de discrepancias críticas en la app web                                                                | Como administrador, quiero ver en la app web únicamente las discrepancias clasificadas como críticas para enfocar mis acciones en los casos de mayor impacto operativo.                                  |                  5 | Matias D.                       | Done   |
 
 #### 6.2.3.4. Development Evidence for Sprint Review
+
+En esta sección, se describen los principales avances de implementación realizados en este tercer sprint. Se tienen como principales avances la implementación de la tercera versión del Web Application, la segunda versión del Web service, la segunda versión de la Mobile application, la tercera versión de la landing page, y la segunda versión del Edge y Embedded.
+
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: Tracking, Devices, Resource, Communications, Profiles y Subscriptions.
+
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el tercer sprint.
+
+| Repository                 | Branch              | Commit Id                                | Commit Message                                                                          | Commited On |
+|----------------------------|---------------------|------------------------------------------|-----------------------------------------------------------------------------------------|-------------|
+| restock-mobile-application | feature/preferences | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components.    | 02/06/26    |
+| restock-mobile-application | feature/preferences | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components. | 02/06/26    |
+| restock-mobile-application | feature/preferences | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings.          | 02/06/26    |
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
