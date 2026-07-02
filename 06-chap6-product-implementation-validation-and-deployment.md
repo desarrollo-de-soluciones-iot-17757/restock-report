@@ -2987,11 +2987,14 @@ Cada miembro del equipo avanzó progresivamente en las diferentes áreas del pro
 
 A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el tercer sprint.
 
-| Repository                 | Branch              | Commit Id                                | Commit Message                                                                          | Commited On |
-|----------------------------|---------------------|------------------------------------------|-----------------------------------------------------------------------------------------|-------------|
-| restock-mobile-application | feature/preferences | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components.    | 02/06/26    |
-| restock-mobile-application | feature/preferences | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components. | 02/06/26    |
-| restock-mobile-application | feature/preferences | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings.          | 02/06/26    |
+| Repository                 | Branch           | Commit Id                                | Commit Message                                                                              | Commited On |
+|----------------------------|------------------|------------------------------------------|---------------------------------------------------------------------------------------------|-------------|
+| restock-mobile-application | feature/profiles | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components.        | 02/06/26    |
+| restock-mobile-application | feature/business | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components.     | 02/06/26    |
+| restock-mobile-application | feature/business | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings.              | 02/06/26    |
+| restock-web-services       | feature/profiles | 79416771a36f03f74902254f8385fad55951affb | feat(profiles): normalize avatar handling and remove unnecessary transactional annotations. | 02/06/26    |
+| restock-web-services       | feature/business | 3d9e08074645f14d03912565de14903d81c0c11e | feat(business): integrate business creation into profile creation process.                  | 02/06/26    |
+
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
