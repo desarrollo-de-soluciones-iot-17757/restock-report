@@ -2983,6 +2983,89 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
+En esta sección se presenta el conjunto de pruebas automatizadas correspondientes al Sprint 3, enfocadas en los Services (`restock-web-services`) y el Edge Service (`restock-edge-service`). A diferencia del Sprint 2 —donde la mayor parte del alcance de testing ya estaba cubierta al momento del Sprint Review—, en este incremento se identificó que dos historias relacionadas a la detección y reporte de anomalías físicas (UTI-801 en el backend y UTI-899 en el Edge Service) se habían implementado sin pruebas automatizadas. Por ello, como parte de esta evidencia se diseñaron e incorporaron los Unit Tests faltantes para ambos servicios, verificando que las suites completas pasen antes de su integración.
+
+#### Testing scope and related User Stories
+
+| Jira ID  | User Story / Technical Story                                    | Descripción resumida                                                                 | Repositorio relacionado  |
+| -------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------ |
+| UTI-490  | Generación de alertas por exceso de stock                         | Evaluar y generar alertas cuando el stock de un producto supera el límite máximo configurado. | `restock-web-services` |
+| UTI-491  | Generación de alertas por bajo stock                               | Evaluar y generar alertas cuando el stock de un producto cae por debajo del límite mínimo configurado. | `restock-web-services` |
+| UTI-801  | Recepción de eventos anómalos (`POST /api/v1/anomalies`)         | Recibir y registrar reportes de anomalías físicas de peso enviados por el Edge Service. | `restock-web-services` |
+| UTI-899  | Detección local y reporte de anomalías físicas                   | Detectar variaciones de peso que exceden la tolerancia configurada y reportarlas al Cloud API. | `restock-edge-service` |
+| UTI-915  | Modelo de datos y persistencia para anomalías (Edge)             | Definir la estructura de datos para registrar anomalías físicas detectadas localmente.  | `restock-edge-service` |
+| UTI-916  | Cliente HTTP y payload de anomalías (Edge)                        | Construir y enviar el payload de la anomalía detectada al endpoint `/api/v1/anomalies` del backend. | `restock-edge-service` |
+
+#### Unit Tests designed
+
+##### Backend Cloud API – `restock-web-services`
+
+| Test ID  | Test class                                    | Related class / component                | Related User Story | Behavior validated                                                                                                                                                 |
+| -------- | ---------------------------------------------- | ----------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UT-BE-07 | `StockThresholdEvaluationServiceImplTest`   | `StockThresholdEvaluationServiceImpl`  | UTI-490, UTI-491    | Valida la evaluación de umbrales de stock: activación/desactivación del servicio, exceso de stock (alerta nueva y ya activa), bajo stock (alerta nueva y desactivación) y normalización de stock. |
+| UT-BE-08 | `StockThresholdAlertsControllerTest`        | `StockThresholdAlertsController`       | UTI-490, UTI-491    | Valida que el controlador delegue correctamente la evaluación por cuenta y que rechace la solicitud con `400 Bad Request` cuando el servicio de evaluación está inactivo.               |
+| UT-BE-09 | `PhysicalAnomalyCommandServiceImplTest`     | `PhysicalAnomalyCommandServiceImpl`    | UTI-801             | Valida el registro de una anomalía física recibida, el valor por defecto del timestamp cuando no se envía, y el rechazo de `deviceId` vacío o `registeredValue` nulo en el comando.  |
+| UT-BE-10 | `AnomaliesControllerTest`                   | `AnomaliesController`                  | UTI-801             | Valida que el endpoint `POST /api/v1/anomalies` delegue al command service y retorne `201 Created` con el recurso de la anomalía persistida.                                        |
+
+Ejecución de la suite de pruebas unitarias para umbrales de stock y anomalías físicas en Backend Cloud API:
+
+```
+Test set: com.uitopic.restock.platform.communications.application.internal.commandservices.StockThresholdEvaluationServiceImplTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.980 s
+
+Test set: com.uitopic.restock.platform.communications.interfaces.rest.controllers.StockThresholdAlertsControllerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.954 s
+
+Test set: com.uitopic.restock.platform.tracking.application.internal.commandservices.PhysicalAnomalyCommandServiceImplTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s
+
+Test set: com.uitopic.restock.platform.tracking.interfaces.rest.controllers.AnomaliesControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s
+```
+
+Adicionalmente, se realizó mantenimiento sobre `UserCommandServiceImplTest` (dos commits de corrección) para alinear los mocks con la firma actualizada de `ExternalProfilesService`, sin ampliar su cobertura funcional.
+
+##### Edge API – `restock-edge-service`
+
+| Test ID  | Test class / file                                                | Related class / component                                | Related User Story | Behavior validated                                                                                                                                             |
+| -------- | ------------------------------------------------------------------ | ----------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UT-ES-08 | `TestWeightRecordServiceIsPhysicalAnomaly`                       | `WeightRecordService.is_physical_anomaly`                 | UTI-899             | Valida la detección de anomalías por residual dentro/fuera de la tolerancia por defecto, la precedencia de un `anomaly_threshold` explícito, y el retorno seguro (`False`) cuando `custom_supply_weight` es nulo, cero o negativo. |
+| UT-ES-09 | `TestWeightRecordApplicationServiceCreateWeightRecord` (extendida) | `WeightRecordApplicationService.create_weight_record`     | UTI-899, UTI-915, UTI-916 | Valida que `_send_anomaly_to_cloud` se invoque únicamente cuando se detecta una anomalía, que se omita cuando la variación está dentro de tolerancia, y que se use un `custom_supply_weight` por defecto (100.0) cuando el dispositivo no tiene threshold registrado. |
+
+Ejecución de la suite de pruebas unitarias de detección y reporte de anomalías físicas del Edge Service:
+
+```
+tests/unit/test_tracking_domain_services.py::TestWeightRecordServiceIsPhysicalAnomaly (6 tests) — PASSED
+tests/unit/test_tracking_application_services.py::TestWeightRecordApplicationServiceCreateWeightRecord (6 tests) — PASSED
+======================== 12 passed in 0.08s ========================
+```
+
+> **Nota de hallazgo:** al ejecutar la suite completa del Edge Service se detectó que el cambio de fórmula de tolerancia en `WeightRecordService.calculate_physical_stock` (parte del mismo incremento) rompía el test preexistente `test_weight_outside_tolerance_returns_float_stock` del Sprint 2. La fórmula nueva (`permitted_weight_difference = permitted_difference`) es la correcta dimensionalmente —la anterior multiplicaba dos veces por `custom_supply_weight`, generando una tolerancia hasta 100 veces mayor a la esperada—, por lo que se actualizó el test para reflejar el comportamiento corregido en lugar de revertir el fix.
+
+#### Integration Tests / Acceptance Tests (BDD)
+
+No se incorporaron nuevas pruebas de integración (MockMvc) ni Acceptance Tests BDD (Cucumber/Behave) en este Sprint. El alcance de testing del Sprint 3 se limitó a Unit Tests para cerrar la brecha de cobertura sobre la detección y el reporte de anomalías físicas.
+
+#### Testing commits for Sprint Review
+
+| Repository                                                  | Branch                                    | Commit Id | Commit Message                                                             | Commit Message Body                                                                                                                                             | Committed on (Date) |
+| ------------------------------------------------------------- | ------------------------------------------- | --------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/alert-generation`               | `96832af` | `feat(communications): implement stock threshold evaluation and alert deactivation.` | Incluye `StockThresholdEvaluationServiceImplTest` y `StockThresholdAlertsControllerTest`, validando UTI-490 y UTI-491.                                     | 24/06/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/update-profile`                 | `13f4118` | `fix(test): align usercommandserviceimpltest with externalprofilesservice signature.` | Corrige mocks de `UserCommandServiceImplTest` tras el cambio de firma de `ExternalProfilesService`.                                                        | 24/06/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/recive-notification-evalute`    | `ede8085` | `feat(communications): filter stock threshold evaluation by accountid.`  | Actualiza `StockThresholdAlertsControllerTest` para reflejar el filtrado por `accountId`.                                                                    | 01/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/communications-test`            | `2a499cc` | `fix(test): correct usercommandserviceimpltest mock references and argument count.` | Corrige referencias de mocks y conteo de argumentos en `UserCommandServiceImplTest`.                                                                          | 01/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/physical-anomalies-testing`     | `80cd08b` | `test(tracking): add physical anomaly command service test`               | Se agregan pruebas unitarias para `PhysicalAnomalyCommandServiceImpl`, validando UTI-801.                                                                      | 04/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-web-services` | `feature/physical-anomalies-testing`     | `6073ef7` | `test(tracking): add anomalies controller test`                            | Se agrega prueba unitaria para `AnomaliesController`, validando la recepción de anomalías vía `POST /api/v1/anomalies`, relacionado con UTI-801.            | 04/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-edge-service` | `feature/physical-anomalies-reporting`   | `734477f` | `test(tracking): add is_physical_anomaly domain service test`             | Se agregan pruebas unitarias para `WeightRecordService.is_physical_anomaly`, validando UTI-899.                                                                | 04/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-edge-service` | `feature/physical-anomalies-reporting`   | `16d6145` | `test(tracking): add anomaly reporting application service test`          | Se agregan pruebas unitarias para la orquestación del reporte de anomalías en `WeightRecordApplicationService.create_weight_record`, relacionado con UTI-899, UTI-915 y UTI-916. | 04/07/2026            |
+| `desarrollo-de-soluciones-iot-17757/restock-edge-service` | `feature/physical-anomalies-reporting`   | `c871752` | `fix(test): align physical stock tolerance test with corrected formula`   | Se corrige `test_weight_outside_tolerance_returns_float_stock` para reflejar la fórmula de tolerancia corregida en `calculate_physical_stock`.               | 04/07/2026            |
+
+**Testing evidence summary**
+
+Durante el Sprint 3 se identificó que las historias de detección y reporte de anomalías físicas (UTI-801 en `restock-web-services` y UTI-899 en `restock-edge-service`) se habían implementado sin pruebas automatizadas, a diferencia del resto del incremento —que sí contó con cobertura de Unit Tests para la generación de alertas por umbrales de stock (UTI-490, UTI-491)—. Se incorporaron 4 nuevas clases/extensiones de test (2 en el backend, 2 en el Edge Service) que en conjunto suman 17 casos de prueba, todos ejecutados exitosamente mediante JUnit 5 + Mockito en el backend y pytest en el Edge Service.
+
+Cabe resaltar que la feature de anomalías físicas del Edge Service (UTI-899) aún se encuentra en el Pull Request `#20` (`feature/physical-anomalies-reporting`), pendiente de aprobación y merge hacia `develop` al momento de este Sprint Review; su testing suite fue añadida directamente sobre esa rama para que viaje junto con el resto del cambio al integrarse. Asimismo, se detectó y corrigió una regresión en `WeightRecordService.calculate_physical_stock` introducida por el mismo incremento, documentada en la nota de hallazgo de la sección de Unit Tests del Edge API.
+
 #### 6.2.3.6. Execution Evidence for Sprint Review
 
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
