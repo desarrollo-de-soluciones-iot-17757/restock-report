@@ -2987,14 +2987,67 @@ Cada miembro del equipo avanzó progresivamente en las diferentes áreas del pro
 
 A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el tercer sprint.
 
-| Repository                 | Branch           | Commit Id                                | Commit Message                                                                              | Commited On |
-|----------------------------|------------------|------------------------------------------|---------------------------------------------------------------------------------------------|-------------|
-| restock-mobile-application | feature/profiles | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components.        | 02/06/26    |
-| restock-mobile-application | feature/business | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components.     | 02/06/26    |
-| restock-mobile-application | feature/business | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings.              | 02/06/26    |
-| restock-web-services       | feature/profiles | 79416771a36f03f74902254f8385fad55951affb | feat(profiles): normalize avatar handling and remove unnecessary transactional annotations. | 02/06/26    |
-| restock-web-services       | feature/business | 3d9e08074645f14d03912565de14903d81c0c11e | feat(business): integrate business creation into profile creation process.                  | 02/06/26    |
-
+| Repository | Branch | Commit Id | Commit Message | Commited On |
+|---|---|---|---|---|
+| restock-edge-service | feature/documentation | 6265434cc409bd1a674d740bb0820b41f3269177 | fix: add mention to environmental record in read me. | 22/06/26 |
+| restock-edge-service | feature/tracking | e162dd76a142080d9cc23ec85d7963530a4f6729 | feat: implement tracking service architecture with database and device management models | 02/07/26 |
+| restock-edge-service | feature/tracking | 4e6470524550ce1919e30a66ddc1ed404c5b38a5 | feat: implement domain, infrastructure, and interface layers for device threshold management | 02/07/26 |
+| restock-edge-service | feature/tracking | 9ecf6648a1b2b4b98a66c554ae512ee6d0f10ed5 | chore: ignore .log files in the repository | 02/07/26 |
+| restock-edge-service | feature/tracking | 734477fa83cfad79b28b7c68d2153706ab5d932e | test(tracking): add is_physical_anomaly domain service test | 04/07/26 |
+| restock-edge-service | feature/tracking | 16d6145a918da4e22e845db7ffb3eefef4b79c92 | test(tracking): add anomaly reporting application service test | 04/07/26 |
+| restock-edge-service | feature/tests | c871752a7d9553548b94345adf845cdad c197a34a (hash incompleto) | fix(test): align physical stock tolerance test with corrected formula | 04/07/26 |
+| restock-embedded-application | feature/device | 9cdb0d1d83c1d7aba5fca1c79fca6089cecb4c94 | refactor(device): migrate embedded app to modest iot arduino workflow | 15/06/26 |
+| restock-embedded-application | feature/device | c2f140df0a2cb7e323310af1422e3b1b338cc7e3 | docs(device): update embedded app setup and workflow | 15/06/26 |
+| restock-embedded-application | feature/telemetry | a39e9d1881a1c707f2bf703b47331467af6bcbe8 | feat(telemetry): implement device health metrics and threshold alerts | 19/06/26 |
+| restock-embedded-application | feature/sketch | a2b29c353a0154fed6cfc065788fd980665c5cfe | fix(sketch): update code to the updated nano-framework | 01/07/26 |
+| restock-embedded-application | feature/weight | e932013d2fadfbde774895b29063c5364ebbc339 | feat(weight): add load cell connections | 01/07/26 |
+| restock-embedded-application | feature/weight | 85a8a0f6691e4c3848b32de7ce7c98dd5ef8d37c | feat(weight): add load cell constants | 01/07/26 |
+| restock-embedded-application | feature/weight | 62061b7acfbfe711195555141678e4c2a322abf6 | feat(weight): add weight telemetry package | 01/07/26 |
+| restock-embedded-application | feature/weight | 6ab39d966305475c115c459c524f649158db8a71 | feat(weight): add front left weight sensor | 01/07/26 |
+| restock-mobile-application | feature/profiles | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components. | 02/06/26 |
+| restock-mobile-application | feature/business | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components. | 02/06/26 |
+| restock-mobile-application | feature/business | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings. | 02/06/26 |
+| restock-mobile-application | feature/communications | daa17fc36f581ac2c5f2e7c64394050bc22d1de3 | fix(communications): add accountid param to stock threshold evaluation and correct tab filters in alertsbody. | 02/06/26 |
+| restock-mobile-application | feature/communications | 8181541613dbd6f5ea1716546ebb5325bfc9928f | fix(communications): connect alerts & notifications. | 02/06/26 |
+| restock-mobile-application | feature/profiles | 422a0f3fe6a6817bd6d591fcf824207d27fa13b5 | feat(profiles): implement profile management with remote data provider and repository. | 02/06/26 |
+| restock-mobile-application | feature/custom-supplies | 1bca7684f4b11f8a586d77510985898ac0c629cd | fix(custom-supplies): update custom supplies fetching to include account id for better data accuracy. | 20/06/26 |
+| restock-mobile-application | feature/communications | f6fa36dda00b3b49918d74ec1d4fa9117e0fba54 | feat(communications): auto resolve low stock alerts on stock normalization. | 29/06/26 |
+| restock-mobile-application | feature/communications | 67e758e3fa8c353f2d68f7ec494f5e8ca4c63c26 | feat(communications): implement stock excess alerts visualization with active or optimal status. | 29/06/26 |
+| restock-mobile-application | feature/communications | 661307697d536ad926fd802cf25165d524dda51f | fix(communications): connect alerts & notifications. | 01/07/26 |
+| restock-mobile-application | feature/business | ea7c9bda997e3bdda150b8c0997b2411c63e1ce1 | refactor(business): rename business files and update imports. | 04/07/26 |
+| restock-web-application | feature/documentation | 9424b4a9173d5abd733d45210942b726808817a5 | docs: add read me file. | 22/06/26 |
+| restock-web-application | feature/subscriptions | 67fef4eb4214977f7cdce1e46f6f64a8c49245d5 | feat(subscriptions): integrate Stripe subscriptions and add related components | 30/06/26 |
+| restock-web-application | feature/subscriptions | e3dc5895b90ec93a890bca74d5d6430d32e3f5e1 | feat(subscriptions): enhance subscription UI and error handling, add new features and loading states | 30/06/26 |
+| restock-web-application | feature/subscriptions | 89dee7129a443569d5a0c08f8e17787786a86987 | Enhance subscription management UI and functionality | 30/06/26 |
+| restock-web-application | feature/subscriptions | 9df68c5097f4a895fa33c78318b4f84e6f124a4f | feat(subscription): implement registration plan selection and success views with styling | 01/07/26 |
+| restock-web-application | feature/communications | c363f860e250cd36f92b0fc8c29ae6420a9b40c0 | feat(communications): load notifications by both userid and accountid, map sourcetype to alert card type. | 02/07/26 |
+| restock-web-application | feature/i18n | 9f53105de5fea2a97320ba020595698ee7bb246a | feat(i18n): apply translations to communications, analytics, and tracking presentation layers. | 02/07/26 |
+| restock-web-application | feature/i18n | 4df3d197214c1e1030610128841ec80ba0df6dd4 | feat(i18n): apply translations to custom-supply presentation layer. | 03/07/26 |
+| restock-web-application | feature/communications | N/A (sin hash) | fix(communication): update entity stock threshold | 04/07/26 |
+| restock-web-application | feature/kits | 45ebecd2a60f0b7c6bcdd47316ae8d6a80547191 | feat(kits): enhance kitstore with account id handling and sequential item addition | 04/07/26 |
+| restock-web-application | feature/kits | c76666637346f14bc1a7193189c72a5210f5e571 | feat(kits): implement responsive design for create and edit kit modals, enhance image handling | 04/07/26 |
+| restock-web-services | feature/profiles | 79416771a36f03f74902254f8385fad55951affb | feat(profiles): normalize avatar handling and remove unnecessary transactional annotations. | 02/06/26 |
+| restock-web-services | feature/business | 3d9e08074645f14d03912565de14903d81c0c11e | feat(business): integrate business creation into profile creation process. | 02/06/26 |
+| restock-web-services | feature/firebase | 910990e3ec3797c70cb4a1d8d9cc116d6d46682d | fix(firebase): restore base64 credentials and secure properties config | 02/06/26 |
+| restock-web-services | feature/tracking | af23ac85a64295d15b1eb3c5d04b33892e4ba197 | feat(tracking): implement physical anomalies domain | 02/06/26 |
+| restock-web-services | feature/security | d80abe7a6b78f9140ae76273ceba4c02c1064abb | fix(security): permit all access to telemetry and anomalies endpoints | 02/06/26 |
+| restock-web-services | feature/tests | 13f411825d20d8296322af516ddbae4db09be1ea | fix(test): align usercommandserviceimpltest with externalprofilesservice signature. | 24/06/26 |
+| restock-web-services | feature/communications | 96832af6dc0fda002635698d89295b0208f1f146 | feat(communications): implement stock threshold evaluation endpoint for overstock alerts. | 24/06/26 |
+| restock-web-services | feature/communications | 0c3cecd5fbf66a54cfd65e7e4610b665d557f8ce | feat(communications): implement stock threshold evaluation and alert deactivation. | 24/06/26 |
+| restock-web-services | feature/subscriptions | 2e62bad619a721859bc75a95df2c35e7376e3f46 | feat(subscriptions): add subscriptions plans seeder. | 24/06/26 |
+| restock-web-services | feature/subscriptions | 254b4c60e24ee72ecb64bd802da6ebbd1163fb29 | feat(subscriptions): link stripe product and price ids to seeded plans. | 24/06/26 |
+| restock-web-services | feature/initializes-subscriptions | 282abc5cab27835e08c89dc06d813af96258840f | feat(initializes-subscriptions): add plans and subscriptions repositories. | 24/06/26 |
+| restock-web-services | feature/initializes-subscriptions | 844a9f722078b4a71ff0d8f055c1ab33f3ea0708 | feat(initializes-subscriptions): add subscriptions type, billing cycle and status value objects | 24/06/26 |
+| restock-web-services | feature/subscriptions | 66ad450b4bb43bbe4cbca02e43a0e88aad7f9e0d | feat(subscriptions): integrate Stripe subscriptions | 30/06/26 |
+| restock-web-services | feature/firebase | 9412b27f30cdb723355e7657b69179c2961ee0d4 | fix: fix firebase cloud messaging | 30/06/26 |
+| restock-web-services | feature/subscriptions | 102a9511b758fc82e64f5413219884ddc831d4b5 | fix: fix stripe config | 30/06/26 |
+| restock-web-services | feature/subscriptions | f3f567bb190d70229db20a0166973d9e231f94d4 | fix: fix stripe subscription | 30/06/26 |
+| restock-web-services | feature/swagger | a9d9835c56036fc45d96e549d8734f9d29f31b6e | fix: fix swagger | 01/07/26 |
+| restock-web-services | feature/tests | 2a499cc95f50bb2be9f3492322d22863c296f582 | fix(test): correct usercommandserviceimpltest mock references and argument count. | 01/07/26 |
+| restock-web-services | feature/communications | ede8085f4edde474e5642b9ad6d2fdc642ca6a31 | feat(communications): filter stock threshold evaluation by accountid. | 01/07/26 |
+| restock-web-services | feature/tracking | 80cd08b06f2896658f6d9496f93ca0d578de3e3b | test(tracking): add physical anomaly command service test | 04/07/26 |
+| restock-web-services | feature/tracking | 6073ef7adfb113881f5c0a611df459547f0266fc | test(tracking): add anomalies controller test | 04/07/26 |
+| restock-web-services | feature/business | 41992999b3ec4ce515b6007658b0d5063f93e626 | fix(profiles): comment out business creation logic in profile creation process. | 04/07/26 |
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
