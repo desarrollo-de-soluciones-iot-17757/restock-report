@@ -83,6 +83,7 @@ Proyecto
 &nbsp;
 
 Período 202610
+Julio 2026
 </div>
 
 &nbsp;
@@ -674,6 +675,48 @@ Período 202610
     <td> 21/06/2026 </th>
     <td> Julio Castro </th>
     <td> Se añadió video about the product. </th>
+  </tr>
+  <tr>
+    <td> 3.01 </th>
+    <td> 04/07/2026 </th>
+    <td> Gabriela Shapiama </th>
+    <td> Se corrigió el Goal del Sprint 1. </th>
+  </tr>
+  <tr>
+    <td> 3.01 </th>
+    <td> 04/07/2026 </th>
+    <td> Jahaziel Guerra </th>
+    <td> Se corrigió el Goal del Sprint 2. </th>
+  </tr>
+  <tr>
+    <td> 3.01 </th>
+    <td> 04/07/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el Goal del Sprint 3. </th>
+  </tr>
+  <tr>
+    <td> 3.02 </th>
+    <td> 04/07/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se corrigieron las descripciones de las entrevistas. </th>
+  </tr>
+  <tr>
+    <td> 3.02 </th>
+    <td> 04/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se corrigió la tabla de Ubiquitous Language para que los términos sean acorde al negocio y no use términos genéricos. </th>
+  </tr>
+   <tr>
+    <td> 3.03 </th>
+    <td> 05/07/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigió el Big Picture Eventstorming alineando solo eventos de negocio sin uso del sistema actual. </th>
+  </tr>
+  <tr>
+    <td> 3.03 </th>
+    <td> 05/07/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se corrigieron los diagramas de clase para Embedded Application y Edge Application. </th>
   </tr>
 </table>
 
