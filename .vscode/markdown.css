@@ -1,5 +1,13 @@
 /* markdown.css */
 
+.cover-page table, th, td {
+  border: none;
+}
+
+.cover-page p {
+  font-size: 20px;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.4;

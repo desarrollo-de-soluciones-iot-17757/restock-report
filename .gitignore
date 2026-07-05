@@ -1,1 +1,7 @@
 annexes/
+node_modules/
+package-lock.json
+full_document.md
+documentacion-final.pdf
+changelog.md
+registro-de-cambios.pdf

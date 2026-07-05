@@ -1,38 +1,88 @@
-<div id="cover-page" align="center">
-<img src="https://i.imgur.com/uoAo2Eb.png" alt="Logo UPC" style="width: 200px; height: auto;" />
+<div class="cover-page" align="center">
+
+<img src="https://i.imgur.com/uoAo2Eb.png" alt="Logo UPC" style="width: 70px; height: auto;" />
+
+<br>
+<br>
+
+Universidad Peruana De Ciencias Aplicadas
+
+Carrera de Ingeniería de Software
+
+<br>
+
+<p>
+  
+<strong> 1ASI0572 </strong>
+
+<strong> <span style="font-size: 100px;"> Desarrollo de Soluciones IoT </span> </strong>
+
+NRC
+
+<strong> 17757 </strong>
+
+<strong> Informe de Trabajo Final </strong>
+
+Docente
+
+<strong> Angel Augusto Velasquez Nuñez </strong>
+
+<br>
+
+Equipo
+
+<strong> UI-Topic </strong>
+
+<br>
+
+Proyecto
+
+<strong> Restock </strong>
+
+<br>
+
+</p>
+
+<strong> Integrantes </strong>
+
+<table>
+  <tr>
+    <th> Código </th>
+    <th> Apellidos y Nombres </th>
+  </tr>
+  <tr>
+    <td> u202021885 </td>
+    <td> Castro Alejos, Julio Daniel </td>
+  </tr>
+  <tr>
+    <td> u202312508 </td>
+    <td> Coronel Espinoza, Farid Sebastian </td>
+  </tr>
+  <tr>
+    <td> u202311938 </td>
+    <td> Diaz Quispe, Matias Sebastian </td>
+  </tr>
+  <tr>
+    <td> u202319831 </td>
+    <td> Guerra Perez, José Jahaziel </td>
+  </tr>
+  <tr>
+    <td> u202317483 </td>
+    <td> Juarez Leon, Nicolas Emilio Walter </td>
+  </tr>
+  <tr>
+    <td> u202314101 </td>
+    <td> Navarro Chinga, Antonio Jhair </td>
+  </tr>
+  <tr>
+    <td> u202319448 </td>
+    <td> Shapiama Rivera, Gabriela Nicole </td>
+  </tr>
+</table>
+
 &nbsp;
 
-# UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS
-## Carrera de Ingeniería de Software
-### 1ASI0572 <br>
-### Desarrollo de Soluciones IoT
-### NRC <br>
-### 17757
-&nbsp;
-## Informe de Trabajo Final
-### Docente <br>
-### Angel Augusto Velasquez Nuñez
-### Equipo<br>
-### UI-Topic
-### Proyect<br> 
-### Restock
-&nbsp;
-
-### Integrantes
-
-| Código | Apellidos y Nombres |
-|---|---|
-| u202021885 | Castro Alejos, Julio Daniel |
-| u202312508 | Coronel Espinoza, Farid Sebastian |
-| u202311938 | Diaz Quispe, Matias Sebastian |
-| u202319831 | Guerra Perez, José Jahaziel |
-| u202317483 | Juarez Leon, Nicolas Emilio Walter |
-| u202314101 | Navarro Chinga, Antonio Jhair |
-| u202319448 | Shapiama Rivera, Gabriela Nicole |
-
-&nbsp;
-
-### Período 202610
+Período 202610
 </div>
 
 &nbsp;
