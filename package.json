@@ -1,0 +1,10 @@
+{
+  "name": "ui-topic-report-pdf-generator",
+  "version": "1.0.0",
+  "description": "Orchestrates markdown compilation and PDF generation",
+  "private": true,
+  "dependencies": {
+    "markdown-toc": "^1.2.0",
+    "md-to-pdf": "^5.2.4"
+  }
+}
