@@ -2985,6 +2985,144 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 
 #### 6.2.3.6. Execution Evidence for Sprint Review
 
+En esta sección, se presenta la evidencia de las principales vistas implementadas en el tercer sprint de trabajo.
+A continuación, se adjuntan los enlaces a los vídeos de ejecución y visibilidad de las vistas implementadas y la descripción de las pantallas implementadas para Landing Page, Aplicación web y móvil.
+Estas evidencias reflejan el progreso realizado en el sprint y sirven como prueba del trabajo realizado.
+
+## Landing Page
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la landing page. El alcance del desarrollo de este producto se centró en la actualización de los videos acerca del producto y del equipo de desarrollo y la implementación de la sección de los términos y condiciones de la plataforma.
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los pantallas actualizadas e implementadas, los cuales abarcan:
+
+* **Sección About-the-product**: Sección con la actualización del video que contiene los testimonios de los dos segmentos objetivo.
+* **Sección About-the-team**: Sección con la actualización de contenidos sobre el desempeño del equipo a través de los tres sprints.
+* **Términos y Condiciones (ToS):** Sección que contiene la descripción del contrado legal que el usuario acepta al utilizar la plataforma.
+
+<img src="https://i.imgur.com/2YR5pys.png" alt="Evidencia de Ejecución - Landing Page en el Sprint 3" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/hoPJql](https://acortar.link/hoPJql)
+
+#### Sección About-the-product
+
+Esta es una pantalla que muestra el vídeo informativo sobre el funcionamiento de la aplicación y los testimonios de ambos segmentos objetivos sobre cómo fue su experiencia con el uso de la plataforma.
+
+<img src="https://i.imgur.com/9CzTkk4.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
+
+#### Sección About-the-team
+
+Luego, se actualizó la sección con el video informativo acerca del equipo de desarrollo de la plataforma que incluye información actualizada sobre el trabajo realizado por el equipo en los tres sprints del proyecto.
+
+<img src="https://i.imgur.com/H25aDHP.png" alt="imagen de la sección about-the-team en la landing page" style="width: 100%; height: auto;"/>
+
+#### Términos y Condiciones (ToS)
+
+Finalmente, se agregó una sección que contiene los términos y condiciones que representa al contrato entre la plataforma y el usuario que desea registrarse y empezar a usar la plataforma.
+
+<img src="https://i.imgur.com/H25aDHP.png" alt="imagen del contrato de términos y condiciones en la landing page" style="width: 100%; height: auto;"/>
+
+## Aplicación Web
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación web. El esfuerzo de desarrollo se centró en habilitar la navegación principal y la interacción gráfica con las entidades operativas del sistema, brindando soporte visual a los modelos de negocio.
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Assets & Resources:** Vistas operativas para el registro, control y gestión de sucursales y suministros.
+* **Device Management:** Pantallas destinadas a la gestión, registro y configuración de dispositivos en el sistema.
+* **Configuración de Sucursales:** Interfaz para la creación y selección de sucursales en el sistema.
+
+<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/CmlyKz](https://acortar.link/CmlyKz)
+
+#### Gestión de inventario
+
+Vista del módulo de inventario donde se visualizan y registran nuevos custom supplies al sistema con el que se pueden registrar, posteriormente, lotes y asignación a dispositivos.
+
+<img src="https://i.imgur.com/HK89TpF.png" alt="sección de custom supplies" style="width: 100%; height: auto;"/>
+
+Vista del módulo donde se registran y categorizan los lotes registrados para los custom supplies en el sistema.
+
+<img src="https://i.imgur.com/iTLpnFp.png" alt="sección de lotes en el sistema de inventarios" style="width: 100%; height: auto;"/>
+
+Sección de discrepancias y tareas de conciliación registradas por el propio sistema en donde se le informa al usuario alguna discrepancia entre stock físico y del sistema al usuario.
+
+<img src="https://i.imgur.com/92vYanE.png" alt="sección de discrepancias y tareas de conciliación" style="width: 100%; height: auto;"/>
+
+Sección de resumen de información de custom supply donde se muestra la información completa del supply y qué lotes tiene registrado en el sistema.
+
+<img src="https://i.imgur.com/anym3ao.png" alt="sección de resumen de información de un custom supply" style="width: 100%; height: auto;"/>
+
+Formulario para edición de información de un custom supply registrado.
+
+<img src="https://i.imgur.com/DrscDdq.png" alt="formulario para editar información de un custom supply" style="width: 100%; height: auto;"/>
+
+#### Gestión de kits/recetas
+
+Formulario de creación de kits/recetas en el sistema
+
+<img src="https://i.imgur.com/wHPT7dV.png" alt="formulario para registrar un kit o receta en el sistema" style="width: 100%; height: auto;"/>
+
+#### Gestión de dispositivos
+
+Panel de gestión de dispositivos con cuatro métricas clave: escalas activas, alertas de stock, alertas ambientales y dispositivos offline.
+
+<img src="https://i.imgur.com/pcx9gZM.png" alt="panel de gestión de dispositivos" style="width: 100%; height: auto;"/>
+
+Sección de configuración de un dispositivo IoT en el sistema que puede ser usado para editar una configuración o finalizar la configuración de un dispositivo.
+
+<img src="https://i.imgur.com/tqtbcKJ.png" alt="centro de configuración de dispositivos" style="width: 100%; height: auto;"/>
+
+#### Configuración del sistema
+
+Sección de sucursales en el sistema donde se visualizan todas las sucursales que contienen tanto ventas como lotes registrados.
+
+<img src="https://i.imgur.com/WwutWr4.png" alt="configuración de sucursales" style="width: 100%; height: auto;"/>
+
+Formulario de registro de sucursal en el sistema.
+
+<img src="https://i.imgur.com/ZE6JYTP.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+## Aplicación móvil
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 2 para la aplicación móvil. El esfuerzo de desarrollo se centró en habilitar la navegación principal y la interacción gráfica con las entidades operativas del sistema, brindando soporte visual a los modelos de negocio.
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Resources:** Vistas operativas para el registro, control y gestión de sucursales, suministros e inventarios.
+* **Device Management:** Pantallas destinadas a la gestión, registro y configuración de dispositivos en el sistema.
+* **Analytics:** Interfaz para la visualización de métricas clave del sistema, como alertas de stock, alertas ambientales y dispositivos offline.
+
+<img src="https://i.imgur.com/v99slpI.png" alt="Evidencia de Ejecución - Mobile App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/J1NiTf](https://acortar.link/J1NiTf)
+
+#### Gestión de inventario
+
+Vista del módulo de inventario donde se visualizan y registran nuevos custom supplies al sistema con el que se pueden registrar, posteriormente, lotes y crear sucursales.
+
+<img src="https://i.imgur.com/VhQhh4y.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/vyuenpc.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+<img src="https://i.imgur.com/aywgsCn.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+#### Métricas del sistema
+
+Vista de métricas del sistema donde se visualizan las alertas de stock o ventas recientes.
+
+<img src="https://i.imgur.com/LQFusxa.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+#### Gestión de dispositivos
+
+Panel de gestión de dispositivos con cuatro métricas clave: escalas activas, alertas de stock, alertas ambientales y dispositivos offline.
+
+<img src="https://i.imgur.com/Nfq9TgC.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+
+
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
 
 #### 6.2.3.8. Software Deployment Evidence for Sprint Review
