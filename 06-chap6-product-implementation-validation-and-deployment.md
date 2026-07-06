@@ -2996,6 +2996,13 @@ A continuación, se muestra una tabla que contiene la información sobre los com
 | restock-edge-service | feature/tracking | 734477fa83cfad79b28b7c68d2153706ab5d932e | test(tracking): add is_physical_anomaly domain service test | 04/07/26 |
 | restock-edge-service | feature/tracking | 16d6145a918da4e22e845db7ffb3eefef4b79c92 | test(tracking): add anomaly reporting application service test | 04/07/26 |
 | restock-edge-service | feature/tests | c871752a7d9553548b94345adf845cdad c197a34a (hash incompleto) | fix(test): align physical stock tolerance test with corrected formula | 04/07/26 |
+| restock-edge-service | feature/tracking | 0dbe4a8f356c8fe19b7d8fc553e315e4cd169624 | test(tracking): update unit and integration tests | 05/07/26 |
+| restock-edge-service | feature/devices | 4b11393f8b78d6dfcb7cb55a6378012f2f3d6149 | feat(devices): add cloud device event url to env | 05/07/26 |
+| restock-edge-service | feature/devices | 4e433758d81cb10f57ae1d288bb804d7bcf6c168 | feat(devices): add device status events and reports to local database | 05/07/26 |
+| restock-edge-service | feature/devices | 78a19a560800718a30535e11ae1fd0387ef22245 | feat(devices): add device status report entity | 05/07/26 |
+| restock-edge-service | feature/devices | 99706778845e594417ffebca4624717363e37041 | feat(devices): add device health message to mqtt client | 05/07/26 |
+| restock-edge-service | feature/devices | f2eb381ea1442cfe1839642b8f82549051197809 | feat(devices): add device status report repository and device health event repository | 05/07/26 |
+| restock-edge-service | feature/devices | abfeeeb0612315b79212294a9360bf6de1a76302 | feat(devices): add device status services | 05/07/26 |
 | restock-embedded-application | feature/device | 9cdb0d1d83c1d7aba5fca1c79fca6089cecb4c94 | refactor(device): migrate embedded app to modest iot arduino workflow | 15/06/26 |
 | restock-embedded-application | feature/device | c2f140df0a2cb7e323310af1422e3b1b338cc7e3 | docs(device): update embedded app setup and workflow | 15/06/26 |
 | restock-embedded-application | feature/telemetry | a39e9d1881a1c707f2bf703b47331467af6bcbe8 | feat(telemetry): implement device health metrics and threshold alerts | 19/06/26 |
@@ -3026,6 +3033,12 @@ A continuación, se muestra una tabla que contiene la información sobre los com
 | restock-web-application | feature/communications | N/A (sin hash) | fix(communication): update entity stock threshold | 04/07/26 |
 | restock-web-application | feature/kits | 45ebecd2a60f0b7c6bcdd47316ae8d6a80547191 | feat(kits): enhance kitstore with account id handling and sequential item addition | 04/07/26 |
 | restock-web-application | feature/kits | c76666637346f14bc1a7193189c72a5210f5e571 | feat(kits): implement responsive design for create and edit kit modals, enhance image handling | 04/07/26 |
+| restock-web-application | feature/monitoring-metrics-and-anomalies | 17bac98334608ec616b89d082e2566ea40d3cf14 | fix: implement kit detail view and system preferences configuration component | 05/07/26 |
+| restock-web-application | feature/monitoring-metrics-and-anomalies | b0607fd7aed36b84f21faf15882afb26a74c32b3 | feat(communications): update alert cards and detail modal for hardware health telemetry | 05/07/26 |
+| restock-web-application | feature/create-sales-order | c86c500621e6701c9b90a759535a3bdda5915888 | feat(sales-orders): implement commands and models for sales order management | 05/07/26 |
+| restock-web-application | feature/create-sales-order | 670322d3045eaecb2222fd5bd6c782d14167d7cf | feat(sales-orders): enhance salesStore with order management features and state handling | 05/07/26 |
+| restock-web-application | feature/create-sales-order | 3eb8d2d8f5162446cd2e7ee5b68421831acf9ed1 | feat(sales-orders): implement sales order management with error handling for insufficient stock | 05/07/26 |
+| restock-web-application | feature/create-sales-order | c8b02b5a3270b7b59316be4cf4e5c66e9e591fb7 | feat(sales-overview): add sales overview screen, transactions table, and detail drawer | 05/07/26 |
 | restock-web-services | feature/profiles | 79416771a36f03f74902254f8385fad55951affb | feat(profiles): normalize avatar handling and remove unnecessary transactional annotations. | 02/06/26 |
 | restock-web-services | feature/business | 3d9e08074645f14d03912565de14903d81c0c11e | feat(business): integrate business creation into profile creation process. | 02/06/26 |
 | restock-web-services | feature/firebase | 910990e3ec3797c70cb4a1d8d9cc116d6d46682d | fix(firebase): restore base64 credentials and secure properties config | 02/06/26 |
@@ -3048,6 +3061,11 @@ A continuación, se muestra una tabla que contiene la información sobre los com
 | restock-web-services | feature/tracking | 80cd08b06f2896658f6d9496f93ca0d578de3e3b | test(tracking): add physical anomaly command service test | 04/07/26 |
 | restock-web-services | feature/tracking | 6073ef7adfb113881f5c0a611df459547f0266fc | test(tracking): add anomalies controller test | 04/07/26 |
 | restock-web-services | feature/business | 41992999b3ec4ce515b6007658b0d5063f93e626 | fix(profiles): comment out business creation logic in profile creation process. | 04/07/26 |
+| restock-web-services | feature/sales | 948dc59a67c4e1a8256ae9a89d53735ce2c517c3 | feat(sales): update sales order completion logic to allow custom items without batch requirements | 05/07/26 |
+| restock-web-services | feature/sales | 10b2a4f235d4dd5f89f0c5ecb81bccfbf3e5bd9a | feat(sales): enhance sales order completion to handle custom supply items | 05/07/26 |
+| restock-web-services | feature/sales | 67b19db1a36e87e6d2f74b3cad0a7facb5b6d929 | feat(sales): add functionality to remove products from sales orders and enhance order retrieval with account or branch filtering | 05/07/26 |
+| restock-web-services | feature/sales | a70ddbcc1584421bf76f542ef6c00bfa67c9d713 | feat(sales): add unit and integration tests for sales order command service handling of supply and kit items | 05/07/26 |
+| restock-web-services | feature/devices | 1a0a21ec61b1925374d5fb87819e774587cf1768 | feat(devices): add device health telemetry and M2M monitoring endpoints | 05/07/26 |
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
