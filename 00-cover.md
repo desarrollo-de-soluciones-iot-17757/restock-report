@@ -47,16 +47,16 @@ Proyecto
 
 <table style="border-collapse: collapse; border: none; background-color: white; color: black; margin: 8px auto; width: auto;">
   <tr>
-    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px;">Código</th>
-    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px;">Apellidos y Nombres</th>
+    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Código</th>
+    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Apellidos y Nombres</th>
   </tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202021885</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Castro Alejos, Julio Daniel</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202312508</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Coronel Espinoza, Farid Sebastian</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202311938</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Diaz Quispe, Matias Sebastian</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202319831</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Guerra Perez, José Jahaziel</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202317483</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Juarez Leon, Nicolas Emilio Walter</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202314101</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Navarro Chinga, Antonio Jhair</td></tr>
-  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202319448</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Shapiama Rivera, Gabriela Nicole</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202021885</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Castro Alejos, Julio Daniel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202312508</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Coronel Espinoza, Farid Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202311938</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Diaz Quispe, Matias Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202319831</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Guerra Perez, José Jahaziel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202317483</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Juarez Leon, Nicolas Emilio Walter</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202314101</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Navarro Chinga, Antonio Jhair</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202319448</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Shapiama Rivera, Gabriela Nicole</td></tr>
 </table>
 
 Período 202610
@@ -755,6 +755,11 @@ fix(chapter-02): correct user persona descriptions
 ![Contributors AV2](https://imgur.com/ldn5iz2.png)
 
 *Figura: Contribuciones por integrante durante el AV2*
+
+
+<div style="page-break-after: always;"></div>
+
+
 # Contenido
 
 ## Tabla de contenidos
@@ -996,7 +1001,9 @@ fix(chapter-02): correct user persona descriptions
 - [Bibliografía](08-bibliography.md#bibliografía)
 - [Anexos](09-annexes.md#anexos)
 
+
 <div style="page-break-after: always;"></div>
+
 
 # Student Outcome
 
