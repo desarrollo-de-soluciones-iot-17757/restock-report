@@ -60,10 +60,14 @@ Proyecto
   <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202319448</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Shapiama Rivera, Gabriela Nicole</td></tr>
 </table>
 
+&nbsp;
+
 Período 202610
 <br>
 Julio
 </div>
+
+&nbsp;
 
 <div style="page-break-after: always;"></div>
 
