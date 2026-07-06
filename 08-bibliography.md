@@ -31,3 +31,5 @@ Vásquez, J., Torres, K., & Castañeda, R. (2024). Propuesta de mejora para el c
 World Wide Web Consortium. (2025). *Web Content Accessibility Guidelines (WCAG) 2.1*. https://www.w3.org/TR/WCAG21/
 
 Zeldman, J., & Marcotte, E. (2009). *Designing with web standards* (3.ª ed.). New Riders.
+
+<div style="page-break-after: always;"></div>
