@@ -2998,29 +2998,35 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 * **Sección About-the-team**: Sección con la actualización de contenidos sobre el desempeño del equipo a través de los tres sprints.
 * **Términos y Condiciones (ToS):** Sección que contiene la descripción del contrado legal que el usuario acepta al utilizar la plataforma.
 
-<img src="https://i.imgur.com/2YR5pys.png" alt="Evidencia de Ejecución - Landing Page en el Sprint 3" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+<img src="https://i.imgur.com/yWzNhy8.png" alt="Evidencia de Ejecución - Landing Page en el Sprint 3" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
 
-**Vídeo de navegación (Product Navigation):** [https://acortar.link/hoPJql](https://acortar.link/hoPJql)
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/MqVQpD](https://acortar.link/MqVQpD)
 
 #### Sección About-the-product
 
 Esta es una pantalla que muestra el vídeo informativo sobre el funcionamiento de la aplicación y los testimonios de ambos segmentos objetivos sobre cómo fue su experiencia con el uso de la plataforma.
 
-<img src="https://i.imgur.com/NTyfLJz.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/90xY3KA.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
 
 #### Sección About-the-team
 
 Luego, se actualizó la sección con el video informativo acerca del equipo de desarrollo de la plataforma que incluye información actualizada sobre el trabajo realizado por el equipo en los tres sprints del proyecto.
 
-<img src="https://i.imgur.com/WSc5lt0.png" alt="imagen de la sección about-the-team en la landing page" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/X75nQFw.png" alt="imagen de la sección about-the-team en la landing page" style="width: 100%; height: auto;"/>
+
+#### Política de privacidad
+
+También, se agregó la descripción de los datos que recolecta la aplicación para mostrar transparencia hacia los usuarios y visitantes de la plataforma.
+
+<img src="https://i.imgur.com/Hw3OtwT.png" alt="imagen de la descripción de la política de privacidad de Restock" style="width: 100%; height: auto;"/>
 
 #### Términos y Condiciones (ToS)
 
 Finalmente, se agregó una sección que contiene los términos y condiciones que representa al contrato entre la plataforma y el usuario que desea registrarse y empezar a usar la plataforma.
 
-<img src="https://i.imgur.com/uuWZWNu.png" alt="imagen del contrato de términos y condiciones en la landing page" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/PNmzA9r.png" alt="imagen del contrato de términos y condiciones en la landing page" style="width: 100%; height: auto;"/>
 
 ## Aplicación Web
 
