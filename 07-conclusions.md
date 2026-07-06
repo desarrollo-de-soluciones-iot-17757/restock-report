@@ -16,7 +16,11 @@
 * **Monitoreo estricto de la capa *Edge*:** Dado que la solución depende de la transmisión de datos físicos al servidor, es vital implementar mecanismos de contingencia robustos en la *Restock Local Station Edge Application*. Se debe asegurar que las caídas de red temporales no generen pérdida de datos ni falsas alertas de discrepancia.
 * **Iteración continua de la usabilidad:** Aunque el diseño actual contempla a los usuarios objetivo, se recomienda realizar pruebas de usabilidad periódicas con administradores reales de restaurantes y tiendas *retail*. El objetivo debe ser mantener una curva de aprendizaje mínima para combatir la resistencia a la digitalización.
 * **Ampliar la cobertura de pruebas durante futuras iteraciones:** Aunque durante el Sprint inicial se desarrollaron evidencias de pruebas funcionales y de ejecución, se recomienda incorporar pruebas automatizadas adicionales, incluyendo pruebas unitarias, de integración y pruebas de rendimiento. Esto permitirá reducir riesgos asociados a cambios futuros y garantizar la estabilidad de la aplicación a medida que aumente su complejidad.
-* **Continuar iterando sobre la experiencia de usuario**: Conforme se incorporen nuevas funcionalidades, será importante mantener ciclos continuos de evaluación de la experiencia de usuario mediante pruebas de usabilidad y sesiones de retroalimentación con administradores y colaboradores de negocios reales. El objetivo debe ser conservar interfaces intuitivas y minimizar la curva de aprendizaje para facilitar la adopción tecnológica. 
+* **Continuar iterando sobre la experiencia de usuario**: Conforme se incorporen nuevas funcionalidades, será importante mantener ciclos continuos de evaluación de la experiencia de usuario mediante pruebas de usabilidad y sesiones de retroalimentación con administradores y colaboradores de negocios reales. El objetivo debe ser conservar interfaces intuitivas y minimizar la curva de aprendizaje para facilitar la adopción tecnológica.
+
+
+<div style="page-break-after: always;"></div>
+
 
 ## Video About-the-Team
 
