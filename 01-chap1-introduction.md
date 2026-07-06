@@ -12,13 +12,28 @@ Nos enfocamos en brindar una solución accesible y escalable para organizaciones
 
 ##### Misión y Visión
 
-##### Misión
-
-Nuestra misión es optimizar la gestión de inventarios mediante soluciones tecnológicas que permitan un control preciso, en tiempo real y basado en datos. Buscamos reducir pérdidas operativas, mejorar la eficiencia en el manejo de stock y apoyar la toma de decisiones en organizaciones que gestionan productos de alta rotación, integrando herramientas digitales e innovaciones como IoT.
-
-##### Visión
-
-Aspiramos a ser una referencia en soluciones inteligentes para la gestión de inventarios, impulsando la transformación digital de las organizaciones mediante el uso de tecnologías innovadoras. Visualizamos un futuro donde el control de stock sea automatizado, preciso y apoyado en monitoreo en tiempo real, permitiendo operaciones más eficientes, sostenibles y adaptables a las nuevas demandas del mercado.
+<table>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Misión</strong></td>
+      <td>
+        Nuestra misión es optimizar la gestión de inventarios mediante soluciones tecnológicas que permitan un control preciso, en tiempo real y basado en datos. Buscamos reducir pérdidas operativas, mejorar la eficiencia en el manejo de stock y apoyar la toma de decisiones en organizaciones que gestionan productos de alta rotación, integrando herramientas digitales e innovaciones como IoT.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Visión</strong></td>
+      <td>
+        Aspiramos a ser una referencia en soluciones inteligentes para la gestión de inventarios, impulsando la transformación digital de las organizaciones mediante el uso de tecnologías innovadoras. Visualizamos un futuro donde el control de stock sea automatizado, preciso y apoyado en monitoreo en tiempo real, permitiendo operaciones más eficientes, sostenibles y adaptables a las nuevas demandas del mercado.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ### 1.1.2 Perfiles de integrantes del equipo
 
