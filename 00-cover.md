@@ -45,18 +45,18 @@ Proyecto
 
 <strong> Integrantes </strong>
 
-<table style="border-collapse: collapse; border: none;">
+<table style="border-collapse: collapse; border: none; background-color: white; color: black;">
   <tr>
-    <th style="border: none; text-align: left;">Código</th>
-    <th style="border: none; text-align: left;">Apellidos y Nombres</th>
+    <th style="border: none; text-align: left; background-color: white; color: black;">Código</th>
+    <th style="border: none; text-align: left; background-color: white; color: black;">Apellidos y Nombres</th>
   </tr>
-  <tr><td style="border: none;">u202021885</td><td style="border: none;">Castro Alejos, Julio Daniel</td></tr>
-  <tr><td style="border: none;">u202312508</td><td style="border: none;">Coronel Espinoza, Farid Sebastian</td></tr>
-  <tr><td style="border: none;">u202311938</td><td style="border: none;">Diaz Quispe, Matias Sebastian</td></tr>
-  <tr><td style="border: none;">u202319831</td><td style="border: none;">Guerra Perez, José Jahaziel</td></tr>
-  <tr><td style="border: none;">u202317483</td><td style="border: none;">Juarez Leon, Nicolas Emilio Walter</td></tr>
-  <tr><td style="border: none;">u202314101</td><td style="border: none;">Navarro Chinga, Antonio Jhair</td></tr>
-  <tr><td style="border: none;">u202319448</td><td style="border: none;">Shapiama Rivera, Gabriela Nicole</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202021885</td><td style="border: none; background-color: white; color: black;">Castro Alejos, Julio Daniel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202312508</td><td style="border: none; background-color: white; color: black;">Coronel Espinoza, Farid Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202311938</td><td style="border: none; background-color: white; color: black;">Diaz Quispe, Matias Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202319831</td><td style="border: none; background-color: white; color: black;">Guerra Perez, José Jahaziel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202317483</td><td style="border: none; background-color: white; color: black;">Juarez Leon, Nicolas Emilio Walter</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202314101</td><td style="border: none; background-color: white; color: black;">Navarro Chinga, Antonio Jhair</td></tr>
+  <tr><td style="border: none; background-color: white; color: black;">u202319448</td><td style="border: none; background-color: white; color: black;">Shapiama Rivera, Gabriela Nicole</td></tr>
 </table>
 
 &nbsp;
@@ -67,8 +67,6 @@ Julio 2026
 </div>
 
 &nbsp;
-
-<div class="page"></div>
 
 <div style="page-break-after: always;"></div>
 
