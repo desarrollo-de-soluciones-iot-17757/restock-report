@@ -667,7 +667,7 @@ Para el desarrollo del **Project Report**, el equipo utiliza un repositorio dent
 
 **Repositorio del informe del proyecto:** [https://shortlink.uk/1oqQ5](https://shortlink.uk/1oqQ5)
 
-**Total de commits:** 254
+**Total de commits:** 422
 
 **Autores contribuyentes:**
 
