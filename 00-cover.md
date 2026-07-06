@@ -45,28 +45,24 @@ Proyecto
 
 <strong> Integrantes </strong>
 
-<table style="border-collapse: collapse; border: none; background-color: white; color: black;">
+<table style="border-collapse: collapse; border: none; background-color: white; color: black; margin: 8px auto; width: auto;">
   <tr>
-    <th style="border: none; text-align: left; background-color: white; color: black;">Código</th>
-    <th style="border: none; text-align: left; background-color: white; color: black;">Apellidos y Nombres</th>
+    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px;">Código</th>
+    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px;">Apellidos y Nombres</th>
   </tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202021885</td><td style="border: none; background-color: white; color: black;">Castro Alejos, Julio Daniel</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202312508</td><td style="border: none; background-color: white; color: black;">Coronel Espinoza, Farid Sebastian</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202311938</td><td style="border: none; background-color: white; color: black;">Diaz Quispe, Matias Sebastian</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202319831</td><td style="border: none; background-color: white; color: black;">Guerra Perez, José Jahaziel</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202317483</td><td style="border: none; background-color: white; color: black;">Juarez Leon, Nicolas Emilio Walter</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202314101</td><td style="border: none; background-color: white; color: black;">Navarro Chinga, Antonio Jhair</td></tr>
-  <tr><td style="border: none; background-color: white; color: black;">u202319448</td><td style="border: none; background-color: white; color: black;">Shapiama Rivera, Gabriela Nicole</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202021885</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Castro Alejos, Julio Daniel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202312508</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Coronel Espinoza, Farid Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202311938</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Diaz Quispe, Matias Sebastian</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202319831</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Guerra Perez, José Jahaziel</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202317483</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Juarez Leon, Nicolas Emilio Walter</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202314101</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Navarro Chinga, Antonio Jhair</td></tr>
+  <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px;">u202319448</td><td style="border: none; background-color: white; color: black; padding: 2px 12px;">Shapiama Rivera, Gabriela Nicole</td></tr>
 </table>
-
-&nbsp;
 
 Período 202610
 <br>
-Julio 2026
+Julio
 </div>
-
-&nbsp;
 
 <div style="page-break-after: always;"></div>
 
