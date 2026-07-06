@@ -34,6 +34,10 @@
 * **Expandir las validaciones hacia nuevos segmentos:** Se recomienda evaluar la solución en diferentes tipos de negocios gastronómicos y de *retail*, permitiendo obtener nueva evidencia que fortalezca la propuesta de valor y oriente la evolución del Roadmap.
 * **Continuar la validación del dispositivo IoT**: Como parte del Roadmap del producto, se recomienda realizar nuevas pruebas del dispositivo en entornos operativos reales, incorporando mejoras en la calibración de los sensores, la estabilidad de la comunicación y la tolerancia a fallos para incrementar la confiabilidad del sistema.
 
+
+<div style="page-break-after: always;"></div>
+
+
 ## Video About-the-Team
 
 El vídeo acerca del equipo refleja el aporte y colaboración de cada integrante del equipo para lograr los objetivos en común de Restock. 
