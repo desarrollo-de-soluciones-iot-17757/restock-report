@@ -45,10 +45,11 @@ Proyecto
 
 <strong> Integrantes </strong>
 
+
 <table style="border-collapse: collapse; border: none; background-color: white; color: black; margin: 8px auto; width: auto;">
   <tr>
     <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Código</th>
-    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Apellidos y Nombres</th>
+    <th style="border: none; text-align: left; background-color: white; color: black; padding: 2px 12px; white-space: nowrap; min-width: 260px;">Apellidos y Nombres</th>
   </tr>
   <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202021885</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Castro Alejos, Julio Daniel</td></tr>
   <tr><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">u202312508</td><td style="border: none; background-color: white; color: black; padding: 2px 12px; white-space: nowrap;">Coronel Espinoza, Farid Sebastian</td></tr>
