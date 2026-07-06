@@ -26,3 +26,5 @@ Además, se hace mención de la forma de colaboración para los entregables y so
 **Enlace al video:** [https://acortar.link/G5Dlxq](https://acortar.link/G5Dlxq)
 
 <img src="https://i.imgur.com/giOQoXl.png" alt="imagen de la reunion para grabar el video sobre el equipo" style="width: 100%; height: auto;"/>
+
+<div style="page-break-after: always;"></div>

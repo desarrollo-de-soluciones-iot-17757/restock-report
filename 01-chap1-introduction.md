@@ -300,3 +300,5 @@ Según el INEI, el sector de comercio en Perú creció 4,33% en enero de 2026 re
   - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los negocios retail presentan dificultades en el control de inventario debido a procesos manuales, lo que genera desorden, pérdidas por vencimiento y falta de precisión en el stock disponible.
 - **Necesidad:** Buscan mantener un control preciso del stock para evitar pérdidas y quiebres de inventario, mejorar la reposición de productos y maximizar sus ventas, asegurando una gestión más ordenada y rentable del negocio.
+
+<div style="page-break-after: always;"></div>
