@@ -612,4 +612,5 @@ Luego de identificar a los eventos significativos del negocio, se formaron líne
 | **Inventory report** *(Reporte de inventario)*            | Resumen que permite al administrador revisar el estado del stock, las reposiciones, las diferencias y las incidencias de una sucursal. |
 | **Point of sale** *(Punto de venta)*                      | Canal donde se registran las ventas del negocio y desde donde puede reflejarse el consumo de recetas o kits.                           |
 
+
 <div style="page-break-after: always;"></div>
