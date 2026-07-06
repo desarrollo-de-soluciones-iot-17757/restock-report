@@ -12,13 +12,28 @@ Nos enfocamos en brindar una solución accesible y escalable para organizaciones
 
 ##### Misión y Visión
 
-##### Misión
-
-Nuestra misión es optimizar la gestión de inventarios mediante soluciones tecnológicas que permitan un control preciso, en tiempo real y basado en datos. Buscamos reducir pérdidas operativas, mejorar la eficiencia en el manejo de stock y apoyar la toma de decisiones en organizaciones que gestionan productos de alta rotación, integrando herramientas digitales e innovaciones como IoT.
-
-##### Visión
-
-Aspiramos a ser una referencia en soluciones inteligentes para la gestión de inventarios, impulsando la transformación digital de las organizaciones mediante el uso de tecnologías innovadoras. Visualizamos un futuro donde el control de stock sea automatizado, preciso y apoyado en monitoreo en tiempo real, permitiendo operaciones más eficientes, sostenibles y adaptables a las nuevas demandas del mercado.
+<table>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Misión</strong></td>
+      <td>
+        Nuestra misión es optimizar la gestión de inventarios mediante soluciones tecnológicas que permitan un control preciso, en tiempo real y basado en datos. Buscamos reducir pérdidas operativas, mejorar la eficiencia en el manejo de stock y apoyar la toma de decisiones en organizaciones que gestionan productos de alta rotación, integrando herramientas digitales e innovaciones como IoT.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Visión</strong></td>
+      <td>
+        Aspiramos a ser una referencia en soluciones inteligentes para la gestión de inventarios, impulsando la transformación digital de las organizaciones mediante el uso de tecnologías innovadoras. Visualizamos un futuro donde el control de stock sea automatizado, preciso y apoyado en monitoreo en tiempo real, permitiendo operaciones más eficientes, sostenibles y adaptables a las nuevas demandas del mercado.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ### 1.1.2 Perfiles de integrantes del equipo
 
@@ -285,3 +300,5 @@ Según el INEI, el sector de comercio en Perú creció 4,33% en enero de 2026 re
   - Lugar de residencia: Lima Metropolitana, Perú.
 - **Problema:** Los negocios retail presentan dificultades en el control de inventario debido a procesos manuales, lo que genera desorden, pérdidas por vencimiento y falta de precisión en el stock disponible.
 - **Necesidad:** Buscan mantener un control preciso del stock para evitar pérdidas y quiebres de inventario, mejorar la reposición de productos y maximizar sus ventas, asegurando una gestión más ordenada y rentable del negocio.
+
+<div style="page-break-after: always;"></div>
