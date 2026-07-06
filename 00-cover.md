@@ -45,18 +45,18 @@ Proyecto
 
 <strong> Integrantes </strong>
 
-<table style="border-collapse: collapse;">
+<table style="border-collapse: collapse; border: none;">
   <tr>
-    <th style="text-align: left;">Código</th>
-    <th style="text-align: left;">Apellidos y Nombres</th>
+    <th style="border: none; text-align: left;">Código</th>
+    <th style="border: none; text-align: left;">Apellidos y Nombres</th>
   </tr>
-  <tr><td>u202021885</td><td>Castro Alejos, Julio Daniel</td></tr>
-  <tr><td>u202312508</td><td>Coronel Espinoza, Farid Sebastian</td></tr>
-  <tr><td>u202311938</td><td>Diaz Quispe, Matias Sebastian</td></tr>
-  <tr><td>u202319831</td><td>Guerra Perez, José Jahaziel</td></tr>
-  <tr><td>u202317483</td><td>Juarez Leon, Nicolas Emilio Walter</td></tr>
-  <tr><td>u202314101</td><td>Navarro Chinga, Antonio Jhair</td></tr>
-  <tr><td>u202319448</td><td>Shapiama Rivera, Gabriela Nicole</td></tr>
+  <tr><td style="border: none;">u202021885</td><td style="border: none;">Castro Alejos, Julio Daniel</td></tr>
+  <tr><td style="border: none;">u202312508</td><td style="border: none;">Coronel Espinoza, Farid Sebastian</td></tr>
+  <tr><td style="border: none;">u202311938</td><td style="border: none;">Diaz Quispe, Matias Sebastian</td></tr>
+  <tr><td style="border: none;">u202319831</td><td style="border: none;">Guerra Perez, José Jahaziel</td></tr>
+  <tr><td style="border: none;">u202317483</td><td style="border: none;">Juarez Leon, Nicolas Emilio Walter</td></tr>
+  <tr><td style="border: none;">u202314101</td><td style="border: none;">Navarro Chinga, Antonio Jhair</td></tr>
+  <tr><td style="border: none;">u202319448</td><td style="border: none;">Shapiama Rivera, Gabriela Nicole</td></tr>
 </table>
 
 &nbsp;
