@@ -1007,7 +1007,10 @@ fix(chapter-02): correct user persona descriptions
 - [Anexos](09-annexes.md#anexos)
 
 
+---
+
 <div style="page-break-after: always;"></div>
+
 
 
 # Student Outcome
