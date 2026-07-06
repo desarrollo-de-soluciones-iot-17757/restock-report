@@ -762,6 +762,34 @@ fix(chapter-02): correct user persona descriptions
 *Figura: Contribuciones por integrante durante el AV2*
 
 
+---
+
+## TB2 – Release Review – Semana 15
+
+Durante esta fase final, el equipo se enfocó en el cierre integral del ciclo de vida del proyecto, consolidando la versión final del informe, el despliegue definitivo de las aplicaciones y la documentación completa del último sprint. Los entregables abarcaron:
+
+- **Informe final del proyecto**, incluyendo versión actualizada del Registro de Versiones, el Project Report Collaboration Insights y la sección Student Outcome.
+- **Versión corregida y mejorada** de artefactos previamente presentados, tales como el Lenguaje Ubicuo, la Bibliografía, las Conclusiones y recomendaciones, los Sprint Backlogs 1, 2 y 3, los Sprints Planning 1 y 2, las entrevistas y su diseño, las IoT Style Guidelines, el sistema de señalización LED, los 12 pasos IoT, el formato Lean UX, el Big Picture, la carátula, los anexos y el formato general del reporte.
+- **Capítulo VI: Product Implementation, Validation & Deployment**, con la sección **6.2.3. Sprint 3**, cubriendo Sprint Planning 3, Aspect Leaders and Collaborators, Development Evidence, Testing Suite Evidence, Execution Evidence, Services Documentation Evidence, Software Deployment Evidence y Team Collaboration Insights for Sprint Review.
+- **6.3 Validation Interviews**, con el registro final de entrevistas de validación realizadas a los usuarios.
+- **Despliegue de la versión final** de las aplicaciones que forman parte del alcance del proyecto: Web Application, Mobile Application, Web Services, Edge Service y el dispositivo embebido Supplies Keeper.
+- **Keynote final de exposición**, Video About-the-Team, Video About-the-Product y el Individual Member Performance Report elaborado por el Team Leader.
+- **Archivo .zip complementario**, con videos, proyectos de software y documentos adicionales según lo requerido para el cierre del proyecto.
+
+Al igual que en los avances anteriores, cada nueva sección y actualización fue trabajada en ramas `feature/<sección>` (por ejemplo, `feature/chapter-06-sprint3`, `feature/annexes-final`) o ramas `fix/<sección>` para las correcciones finales de entregas pasadas. Los commits siguieron la convención establecida, reflejando las tareas de desarrollo, documentación, corrección y despliegue asignadas en el tablero Scrum para el cierre del proyecto:
+
+```text
+feat(chapter-06): add sprint 3 execution and deployment evidence
+chore(annexes): update final version log and bibliography
+fix(chapter-05): correct IoT style guidelines and LED signaling
+```
+
+**Analíticos de colaboración – GitHub Insights:**
+
+![Contributors TB2](./assets/images/project-insights/contributors-tb2.png)
+
+*Figura: Contribuciones por integrante durante el TB2*
+
 <div style="page-break-after: always;"></div>
 
 
