@@ -253,127 +253,333 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
 
 #### Segmento 1: Dueños o administradores de Restaurantes
 
-##### Entrevista 1:
-
-**Nombre:** Alex Guardia
-**Edad:** 38 años
-**Distrito:** Chorrillos
-**Timing:** (00:08 - 04:39 min)
-
-<img src="assets/images/chapter2/needfinding-interviews/entrevista1.png" height="500"> 
-
-Ver entrevista (00:08 - 04:39 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Alex Guardia tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Cuenta con 5 a 6 años de experiencia como gerente de restaurantes.
-
-Actualmente enfrenta desafíos relacionados con los proveedores y la gestión de inventarios. Realiza controles físicos diarios y verificaciones electrónicas semanales. Además, en ocasiones presenta problemas de discrepancia entre sus insumos físicos y los registrados.
-
-Utiliza dispositivos como un celular Android y una laptop con Windows, y su navegador habitual es Google Chrome. Para comunicarse, recurre frecuentemente a canales como WhatsApp y YouTube. También emplea software de gestión, aunque considera que la mayoría carece de personalización y que el soporte postventa suele ser deficiente. Se inspira en figuras del rubro gastronómico como Gastón Acurio y realiza compras en establecimientos como Makro o PlazaVea. Estaría dispuesto a invertir entre 500 y 800 dólares en una solución tecnológica integral que incluya implementación, capacitación y soporte, siempre que se adapte a sus procesos y contribuya a mejorar la eficiencia del negocio.
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #1</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Alex</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Guardia</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>38 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Gerente de restaurantes</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img 
+          src="assets/images/chapter2/needfinding-interviews/entrevista1.png" 
+          style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
+        >
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>00:08 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>04:31 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Alex Guardia tiene 38 años, es casado y vive en el distrito de Chorrillos, Lima. Es una persona analítica, comprometida y orientada a la mejora continua. Cuenta con 5 a 6 años de experiencia como gerente de restaurantes.
+      <br><br>
+      Su principal dolor radica en la gestión del inventario: realiza controles físicos diarios de forma manual y verificaciones electrónicas semanales usando hojas de cálculo en Excel, lo que le genera frecuentes discrepancias entre el stock físico real y los datos registrados. Este desajuste le impide tomar decisiones de reposición con seguridad y le consume tiempo operativo valioso. Aunque utiliza software de gestión gastronómica, siente que ninguna solución del mercado se adapta a sus procesos específicos y que el soporte postventa es deficiente, por lo que no logra cubrir del todo su necesidad de control preciso del inventario.
+      <br><br>
+      Utiliza un celular Android y una laptop con Windows; su navegador habitual es Google Chrome. Se comunica principalmente por WhatsApp y consume contenido de referencia en YouTube. Se inspira en figuras del rubro como Gastón Acurio y realiza compras en Makro y PlazaVea. Estaría dispuesto a invertir entre 500 y 800 dólares en una solución tecnológica integral que incluya implementación, capacitación y soporte continuo, siempre que se adapte a sus procesos y mejore la eficiencia del negocio.
+    </td>
+  </tr>
+</table>
 
 ##### Entrevista 2:
 
-**Nombre:** Lincoln Chauca Rubio
-**Edad:** 36 años
-**Distrito:** Breña
-**Timing:** (04:40 - 08:24 min)
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #2</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Lincoln</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Chauca Rubio</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>36 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Propietario y administrador de Amazonas Restaurant</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img 
+          src="assets/images/chapter2/needfinding-interviews/entrevista2.png" 
+          style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
+        >
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>04:40 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>03:44 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Lincoln Chauca Rubio tiene 36 años, es casado y vive en el distrito de Breña, Lima. Se describe como una persona disciplinada, responsable y dedicada. Es propietario del “Amazonas Restaurant” y lo administra desde hace 5 años, con una participación directa en la gestión operativa del negocio.
+      <br><br>
+      Enfrenta dos dolores principales. El primero es la rotación constante de personal: al no contar con un equipo estable, debe contratar y capacitar empleados con frecuencia, lo que genera errores en los registros de inventario y afecta la eficiencia del servicio. El segundo es la inconsistencia en el control de stock: el inventario real no siempre coincide con lo registrado en su software actual, Vidal, un sistema que permite a los mozos tomar pedidos desde tablets o celulares y mantener una base de datos de clientes. Si bien Vidal le facilita la operación general del restaurante y siente que cubre parcialmente sus necesidades, reconoce que el módulo de inventario aún presenta fallas y oportunidades de mejora claras, especialmente en el registro preciso de insumos.
+      <br><br>
+      Utiliza un celular Android y una laptop con Windows; navega con Google Chrome. Se comunica con su equipo y proveedores principalmente por WhatsApp y llamadas telefónicas. Se inspira en restaurantes reconocidos de cocina regional y realiza compras en Makro. Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológicas, pero está dispuesto a aumentar esa inversión hasta 500 soles si la solución mejora sustancialmente la gestión del negocio.
+    </td>
+  </tr>
+</table>
 
-<img src="assets/images/chapter2/needfinding-interviews/entrevista2.png" height="500">  
-
-Ver entrevista (04:40 - 08:24 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Lincoln Chauca Rubio tiene 36 años, es casado y vive en el distrito de Breña, Lima. Se describe como una persona disciplinada, responsable y dedicada. Es propietario del “Amazonas Restaurant” y lo administra desde hace 5 años, con una participación directa en la gestión operativa del negocio.
-
-Uno de los principales desafíos que enfrenta es la rotación constante del personal, ya que no cuenta con un equipo estable y se ve obligado a contratar nuevos empleados con frecuencia. Este problema afecta la eficiencia del servicio y genera un esfuerzo adicional en capacitación y adaptación. Otro reto significativo es el manejo del inventario, ya que el stock real no siempre coincide con lo mostrado en el software y su personal presenta errores de registro en algunas ocasiones.
-
-En términos tecnológicos, utiliza un celular con sistema operativo Android y una laptop con Windows, y su navegador habitual es Google Chrome. Usa un software llamado Vidal, el cual facilita la gestión del negocio al permitir que los mozos tomen pedidos desde tablets o celulares y se mantenga una base de datos de clientes, aunque reconoce que aún existen oportunidades de mejora. Para comunicarse con su equipo y proveedores emplea canales como WhatsApp y llamadas telefónicas. En cuanto a influencias y marcas, menciona que busca referencias en otros restaurantes reconocidos de cocina regional y realiza compras en proveedores mayoristas como Makro. Actualmente invierte alrededor de 300 soles mensuales en herramientas tecnológicas, pero está dispuesto a incrementar esa inversión hasta 500 soles si la solución mejora sustancialmente la gestión del restaurante.
-
-##### Entrevista 3:
-
-**Nombre:** Amparo Soledad Robles Vásquez
-**Edad:** 56 años
-**Distrito:** Bellavista
-**Timing:** (08:25 - 13:07 min)
-
-<img src="assets/images/chapter2/needfinding-interviews/entrevista3.png" height="500"> 
-
-Ver entrevista (08:25 - 13:07 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Amparo Soledad Robles Vásquez tiene 56 años, vive en el distrito de Bellavista y es propietaria del restaurante y cevichería “El 1er Puerto”, el cual gestiona desde hace 20 años. Se describe como una persona perseverante, responsable y amable.
-
-Entre los principales desafíos que enfrenta están la dificultad para encontrar personal adecuado y la falta de conocimientos en marketing digital, lo que limita la promoción de su restaurante. Asimismo, actualmente gestiona el inventario principalmente de manera manual, lo que le toma tiempo y esfuerzo.
-
-Usa un celular con Android y una laptop con Windows, y suele navegar usando Google Chrome. Se informa por canales como WhatsApp y YouTube, y tiene afinidad con marcas como Makro y figuras del sector gastronómico como Gastón Acurio. Reconoce que adaptarse a la tecnología es un reto, pero también una necesidad en el contexto actual. Por ello, tiene la intención de implementar un sistema digital que le permita agilizar los procesos y mejorar la atención al cliente, considerando esto clave para crecer y ofrecer un mejor servicio. Está dispuesta a invertir en un software que automatice su negocio si este se adapta a sus necesidades.
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #3</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Amparo Soledad</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Robles Vásquez</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>56 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Propietaria del restaurante y cevichería “El 1er Puerto”</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img 
+          src="assets/images/chapter2/needfinding-interviews/entrevista3.png" 
+          style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
+        >
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>08:25 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>04:42 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Amparo Soledad Robles Vásquez tiene 56 años, vive en el distrito de Bellavista y es propietaria del restaurante y cevichería “El 1er Puerto”, el cual gestiona desde hace 20 años. Se describe como una persona perseverante, responsable y amable.
+      <br><br>
+      Su dolor más crítico es la gestión manual del inventario: actualmente registra sus insumos en cuadernos y hojas escritas a mano, sin ningún sistema digital de apoyo. Esto le demanda un esfuerzo diario considerable, le genera pérdidas por productos vencidos o agotados sin previo aviso, y le impide tener visibilidad clara sobre qué necesita reponer y cuándo. No logra controlar su stock con precisión, lo que impacta directamente en la calidad del servicio y en los costos del restaurante. A esto se suma la dificultad para encontrar personal adecuado y su limitado conocimiento en marketing digital, que restringe la promoción del negocio.
+      <br><br>
+      Reconoce que adaptarse a la tecnología es un reto personal, pero también una necesidad. Usa un celular Android y una laptop con Windows, y navega con Google Chrome. Se informa principalmente por WhatsApp y YouTube, y tiene afinidad con marcas como Makro y referentes del sector como Gastón Acurio. Está dispuesta a invertir en un software que automatice los procesos de su negocio, siempre que sea simple, confiable y se adapte a su nivel de manejo tecnológico.
+    </td>
+  </tr>
+</table>
 
 ---
 
 #### Segmento 2: Dueños o administradores de negocios del sector retail de consumo masivo
 
-##### Entrevista 4:
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #4</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Brayner</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Coronel</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>28 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Propietario de una tienda retail llamada “Donde Siempre”</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>13:08 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>03:00 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Brayner Coronel es un emprendedor de 28 años y uno de los propietarios de una tienda retail llamada “Donde Siempre”. Se caracteriza por ser una persona disciplinada y, sobre todo, perseverante. Actualmente, cuenta con cinco años de experiencia en el rubro y gestiona dos sucursales de alta rotación.
+      <br><br>
+      Su principal dolor es la falta de control preciso del stock en tiempo real: antes del cierre de cada jornada, debe contabilizar manualmente cada artículo disponible en tienda para identificar faltantes y cantidades a reponer. Este proceso, que realiza producto por producto, se ha vuelto insostenible con el crecimiento del negocio a dos sucursales, generando errores de reposición y tiempo operativo desperdiciado. Para mitigar esto, utiliza dos herramientas en paralelo: Vandastic para registrar entradas y salidas de productos en tienda, y Excel para el control de sus almacenes externos. Sin embargo, esta combinación no le ofrece una vista unificada del inventario total, por lo que no logra tener visibilidad completa de su stock sin intervención manual. Considera necesario migrar a una solución más especializada con funciones avanzadas de gestión de inventarios que elimine esta doble carga operativa.
+      <br><br>
+      Por otro lado, considera que la tecnología es una aliada clave para la eficiencia operativa y el crecimiento sostenible de su emprendimiento. En la actualidad, utiliza navegadores como Google Chrome y Microsoft Edge, además de un celular Android y una computadora con sistema operativo Windows. Asimismo, para la comunicación con su equipo y proveedores, emplea principalmente WhatsApp, lo que le permite una coordinación más ágil. De igual manera, se inspira en referentes del sector retail como la familia Lindley y realiza sus compras a través de aplicaciones como BEES, AC Digital, Merkao y Pepsi Chat. Finalmente, utiliza un software de gestión de inventarios denominado “Vandastic”, el cual le permite registrar de forma detallada cada producto que ingresa y sale; adicionalmente, complementa este control con Excel para el registro de sus almacenes externos. Sin embargo, considera invertir en un software más especializado, con funciones avanzadas que le permitan optimizar la gestión de inventarios y mejorar la eficiencia operativa.
+    </td>
+  </tr>
+</table>
 
-**Nombre:** Brayner Coronel
-**Edad:** 28 años
-**Distrito:** Villa El Salvador
-**Timing:** (13:08 - 16:08 min)
 
-<img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" height="500" width="650">
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #5</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Erick</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Coronel</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>51 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Propietario de la tienda retail “Donde Siempre”</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>16:09 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>03:06 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Erick Coronel, de 51 años, es uno de los propietarios de la tienda retail “Donde Siempre”. Decidió dedicarse a este rubro tras haber trabajado en el sector de la construcción durante la pandemia, lo que representó un cambio significativo en su trayectoria profesional. Desde entonces, ha venido adaptando sus procesos con el objetivo de responder mejor a las exigencias del comercio moderno.
+      <br><br>
+      Su dolor principal tiene dos frentes. El primero es la alta rotación de personal: su sistema actual no le permite gestionar adecuadamente a los empleados ni asignar responsabilidades claras, lo que genera inconsistencias directas en el registro del inventario durante la operación diaria. El segundo es la limitación de su sistema de gestión actual, Vandastic: aunque lo utiliza para el control de inventarios y ventas diarias, el sistema no le indica automáticamente qué productos tienen mayor rotación ni cuándo es momento de reponer, obligándolo a revisar manualmente los registros para identificar esa información. En consecuencia, no logra anticiparse al desabastecimiento, lo que en ocasiones resulta en pérdida de ventas. Considera necesario migrar a una solución más especializada que le notifique oportunamente cuándo reponer productos, le brinde recomendaciones de almacenamiento y reduzca la dependencia del criterio manual de su personal.
+      <br><br>
+      Por otro lado, considera que la tecnología es un elemento clave para la gestión y crecimiento de su negocio. En la actualidad, utiliza únicamente el navegador Google Chrome, junto con un celular Android y una computadora con sistema operativo Windows. Asimismo, emplea WhatsApp y YouTube como medios de comunicación y apoyo operativo, lo que le permite mantenerse conectado con su equipo y acceder a información de utilidad. Para la gestión de su negocio realiza compras a través de plataformas como BEES, Merkao y tiendas Makro, y se inspira en referentes del sector retail como la familia Lindley. Para el control de inventarios y ventas diarias, emplea el sistema Vandastic; sin embargo, considera que este resulta limitado para sus necesidades actuales, especialmente porque le demanda revisar manualmente qué productos tienen mayor rotación. En este sentido, considera necesario migrar hacia una solución más especializada que le permita optimizar la gestión del inventario, mejorar la eficiencia operativa y, además, le notifique oportunamente cuándo es necesario reponer productos y le brinde recomendaciones sobre su almacenamiento.
+    </td>
+  </tr>
+</table>
 
-Ver entrevista (13:08 - 16:08 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Brayner Coronel es un emprendedor de 28 años y uno de los propietarios de una tienda retail llamada “Donde Siempre”. Se caracteriza por ser una persona disciplinada y, sobre todo, perseverante. Actualmente, cuenta con cinco años de experiencia en el rubro y gestiona dos sucursales de alta rotación.
-
-Uno de los principales desafíos que enfrenta está relacionado con la gestión y reposición de sus productos. En ese sentido, comenta que resulta complicado identificar qué productos faltan o en qué cantidades, ya que, antes del cierre, debe contabilizar manualmente cada artículo disponible dentro de la tienda. En consecuencia, debido al crecimiento de su negocio, se le ha hecho cada vez más difícil mantener un control constante y preciso del stock.
-
-
-Por otro lado, considera que la tecnología es una aliada clave para la eficiencia operativa y el crecimiento sostenible de su emprendimiento. En la actualidad, utiliza navegadores como Google Chrome y Microsoft Edge, además de un celular Android y una computadora con sistema operativo Windows. Asimismo, para la comunicación con su equipo y proveedores, emplea principalmente WhatsApp, lo que le permite una coordinación más ágil. De igual manera, se inspira en referentes del sector retail como la familia Lindley y realiza sus compras a través de aplicaciones como BEES, AC Digital, Merkao y Pepsi Chat. Finalmente, utiliza un software de gestión de inventarios denominado “Vandastic”, el cual le permite registrar de forma detallada cada producto que ingresa y sale; adicionalmente, complementa este control con Excel para el registro de sus almacenes externos. Sin embargo, considera invertir en un software más especializado, con funciones avanzadas que le permitan optimizar la gestión de inventarios y mejorar la eficiencia operativa.
-
-
-##### Entrevista 5:
-
-**Nombre:** Erick Coronel
-**Edad:** 51 años
-**Distrito:** Villa María del Triunfo
-**Timing:** (16:09 - 19:15 min)
-
-<img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" height="500" width="700">
-
-Ver entrevista (16:09 - 19:15 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Erick Coronel, de 51 años, es uno de los propietarios de la tienda retail “Donde Siempre”. Decidió dedicarse a este rubro tras haber trabajado en el sector de la construcción durante la pandemia, lo que representó un cambio significativo en su trayectoria profesional. Desde entonces, ha venido adaptando sus procesos con el objetivo de responder mejor a las exigencias del comercio moderno.
-
-
-Uno de los principales desafíos que enfrenta está relacionado con la gestión interna del personal, debido a la alta rotación de empleados. En ese sentido, comenta que su sistema actual no le permite administrar adecuadamente al equipo, lo que dificulta el control de las operaciones diarias. En consecuencia, esta situación puede generar inconsistencias en el registro del inventario, especialmente durante las actividades rutinarias de la tienda, afectando la precisión del stock.
-
-
-Por otro lado, considera que la tecnología es un elemento clave para la gestión y crecimiento de su negocio. En la actualidad, utiliza únicamente el navegador Google Chrome, junto con un celular Android y una computadora con sistema operativo Windows. Asimismo, emplea WhatsApp y YouTube como medios de comunicación y apoyo operativo, lo que le permite mantenerse conectado con su equipo y acceder a información de utilidad. Para la gestión de su negocio realiza compras a través de plataformas como BEES, Merkao y tiendas Makro, y se inspira en referentes del sector retail como la familia Lindley. Para el control de inventarios y ventas diarias, emplea el sistema Vandastic; sin embargo, considera que este resulta limitado para sus necesidades actuales, especialmente porque le demanda revisar manualmente qué productos tienen mayor rotación. En este sentido, considera necesario migrar hacia una solución más especializada que le permita optimizar la gestión del inventario, mejorar la eficiencia operativa y, además, le notifique oportunamente cuándo es necesario reponer productos y le brinde recomendaciones sobre su almacenamiento.
-
-##### Entrevista 6:
-
-**Nombre:** Luis Alfonso Jimenez
-**Edad:** 55 años
-**Distrito:** San Martín de Porres
-**Timing:** (19:16 - 29:49 min)
-
-<img src="assets/images/chapter2/needfinding-interviews/entrevista6.png" height="500"> 
-
-Ver entrevista (19:16 - 29:49 min): https://bit.ly/41kf54H
-
-**Resumen:**
-
-Luis Alfonso Jiménez, de 55 años, es administrador de una tienda del sector retail. Se caracteriza por ser una persona honesta, responsable y trabajadora, comprometida con el correcto funcionamiento de su negocio, aunque reconoce que los métodos actuales ya no responden a las exigencias del mercado.
-
-Uno de los principales desafíos que enfrenta está relacionado con la gestión de inventarios, especialmente en el manejo de productos próximos a vencer. En ese sentido, para evitar pérdidas, suele reubicar estos productos en zonas más accesibles para los clientes y colocar los más recientes al fondo de la tienda. Sin embargo, este proceso constante de rotación puede ocasionar daños en los empaques o productos, generando pérdidas innecesarias y dificultando un control eficiente del stock.
-
-Por otro lado, en la actualidad utiliza Google Chrome y Safari como navegadores, junto con un celular iPhone y una laptop con sistema operativo macOS. Asimismo, emplea WhatsApp como medio de comunicación con su equipo y proveedores, lo que facilita la coordinación diaria. Su principal referente en el sector retail es Carlos Rodríguez-Pastor, a quien valora por la organización y eficiencia de sus modelos de gestión. De igual manera, continúa utilizando Excel para el control de inventarios, compras y ventas, aunque reconoce que este método le consume tiempo, puede generar errores y dificulta la identificación oportuna de productos para reposición, lo que en ocasiones lo obliga a verificar físicamente el almacén para confirmar existencias. En este contexto, considera que la tecnología es fundamental para optimizar sus operaciones y está dispuesto a invertir lo que sea necesario en un sistema que le permita mejorar la gestión del negocio.
+<table>
+  <tr>
+    <th colspan="2" style="text-align:center;">Entrevista #6</th>
+  </tr>
+  <tr>
+    <td><strong>Nombre</strong></td>
+    <td>Luis Alfonso</td>
+  </tr>
+  <tr>
+    <td><strong>Apellidos</strong></td>
+    <td>Jimenez</td>
+  </tr>
+  <tr>
+    <td><strong>Edad</strong></td>
+    <td>55 años</td>
+  </tr>
+  <tr>
+    <td><strong>Rol</strong></td>
+    <td>Administrador de una tienda del sector retail</td>
+  </tr>
+  <tr>
+    <td><strong>Evidencia</strong></td>
+    <td>
+      <div align="center">
+        <img src="assets/images/chapter2/needfinding-interviews/entrevista6.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Link</strong></td>
+    <td><a href="https://bit.ly/41kf54H">https://bit.ly/41kf54H</a></td>
+  </tr>
+  <tr>
+    <td><strong>Timing donde inicia la entrevista</strong></td>
+    <td>19:16 min</td>
+  </tr>
+  <tr>
+    <td><strong>Duración de la entrevista</strong></td>
+    <td>10:33 min</td>
+  </tr>
+  <tr>
+    <td><strong>Resumen</strong></td>
+    <td>
+      Luis Alfonso Jiménez, de 55 años, es administrador de una tienda del sector retail. Se caracteriza por ser una persona honesta, responsable y trabajadora, comprometida con el correcto funcionamiento de su negocio, aunque reconoce que los métodos actuales ya no responden a las exigencias del mercado.
+      <br><br>
+      Su dolor principal es el manejo ineficiente de productos próximos a vencer: al no contar con un sistema que le alerte sobre fechas de vencimiento, recurre a una práctica manual de rotación física, reubicando los productos más antiguos en zonas más visibles y accesibles para el cliente, y colocando los más recientes al fondo. Este proceso frecuente genera daños en empaques y productos, pérdidas económicas evitables y un desgaste operativo constante. Para el control de inventarios, compras y ventas utiliza Excel, lo que le consume tiempo significativo, propensa a errores de digitación y no le permite identificar oportunamente qué productos necesitan reposición, obligándolo en ocasiones a verificar físicamente el almacén para confirmar existencias. En síntesis, no logra controlar su inventario de forma preventiva: siempre actúa sobre el problema una vez que ya ocurrió, no antes.
+      <br><br>
+      Por otro lado, en la actualidad utiliza Google Chrome y Safari como navegadores, junto con un celular iPhone y una laptop con sistema operativo macOS. Asimismo, emplea WhatsApp como medio de comunicación con su equipo y proveedores, lo que facilita la coordinación diaria. Su principal referente en el sector retail es Carlos Rodríguez-Pastor, a quien valora por la organización y eficiencia de sus modelos de gestión. De igual manera, continúa utilizando Excel para el control de inventarios, compras y ventas, aunque reconoce que este método le consume tiempo, puede generar errores y dificulta la identificación oportuna de productos para reposición, lo que en ocasiones lo obliga a verificar físicamente el almacén para confirmar existencias. En este contexto, considera que la tecnología es fundamental para optimizar sus operaciones y está dispuesto a invertir lo que sea necesario en un sistema que le permita mejorar la gestión del negocio.
+    </td>
+  </tr>
+</table>
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -564,7 +770,7 @@ El Big Picture Event Storming nos ayuda a explorar los eventos relacionados al n
 **Paso 1: Free Exploration**
 
 <div align="center">
-  <img src="https://i.imgur.com/5huCOyK.png" style="width: 100%; height: auto;" alt="Imagen de identificacion de eventos del negocio">
+  <img src="https://i.imgur.com/wqD5S1U.png" style="width: 100%; height: auto;" alt="Imagen de identificacion de eventos del negocio">
 </div>
 
 Para este primer paso, el equipo se reunió e inició una lluvia de ideas con el objetivo de identificar los eventos significativos que suelen ocurrir en el día a día de los restaurantes y tiendas retail. Para este proceso no se necesitó de que los eventos sigan una secuencia. Además, se usaron bloques de color naraja para identificarlos.
@@ -572,13 +778,13 @@ Para este primer paso, el equipo se reunió e inició una lluvia de ideas con el
 **Paso 2: Structured organization**
 
 <div align="center">
-  <img src="https://i.imgur.com/UK1f8Gy.png" style="width: 100%; height: auto;" alt="Eventos de cierre de caja para ambos sectores y gestión de inventarios y reposicionamiento de productos en restaurantes.">
+  <img src="https://i.imgur.com/ZEynNPP.png" style="width: 100%; height: auto;" alt="Eventos de cierre de caja para ambos sectores y gestión de inventarios y reposicionamiento de productos en restaurantes.">
 
-  <img src="https://i.imgur.com/JxzNtoY.png" style="width: 100%; height: auto;" alt="Gestión de inventarios y reposicionamiento de productos en tiendas retail y actividades de cierre de tienda para ambos sectores.">
+  <img src="https://i.imgur.com/FufTkUl.png" style="width: 100%; height: auto;" alt="Gestión de inventarios y reposicionamiento de productos en tiendas retail y actividades de cierre de tienda para ambos sectores.">
 
-  <img src="https://i.imgur.com/uzZnfOb.png" style="width: 100%; height: auto;" alt="Reposicionamiento de products en góndolas para tiendas retail, flujo de preparación de comandas y atención al cliente en restaurantes.">
+  <img src="https://i.imgur.com/edVGUxh.png" style="width: 100%; height: auto;" alt="Reposicionamiento de products en góndolas para tiendas retail, flujo de preparación de comandas y atención al cliente en restaurantes.">
 
-  <img src="https://i.imgur.com/Lk2gGLW.png" style="width: 100%; height: auto;" alt="Atención al cliente en tiendas retail, ideación y preparación de oferta (o promociones) y recetas.">
+  <img src="https://i.imgur.com/TjULI5R.png" style="width: 100%; height: auto;" alt="Atención al cliente en tiendas retail, ideación y preparación de oferta (o promociones) y recetas.">
 </div>
 
 Luego de identificar a los eventos significativos del negocio, se formaron líneas de tiempo con cada uno de ellos para formar una secuencia coherente y capaz de explicarse por sí misma al momento de la lectura. Además, como resultado de la formación de líneas de tiempo, se identificaron flujos referentes a recepción de clientes, preparación de comandas, revisión de inventarios, reposición de productos, cierre de caja, definición de recetas y creación de ofertas. Al tener las líneas de tiempo formadas, se identificaron a los actores que interactúan en el negocio y que son responsables de los eventos de dominio. Para ello, se identificó a gerentes, almaceneros, proveedores, cocineros, cajeros, meseros, sistema POS y clientes. Luego, a cada evento de dominio, se le asignó el actor que ejecuta un flujo de acciones. Finalmente, se analizaron las líneas de tiempo formadas en búsqueda de puntos de dolor que afecten a los actores del negocio. De esta forma, se puede encontrar zonas a aprovechar para oportunidades de solución. Para ello, el equipo centró sus ideas en pensar cómo cada actor identificado para los eventos y analizar qué es aquello que los fastidia o causa frustración. Como resultado de este proceso, se identificaron varios puntos de dolor que servirán como base para el diseño del software solución.
@@ -613,4 +819,7 @@ Luego de identificar a los eventos significativos del negocio, se formaron líne
 | **Supply history** *(Historial de insumos)*               | Registro de movimientos de un insumo, como ingresos, consumos, reposiciones, ajustes y ventas asociadas.                               |
 | **Inventory report** *(Reporte de inventario)*            | Resumen que permite al administrador revisar el estado del stock, las reposiciones, las diferencias y las incidencias de una sucursal. |
 | **Point of sale** *(Punto de venta)*                      | Canal donde se registran las ventas del negocio y desde donde puede reflejarse el consumo de recetas o kits.                           |
+
+
+<div style="page-break-after: always;"></div>
 
