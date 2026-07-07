@@ -4072,18 +4072,18 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 **Flujos a Validar (resumen por User Goal)**
 
-| User Goal | User Flow Relacionado (Código y Título) | Descripción del Flujo | Objetivo de Validación |
-| --------- | --------------------------------------- | --------------------- | ---------------------- |
-| UG 1      | **UF 1**: Registro y Onboarding | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación. | Validar claridad del mensaje y de la propuesta de valor. |
-| UG 2      | **UF 1**: Registro y Onboarding<br>**UF 2**: Inicio de Sesión y Recuperación de Contraseña | El usuario se registra e inicia sesión con sus datos. | Validar claridad del formulario de registro y facilidad de login. |
-| UG 3      | **UF 9**: Gestión de Sucursales | El usuario crea, edita y desactiva una sucursal de su negocio. | Validar la gestión del ciclo de vida de sucursales. |
-| UG 4      | **UF 3**: Gestión de Insumos / Custom Supplies<br>**UF 4**: Gestión de Recetas<br>**UF 5**: Gestión de Kits / Combos | El usuario registra, edita y filtra insumos/productos del inventario. | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
-| UG 5      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario accede al inventario y consulta el stock por sucursal. | Validar la claridad y organización de la información de inventario. |
-| UG 6      | **UF 8**: Gestión de Dispositivos (Smart Scales) | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos. |
-| UG 7      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario transfiere stock entre dos sucursales. | Validar la funcionalidad de transferencia de inventario. |
-| UG 8      | **UF 7**: Conciliación de Discrepancias de Inventario | El usuario revisa el centro de notificaciones y alertas. | Validar la utilidad y claridad de las notificaciones. |
-| UG 9      | - | El usuario visualiza el dashboard de datos del negocio. | Validar la comprensión de los indicadores presentados. |
-| UG 10     | - | El usuario cambia el idioma de la interfaz. | Validar la accesibilidad y el soporte multi-idioma. |
+| User Goal | Descripción del Flujo | Objetivo de Validación |
+|---|---|---|
+| UG 1 | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación. | Validar claridad del mensaje y de la propuesta de valor. |
+| UG 2 | El usuario se registra e inicia sesión con sus datos. | Validar claridad del formulario de registro y facilidad de login. |
+| UG 3 | El usuario crea, edita y desactiva una sucursal de su negocio. | Validar la gestión del ciclo de vida de sucursales. |
+| UG 4 | El usuario registra, edita y filtra insumos/productos del inventario. | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5 | El usuario accede al inventario y consulta el stock por sucursal. | Validar la claridad y organización de la información de inventario. |
+| UG 6 | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos. |
+| UG 7 | El usuario transfiere stock entre dos sucursales. | Validar la funcionalidad de transferencia de inventario. |
+| UG 8 | El usuario revisa el centro de notificaciones y alertas. | Validar la utilidad y claridad de las notificaciones. |
+| UG 9 | El usuario visualiza el dashboard de datos del negocio. | Validar la comprensión de los indicadores presentados. |
+| UG 10 | El usuario cambia el idioma de la interfaz. | Validar la accesibilidad y el soporte multi-idioma. |
 
 ### 6.3.2. Registro de Entrevistas
 
