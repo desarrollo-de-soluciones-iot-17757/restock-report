@@ -806,7 +806,7 @@ fix(chapter-02): correct user persona descriptions
 
 **Analíticos de colaboración – GitHub Insights:**
 
-![Contributors AV1](./assets/images/project-insights/contributors-av1.png)
+![Contributors AV1](../assets/images/project-insights/contributors-av1.png)
 *Figura: Contribuciones por integrante durante el AV1*
 
 ---
@@ -832,7 +832,7 @@ fix(chapter-02): correct user persona descriptions
 
 **Analíticos de colaboración – GitHub Insights:**
 
-![Contributors AV1](./assets/images/project-insights/contributors-tb1.png)
+![Contributors AV1](../assets/images/project-insights/contributors-tb1.png)
 *Figura: Contribuciones por integrante durante el TB1*
 
 ---
@@ -888,7 +888,7 @@ fix(chapter-05): correct IoT style guidelines and LED signaling
 
 **Analíticos de colaboración – GitHub Insights:**
 
-![Contributors TB2](./assets/images/project-insights/contributors-tb2.png)
+![Contributors TB2](../assets/images/project-insights/contributors-tb2.png)
 
 *Figura: Contribuciones por integrante durante el TB2*
 
