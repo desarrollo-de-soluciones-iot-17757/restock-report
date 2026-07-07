@@ -24,9 +24,9 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 **Exposición del TB2**
 
-**Enlace para acceder al video:** []()
+**Enlace para acceder al video:** [https://acortar.link/gIzptX](https://acortar.link/gIzptX)
 
-<img src=".png" alt="Fragmento de la exposición del TB2."/>
+<img src="https://imgur.com/VRRb8Sp.png" alt="Fragmento de la exposición del TB2."/>
 
 <div class="page"></div>
 
