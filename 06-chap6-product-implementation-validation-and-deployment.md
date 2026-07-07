@@ -4030,6 +4030,117 @@ Se evidencia una segunda prueba sobre el dispositivo Supplies Keeper en funciona
 
 #### 6.2.3.9. Team Collaboration Insights during Sprint
 
+Durante el tercer sprint, el equipo consolidó el desarrollo integrando la telemetría en tiempo real del dispositivo IoT físico, afinando las interfaces de usuario y preparando los servicios para las entrevistas de validación finales. A continuación se presentan las métricas de colaboración y la distribución de esfuerzo para cada repositorio del proyecto:
+
+##### Embedded Application
+
+Para el desarrollo del componente de software embebido (`embedded-application`), el equipo se enfocó en la integración final con el hardware de celdas de carga y los sensores de temperatura y humedad (DHT11/DHT22), optimizando la transmisión de datos hacia el Edge. Las prácticas de colaboración incluyeron:
+- Definición y validación de las tramas de datos transmitidas por puerto serial/inalámbrico.
+- Pruebas en hardware real con simulación y calibración de pesos físicos en la balanza.
+- Modulación del código del firmware para facilitar la lectura asíncrona de múltiples sensores periféricos.
+
+**Analíticos de colaboración — Embedded Application**
+
+![Colaboración en Embedded Application](assets/images/chapter6/collaboration-insights/commit-embedded-application.png)
+
+- **Total de commits**: 16 commits.
+- **Autores contribuyentes**:
+  - GabrielaShapiama28: 15 commits
+  - JulioXC4: 1 commit
+- **Observación**: El desarrollo estuvo concentrado principalmente en la implementación del firmware y la configuración de pines de lectura, liderado por GabrielaShapiama28 con soporte de JulioXC4 en la integración inicial.
+
+---
+
+##### Web Application
+
+El desarrollo del frontend administrativo (`web-application`) avanzó a través de un trabajo coordinado para consolidar las vistas principales del sistema. Las prácticas colaborativas aplicadas fueron:
+- Creación de ramas de características (`feature/*`) para aislar el desarrollo de pantallas específicas (inventarios, recetas, alertas).
+- Implementación de componentes reutilizables utilizando frameworks modernos de desarrollo frontend.
+- Integración continua y previsualizaciones en entornos temporales para validar cambios visuales.
+
+**Analíticos de colaboración — Web Application**
+
+![Colaboración en Web Application](assets/images/chapter6/collaboration-insights/commit-web-application.png)
+
+- **Total de commits**: 70 commits.
+- **Autores contribuyentes**:
+  - equinox-1092: 24 commits
+  - jahazielgg: 18 commits
+  - AntonioNavarro24: 13 commits
+  - JulioXC4: 10 commits
+  - Far14z: 4 commits
+  - JuarezLn10: 1 commit
+- **Observación**: Presenta una distribución balanceada entre los principales desarrolladores frontend, con equinox-1092 y jahazielgg liderando la creación de vistas y componentes dinámicos.
+
+---
+
+##### Web Service
+
+El backend principal (`web-service`) concentró el mayor volumen de contribuciones debido a la implementación de la lógica de negocio central y la persistencia de datos. Las prácticas colaborativas clave incluyeron:
+- Diseño guiado por el dominio (Domain-Driven Design) para mantener la separación de responsabilidades y modularidad en el backend.
+- Flujo estricto de revisión de código (Pull Requests) con comentarios constructivos sobre el diseño de la API.
+- Pruebas automatizadas de integración para asegurar que los endpoints cumplieran con las especificaciones de OpenAPI.
+
+**Analíticos de colaboración — Web Service**
+
+![Colaboración en Web Service](assets/images/chapter6/collaboration-insights/commit-web-services.png)
+
+- **Total de commits**: 178 commits.
+- **Autores contribuyentes**:
+  - GabrielaShapiama28: 52 commits
+  - JuarezLn10: 47 commits
+  - Far14z: 31 commits
+  - AntonioNavarro24: 16 commits
+  - JulioXC4: 14 commits
+  - jahazielgg: 11 commits
+  - equinox-1092: 7 commits
+- **Observación**: Es el repositorio con mayor actividad global. Refleja un alto nivel de co-creación y comunicación técnica fluida, con aportes significativos de GabrielaShapiama28 y JuarezLn10 para la base de datos y endpoints principales.
+
+---
+
+##### Edge Service
+
+El componente de borde (`Edge-service`) fue desarrollado para garantizar el procesamiento local ágil y la resiliencia en la red. Las prácticas aplicadas para su desarrollo colaborativo fueron:
+- Definición rigurosa de protocolos de serialización eficientes para optimizar el ancho de banda.
+- Implementación de estrategias de almacenamiento local temporal (caching) para prevenir pérdida de datos durante caídas de red.
+- Revisiones periódicas enfocadas en la optimización del rendimiento y consumo de recursos.
+
+**Analíticos de colaboración — Edge Service**
+
+![Colaboración en Edge Service](assets/images/chapter6/collaboration-insights/commit-edge-service.png)
+
+- **Total de commits**: 86 commits.
+- **Autores contribuyentes**:
+  - JuarezLn10: 43 commits
+  - GabrielaShapiama28: 24 commits
+  - JulioXC4: 10 commits
+  - Far14z: 6 commits
+  - jahazielgg: 3 commits
+- **Observación**: Se observa una distribución clara del esfuerzo donde JuarezLn10 y GabrielaShapiama28 lideraron el diseño de sincronización del nodo local con la nube.
+
+---
+
+##### Mobile Application
+
+El canal móvil (`mobile-application`) se desarrolló para permitir la consulta rápida y la recepción de alertas en tiempo real por parte de los operarios en planta. Las prácticas de colaboración incluyeron:
+- Diseño responsivo y optimización de flujos de interacción móvil para pantallas pequeñas.
+- Integración de componentes nativos de la plataforma móvil (notificaciones push, navegación móvil).
+- Trabajo colaborativo mediante el uso de prototipos previos interactivos de UI para guiar el desarrollo frontend móvil.
+
+**Analíticos de colaboración — Mobile Application**
+
+![Colaboración en Mobile Application](assets/images/chapter6/collaboration-insights/commit-mobile-app.png)
+
+- **Total de commits**: 64 commits.
+- **Autores contribuyentes**:
+  - Far14z: 44 commits
+  - JuarezLn10: 9 commits
+  - equinox-1092: 5 commits
+  - JulioXC4: 5 commits
+  - GabrielaShapiama28: 1 commit
+- **Observación**: Far14z actuó como el principal responsable del desarrollo móvil, logrando implementar la arquitectura inicial y flujos de navegación, complementado por aportes de integración de JuarezLn10 y otros desarrolladores.
+
+
 ## 6.3. Validation Interviews
 
 ### 6.3.1. Diseño de Entrevistas
