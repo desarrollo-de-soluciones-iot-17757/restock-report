@@ -718,6 +718,60 @@ Julio 2026
     <td> Nicolas Juarez </th>
     <td> Se corrigieron los diagramas de clase para Embedded Application y Edge Application. </th>
   </tr>
+  <tr>
+    <td> 3.10 </th>
+    <td> 05/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió el Student Outcome para el TB2 del proyecto. </th>
+  </tr>
+  <tr>
+    <td> 3.10 </th>
+    <td> 05/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadieron el Student Outcome para el TB2 del proyecto y el collab insights del reporte. </th>
+  </tr>
+  <tr>
+    <td> 3.20 </th>
+    <td> 06/07/2026 </th>
+    <td> Matias Diaz </th>
+    <td> Se añadió la tabla de Development Evidence para el Sprint 3 con los commits principales hechos para el proyecto. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Nicolas Juarez </th>
+    <td> Se añadió la sección de Execution Evidence con las pantallas implementadas para el Sprint 3. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Antonio Navarro </th>
+    <td> Se añadió la sección de Documentation Evidence con documentación de los endpoints implementados para el Sprint 3. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Deployment Evidence con los procesos seguidos para el despliegue de los productos de software desarrollados durante el Sprint 3. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadió la sección de Collaboration Insights sobre el proceso colaborativo del equipo durante el Sprint 3. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Julio Castro </th>
+    <td> Se añadieron las versiones finales de los videos About-the-team y About-the-product. </th>
+  </tr>
+  <tr>
+    <td> 3.XX </th>
+    <td> 06/07/2026 </th>
+    <td> Farid Coronel </th>
+    <td> Se añadió el resumen de las entrevistas de validación. </th>
+  </tr>
 </table>
 
 # Project Report Collaboration Insights
