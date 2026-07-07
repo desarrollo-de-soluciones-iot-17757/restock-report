@@ -4087,7 +4087,9 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 ### 6.3.2. Registro de Entrevistas
 
-A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de restaurantes, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de restaurante.
+A continuación, se presenta el registro correspondiente a las entrevistas realizadas con representantes de los segmentos de restaurantes y retail de consumo masivo, quienes participaron en la validación de la Landing page, aplicación web, aplicación móvil y dispositivo de la plataforma Restock. Todas las entrevistas fueron registradas en un mismo video de 74 minutos de duración total. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de dueños o administradores de restaurantes y tiendas retail.
+
+**Link del video completo:** [https://acortar.link/AVJ9RS](https://acortar.link/AVJ9RS)
 
 ### Segmento Administradores de restaurantes
 
@@ -4129,16 +4131,16 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>0:05 min</td>
+    <td>0:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>6 minutos y 10 segundos</td>
+    <td>12 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Adriana Huiza para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
+      Durante la sesión, se presentaron los componentes principales de la solución Restock a Adriana Huiza para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
       <br><br>
       En la evaluación de la landing page, la entrevistada mostró una percepción positiva respecto a la forma en que se comunica el propósito de Restock. Consideró que la información presentada permite comprender que la plataforma busca optimizar el control de inventarios mediante herramientas digitales y dispositivos de monitoreo. Asimismo, destacó que la propuesta resulta útil para restaurantes que necesitan reducir errores manuales, conocer mejor el estado de sus insumos y tomar decisiones oportunas sobre reposición.
       <br><br>
@@ -4146,7 +4148,9 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
       <br><br>
       La respuesta hacia la aplicación móvil también fue favorable. Adriana destacó que contar con una versión móvil puede ser útil para revisar información del negocio fuera de una computadora, especialmente cuando el administrador necesita supervisar el estado del inventario, revisar discrepancias o consultar información general de manera rápida. Desde su perspectiva, la movilidad de la solución aporta valor porque permite mantener control sobre la operación incluso cuando no se está físicamente en el área administrativa.
       <br><br>
-      Finalmente, la entrevista permitió validar que Restock es percibida como una solución útil para restaurantes que buscan mejorar la precisión del inventario y reducir la dependencia de registros manuales. Se confirmó que funcionalidades como el monitoreo de insumos, la gestión de lotes, la visualización de dispositivos y el acceso móvil representan elementos importantes para fortalecer la gestión operativa. Como oportunidad de mejora, se identifica la necesidad de mantener indicadores visuales claros que permitan interpretar rápidamente el estado del stock y las posibles discrepancias detectadas por el sistema.
+      En cuanto al dispositivo de monitoreo, Adriana manifestó especial agrado por la funcionalidad de registro de temperatura y humedad, señalando que este tipo de control automático resulta muy valioso para un restaurante, ya que permite conservar mejor los insumos perecibles y anticiparse a posibles pérdidas por almacenamiento inadecuado. Consideró que contar con estos datos en tiempo real reduce la incertidumbre respecto al estado real de los productos guardados.
+      <br><br>
+      Finalmente, la entrevista permitió validar que Restock es percibida como una solución útil para restaurantes que buscan mejorar la precisión del inventario y reducir la dependencia de registros manuales. Se confirmó que funcionalidades como el monitoreo de insumos, la gestión de lotes, la visualización de dispositivos, el acceso móvil y el registro de temperatura y humedad representan elementos importantes para fortalecer la gestión operativa. Como oportunidad de mejora, se identifica la necesidad de mantener indicadores visuales claros que permitan interpretar rápidamente el estado del stock y las posibles discrepancias detectadas por el sistema.
     </td>
   </tr>
 </table>
@@ -4185,20 +4189,20 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Link</strong></td>
-    <td><a href="https://acortar.link/4mGKph">https://acortar.link/4mGKph</a></td>
+    <td><a href="https://acortar.link/AVJ9RS">https://acortar.link/AVJ9RS</a></td>
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>6:16 min</td>
+    <td>12:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>6 minutos y 47 segundos</td>
+    <td>12 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Angelina Medina para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. La entrevista tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
+      Durante la sesión, se presentaron los componentes principales de la solución Restock a Angelina Medina para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. La entrevista tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
       <br><br>
       En la evaluación de la landing page, la entrevistada pudo identificar que Restock está orientada a resolver problemas relacionados con el control de inventarios, el monitoreo de insumos y la reducción de errores en la gestión manual. Angelina consideró que la explicación general de la plataforma ayuda a comprender el valor del sistema, especialmente porque presenta una solución que combina software con dispositivos de monitoreo para obtener información más confiable sobre el estado de los productos almacenados.
       <br><br>
@@ -4206,7 +4210,9 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
       <br><br>
       La aplicación móvil fue percibida como un complemento importante para la solución. Angelina destacó que una versión móvil facilita la supervisión rápida del negocio, permitiendo revisar información general, indicadores de stock y posibles discrepancias sin depender únicamente de una computadora. Esta característica fue considerada valiosa para administradores que necesitan mantenerse informados sobre el estado del inventario mientras realizan otras actividades operativas dentro o fuera del local.
       <br><br>
-      Finalmente, la entrevista permitió validar que Restock responde a necesidades reales del segmento restaurantes, principalmente en relación con la visibilidad del inventario, la actualización de información y la detección oportuna de problemas de stock. Se confirmó que la combinación de aplicación web, aplicación móvil y dispositivos de monitoreo puede aportar valor al reducir el trabajo manual y mejorar la toma de decisiones. Como oportunidad de mejora, se identificó la importancia de reforzar los indicadores visuales dentro del dashboard y las vistas de inventario, para que el usuario pueda interpretar rápidamente si un insumo se encuentra en estado normal, crítico o con discrepancias.
+      Sobre el dispositivo de monitoreo, Angelina expresó que le gustó especialmente la función de registro de temperatura y humedad, indicando que esta característica aporta un nivel de control que normalmente no se tiene en un restaurante tradicional. Mencionó que poder visualizar estos datos junto con el resto de la información del inventario ayuda a prevenir el deterioro de insumos sensibles y a tomar decisiones más informadas sobre su rotación.
+      <br><br>
+      Finalmente, la entrevista permitió validar que Restock responde a necesidades reales del segmento restaurantes, principalmente en relación con la visibilidad del inventario, la actualización de información y la detección oportuna de problemas de stock. Se confirmó que la combinación de aplicación web, aplicación móvil, dispositivo de monitoreo con registro de temperatura y humedad puede aportar valor al reducir el trabajo manual y mejorar la toma de decisiones. Como oportunidad de mejora, se identificó la importancia de reforzar los indicadores visuales dentro del dashboard y las vistas de inventario, para que el usuario pueda interpretar rápidamente si un insumo se encuentra en estado normal, crítico o con discrepancias.
     </td>
   </tr>
 </table>
@@ -4245,20 +4251,20 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Link</strong></td>
-    <td><a href="https://acortar.link/F9EHY7">https://acortar.link/F9EHY7</a></td>
+    <td><a href="https://acortar.link/AVJ9RS">https://acortar.link/AVJ9RS</a></td>
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>13:04 min</td>
+    <td>24:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>9 minutos y 11 segundos</td>
+    <td>13 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la sesión, se presentaron los tres componentes principales de la solución Restock a Melany Espinoza para evaluar su percepción sobre la plataforma, la cual está enfocada en el segmento de administradoras de restaurantes. La entrevista, dirigida por Antonio Navarro, tuvo como objetivo validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso del sistema.
+      Durante la sesión, se presentaron los componentes principales de la solución Restock a Melany Espinoza para evaluar su percepción sobre la plataforma, la cual está enfocada en el segmento de administradoras de restaurantes. La entrevista, dirigida por Antonio Navarro, tuvo como objetivo validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso del sistema.
       <br><br>
       En la evaluación de la landing page, la entrevistada mostró una percepción muy positiva respecto al diseño, calificándolo como limpio, completo y organizado. Destacó que la información sobre los beneficios, el uso de dispositivos adicionales (balanza para control de stock, humedad y temperatura) y la sección de preguntas frecuentes comunican claramente la propuesta de valor y generan confianza. Consideró que la estructura facilita el entendimiento inicial de la plataforma para cualquier usuario.
       <br><br>
@@ -4266,12 +4272,12 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
       <br><br>
       La respuesta hacia la aplicación móvil fue muy favorable. La entrevistada destacó que contar con una versión móvil es una gran idea, ya que le permite supervisar las operaciones, revisar el inventario y el consumo fuera de la oficina, facilitando una gestión más rápida. Como punto de mejora, propuso incluir indicadores más visuales en el apartado de overview para identificar rápidamente el estado de las discrepancias en los lotes.
       <br><br>
-      Finalmente, La entrevista permitió validar que Restock es percibida como una solución completa y altamente funcional para las necesidades administrativas. Se confirmó que la automatización de procesos mediante dispositivos de hardware y la portabilidad de la aplicación móvil son puntos de gran valor estratégico. La incorporación de reportes de rentabilidad y la estandarización entre sucursales se identificaron como las oportunidades principales para fortalecer el sistema y optimizar la toma de decisiones del usuario final.
+      Con relación al dispositivo, Melany señaló que la funcionalidad de registro de temperatura y humedad le pareció uno de los aspectos más atractivos de la solución, ya que permite un monitoreo constante de las condiciones de almacenamiento sin necesidad de revisiones manuales. Consideró que esta automatización representa un ahorro de tiempo importante y contribuye directamente a la calidad de los insumos que se ofrecen a los clientes.
+      <br><br>
+      Finalmente, la entrevista permitió validar que Restock es percibida como una solución completa y altamente funcional para las necesidades administrativas. Se confirmó que la automatización de procesos mediante dispositivos de hardware, incluyendo el registro de temperatura y humedad, y la portabilidad de la aplicación móvil son puntos de gran valor estratégico. La incorporación de reportes de rentabilidad y la estandarización entre sucursales se identificaron como las oportunidades principales para fortalecer el sistema y optimizar la toma de decisiones del usuario final.
     </td>
   </tr>
 </table>
-
-A continuación, se presenta el registro correspondiente a la entrevista realizada con un representante del segmento de sector retail de consumo masivo, quien participó en la validación de la Landing page, aplicación web y móvil de la plataforma Restock. El objetivo fue evaluar la claridad del mensaje, la propuesta de valor y la percepción de utilidad del sistema desde la perspectiva de un dueño o administrador de tienda retail.
 
 ### Segmento Administradores de tiendas retail
 
@@ -4309,26 +4315,28 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Link</strong></td>
-    <td><a href="https://acortar.link/P51YEX">https://acortar.link/P51YEX</a></td>
+    <td><a href="https://acortar.link/AVJ9RS">https://acortar.link/AVJ9RS</a></td>
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>22:16 min</td>
+    <td>37:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>9 minutos y 04 segundos</td>
+    <td>12 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
+      Durante la entrevista, se evaluaron los componentes principales de la solución Restock: la landing page, la aplicación web, la aplicación móvil y el dispositivo. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
       <br><br>
       En la evaluación de la landing page, Brayner Coronel mostró una percepción positiva respecto al diseño visual, destacando la combinación de colores, la tipografía y la organización de la información. Asimismo, consideró que las secciones de beneficios, testimonios y presentación de funcionalidades transmiten de manera clara la propuesta de valor de Restock. Sin embargo, identificó una dificultad en la sección de selección de planes, ya que la estructura de precios le generó confusión al percibir que un plan con menos funcionalidades presentaba un costo superior al de otro con mayores beneficios. Esta situación afectó la comprensión inicial de la oferta comercial y dio origen al hallazgo heurístico relacionado con la jerarquía de precios.
       <br><br>
       Respecto a la aplicación web, el entrevistado destacó positivamente la consistencia visual con la landing page, valorando que los colores, estilos y componentes mantengan una misma identidad a lo largo de la experiencia. También señaló que los módulos de analíticas y gestión de perfiles resultan útiles y fáciles de comprender. Durante la navegación identificó un problema de usabilidad en el módulo de gestión de lotes (Batches), donde las acciones disponibles para cada registro permanecían ocultas hasta posicionar el cursor sobre una fila específica. Según comentó, esta implementación dificulta que usuarios nuevos descubran rápidamente las opciones de edición y eliminación disponibles.
       <br><br>
-      Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
+      Se evaluó también la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. El entrevistado indicó que la interfaz resulta intuitiva y cómoda para el uso diario, especialmente considerando que suele gestionar operaciones desde dispositivos móviles. Entre las funcionalidades que más valoró se encuentra la transferencia de lotes entre sucursales, ya que considera que esta característica facilita el control del inventario distribuido y optimiza la gestión de stock entre diferentes puntos de venta. Además, destacó la fluidez de la navegación y la coherencia visual con el resto de la plataforma.
+      <br><br>
+      Finalmente, respecto al dispositivo, Brayner destacó de manera especial la funcionalidad que permite calcular el stock físico a partir del peso registrado en la balanza, señalando que esto elimina la necesidad de contar manualmente unidades sueltas o a granel, lo cual representa un ahorro considerable de tiempo en el día a día de la tienda. Adicionalmente, mencionó que le agradó la funcionalidad de registro de temperatura y humedad, indicando que este tipo de monitoreo automático es muy útil para una tienda retail, ya que ayuda a controlar mejor las condiciones de almacenamiento de productos sensibles y a evitar pérdidas por mal manejo de las condiciones ambientales.
     </td>
   </tr>
 </table>
@@ -4367,26 +4375,28 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Link</strong></td>
-    <td><a href="https://acortar.link/bhXlMy">https://acortar.link/bhXlMy</a></td>
+    <td><a href="https://acortar.link/AVJ9RS">https://acortar.link/AVJ9RS</a></td>
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>31:21 min</td>
+    <td>49:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>3 minutos y 46 segundos</td>
+    <td>12 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la facilidad de uso de las funcionalidades y la percepción de valor de la plataforma dentro del segmento de dueños y administradores de tiendas retail de consumo masivo.
+      Durante la entrevista, se evaluaron los componentes principales de la solución Restock: la landing page, la aplicación web, la aplicación móvil y el dispositivo. El objetivo fue validar la experiencia de usuario, la facilidad de uso de las funcionalidades y la percepción de valor de la plataforma dentro del segmento de dueños y administradores de tiendas retail de consumo masivo.
       <br><br>
       En la evaluación de la landing page, Mónica Jaramillo mostró una percepción muy positiva respecto al diseño y la presentación general del producto. Destacó la combinación de colores, la organización de la información y la claridad con la que se comunican los beneficios de la plataforma. Asimismo, comentó que las secciones de testimonios y características le permitieron comprender rápidamente la propuesta de valor de Restock. También manifestó agrado por los elementos visuales e ilustraciones presentes en la página, considerando que contribuyen a una experiencia más atractiva y amigable para el usuario. Durante esta evaluación no identificó inconvenientes ni dificultades de navegación.
       <br><br>
       Respecto a la aplicación web, la entrevistada valoró positivamente la consistencia visual con la landing page y la organización de los diferentes módulos. Sin embargo, al interactuar con la gestión de lotes (Batches), encontró la misma dificultad observada en otras entrevistas, relacionada con la visibilidad de las acciones disponibles para cada registro. Indicó que inicialmente no logró identificar cómo editar o eliminar elementos de la lista debido a que estas opciones solo aparecen al posicionar el cursor sobre una fila específica, lo que afecta la facilidad de descubrimiento de dichas funcionalidades.
       <br><br>
-      Finalmente, se evaluó la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. La entrevistada señaló que utiliza con frecuencia dispositivos móviles para gestionar actividades de su negocio, por lo que valoró especialmente la facilidad de uso de la aplicación. Destacó que la navegación resulta intuitiva y que las interacciones táctiles permiten acceder rápidamente a funcionalidades adicionales. En particular, le agradó la posibilidad de mantener presionados determinados elementos para desplegar nuevas opciones y acciones contextuales, ya que considera que este comportamiento agiliza las tareas diarias sin sobrecargar la interfaz con botones adicionales.
+      Se evaluó también la aplicación móvil de Restock, obteniendo una respuesta altamente favorable. La entrevistada señaló que utiliza con frecuencia dispositivos móviles para gestionar actividades de su negocio, por lo que valoró especialmente la facilidad de uso de la aplicación. Destacó que la navegación resulta intuitiva y que las interacciones táctiles permiten acceder rápidamente a funcionalidades adicionales. En particular, le agradó la posibilidad de mantener presionados determinados elementos para desplegar nuevas opciones y acciones contextuales, ya que considera que este comportamiento agiliza las tareas diarias sin sobrecargar la interfaz con botones adicionales.
+      <br><br>
+      Finalmente, en cuanto al dispositivo, Mónica manifestó gran interés por la funcionalidad que permite calcular automáticamente el stock físico a partir del peso registrado, comentando que en su tienda muchos productos se venden a granel o por peso variable, por lo que esta característica facilita enormemente el conteo y evita errores frecuentes del inventario manual. También destacó la función de registro de temperatura y humedad, señalando que esta característica le pareció muy práctica, ya que le permite monitorear en todo momento las condiciones de sus productos sin tener que realizar revisiones manuales constantes, lo cual representa un ahorro de tiempo considerable en su día a día.
     </td>
   </tr>
 </table>
@@ -4425,26 +4435,28 @@ A continuación, se presenta el registro correspondiente a la entrevista realiza
   </tr>
   <tr>
     <td><strong>Link</strong></td>
-    <td><a href="https://acortar.link/pPsfaS">https://acortar.link/pPsfaS</a></td>
+    <td><a href="https://acortar.link/AVJ9RS">https://acortar.link/AVJ9RS</a></td>
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>35:08 min</td>
+    <td>61:00 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
-    <td>9 minutos y 50 segundos</td>
+    <td>13 minutos</td>
   </tr>
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la entrevista, se evaluaron tres componentes principales de la solución Restock: la landing page, la aplicación web y la aplicación móvil. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
+      Durante la entrevista, se evaluaron los componentes principales de la solución Restock: la landing page, la aplicación web, la aplicación móvil y el dispositivo. El objetivo fue validar la experiencia de usuario, la percepción de valor de las funcionalidades y la facilidad de uso de la plataforma en el segmento de dueños y administradores de tiendas retail de consumo masivo.
       <br><br>
       En la evaluación de la landing page, Erick Coronel mostró una percepción muy positiva respecto al contenido y diseño presentado. Destacó especialmente las secciones de beneficios, ya que le permitieron comprender rápidamente cómo la plataforma puede contribuir a mejorar la gestión de su negocio. Asimismo, valoró los testimonios mostrados, considerándolos útiles para generar confianza en la solución. También mencionó que la sección de preguntas frecuentes le resultó particularmente atractiva, debido a que suele revisar este tipo de información antes de adquirir un producto o servicio, ya que le permite resolver dudas comunes y comprender mejor la propuesta de valor ofrecida.
       <br><br>
       Respecto a la aplicación web, el entrevistado destacó la consistencia visual de la plataforma y la calidad de su diseño. Comentó que los colores utilizados resultan agradables y transmiten una identidad profesional y moderna. Asimismo, valoró positivamente la organización de las tablas utilizadas para la gestión de lotes y el formato de las tarjetas empleadas para visualizar información de productos, indicando que ambos elementos facilitan la lectura y comprensión de los datos. En general, consideró que la navegación es clara y que las funcionalidades presentadas responden adecuadamente a las necesidades de gestión de una tienda retail.
       <br><br>
-      Finalmente, se evaluó la aplicación móvil de Restock. Durante esta prueba, el entrevistado identificó una oportunidad de mejora relacionada con la funcionalidad de transferencia de lotes entre sucursales. Específicamente, observó que el botón principal para confirmar la transferencia permanecía visualmente activo incluso cuando los campos obligatorios del formulario no habían sido completados, lo que generó incertidumbre respecto al estado de validación del proceso. Esta situación dio origen al hallazgo heurístico relacionado con la prevención de errores. No obstante, fuera de este aspecto, manifestó una percepción positiva de la aplicación, destacando especialmente los módulos de analíticas y notificaciones, así como la facilidad de navegación entre las diferentes secciones.
+      Se evaluó también la aplicación móvil de Restock. Durante esta prueba, el entrevistado identificó una oportunidad de mejora relacionada con la funcionalidad de transferencia de lotes entre sucursales. Específicamente, observó que el botón principal para confirmar la transferencia permanecía visualmente activo incluso cuando los campos obligatorios del formulario no habían sido completados, lo que generó incertidumbre respecto al estado de validación del proceso. Esta situación dio origen al hallazgo heurístico relacionado con la prevención de errores. No obstante, fuera de este aspecto, manifestó una percepción positiva de la aplicación, destacando especialmente los módulos de analíticas y notificaciones, así como la facilidad de navegación entre las diferentes secciones.
+      <br><br>
+      Finalmente, en cuanto al dispositivo, Erick resaltó como uno de los puntos más valiosos la funcionalidad que permite calcular el stock físico directamente a partir del peso captado por la balanza, indicando que esto agiliza notablemente el proceso de conteo en su tienda y reduce los errores asociados al registro manual de unidades. Asimismo, expresó que la funcionalidad de registro de temperatura y humedad le pareció uno de los aportes más valiosos de la solución, ya que permite un control constante de las condiciones de almacenamiento sin depender de inspecciones manuales, contribuyendo así a preservar mejor la calidad de los productos de su tienda.
     </td>
   </tr>
 </table>
