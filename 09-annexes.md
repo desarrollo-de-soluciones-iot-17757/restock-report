@@ -22,6 +22,12 @@ Se realizaron videos de exposición para cada entrega de avance del proyecto. Ca
 
 <img src="https://i.imgur.com/2vPi4fN.png" alt="Fragmento de la exposición del AV2."/>
 
+**Exposición del TB2**
+
+**Enlace para acceder al video:** [https://acortar.link/gIzptX](https://acortar.link/gIzptX)
+
+<img src="https://imgur.com/VRRb8Sp.png" alt="Fragmento de la exposición del TB2."/>
+
 <div class="page"></div>
 
 ## Anexo B. Video de las entrevistas
@@ -51,3 +57,21 @@ Se realizaron entrevistas de validación a cada segmento objetivo con el objetiv
 **Enlace para acceder a los vídeos:** [https://acortar.link/XSgoqW](https://acortar.link/XSgoqW)
 
 <img src="https://i.imgur.com/7QPOCz1.png" alt="Fragmento de las entrevistas de validación realizadas a los segmentos objetivo."/>
+
+## Anexo E. Landing page desplegado
+
+**Enlace para acceder a la landing page:** [https://restock-landing-page-eta.vercel.app/](https://restock-landing-page-eta.vercel.app/)
+
+<img src="https://imgur.com/6UJ8Upr.png" alt="Fragmento de la landing page"/>
+
+## Anexo F. Web application desplegado
+
+**Enlace para acceder al web application:** [https://restock-web-application.vercel.app/](https://restock-web-application.vercel.app/)
+
+<img src="https://imgur.com/qvQ6vJq.png" alt="Fragmento del web application"/>
+
+## Anexo G. Web services desplegado
+
+**Enlace para acceder al web services:** [https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/)
+
+<img src="https://imgur.com/igOqiPh.png" alt="Fragmento del web service"/>
