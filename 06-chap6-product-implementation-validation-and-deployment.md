@@ -4042,30 +4042,31 @@ Convertir ambos botones en componentes con contenedor sólido (relleno o outline
 
 ## 6.4. Video About-the-Product
 
-El video **About-the-Product** ha sido elaborado con el propósito de presentar la propuesta de valor integral de **Restock**, exhibiendo el ecosistema completo de productos desarrollados durante el ciclo. El contenido audiovisual destaca la integración de las siguientes soluciones tecnológicas:
+El video **About-the-Product** ha sido elaborado con el propósito de presentar la propuesta de valor integral de **Restock**, exhibiendo el ecosistema completo de productos desarrollados durante el ciclo. El contenido audiovisual destaca la integración de las siguientes soluciones tecnológicas y componentes:
 
 * **Landing Page:** Portal informativo diseñado para la captación de usuarios y presentación de la solución.
 * **Aplicación Web Frontend:** Desarrollada con el framework **Angular**, orientada a la gestión administrativa profunda.
-* **Aplicaciones Móviles:** Se presenta la coexistencia de dos soluciones móviles, una desarrollada de forma **Nativa** y otra mediante el framework **Flutter**, permitiendo una gestión de inventario versátil y en tiempo real.
+* **Aplicaciones Móviles:** Se presenta la solucion móvil desarrollada mediante el framework **Flutter**, permitiendo una gestión de inventario versátil y en tiempo real.
+* **Dispositivo fisico (Supplies Keeper):** Presentación del componente de hardware físico integrado, encargado de capturar y transmitir automáticamente las métricas de peso y las condiciones ambientales de los suministros.
 
-La narrativa del video guía al espectador a través del flujo principal de la plataforma, mostrando la resolución de problemas reales en la gestión de insumos mediante el uso de sensores y culminando con testimonios de usuarios recolectados durante las sesiones de validación.
+La narrativa del video guía al espectador a través del flujo principal de la plataforma, mostrando la resolución de problemas reales en la gestión de insumos mediante el uso de nuestra tecnología. El recorrido culmina con los testimonios recolectados durante las sesiones de validación, destacando el feedback directo de representantes de nuestros dos segmentos objetivo principales: el **administrador de restaurantes** y el **administrador de retail**.
 
 **Información del Video:**
 
-* **Nombre del archivo:** `upc-pre-202610-1asi0572-17757-UI-Topic-about-the-product-sprint-2`
-* **Duración:** 00:01:48
-* **Formatos y Plataformas:** Subido a Microsoft Stream (entorno institucional), YouTube (para visualización pública e inserción en el Landing Page).
+* **Nombre del archivo:** `upc-pre-202610-1asi0572-17757-UI-Topic-about-the-product-sprint-3`
+* **Duración:** 00:03:16
+* **Formatos y Plataformas:** Subido a Microsoft Stream (entorno institucional) y YouTube (para visualización pública e inserción en la Landing Page).
 
 **Evidencia de Publicación:**
 
 ![About the Product - Thumbnail](assets/images/chapter5/about-the-product-screenshot.png)
-*Interfaz de la aplicación Restock presentada en el video institucional.*
+*Interfaz de la aplicación Restock y el dispositivo Supplies Keeper presentados en el video institucional.*
 
 **Enlaces de acceso:**
 
 | Plataforma | Enlace de Acceso |
 | :--- | :--- |
-| **Microsoft Stream** | [https://shorturl.at/XYcrE](https://shorturl.at/XYcrE) |
-| **YouTube** | [https://www.youtube.com/watch?v=2pV4h6XbO7Y](https://www.youtube.com/watch?v=2pV4h6XbO7Y) |
+| **Microsoft Stream** | [https://shorturl.at/p28Nc](https://shorturl.at/p28Nc) |
+| **YouTube** | [https://www.youtube.com/watch?v=QVXA2PC6Jyo](https://www.youtube.com/watch?v=QVXA2PC6Jyo) |
 
 <div style="page-break-after: always;"></div>
