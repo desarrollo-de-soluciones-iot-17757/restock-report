@@ -3213,6 +3213,116 @@ Cabe resaltar que la feature de anomalías físicas del Edge Service (UTI-899) a
 
 #### 6.2.3.6. Execution Evidence for Sprint Review
 
+En esta sección, se presenta la evidencia de las principales vistas implementadas en el tercer sprint de trabajo.
+A continuación, se adjuntan los enlaces a los vídeos de ejecución y visibilidad de las vistas implementadas y la descripción de las pantallas implementadas para Landing Page, Aplicación web y móvil.
+Estas evidencias reflejan el progreso realizado en el sprint y sirven como prueba del trabajo realizado.
+
+## Landing Page
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la landing page. El alcance del desarrollo de este producto se centró en la actualización de los videos acerca del producto y del equipo de desarrollo y la implementación de la sección de los términos y condiciones de la plataforma.
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los pantallas actualizadas e implementadas, los cuales abarcan:
+
+* **Sección About-the-product**: Sección con la actualización del video que contiene los testimonios de los dos segmentos objetivo.
+* **Sección About-the-team**: Sección con la actualización de contenidos sobre el desempeño del equipo a través de los tres sprints.
+* **Términos y Condiciones (ToS):** Sección que contiene la descripción del contrado legal que el usuario acepta al utilizar la plataforma.
+
+<img src="https://i.imgur.com/yWzNhy8.png" alt="Evidencia de Ejecución - Landing Page en el Sprint 3" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/MqVQpD](https://acortar.link/MqVQpD)
+
+#### Sección About-the-product
+
+Esta es una pantalla que muestra el vídeo informativo sobre el funcionamiento de la aplicación y los testimonios de ambos segmentos objetivos sobre cómo fue su experiencia con el uso de la plataforma.
+
+<img src="https://i.imgur.com/90xY3KA.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
+
+#### Sección About-the-team
+
+Luego, se actualizó la sección con el video informativo acerca del equipo de desarrollo de la plataforma que incluye información actualizada sobre el trabajo realizado por el equipo en los tres sprints del proyecto.
+
+<img src="https://i.imgur.com/X75nQFw.png" alt="imagen de la sección about-the-team en la landing page" style="width: 100%; height: auto;"/>
+
+#### Política de privacidad
+
+También, se agregó la descripción de los datos que recolecta la aplicación para mostrar transparencia hacia los usuarios y visitantes de la plataforma.
+
+<img src="https://i.imgur.com/Hw3OtwT.png" alt="imagen de la descripción de la política de privacidad de Restock" style="width: 100%; height: auto;"/>
+
+#### Términos y Condiciones (ToS)
+
+Finalmente, se agregó una sección que contiene los términos y condiciones que representa al contrato entre la plataforma y el usuario que desea registrarse y empezar a usar la plataforma.
+
+<img src="https://i.imgur.com/PNmzA9r.png" alt="imagen del contrato de términos y condiciones en la landing page" style="width: 100%; height: auto;"/>
+
+## Aplicación Web
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación web. Para este sprint, el alcance de desarrollo de la aplicación incluyó secciones como el centro de notificaciones, personalización de perfiles tanto del usuario como del negocio y el recibimiento de telemetría de los dispositivos.
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Profile Management:** Vistas personalizables donde los usuarios pueden colocar su información personal y de su negocio para generar identidad.
+* **Tracking:** Visualización de la telemetría procesada recibida por parte de los dispositivos Restock Supplies Keeper.
+* **Suscripciones:** Interfaz para la visualización del plan de suscripción actual de la cuenta.
+* **Centro de notificaciones:** Interfaz para las alertas generadas por el sistema sobre eventos que ocurren en el inventario.
+
+<img src="https://i.imgur.com/7LXrUAN.png" alt="Evidencia de Ejecución para sprint 3 de la Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/P4eeuX](https://acortar.link/P4eeuX)
+
+#### Perfil de Usuario y Negocio
+
+Vista de la interfaz de perfil para el usuario y su negocio donde se puede colocar información personal.
+
+<img src="https://i.imgur.com/ot0qHDZ.png" alt="Sección de perfiles para usuarios y negocios" style="width: 100%; height: auto;"/>
+
+#### Telemetría recibida
+
+Vista de la sección que muestra los datos actuales de stock físico, humedad y temperatura luego de la sincronización entre el servicio Edge y el API.
+
+<img src="https://i.imgur.com/hBuwxxV.png" alt="Sección de telemetría procesada" style="width: 100%; height: auto;"/>
+
+#### Suscripciones
+
+Sección de información del plan de suscripción actual que posee el usuario.
+
+<img src="https://i.imgur.com/7cliqBR.png" alt="Sección de suscripciones y planes de suscripción de la cuenta" style="width: 100%; height: auto;"/>
+
+#### Centro de notificaciones
+
+Interfaz que muestra las alertas generadas por el sistema cuando se detecta un evento crítico en los inventarios de los usuarios o cuando se advierte de que un evento va a ocurrir (como el evento de suministro con stock mínimo).
+
+<img src="https://i.imgur.com/2rHeL2F.png" alt="Sección del centro de notificaciones" style="width: 100%; height: auto;"/>
+
+## Aplicación móvil
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación móvil. El cual se centró en implementar las vistas de notificaciones y las preferencias del usuario (perfil y negocio). 
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Profiles:** Vistas de perfil de usuario y perfil de negocio, con la posibilidad de editar la información personal y del negocio.
+* **Notifications:** Pantallas de notificaciones y alertas del sistema, con la posibilidad de marcar como leídas o eliminar notificaciones.
+
+<img src="https://i.imgur.com/ik9Rndw.png" alt="Evidencia de Ejecución - Mobile App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/TQ5dzO](https://acortar.link/TQ5dzO)
+
+#### Preferencias del usuario
+
+Vistas de perfil de usuario y perfil de negocio, con la posibilidad de editar la información personal y del negocio.
+
+<img src="https://i.imgur.com/tfrCgxn.png" alt="Preferencias" style="width: 100%; height: auto;"/>
+
+#### Notificaciones
+
+Vista que muestra las notificaciones y alertas del sistema para que el usuario pueda estar al tanto de los eventos importantes del negocio.
+
+<img src="https://i.imgur.com/tqPqMID.png" alt="notificaciones" style="width: 100%; height: auto;"/>
+
+
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
 
 #### 6.2.3.8. Software Deployment Evidence for Sprint Review
@@ -3476,6 +3586,20 @@ Para garantizar que la solución cumpla con las necesidades reales de los usuari
 
 Validar la usabilidad, comprensión y utilidad de las funcionalidades del sistema a través de sesiones controladas de interacción, aplicando principios de evaluación heurística y recogiendo observaciones cualitativas que retroalimenten futuras iteraciones del producto.
 
+**Relación con los User Flows de Diseño (Capítulo 5)**
+
+El diseño de las entrevistas y las tareas asignadas se basan directamente en la especificación y los diagramas de flujos de usuario detallados en el [Capítulo 5 (Sección 5.4.3)](05-chap5-solution-ui-ux-design.md#543-applications-user-flow-diagrams). A continuación, se enumeran los User Flows diseñados con sus respectivos códigos y títulos:
+
+*   **UF 1**: Registro y Onboarding
+*   **UF 2**: Inicio de Sesión y Recuperación de Contraseña
+*   **UF 3**: Gestión de Insumos / Custom Supplies
+*   **UF 4**: Gestión de Recetas (exclusivo de restaurantes)
+*   **UF 5**: Gestión de Kits / Combos (exclusivo de retail)
+*   **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock
+*   **UF 7**: Conciliación de Discrepancias de Inventario
+*   **UF 8**: Gestión de Dispositivos (Smart Scales)
+*   **UF 9**: Gestión de Sucursales
+
 A continuación, se detallan los elementos a validar, los user flows del aplicativo móvil y las actividades a realizar durante cada sesión, organizados por segmento objetivo.
 
 | Segmento                                          | Elementos a validar                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Mobile User Flow                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Actividades durante la sesión                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -3494,18 +3618,18 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 **Flujos a Validar (resumen por User Goal)**
 
-| User Goal | Descripción del Flujo                                                                             | Objetivo de Validación                                                       |
-| --------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| UG 1      | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación.      | Validar claridad del mensaje y de la propuesta de valor.                      |
-| UG 2      | El usuario se registra e inicia sesión con sus datos.                                             | Validar claridad del formulario de registro y facilidad de login.             |
-| UG 3      | El usuario crea, edita y desactiva una sucursal de su negocio.                                     | Validar la gestión del ciclo de vida de sucursales.                          |
-| UG 4      | El usuario registra, edita y filtra insumos/productos del inventario.                              | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
-| UG 5      | El usuario accede al inventario y consulta el stock por sucursal.                                  | Validar la claridad y organización de la información de inventario.         |
-| UG 6      | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos.              |
-| UG 7      | El usuario transfiere stock entre dos sucursales.                                                  | Validar la funcionalidad de transferencia de inventario.                      |
-| UG 8      | El usuario revisa el centro de notificaciones y alertas.                                           | Validar la utilidad y claridad de las notificaciones.                         |
-| UG 9      | El usuario visualiza el dashboard de datos del negocio.                                            | Validar la comprensión de los indicadores presentados.                       |
-| UG 10     | El usuario cambia el idioma de la interfaz.                                                        | Validar la accesibilidad y el soporte multi-idioma.                           |
+| User Goal | User Flow Relacionado (Código y Título) | Descripción del Flujo | Objetivo de Validación |
+| --------- | --------------------------------------- | --------------------- | ---------------------- |
+| UG 1      | **UF 1**: Registro y Onboarding | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación. | Validar claridad del mensaje y de la propuesta de valor. |
+| UG 2      | **UF 1**: Registro y Onboarding<br>**UF 2**: Inicio de Sesión y Recuperación de Contraseña | El usuario se registra e inicia sesión con sus datos. | Validar claridad del formulario de registro y facilidad de login. |
+| UG 3      | **UF 9**: Gestión de Sucursales | El usuario crea, edita y desactiva una sucursal de su negocio. | Validar la gestión del ciclo de vida de sucursales. |
+| UG 4      | **UF 3**: Gestión de Insumos / Custom Supplies<br>**UF 4**: Gestión de Recetas<br>**UF 5**: Gestión de Kits / Combos | El usuario registra, edita y filtra insumos/productos del inventario. | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario accede al inventario y consulta el stock por sucursal. | Validar la claridad y organización de la información de inventario. |
+| UG 6      | **UF 8**: Gestión de Dispositivos (Smart Scales) | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos. |
+| UG 7      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario transfiere stock entre dos sucursales. | Validar la funcionalidad de transferencia de inventario. |
+| UG 8      | **UF 7**: Conciliación de Discrepancias de Inventario | El usuario revisa el centro de notificaciones y alertas. | Validar la utilidad y claridad de las notificaciones. |
+| UG 9      | - | El usuario visualiza el dashboard de datos del negocio. | Validar la comprensión de los indicadores presentados. |
+| UG 10     | - | El usuario cambia el idioma de la interfaz. | Validar la accesibilidad y el soporte multi-idioma. |
 
 ### 6.3.2. Registro de Entrevistas
 
@@ -4042,30 +4166,32 @@ Convertir ambos botones en componentes con contenedor sólido (relleno o outline
 
 ## 6.4. Video About-the-Product
 
-El video **About-the-Product** ha sido elaborado con el propósito de presentar la propuesta de valor integral de **Restock**, exhibiendo el ecosistema completo de productos desarrollados durante el ciclo. El contenido audiovisual destaca la integración de las siguientes soluciones tecnológicas:
+El video **About-the-Product** ha sido elaborado con el propósito de presentar la propuesta de valor integral de **Restock**, exhibiendo el ecosistema completo de productos desarrollados durante el ciclo. El contenido audiovisual destaca la integración de las siguientes soluciones tecnológicas y componentes:
 
 * **Landing Page:** Portal informativo diseñado para la captación de usuarios y presentación de la solución.
 * **Aplicación Web Frontend:** Desarrollada con el framework **Angular**, orientada a la gestión administrativa profunda.
-* **Aplicaciones Móviles:** Se presenta la coexistencia de dos soluciones móviles, una desarrollada de forma **Nativa** y otra mediante el framework **Flutter**, permitiendo una gestión de inventario versátil y en tiempo real.
+* **Aplicaciones Móviles:** Se presenta la solucion móvil desarrollada mediante el framework **Flutter**, permitiendo una gestión de inventario versátil y en tiempo real.
+* **Dispositivo fisico (Supplies Keeper):** Presentación del componente de hardware físico integrado, encargado de capturar y transmitir automáticamente las métricas de peso y las condiciones ambientales de los suministros.
 
-La narrativa del video guía al espectador a través del flujo principal de la plataforma, mostrando la resolución de problemas reales en la gestión de insumos mediante el uso de sensores y culminando con testimonios de usuarios recolectados durante las sesiones de validación.
+La narrativa del video guía al espectador a través del flujo principal de la plataforma, mostrando la resolución de problemas reales en la gestión de insumos mediante el uso de nuestra tecnología. El recorrido culmina con los testimonios recolectados durante las sesiones de validación, destacando el feedback directo de representantes de nuestros dos segmentos objetivo principales: el **administrador de restaurantes** y el **administrador de retail**.
 
 **Información del Video:**
 
-* **Nombre del archivo:** `upc-pre-202610-1asi0572-17757-UI-Topic-about-the-product-sprint-2`
-* **Duración:** 00:01:48
-* **Formatos y Plataformas:** Subido a Microsoft Stream (entorno institucional), YouTube (para visualización pública e inserción en el Landing Page).
+* **Nombre del archivo:** `upc-pre-202610-1asi0572-17757-UI-Topic-about-the-product-sprint-3`
+* **Duración:** 00:03:16
+* **Formatos y Plataformas:** Subido a Microsoft Stream (entorno institucional) y YouTube (para visualización pública e inserción en la Landing Page).
 
 **Evidencia de Publicación:**
 
 ![About the Product - Thumbnail](assets/images/chapter5/about-the-product-screenshot.png)
-*Interfaz de la aplicación Restock presentada en el video institucional.*
+*Interfaz de la aplicación Restock y el dispositivo Supplies Keeper presentados en el video institucional.*
 
 **Enlaces de acceso:**
 
 | Plataforma | Enlace de Acceso |
 | :--- | :--- |
-| **Microsoft Stream** | [https://shorturl.at/XYcrE](https://shorturl.at/XYcrE) |
-| **YouTube** | [https://www.youtube.com/watch?v=2pV4h6XbO7Y](https://www.youtube.com/watch?v=2pV4h6XbO7Y) |
+| **Microsoft Stream** | [https://shorturl.at/p28Nc](https://shorturl.at/p28Nc) |
+| **YouTube** | [https://www.youtube.com/watch?v=QVXA2PC6Jyo](https://www.youtube.com/watch?v=QVXA2PC6Jyo) |
+
 
 <div style="page-break-after: always;"></div>
