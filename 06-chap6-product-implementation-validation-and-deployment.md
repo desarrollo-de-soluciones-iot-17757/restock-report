@@ -2634,42 +2634,65 @@ El backend principal fue desplegado en Azure App Service bajo el plan `plan-rest
 Los pasos seguidos para este despliegue fueron los siguientes:
 
 1. Se creó el Plan de App Service `plan-restock-17757` en la región Brazil South, bajo el tier Basic B1 con sistema operativo Linux.
+
 2. Se configuró la aplicación web `restock-api-17757` con modelo de publicación por contenedor, utilizando la imagen base `nginx:latest` como punto de partida.
+
 3. Se registraron las variables de entorno necesarias para la ejecución del servicio, incluyendo MONGODB_URI, AUTHORIZATION_JWT_SECRET, AUTHORIZATION_JWT_EXPIRA..., CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, CLOUDINARY_CLOUD_NAME, FIREBASE_CREDENTIALS_BASE64, FIREBASE_PROJECT_ID, INTEGRATIONS_FCM_ENABLED, RESEND_API_KEY, SPRING_PROFILES_ACTIVE, entre otras, configuradas directamente desde la sección de Variables de entorno del App Service.
+
 4. Se configuró el workflow de GitHub Actions (`deploy-azure.yml`) con el pipeline CD - Deploy Backend to Azure, el cual construye la imagen Docker, la publica en el GitHub Container Registry (ghcr.io) y despliega automáticamente al App Service al detectar cambios en la rama main.
+
 5. Se verificó la ejecución exitosa de los 10 workflow runs registrados en GitHub Actions, todos con estado completado satisfactoriamente.
+
 6. Se validó la disponibilidad pública del Swagger UI en [https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/), confirmando la exposición correcta de los endpoints documentados bajo OpenAPI 3.1.
 
 Las siguientes capturas evidencian el proceso de despliegue ejecutado:
 
 <p align="center">
+
   <img src="https://i.ibb.co/HL1dMvs0/1-creacion-plan-app-service.png" alt="Plan de App Service plan-restock-17757" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 La imagen anterior muestra el Plan de App Service `plan-restock-17757` en estado Listo, configurado en Brazil South con tier B1 y sistema operativo Linux.
 
 <p align="center">
+
   <img src="https://i.ibb.co/TqnR6PyQ/2-creacion-inicial-app-service.png" alt="Creación inicial de la App Service restock-api-17757" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 La captura evidencia la aplicación web `restock-api-17757` en estado En ejecución, con su dominio predeterminado asignado y el plan de hosting vinculado correctamente.
 
 <p align="center">
+
   <img src="https://i.ibb.co/p6dDTTxV/3-enviroment-variables.png" alt="Variables de entorno configuradas en App Service" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 Se muestra la configuración de las variables de entorno registradas en el App Service, necesarias para la conexión con MongoDB, autenticación JWT, servicios de notificaciones y almacenamiento en nube.
 
 <p align="center">
+
   <img src="https://i.ibb.co/60JSgp3d/4-cd-configuration.png" alt="Configuración del workflow de CD en GitHub Actions" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 La imagen muestra el archivo `deploy-azure.yml` con el pipeline de entrega continua configurado para construir y publicar la imagen Docker automáticamente al fusionar cambios en main.
 
 <p align="center">
+
   <img src="https://i.ibb.co/fYDhCY9T/5-github-actions.png" alt="Ejecuciones del workflow en GitHub Actions" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 Se evidencian los 10 workflow runs completados exitosamente en el repositorio `restock-web-services`, correspondientes a los distintos merges realizados durante el sprint.
 
 <p align="center">
+
   <img src="https://i.ibb.co/0jmJDhQN/6-swagger.png" alt="Swagger UI del backend desplegado" style="width:100%; max-width:900px; height:auto;">
+
 </p>
+
 La captura confirma la disponibilidad del Swagger UI de la Restock API en producción, con los módulos Custom Supplies, Device Thresholds y demás bounded contexts correctamente expuestos y documentados bajo OAS 3.1.
 
 ##### Despliegue del Edge Service (edge-restock)
@@ -3193,6 +3216,253 @@ Cabe resaltar que la feature de anomalías físicas del Edge Service (UTI-899) a
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
 
 #### 6.2.3.8. Software Deployment Evidence for Sprint Review
+
+Durante este Sprint, el equipo expandió y consolidó la estrategia de despliegue para abarcar la totalidad del ecosistema de la solución. Esto incluyó la puesta en producción de las plataformas interactivas de cara al usuario (Landing Page, Web Application y Mobile Application), la actualización continua del núcleo en la nube (Web Service), la preparación del entorno contenedorizado para la simulación del nodo Edge, y la carga final del firmware en el dispositivo físico denominado **Supplies Keeper**. 
+
+A continuación, se detallan los entornos, configuraciones y pasos ejecutados para el despliegue de cada componente, junto con sus respectivas evidencias de disponibilidad.
+
+##### Despliegue y Actualización de la Landing Page (Vercel)
+
+Durante este tercer sprint, la Landing Page del proyecto, orientada al marketing y captación de clientes, mantuvo su ciclo de integración y despliegue continuo sobre la plataforma Vercel. La automatización previamente configurada garantizó que las nuevas actualizaciones de contenido y diseño se publicaran de manera fluida, manteniendo tiempos de carga óptimos y alta disponibilidad global a través de su CDN.
+
+Los pasos seguidos para la actualización de este despliegue fueron los siguientes:
+
+1. Se monitorizó el trigger automático en la plataforma Vercel tras la integración de los nuevos *pull requests* de la iteración.
+2. Se verificó el proceso de *build* para asegurar la correcta compilación y generación de los recursos estáticos actualizados sin errores.
+3. Se confirmó la culminación exitosa del pipeline de publicación, asegurando que la plataforma reconstruyera el proyecto a partir de su rama principal (`master`).
+4. Se validó el acceso a la plataforma mediante el dominio seguro generado por el hosting (`restock-landing-page-eta.vercel.app`), confirmando la actualización exitosa del sitio institucional en producción.
+
+La siguiente captura evidencia el estado del despliegue ejecutado durante el sprint:
+
+**Dashboard de Producción en Vercel**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/landing-vercel-dashboard.jpeg" alt="Dashboard de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se muestra el panel general (Overview) del proyecto `restock-landing-page` en Vercel. Se evidencia el estado "Ready" del despliegue en producción tras la exitosa integración del Pull Request #25 en la rama `master`. Asimismo, se observa la asignación correcta del dominio público y los despliegues de previsualización (Preview) operativos correspondientes a las ramas activas en desarrollo, como la rama `develop`.
+
+#### Despliegue y Actualización de la Web Application (Vercel)
+
+De forma complementaria, el ciclo de vida de la Web Application continuó gestionándose a través del despliegue automático en Vercel. En este sprint, la publicación sirvió para verificar la disponibilidad del frontend administrativo y la exposición correcta de las nuevas funcionalidades desarrolladas, garantizando la integración continua de los nuevos módulos interactivos del ecosistema Restock.
+
+Los pasos seguidos para la actualización de este despliegue fueron los siguientes:
+
+1. Se monitorizó el proceso de compilación de producción (production build) requerido por el framework al recibir los nuevos *commits* y *pull requests* de la iteración.
+2. Se revisaron las configuraciones en el panel de Vercel para asegurar la correcta comunicación del frontend con los nuevos servicios expuestos por el backend.
+3. Se confirmó la culminación exitosa del pipeline de publicación, asegurando que la plataforma reconstruyera el proyecto en su rama principal (`main`) sin errores de dependencias.
+4. Se validó el acceso a la plataforma web mediante el dominio seguro generado por el hosting (`restock-web-application.vercel.app`), confirmando la actualización exitosa de la interfaz en producción.
+
+La siguiente captura evidencia el estado del despliegue ejecutado durante el sprint:
+
+**Dashboard de Producción en Vercel**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/web-app-vercel-dashboard.jpeg" alt="Dashboard de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se muestra el panel general (Overview) del proyecto `restock-web-application` en Vercel. Se evidencia el estado "Ready" del despliegue en producción tras la exitosa integración del Pull Request #95 en la rama principal. Asimismo, se observan los despliegues de previsualización (Preview) operativos correspondientes a las ramas activas desarrolladas por el equipo durante el sprint (tales como `develop`, `feature/display-mode` y `feature/physical-anomalies`).
+
+#### Despliegue y Actualización de la Mobile Application (Firebase)
+
+Durante este tercer sprint, la Mobile Application del ecosistema, diseñada para el monitoreo y gestión operativa de los inventarios, continuó su ciclo de integración y despliegue utilizando los servicios de Firebase. Específicamente, se empleó Firebase App Distribution para empaquetar y entregar las nuevas versiones estables (con las características desarrolladas en esta iteración) directamente a los dispositivos de los testers y stakeholders del proyecto.
+
+Los pasos seguidos para este despliegue continuo fueron los siguientes:
+
+1. Se verificó el estado de los proyectos registrados para Android e iOS en la consola de Firebase, asegurando que los servicios de analíticas y distribución estuvieran activos para el paquete de la aplicación.
+2. Se compilaron los artefactos de la aplicación desde el entorno de desarrollo, generando los archivos instalables optimizados (APK o App Bundle) correspondientes a las nuevas versiones de este sprint.
+3. Se subieron los artefactos generados a la plataforma de Firebase App Distribution, adjuntando las notas de la versión (release notes) y notificando automáticamente a los grupos de testers mediante correo electrónico.
+4. Se monitoreó el panel de distribución para confirmar la recepción, aceptación y descarga de la aplicación por parte de los usuarios invitados.
+5. Se validó el despliegue realizando la instalación directa y ejecución de la aplicación en un dispositivo físico para confirmar la operatividad de los nuevos módulos.
+
+Las siguientes capturas evidencian el flujo de distribución y verificación de la aplicación móvil:
+
+**Registro y Monitoreo en Firebase Console**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/firebase-console-app.png" alt="Registro de la Mobile App en la consola de Firebase" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Panel principal de Firebase mostrando los entornos `restock (android)` y `restock (ios)` debidamente registrados. Esta configuración centralizada asegura que la aplicación esté vinculada a los servicios de la plataforma para su correcta distribución y monitoreo de métricas.
+
+**Distribución de Versiones con Firebase App Distribution**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/firebase-app-distribution.png" alt="Lanzamiento de versiones en Firebase App Distribution" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Panel de App Distribution evidenciando el historial de lanzamientos iterativos de la aplicación móvil correspondientes al sprint. Se observa la distribución exitosa de la versión más reciente (v1.4.1), detallando en tiempo real las métricas de invitaciones enviadas, aceptadas y descargas completadas por los testers.
+
+**Mobile Application Operativa en Dispositivo Físico**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/mobile-app-running.png" alt="Mobile Application en ejecución en dispositivo físico" style="width:90%; max-width:200px; height:auto;">
+</p>
+Captura de pantalla de la aplicación móvil Restock ejecutándose sin incidencias en un dispositivo físico tras su descarga desde App Distribution. Se valida el correcto renderizado de la interfaz de usuario, exponiendo la lista de suministros actualizados y la barra de navegación principal habilitada.
+
+#### Despliegue y Actualización del Web Service (restock-web-services)
+
+Durante este tercer sprint, el Web Service principal mantuvo su operatividad sobre la infraestructura preexistente en Azure App Service (`plan-restock-17757`). El enfoque de esta iteración se centró en la integración continua y el despliegue automático de los nuevos módulos desarrollados, garantizando la estabilidad del entorno de producción y manteniendo la disponibilidad pública a través del dominio `restock-api-17757.azurewebsites.net`.
+
+Los pasos seguidos para la actualización de este despliegue fueron los siguientes:
+
+1. Se validó la salud y el consumo de recursos del Plan de App Service `plan-restock-17757` (ubicado en la región Brazil South, tier Basic B1) para asegurar que soportara adecuadamente la carga de los nuevos controladores y servicios agregados.
+2. Se mantuvo activo el modelo de publicación por contenedor, asegurando que la aplicación web extrajera automáticamente la última versión de la imagen Docker generada en cada pase a producción.
+3. Se revisaron y actualizaron las variables de entorno en la configuración de la App Service, validando que las credenciales (MONGODB_URI, JWT, Cloudinary, Firebase, y perfiles de Spring) estuvieran correctamente inyectadas para soportar las nuevas integraciones del sistema.
+4. El pipeline de Continuous Deployment configurado mediante GitHub Actions (`deploy-azure.yml`) continuó su labor de automatización, encargándose de compilar el proyecto, construir la nueva imagen Docker y publicarla en el GitHub Container Registry tras cada merge aprobado en la rama `main`.
+5. Se monitorizó el historial de ejecuciones en GitHub Actions, confirmando que los workflow runs correspondientes a las integraciones de este sprint finalizaron con estado exitoso.
+6. Se comprobó la actualización en producción de la documentación interactiva (Swagger UI), verificando que la especificación OpenAPI 3.1 exponga y documente correctamente los nuevos endpoints desarrollados en esta iteración.
+
+Las siguientes capturas evidencian el proceso de actualización continua ejecutado:
+
+<p align="center">
+  <img src="https://i.ibb.co/HL1dMvs0/1-creacion-plan-app-service.png" alt="Monitoreo del Plan de App Service plan-restock-17757" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La imagen anterior muestra el Plan de App Service `plan-restock-17757` operativo, confirmando que los recursos asignados en el tier B1 (Linux) siguen soportando el ecosistema del backend de manera estable.
+
+<p align="center">
+  <img src="https://i.ibb.co/TqnR6PyQ/2-creacion-inicial-app-service.png" alt="Estado operativo de la App Service restock-api-17757" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La captura evidencia la aplicación web `restock-api-17757` en estado "En ejecución", procesando las peticiones entrantes a través de su dominio asignado tras los despliegues de este sprint.
+
+<p align="center">
+  <img src="https://i.ibb.co/p6dDTTxV/3-enviroment-variables.png" alt="Variables de entorno verificadas en App Service" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se muestra el panel de configuración de la App Service, validando la persistencia y actualización de las variables de entorno críticas para la conexión con bases de datos, almacenamiento y notificaciones.
+
+<p align="center">
+  <img src="https://i.ibb.co/60JSgp3d/4-cd-configuration.png" alt="Pipeline de CI/CD activo en el repositorio" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La imagen destaca el archivo `deploy-azure.yml`, que se mantiene como el motor de entrega continua para enviar las actualizaciones del código hacia la infraestructura en la nube.
+
+<p align="center">
+  <img src="https://i.ibb.co/fYDhCY9T/5-github-actions.png" alt="Nuevas ejecuciones del workflow en GitHub Actions" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se evidencian los workflow runs más recientes completados exitosamente en el repositorio `restock-web-services`, los cuales corresponden a la liberación de las nuevas funcionalidades de esta iteración.
+
+<p align="center">
+  <img src="https://i.ibb.co/0jmJDhQN/6-swagger.png" alt="Swagger UI actualizado con los nuevos endpoints" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La captura confirma la actualización de la Restock API en producción. El Swagger UI ahora refleja los nuevos módulos y bounded contexts finalizados por el equipo, listos para ser consumidos por las aplicaciones cliente.
+
+#### Preparación y Contenedorización del Edge Service (Docker Hub para Despliegue Local)
+
+Para asegurar la portabilidad y facilitar el despliegue del sistema Restock Edge Service en la presentación física del proyecto, se optó por una estrategia de contenerización con Docker. Esto elimina la necesidad de configurar manualmente intérpretes de Python o dependencias en las laptops de exposición. Se diseñó un Dockerfile multi-stage optimizado para disminuir el tamaño del artefacto y se habilitó la persistencia de datos de SQLite mediante volúmenes. Finalmente, la imagen se publicó en un registro centralizado (Docker Hub) para posibilitar un despliegue rápido de tipo 'zero-code' utilizando únicamente comandos de consola.
+
+**Construcción de la Imagen (Docker Build)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-build.png" alt="Construcción multi-stage de la imagen Docker" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Proceso de construcción multi-stage de la imagen Docker para el Edge Service. En la captura se observa el aislamiento en la fase de 'builder' para instalar dependencias de Python mediante pip, seguido de la etapa de 'runner' que genera una imagen final ligera.
+
+**Imagen Publicada en Docker Hub**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-hub.png" alt="Repositorio en Docker Hub" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Repositorio público del Edge Service alojado en Docker Hub. Se muestran los tags garantizando que cualquier nodo de la red pueda descargar la imagen mediante el comando `docker pull` sin requerir acceso al código fuente.
+
+**Contenedor corriendo en Docker Desktop o Terminal**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-desktop.png" alt="Contenedor corriendo en Docker Desktop" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Estado de ejecución del contenedor en Docker Desktop. El servicio se expone localmente a través del puerto 5000 y cuenta con un volumen montado en el host en la ruta `./data`, permitiendo que la base de datos local SQLite conserve la persistencia de datos.
+
+**Logs de Inicialización del Servicio**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-logs.png" alt="Logs de inicialización" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Logs de inicialización del Edge Service dentro del contenedor Docker. Se evidencia que al arrancar, el servicio ejecuta de forma automatizada los scripts de creación y mapea los modelos de dominio.
+
+**Prueba de API (Evidencia de Funcionamiento)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/edge-api-test.png" alt="Prueba de validación del API en Postman" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Prueba de validación del API expuesta por el contenedor del Edge Service. Se observa una solicitud POST que emula un envío de telemetría de peso, obteniendo una respuesta exitosa procesada directamente por el servidor Gunicorn.
+
+#### Carga de Firmware y Evidencia del Dispositivo Embedded (Supplies Keeper)
+
+El componente de hardware del sistema, denominado **Supplies Keeper**, ejecuta el software embebido encargado de realizar la lectura física de los sensores de peso y enviar las métricas de telemetría hacia el ecosistema de Restock. Para mitigar riesgos y asegurar la estabilidad del código en C++, el proceso de desarrollo y despliegue del firmware siguió un enfoque iterativo, comenzando con simulaciones virtuales y culminando en el flasheo directo del microcontrolador ESP32 físico.
+
+Los pasos ejecutados para la validación y carga del firmware fueron los siguientes:
+
+1. Se construyó y validó la lógica base del circuito electrónico mediante la plataforma de simulación **Wokwi**, permitiendo emular el comportamiento del ESP32 y las lecturas de los sensores antes de interactuar con los componentes físicos.
+2. Se migró el código fuente validado hacia un entorno de desarrollo local utilizando **Arduino IDE**, garantizando un proceso de compilación, gestión de librerías y revisión de sintaxis eficiente.
+3. Se conectó la placa base del dispositivo Supplies Keeper vía conexión serial-USB a la estación de trabajo, ejecutando el comando de subida para compilar y flashear el binario final en la memoria flash del microcontrolador.
+4. Se validó la correcta ejecución en el entorno físico mediante el monitor serial y la observación directa del hardware, comprobando la inicialización de los sensores, la conexión a la red, y el envío exitoso de los paquetes de datos.
+
+Las siguientes capturas y fotografías evidencian el flujo de despliegue del componente Embedded:
+
+**Simulación Temprana del Circuito (Wokwi)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-wokwi.png" alt="Simulación del ESP32 en Wokwi" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La imagen muestra el entorno de simulación de Wokwi ejecutando el archivo principal del proyecto. En ella se prototipó la lógica de lectura de los sensores y la conexión de la pantalla LCD de manera virtual, asegurando la viabilidad del código antes del ensamblaje físico.
+
+**Compilación y Verificación en Arduino IDE**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-compilation.png" alt="Compilación del firmware en Arduino IDE" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se evidencia la salida de la consola durante el uso de Arduino IDE 2.3.10. El log confirma la resolución exitosa de las librerías de dependencias y la compilación del binario sin errores de sintaxis en el código fuente.
+
+**Salida del Monitor Serial**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-serial.png" alt="Monitor serial mostrando logs del ESP32" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La captura muestra el log en tiempo real del Monitor Serial. Se observa el proceso de inicialización de los módulos, los intentos de conexión al broker MQTT y las lecturas preliminares de los sensores de peso calibrados.
+
+**Carga del Firmware al Microcontrolador (ESP32)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-upload.png" alt="Proceso de carga (uploading) al ESP32" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La imagen documenta el proceso de flasheo del código ("Uploading..."). Se confirma la escritura del binario compilado al 100% de su capacidad en la memoria flash del microcontrolador físico conectado por el puerto serie.
+
+**Pruebas de Hardware en Protoboard**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-breadboard-test.png" alt="Pruebas del circuito físico en protoboard" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Fotografía del circuito físico preliminar ensamblado en una placa de pruebas (protoboard). Se evidencia el microcontrolador ESP32 energizado y la pantalla LCD retroiluminada respondiendo a las instrucciones del firmware.
+
+**Prueba de Sensores de Peso (Supplies Keeper Operativo)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-device-weight.png" alt="Prueba de peso en el dispositivo Supplies Keeper" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+La fotografía muestra el dispositivo IoT físico finalizado, demostrando su capacidad operativa al reflejar en tiempo real los valores de peso (Weight) capturados por las celdas de carga integradas en la balanza inteligente.
+
+**Prueba de Sensores Ambientales (Temperatura y Humedad)**
+
+<p align="center">
+  <img src="assets/images/chapter6/sprint3/deployment/embedded-device-temp-hum.png" alt="Prueba de temperatura y humedad en el dispositivo" style="width:100%; max-width:900px; height:auto;">
+</p>
+
+Se evidencia una segunda prueba sobre el dispositivo Supplies Keeper en funcionamiento, donde la pantalla LCD muestra exitosamente las lecturas de Temperatura y Humedad del entorno, validando la integración completa de los módulos periféricos.
 
 #### 6.2.3.9. Team Collaboration Insights during Sprint
 
