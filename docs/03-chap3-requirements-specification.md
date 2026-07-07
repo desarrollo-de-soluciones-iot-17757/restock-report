@@ -123,7 +123,7 @@ Para el presente proyecto, se definieron los epics a partir de los objetivos fun
 
 A continuación, se muestra el mapa de impacto según las historias de usuario. 
 
-<img src="assets/images/chapter3/impact-mapping.png" alt="Domain Message Flow - Record a supply" height=90%>
+<img src="../assets/images/chapter3/impact-mapping.png" alt="Domain Message Flow - Record a supply" height=90%>
 
 ## 3.3. Product Backlog
 

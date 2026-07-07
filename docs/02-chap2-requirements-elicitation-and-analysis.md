@@ -278,7 +278,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td>
       <div align="center">
         <img 
-          src="assets/images/chapter2/needfinding-interviews/entrevista1.png" 
+          src="../assets/images/chapter2/needfinding-interviews/entrevista1.png" 
           style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
         >
       </div>
@@ -335,7 +335,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td>
       <div align="center">
         <img 
-          src="assets/images/chapter2/needfinding-interviews/entrevista2.png" 
+          src="../assets/images/chapter2/needfinding-interviews/entrevista2.png" 
           style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
         >
       </div>
@@ -390,7 +390,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td>
       <div align="center">
         <img 
-          src="assets/images/chapter2/needfinding-interviews/entrevista3.png" 
+          src="../assets/images/chapter2/needfinding-interviews/entrevista3.png" 
           style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;"
         >
       </div>
@@ -448,7 +448,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="assets/images/chapter2/needfinding-interviews/entrevista4.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="../assets/images/chapter2/needfinding-interviews/entrevista4.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -501,7 +501,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="assets/images/chapter2/needfinding-interviews/entrevista5.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="../assets/images/chapter2/needfinding-interviews/entrevista5.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -553,7 +553,7 @@ En esta sección se presenta la investigación realizada a partir de la recolecc
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="assets/images/chapter2/needfinding-interviews/entrevista6.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="../assets/images/chapter2/needfinding-interviews/entrevista6.png" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -714,7 +714,7 @@ En esta sección se presentan los User Journey Maps (As-Is) de los segmentos rep
 
 A continuación se presenta el User Journey Map de Carolina Rivas.
 
-![user journey mapping carolina rivas](assets/images/chapter2/empathy-maps/customer-journey-map-restaurant-managers.png)
+![user journey mapping carolina rivas](../assets/images/chapter2/empathy-maps/customer-journey-map-restaurant-managers.png)
 
 Uno de los problemas más críticos se encuentra en la toma y transmisión de pedidos. Al no existir un sistema estructurado, es común que ocurran errores en la anotación, interpretación o comunicación de los pedidos hacia la cocina. Esto puede generar confusiones, retrasos e incluso la entrega incorrecta de platos a los clientes.
 
@@ -726,7 +726,7 @@ En conclusión, el proceso del restaurante requiere la implementación de un sis
 
 A continuación se presenta el User Journey Map de Jorge Torres.
 
-![user journey mapping jorge torres](assets/images/chapter2/empathy-maps/customer-journey-mapping-retail-managers.png)
+![user journey mapping jorge torres](../assets/images/chapter2/empathy-maps/customer-journey-mapping-retail-managers.png)
 
 Uno de los principales problemas identificados es la falta de control en tiempo real del stock. Al no existir un sistema automatizado, los productos no se actualizan correctamente después de cada venta o reposición, lo que puede generar tanto quiebres de stock como sobreabastecimiento. Esta falta de visibilidad impacta directamente en la toma de decisiones del negocio.
 
