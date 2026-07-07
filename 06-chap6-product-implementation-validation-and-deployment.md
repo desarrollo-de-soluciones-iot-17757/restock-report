@@ -1686,7 +1686,7 @@ En esta sección, se describen los principales avances de implementación realiz
 
 Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: en el Web services, se implementó de Devices ,Tracking, Design and Planning, Sales Management, Analytics, Communications, IAM y Resource. En la aplicación web, se implementó las pantallas de kit, dashboard de analisis, , manejo de discrepancia. Por el lado de la aplicación móvil, se implemento los distintos bounded context Devices ,Tracking, Analytics, Communications, IAM y Resource.
 
-A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el primer sprint.
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el segundo sprint.
 
 | Repository                   | Branch                                   | Commit Id                                | Commit Message                                                                                                                                                                                                            | Committed On |
 | ---------------------------- | ---------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
@@ -2979,6 +2979,129 @@ A continuación, se presenta la tabla con las historias y sus tareas necesarias 
 |            |                                                                 | UTI-853          | Implementar la visualización de discrepancias críticas en la app web                                                                | Como administrador, quiero ver en la app web únicamente las discrepancias clasificadas como críticas para enfocar mis acciones en los casos de mayor impacto operativo.                                  |                  5 | Matias D.                       | Done   |
 
 #### 6.2.3.4. Development Evidence for Sprint Review
+
+En esta sección, se describen los principales avances de implementación realizados en este tercer sprint. Se tienen como principales avances la implementación de la tercera versión del Web Application, la segunda versión del Web service, la segunda versión de la Mobile application, la tercera versión de la landing page, y la segunda versión del Edge y Embedded.
+
+Cada miembro del equipo avanzó progresivamente en las diferentes áreas del proyecto: Tracking, Devices, Resource, Communications, Profiles y Subscriptions.
+
+A continuación, se muestra una tabla que contiene la información sobre los commits realizados que contienen las funcionalidades implementadas para completar el tercer sprint.
+
+| Repository | Branch | Commit Id | Commit Message | Commited On |
+|---|---|---|---|---|
+| restock-edge-service | feature/documentation | 6265434cc409bd1a674d740bb0820b41f3269177 | fix: add mention to environmental record in read me. | 22/06/26 |
+| restock-edge-service | feature/tracking | e162dd76a142080d9cc23ec85d7963530a4f6729 | feat: implement tracking service architecture with database and device management models | 02/07/26 |
+| restock-edge-service | feature/tracking | 4e6470524550ce1919e30a66ddc1ed404c5b38a5 | feat: implement domain, infrastructure, and interface layers for device threshold management | 02/07/26 |
+| restock-edge-service | feature/tracking | 9ecf6648a1b2b4b98a66c554ae512ee6d0f10ed5 | chore: ignore .log files in the repository | 02/07/26 |
+| restock-edge-service | feature/tracking | 734477fa83cfad79b28b7c68d2153706ab5d932e | test(tracking): add is_physical_anomaly domain service test | 04/07/26 |
+| restock-edge-service | feature/tracking | 16d6145a918da4e22e845db7ffb3eefef4b79c92 | test(tracking): add anomaly reporting application service test | 04/07/26 |
+| restock-edge-service | feature/tests | c871752a7d9553548b94345adf845cdad c197a34a (hash incompleto) | fix(test): align physical stock tolerance test with corrected formula | 04/07/26 |
+| restock-edge-service | feature/tracking | 0dbe4a8f356c8fe19b7d8fc553e315e4cd169624 | test(tracking): update unit and integration tests | 05/07/26 |
+| restock-edge-service | feature/devices | 4b11393f8b78d6dfcb7cb55a6378012f2f3d6149 | feat(devices): add cloud device event url to env | 05/07/26 |
+| restock-edge-service | feature/devices | 4e433758d81cb10f57ae1d288bb804d7bcf6c168 | feat(devices): add device status events and reports to local database | 05/07/26 |
+| restock-edge-service | feature/devices | 78a19a560800718a30535e11ae1fd0387ef22245 | feat(devices): add device status report entity | 05/07/26 |
+| restock-edge-service | feature/devices | 99706778845e594417ffebca4624717363e37041 | feat(devices): add device health message to mqtt client | 05/07/26 |
+| restock-edge-service | feature/devices | f2eb381ea1442cfe1839642b8f82549051197809 | feat(devices): add device status report repository and device health event repository | 05/07/26 |
+| restock-edge-service | feature/devices | abfeeeb0612315b79212294a9360bf6de1a76302 | feat(devices): add device status services | 05/07/26 |
+| restock-edge-service | feature/devices | 081270cae3b22604b076229550c56dd3e265c7ee | feat: enhance device handling and anomaly reporting logic in services | 06/07/26 |
+| restock-edge-service | feature/test | 888b57331c0919b20c6ef6c61ba17e1a98e8ac5f | fix(test): include average physical stock in weight record response | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | 69f06d481d20155c89b60a5e22d3184844a729e3 | fix: add token variable. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | 24ad74733adebff443641ae55159824b62e613db | feat(cloud-sync): add payload class for telemetry sending. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | be122112284040308848470f09f7441215888d3b | fix: rename broker topics. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | 69f8337ff1f38d32b8eecd0abd128eb8af54f80c | chore: add requests library for http interaction. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | ec7317978c75c0f8cba3b0e899cfccb4a26ecf14 | feat(cloud-sync): add telemetry sync client class for sending telemetry to the cloud api. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | 54f98e16cf432bcc34b8b05da62d2426af1b5fb0 | feat(cloud-sync): add methods to find the last registered telemetry record. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | c16ee909781676e1932c02f36d45242c419a11e2 | fix: use threshold, and telemetry classes to build the payload. | 06/07/26 |
+| restock-edge-service | feature/cloud-sync | b431bd4f6b2a87721a6377d9fb47b315f5117aa5 | feat(cloud-sync): complement methods to sync telemetry data with the cloud API. | 06/07/26 |
+| restock-edge-service | feature/display-mode | abea69d261990256877506ee14dc61d8ef28f44e | feat(display-mode): add enum for display modes of a device. | 06/07/26 |
+| restock-edge-service | feature/display-mode | 5f820df0c19e2c148452a4a9a662e20f06951a54 | feat(display-mode): add display mode field. | 06/07/26 |
+| restock-edge-service | feature/display-mode | 19b82556f092cb3e324646c9784e89c33ca2eaea | feat(display-mode): add method to update the device display mode. | 06/07/26 |
+| restock-edge-service | feature/display-mode | 0e52bc0fdf57be97fc5a34d821014fa62d507b15 | feat(display-mode): add patch endpoint to update display mode. | 06/07/26 |
+| restock-edge-service | feature/display-mode | 54d39373018ebe51b3291cc18983cff00fc9478c | feat(display-mode): complement mqtt listeners to response with the current display mode. | 06/07/26 |
+| restock-edge-service | feature/dockerize | 8208e09e4392c9dd4046ea55a51bb2c8189b90af | feat(docker): dockerize edge service and fix tracking unit tests | 06/07/26 |
+| restock-embedded-application | feature/device | 9cdb0d1d83c1d7aba5fca1c79fca6089cecb4c94 | refactor(device): migrate embedded app to modest iot arduino workflow | 15/06/26 |
+| restock-embedded-application | feature/device | c2f140df0a2cb7e323310af1422e3b1b338cc7e3 | docs(device): update embedded app setup and workflow | 15/06/26 |
+| restock-embedded-application | feature/telemetry | a39e9d1881a1c707f2bf703b47331467af6bcbe8 | feat(telemetry): implement device health metrics and threshold alerts | 19/06/26 |
+| restock-embedded-application | feature/sketch | a2b29c353a0154fed6cfc065788fd980665c5cfe | fix(sketch): update code to the updated nano-framework | 01/07/26 |
+| restock-embedded-application | feature/weight | e932013d2fadfbde774895b29063c5364ebbc339 | feat(weight): add load cell connections | 01/07/26 |
+| restock-embedded-application | feature/weight | 85a8a0f6691e4c3848b32de7ce7c98dd5ef8d37c | feat(weight): add load cell constants | 01/07/26 |
+| restock-embedded-application | feature/weight | 62061b7acfbfe711195555141678e4c2a322abf6 | feat(weight): add weight telemetry package | 01/07/26 |
+| restock-embedded-application | feature/weight | 6ab39d966305475c115c459c524f649158db8a71 | feat(weight): add front left weight sensor | 01/07/26 |
+| restock-embedded-application | feature/weight | d9e64f1bb9b59c6558766d2ee4daef61a4c36ca8 | feat(weight): change lock pin of sensor | 06/07/26 |
+| restock-embedded-application | feature/weight | 0f16ce804aaf751e6efbc06c2a43d9445b07af57 | feat(weight): add weight sensor calibration | 06/07/26 |
+| restock-embedded-application | feature/tracking | 48b281bc8d55979d6e0b004ab7fe566d00494d80 | feat(tracking): add mqtt connection fallbacks | 06/07/26 |
+| restock-embedded-application | feature/tracking | 0112f09799e83fe8f4fcab57f28727ea4157fb54 | feat(tracking): update sck pin of load cell | 06/07/26 |
+| restock-embedded-application | feature/tracking | f9a39bfc8294c048f300d680cb0eb23d9b4259fa | feat(tracking): add mqtt topics | 06/07/26 |
+| restock-embedded-application | feature/tracking | a06ca5b3a8a16466760d043f5b1747937c4f43e4 | feat(tracking): define display modes | 06/07/26 |
+| restock-embedded-application | feature/tracking | bc4098ed305dcd59649010fd75d908ca9372592e | feat(tracking): update telemetry body request | 06/07/26 |
+| restock-embedded-application | feature/tracking | 3e71fd476cbe04036cbc8e60cfba796b731b79fe | feat(tracking): improve display modes and environment telemetry detection | 06/07/26 |
+| restock-mobile-application | feature/profiles | c10f4a95580d338477a75481305927734f40a35a | feat(profile): implement profile management with state management and ui components. | 02/06/26 |
+| restock-mobile-application | feature/business | 571950e83b0ebd77e44d42c35c20ba147cf9d81b | feat(business): implement business management with bloc architecture and ui components. | 02/06/26 |
+| restock-mobile-application | feature/business | b60cab76752a8dda4ffd02e56f03c85017e5857a | feat(business): add business context dependencies and integrate into settings. | 02/06/26 |
+| restock-mobile-application | feature/communications | daa17fc36f581ac2c5f2e7c64394050bc22d1de3 | fix(communications): add accountid param to stock threshold evaluation and correct tab filters in alertsbody. | 02/06/26 |
+| restock-mobile-application | feature/communications | 8181541613dbd6f5ea1716546ebb5325bfc9928f | fix(communications): connect alerts & notifications. | 02/06/26 |
+| restock-mobile-application | feature/profiles | 422a0f3fe6a6817bd6d591fcf824207d27fa13b5 | feat(profiles): implement profile management with remote data provider and repository. | 02/06/26 |
+| restock-mobile-application | feature/custom-supplies | 1bca7684f4b11f8a586d77510985898ac0c629cd | fix(custom-supplies): update custom supplies fetching to include account id for better data accuracy. | 20/06/26 |
+| restock-mobile-application | feature/communications | f6fa36dda00b3b49918d74ec1d4fa9117e0fba54 | feat(communications): auto resolve low stock alerts on stock normalization. | 29/06/26 |
+| restock-mobile-application | feature/communications | 67e758e3fa8c353f2d68f7ec494f5e8ca4c63c26 | feat(communications): implement stock excess alerts visualization with active or optimal status. | 29/06/26 |
+| restock-mobile-application | feature/communications | 661307697d536ad926fd802cf25165d524dda51f | fix(communications): connect alerts & notifications. | 01/07/26 |
+| restock-mobile-application | feature/business | ea7c9bda997e3bdda150b8c0997b2411c63e1ce1 | refactor(business): rename business files and update imports. | 04/07/26 |
+| restock-mobile-application | feature/documentation | 76a8a3ca8691e828c0eefc2ff3d6a47bf7d6c702 | docs: document auth services and token storage | 06/07/26 |
+| restock-mobile-application | feature/documentation | f8efc4f107ede8e32f74b7e64edc1339c0310288 | docs: document base button widgets | 06/07/26 |
+| restock-mobile-application | feature/documentation | 2ca605795f02931e25d931b97aea218727cf6c69 | docs: document routing configuration and main app bar | 06/07/26 |
+| restock-mobile-application | feature/documentation | d0b8dbbf7a6648df9f5bd1040fbc4d420a8ecddf | docs: document authentication repository interfaces and implementations | 06/07/26 |
+| restock-mobile-application | feature/documentation | 3cf8eeca853e03b2653cf934d0190348ae51133b | docs: document main entrypoint and dependency injection layers | 06/07/26 |
+| restock-web-application | feature/documentation | 9424b4a9173d5abd733d45210942b726808817a5 | docs: add read me file. | 22/06/26 |
+| restock-web-application | feature/subscriptions | 67fef4eb4214977f7cdce1e46f6f64a8c49245d5 | feat(subscriptions): integrate Stripe subscriptions and add related components | 30/06/26 |
+| restock-web-application | feature/subscriptions | e3dc5895b90ec93a890bca74d5d6430d32e3f5e1 | feat(subscriptions): enhance subscription UI and error handling, add new features and loading states | 30/06/26 |
+| restock-web-application | feature/subscriptions | 89dee7129a443569d5a0c08f8e17787786a86987 | Enhance subscription management UI and functionality | 30/06/26 |
+| restock-web-application | feature/subscriptions | 9df68c5097f4a895fa33c78318b4f84e6f124a4f | feat(subscription): implement registration plan selection and success views with styling | 01/07/26 |
+| restock-web-application | feature/communications | c363f860e250cd36f92b0fc8c29ae6420a9b40c0 | feat(communications): load notifications by both userid and accountid, map sourcetype to alert card type. | 02/07/26 |
+| restock-web-application | feature/i18n | 9f53105de5fea2a97320ba020595698ee7bb246a | feat(i18n): apply translations to communications, analytics, and tracking presentation layers. | 02/07/26 |
+| restock-web-application | feature/i18n | 4df3d197214c1e1030610128841ec80ba0df6dd4 | feat(i18n): apply translations to custom-supply presentation layer. | 03/07/26 |
+| restock-web-application | feature/communications |cd96ef8d0926cbd99c187d17807c7f1eabf708cf | fix(communication): update entity stock threshold | 04/07/26 |
+| restock-web-application | feature/kits | 45ebecd2a60f0b7c6bcdd47316ae8d6a80547191 | feat(kits): enhance kitstore with account id handling and sequential item addition | 04/07/26 |
+| restock-web-application | feature/kits | c76666637346f14bc1a7193189c72a5210f5e571 | feat(kits): implement responsive design for create and edit kit modals, enhance image handling | 04/07/26 |
+| restock-web-application | feature/monitoring-metrics-and-anomalies | 17bac98334608ec616b89d082e2566ea40d3cf14 | fix: implement kit detail view and system preferences configuration component | 05/07/26 |
+| restock-web-application | feature/monitoring-metrics-and-anomalies | b0607fd7aed36b84f21faf15882afb26a74c32b3 | feat(communications): update alert cards and detail modal for hardware health telemetry | 05/07/26 |
+| restock-web-application | feature/create-sales-order | c86c500621e6701c9b90a759535a3bdda5915888 | feat(sales-orders): implement commands and models for sales order management | 05/07/26 |
+| restock-web-application | feature/create-sales-order | 670322d3045eaecb2222fd5bd6c782d14167d7cf | feat(sales-orders): enhance salesStore with order management features and state handling | 05/07/26 |
+| restock-web-application | feature/create-sales-order | 3eb8d2d8f5162446cd2e7ee5b68421831acf9ed1 | feat(sales-orders): implement sales order management with error handling for insufficient stock | 05/07/26 |
+| restock-web-application | feature/create-sales-order | c8b02b5a3270b7b59316be4cf4e5c66e9e591fb7 | feat(sales-overview): add sales overview screen, transactions table, and detail drawer | 05/07/26 |
+| restock-web-application | feature/devices | 11f8cb7f15e2f84357c9471b48367b166a834d7f | feat(devices): add device history logs panel and fix onboarding page reload issue | 06/07/26 |
+| restock-web-application | feature/profiles | 5e2e370f4fccfc6deab17e9a13a6bde9dcd579de | fix(profiles): parse single object response from get by accountId | 06/07/26 |
+| restock-web-application | feature/corrections | 543a7daab54f69a6aa79d553d414fa1ef51d894f | fix(ci): update node engine to 24.x to resolve Vercel build failure. | 06/07/26 |
+| restock-web-services | feature/profiles | 79416771a36f03f74902254f8385fad55951affb | feat(profiles): normalize avatar handling and remove unnecessary transactional annotations. | 02/06/26 |
+| restock-web-services | feature/business | 3d9e08074645f14d03912565de14903d81c0c11e | feat(business): integrate business creation into profile creation process. | 02/06/26 |
+| restock-web-services | feature/firebase | 910990e3ec3797c70cb4a1d8d9cc116d6d46682d | fix(firebase): restore base64 credentials and secure properties config | 02/06/26 |
+| restock-web-services | feature/tracking | af23ac85a64295d15b1eb3c5d04b33892e4ba197 | feat(tracking): implement physical anomalies domain | 02/06/26 |
+| restock-web-services | feature/security | d80abe7a6b78f9140ae76273ceba4c02c1064abb | fix(security): permit all access to telemetry and anomalies endpoints | 02/06/26 |
+| restock-web-services | feature/tests | 13f411825d20d8296322af516ddbae4db09be1ea | fix(test): align usercommandserviceimpltest with externalprofilesservice signature. | 24/06/26 |
+| restock-web-services | feature/communications | 96832af6dc0fda002635698d89295b0208f1f146 | feat(communications): implement stock threshold evaluation endpoint for overstock alerts. | 24/06/26 |
+| restock-web-services | feature/communications | 0c3cecd5fbf66a54cfd65e7e4610b665d557f8ce | feat(communications): implement stock threshold evaluation and alert deactivation. | 24/06/26 |
+| restock-web-services | feature/subscriptions | 2e62bad619a721859bc75a95df2c35e7376e3f46 | feat(subscriptions): add subscriptions plans seeder. | 24/06/26 |
+| restock-web-services | feature/subscriptions | 254b4c60e24ee72ecb64bd802da6ebbd1163fb29 | feat(subscriptions): link stripe product and price ids to seeded plans. | 24/06/26 |
+| restock-web-services | feature/initializes-subscriptions | 282abc5cab27835e08c89dc06d813af96258840f | feat(initializes-subscriptions): add plans and subscriptions repositories. | 24/06/26 |
+| restock-web-services | feature/initializes-subscriptions | 844a9f722078b4a71ff0d8f055c1ab33f3ea0708 | feat(initializes-subscriptions): add subscriptions type, billing cycle and status value objects | 24/06/26 |
+| restock-web-services | feature/subscriptions | 66ad450b4bb43bbe4cbca02e43a0e88aad7f9e0d | feat(subscriptions): integrate Stripe subscriptions | 30/06/26 |
+| restock-web-services | feature/firebase | 9412b27f30cdb723355e7657b69179c2961ee0d4 | fix: fix firebase cloud messaging | 30/06/26 |
+| restock-web-services | feature/subscriptions | 102a9511b758fc82e64f5413219884ddc831d4b5 | fix: fix stripe config | 30/06/26 |
+| restock-web-services | feature/subscriptions | f3f567bb190d70229db20a0166973d9e231f94d4 | fix: fix stripe subscription | 30/06/26 |
+| restock-web-services | feature/swagger | a9d9835c56036fc45d96e549d8734f9d29f31b6e | fix: fix swagger | 01/07/26 |
+| restock-web-services | feature/tests | 2a499cc95f50bb2be9f3492322d22863c296f582 | fix(test): correct usercommandserviceimpltest mock references and argument count. | 01/07/26 |
+| restock-web-services | feature/communications | ede8085f4edde474e5642b9ad6d2fdc642ca6a31 | feat(communications): filter stock threshold evaluation by accountid. | 01/07/26 |
+| restock-web-services | feature/tracking | 80cd08b06f2896658f6d9496f93ca0d578de3e3b | test(tracking): add physical anomaly command service test | 04/07/26 |
+| restock-web-services | feature/tracking | 6073ef7adfb113881f5c0a611df459547f0266fc | test(tracking): add anomalies controller test | 04/07/26 |
+| restock-web-services | feature/business | 41992999b3ec4ce515b6007658b0d5063f93e626 | fix(profiles): comment out business creation logic in profile creation process. | 04/07/26 |
+| restock-web-services | feature/sales | 948dc59a67c4e1a8256ae9a89d53735ce2c517c3 | feat(sales): update sales order completion logic to allow custom items without batch requirements | 05/07/26 |
+| restock-web-services | feature/sales | 10b2a4f235d4dd5f89f0c5ecb81bccfbf3e5bd9a | feat(sales): enhance sales order completion to handle custom supply items | 05/07/26 |
+| restock-web-services | feature/sales | 67b19db1a36e87e6d2f74b3cad0a7facb5b6d929 | feat(sales): add functionality to remove products from sales orders and enhance order retrieval with account or branch filtering | 05/07/26 |
+| restock-web-services | feature/sales | a70ddbcc1584421bf76f542ef6c00bfa67c9d713 | feat(sales): add unit and integration tests for sales order command service handling of supply and kit items | 05/07/26 |
+| restock-web-services | feature/devices | 1a0a21ec61b1925374d5fb87819e774587cf1768 | feat(devices): add device health telemetry and M2M monitoring endpoints | 05/07/26 |
+| restock-web-services | feature/tracking | be6811ac850596304795f21eefe51c8c398ed441 | feat(tracking): implement telemetry readings and device health history endpoints | 06/07/26 |
+| restock-web-services | feature/telemetry-sync | 1c235b2cdf1faab69b03057c61c4a5cae5acb125 | feat(telemetry-sync): add telemetry reading resource for weight and environment telemetry. | 06/07/26 |
+| restock-web-services | feature/device | e4e8c3077b74364a395cb6b88be853902850b96a | feat(device): add display mode handling and update command for device display mode. | 06/07/26 |
+| restock-web-services | feature/device | bac9508fdd161be0e7b202e67db77b969b68ff6a | feat(device): add display mode property and update endpoint for modifying device display mode. | 06/07/26 |
+| restock-web-services | feature/device | 86a9872f96f77b619720f3a3bd7b4332afd61fb9 | feat(device): implement display mode update event and edge service integration. | 06/07/26 |
 
 #### 6.2.3.5. Testing Suite Evidence for Sprint Review
 
