@@ -3030,66 +3030,43 @@ Finalmente, se agregó una sección que contiene los términos y condiciones que
 
 ## Aplicación Web
 
-En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación web. El esfuerzo de desarrollo se centró en habilitar la navegación principal y la interacción gráfica con las entidades operativas del sistema, brindando soporte visual a los modelos de negocio.
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación web. Para este sprint, el alcance de desarrollo de la aplicación incluyó secciones como el centro de notificaciones, personalización de perfiles tanto del usuario como del negocio y el recibimiento de telemetría de los dispositivos.
 
 El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
 
-* **Assets & Resources:** Vistas operativas para el registro, control y gestión de sucursales y suministros.
-* **Device Management:** Pantallas destinadas a la gestión, registro y configuración de dispositivos en el sistema.
-* **Configuración de Sucursales:** Interfaz para la creación y selección de sucursales en el sistema.
+* **Profile Management:** Vistas personalizables donde los usuarios pueden colocar su información personal y de su negocio para generar identidad.
+* **Tracking:** Visualización de la telemetría procesada recibida por parte de los dispositivos Restock Supplies Keeper.
+* **Suscripciones:** Interfaz para la visualización del plan de suscripción actual de la cuenta.
+* **Centro de notificaciones:** Interfaz para las alertas generadas por el sistema sobre eventos que ocurren en el inventario.
 
-<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+<img src="https://i.imgur.com/7LXrUAN.png" alt="Evidencia de Ejecución para sprint 3 de la Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
-**Vídeo de navegación (Product Navigation):** [https://acortar.link/CmlyKz](https://acortar.link/CmlyKz)
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/P4eeuX](https://acortar.link/P4eeuX)
 
-#### Gestión de inventario
+#### Perfil de Usuario y Negocio
 
-Vista del módulo de inventario donde se visualizan y registran nuevos custom supplies al sistema con el que se pueden registrar, posteriormente, lotes y asignación a dispositivos.
+Vista de la interfaz de perfil para el usuario y su negocio donde se puede colocar información personal.
 
-<img src="https://i.imgur.com/HK89TpF.png" alt="sección de custom supplies" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/ot0qHDZ.png" alt="Sección de perfiles para usuarios y negocios" style="width: 100%; height: auto;"/>
 
-Vista del módulo donde se registran y categorizan los lotes registrados para los custom supplies en el sistema.
+#### Telemetría recibida
 
-<img src="https://i.imgur.com/iTLpnFp.png" alt="sección de lotes en el sistema de inventarios" style="width: 100%; height: auto;"/>
+Vista de la sección que muestra los datos actuales de stock físico, humedad y temperatura luego de la sincronización entre el servicio Edge y el API.
 
-Sección de discrepancias y tareas de conciliación registradas por el propio sistema en donde se le informa al usuario alguna discrepancia entre stock físico y del sistema al usuario.
+<img src="https://i.imgur.com/hBuwxxV.png" alt="Sección de telemetría procesada" style="width: 100%; height: auto;"/>
 
-<img src="https://i.imgur.com/92vYanE.png" alt="sección de discrepancias y tareas de conciliación" style="width: 100%; height: auto;"/>
+#### Suscripciones
 
-Sección de resumen de información de custom supply donde se muestra la información completa del supply y qué lotes tiene registrado en el sistema.
+Sección de información del plan de suscripción actual que posee el usuario.
 
-<img src="https://i.imgur.com/anym3ao.png" alt="sección de resumen de información de un custom supply" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/7cliqBR.png" alt="Sección de suscripciones y planes de suscripción de la cuenta" style="width: 100%; height: auto;"/>
 
-Formulario para edición de información de un custom supply registrado.
+#### Centro de notificaciones
 
-<img src="https://i.imgur.com/DrscDdq.png" alt="formulario para editar información de un custom supply" style="width: 100%; height: auto;"/>
+Interfaz que muestra las alertas generadas por el sistema cuando se detecta un evento crítico en los inventarios de los usuarios o cuando se advierte de que un evento va a ocurrir (como el evento de suministro con stock mínimo).
 
-#### Gestión de kits/recetas
-
-Formulario de creación de kits/recetas en el sistema
-
-<img src="https://i.imgur.com/wHPT7dV.png" alt="formulario para registrar un kit o receta en el sistema" style="width: 100%; height: auto;"/>
-
-#### Gestión de dispositivos
-
-Panel de gestión de dispositivos con cuatro métricas clave: escalas activas, alertas de stock, alertas ambientales y dispositivos offline.
-
-<img src="https://i.imgur.com/pcx9gZM.png" alt="panel de gestión de dispositivos" style="width: 100%; height: auto;"/>
-
-Sección de configuración de un dispositivo IoT en el sistema que puede ser usado para editar una configuración o finalizar la configuración de un dispositivo.
-
-<img src="https://i.imgur.com/tqtbcKJ.png" alt="centro de configuración de dispositivos" style="width: 100%; height: auto;"/>
-
-#### Configuración del sistema
-
-Sección de sucursales en el sistema donde se visualizan todas las sucursales que contienen tanto ventas como lotes registrados.
-
-<img src="https://i.imgur.com/WwutWr4.png" alt="configuración de sucursales" style="width: 100%; height: auto;"/>
-
-Formulario de registro de sucursal en el sistema.
-
-<img src="https://i.imgur.com/ZE6JYTP.png" alt="Formulario de registro de sucursales" style="width: 100%; height: auto;"/>
+<img src="https://i.imgur.com/2rHeL2F.png" alt="Sección del centro de notificaciones" style="width: 100%; height: auto;"/>
 
 ## Aplicación móvil
 
