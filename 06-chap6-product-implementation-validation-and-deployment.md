@@ -3213,6 +3213,116 @@ Cabe resaltar que la feature de anomalías físicas del Edge Service (UTI-899) a
 
 #### 6.2.3.6. Execution Evidence for Sprint Review
 
+En esta sección, se presenta la evidencia de las principales vistas implementadas en el tercer sprint de trabajo.
+A continuación, se adjuntan los enlaces a los vídeos de ejecución y visibilidad de las vistas implementadas y la descripción de las pantallas implementadas para Landing Page, Aplicación web y móvil.
+Estas evidencias reflejan el progreso realizado en el sprint y sirven como prueba del trabajo realizado.
+
+## Landing Page
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la landing page. El alcance del desarrollo de este producto se centró en la actualización de los videos acerca del producto y del equipo de desarrollo y la implementación de la sección de los términos y condiciones de la plataforma.
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los pantallas actualizadas e implementadas, los cuales abarcan:
+
+* **Sección About-the-product**: Sección con la actualización del video que contiene los testimonios de los dos segmentos objetivo.
+* **Sección About-the-team**: Sección con la actualización de contenidos sobre el desempeño del equipo a través de los tres sprints.
+* **Términos y Condiciones (ToS):** Sección que contiene la descripción del contrado legal que el usuario acepta al utilizar la plataforma.
+
+<img src="https://i.imgur.com/yWzNhy8.png" alt="Evidencia de Ejecución - Landing Page en el Sprint 3" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/MqVQpD](https://acortar.link/MqVQpD)
+
+#### Sección About-the-product
+
+Esta es una pantalla que muestra el vídeo informativo sobre el funcionamiento de la aplicación y los testimonios de ambos segmentos objetivos sobre cómo fue su experiencia con el uso de la plataforma.
+
+<img src="https://i.imgur.com/90xY3KA.png" alt="imagen de la sección about-the-product en la landing page" style="width: 100%; height: auto;"/>
+
+#### Sección About-the-team
+
+Luego, se actualizó la sección con el video informativo acerca del equipo de desarrollo de la plataforma que incluye información actualizada sobre el trabajo realizado por el equipo en los tres sprints del proyecto.
+
+<img src="https://i.imgur.com/X75nQFw.png" alt="imagen de la sección about-the-team en la landing page" style="width: 100%; height: auto;"/>
+
+#### Política de privacidad
+
+También, se agregó la descripción de los datos que recolecta la aplicación para mostrar transparencia hacia los usuarios y visitantes de la plataforma.
+
+<img src="https://i.imgur.com/Hw3OtwT.png" alt="imagen de la descripción de la política de privacidad de Restock" style="width: 100%; height: auto;"/>
+
+#### Términos y Condiciones (ToS)
+
+Finalmente, se agregó una sección que contiene los términos y condiciones que representa al contrato entre la plataforma y el usuario que desea registrarse y empezar a usar la plataforma.
+
+<img src="https://i.imgur.com/PNmzA9r.png" alt="imagen del contrato de términos y condiciones en la landing page" style="width: 100%; height: auto;"/>
+
+## Aplicación Web
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación web. Para este sprint, el alcance de desarrollo de la aplicación incluyó secciones como el centro de notificaciones, personalización de perfiles tanto del usuario como del negocio y el recibimiento de telemetría de los dispositivos.
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Profile Management:** Vistas personalizables donde los usuarios pueden colocar su información personal y de su negocio para generar identidad.
+* **Tracking:** Visualización de la telemetría procesada recibida por parte de los dispositivos Restock Supplies Keeper.
+* **Suscripciones:** Interfaz para la visualización del plan de suscripción actual de la cuenta.
+* **Centro de notificaciones:** Interfaz para las alertas generadas por el sistema sobre eventos que ocurren en el inventario.
+
+<img src="https://i.imgur.com/7LXrUAN.png" alt="Evidencia de Ejecución para sprint 3 de la Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/P4eeuX](https://acortar.link/P4eeuX)
+
+#### Perfil de Usuario y Negocio
+
+Vista de la interfaz de perfil para el usuario y su negocio donde se puede colocar información personal.
+
+<img src="https://i.imgur.com/ot0qHDZ.png" alt="Sección de perfiles para usuarios y negocios" style="width: 100%; height: auto;"/>
+
+#### Telemetría recibida
+
+Vista de la sección que muestra los datos actuales de stock físico, humedad y temperatura luego de la sincronización entre el servicio Edge y el API.
+
+<img src="https://i.imgur.com/hBuwxxV.png" alt="Sección de telemetría procesada" style="width: 100%; height: auto;"/>
+
+#### Suscripciones
+
+Sección de información del plan de suscripción actual que posee el usuario.
+
+<img src="https://i.imgur.com/7cliqBR.png" alt="Sección de suscripciones y planes de suscripción de la cuenta" style="width: 100%; height: auto;"/>
+
+#### Centro de notificaciones
+
+Interfaz que muestra las alertas generadas por el sistema cuando se detecta un evento crítico en los inventarios de los usuarios o cuando se advierte de que un evento va a ocurrir (como el evento de suministro con stock mínimo).
+
+<img src="https://i.imgur.com/2rHeL2F.png" alt="Sección del centro de notificaciones" style="width: 100%; height: auto;"/>
+
+## Aplicación móvil
+
+En la presente sección se detalla la evidencia de ejecución alcanzada durante el Sprint 3 para la aplicación móvil. El cual se centró en implementar las vistas de notificaciones y las preferencias del usuario (perfil y negocio). 
+
+El vídeo de demostración evidencia la correcta visualización y navegación a través de los flujos implementados, los cuales abarcan:
+
+* **Profiles:** Vistas de perfil de usuario y perfil de negocio, con la posibilidad de editar la información personal y del negocio.
+* **Notifications:** Pantallas de notificaciones y alertas del sistema, con la posibilidad de marcar como leídas o eliminar notificaciones.
+
+<img src="https://i.imgur.com/ik9Rndw.png" alt="Evidencia de Ejecución - Mobile App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+
+**Evidencias de la demostración:**
+**Vídeo de navegación (Product Navigation):** [https://acortar.link/TQ5dzO](https://acortar.link/TQ5dzO)
+
+#### Preferencias del usuario
+
+Vistas de perfil de usuario y perfil de negocio, con la posibilidad de editar la información personal y del negocio.
+
+<img src="https://i.imgur.com/tfrCgxn.png" alt="Preferencias" style="width: 100%; height: auto;"/>
+
+#### Notificaciones
+
+Vista que muestra las notificaciones y alertas del sistema para que el usuario pueda estar al tanto de los eventos importantes del negocio.
+
+<img src="https://i.imgur.com/tqPqMID.png" alt="notificaciones" style="width: 100%; height: auto;"/>
+
+
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
 
 #### 6.2.3.8. Software Deployment Evidence for Sprint Review
@@ -4082,5 +4192,6 @@ La narrativa del video guía al espectador a través del flujo principal de la p
 | :--- | :--- |
 | **Microsoft Stream** | [https://shorturl.at/p28Nc](https://shorturl.at/p28Nc) |
 | **YouTube** | [https://www.youtube.com/watch?v=QVXA2PC6Jyo](https://www.youtube.com/watch?v=QVXA2PC6Jyo) |
+
 
 <div style="page-break-after: always;"></div>
