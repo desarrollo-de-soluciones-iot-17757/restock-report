@@ -4041,9 +4041,7 @@ Para el desarrollo del componente de software embebido (`embedded-application`),
 
 **Analíticos de colaboración — Embedded Application**
 
-<p align="center">
-  <img src="assets/images/chapter6/collaboration-insights/commit-embedded-application.png" alt="Colaboración en Embedded Application" style="width:100%; max-width:600px; height:auto;">
-</p>
+![Colaboración en Embedded Application](assets/images/chapter6/collaboration-insights/commit-embedded-application.png)
 
 - **Total de commits**: 16 commits.
 - **Autores contribuyentes**:
@@ -4062,9 +4060,7 @@ El desarrollo del frontend administrativo (`web-application`) avanzó a través 
 
 **Analíticos de colaboración — Web Application**
 
-<p align="center">
-  <img src="assets/images/chapter6/collaboration-insights/commit-web-application.png" alt="Colaboración en Web Application" style="width:100%; max-width:600px; height:auto;">
-</p>
+![Colaboración en Web Application](assets/images/chapter6/collaboration-insights/commit-web-application.png)
 
 - **Total de commits**: 70 commits.
 - **Autores contribuyentes**:
@@ -4087,9 +4083,7 @@ El backend principal (`web-service`) concentró el mayor volumen de contribucion
 
 **Analíticos de colaboración — Web Service**
 
-<p align="center">
-  <img src="assets/images/chapter6/collaboration-insights/commit-web-services.png" alt="Colaboración en Web Service" style="width:100%; max-width:600px; height:auto;">
-</p>
+![Colaboración en Web Service](assets/images/chapter6/collaboration-insights/commit-web-services.png)
 
 - **Total de commits**: 178 commits.
 - **Autores contribuyentes**:
@@ -4113,9 +4107,7 @@ El componente de borde (`Edge-service`) fue desarrollado para garantizar el proc
 
 **Analíticos de colaboración — Edge Service**
 
-<p align="center">
-  <img src="assets/images/chapter6/collaboration-insights/commit-edge-service.png" alt="Colaboración en Edge Service" style="width:100%; max-width:600px; height:auto;">
-</p>
+![Colaboración en Edge Service](assets/images/chapter6/collaboration-insights/commit-edge-service.png)
 
 - **Total de commits**: 86 commits.
 - **Autores contribuyentes**:
@@ -4137,9 +4129,7 @@ El canal móvil (`mobile-application`) se desarrolló para permitir la consulta 
 
 **Analíticos de colaboración — Mobile Application**
 
-<p align="center">
-  <img src="assets/images/chapter6/collaboration-insights/commit-mobile-app.png" alt="Colaboración en Mobile Application" style="width:100%; max-width:600px; height:auto;">
-</p>
+![Colaboración en Mobile Application](assets/images/chapter6/collaboration-insights/commit-mobile-app.png)
 
 - **Total de commits**: 64 commits.
 - **Autores contribuyentes**:
