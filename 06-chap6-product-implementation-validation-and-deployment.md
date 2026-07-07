@@ -4232,7 +4232,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="assets/images/chapter6/validation-interviews/rest-entrevista2.png" alt="validation_interview_1" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="https://i.imgur.com/zl1M09Y.png" alt="validation_interview_1" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -4294,7 +4294,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="assets/images/chapter6/validation-interviews/rest-entrevista1.png" alt="validation_interview_2" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="https://i.imgur.com/2H58kfx.png" alt="validation_interview_2" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
