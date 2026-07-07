@@ -3843,3 +3843,5 @@ Este flujo presenta el comportamiento del sistema ante la detección de una situ
 <div align="center">
   <img src="assets/images/chapter5/iot_design/flujo4.png" alt="Prototipo físico del dispositivo IoT" width="450px"/>
 </div>
+
+<div style="page-break-after: always;"></div>
