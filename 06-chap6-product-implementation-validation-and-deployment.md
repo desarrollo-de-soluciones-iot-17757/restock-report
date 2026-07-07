@@ -3325,6 +3325,460 @@ Vista que muestra las notificaciones y alertas del sistema para que el usuario p
 
 #### 6.2.3.7. Services Documentation Evidence for Sprint Review
 
+Durante el Sprint 3, el equipo expandió el API REST de Restock para dar soporte a las nuevas capacidades de monitoreo en tiempo real, alertas de inventario, perfiles de usuario y negocio, y procesamiento de pagos. Toda la funcionalidad backend desarrollada en este incremento fue documentada mediante OpenAPI (Swagger), permitiendo al equipo consultar de forma interactiva los contratos, parámetros y respuestas en el servidor de Azure (`https://restock-api-17757.azurewebsites.net/swagger-ui/index.html`).
+
+A continuación se presenta la tabla resumen de los endpoints documentados en este Sprint, mapeados directamente con sus respectivas **Technical Stories (TS)** de la iteración:
+
+| Bounded Context | Recurso                             | Verbo HTTP | URL                                                   | Código TS | Enlace a documentación                                                                                               |
+| --------------- | ----------------------------------- | ---------- | ----------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
+| IAM             | Solicitar código de recuperación    | POST       | `/api/v1/auth/password-reset`                         | **TS-04** | [Swagger – auth](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Authentication)                   |
+| IAM             | Validar código de verificación      | POST       | `/api/v1/auth/password-reset/verify`                  | **TS-04** | [Swagger – auth](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Authentication)                   |
+| IAM             | Restablecer contraseña              | POST       | `/api/v1/auth/password-reset/confirm`                 | **TS-04** | [Swagger – auth](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Authentication)                   |
+| Profiles        | Obtener perfil de usuario           | GET        | `/api/v1/users/{id}/profile`                          | **TS-06** | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles)                     |
+| Profiles        | Actualizar perfil de usuario        | PUT        | `/api/v1/users/{id}/profile`                          | **TS-06** | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles)                     |
+| Profiles        | Carga de imagen de perfil de usuario| POST       | `/api/v1/users/{id}/profile/image`                    | **TS-06** | [Swagger – profiles](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Profiles)                     |
+| Profiles        | Obtener perfil de negocio           | GET        | `/api/v1/businesses/{id}`                             | **TS-07** | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses)                 |
+| Profiles        | Editar perfil de negocio            | PUT        | `/api/v1/businesses/{id}`                             | **TS-07** | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses)                 |
+| Profiles        | Carga de imagen de negocio          | POST       | `/api/v1/businesses/{id}/image`                       | **TS-07** | [Swagger – businesses](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Businesses)                 |
+| Subscription    | Obtener estado de suscripción       | GET        | `/api/v1/subscription/{id}/status`                    | **TS-05** | [Swagger – subscription](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Subscription)             |
+| Subscription    | Procesar pago de suscripción        | POST       | `/api/v1/subscriptions/payments`                      | **TS-03** | [Swagger – subscription](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Subscription)             |
+| Devices         | Asignar/desvincular producto        | PATCH      | `/api/v1/devices/{deviceId}/product`                  | **TS-32** | [Swagger – devices](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Devices)                       |
+| Tracking        | Ingesta de métricas de monitoreo    | POST       | `/api/v1/tracking/metrics`                            | **TS-34/35** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                  |
+| Tracking        | Ingesta de anomalías                | POST       | `/api/v1/tracking/anomalies`                          | **TS-34/35** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                  |
+| Tracking        | Ingesta de métricas del dispositivo | POST       | `/api/v1/devices/status`                              | **TS-34/35** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                  |
+| Tracking        | Listar discrepancias                | GET        | `/api/v1/discrepancies`                               | **TS-27** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                     |
+| Tracking        | Listar tareas de conciliación        | GET        | `/api/v1/conciliation-tasks`                          | **TS-25/26** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                  |
+| Tracking        | Resolver tarea de conciliación      | POST       | `/api/v1/conciliation-tasks/{id}/resolve`             | **TS-25/26** | [Swagger – tracking](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Tracking)                  |
+| Alerts          | Evaluar stock por umbrales          | POST       | `/api/v1/alerts/stock-thresholds/evaluate`            | **TS-18/19** | [Swagger – alerts](https://restock-api-17757.azurewebsites.net/swagger-ui/index.html#/Alerts)                      |
+
+---
+
+A continuación se detalla cada acción implementada con su sintaxis de llamada, parámetros y response de ejemplo:
+
+##### IAM — Autenticación y Recuperación de Contraseña [TS-04]
+
+**POST `/api/v1/auth/password-reset`**
+
+Permite a un usuario solicitar el código de 6 dígitos para restablecer su contraseña en caso de olvido.
+
+| Campo   | Tipo   | Ubicación  | Requerido | Descripción                     |
+| ------- | ------ | ---------- | --------- | ------------------------------- |
+| `email` | string | body (JSON)| Sí        | Correo electrónico del usuario |
+
+_Request body:_
+```json
+{
+  "email": "test@gmail.com"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "message": "Verification code sent successfully to your email."
+}
+```
+
+**POST `/api/v1/auth/password-reset/verify`**
+
+Valida que el código enviado al correo coincida con el generado por el sistema y esté vigente.
+
+| Campo   | Tipo   | Ubicación  | Requerido | Descripción                     |
+| ------- | ------ | ---------- | --------- | ------------------------------- |
+| `email` | string | body (JSON)| Sí        | Correo electrónico del usuario |
+| `code`  | string | body (JSON)| Sí        | Código de verificación de 6 dígitos |
+
+_Request body:_
+```json
+{
+  "email": "test@gmail.com",
+  "code": "847291"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "token": "reset-jwt-token-xyz-123",
+  "message": "Code verified successfully."
+}
+```
+
+**POST `/api/v1/auth/password-reset/confirm`**
+
+Aplica la nueva contraseña utilizando el token de restablecimiento validado.
+
+| Campo         | Tipo   | Ubicación  | Requerido | Descripción                        |
+| ------------- | ------ | ---------- | --------- | ---------------------------------- |
+| `newPassword` | string | body (JSON)| Sí        | Nueva contraseña elegida           |
+
+_Request body:_
+```json
+{
+  "newPassword": "SecureNewPassword2026!"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "message": "Password updated successfully."
+}
+```
+
+##### Profiles — Perfil de Usuario [TS-06]
+
+**GET `/api/v1/users/{id}/profile`**
+
+Retorna el perfil de usuario detallado con su información personal y rol.
+
+| Parámetro | Tipo   | Ubicación | Requerido | Descripción                     |
+| --------- | ------ | --------- | --------- | ------------------------------- |
+| `id`      | string | path      | Sí        | Identificador único de usuario  |
+
+_Response body (200 OK):_
+```json
+{
+  "id": "usr-12345",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "test@gmail.com",
+  "role": "RETAIL",
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/profiles/usr-12345.png",
+  "status": "ACTIVE"
+}
+```
+
+**PUT `/api/v1/users/{id}/profile`**
+
+Permite la edición de la información personal del usuario.
+
+_Request body:_
+```json
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "test@gmail.com"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "id": "usr-12345",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "test@gmail.com",
+  "role": "RETAIL",
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/profiles/usr-12345.png",
+  "status": "ACTIVE"
+}
+```
+
+**POST `/api/v1/users/{id}/profile/image`**
+
+Sube un archivo de imagen a Cloudinary y lo asocia al perfil del usuario correspondiente.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción                    |
+| --------- | ---- | --------- | --------- | ------------------------------ |
+| `file`    | file | form-data | Sí        | Imagen en formato JPG, PNG o WEBP |
+
+_Response body (200 OK):_
+```json
+{
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/profiles/usr-12345.png"
+}
+```
+
+##### Profiles — Perfil de Negocio [TS-07]
+
+**GET `/api/v1/businesses/{id}`**
+
+Consulta y retorna la información centralizada del perfil de negocio.
+
+| Parámetro | Tipo   | Ubicación | Requerido | Descripción                     |
+| --------- | ------ | --------- | --------- | ------------------------------- |
+| `id`      | string | path      | Sí        | Identificador único del negocio |
+
+_Response body (200 OK):_
+```json
+{
+  "id": "bus-9988",
+  "commercialName": "Restaurante Sabor Criollo",
+  "description": "Cadena de restaurantes gourmet especializados en comida peruana tradicional.",
+  "categories": ["Gastronomía", "Restaurante"],
+  "address": "Av. La Marina 1230, San Miguel",
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/businesses/bus-9988.png"
+}
+```
+
+**PUT `/api/v1/businesses/{id}`**
+
+Permite editar los datos de perfil de negocio registrado.
+
+_Request body:_
+```json
+{
+  "commercialName": "Restaurante Sabor Criollo Editado",
+  "description": "Cadena de restaurantes gourmet especializados en comida peruana.",
+  "categories": ["Gastronomía", "Restaurantes", "Comida Criolla"],
+  "address": "Av. La Marina 1234, San Miguel"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "id": "bus-9988",
+  "commercialName": "Restaurante Sabor Criollo Editado",
+  "description": "Cadena de restaurantes gourmet especializados en comida peruana.",
+  "categories": ["Gastronomía", "Restaurantes", "Comida Criolla"],
+  "address": "Av. La Marina 1234, San Miguel",
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/businesses/bus-9988.png"
+}
+```
+
+**POST `/api/v1/businesses/{id}/image`**
+
+Carga y vincula una imagen de establecimiento o logo al perfil de negocio.
+
+| Parámetro | Tipo | Ubicación | Requerido | Descripción                    |
+| --------- | ---- | --------- | --------- | ------------------------------ |
+| `file`    | file | form-data | Sí        | Imagen en formato JPG, PNG o WEBP |
+
+_Response body (200 OK):_
+```json
+{
+  "imageUrl": "https://res.cloudinary.com/restock/image/upload/v1/businesses/bus-9988.png"
+}
+```
+
+##### Subscription — Gestión de Suscripciones y Pagos [TS-03, TS-05]
+
+**GET `/api/v1/subscription/{id}/status` [TS-05]**
+
+Consulta la vigencia de la suscripción de un negocio y detalla los días restantes del ciclo. Retorna `inactive` en caso de no contar con contrato activo.
+
+| Parámetro | Tipo   | Ubicación | Requerido | Descripción                     |
+| --------- | ------ | --------- | --------- | ------------------------------- |
+| `id`      | string | path      | Sí        | Identificador único de suscripción |
+
+_Response body (200 OK):_
+```json
+{
+  "id": "sub-789",
+  "status": "active",
+  "billingCycleStart": "2026-07-01T00:00:00Z",
+  "billingCycleEnd": "2026-08-01T00:00:00Z",
+  "daysRemaining": 25
+}
+```
+
+**POST `/api/v1/subscriptions/payments` [TS-03]**
+
+Procesa la suscripción del negocio integrándose directamente con Stripe.
+
+_Request body:_
+```json
+{
+  "paymentMethodId": "pm_1Ht2EE2eZvKYlo2C5vX1234",
+  "planId": "plan_premium_monthly",
+  "amount": 29.99,
+  "currency": "usd"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "transactionId": "ch_1Ht2EE2eZvKYlo2C5vXabcd",
+  "status": "accepted",
+  "message": "Payment processed and subscription activated successfully."
+}
+```
+
+##### Devices — Control de Dispositivos [TS-32]
+
+**PATCH `/api/v1/devices/{deviceId}/product`**
+
+Vincula o remueve el producto/insumo asociado a una balanza inteligente específica para controlar qué suministro es monitoreado y recalcular el stock total.
+
+_Request body (Asignación):_
+```json
+{
+  "productId": "prod-5678"
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "deviceId": "dev-9901",
+  "productId": "prod-5678",
+  "status": "ASSIGNED",
+  "updatedAt": "2026-07-06T20:30:00Z"
+}
+```
+
+##### Tracking — Recepción de Métricas y Anomalías (Edge Service) [TS-34, TS-35]
+
+**POST `/api/v1/tracking/metrics`**
+
+Permite recibir e ingerir las métricas de monitoreo de stock actual y estado ambiental enviadas periódicamente por el servicio Edge.
+
+_Request body:_
+```json
+{
+  "deviceId": "dev-9901",
+  "currentStock": 45,
+  "averageTemperature": 21.5,
+  "averageHumidity": 55.2,
+  "timestamp": "2026-07-06T21:40:00Z"
+}
+```
+
+_Response body (201 Created):_
+```json
+{
+  "metricId": "met-77890",
+  "status": "SUCCESS",
+  "createdAt": "2026-07-06T21:40:02Z"
+}
+```
+
+**POST `/api/v1/tracking/anomalies`**
+
+Ingesta eventos anómalos de peso, temperatura y humedad ambiental capturados por el edge. Este endpoint provee los datos necesarios para la lógica de detección de fallos recurrentes del hardware.
+
+_Request body:_
+```json
+{
+  "deviceId": "dev-9901",
+  "anomalyType": "WEIGHT_DISCREPANCY",
+  "readingValue": 12.4,
+  "expectedValue": 25.0,
+  "timestamp": "2026-07-06T21:42:00Z"
+}
+```
+
+_Response body (201 Created):_
+```json
+{
+  "anomalyId": "anom-8890",
+  "status": "RECORDED",
+  "createdAt": "2026-07-06T21:42:01Z"
+}
+```
+
+**POST `/api/v1/devices/status`**
+
+Registra el estado operativo (CPU, memoria, voltaje, temperatura del microcontrolador) enviado por el dispositivo inteligente para el diagnóstico y control de desconexión.
+
+_Request body:_
+```json
+{
+  "deviceId": "dev-9901",
+  "cpuUsage": 12.4,
+  "memoryUsage": 45.1,
+  "voltage": 3.3,
+  "microcontrollerTemp": 38.5,
+  "timestamp": "2026-07-06T21:45:00Z"
+}
+```
+
+_Response body (201 Created):_
+```json
+{
+  "status": "RECORDED"
+}
+```
+
+##### Tracking — Gestión de Discrepancias y Conciliación [TS-25, TS-26, TS-27]
+
+**GET `/api/v1/discrepancies` [TS-27]**
+
+Permite obtener y listar las discrepancias registradas con su estado (pending, resolved).
+
+| Parámetro | Tipo   | Ubicación | Requerido | Descripción                             |
+| --------- | ------ | --------- | --------- | --------------------------------------- |
+| `status`  | string | query     | No        | Filtrado por estado: pending, resolved |
+
+_Response body (200 OK):_
+```json
+[
+  {
+    "discrepancyId": "disc-101",
+    "supplyId": "sup-330",
+    "difference": -12.5,
+    "status": "pending",
+    "timestamp": "2026-07-06T21:00:00Z"
+  }
+]
+```
+
+**GET `/api/v1/conciliation-tasks` [TS-25, TS-26]**
+
+Obtiene las tareas de conciliación de inventario activas generadas automáticamente ante discrepancias clasificadas como críticas.
+
+_Response body (200 OK):_
+```json
+[
+  {
+    "taskId": "task-889",
+    "deviceId": "dev-9901",
+    "supplyId": "sup-330",
+    "difference": -12.5,
+    "status": "PENDING",
+    "createdAt": "2026-07-06T21:05:00Z"
+  }
+]
+```
+
+**POST `/api/v1/conciliation-tasks/{id}/resolve` [TS-25]**
+
+Permite al administrador registrar una intervención sobre la discrepancia crítica para cerrar y marcar la tarea de conciliación como completada.
+
+_Request body:_
+```json
+{
+  "resolutionCause": "SPOILAGE",
+  "justification": "Se encontraron insumos vencidos en el fondo del estante que no fueron descartados digitalmente."
+}
+```
+
+_Response body (200 OK):_
+```json
+{
+  "taskId": "task-889",
+  "status": "RESOLVED",
+  "resolvedAt": "2026-07-06T21:50:00Z"
+}
+```
+
+##### Alerts — Monitoreo de Stock y Umbrales [TS-18, TS-19]
+
+**POST `/api/v1/alerts/stock-thresholds/evaluate`**
+
+Evalúa las existencias en inventario contra los límites mínimos (bajo stock) y máximos (sobrestock) y despacha las correspondientes alertas de criticidad.
+
+_Response body (200 OK):_
+```json
+{
+  "evaluatedItems": 150,
+  "alertsGenerated": 3,
+  "details": [
+    {
+      "productId": "prod-5678",
+      "branchId": "br-101",
+      "alertType": "LOW_STOCK",
+      "message": "El stock actual (3) es inferior al umbral mínimo (10)"
+    }
+  ]
+}
+```
+
+---
+
 #### 6.2.3.8. Software Deployment Evidence for Sprint Review
 
 Durante este Sprint, el equipo expandió y consolidó la estrategia de despliegue para abarcar la totalidad del ecosistema de la solución. Esto incluyó la puesta en producción de las plataformas interactivas de cara al usuario (Landing Page, Web Application y Mobile Application), la actualización continua del núcleo en la nube (Web Service), la preparación del entorno contenedorizado para la simulación del nodo Edge, y la carga final del firmware en el dispositivo físico denominado **Supplies Keeper**. 
