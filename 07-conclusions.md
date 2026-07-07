@@ -43,7 +43,9 @@
 El vídeo acerca del equipo refleja el aporte y colaboración de cada integrante del equipo para lograr los objetivos en común de Restock. 
 Además, se hace mención de la forma de colaboración para los entregables y sobre el control de los avances de cada integrante.
 
-**Enlace al video:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/gabriela_shapiama_upc_edu_pe/IQDGwOLqS1vgTInCWkrzWYbLAUi3e7ZpXzdjiY8uxcClLQY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=gR9K9m ABPUT THE TEAM](https://upcedupe-my.sharepoint.com/:v:/g/personal/gabriela_shapiama_upc_edu_pe/IQDGwOLqS1vgTInCWkrzWYbLAUi3e7ZpXzdjiY8uxcClLQY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=gR9K9m ABPUT THE TEAM)
+**Enlace al video:** [https://upcedupe-my.sharepoint.com/:v:/g/personal/gabriela_shapiama_upc_edu_pe/IQDGwOLqS1vgTInCWkrzWYbLAUi3e7ZpXzdjiY8uxcClLQY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=gR9K9m](https://upcedupe-my.sharepoint.com/:v:/g/personal/gabriela_shapiama_upc_edu_pe/IQDGwOLqS1vgTInCWkrzWYbLAUi3e7ZpXzdjiY8uxcClLQY?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=gR9K9m)
+
+**Enlace al video:** [https://www.youtube.com/watch?v=rtN7Ron0Yhk](https://www.youtube.com/watch?v=rtN7Ron0Yhk)
 
 <img src="https://imgur.com/6RZf435.png" alt="imagen de la reunion para grabar el video sobre el equipo" style="width: 100%; height: auto;"/>
 
