@@ -4183,18 +4183,18 @@ Durante cada entrevista, el equipo a cargo registrará:
 
 **Flujos a Validar (resumen por User Goal)**
 
-| User Goal | User Flow Relacionado (Código y Título) | Descripción del Flujo | Objetivo de Validación |
-| --------- | --------------------------------------- | --------------------- | ---------------------- |
-| UG 1      | **UF 1**: Registro y Onboarding | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación. | Validar claridad del mensaje y de la propuesta de valor. |
-| UG 2      | **UF 1**: Registro y Onboarding<br>**UF 2**: Inicio de Sesión y Recuperación de Contraseña | El usuario se registra e inicia sesión con sus datos. | Validar claridad del formulario de registro y facilidad de login. |
-| UG 3      | **UF 9**: Gestión de Sucursales | El usuario crea, edita y desactiva una sucursal de su negocio. | Validar la gestión del ciclo de vida de sucursales. |
-| UG 4      | **UF 3**: Gestión de Insumos / Custom Supplies<br>**UF 4**: Gestión de Recetas<br>**UF 5**: Gestión de Kits / Combos | El usuario registra, edita y filtra insumos/productos del inventario. | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
-| UG 5      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario accede al inventario y consulta el stock por sucursal. | Validar la claridad y organización de la información de inventario. |
-| UG 6      | **UF 8**: Gestión de Dispositivos (Smart Scales) | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos. |
-| UG 7      | **UF 6**: Gestión de Lotes (Batches) y Transferencia de Stock | El usuario transfiere stock entre dos sucursales. | Validar la funcionalidad de transferencia de inventario. |
-| UG 8      | **UF 7**: Conciliación de Discrepancias de Inventario | El usuario revisa el centro de notificaciones y alertas. | Validar la utilidad y claridad de las notificaciones. |
-| UG 9      | - | El usuario visualiza el dashboard de datos del negocio. | Validar la comprensión de los indicadores presentados. |
-| UG 10     | - | El usuario cambia el idioma de la interfaz. | Validar la accesibilidad y el soporte multi-idioma. |
+| User Goal | Descripción del Flujo | Objetivo de Validación |
+|---|---|---|
+| UG 1 | El usuario accede al Landing Page, comprende la propuesta de valor y accede a la aplicación. | Validar claridad del mensaje y de la propuesta de valor. |
+| UG 2 | El usuario se registra e inicia sesión con sus datos. | Validar claridad del formulario de registro y facilidad de login. |
+| UG 3 | El usuario crea, edita y desactiva una sucursal de su negocio. | Validar la gestión del ciclo de vida de sucursales. |
+| UG 4 | El usuario registra, edita y filtra insumos/productos del inventario. | Validar la funcionalidad de gestión de insumos y el filtrado por categoría. |
+| UG 5 | El usuario accede al inventario y consulta el stock por sucursal. | Validar la claridad y organización de la información de inventario. |
+| UG 6 | El usuario registra un dispositivo (balanza), le asigna un lote y configura sus límites de stock. | Validar el flujo de onboarding y configuración de dispositivos. |
+| UG 7 | El usuario transfiere stock entre dos sucursales. | Validar la funcionalidad de transferencia de inventario. |
+| UG 8 | El usuario revisa el centro de notificaciones y alertas. | Validar la utilidad y claridad de las notificaciones. |
+| UG 9 | El usuario visualiza el dashboard de datos del negocio. | Validar la comprensión de los indicadores presentados. |
+| UG 10 | El usuario cambia el idioma de la interfaz. | Validar la accesibilidad y el soporte multi-idioma. |
 
 ### 6.3.2. Registro de Entrevistas
 
@@ -4210,7 +4210,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Nombre completo</strong></td>
-    <td>Huiza Adriana</td>
+    <td>Mery Rivera</td>
   </tr>
   <tr>
     <td><strong>Edad</strong></td>
@@ -4226,13 +4226,13 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="https://i.imgur.com/USeukEB.png" alt="validation_interview_1" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="assets/images/chapter6/validation-interviews/rest-entrevista2.png" alt="validation_interview_1" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -4242,7 +4242,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>0:00 min</td>
+    <td>0:00 min - 11:59 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4251,15 +4251,15 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la sesión, se presentaron los componentes principales de la solución Restock a Adriana Huiza para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
+      Durante la sesión, se presentaron los componentes principales de la solución Restock a Mery Rivera para evaluar su percepción sobre la plataforma, la cual está enfocada en apoyar la gestión de inventarios en restaurantes. La entrevista tuvo como objetivo validar la experiencia de usuario, la claridad de la propuesta de valor, la utilidad de las funcionalidades de control de stock y la facilidad de uso de la solución en un contexto operativo real.
       <br><br>
       En la evaluación de la landing page, la entrevistada mostró una percepción positiva respecto a la forma en que se comunica el propósito de Restock. Consideró que la información presentada permite comprender que la plataforma busca optimizar el control de inventarios mediante herramientas digitales y dispositivos de monitoreo. Asimismo, destacó que la propuesta resulta útil para restaurantes que necesitan reducir errores manuales, conocer mejor el estado de sus insumos y tomar decisiones oportunas sobre reposición.
       <br><br>
-      Respecto a la aplicación web, Adriana valoró que el sistema permita centralizar procesos relacionados con la gestión del negocio, como el registro de información, la administración de lotes, el control de stock y la visualización de dispositivos. La entrevistada percibió como relevante que la plataforma permita registrar insumos y consultar información operativa desde un panel organizado, ya que esto puede facilitar la supervisión diaria del inventario. Además, consideró importante que los flujos sean claros para que un administrador pueda utilizarlos sin requerir conocimientos técnicos avanzados.
+      Respecto a la aplicación web, Mery valoró que el sistema permita centralizar procesos relacionados con la gestión del negocio, como el registro de información, la administración de lotes, el control de stock y la visualización de dispositivos. La entrevistada percibió como relevante que la plataforma permita registrar insumos y consultar información operativa desde un panel organizado, ya que esto puede facilitar la supervisión diaria del inventario. Además, consideró importante que los flujos sean claros para que un administrador pueda utilizarlos sin requerir conocimientos técnicos avanzados.
       <br><br>
-      La respuesta hacia la aplicación móvil también fue favorable. Adriana destacó que contar con una versión móvil puede ser útil para revisar información del negocio fuera de una computadora, especialmente cuando el administrador necesita supervisar el estado del inventario, revisar discrepancias o consultar información general de manera rápida. Desde su perspectiva, la movilidad de la solución aporta valor porque permite mantener control sobre la operación incluso cuando no se está físicamente en el área administrativa.
+      La respuesta hacia la aplicación móvil también fue favorable. Mery destacó que contar con una versión móvil puede ser útil para revisar información del negocio fuera de una computadora, especialmente cuando el administrador necesita supervisar el estado del inventario, revisar discrepancias o consultar información general de manera rápida. Desde su perspectiva, la movilidad de la solución aporta valor porque permite mantener control sobre la operación incluso cuando no se está físicamente en el área administrativa.
       <br><br>
-      En cuanto al dispositivo de monitoreo, Adriana manifestó especial agrado por la funcionalidad de registro de temperatura y humedad, señalando que este tipo de control automático resulta muy valioso para un restaurante, ya que permite conservar mejor los insumos perecibles y anticiparse a posibles pérdidas por almacenamiento inadecuado. Consideró que contar con estos datos en tiempo real reduce la incertidumbre respecto al estado real de los productos guardados.
+      En cuanto al dispositivo de monitoreo, Mery manifestó especial agrado por la funcionalidad de registro de temperatura y humedad, señalando que este tipo de control automático resulta muy valioso para un restaurante, ya que permite conservar mejor los insumos perecibles y anticiparse a posibles pérdidas por almacenamiento inadecuado. Consideró que contar con estos datos en tiempo real reduce la incertidumbre respecto al estado real de los productos guardados.
       <br><br>
       Finalmente, la entrevista permitió validar que Restock es percibida como una solución útil para restaurantes que buscan mejorar la precisión del inventario y reducir la dependencia de registros manuales. Se confirmó que funcionalidades como el monitoreo de insumos, la gestión de lotes, la visualización de dispositivos, el acceso móvil y el registro de temperatura y humedad representan elementos importantes para fortalecer la gestión operativa. Como oportunidad de mejora, se identifica la necesidad de mantener indicadores visuales claros que permitan interpretar rápidamente el estado del stock y las posibles discrepancias detectadas por el sistema.
     </td>
@@ -4272,11 +4272,11 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Nombre completo</strong></td>
-    <td>Angelina Medina</td>
+    <td>Alfredo Bernuy</td>
   </tr>
   <tr>
     <td><strong>Edad</strong></td>
-    <td>25 años</td>
+    <td>53 años</td>
   </tr>
   <tr>
     <td><strong>Distrito</strong></td>
@@ -4288,13 +4288,13 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
     <td>
       <div align="center">
-        <img src="https://i.imgur.com/HnRzJHH.png" alt="validation_interview_2" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
+        <img src="assets/images/chapter6/validation-interviews/rest-entrevista1.png" alt="validation_interview_2" style="width:100%; max-width:720px; height:500px; object-fit:cover; object-position:center; display:block; margin:0 auto;">
       </div>
     </td>
   </tr>
@@ -4304,7 +4304,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>12:00 min</td>
+    <td>12:00 min - 23:59 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4313,15 +4313,15 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   <tr>
     <td><strong>Resumen</strong></td>
     <td>
-      Durante la sesión, se presentaron los componentes principales de la solución Restock a Angelina Medina para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. La entrevista tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
+      Durante la sesión, se presentaron los componentes principales de la solución Restock a Alfredo Bernuy para evaluar su percepción sobre la plataforma desde el segmento de restaurantes. El entrevisto tuvo como objetivo validar si la solución comunica adecuadamente su propuesta de valor, si los flujos de la aplicación web resultan comprensibles y si la aplicación móvil aporta utilidad para la supervisión de inventario y operaciones del negocio.
       <br><br>
-      En la evaluación de la landing page, la entrevistada pudo identificar que Restock está orientada a resolver problemas relacionados con el control de inventarios, el monitoreo de insumos y la reducción de errores en la gestión manual. Angelina consideró que la explicación general de la plataforma ayuda a comprender el valor del sistema, especialmente porque presenta una solución que combina software con dispositivos de monitoreo para obtener información más confiable sobre el estado de los productos almacenados.
+      En la evaluación de la landing page, el entrevistado pudo identificar que Restock está orientada a resolver problemas relacionados con el control de inventarios, el monitoreo de insumos y la reducción de errores en la gestión manual. Alfredo consideró que la explicación general de la plataforma ayuda a comprender el valor del sistema, especialmente porque presenta una solución que combina software con dispositivos de monitoreo para obtener información más confiable sobre el estado de los productos almacenados.
       <br><br>
-      Respecto a la aplicación web, Angelina valoró positivamente la posibilidad de gestionar información del negocio desde un entorno centralizado. Durante la revisión de los flujos, se resaltó la utilidad de contar con secciones para configuración del negocio, gestión de lotes, visualización de suministros y administración de dispositivos. La entrevistada consideró que estas funcionalidades pueden ayudar a mantener una mejor organización del inventario, especialmente en restaurantes donde el control de insumos es constante y puede volverse complejo si se realiza de forma manual.
+      Respecto a la aplicación web, Alfredo valoró positivamente la posibilidad de gestionar información del negocio desde un entorno centralizado. Durante la revisión de los flujos, se resaltó la utilidad de contar con secciones para configuración del negocio, gestión de lotes, visualización de suministros y administración de dispositivos. El entrevistado consideró que estas funcionalidades pueden ayudar a mantener una mejor organización del inventario, especialmente en restaurantes donde el control de insumos es constante y puede volverse complejo si se realiza de forma manual.
       <br><br>
-      La aplicación móvil fue percibida como un complemento importante para la solución. Angelina destacó que una versión móvil facilita la supervisión rápida del negocio, permitiendo revisar información general, indicadores de stock y posibles discrepancias sin depender únicamente de una computadora. Esta característica fue considerada valiosa para administradores que necesitan mantenerse informados sobre el estado del inventario mientras realizan otras actividades operativas dentro o fuera del local.
+      La aplicación móvil fue percibida como un complemento importante para la solución. Alfredo destacó que una versión móvil facilita la supervisión rápida del negocio, permitiendo revisar información general, indicadores de stock y posibles discrepancias sin depender únicamente de una computadora. Esta característica fue considerada valiosa para administradores que necesitan mantenerse informados sobre el estado del inventario mientras realizan otras actividades operativas dentro o fuera del local.
       <br><br>
-      Sobre el dispositivo de monitoreo, Angelina expresó que le gustó especialmente la función de registro de temperatura y humedad, indicando que esta característica aporta un nivel de control que normalmente no se tiene en un restaurante tradicional. Mencionó que poder visualizar estos datos junto con el resto de la información del inventario ayuda a prevenir el deterioro de insumos sensibles y a tomar decisiones más informadas sobre su rotación.
+      Sobre el dispositivo de monitoreo, Alfredo expresó que le gustó especialmente la función de registro de temperatura y humedad, indicando que esta característica aporta un nivel de control que normalmente no se tiene en un restaurante tradicional. Mencionó que poder visualizar estos datos junto con el resto de la información del inventario ayuda a prevenir el deterioro de insumos sensibles y a tomar decisiones más informadas sobre su rotación.
       <br><br>
       Finalmente, la entrevista permitió validar que Restock responde a necesidades reales del segmento restaurantes, principalmente en relación con la visibilidad del inventario, la actualización de información y la detección oportuna de problemas de stock. Se confirmó que la combinación de aplicación web, aplicación móvil, dispositivo de monitoreo con registro de temperatura y humedad puede aportar valor al reducir el trabajo manual y mejorar la toma de decisiones. Como oportunidad de mejora, se identificó la importancia de reforzar los indicadores visuales dentro del dashboard y las vistas de inventario, para que el usuario pueda interpretar rápidamente si un insumo se encuentra en estado normal, crítico o con discrepancias.
     </td>
@@ -4350,7 +4350,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
@@ -4366,7 +4366,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>24:00 min</td>
+    <td>24:00 min - 35:59 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4414,7 +4414,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
@@ -4430,7 +4430,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>37:00 min</td>
+    <td>36:00 min - 47:59 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4474,7 +4474,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
@@ -4490,7 +4490,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>49:00 min</td>
+    <td>48:00 min - 59:59 min</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4534,7 +4534,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Fecha de entrevista</strong></td>
-    <td>20 de junio de 2026</td>
+    <td>6 de julio de 2026</td>
   </tr>
   <tr>
     <td><strong>Evidencia</strong></td>
@@ -4550,7 +4550,7 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
   <tr>
     <td><strong>Timing donde inicia la entrevista</strong></td>
-    <td>61:00 min</td>
+    <td>1:00:00 min - 1:13:00:</td>
   </tr>
   <tr>
     <td><strong>Duración de la entrevista</strong></td>
@@ -4572,8 +4572,6 @@ A continuación, se presenta el registro correspondiente a las entrevistas reali
   </tr>
 </table>
 
-
-
 ### 6.3.3. Evaluaciones según heurísticas
 
 Evaluaciones según heurísticas
@@ -4583,14 +4581,14 @@ Esta sección contiene el proceso de evaluación de las sesiones de validación 
 **UX Heuristics & Principles Evaluation**
 **Usability – Inclusive Design – Information Architecture**
 
-|                      |                                                                                                   |
-| -------------------- |---------------------------------------------------------------------------------------------------|
-| **CARRERA**    | Ingeniería de Software                                                                            |
-| **CURSO**      | Desarrollo de Soluciones IoT                                                                      |
-| **SECCIÓN**   | 17757                                                                                             |
-| **PROFESORES** | Todos                                                                                             |
-| **AUDITOR**    | UI-Topic                                                                                          |
-| **CLIENTE(S)** | Huiza Adriana, Angelina Medina, Melany Espinoza, Brayner Coronel, Monica Jaramillo, Erick Coronel |
+|                      |                                                                                                |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| **CARRERA**    | Ingeniería de Software                                                                        |
+| **CURSO**      | Desarrollo de Soluciones IoT                                                                   |
+| **SECCIÓN**   | 17757                                                                                          |
+| **PROFESORES** | Todos                                                                                          |
+| **AUDITOR**    | UI-Topic                                                                                       |
+| **CLIENTE(S)** | Mery Rivera, Alfredo Bernuy, Melany Espinoza, Brayner Coronel, Monica Jaramillo, Erick Coronel |
 
 ---
 
@@ -4634,13 +4632,13 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
 **TABLA RESUMEN:**
 
-| # | Problema                            | Escala de severidad | Heurística/Principio violada(o)                                                 |
-| - | ----------------------------------- | ------------------- | -------------------------------------------------------------------------------- |
-| 1 | [Descripción breve del problema 1] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 2 | [Descripción breve del problema 2] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 3 | [Descripción breve del problema 3] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 4 | [Descripción breve del problema 4] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
-| 5 | [Descripción breve del problema 5] | [1-4]               | [Usability / Inclusive Design / Information Architecture: principio específico] |
+| # | Problema                                                                                                 | Escala de severidad | Heurística/Principio violada(o)                                                             |
+|---|----------------------------------------------------------------------------------------------------------|---------------------|---------------------------------------------------------------------------------------------|
+| 1 | Jerarquía de precios confusa en la selección de plan                                                     | 3                   | Information Architecture: Is it understandable? / Usability: Coincidencia con el mundo real |
+| 2 | Las acciones de cada fila permanecen ocultas hasta el hover                                              | 2                   | Usability: Reconocer en lugar de recordar / Visibilidad del estado del sistema              |
+| 3 | Campo de confirmación ambiguo al desvincular una balanza                                                 | 2                   | Usability: Prevención de errores                                                            |
+| 4 | Botón de acción primaria activo sin validación de campos obligatorios en el modal "Transfer Batch Stock" | 2                   | Usability: Prevención de errores                                                            |
+| 5 | Baja prominencia y jerarquía insuficiente entre acciones en el modal de desactivación de sucursal        | 2                   | Usability: Visibilidad del estado del sistema / Prevención de errores                       |
 
 ---
 
