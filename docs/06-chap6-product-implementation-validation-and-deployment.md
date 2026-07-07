@@ -902,7 +902,7 @@ Las actualizaciones del firmware requieren recompilar el proyecto y volver a car
 
 El Deployment Diagram del modelo C4 representa la distribución física de los distintos contenedores de software de Restock, incluyendo clientes web y móviles, infraestructura cloud, broker MQTT, Edge Application y dispositivos IoT embebidos.
 
-<img src="assets/images/chapter6/deployment-configuration/deployment-diagram.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
+<img src="../assets/images/chapter6/deployment-configuration/deployment-diagram.png" alt="Diagrama de despliegue de contenedores de Restock" style="width:100%; height:auto;">
 
 ## 6.2. Landing Page, Services & Applications Implementation
 
@@ -1184,7 +1184,7 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 * **Device Management:** Pantallas destinadas a la administración, asignación y revisión de estado de los dispositivos IoT en la red.
 * **Profiles:** Interfaz para la configuración de preferencias y gestión de la cuenta del usuario.
 
-<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+<img src="../assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
 **Vídeo de navegación (Product Navigation):** [https://shortlink.uk/1pF66](https://shortlink.uk/1pF66)
@@ -1814,23 +1814,23 @@ En esta sección se presenta el conjunto de pruebas automatizadas implementadas 
 
 Ejecución de pruebas unitarias para el servicio de métricas en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/metric-tests-back.png" alt="Evidencia de ejecución de MetricCommandServiceImplTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/metric-tests-back.png" alt="Evidencia de ejecución de MetricCommandServiceImplTest en el Backend Cloud API" width="600px">
 
 Ejecución de pruebas unitarias para consultas analíticas en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/analytics-tests-back.png" alt="Evidencia de ejecución de AnalyticsReportingQueryServiceImplTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/analytics-tests-back.png" alt="Evidencia de ejecución de AnalyticsReportingQueryServiceImplTest en el Backend Cloud API" width="600px">
 
 Ejecución de pruebas unitarias para gestión de discrepancias en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/discrepancy-tests-back.png" alt="Evidencia de ejecución de DiscrepancyCommandServiceImplTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/discrepancy-tests-back.png" alt="Evidencia de ejecución de DiscrepancyCommandServiceImplTest en el Backend Cloud API" width="600px">
 
 Ejecución de pruebas unitarias para procesamiento de telemetría en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/telemetry-tests-back.png" alt="Evidencia de ejecución de TelemetryReadingCommandServiceImplTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/telemetry-tests-back.png" alt="Evidencia de ejecución de TelemetryReadingCommandServiceImplTest en el Backend Cloud API" width="600px">
 
 Ejecución de pruebas unitarias del controlador de telemetrías en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/telemetry-controller-tests-back.png" alt="Evidencia de ejecución de TelemetriesControllerTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/telemetry-controller-tests-back.png" alt="Evidencia de ejecución de TelemetriesControllerTest en el Backend Cloud API" width="600px">
 
 ##### Edge API – `restock-edge-service`
 
@@ -1846,7 +1846,7 @@ Ejecución de pruebas unitarias del controlador de telemetrías en Backend Cloud
 
 Ejecución de pruebas unitarias del Edge Service:
 
-<img src="./assets/images/chapter6/testing-sprint-2/unit-tests-edge.png" alt="Evidencia de ejecución de Unit Tests del Edge Service con pytest" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/unit-tests-edge.png" alt="Evidencia de ejecución de Unit Tests del Edge Service con pytest" width="600px">
 
 #### Integration Tests designed
 
@@ -1864,7 +1864,7 @@ Ejecución de pruebas unitarias del Edge Service:
 
 Ejecución de pruebas de integración del controlador de telemetrías en Backend Cloud API:
 
-<img src="./assets/images/chapter6/testing-sprint-2/telemetry-controller-integration-tests-back.png" alt="Evidencia de ejecución de TelemetriesControllerIntegrationTest en el Backend Cloud API" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/telemetry-controller-integration-tests-back.png" alt="Evidencia de ejecución de TelemetriesControllerIntegrationTest en el Backend Cloud API" width="600px">
 
 ##### Edge API – `restock-edge-service`
 
@@ -1880,7 +1880,7 @@ Ejecución de pruebas de integración del controlador de telemetrías en Backend
 
 Ejecución de pruebas de integración del Edge Service:
 
-<img src="./assets/images/chapter6/testing-sprint-2/integration-tests-edge.png" alt="Evidencia de ejecución de Integration Tests del Edge Service para endpoints REST de tracking" width="600px">
+<img src="../assets/images/chapter6/testing-sprint-2/integration-tests-edge.png" alt="Evidencia de ejecución de Integration Tests del Edge Service para endpoints REST de tracking" width="600px">
 
 #### Acceptance Tests under BDD approach
 
@@ -1988,7 +1988,7 @@ Este feature se relaciona con TS-39, TS-41 y TS-43. Los escenarios validan el re
 
 Ejecución de Acceptance Tests BDD del Edge Service con Behave:
 
-<img src="./assets/images/chapter6/testing-sprint-2/behave-features-edge.png" alt="Evidencia de ejecución de Acceptance Tests BDD del Edge Service con Behave y archivos Gherkin" width="500px">
+<img src="../assets/images/chapter6/testing-sprint-2/behave-features-edge.png" alt="Evidencia de ejecución de Acceptance Tests BDD del Edge Service con Behave y archivos Gherkin" width="500px">
 
 #### Testing commits for Sprint Review
 
@@ -2060,7 +2060,7 @@ El vídeo de demostración evidencia la correcta visualización y navegación a 
 * **Device Management:** Pantallas destinadas a la gestión, registro y configuración de dispositivos en el sistema.
 * **Configuración de Sucursales:** Interfaz para la creación y selección de sucursales en el sistema.
 
-<img src="assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
+<img src="../assets/images/chapter6/sprint1/execution-evidence.png" alt="Evidencia de Ejecución - Web App" style="width: 100%; height: auto; border: 1px solid #E2E8F0; border-radius: 8px; margin-top: 10px; margin-bottom: 10px;"/>
 
 **Evidencias de la demostración:**
 **Vídeo de navegación (Product Navigation):** [https://acortar.link/CmlyKz](https://acortar.link/CmlyKz)
@@ -3801,7 +3801,7 @@ La siguiente captura evidencia el estado del despliegue ejecutado durante el spr
 **Dashboard de Producción en Vercel**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/landing-vercel-dashboard.jpeg" alt="Dashboard de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/landing-vercel-dashboard.jpeg" alt="Dashboard de la Landing Page en Vercel" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Se muestra el panel general (Overview) del proyecto `restock-landing-page` en Vercel. Se evidencia el estado "Ready" del despliegue en producción tras la exitosa integración del Pull Request #25 en la rama `master`. Asimismo, se observa la asignación correcta del dominio público y los despliegues de previsualización (Preview) operativos correspondientes a las ramas activas en desarrollo, como la rama `develop`.
@@ -3822,7 +3822,7 @@ La siguiente captura evidencia el estado del despliegue ejecutado durante el spr
 **Dashboard de Producción en Vercel**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/web-app-vercel-dashboard.jpeg" alt="Dashboard de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/web-app-vercel-dashboard.jpeg" alt="Dashboard de la Web Application en Vercel" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Se muestra el panel general (Overview) del proyecto `restock-web-application` en Vercel. Se evidencia el estado "Ready" del despliegue en producción tras la exitosa integración del Pull Request #95 en la rama principal. Asimismo, se observan los despliegues de previsualización (Preview) operativos correspondientes a las ramas activas desarrolladas por el equipo durante el sprint (tales como `develop`, `feature/display-mode` y `feature/physical-anomalies`).
@@ -3844,7 +3844,7 @@ Las siguientes capturas evidencian el flujo de distribución y verificación de 
 **Registro y Monitoreo en Firebase Console**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/firebase-console-app.png" alt="Registro de la Mobile App en la consola de Firebase" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/firebase-console-app.png" alt="Registro de la Mobile App en la consola de Firebase" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Panel principal de Firebase mostrando los entornos `restock (android)` y `restock (ios)` debidamente registrados. Esta configuración centralizada asegura que la aplicación esté vinculada a los servicios de la plataforma para su correcta distribución y monitoreo de métricas.
@@ -3852,7 +3852,7 @@ Panel principal de Firebase mostrando los entornos `restock (android)` y `restoc
 **Distribución de Versiones con Firebase App Distribution**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/firebase-app-distribution.png" alt="Lanzamiento de versiones en Firebase App Distribution" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/firebase-app-distribution.png" alt="Lanzamiento de versiones en Firebase App Distribution" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Panel de App Distribution evidenciando el historial de lanzamientos iterativos de la aplicación móvil correspondientes al sprint. Se observa la distribución exitosa de la versión más reciente (v1.4.1), detallando en tiempo real las métricas de invitaciones enviadas, aceptadas y descargas completadas por los testers.
@@ -3860,7 +3860,7 @@ Panel de App Distribution evidenciando el historial de lanzamientos iterativos d
 **Mobile Application Operativa en Dispositivo Físico**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/mobile-app-running.png" alt="Mobile Application en ejecución en dispositivo físico" style="width:90%; max-width:200px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/mobile-app-running.png" alt="Mobile Application en ejecución en dispositivo físico" style="width:90%; max-width:200px; height:auto;">
 </p>
 Captura de pantalla de la aplicación móvil Restock ejecutándose sin incidencias en un dispositivo físico tras su descarga desde App Distribution. Se valida el correcto renderizado de la interfaz de usuario, exponiendo la lista de suministros actualizados y la barra de navegación principal habilitada.
 
@@ -3922,7 +3922,7 @@ Para asegurar la portabilidad y facilitar el despliegue del sistema Restock Edge
 **Construcción de la Imagen (Docker Build)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-build.png" alt="Construcción multi-stage de la imagen Docker" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/edge-docker-build.png" alt="Construcción multi-stage de la imagen Docker" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Proceso de construcción multi-stage de la imagen Docker para el Edge Service. En la captura se observa el aislamiento en la fase de 'builder' para instalar dependencias de Python mediante pip, seguido de la etapa de 'runner' que genera una imagen final ligera.
@@ -3930,7 +3930,7 @@ Proceso de construcción multi-stage de la imagen Docker para el Edge Service. E
 **Imagen Publicada en Docker Hub**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-hub.png" alt="Repositorio en Docker Hub" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/edge-docker-hub.png" alt="Repositorio en Docker Hub" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Repositorio público del Edge Service alojado en Docker Hub. Se muestran los tags garantizando que cualquier nodo de la red pueda descargar la imagen mediante el comando `docker pull` sin requerir acceso al código fuente.
@@ -3938,7 +3938,7 @@ Repositorio público del Edge Service alojado en Docker Hub. Se muestran los tag
 **Contenedor corriendo en Docker Desktop o Terminal**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-desktop.png" alt="Contenedor corriendo en Docker Desktop" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/edge-docker-desktop.png" alt="Contenedor corriendo en Docker Desktop" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Estado de ejecución del contenedor en Docker Desktop. El servicio se expone localmente a través del puerto 5000 y cuenta con un volumen montado en el host en la ruta `./data`, permitiendo que la base de datos local SQLite conserve la persistencia de datos.
@@ -3946,7 +3946,7 @@ Estado de ejecución del contenedor en Docker Desktop. El servicio se expone loc
 **Logs de Inicialización del Servicio**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/edge-docker-logs.png" alt="Logs de inicialización" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/edge-docker-logs.png" alt="Logs de inicialización" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Logs de inicialización del Edge Service dentro del contenedor Docker. Se evidencia que al arrancar, el servicio ejecuta de forma automatizada los scripts de creación y mapea los modelos de dominio.
@@ -3954,7 +3954,7 @@ Logs de inicialización del Edge Service dentro del contenedor Docker. Se eviden
 **Prueba de API (Evidencia de Funcionamiento)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/edge-api-test.png" alt="Prueba de validación del API en Postman" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/edge-api-test.png" alt="Prueba de validación del API en Postman" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Prueba de validación del API expuesta por el contenedor del Edge Service. Se observa una solicitud POST que emula un envío de telemetría de peso, obteniendo una respuesta exitosa procesada directamente por el servidor Gunicorn.
@@ -3975,7 +3975,7 @@ Las siguientes capturas y fotografías evidencian el flujo de despliegue del com
 **Simulación Temprana del Circuito (Wokwi)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-wokwi.png" alt="Simulación del ESP32 en Wokwi" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-wokwi.png" alt="Simulación del ESP32 en Wokwi" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 La imagen muestra el entorno de simulación de Wokwi ejecutando el archivo principal del proyecto. En ella se prototipó la lógica de lectura de los sensores y la conexión de la pantalla LCD de manera virtual, asegurando la viabilidad del código antes del ensamblaje físico.
@@ -3983,7 +3983,7 @@ La imagen muestra el entorno de simulación de Wokwi ejecutando el archivo princ
 **Compilación y Verificación en Arduino IDE**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-compilation.png" alt="Compilación del firmware en Arduino IDE" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-compilation.png" alt="Compilación del firmware en Arduino IDE" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Se evidencia la salida de la consola durante el uso de Arduino IDE 2.3.10. El log confirma la resolución exitosa de las librerías de dependencias y la compilación del binario sin errores de sintaxis en el código fuente.
@@ -3991,7 +3991,7 @@ Se evidencia la salida de la consola durante el uso de Arduino IDE 2.3.10. El lo
 **Salida del Monitor Serial**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-serial.png" alt="Monitor serial mostrando logs del ESP32" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-serial.png" alt="Monitor serial mostrando logs del ESP32" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 La captura muestra el log en tiempo real del Monitor Serial. Se observa el proceso de inicialización de los módulos, los intentos de conexión al broker MQTT y las lecturas preliminares de los sensores de peso calibrados.
@@ -3999,7 +3999,7 @@ La captura muestra el log en tiempo real del Monitor Serial. Se observa el proce
 **Carga del Firmware al Microcontrolador (ESP32)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-upload.png" alt="Proceso de carga (uploading) al ESP32" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-arduino-ide-upload.png" alt="Proceso de carga (uploading) al ESP32" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 La imagen documenta el proceso de flasheo del código ("Uploading..."). Se confirma la escritura del binario compilado al 100% de su capacidad en la memoria flash del microcontrolador físico conectado por el puerto serie.
@@ -4007,7 +4007,7 @@ La imagen documenta el proceso de flasheo del código ("Uploading..."). Se confi
 **Pruebas de Hardware en Protoboard**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-breadboard-test.png" alt="Pruebas del circuito físico en protoboard" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-breadboard-test.png" alt="Pruebas del circuito físico en protoboard" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Fotografía del circuito físico preliminar ensamblado en una placa de pruebas (protoboard). Se evidencia el microcontrolador ESP32 energizado y la pantalla LCD retroiluminada respondiendo a las instrucciones del firmware.
@@ -4015,7 +4015,7 @@ Fotografía del circuito físico preliminar ensamblado en una placa de pruebas (
 **Prueba de Sensores de Peso (Supplies Keeper Operativo)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-device-weight.png" alt="Prueba de peso en el dispositivo Supplies Keeper" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-device-weight.png" alt="Prueba de peso en el dispositivo Supplies Keeper" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 La fotografía muestra el dispositivo IoT físico finalizado, demostrando su capacidad operativa al reflejar en tiempo real los valores de peso (Weight) capturados por las celdas de carga integradas en la balanza inteligente.
@@ -4023,7 +4023,7 @@ La fotografía muestra el dispositivo IoT físico finalizado, demostrando su cap
 **Prueba de Sensores Ambientales (Temperatura y Humedad)**
 
 <p align="center">
-  <img src="assets/images/chapter6/sprint3/deployment/embedded-device-temp-hum.png" alt="Prueba de temperatura y humedad en el dispositivo" style="width:100%; max-width:900px; height:auto;">
+  <img src="../assets/images/chapter6/sprint3/deployment/embedded-device-temp-hum.png" alt="Prueba de temperatura y humedad en el dispositivo" style="width:100%; max-width:900px; height:auto;">
 </p>
 
 Se evidencia una segunda prueba sobre el dispositivo Supplies Keeper en funcionamiento, donde la pantalla LCD muestra exitosamente las lecturas de Temperatura y Humedad del entorno, validando la integración completa de los módulos periféricos.
@@ -4041,7 +4041,7 @@ Para el desarrollo del componente de software embebido (`embedded-application`),
 
 **Analíticos de colaboración — Embedded Application**
 
-![Colaboración en Embedded Application](assets/images/chapter6/collaboration-insights/commit-embedded-application.png)
+![Colaboración en Embedded Application](../assets/images/chapter6/collaboration-insights/commit-embedded-application.png)
 
 - **Total de commits**: 16 commits.
 - **Autores contribuyentes**:
@@ -4060,7 +4060,7 @@ El desarrollo del frontend administrativo (`web-application`) avanzó a través 
 
 **Analíticos de colaboración — Web Application**
 
-![Colaboración en Web Application](assets/images/chapter6/collaboration-insights/commit-web-application.png)
+![Colaboración en Web Application](../assets/images/chapter6/collaboration-insights/commit-web-application.png)
 
 - **Total de commits**: 70 commits.
 - **Autores contribuyentes**:
@@ -4083,7 +4083,7 @@ El backend principal (`web-service`) concentró el mayor volumen de contribucion
 
 **Analíticos de colaboración — Web Service**
 
-![Colaboración en Web Service](assets/images/chapter6/collaboration-insights/commit-web-services.png)
+![Colaboración en Web Service](../assets/images/chapter6/collaboration-insights/commit-web-services.png)
 
 - **Total de commits**: 178 commits.
 - **Autores contribuyentes**:
@@ -4107,7 +4107,7 @@ El componente de borde (`Edge-service`) fue desarrollado para garantizar el proc
 
 **Analíticos de colaboración — Edge Service**
 
-![Colaboración en Edge Service](assets/images/chapter6/collaboration-insights/commit-edge-service.png)
+![Colaboración en Edge Service](../assets/images/chapter6/collaboration-insights/commit-edge-service.png)
 
 - **Total de commits**: 86 commits.
 - **Autores contribuyentes**:
@@ -4129,7 +4129,7 @@ El canal móvil (`mobile-application`) se desarrolló para permitir la consulta 
 
 **Analíticos de colaboración — Mobile Application**
 
-![Colaboración en Mobile Application](assets/images/chapter6/collaboration-insights/commit-mobile-app.png)
+![Colaboración en Mobile Application](../assets/images/chapter6/collaboration-insights/commit-mobile-app.png)
 
 - **Total de commits**: 64 commits.
 - **Autores contribuyentes**:
@@ -4758,7 +4758,7 @@ La narrativa del video guía al espectador a través del flujo principal de la p
 
 **Evidencia de Publicación:**
 
-![About the Product - Thumbnail](assets/images/chapter5/about-the-product-screenshot.png)
+![About the Product - Thumbnail](../assets/images/chapter5/about-the-product-screenshot.png)
 *Interfaz de la aplicación Restock y el dispositivo Supplies Keeper presentados en el video institucional.*
 
 **Enlaces de acceso:**

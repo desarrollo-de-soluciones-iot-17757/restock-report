@@ -32,10 +32,10 @@ jobs:
         run: npm install
 
       - name: Compile unified Markdown document
-        run: bash scripts/merge.sh
+        run: bash docs/scripts/merge.sh
 
       - name: Inject dynamic Table of Contents
-        run: node scripts/generate-toc.js
+        run: node docs/scripts/generate-toc.js
 
       - name: Clean document text (Regex/Sed)
         run: sed -i 's/\.md://g' full_document.md

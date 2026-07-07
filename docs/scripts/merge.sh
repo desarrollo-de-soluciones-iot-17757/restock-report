@@ -10,7 +10,7 @@ rm -f full_document.md
 # Collect all markdown files in the root folder, excluding README.md and full_document.md
 shopt -s nullglob
 files=()
-for f in *.md; do
+for f in docs/*.md; do
   if [[ "$f" != "README.md" && "$f" != "full_document.md" ]]; then
     files+=("$f")
   fi
