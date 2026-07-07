@@ -1,4 +1,4 @@
-# Bibliografía
+# Bibliografia
 
 Andersson, R. (s. f.). *Inter font family*. [https://rsms.me/inter/](https://rsms.me/inter/)
 
@@ -28,13 +28,11 @@ Google. (s. f.). *Angular Style Guide*. [https://angular.dev/style-guide](https:
 
 Google. (s. f.). *Effective Dart: Style*. [https://dart.dev/effective-dart/style](https://dart.dev/effective-dart/style)
 
+Google. (s. f.). *Google Java Style Guide*. [https://google.github.io/styleguide/javaguide.html](https://google.github.io/styleguide/javaguide.html)
+
 Instituto Nacional de Estadística e Informática. (2026, 20 de marzo). *Actividad de restaurantes aumentó 5,97% durante enero 2026*. Gobierno del Perú. [https://www.gob.pe/institucion/inei/noticias/1368670-actividad-de-restaurantes-aumento-5-97-durante-enero-2026](https://www.gob.pe/institucion/inei/noticias/1368670-actividad-de-restaurantes-aumento-5-97-durante-enero-2026)
 
 Instituto Nacional de Estadística e Informática. (2026, 20 de marzo). *Sector comercio se incrementó 4,33% en enero de 2026*. Gobierno del Perú. [https://www.gob.pe/institucion/inei/noticias/1368664-sector-comercio-se-incremento-4-33-en-enero-de-2026](https://www.gob.pe/institucion/inei/noticias/1368664-sector-comercio-se-incremento-4-33-en-enero-de-2026)
-
-Microsoft. (s. f.). *C# Coding Conventions*. [https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/coding-conventions](https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/coding-conventions)
-
-Microsoft. (s. f.). *Framework Design Guidelines*. [https://learn.microsoft.com/dotnet/standard/design-guidelines/](https://learn.microsoft.com/dotnet/standard/design-guidelines/)
 
 Microsoft. (s. f.). *TypeScript Coding Guidelines*. [https://github.com/microsoft/TypeScript/wiki/Coding-guidelines](https://github.com/microsoft/TypeScript/wiki/Coding-guidelines)
 
@@ -43,6 +41,8 @@ Moran, K. (2024). *The four dimensions of tone of voice*. Nielsen Norman Group. 
 Nielsen, J. (1994). *Enhancing the explanatory power of usability heuristics*. En *Proceedings of the SIGCHI Conference on Human Factors in Computing Systems* (pp. 152–158). Association for Computing Machinery. [https://doi.org/10.1145/191666.191729](https://doi.org/10.1145/191666.191729)
 
 OpenAPI Initiative. (s. f.). *OpenAPI Specification*. [https://spec.openapis.org/oas/latest.html](https://spec.openapis.org/oas/latest.html)
+
+Oracle. (s. f.). *Code Conventions for the Java Programming Language*. [https://www.oracle.com/java/technologies/javase/codeconventions-contents.html](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
 
 Prettier. (s. f.). *Prettier Documentation*. [https://prettier.io/docs/](https://prettier.io/docs/)
 
@@ -53,6 +53,10 @@ Sozib, H. M., & Zaman, A. M. (2025). *Smart shelves: Transforming retail stockin
 Swagger. (s. f.). *Swagger Specification*. [https://swagger.io/specification/](https://swagger.io/specification/)
 
 Vásquez, J., Torres, K., & Castañeda, R. (2024). *Propuesta de mejora para el control y manejo de un almacén*. *Revista Ingeniería Industrial, 24*(2), 15–25. [https://www.scielo.org.pe/scielo.php?pid=S2523-63262024000200015&script=sci_arttext](https://www.scielo.org.pe/scielo.php?pid=S2523-63262024000200015&script=sci_arttext)
+
+VMware/Broadcom. (s. f.). *Spring Boot Reference Documentation*. [https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
+
+VMware/Broadcom. (s. f.). *Spring Framework Documentation*. [https://docs.spring.io/spring-framework/reference/](https://docs.spring.io/spring-framework/reference/)
 
 World Wide Web Consortium. (2025). *Web Content Accessibility Guidelines (WCAG) 2.1*. [https://www.w3.org/TR/WCAG21/](https://www.w3.org/TR/WCAG21/)
 
